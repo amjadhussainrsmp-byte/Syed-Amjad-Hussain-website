@@ -3,145 +3,607 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Poetry | Syed Amjad Hussain</title>
-<meta name="description" content="Read the poetry of Syed Amjad Hussain in Urdu, Hindi and Roman Urdu, including ghazals, naat, manqabat, salam, bait and more.">
 <meta name="theme-color" content="#472127">
+<title>Poetry & Kalam | Syed Amjad Hussain</title>
+<meta name="description" content="Read Urdu poetry, ghazals, naats and manqabats by Syed Amjad Hussain in Urdu, Roman Urdu and Hindi.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Nastaliq+Urdu&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&family=Noto+Nastaliq+Urdu&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --paper:#f4efe6;
-  --paper-2:#ebe3d7;
-  --ink:#2f2926;
-  --muted:#71665e;
-  --burgundy:#652e36;
-  --burgundy-dark:#472127;
-  --gold:#b89b6a;
-  --line:#d8cdbd;
-  --white:#fffdf8;
-  --sans:"DM Sans",Arial,sans-serif;
-  --serif:"Playfair Display",Georgia,serif;
+  --paper: #f4efe6;
+  --paper-2: #ebe3d7;
+  --ink: #2f2926;
+  --muted: #71665e;
+  --burgundy: #652e36;
+  --burgundy-dark: #472127;
+  --gold: #b89b6a;
+  --line: #d8cdbd;
+  --white: #fffdf8;
+  --sans: "DM Sans", Arial, sans-serif;
+  --serif: "Playfair Display", Georgia, serif;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7}
-a{color:inherit;text-decoration:none}
-button,input,select{font:inherit}
-button{cursor:pointer}
-.topline{min-height:32px;padding:7px 5.5%;background:var(--burgundy-dark);color:#e5d5c3;display:flex;justify-content:space-between;gap:12px;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
-.site-header{position:sticky;top:0;z-index:50;min-height:83px;padding:14px 5.5%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(244,239,230,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-.brand{display:flex;align-items:center;gap:13px;flex-shrink:0}
-.brand-mark{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--gold);color:var(--burgundy);font-family:"Noto Nastaliq Urdu",serif;font-size:26px}
-.brand-text strong{display:block;font-family:var(--serif);font-weight:600;font-size:17px;line-height:1.35}
-.brand-text small{display:block;margin-top:4px;color:var(--muted);font-size:8px;letter-spacing:.1em;text-transform:uppercase}
-nav{display:flex;align-items:center;gap:18px}
-nav a{color:#544942;font-size:10px}
-nav a:hover,nav a.active{color:var(--burgundy)}
-nav a.active{font-weight:700}
-.nav-contact{border:1px solid var(--burgundy);padding:9px 13px}
-.menu-toggle{display:none;background:none;border:1px solid var(--line);padding:8px 11px;color:var(--burgundy)}
-.wrap{width:min(1120px,89%);margin:0 auto}
-.eyebrow{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:9px;letter-spacing:.18em;font-weight:700;text-transform:uppercase}
-.eyebrow:before{content:"";width:27px;height:1px;background:currentColor}
-.hero{background:var(--burgundy);color:var(--paper);padding:72px 0 66px}
-.hero h1{margin:20px 0 15px;font-family:var(--serif);font-weight:400;font-size:clamp(42px,6vw,72px);line-height:1.12;letter-spacing:-.03em}
-.hero h1 em{color:#d3b788;font-weight:400}
-.hero p{max-width:610px;color:#e0d1c5;font-size:12px;line-height:2}
-.hero-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:28px}
-.poet-location{font-size:9px;color:#e6d4c1;letter-spacing:.12em;text-transform:uppercase}
-.language-switch{display:flex;gap:5px;flex-wrap:wrap}
-.language-switch button{padding:8px 12px;border:1px solid #936c70;background:transparent;color:#f4efe6;font-size:10px}
-.language-switch button.active,.language-switch button:hover{background:#f4efe6;color:var(--burgundy)}
-main{padding:42px 0 85px}
-.library-intro{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:27px}
-.library-intro h2{font-family:var(--serif);font-size:clamp(30px,4vw,43px);font-weight:400;line-height:1.25}
-.library-intro p{max-width:330px;color:var(--muted);font-size:11px;line-height:1.9}
-.toolbar{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:12px;margin-bottom:18px}
-.searchbox,.sortbox{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:0;background:var(--white);color:var(--ink);font-size:11px;outline-offset:3px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 25px}
-.filter-btn{border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 13px;font-size:10px;transition:.2s}
-.filter-btn:hover,.filter-btn.active{background:var(--burgundy);border-color:var(--burgundy);color:var(--white)}
-.results-line{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:15px;color:var(--muted);font-size:10px}
-.poetry-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.poem-card{min-height:218px;display:flex;flex-direction:column;align-items:flex-start;padding:23px;background:var(--white);transition:background .2s}
-.poem-card:hover{background:#faf5ed}
-.poem-category{color:var(--burgundy);font-size:8px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
-.poem-card h3{margin:15px 0 10px;font-family:var(--serif);font-size:21px;line-height:1.45;font-weight:500}
-.poem-card .poem-subtitle{color:var(--muted);font-size:10px;line-height:1.8}
-.card-bottom{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:22px}
-.card-bottom span{color:var(--muted);font-size:9px}
-.read-btn{border:0;border-bottom:1px solid var(--gold);padding:4px 0;background:transparent;color:var(--burgundy);font-size:10px;font-weight:700}
-.empty-state{grid-column:1/-1;padding:45px 20px;text-align:center;background:var(--white);color:var(--muted);font-size:12px}
-.poem-reader{margin-top:45px;padding:35px 5%;background:var(--paper-2);border:1px solid var(--line);scroll-margin-top:110px}
-.reader-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
-.reader-top h2{margin:10px 0;font-family:var(--serif);font-size:clamp(27px,4vw,39px);font-weight:400;line-height:1.4}
-.reader-category{color:var(--burgundy);font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
-.reader-actions{display:flex;flex-wrap:wrap;gap:7px;margin:18px 0}
-.script-btn{border:1px solid var(--line);background:var(--white);padding:8px 12px;color:var(--ink);font-size:10px}
-.script-btn.active{background:var(--burgundy);border-color:var(--burgundy);color:white}
-.poem-body{max-width:760px;margin:20px auto 0;text-align:center;white-space:pre-line;font-size:18px;line-height:2.5}
-.poem-body.urdu{font-family:"Noto Nastaliq Urdu",serif;font-size:22px;line-height:2.7;direction:rtl}
-.poem-body.hindi{font-family:"Noto Serif Devanagari",serif;line-height:2.3}
-.poem-note{margin-top:22px;text-align:center;color:var(--muted);font-size:10px}
-.close-reader{border:1px solid var(--line);background:transparent;padding:7px 10px;color:var(--muted);font-size:10px}
-.about-poet{margin-top:55px;padding:35px;background:var(--burgundy-dark);color:var(--paper);display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
-.about-poet h2{margin-top:12px;font-family:var(--serif);font-size:32px;font-weight:400}
-.about-poet p{color:#d0c2b5;font-size:11px;line-height:2}
-.about-poet a{display:inline-block;margin-top:15px;color:#e6d3b4;font-size:10px;border-bottom:1px solid #8d775a;padding-bottom:4px}
-.site-footer{padding:35px 5.5% 18px;background:#292321;color:var(--paper)}
-.footer-main{display:flex;justify-content:space-between;align-items:center;gap:25px}
-.footer-brand .brand-mark{color:#d5bd95;border-color:#8d775a}
-.footer-brand .brand-text small{color:#c1b3a5}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap}
-.footer-links a{color:#d3c3b4;font-size:10px}
-.site-footer>p{margin:20px 0 30px;color:#b8aaa0;font-size:10px}
-.footer-bottom{border-top:1px solid #4c403a;padding-top:16px;display:flex;justify-content:space-between;gap:16px;color:#b8aaa0;font-size:9px}
-.footer-bottom a{color:#e6d3b4}
-@media(max-width:1050px){nav{gap:11px}nav a{font-size:9px}.brand-text strong{font-size:15px}}
-@media(max-width:780px){
-.site-header{min-height:75px}
-.menu-toggle{display:block}
-nav{display:none;position:absolute;top:100%;left:0;right:0;padding:16px 5.5% 22px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
-nav.open{display:flex}
-nav a{padding:11px 0;border-bottom:1px solid var(--line);font-size:11px}
-nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
-.hero{padding:55px 0}
-.hero-bottom,.library-intro{align-items:flex-start;flex-direction:column}
-.toolbar{grid-template-columns:1fr}
-.poetry-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.about-poet{grid-template-columns:1fr}
-.footer-main{align-items:flex-start;flex-direction:column}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
-@media(max-width:480px){
-.topline{font-size:7px;letter-spacing:.06em}
-.brand{gap:9px}.brand-mark{width:38px;height:38px;font-size:22px}
-  .brand-text strong{font-size:13px}.brand-text small{font-size:7px}
-.poetry-grid{grid-template-columns:1fr}
-.poem-card{min-height:175px}
-.poem-reader{padding:25px 18px}
-.reader-top{gap:10px}
-.poem-body{font-size:16px}
-.poem-body.urdu{font-size:20px}
-.footer-bottom{flex-direction:column}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.7;
 }
-  
-[hidden] {
-  display: none !important;
+
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+[hidden] { display: none !important; }
+
+.topline {
+  padding: 7px 5.5%;
+  min-height: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--burgundy-dark);
+  color: #e5d5c3;
+  font-size: 9px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  min-height: 83px;
+  padding: 14px 5.5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: rgba(244,239,230,.97);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  color: var(--burgundy);
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 26px;
+}
+
+.brand-text strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.brand-text small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+nav a {
+  color: #544942;
+  font-size: 10px;
+}
+
+nav a:hover, nav a.active { color: var(--burgundy); }
+nav a.active { font-weight: 700; }
+
+.nav-contact {
+  padding: 9px 13px;
+  border: 1px solid var(--burgundy);
+}
+
+.menu-toggle {
+  display: none;
+  padding: 8px 11px;
+  background: transparent;
+  color: var(--burgundy);
+  border: 1px solid var(--line);
+}
+
+.wrap {
+  width: min(1120px, 89%);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 27px;
+  height: 1px;
+  background: currentColor;
+}
+
+.hero {
+  padding: 72px 0 66px;
+  background: var(--burgundy);
+  color: var(--paper);
+}
+
+.hero h1 {
+  margin: 20px 0 15px;
+  font-family: var(--serif);
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -.03em;
+}
+
+.hero h1 em {
+  color: #d3b788;
+  font-weight: 400;
+}
+
+.hero p {
+  max-width: 610px;
+  color: #e0d1c5;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.poet-signature {
+  color: #e6d4c1;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+main { padding: 42px 0 85px; }
+
+.library-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 25px;
+  margin-bottom: 27px;
+}
+
+.library-intro h2 {
+  margin: 10px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 43px);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.library-intro p {
+  max-width: 330px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.searchbox, .sortbox {
+  width: 100%;
+  padding: 13px 15px;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  font-size: 11px;
+  outline-offset: 3px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 25px;
+}
+
+.filter-btn {
+  padding: 9px 13px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  font-size: 10px;
+  transition: .2s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  color: var(--white);
+}
+
+.results-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.poetry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.poem-card {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 23px;
+  background: var(--white);
+  transition: background .2s;
+}
+
+.poem-card:hover { background: #faf5ed; }
+
+.poem-category {
+  color: var(--burgundy);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.poem-card h3 {
+  margin: 15px 0 10px;
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.poem-preview {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+.card-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.card-bottom span {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.read-btn {
+  padding: 4px 0;
+  background: transparent;
+  color: var(--burgundy);
+  border: 0;
+  border-bottom: 1px solid var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 45px 20px;
+  background: var(--white);
+  color: var(--muted);
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Individual poem reading area */
+
+.poem-reader {
+  margin-top: 45px;
+  padding: 35px 5%;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  scroll-margin-top: 110px;
+}
+
+.reader-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.reader-category {
+  color: var(--burgundy);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.reader-top h2 {
+  margin: 10px 0;
+  font-family: var(--serif);
+  font-size: clamp(27px, 4vw, 39px);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.close-reader {
+  padding: 7px 10px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  font-size: 10px;
+}
+
+.script-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+  margin: 22px 0;
+}
+
+.script-btn {
+  padding: 9px 14px;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-size: 10px;
+}
+
+.script-btn.active {
+  background: var(--burgundy);
+  color: white;
+  border-color: var(--burgundy);
+}
+
+.poem-body {
+  max-width: 760px;
+  margin: 20px auto 0;
+  text-align: center;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  font-size: 18px;
+  line-height: 2.5;
+}
+
+.poem-body.urdu {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 22px;
+  line-height: 2.8;
+  direction: rtl;
+}
+
+.poem-body.hindi {
+  font-family: "Noto Serif Devanagari", serif;
+  line-height: 2.4;
+}
+
+.poem-note {
+  margin-top: 20px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 10px;
+}
+
+.about-poet {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 35px;
+  margin-top: 55px;
+  padding: 35px;
+  background: var(--burgundy-dark);
+  color: var(--paper);
+}
+
+.about-poet h2 {
+  margin-top: 12px;
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.about-poet p {
+  color: #d0c2b5;
+  font-size: 11px;
+  line-height: 2;
+}
+
+.about-poet a {
+  display: inline-block;
+  margin-top: 15px;
+  padding-bottom: 4px;
+  color: #e6d3b4;
+  border-bottom: 1px solid #8d775a;
+  font-size: 10px;
+}
+
+.site-footer {
+  padding: 35px 5.5% 18px;
+  background: #292321;
+  color: var(--paper);
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+
+.footer-brand .brand-mark {
+  color: #d5bd95;
+  border-color: #8d775a;
+}
+
+.footer-brand .brand-text small { color: #c1b3a5; }
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.footer-links a {
+  color: #d3c3b4;
+  font-size: 10px;
+}
+
+.site-footer > p {
+  margin: 20px 0 30px;
+  color: #b8aaa0;
+  font-size: 10px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #4c403a;
+  color: #b8aaa0;
+  font-size: 9px;
+}
+
+.footer-bottom a { color: #e6d3b4; }
+
+@media (max-width: 1050px) {
+  nav { gap: 11px; }
+  nav a { font-size: 9px; }
+  .brand-text strong { font-size: 15px; }
+}
+
+@media (max-width: 780px) {
+  .site-header { min-height: 75px; }
+  .menu-toggle { display: block; }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 16px 5.5% 22px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  nav.open { display: flex; }
+
+  nav a {
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 11px;
+  }
+
+  nav .nav-contact {
+    margin-top: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .hero { padding: 55px 0; }
+  .hero-bottom, .library-intro {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .toolbar { grid-template-columns: 1fr; }
+  .poetry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-poet { grid-template-columns: 1fr; }
+  .footer-main { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .topline { font-size: 7px; letter-spacing: .06em; }
+  .brand { gap: 9px; }
+  .brand-mark { width: 38px; height: 38px; font-size: 22px; }
+  .brand-text strong { font-size: 13px; }
+  .brand-text small { font-size: 7px; }
+  .poetry-grid { grid-template-columns: 1fr; }
+  .poem-card { min-height: 175px; }
+  .poem-reader { padding: 25px 18px; }
+  .reader-top { gap: 10px; }
+  .poem-body { font-size: 16px; }
+  .poem-body.urdu { font-size: 20px; }
+  .footer-bottom { flex-direction: column; }
 }
 </style>
 </head>
 
 <body>
+
 <div class="topline">
   <span>Independent Research · Literature · Heritage</span>
   <span>Bihar, India</span>
 </div>
 
 <header class="site-header">
-  <a class="brand" href="home.html">
+  <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
     <span class="brand-mark">أ</span>
     <span class="brand-text">
       <strong>Syed Amjad Hussain</strong>
@@ -149,7 +611,8 @@ nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
     </span>
   </a>
 
-  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+  <button class="menu-toggle" id="menuToggle" type="button"
+          aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
 
   <nav id="mainNav" aria-label="Main navigation">
     <a href="home.html">Home</a>
@@ -165,35 +628,39 @@ nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
 
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="eyebrow">Poetry & Literary Works</div>
-    <h1 data-i18n="heroTitle">The world of <em>words</em></h1>
-    <p data-i18n="heroDesc">Explore the poetry of Syed Amjad Hussain, including ghazals, naat, manqabat, salam, bait and other literary forms. Read in Urdu, Hindi or Roman Urdu wherever a version is available.</p>
+    <div class="eyebrow">Poetry & Literary Works</div>
+    <h1>The world of <em>words</em></h1>
+    <p>
+      Explore ghazals, naat, manqabat, salam, bait, sher and other
+      literary works by Syed Amjad Hussain. Read each poem in Urdu,
+      Roman Urdu or Hindi whenever the corresponding text is available.
+    </p>
     <div class="hero-bottom">
-      <div class="poet-location" data-i18n="poetLocation">Syed Amjad Hussain · Amjadؔ</div>
-      <div class="language-switch" aria-label="Interface language">
-        <button class="active" data-lang="en">English</button>
-        <button data-lang="hi">हिन्दी</button>
-        <button data-lang="ur">اردو</button>
-      </div>
+      <div class="poet-signature">Syed Amjad Hussain · Amjadؔ</div>
     </div>
   </div>
 </section>
 
 <main class="wrap">
-  <div class="library-intro">
+  <section class="library-intro">
     <div>
-      <div class="eyebrow" style="color:var(--burgundy)" data-i18n="collectionLabel">The Collection</div>
-      <h2 data-i18n="collectionTitle">Poetry & Kalam</h2>
+      <div class="eyebrow" style="color:var(--burgundy)">The Collection</div>
+      <h2>Poetry & Kalam</h2>
     </div>
-    <p data-i18n="collectionDesc">Browse by literary form, find a title, and open a poem to read its available script versions.</p>
-  </div>
+    <p>
+      Browse by literary form, search for a title, and open a poem
+      to read its available versions in different scripts.
+    </p>
+  </section>
 
   <div class="toolbar">
-    <input class="searchbox" id="searchInput" type="search" placeholder="Search titles and poetry..." aria-label="Search poetry">
-    <select class="sortbox" id="sortSelect" aria-label="Sort poetry">
+    <input class="searchbox" id="searchInput" type="search"
+           placeholder="Search poems and titles..."
+           aria-label="Search poetry">
+
+    <select class="sortbox" id="sortSelect" aria-label="Sort poems">
       <option value="featured">Featured order</option>
       <option value="az">Alphabetical: A–Z</option>
-      <option value="popular">Most popular</option>
     </select>
   </div>
 
@@ -201,10 +668,10 @@ nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
 
   <div class="results-line">
     <span id="resultCount" aria-live="polite"></span>
-    <span data-i18n="scriptNote">Script options appear inside each poem.</span>
+    <span>Open a poem to read it.</span>
   </div>
 
-  <div class="poetry-grid" id="poetryGrid"></div>
+  <section class="poetry-grid" id="poetryGrid" aria-label="Poems"></section>
 
   <section class="poem-reader" id="poemReader" hidden>
     <div class="reader-top">
@@ -212,13 +679,13 @@ nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
         <div class="reader-category" id="readerCategory"></div>
         <h2 id="readerTitle"></h2>
       </div>
-      <button class="close-reader" id="closeReader" data-i18n="close">Close ×</button>
+      <button class="close-reader" id="closeReader" type="button">Close ×</button>
     </div>
 
-    <div class="reader-actions" aria-label="Poem script">
-      <button class="script-btn active" data-script="ur">اردو</button>
-      <button class="script-btn" data-script="hi">हिन्दी</button>
-      <button class="script-btn" data-script="roman">Roman Urdu</button>
+    <div class="script-tabs" aria-label="Choose poem script">
+      <button class="script-btn active" type="button" data-script="ur">اردو</button>
+      <button class="script-btn" type="button" data-script="roman">Roman Urdu</button>
+      <button class="script-btn" type="button" data-script="hi">हिन्दी</button>
     </div>
 
     <div class="poem-body urdu" id="poemBody" lang="ur" dir="rtl"></div>
@@ -227,13 +694,17 @@ nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
 
   <section class="about-poet">
     <div>
-      <div class="eyebrow" data-i18n="aboutLabel">About the Poet</div>
+      <div class="eyebrow">About the Poet</div>
       <h2>Syed Amjad Hussain</h2>
-      <a href="biography.html" data-i18n="biographyLink">Read the biography →</a>
+      <a href="biography.html">Read the biography →</a>
     </div>
     <div>
-      <p data-i18n="aboutText">A poet and author from Bihar whose literary interests include devotional poetry, Sufi traditions and Urdu literature. This collection brings together his works in a searchable, multilingual reading space.</p>
-      <a href="contact.html" data-i18n="contactLink">Correspond about poetry →</a>
+      <p>
+        Author, poet, historian and independent research scholar from
+        Bihar, with literary interests in Urdu poetry, Sufi traditions,
+        history and cultural heritage.
+      </p>
+      <a href="contact.html">Correspond about poetry →</a>
     </div>
   </section>
 </main>
@@ -247,6 +718,7 @@ nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
         <small>Author · Historian · Poet · Researcher</small>
       </span>
     </a>
+
     <div class="footer-links">
       <a href="home.html">Home</a>
       <a href="biography.html">Biography</a>
@@ -255,7 +727,9 @@ nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
       <a href="contact.html">Contact</a>
     </div>
   </div>
+
   <p>Poetry, literature and heritage.</p>
+
   <div class="footer-bottom">
     <span>© <span id="currentYear"></span> Syed Amjad Hussain. All rights reserved.</span>
     <a href="#">Back to top ↑</a>
@@ -263,468 +737,265 @@ nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
 </footer>
 
 <script>
+"use strict";
+
 /*
-  ADD YOUR POEMS HERE.
-
-  Each poem can contain:
-  title: titles in Urdu, Hindi and Roman Urdu
-  category: ghazal, naat, manqabat, salam, bait, sher, etc.
-  text: the actual poem in each available script
-  popularity: optional number for sorting
-
-  Leave a text field empty if that script version is not available.
-  Do not publish poems until you have entered and checked their text.
+  POEM DATA
+  Add each new poem as another object inside this array.
+  Keep the three script versions under text. Do not put a poem
+  object after the closing ];.
 */
 
 const POEMS = [
   {
     id: 1,
-    category: "manqabat",
+    category: "ghazal",
     title: {
-      roman: "Mirii aa.nkho.n me.n hai jamaal-e-Ahmad-e-Jaajner",
-      ur: "میری آنکھوں میں ہے جمالِ احمدِ جاجنیر",
-      hi: "मेरी आँखों में है जमाल-ए-अहमद-ए-जाजनेर"
+      ur: "دل میں اک چراغ جلائے رکھتے ہیں",
+      roman: "Dil Mein Ik Charagh Jalaye Rakhte Hain",
+      hi: "दिल में इक चराग़ जलाए रखते हैं"
     },
-    text: { ur: "", hi: "", roman: "" },
-    popularity: 113
-  },
-  {
-    id: 2,
-    category: "manqabat",
-    title: {
-      roman: "Jahaa.n me.n har taraf phailaa ujaalaa Gaus-e-A'zam kaa",
-      ur: "جہاں میں ہر طرف پھیلا اجالا غوثِ اعظم کا",
-      hi: "जहाँ में हर तरफ़ फैला उजाला ग़ौस-ए-आज़म का"
-    },
-    text: { ur: "", hi: "", roman: "" },
-    popularity: 0
-  },
-  {
-    id: 3,
-    category: "manqabat",
-    title: {
-      roman: "Bihaar-o-Hind me.n phailaa ujaalaa Jaajnerii kaa",
-      ur: "بہار و ہند میں پھیلا اجالا جاجنیری کا",
-      hi: "बिहार-ओ-हिंद में फैला उजाला जाजनेरी का"
-    },
-    text: { ur: "", hi: "", roman: "" },
-    popularity: 0
-  },
-  {
-    id: 4,
-    category: "manqabat",
-    title: {
-      roman: "Aap kii kyaa aa'laa hai shaan yaa Khvaaja Ishaaq",
-      ur: "آپ کی کیا اعلیٰ ہے شان یا خواجہ اسحاق",
-      hi: "आप की क्या आला है शान या ख़्वाजा इसहाक़"
-    },
-    text: { ur: "", hi: "", roman: "" },
-    popularity: 0
-  },
-  {
-    id: 5,
-    category: "manqabat",
-    title: {
-      roman: "Sharaafat naaz kartii hai siyaasat naaz kartii hai",
-      ur: "شرافت ناز کرتی ہے سیاست ناز کرتی ہے",
-      hi: "शराफ़त नाज़ करती है, सियासत नाज़ करती है"
-    },
-    text: { ur: "", hi: "", roman: "" },
-    popularity: 0
-  },
-  {
-    id: 6,
-    category: "manqabat",
-    title: {
-      roman: "Sham'-e-dii.n le ke aa.e Bihaar Ahmad-e-Jaajner",
-      ur: "شمعِ دیں لے کے آئے بہار احمدِ جاجنیر",
-      hi: "शम्अ-ए-दीन ले के आए बिहार अहमद-ए-जाजनेर"
-    },
-    text: { ur: "", hi: "", roman: "" },
-    popularity: 0
-  },
-  {
-    id: 7,
-    category: "manqabat",
-    title: {
-      roman: "Teri rahmat ka tasavvur hi ata ho jaana",
-      ur: "تیری رحمت کا تصور ہی عطا ہو جانا",
-      hi: "तेरी रहमत का तसव्वुर ही अता हो जाना"
-    },
-    text: { ur: "", hi: "", roman: "" },
-    popularity: 0
-  },
-  {
-    id: 8,
-    category: "naat",
-    title: {
-      roman: "Nuur ban kar jo chamaktaa har gha.Dii hai Mustafa",
-      ur: "نور بن کر جو چمکتا ہر گھڑی ہے مصطفیٰ",
-      hi: "नूर बन कर जो चमकता हर घड़ी है मुस्तफ़ा"
-    },
-    text: { ur: "", hi: "", roman: "" },
-    popularity: 0
-  },
-  {
-    id: 9,
-    category: "naat",
-    title: {
-      roman: "Har andhere ko mitaane Khud Muhammad aa gaye",
-      ur: "ہر اندھیرے کو مٹانے خود محمد آ گئے",
-      hi: "हर अँधेरे को मिटाने ख़ुद मुहम्मद आ गए"
-    },
-    text: { ur: "", hi: "", roman: "" },
-    popularity: 0
-  },
-  {
-    id: 10,
-    category: "salam",
-    title: {
-      roman: "Safeer-e-haq-o-sadaaqat Hussain zindaa-baad",
-      ur: "سفیرِ حق و صداقت حسین زندہ باد",
-      hi: "सफ़ीर-ए-हक़-ओ-सदाक़त हुसैन ज़िंदाबाद"
-    },
-    text: { ur: "", hi: "", roman: "" },
-    popularity: 0
-  },
-  
-{
-  id: 11,
-  category: "ghazal",
-  title: {
-    ur: "دل میں اک چراغ جلائے رکھتے ہیں",
-    hi: "दिल में इक चराग़ जलाए रखते हैं",
-    roman: "Dil mein ik charagh jalaye rakhte hain"
-  },
-  text: {
-    ur: `دل میں اک چراغ جلائے رکھتے ہیں
-    ہم امید کے پھول کھلائے رکھتے ہیں
+    text: {
+      ur: `دل میں اک چراغ جلائے رکھتے ہیں
+ہم امید کے پھول کھلائے رکھتے ہیں
 
-    رات کتنی بھی اندھیری ہو مگر
-    خواب آنکھوں میں سجائے رکھتے ہیں
+رات کتنی بھی اندھیری ہو مگر
+خواب آنکھوں میں سجائے رکھتے ہیں
 
-    وقت بدلے تو بدل جائے جہاں
-    ہم وفا دل سے نبھائے رکھتے ہیں`,
+وقت بدلے تو بدل جائے جہاں
+ہم وفا دل سے نبھائے رکھتے ہیں`,
 
-    hi: `दिल में इक चराग़ जलाए रखते हैं
-    हम उम्मीद के फूल खिलाए रखते हैं
+      roman: `Dil mein ik charagh jalaye rakhte hain
+Hum umeed ke phool khilaye rakhte hain
 
-    रात कितनी भी अँधेरी हो मगर
-    ख़्वाब आँखों में सजाए रखते हैं
+Raat kitni bhi andheri ho magar
+Khwab aankhon mein sajaye rakhte hain
 
-    वक़्त बदले तो बदल जाए जहाँ
-    हम वफ़ा दिल से निभाए रखते हैं`,
+Waqt badle to badal jaye jahan
+Hum wafa dil se nibhaye rakhte hain`,
 
-    roman: `Dil mein ik charagh jalaye rakhte hain
-    Hum umeed ke phool khilaye rakhte hain
+      hi: `दिल में इक चराग़ जलाए रखते हैं
+हम उम्मीद के फूल खिलाए रखते हैं
 
-    Raat kitni bhi andheri ho magar
-    Khwab aankhon mein sajaye rakhte hain
+रात कितनी भी अँधेरी हो मगर
+ख़्वाब आँखों में सजाए रखते हैं
 
-    Waqt badle to badal jaye jahan
-    Hum wafa dil se nibhaye rakhte hain`
-  },
-  popularity: 0
-},
-  
+वक़्त बदले तो बदल जाए जहाँ
+हम वफ़ा दिल से निभाए रखते हैं`
+    },
+    note: "Demonstration poem — replace this sample with your original ghazal.",
+    featured: 1
+  }
 ];
 
-const UI = {
-  en: {
-    eyebrow:"Poetry & Literary Works",
-    heroTitle:'The world of <em>words</em>',
-    heroDesc:"Explore the poetry of Syed Amjad Hussain, including ghazals, naat, manqabat, salam, bait and other literary forms. Read in Urdu, Hindi or Roman Urdu wherever a version is available.",
-    poetLocation:"Syed Amjad Hussain · Amjadؔ",
-    collectionLabel:"The Collection",
-    collectionTitle:"Poetry & Kalam",
-    collectionDesc:"Browse by literary form, find a title, and open a poem to read its available script versions.",
-    search:"Search titles and poetry...",
-    featured:"Featured order",
-    az:"Alphabetical: A–Z",
-    popular:"Most popular",
-    scriptNote:"Script options appear inside each poem.",
-    close:"Close ×",
-    aboutLabel:"About the Poet",
-    aboutText:"A poet and author from Bihar whose literary interests include devotional poetry, Sufi traditions and Urdu literature. This collection brings together his works in a searchable, multilingual reading space.",
-    biographyLink:"Read the biography →",
-    contactLink:"Correspond about poetry →",
-    all:"All",
-    ghazal:"Ghazal",
-    naat:"Naat",
-    manqabat:"Manqabat",
-    salam:"Salam",
-    bait:"Bait",
-    sher:"Sher",
-    article:"Articles",
-    misc:"Other",
-    read:"Read poem →",
-    noResults:"No poems match your search. Try another title or category.",
-    count:"poems",
-    unavailable:"Poem text has not been added yet. Add the verified text in the POEMS collection in this file.",
-    noScript:"This script version has not been added yet."
-  },
-  hi: {
-    eyebrow:"शायरी और अदबी रचनाएँ",
-    heroTitle:'अल्फ़ाज़ की <em>दुनिया</em>',
-    heroDesc:"सय्यद अमजद हुसैन की ग़ज़ल, नात, मनक़बत, सलाम, बैत और दूसरी अदबी रचनाएँ पढ़ें। उपलब्ध होने पर उर्दू, हिंदी या रोमन उर्दू में पढ़ें।",
-    poetLocation:"सय्यद अमजद हुसैन · अमजदؔ",
-    collectionLabel:"काव्य संग्रह",
-    collectionTitle:"शायरी और कलाम",
-    collectionDesc:"शायरी की विधा चुनें, शीर्षक खोजें और उपलब्ध लिपियों में कलाम पढ़ें।",
-    search:"शीर्षक या शायरी खोजें...",
-    featured:"क्रम अनुसार",
-    az:"वर्णानुक्रम: A–Z",
-    popular:"लोकप्रियता के अनुसार",
-    scriptNote:"हर कलाम के अंदर लिपि बदलने का विकल्प है।",
-    close:"बंद करें ×",
-    aboutLabel:"शायर का परिचय",
-    aboutText:"बिहार के शायर और लेखक, जिनकी साहित्यिक रुचियों में नातिया व मनक़बती शायरी, सूफ़ी परंपराएँ और उर्दू साहित्य शामिल हैं। यह संग्रह उनकी रचनाओं को खोजने और अलग-अलग लिपियों में पढ़ने की सुविधा देता है।",
-    biographyLink:"जीवनी पढ़ें →",
-    contactLink:"शायरी के बारे में संपर्क करें →",
-    all:"सभी",
-    ghazal:"ग़ज़ल",
-    naat:"नात",
-    manqabat:"मनक़बत",
-    salam:"सलाम",
-    bait:"बैत",
-    sher:"शेर",
-    article:"लेख",
-    misc:"अन्य",
-    read:"कलाम पढ़ें →",
-    noResults:"आपकी खोज से मेल खाती रचना नहीं मिली। दूसरा शीर्षक या विधा आज़माएँ।",
-    count:"रचनाएँ",
-    unavailable:"इस कलाम का पाठ अभी नहीं जोड़ा गया है। इस फ़ाइल के POEMS संग्रह में प्रमाणित पाठ जोड़ें।",
-    noScript:"इस लिपि में पाठ अभी उपलब्ध नहीं है।"
-  },
-  ur: {
-    eyebrow:"شاعری اور ادبی تخلیقات",
-    heroTitle:'الفاظ کی <em>دنیا</em>',
-    heroDesc:"سید امجد حسین کی غزل، نعت، منقبت، سلام، بیت اور دیگر ادبی تخلیقات پڑھیے۔ جہاں متن دستیاب ہو، اردو، ہندی یا رومن اردو میں مطالعہ کیجیے۔",
-    poetLocation:"سید امجد حسین · امجدؔ",
-    collectionLabel:"مجموعۂ کلام",
-    collectionTitle:"شاعری اور کلام",
-    collectionDesc:"صنف کے لحاظ سے کلام دیکھیے، عنوان تلاش کیجیے اور دستیاب رسم الخط میں پڑھیے۔",
-    search:"عنوان یا کلام تلاش کریں...",
-    featured:"ترتیب کے مطابق",
-    az:"حروفِ تہجی کے مطابق",
-    popular:"مقبولیت کے مطابق",
-    scriptNote:"ہر کلام کے اندر رسم الخط بدلنے کا اختیار موجود ہے۔",
-    close:"بند کریں ×",
-    aboutLabel:"تعارفِ شاعر",
-    aboutText:"بہار سے تعلق رکھنے والے شاعر اور مصنف، جن کی ادبی دلچسپیوں میں نعت و منقبت، صوفی روایات اور اردو ادب شامل ہیں۔ یہ مجموعہ ان کی تخلیقات کو تلاش کرنے اور مختلف رسم الخط میں پڑھنے کی سہولت فراہم کرتا ہے۔",
-    biographyLink:"سوانح پڑھیے →",
-    contactLink:"شاعری کے سلسلے میں رابطہ کریں →",
-    all:"تمام",
-    ghazal:"غزل",
-    naat:"نعت",
-    manqabat:"منقبت",
-    salam:"سلام",
-    bait:"بیت",
-    sher:"شعر",
-    article:"مضامین",
-    misc:"دیگر",
-    read:"کلام پڑھیے →",
-    noResults:"آپ کی تلاش سے مطابقت رکھنے والا کلام نہیں ملا۔ دوسرا عنوان یا صنف آزمائیں۔",
-    count:"تخلیقات",
-    unavailable:"اس کلام کا متن ابھی شامل نہیں کیا گیا۔ اس فائل کے POEMS مجموعے میں مستند متن شامل کریں۔",
-    noScript:"اس رسم الخط میں متن ابھی دستیاب نہیں۔"
-  }
-};
+/*
+  These are the available categories. A category appears in the
+  filters even when you have not added a poem in that category yet.
+*/
 
-const CATEGORIES = ["all","ghazal","naat","manqabat","salam","bait","sher","article","misc"];
-let currentLang = "en";
+const CATEGORIES = [
+  { id: "all", label: "All Poetry" },
+  { id: "ghazal", label: "Ghazal" },
+  { id: "naat", label: "Naat" },
+  { id: "manqabat", label: "Manqabat" },
+  { id: "salam", label: "Salam" },
+  { id: "bait", label: "Bait" },
+  { id: "sher", label: "Sher" },
+  { id: "article", label: "Articles" },
+  { id: "other", label: "Other" }
+];
+
 let currentCategory = "all";
 let currentPoem = null;
 let currentScript = "ur";
 
-const $ = id => document.getElementById(id);
-const tr = key => UI[currentLang][key] || UI.en[key] || key;
+const $ = (id) => document.getElementById(id);
 
-function categoryKey(category) {
-  return CATEGORIES.includes(category) ? category : "misc";
+function getCategoryLabel(categoryId) {
+  const category = CATEGORIES.find(item => item.id === categoryId);
+  return category ? category.label : "Other";
 }
 
-function titleFor(poem) {
-  return poem.title[currentLang] || poem.title.roman || poem.title.en || "";
+function getTitle(poem) {
+  return poem.title.roman || poem.title.en || "Untitled poem";
 }
 
-function searchableText(poem) {
+function getSearchText(poem) {
   return [
+    poem.category,
     ...Object.values(poem.title || {}),
-    ...Object.values(poem.text || {}),
-    tr(categoryKey(poem.category))
+    ...Object.values(poem.text || {})
   ].join(" ").toLowerCase();
 }
 
-function applyLanguage() {
-  document.documentElement.lang = currentLang === "ur" ? "ur" : currentLang === "hi" ? "hi" : "en";
-  document.documentElement.dir = "ltr";
-
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.dataset.i18n;
-    el.innerHTML = tr(key);
-  });
-
-  $("searchInput").placeholder = tr("search");
-
-  const sort = $("sortSelect");
-  const selected = sort.value;
-  sort.innerHTML = `
-    <option value="featured">${tr("featured")}</option>
-    <option value="az">${tr("az")}</option>
-    <option value="popular">${tr("popular")}</option>`;
-  sort.value = selected;
-
-  document.querySelectorAll("[data-lang]").forEach(button => {
-    button.classList.toggle("active", button.dataset.lang === currentLang);
-  });
-
-  renderFilters();
-  renderPoems();
-
-  if (currentPoem) renderReader(currentPoem);
-}
-
 function renderFilters() {
-  const filters = $("filters");
-  filters.innerHTML = "";
+  const container = $("filters");
+  container.replaceChildren();
 
   CATEGORIES.forEach(category => {
     const button = document.createElement("button");
-    button.className = "filter-btn" + (currentCategory === category ? " active" : "");
-    button.textContent = tr(category);
     button.type = "button";
+    button.className = "filter-btn";
+
+    if (currentCategory === category.id) {
+      button.classList.add("active");
+    }
+
+    button.textContent = category.label;
+
     button.addEventListener("click", () => {
-      currentCategory = category;
+      currentCategory = category.id;
       renderFilters();
       renderPoems();
     });
-    filters.appendChild(button);
+
+    container.appendChild(button);
   });
 }
 
 function renderPoems() {
+  const container = $("poetryGrid");
   const query = $("searchInput").value.trim().toLowerCase();
-  let list = POEMS.filter(poem => {
-    const categoryMatch = currentCategory === "all" || poem.category === currentCategory;
-    return categoryMatch && searchableText(poem).includes(query);
+  const sort = $("sortSelect").value;
+
+  let poems = POEMS.filter(poem => {
+    const categoryMatches =
+      currentCategory === "all" ||
+      poem.category === currentCategory;
+
+    const searchMatches = getSearchText(poem).includes(query);
+
+    return categoryMatches && searchMatches;
   });
 
-  const sort = $("sortSelect").value;
   if (sort === "az") {
-    list.sort((a,b) => titleFor(a).localeCompare(titleFor(b)));
-  } else if (sort === "popular") {
-    list.sort((a,b) => (b.popularity || 0) - (a.popularity || 0));
+    poems.sort((a, b) => getTitle(a).localeCompare(getTitle(b)));
+  } else {
+    poems.sort((a, b) => (a.featured || 999) - (b.featured || 999));
   }
 
-  $("resultCount").textContent = `${list.length} ${tr("count")}`;
-  const grid = $("poetryGrid");
-  grid.innerHTML = "";
+  $("resultCount").textContent =
+    `${poems.length} ${poems.length === 1 ? "poem" : "poems"}`;
 
-  if (!list.length) {
+  container.replaceChildren();
+
+  if (poems.length === 0) {
     const empty = document.createElement("div");
     empty.className = "empty-state";
-    empty.textContent = tr("noResults");
-    grid.appendChild(empty);
+    empty.textContent = query
+      ? "No poems match your search. Try another title or category."
+      : "No poems have been added to this category yet.";
+    container.appendChild(empty);
     return;
   }
 
-  list.forEach(poem => {
+  poems.forEach(poem => {
     const card = document.createElement("article");
     card.className = "poem-card";
 
     const category = document.createElement("div");
     category.className = "poem-category";
-    category.textContent = tr(categoryKey(poem.category));
+    category.textContent = getCategoryLabel(poem.category);
 
     const title = document.createElement("h3");
-    title.textContent = titleFor(poem);
-    if (currentLang === "ur") {
-      title.lang = "ur";
-      title.dir = "rtl";
-      title.style.fontFamily = '"Noto Nastaliq Urdu", serif';
-    } else if (currentLang === "hi") {
-      title.lang = "hi";
-      title.style.fontFamily = '"Noto Serif Devanagari", serif';
-    }
+    title.textContent = getTitle(poem);
 
-    const subtitle = document.createElement("p");
-    subtitle.className = "poem-subtitle";
-    subtitle.textContent = poem.title.roman || "";
+    const preview = document.createElement("p");
+    preview.className = "poem-preview";
+
+    const previewText = poem.text.roman || "";
+    preview.textContent = previewText
+      ? previewText.split("\n").slice(0, 2).join("\n")
+      : "Poem text coming soon.";
 
     const bottom = document.createElement("div");
     bottom.className = "card-bottom";
 
-    const meta = document.createElement("span");
-    meta.textContent = poem.popularity ? `♡ ${poem.popularity}` : tr(categoryKey(poem.category));
+     const meta = document.createElement("span");
+    meta.textContent = "Amjadؔ";
 
-    const read = document.createElement("button");
-    read.type = "button";
-    read.className = "read-btn";
-    read.textContent = tr("read");
-    read.addEventListener("click", () => {
-      currentPoem = poem;
-      currentScript = "ur";
-      renderReader(poem);
-      $("poemReader").hidden = false;
-      $("poemReader").scrollIntoView({behavior:"smooth", block:"start"});
-    });
+    const readButton = document.createElement("button");
+    readButton.type = "button";
+    readButton.className = "read-btn";
+    readButton.textContent = "Read poem →";
 
-    bottom.append(meta, read);
-    card.append(category, title, subtitle, bottom);
-    grid.appendChild(card);
+    readButton.addEventListener("click", () => openPoem(poem));
+
+    bottom.append(meta, readButton);
+    card.append(category, title, preview, bottom);
+    container.appendChild(card);
   });
 }
 
-function renderReader(poem) {
-  $("readerCategory").textContent = tr(categoryKey(poem.category));
-  $("readerTitle").textContent = titleFor(poem);
+function openPoem(poem) {
+  currentPoem = poem;
+  currentScript = "ur";
 
-  if (currentLang === "ur") {
-    $("readerTitle").lang = "ur";
-    $("readerTitle").dir = "rtl";
-    $("readerTitle").style.fontFamily = '"Noto Nastaliq Urdu", serif';
-  } else {
-    $("readerTitle").dir = "ltr";
-    $("readerTitle").style.fontFamily = currentLang === "hi"
-      ? '"Noto Serif Devanagari", serif' : "var(--serif)";
-  }
+  $("poemReader").hidden = false;
+  $("readerCategory").textContent = getCategoryLabel(poem.category);
+  $("readerTitle").textContent = getTitle(poem);
+
+  renderScriptButtons();
+  renderReader();
+
+  $("poemReader").scrollIntoView({
+    behavior: "smooth",
+}    block: "start"
+  });
+}
+
+function renderScriptButtons() {
+  document.querySelectorAll("[data-script]").forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.script === currentScript
+    );
+  });
+}
+
+function renderReader() {
+  if (!currentPoem) return;
 
   const body = $("poemBody");
-  const availableText = poem.text[currentScript] || "";
+  const note = $("poemNote");
+  const title = $("readerTitle");
 
-  body.textContent = availableText || tr("noScript");
+  const poemText = currentPoem.text[currentScript] || "";
+
   body.className = "poem-body";
   body.dir = "ltr";
   body.lang = "en";
+
+  title.dir = "ltr";
+  title.style.fontFamily = "var(--serif)";
 
   if (currentScript === "ur") {
     body.classList.add("urdu");
     body.dir = "rtl";
     body.lang = "ur";
+
+    title.dir = "rtl";
+    title.style.fontFamily = '"Noto Nastaliq Urdu", serif';
   } else if (currentScript === "hi") {
     body.classList.add("hindi");
     body.lang = "hi";
+
+    title.lang = "hi";
+    title.style.fontFamily = '"Noto Serif Devanagari", serif';
   }
 
-  $("poemNote").textContent = availableText ? "" : tr("unavailable");
+  body.textContent = poemText ||
+    "This version has not been added yet.";
 
-  document.querySelectorAll("[data-script]").forEach(button => {
-    button.classList.toggle("active", button.dataset.script === currentScript);
-  });
+  note.textContent = currentPoem.note || "";
+
+  renderScriptButtons();
 }
-
-document.querySelectorAll("[data-lang]").forEach(button => {
-  button.addEventListener("click", () => {
-    currentLang = button.dataset.lang;
-    applyLanguage();
-  });
-});
 
 document.querySelectorAll("[data-script]").forEach(button => {
   button.addEventListener("click", () => {
     currentScript = button.dataset.script;
-    if (currentPoem) renderReader(currentPoem);
+    renderReader();
   });
 });
 
@@ -735,16 +1006,16 @@ $("closeReader").addEventListener("click", () => {
   $("poemReader").hidden = true;
   currentPoem = null;
 });
-});
 
 $("menuToggle").addEventListener("click", () => {
   const nav = $("mainNav");
-  const open = nav.classList.toggle("open");
-  $("menuToggle").setAttribute("aria-expanded", String(open));
-  $("menuToggle").textContent = open ? "✕ Close" : "☰ Menu";
+  const isOpen = nav.classList.toggle("open");
+
+  $("menuToggle").setAttribute("aria-expanded", String(isOpen));
+  $("menuToggle").textContent = isOpen ? "✕ Close" : "☰ Menu";
 });
 
-$("mainNav").querySelectorAll("a").forEach(link => {
+document.querySelectorAll("#mainNav a").forEach(link => {
   link.addEventListener("click", () => {
     $("mainNav").classList.remove("open");
     $("menuToggle").setAttribute("aria-expanded", "false");
@@ -753,7 +1024,11 @@ $("mainNav").querySelectorAll("a").forEach(link => {
 });
 
 $("currentYear").textContent = new Date().getFullYear();
-applyLanguage();
+
+/* Render the collection immediately. */
+renderFilters();
+renderPoems();
 </script>
+
 </body>
 </html>
