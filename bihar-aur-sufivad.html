@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4c2029">
+<meta name="description" content="Bihar Aur Sufivad by Syed Amjad Hussain — a research-driven exploration of Sufi traditions, spiritual lineages, and the history of Sufism in Bihar.">
+<title>Bihar Aur Sufivad | Syed Amjad Hussain</title>
+<style>
+:root{--wine:#4c2029;--wine2:#6a2b36;--gold:#bd965b;--paper:#f7f3eb;--ink:#211d1a;--muted:#6e665f;--line:#ded5c8;--white:#fffdf9;--serif:Georgia,"Times New Roman",serif;--sans:Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65}a{color:inherit}img{max-width:100%;display:block}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+.topline{background:var(--wine);color:#f8eee0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:10px 0}.topline .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+header{background:var(--white);border-bottom:1px solid var(--line)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{font-family:var(--serif);font-size:21px;font-weight:bold;text-decoration:none;line-height:1.15}.brand small{display:block;font:10px var(--sans);letter-spacing:.19em;text-transform:uppercase;color:var(--muted);margin-top:7px}.navlinks{display:flex;gap:25px;align-items:center;font-size:13px}.navlinks a{text-decoration:none;color:#50463f}.navlinks a:hover{color:var(--wine)}.navlinks .back{border:1px solid var(--line);padding:9px 13px;border-radius:2px}
+.hero{background:var(--wine);color:var(--white);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 25%,rgba(189,150,91,.18),transparent 42%),linear-gradient(115deg,transparent 50%,rgba(255,255,255,.025) 50%);pointer-events:none}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;gap:7%;align-items:center;padding:76px 0 82px}.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:bold}.hero h1{font:clamp(42px,6.3vw,76px)/.99 var(--serif);letter-spacing:-.04em;margin:20px 0 23px;max-width:660px}.hero h1 em{font-weight:normal;color:#d9bc8d}.lead{font:19px/1.7 var(--serif);color:#f0e6d9;max-width:570px}.hero-meta{display:flex;flex-wrap:wrap;gap:12px 22px;margin:27px 0 30px;font-size:12px;color:#e1d3c3}.hero-meta span:before{content:"✦";color:var(--gold);margin-right:8px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:13px 18px;font-size:12px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--gold);transition:.2s}.btn.gold{background:var(--gold);color:#271b15}.btn.outline{color:var(--white);border-color:#a78a70}.btn:hover{transform:translateY(-2px)}
+.book-stage{min-height:410px;display:flex;align-items:center;justify-content:center;position:relative}.book{width:min(290px,78%);aspect-ratio: .69;position:relative;transform:rotate(2deg);background:linear-gradient(110deg,#30151c,#5a2732 60%,#35171e);box-shadow:22px 24px 35px #1e0d1280, inset 8px 0 9px #0003;border:1px solid #8d6a45;padding:27px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;color:#f5e8cf}.book:before{content:"";position:absolute;inset:9px;border:1px solid #b18a51;pointer-events:none}.book .ornament{font-size:26px;color:var(--gold);margin:9px 0 18px}.book .book-title{font: bold clamp(25px,3vw,34px)/1.13 var(--serif);letter-spacing:.01em}.book .book-title span{display:block;font-style:italic;font-weight:normal;font-size:.82em;margin-top:7px}.book .rule{width:55px;height:1px;background:var(--gold);margin:20px 0}.book .subtitle{font:12px/1.7 var(--serif);color:#e8d6b7;max-width:190px}.book .author{margin-top:auto;padding-bottom:12px;font-size:10px;letter-spacing:.16em;text-transform:uppercase}.book-note{position:absolute;bottom:4px;right:0;color:#c9b7a4;font:italic 12px var(--serif)}
+.section{padding:78px 0}.section.white{background:var(--white)}.section-head{max-width:720px;margin-bottom:38px}.kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--wine2);font-weight:bold}.section h2{font:clamp(31px,4vw,47px)/1.12 var(--serif);letter-spacing:-.025em;margin:12px 0 17px}.section-intro{font:18px/1.75 var(--serif);color:var(--muted);max-width:720px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:start}.copy p{margin:0 0 17px;color:#514941}.pullquote{border-left:3px solid var(--gold);padding:18px 24px;background:#f2eadf;font:italic 21px/1.55 var(--serif);color:var(--wine);margin:26px 0}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-left:1px solid var(--line)}.fact{padding:20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.fact small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.15em;margin-bottom:7px}.fact strong{font:19px var(--serif);font-weight:normal}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{background:var(--paper);border:1px solid var(--line);padding:26px 24px;min-height:205px}.feature .num{font:italic 25px var(--serif);color:var(--gold)}.feature h3{font:23px/1.2 var(--serif);margin:13px 0 10px}.feature p{color:var(--muted);font-size:14px;margin:0}
+.author-band{background:#eee5d8}.author-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:center}.monogram{aspect-ratio:1;background:var(--wine);color:var(--gold);display:flex;align-items:center;justify-content:center;font:italic 82px var(--serif);max-width:300px;margin:auto;border:1px solid var(--gold);outline:1px solid var(--gold);outline-offset:-12px}
+.note{font-size:12px;color:var(--muted);margin-top:17px}
+.cta{background:var(--wine);color:var(--white);padding:56px 0}.cta-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}.cta h2{font:clamp(27px,3.5vw,40px) var(--serif);margin:0 0 8px}.cta p{color:#e4d4c6;margin:0}
+footer{background:#29151a;color:#d9c9ba;padding:26px 0;font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.footer-inner a{color:#e8d3ad}
+@media(max-width:760px){.wrap{width:min(100% - 30px,600px)}.nav{padding:17px 0;align-items:flex-start}.brand{font-size:18px}.navlinks{gap:10px;flex-wrap:wrap;justify-content:flex-end;font-size:12px}.navlinks a:not(.back){display:none}.hero-grid{grid-template-columns:1fr;padding:55px 0 52px;gap:20px}.hero h1{font-size:clamp(43px,12vw,64px)}.lead{font-size:17px}.book-stage{min-height:340px}.book{width:230px}.book-note{right:6px}.section{padding:56px 0}.two-col,.author-grid{grid-template-columns:1fr;gap:27px}.feature-grid{grid-template-columns:1fr}.feature{min-height:0}.facts{margin-top:4px}.cta-inner{align-items:flex-start;flex-direction:column}.section h2{font-size:34px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topline"><div class="wrap"><span>Independent Research · Bihar Heritage</span><span>History · Spiritual Traditions · Literature</span></div></div>
+<header><div class="wrap nav">
+<a class="brand" href="#top">Syed Amjad Hussain<small>Author · Poet · Sufi Historian</small></a>
+<nav class="navlinks" aria-label="Main navigation"><a href="#about">About the book</a><a href="#contents">Themes</a><a href="#author">The author</a><a class="back" href="index.html">← Main website</a></nav>
+</div></header>
+<main id="top">
+<section class="hero"><div class="wrap hero-grid">
+<div>
+<div class="eyebrow">A research-driven book on Bihar</div>
+<h1>Bihar Aur <em>Sufivad</em></h1>
+<p class="lead">Exploring the Sufi traditions, spiritual lineages, and historical memory of Bihar—bringing regional histories and literary sources into wider conversation.</p>
+<div class="hero-meta"><span>By Syed Amjad Hussain</span><span>Rajmangal Prakashan</span><span>Published 2025</span></div>
+<div class="actions"><a class="btn gold" href="#about">Discover the book ↓</a><a class="btn outline" href="#author">About the author</a></div>
+</div>
+<div class="book-stage" aria-label="Stylised book cover illustration for Bihar Aur Sufivad">
+<div class="book"><div class="ornament">✦ ❧ ✦</div><div class="book-title">BIHAR<span>AUR SUFIVAD</span></div><div class="rule"></div><div class="subtitle">Sufi traditions and the spiritual history of Bihar</div><div class="ornament">۞</div><div class="author">Syed Amjad Hussain</div></div>
+<div class="book-note">Book-cover illustration · replace with official cover</div>
+</div>
+</div></section>
+<section class="section white" id="about"><div class="wrap two-col">
+<div class="section-head"><div class="kicker">About the book</div><h2>Recovering the stories behind a living tradition.</h2><p class="section-intro">Bihar Aur Sufivad is a study of the people, places, lineages, and texts that shaped the region’s Sufi heritage.</p></div>
+<div class="copy"><p>Drawing on Persian and Urdu material, published references, and visits to khanqahs and dargahs, the book brings together historical and literary perspectives on Sufism in Bihar.</p><p>It explores the connections between spiritual traditions and regional history, with attention to the lives and legacies of Sufi figures associated with Bihar. Its aim is to make this heritage more accessible to readers while encouraging deeper engagement with historical sources.</p><div class="pullquote">“A journey through the spiritual and literary memory of Bihar.”</div><p class="note">For academic citation or quotation, readers should consult the printed edition and verify page references against the original text.</p></div>
+</div></section>
+<section class="section" id="contents"><div class="wrap">
+<div class="section-head"><div class="kicker">Inside the book</div><h2>History, lineages and literary memory.</h2><p class="section-intro">The book approaches Bihar’s Sufi heritage through interconnected themes rather than treating it as a story of isolated sites or personalities.</p></div>
+<div class="feature-grid">
+<article class="feature"><div class="num">01</div><h3>Islam and Sufism</h3><p>An introduction to Sufi thought and its place in the broader religious and intellectual history.</p></article>
+<article class="feature"><div class="num">02</div><h3>Sufi Silsilas</h3><p>Spiritual lineages and networks that connect teachers, disciples, khanqahs, and regions.</p></article>
+<article class="feature"><div class="num">03</div><h3>Lives of the Sufis</h3><p>Biographical sketches of Sufi figures associated with Bihar and their historical legacies.</p></article>
+<article class="feature"><div class="num">04</div><h3>Khanqahs and Dargahs</h3><p>Places of devotion, learning, hospitality, and collective memory across the region.</p></article>
+<article class="feature"><div class="num">05</div><h3>Persian and Urdu Sources</h3><p>Literary and historical materials that help preserve regional narratives and traditions.</p></article>
+<article class="feature"><div class="num">06</div><h3>Manqabat and Devotional Verse</h3><p>The poetic expressions through which reverence and spiritual memory are carried forward.</p></article>
+</div>
+<p class="note">This overview is descriptive; consult the book’s contents page for the exact chapter titles and order.</p>
+</div></section>
+<section class="section white"><div class="wrap two-col">
+<div><div class="kicker">Book details</div><h2>A reference for readers of Bihar’s heritage.</h2><p class="section-intro">For readers interested in Sufism, regional history, Persian and Urdu literature, and the cultural history of Bihar.</p></div>
+<div class="facts">
+<div class="fact"><small>Title</small><strong>Bihar Aur Sufivad</strong></div>
+<div class="fact"><small>Author</small><strong>Syed Amjad Hussain</strong></div>
+<div class="fact"><small>Publisher</small><strong>Rajmangal Prakashan</strong></div>
+<div class="fact"><small>Edition</small><strong>Print edition</strong></div>
+<div class="fact"><small>Publication date</small><strong>27 April 2025</strong></div>
+<div class="fact"><small>Length</small><strong>308 pages</strong></div>
+</div>
+</div></section>
+<section class="section author-band" id="author"><div class="wrap author-grid">
+<div class="monogram" aria-hidden="true">امجدؔ</div>
+<div><div class="kicker">About the author</div><h2>Syed Amjad Hussain</h2><p class="section-intro">Author, poet, historian, and independent research scholar from Sheikhpura, Bihar, with a particular focus on Sufism, Islam, and the historical heritage of the region.</p><p class="copy">His work centres on documenting regional histories, engaging with literary sources, and bringing greater attention to the people and places that form Bihar’s spiritual and cultural memory.</p><p><a class="btn" style="border-color:var(--wine);color:var(--wine)" href="index.html#about">Read full biography →</a></p></div>
+</div></section>
+<section class="cta"><div class="wrap cta-inner"><div><h2>For book and media enquiries</h2><p>For interviews, reviews, research enquiries, or bibliographic information.</p></div><a class="btn gold" href="mailto:">Contact the author ↗</a></div></section>
+</main>
+<footer><div class="wrap footer-inner"><span>© <span id="year">2026</span> Syed Amjad Hussain. All rights reserved.</span><span><a href="index.html">Main website</a> · Bihar Aur Sufivad</span></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
