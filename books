@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#651c2c">
+  <title>Books & Articles | Syed Amjad Hussain</title>
+  <meta name="description" content="Explore books, articles and historical research by Syed Amjad Hussain, author, poet and Sufi historian.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --wine: #651c2c;
+      --wine-dark: #3f101b;
+      --gold: #bd9855;
+      --cream: #faf7f0;
+      --paper: #fffdf8;
+      --ink: #282321;
+      --muted: #756c66;
+      --line: #e9dfd1;
+      --shadow: 0 12px 35px rgba(55, 28, 25, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, input, select { font: inherit; }
+
+    .site-header {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav-wrap {
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--wine);
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font: 10px "DM Sans", sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: #51443f;
+    }
+
+    nav a:hover, nav a.active { color: var(--wine); }
+
+    .hero {
+      background:
+        radial-gradient(ellipse at 85% 20%, rgba(189,152,85,.17), transparent 35%),
+        linear-gradient(120deg, var(--wine-dark), var(--wine));
+      color: white;
+      padding: 80px 24px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "✦";
+      position: absolute;
+      right: 8%;
+      bottom: -70px;
+      color: rgba(255,255,255,.06);
+      font-size: 280px;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      line-height: 1.25;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 65px);
+      margin: 15px 0;
+      font-weight: 600;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: #f0e6df;
+      font-size: 15px;
+    }
+
+    .hero-links {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 3px;
+      background: var(--gold);
+      color: #24170e;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+    }
+
+    .button.outline {
+      background: transparent;
+      color: white;
+      border-color: rgba(255,255,255,.5);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 55px 24px 80px;
+    }
+
+    .section { margin-bottom: 75px; }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      color: var(--wine);
+      font-size: clamp(29px, 4vw, 40px);
+      margin: 6px 0 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 8px 0 0;
+    }
+
+    .section-number {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .toolbar input, .toolbar select {
+      min-width: 180px;
+      flex: 1;
+      padding: 12px 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      outline: none;
+      color: var(--ink);
+    }
+
+    .toolbar input:focus, .toolbar select:focus {
+      border-color: var(--gold);
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 24px;
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 30px;
+      padding: 7px 14px;
+      cursor: pointer;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .filter.active, .filter:hover {
+      background: var(--wine);
+      border-color: var(--wine);
+      color: white;
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .book-card, .article-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .book-card:hover, .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .book-cover {
+      min-height: 260px;
+      padding: 24px;
+      background: linear-gradient(145deg, #7b2838, #3e101b);
+      color: #f7e9c8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-cover::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(220,190,125,.6);
+      pointer-events: none;
+    }
+
+    .book-cover::after {
+      content: "✦";
+      position: absolute;
+      top: 23px;
+      color: var(--gold);
+      font-size: 21px;
+    }
+
+    .cover-inner {
+      max-width: 240px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-kicker {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #dfc68e;
+      margin-bottom: 15px;
+    }
+
+    .cover-title {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+    }
+
+    .cover-urdu {
+      font-family: "Noto Nastaliq Urdu", serif;
+      font-size: 19px;
+      margin-top: 10px;
+      line-height: 2;
+    }
+
+    .cover-author {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      margin-top: 22px;
+      color: #ead8b5;
+      text-transform: uppercase;
+    }
+
+    .book-cover img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #f3eee4;
+      z-index: 2;
+    }
+
+    .card-body { padding: 21px; }
+
+    .category {
+      color: #98743a;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .card-body h3 {
+      color: var(--wine);
+      font-size: 23px;
+      margin: 8px 0 10px;
+    }
+
+    .urdu-title {
+      font-family: "Noto Nastaliq Urdu", serif;
+      font-size: 16px;
+      line-height: 2.2;
+      color: var(--muted);
+    }
+
+    .card-body p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 10px 0 17px;
+    }
+
+    .meta {
+      font-size: 11px;
+      color: #887b72;
+      margin-bottom: 16px;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .card-actions .button {
+      padding: 9px 13px;
+      font-size: 11px;
+    }
+
+    .button.secondary {
+      color: var(--wine);
+      background: transparent;
+      border-color: var(--line);
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .article-card { padding: 23px; }
+
+    .article-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .article-card h3 {
+      color: var(--wine);
+      font-size: 23px;
+      margin: 8px 0;
+    }
+
+    .article-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 10px 0 18px;
+    }
+
+    .article-link {
+      display: inline-block;
+      color: var(--wine);
+      font-size: 12px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 3px;
+    }
+
+    .empty {
+      display: none;
+      padding: 35px 20px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--paper);
+      border: 1px dashed var(--line);
+      border-radius: 5px;
+      grid-column: 1 / -1;
+    }
+
+    .note {
+      padding: 22px;
+      background: #f0e7d8;
+      border-left: 3px solid var(--gold);
+      color: #5b4b3c;
+      font-size: 13px;
+      margin-top: 28px;
+    }
+
+    footer {
+      background: var(--wine-dark);
+      color: #f1e8df;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    footer .footer-name {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+    }
+
+    footer p {
+      color: #d4c3b9;
+      font-size: 12px;
+      margin: 8px 0;
+    }
+
+    footer a { color: #e5c78d; }
+
+    @media (max-width: 850px) {
+      .book-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-wrap { align-items: flex-start; flex-direction: column; }
+      nav { justify-content: flex-start; gap: 12px 18px; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { padding: 58px 20px; }
+      main { padding: 40px 16px 60px; }
+      .book-grid, .article-grid { grid-template-columns: 1fr; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+      .book-cover { min-height: 240px; }
+      .toolbar input, .toolbar select { min-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        Syed Amjad Hussain
+        <small>Author · Poet · Historian</small>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="books-articles.html" class="active">Books & Articles</a>
+        <a href="research.html">Research</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">The Written Works</div>
+    <h1>Books, Articles & Research</h1>
+    <p>
+      Explore the published books, historical writings, articles and research
+      of Syed Amjad Hussain, with a focus on Sufism, Bihar's heritage and Urdu literature.
+    </p>
+    <div class="hero-links">
+      <a class="button" href="#books">Explore Books</a>
+      <a class="button outline" href="#articles">Read Articles</a>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="books">
+      <div class="section-heading">
+        <div>
+          <div class="section-number">01 / Publications</div>
+          <h2>Books by the Author</h2>
+          <p>A growing catalogue of books and published works.</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <input id="bookSearch" type="search" placeholder="Search books by title or subject..." aria-label="Search books">
+        <select id="bookSort" aria-label="Sort books">
+          <option value="featured">Featured order</option>
+          <option value="title">Title: A–Z</option>
+          <option value="newest">Newest first</option>
+        </select>
+      </div>
+
+      <div id="bookGrid" class="book-grid"></div>
+      <div id="bookEmpty" class="empty">No books match your search.</div>
+    </section>
+
+    <section class="section" id="articles">
+      <div class="section-heading">
+        <div>
+          <div class="section-number">02 / Writing & Scholarship</div>
+          <h2>Articles & Historical Essays</h2>
+          <p>Search writings on Sufism, history, heritage and literature.</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <input id="articleSearch" type="search" placeholder="Search articles by title or keyword..." aria-label="Search articles">
+        <select id="articleSort" aria-label="Sort articles">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="title">Title: A–Z</option>
+        </select>
+      </div>
+
+      <div id="articleFilters" class="filters"></div>
+      <div id="articleGrid" class="article-grid"></div>
+      <div id="articleEmpty" class="empty">No articles match your search.</div>
+
+      <div class="note">
+        This page is designed to grow with your work. Add each article's title,
+        subject, publication date, summary and original link in the ARTICLES array
+        in the code below. Only add verified publication details and working links.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-name">Syed Amjad Hussain</div>
+    <p>Author · Poet · Historian · Independent Research Scholar</p>
+    <p>Exploring the history, Sufi heritage and literary traditions of Bihar.</p>
+    <p>© <span id="year"></span> Syed Amjad Hussain. All rights reserved.</p>
+    <p><a href="index.html">Return to Homepage</a></p>
+  </footer>
+
+  <script>
+    /*
+      HOW TO ADD A BOOK:
+      Copy one book object and add it inside the BOOKS array.
+      cover: direct image URL for the book cover (optional)
+      readUrl: link to read the book (optional)
+      buyUrl: purchase link (optional)
+    */
+
+    const BOOKS = [
+      {
+        title: "Bihar Aur Sufivad",
+        urdu: "بہار اور صوفیواد",
+        category: "Sufi Studies",
+        year: 2025,
+        description: "A book exploring Sufi traditions, saints and the historical heritage of Bihar.",
+        cover: "",
+        readUrl: "",
+        buyUrl: "",
+        featured: 1
+      },
+      {
+        title: "The Eternals of Bihar",
+        urdu: "",
+        category: "History",
+        year: "",
+        description: "A work on the historical personalities and heritage of Bihar. Add the verified book description and publication details here.",
+        cover: "",
+        readUrl: "",
+        buyUrl: "",
+        featured: 2
+      },
+      {
+        title: "Akhtar Orenvi: Bihar Mein Urdu Sahitya Ke Nirmata",
+        urdu: "اختر اورنوی: بہار میں اردو ادب کے معمار",
+        category: "Urdu Literature",
+        year: "",
+        description: "A work devoted to Akhtar Orenvi and his place in the development of Urdu literature in Bihar. Add verified publication details here.",
+        cover: "",
+        readUrl: "",
+        buyUrl: "",
+        featured: 3
+      }
+
+      /*
+      ADD MORE BOOKS HERE, separated by commas:
+
+      ,{
+        title: "Your Book Title",
+        urdu: "کتاب کا اردو عنوان",
+        category: "History",
+        year: 2026,
+        description: "Write a short, accurate description of the book.",
+        cover: "https://example.com/book-cover.jpg",
+        readUrl: "https://example.com/read-book",
+        buyUrl: "https://example.com/buy-book",
+        featured: 4
+      }
+      */
+    ];
+
+    /*
+      HOW TO ADD ARTICLES:
+      Copy an article object into this array.
+      topic options can be History, Sufism, Heritage, Literature or Research.
+      url should be the article's actual public webpage.
+    */
+
+    const ARTICLES = [
+      /*
+      {
+        title: "Your Article Title",
+        topic: "History",
+        date: "2026-10-01",
+        publication: "Publication or Website Name",
+        summary: "A short summary of the article's main argument or findings.",
+        url: "https://example.com/your-article"
+      },
+
+      {
+        title: "Another Article Title",
+        topic: "Sufism",
+        date: "2026-09-15",
+        publication: "Publication Name",
+        summary: "Add a concise and informative description of the article.",
+        url: "https://example.com/another-article"
+      }
+      */
+    ];
+
+    const $ = id => document.getElementById(id);
+
+    function escapeHTML(value = "") {
+      return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
+
+    function safeUrl(value = "") {
+      const url = String(value).trim();
+      if (!url) return "";
+      try {
+        const parsed = new URL(url, window.location.href);
+        if (["http:", "https:"].includes(parsed.protocol)) return parsed.href;
+      } catch (error) {}
+      return "";
+    }
+
+    function bookCover(book) {
+      const imageUrl = safeUrl(book.cover);
+      const image = imageUrl
+        ? `<img src="${escapeHTML(imageUrl)}" alt="Cover of ${escapeHTML(book.title)}" loading="lazy" onerror="this.remove()">`
+        : "";
+
+      return `
+        <div class="book-cover">
+          <div class="cover-inner">
+            <div class="cover-kicker">${escapeHTML(book.category || "Publication")}</div>
+            <div class="cover-title">${escapeHTML(book.title)}</div>
+            ${book.urdu ? `<div class="cover-urdu" lang="ur" dir="rtl">${escapeHTML(book.urdu)}</div>` : ""}
+            <div class="cover-author">Syed Amjad Hussain</div>
+          </div>
+          ${image}
+        </div>`;
+    }
+
+    function renderBooks() {
+      const search = $("bookSearch").value.trim().toLowerCase();
+      const sort = $("bookSort").value;
+
+      let results = BOOKS.filter(book =>
+        [book.title, book.urdu, book.category, book.description]
+          .join(" ").toLowerCase().includes(search)
+      );
+
+      if (sort === "title") {
+        results.sort((a, b) => a.title.localeCompare(b.title));
+      } else if (sort === "newest") {
+        results.sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0));
+      } else {
+        results.sort((a, b) => (a.featured || 999) - (b.featured || 999));
+      }
+
+      $("bookGrid").innerHTML = results.map(book => {
+        const readUrl = safeUrl(book.readUrl);
+        const buyUrl = safeUrl(book.buyUrl);
+
+        return `
+          <article class="book-card">
+            ${bookCover(book)}
+            <div class="card-body">
+              <div class="category">${escapeHTML(book.category || "Book")}</div>
+              <h3>${escapeHTML(book.title)}</h3>
+              ${book.urdu ? `<div class="urdu-title" lang="ur" dir="rtl">${escapeHTML(book.urdu)}</div>` : ""}
+              <p>${escapeHTML(book.description || "Book description coming soon.")}</p>
+              <div class="meta">${book.year ? "Publication year: " + escapeHTML(book.year) : "Publication details to be added"}</div>
+              <div class="card-actions">
+                ${readUrl ? `<a class="button" href="${escapeHTML(readUrl)}" target="_blank" rel="noopener noreferrer">Read Book</a>` : ""}
+                ${buyUrl ? `<a class="button secondary" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Get a Copy</a>` : ""}
+              </div>
+            </div>
+          </article>`;
+      }).join("");
+
+      $("bookEmpty").style.display = results.length ? "none" : "block";
+    }
+
+    let activeTopic = "All";
+
+    function renderFilters() {
+      const topics = ["All", ...new Set(ARTICLES.map(article => article.topic || "Research"))];
+
+      if (!topics.includes(activeTopic)) activeTopic = "All";
+
+      $("articleFilters").innerHTML = topics.map(topic => `
+        <button type="button"
+          class="filter ${activeTopic === topic ? "active" : ""}"
+          data-topic="${escapeHTML(topic)}">
+          ${escapeHTML(topic)}
+        </button>
+      `).join("");
+
+      $("articleFilters").querySelectorAll("button").forEach(button => {
+        button.addEventListener("click", () => {
+          activeTopic = button.dataset.topic;
+          renderFilters();
+          renderArticles();
+        });
+      });
+    }
+
+    function renderArticles() {
+      const search = $("articleSearch").value.trim().toLowerCase();
+      const sort = $("articleSort").value;
+
+      let results = ARTICLES.filter(article => {
+        const matchesSearch = [
+          article.title,
+          article.topic,
+          article.publication,
+          article.summary,
+          article.date
+        ].join(" ").toLowerCase().includes(search);
+
+        const matchesTopic = activeTopic === "All" ||
+          (article.topic || "Research") === activeTopic;
+
+        return matchesSearch && matchesTopic;
+      });
+
+      if (sort === "title") {
+        results.sort((a, b) => a.title.localeCompare(b.title));
+      } else {
+        results.sort((a, b) => {
+          const comparison = String(a.date || "").localeCompare(String(b.date || ""));
+          return sort === "oldest" ? comparison : -comparison;
+        });
+      }
+
+      $("articleGrid").innerHTML = results.map(article => {
+        const url = safeUrl(article.url);
+        const date = article.date
+          ? escapeHTML(article.date)
+          : "Date not specified";
+
+        return `
+          <article class="article-card">
+            <div class="article-top">
+              <span class="category">${escapeHTML(article.topic || "Research")}</span>
+              <span class="meta">${date}</span>
+            </div>
+            <h3>${escapeHTML(article.title)}</h3>
+            ${article.publication ? `<div class="meta">${escapeHTML(article.publication)}</div>` : ""}
+            <p>${escapeHTML(article.summary || "Article summary coming soon.")}</p>
+            ${url ? `<a class="article-link" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">Read Article ↗</a>` : ""}
+          </article>`;
+      }).join("");
+
+      $("articleEmpty").style.display = results.length ? "none" : "block";
+     }
+
+    $("bookSearch").addEventListener("input", renderBooks);
+    $("bookSort").addEventListener("change", renderBooks);
+    $("articleSearch").addEventListener("input", renderArticles);
+    $("articleSort").addEventListener("change", renderArticles);
+
+    $("year").textContent = new Date().getFullYear();
+
+    renderBooks();
+    renderFilters();
+    renderArticles();
+  </script>
+</body>
+</html>
