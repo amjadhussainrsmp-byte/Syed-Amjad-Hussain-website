@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Research | Syed Amjad Hussain</title>
+  <meta name="description" content="Explore the independent historical research of Syed Amjad Hussain on Sufism, Bihar's heritage, Islamic history, Persian and Urdu sources, and cultural preservation.">
+  <meta name="author" content="Syed Amjad Hussain">
+  <meta name="theme-color" content="#472127">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f4efe6;
+      --paper-2: #ebe3d7;
+      --ink: #2f2926;
+      --muted: #71665e;
+      --burgundy: #652e36;
+      --burgundy-dark: #472127;
+      --gold: #b89b6a;
+      --line: #d8cdbd;
+      --white: #fffdf8;
+      --sans: "DM Sans", Arial, sans-serif;
+      --serif: "Playfair Display", Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .topline {
+      min-height: 32px;
+      padding: 7px 5.5%;
+      background: var(--burgundy-dark);
+      color: #e5d5c3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      font-size: 9px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 83px;
+      padding: 14px 5.5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      background: rgba(244, 239, 230, .97);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      color: var(--burgundy);
+      font-family: "Noto Nastaliq Urdu", serif;
+      font-size: 26px;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .brand-text small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 8px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+    }
+
+    nav a {
+      color: #544942;
+      font-size: 10px;
+      transition: color .2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--burgundy);
+    }
+
+    nav a.active {
+      font-weight: 700;
+    }
+
+    .nav-contact {
+      border: 1px solid var(--burgundy);
+      padding: 10px 15px;
+      color: var(--burgundy);
+    }
+
+    .nav-contact:hover {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      padding: 8px 11px;
+      color: var(--burgundy);
+      cursor: pointer;
+    }
+
+    .section-wrap {
+      width: min(1120px, 89%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: .19em;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      display: block;
+      width: 27px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--burgundy);
+      color: var(--paper);
+      padding: 100px 0 95px;
+    }
+
+    .hero::after {
+      content: "تحقیق";
+      position: absolute;
+      right: 2%;
+      bottom: -55px;
+      color: rgba(255, 253, 248, .045);
+      font-family: "Noto Nastaliq Urdu", serif;
+      font-size: clamp(150px, 27vw, 340px);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      margin: 27px 0 24px;
+      font-family: var(--serif);
+      font-size: clamp(46px, 7vw, 82px);
+      line-height: 1.1;
+      font-weight: 400;
+      letter-spacing: -.035em;
+    }
+
+    .hero h1 em {
+      color: #d3b788;
+      font-weight: 400;
+    }
+
+    .hero-description {
+      max-width: 640px;
+      color: #e0d1c5;
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      margin-top: 32px;
+      color: #e6d4c1;
+      font-size: 9px;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .hero-meta span::before {
+      content: "✦";
+      color: #d3b788;
+      margin-right: 9px;
+    }
+
+    .intro {
+      padding: 85px 0;
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 12%;
+      align-items: start;
+    }
+
+    .section-label {
+      color: var(--burgundy);
+      font-size: 9px;
+      letter-spacing: .16em;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .intro h2,
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(33px, 4.2vw, 49px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .intro h2 {
+      margin-top: 17px;
+    }
+
+    .intro-copy p {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .intro-copy p:first-child {
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .divider {
+      width: 52px;
+      height: 1px;
+      background: var(--gold);
+      margin: 27px 0;
+    }
+
+    .focus-section {
+      padding: 85px 0 95px;
+      background: var(--paper-2);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 42px;
+    }
+
+    .section-head .section-heading {
+      margin-top: 15px;
+      max-width: 620px;
+    }
+
+    .section-head > p {
+      max-width: 300px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .research-card {
+      min-height: 240px;
+      padding: 32px;
+      background: var(--white);
+      transition: background .25s ease;
+    }
+
+    .research-card:hover {
+      background: #faf5ed;
+    }
+
+    .card-number {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 19px;
+    }
+
+    .research-card h3 {
+      margin: 18px 0 12px;
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .research-card p {
+      max-width: 470px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 2;
+    }
+
+    .method-section {
+      padding: 90px 0;
+    }
+
+    .method-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 12%;
+      align-items: start;
+    }
+
+    .method-layout .section-heading {
+      margin-top: 17px;
+    }
+
+    .method-intro {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .method-list {
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .method-list li {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 15px;
+      padding: 21px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .method-list .number {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 20px;
+    }
+
+    .method-list h3 {
+      margin-bottom: 5px;
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .method-list p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .featured {
+      padding: 78px 0;
+      background: #e6dccd;
+    }
+
+    .featured-layout {
+      display: grid;
+      grid-template-columns: .65fr 1.35fr;
+      gap: 10%;
+      align-items: center;
+    }
+
+    .book-art {
+      min-height: 310px;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--burgundy-dark);
+      box-shadow: 9px 9px 0 rgba(101, 46, 54, .12);
+    }
+
+    .book-art-inner {
+      width: 100%;
+      min-height: 260px;
+      padding: 24px 16px;
+      border: 1px solid rgba(211, 183, 136, .65);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--paper);
+    }
+
+    .book-art-inner small {
+      color: #d3b788;
+      font-size: 8px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .book-art-inner h3 {
+      margin: 22px 0;
+      font-family: var(--serif);
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .book-art-inner p {
+      color: #d7c6b6;
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+
+    .featured-copy .section-heading {
+      margin: 17px 0;
+    }
+
+    .featured-copy > p {
+      margin: 15px 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 15px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--gold);
+      color: var(--burgundy);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .text-link span {
+      font-size: 16px;
+    }
+
+    .principles {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .principles .section-heading {
+      margin: 15px auto 35px;
+      max-width: 680px;
+    }
+
+    .principle-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 35px;
+      text-align: left;
+    }
+
+    .principle {
+      padding-top: 20px;
+      border-top: 1px solid var(--gold);
+    }
+
+    .principle h3 {
+      margin-bottom: 10px;
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .principle p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .contact-section {
+      padding: 72px 0;
+      background: var(--burgundy);
+      color: var(--paper);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 13%;
+      align-items: center;
+    }
+
+    .contact-inner h2 {
+      margin: 18px 0;
+      font-family: var(--serif);
+      font-size: clamp(36px, 4vw, 49px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .contact-inner h2 em {
+      color: #d3b788;
+    }
+
+    .contact-inner > div > p {
+      max-width: 430px;
+      color: #d0c2b5;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .contact-action {
+      justify-self: start;
+      display: inline-block;
+      margin-top: 22px;
+      padding: 13px 20px;
+      border: 1px solid #d3b788;
+      color: #f4efe6;
+      font-size: 10px;
+      transition: background .2s ease;
+    }
+
+    .contact-action:hover {
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .contact-note {
+      padding: 24px;
+      border: 1px solid #936c70;
+      color: #e1d1c1;
+      font-size: 11px;
+      line-height: 2;
+    }
+
+    .contact-note strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fffdf8;
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+    }
+
+    .site-footer {
+      padding: 35px 5.5% 18px;
+      background: #292321;
+      color: var(--paper);
+    }
+
+    .footer-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .footer-brand .brand-mark {
+      color: #d5bd95;
+      border-color: #8d775a;
+    }
+
+    .footer-brand .brand-text small {
+      color: #c1b3a5;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: #d3c3b4;
+      font-size: 10px;
+    }
+
+    .footer-links a:hover {
+      color: #fffdf8;
+    }
+
+    .site-footer > p {
+      margin: 20px 0 30px;
+      color: #b8aaa0;
+      font-size: 10px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #4c403a;
+      color: #b8aaa0;
+      font-size: 9px;
+    }
+
+    .footer-bottom a {
+      color: #e6d3b4;
+    }
+
+    @media (max-width: 1050px) {
+      nav {
+        gap: 13px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+
+      .brand-text strong {
+        font-size: 15px;
+      }
+
+      .brand-text small {
+        font-size: 7px;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .site-header {
+        min-height: 75px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 18px 5.5% 23px;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      nav a {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 11px;
+      }
+
+      nav .nav-contact {
+        margin-top: 10px;
+        padding: 12px;
+        text-align: center;
+        border: 1px solid var(--burgundy);
+      }
+
+      .hero {
+        padding: 75px 0;
+      }
+
+      .intro,
+      .method-layout,
+      .featured-layout,
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .intro,
+      .method-section {
+        padding: 65px 0;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head > p {
+        margin-top: 20px;
+      }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .research-card {
+        min-height: auto;
+        padding: 27px;
+      }
+
+      .featured {
+        padding: 60px 0;
+      }
+
+      .book-art {
+        max-width: 360px;
+      }
+
+      .principle-row {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .footer-main {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .topline {
+        font-size: 7px;
+        letter-spacing: .07em;
+      }
+
+      .brand {
+        gap: 9px;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        font-size: 22px;
+      }
+
+      .brand-text strong {
+        font-size: 13px;
+      }
+
+      .brand-text small {
+        max-width: 190px;
+        line-height: 1.7;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topline">
+    <span>Independent Research · Literature · Heritage</span>
+    <span>Bihar, India</span>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
+      <span class="brand-mark" aria-hidden="true">أ</span>
+      <span class="brand-text">
+        <strong>Syed Amjad Hussain</strong>
+        <small>Author · Historian · Poet · Researcher</small>
+      </span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mainNav"
+      type="button">
+      ☰ Menu
+    </button>
+
+    <nav id="mainNav" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="home.html#books">Books</a>
+      <a href="research.html" class="active" aria-current="page">Research</a>
+      <a href="home.html#poetry">Poetry</a>
+      <a href="home.html#library">Library</a>
+      <a href="home.html#press">Press</a>
+      <a href="contact.html" class="nav-contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="section-wrap hero-content">
+        <div class="eyebrow">Research & Historical Inquiry</div>
+
+        <h1>Exploring the past.<br><em>Preserving heritage.</em></h1>
+
+        <p class="hero-description">
+          An independent research initiative devoted to the study of Sufism,
+          Bihar's historical and cultural heritage, Islamic intellectual
+          traditions, and the recovery of histories preserved in Persian,
+          Urdu and other historical sources.
+        </p>
+
+        <div class="hero-meta">
+          <span>Independent Scholar</span>
+          <span>Historical Research</span>
+          <span>Bihar, India</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-wrap intro">
+      <div>
+        <div class="section-label">Research Profile</div>
+        <h2>History deserves to be examined, documented and remembered.</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="intro-copy">
+        <p>
+          Syed Amjad Hussain is an independent researcher, author and
+          historian whose work focuses particularly on Sufism and the
+          historical heritage of Bihar.
+        </p>
+
+        <p>
+          His research explores the lives of Sufi saints, the development
+          of Sufi orders, the history of khanqahs and dargahs, and the
+          contribution of religious and literary traditions to the
+          region's cultural landscape.
+        </p>
+
+        <p>
+          A central concern of this work is the documentation of historical
+          personalities, places and traditions that may receive limited
+          attention in broader historical narratives. The aim is to bring
+          together available evidence and make regional history more
+          accessible to readers and future researchers.
+        </p>
+
+        <p>
+          This is an independent scholarly undertaking, not a university-
+          affiliated research programme.
+        </p>
+      </div>
+    </section>
+
+    <section class="focus-section" id="research-areas">
+      <div class="section-wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Areas of Inquiry</div>
+            <h2 class="section-heading">Fields of research</h2>
+          </div>
+
+          <p>
+            Research interests connecting regional history, Sufi traditions,
+            textual sources and the preservation of cultural memory.
+          </p>
+        </div>
+
+        <div class="research-grid">
+
+          <article class="research-card">
+            <div class="card-number">01</div>
+            <h3>Sufism in Bihar</h3>
+            <p>
+              Historical study of Sufi traditions in Bihar, their
+              intellectual and spiritual lineages, the development of
+              khanqahs, and their place in the region's social and cultural
+              history.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="card-number">02</div>
+            <h3>Sufi Orders & Biographical History</h3>
+            <p>
+              Documentation of Sufi silsilas, scholarly relationships,
+              biographies of saints, and the historical contexts in which
+              spiritual and intellectual traditions developed.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="card-number">03</div>
+            <h3>Sheikhpura & Regional Heritage</h3>
+            <p>
+              Research into the historical personalities, sacred sites,
+              local traditions and cultural memory associated with
+              Sheikhpura and its surrounding areas in Bihar.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="card-number">04</div>
+            <h3>Persian & Urdu Historical Sources</h3>
+            <p>
+              Engagement with Persian and Urdu writings, historical
+              biographies, manuscripts and published works to investigate
+              historical claims and recover information about people,
+              places and institutions.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="card-number">05</div>
+            <h3>Islamic Intellectual & Literary History</h3>
+            <p>
+              Study of Islamic scholarship, literary traditions and the
+              historical contributions of scholars, writers and spiritual
+              figures, with particular attention to their regional contexts.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="card-number">06</div>
+            <h3>Heritage Documentation & Preservation</h3>
+            <p>
+              Recording historical information about dargahs, khanqahs,
+              monuments and lesser-documented sites, and encouraging
+              responsible preservation of regional heritage.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+    <section class="method-section">
+      <div class="section-wrap method-layout">
+
+        <div>
+          <div class="section-label">Research Approach</div>
+          <h2 class="section-heading">Evidence before assertion.</h2>
+          <div class="divider"></div>
+
+          <p class="method-intro">
+            Historical research requires careful reading, comparison of
+            sources and attention to the circumstances in which accounts
+            were produced. The objective is to distinguish documented
+            information from later tradition and interpretation.
+          </p>
+        </div>
+
+        <ol class="method-list">
+          <li>
+            <span class="number">01</span>
+            <div>
+              <h3>Textual Study</h3>
+              <p>
+                Examining available historical books, biographical
+                literature and Persian and Urdu material relevant to
+                the subject under investigation.
+              </p>
+            </div>
+          </li>
+          <span class="number">02</span>
+            <div>
+              <h3>Source Comparison</h3>
+              <p>
+                Comparing accounts across available sources, noting
+                agreements, differences, dates and variations in names
+                or historical details.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span class="number">03</span>
+            <div>
+              <h3>Field & Heritage Observation</h3>
+              <p>
+                Visiting relevant historical sites where possible and
+                documenting their present condition, local associations
+                and available historical information.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span class="number">04</span>
+            <div>
+              <h3>Responsible Documentation</h3>
+              <p>
+                Presenting findings with appropriate context and
+                acknowledging uncertainty where the surviving evidence
+                does not support a definitive conclusion.
+              </p>
+            </div>
+          </li>
+        </ol>
+           </div>
+    </section>
+
+    <section class="featured" id="featured-research">
+      <div class="section-wrap featured-layout">
+
+        <div class="book-art" aria-label="Typographic artwork for Bihar Aur Sufivad">
+          <div class="book-art-inner">
+            <small>A Historical Study</small>
+            <h3>Bihar Aur<br>Sufivad</h3>
+            <p>SYED AMJAD HUSSAIN</p>
+          </div>
+        </div>
+
+        <div class="featured-copy">
+          <div class="section-label">Selected Work</div>
+          <h2 class="section-heading">Bihar Aur Sufivad</h2>
+
+          <p>
+            <em>Bihar Aur Sufivad</em> is a book by Syed Amjad Hussain
+            exploring the history of Sufism in Bihar. It brings together
+            discussions of Sufi traditions, spiritual lineages and
+            biographies of Sufi personalities associated with the region.
+          </p>
+          <a class="text-link" href="home.html#books">
+            Explore publications <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="principles">
+      <div class="section-wrap">
+        <div class="section-label">Guiding Principles</div>
+        <h2 class="section-heading">
+          Research rooted in sources, context and respect for history.
+        </h2>
+
+        <div class="principle-row">
+          <article class="principle">
+            <h3>Historical Accuracy</h3>
+            <p>
+              Prioritising verifiable information, careful chronology
+              and responsible treatment of historical evidence.
+            </p>
+          </article>
+          <article class="principle">
+            <h3>Regional Memory</h3>
+            <p>
+              Recognising the importance of local histories and the
+              people, places and institutions that preserve them.
+            </p>
+          </article>
+
+          <article class="principle">
+            <h3>Accessible Scholarship</h3>
+            <p>
+              Making historical knowledge understandable and useful
+              to readers beyond specialist academic circles.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="section-wrap contact-inner">
+        <div>
+          <div class="eyebrow">Research & Collaboration</div>
+          <h2>Have a source, a question or a <em>historical lead?</em></h2>
+          <p>
+            For research-related correspondence, historical references,
+            publications or heritage documentation, you are welcome
+            to get in touch.
+          </p>
+
+          <a class="contact-action" href="contact.html">
+            Get in touch &nbsp; →
+          </a>
+        </div>
+          <div class="contact-note">
+          <strong>Contribute to historical documentation</strong>
+          Relevant books, references, archival information and documented
+          historical material can help deepen the understanding of
+          Bihar's past and its Sufi heritage.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <a class="brand footer-brand" href="home.html">
+        <span class="brand-mark" aria-hidden="true">أ</span>
+        <span class="brand-text">
+          <strong>Syed Amjad Hussain</strong>
+          <small>Author · Historian · Poet · Researcher</small>
+        </span>
+      </a>
+
+      <div class="footer-links">
+        <a href="home.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="home.html#books">Books</a>
+        <a href="research.html">Research</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
+    <p>
+      Independent research into Sufism, history, literature and heritage.
+    </p>
+    <div class="footer-bottom">
+      <span>© <span id="currentYear"></span> Syed Amjad Hussain. All rights reserved.</span>
+      <a href="home.html">Back to home ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuToggle.innerHTML = isOpen ? "✕ Close" : "☰ Menu";
+    });
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.innerHTML = "☰ Menu";
+      });
+    });
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
