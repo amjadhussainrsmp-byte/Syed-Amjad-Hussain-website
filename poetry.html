@@ -747,47 +747,629 @@ main { padding: 42px 0 85px; }
   object after the closing ];.
 */
 
+
 const POEMS = [
   {
     id: 1,
     category: "ghazal",
     title: {
-      ur: "دل میں اک چراغ جلائے رکھتے ہیں",
-      roman: "Dil Mein Ik Charagh Jalaye Rakhte Hain",
-      hi: "दिल में इक चराग़ जलाए रखते हैं"
+      ur: "ہر طرف تھی گونج تری قول کی اذکار میں",
+      roman: "Har Taraf Thi Goonj Teri Qaul Ki Azkaar Mein",
+      hi: "हर तरफ़ थी गूँज तेरी क़ौल की अज़कार में"
     },
     text: {
-      ur: `دل میں اک چراغ جلائے رکھتے ہیں
-ہم امید کے پھول کھلائے رکھتے ہیں
+      ur: `ہر طرف تھی گونج تری قول کی اذکار میں
+ابتدا روشن ہوئی تھی صرف اک اظہار میں
 
-رات کتنی بھی اندھیری ہو مگر
-خواب آنکھوں میں سجائے رکھتے ہیں
+جلوۂ حق میں نظر ہے حق پہ پردہ ہے بشر
+خاک بھی رقصاں ہوئی ہے عرصۂ اسرار میں
 
-وقت بدلے تو بدل جائے جہاں
-ہم وفا دل سے نبھائے رکھتے ہیں`,
+تشنگی رحمت سے گونجی لب تھے خاموشی کے گھر
+نور کی لہریں اٹھی تھیں گوشۂ اذکار میں
 
-      roman: `Dil mein ik charagh jalaye rakhte hain
-Hum umeed ke phool khilaye rakhte hain
+حرفِ حق جو تو نے بولا کانپ اٹھا ہر جگر
+لرزِشیں تقدیر کی بھی تھیں تری افکار میں
 
-Raat kitni bhi andheri ho magar
-Khwab aankhon mein sajaye rakhte hain
+قلب میں گونجی صدائیں لفظِ الہام و نظر
+روشنی محدود نہ ہو صرف اک مینار میں
 
-Waqt badle to badal jaye jahan
-Hum wafa dil se nibhaye rakhte hain`,
+قدسیت کے جلووں نے جب رقص فرمایا میاں
+طورِ ہستی ڈھہ گیا بس اک تصور کار میں
 
-      hi: `दिल में इक चराग़ जलाए रखते हैं
-हम उम्मीद के फूल खिलाए रखते हैं
+نقش ایسا اپنی تحریروں میں امجدؔ چھوڑ دے
+شمع کی مانند ہو تابش ترے اشعار میں`,
+      roman: `Har taraf thi goonj teri qaul ki azkaar mein
+Ibtida roshan hui thi sirf ik izhaar mein
 
-रात कितनी भी अँधेरी हो मगर
-ख़्वाब आँखों में सजाए रखते हैं
+Jalwa-e-Haq mein nazar hai, Haq pe parda hai bashar
+Khaak bhi raqsaan hui hai arsa-e-asraar mein
 
-वक़्त बदले तो बदल जाए जहाँ
-हम वफ़ा दिल से निभाए रखते हैं`
+Tishnagi rahmat se goonji, lab the khamoshi ke ghar
+Noor ki lehrein uthi thin gosh-e-azkaar mein
+
+Harf-e-Haq jo tu ne bola, kaanp utha har jigar
+Larzishein taqdeer ki bhi thin tere afkaar mein
+
+Qalb mein goonji sadaaein, lafz-e-ilhaam-o-nazar
+Raushni mahdood na ho sirf ik minaar mein
+
+Qudsiyat ke jalwon ne jab raqs farmaya miyan
+Toor-e-hasti dhah gaya bas ik tasawwur-kaar mein
+
+Naqsh aisa apni tehreeron mein Amjad chhod de
+Shama ki maanind ho taabish tere ash'aar mein`,
+      hi: `हर तरफ़ थी गूँज तेरी क़ौल की अज़कार में
+इब्तिदा रौशन हुई थी सिर्फ़ इक इज़हार में
+
+जल्वा-ए-हक़ में नज़र है, हक़ पे पर्दा है बशर
+ख़ाक भी रक़्साँ हुई है अरसा-ए-असरार में
+
+तिश्नगी रहमत से गूँजी, लब थे ख़ामोशी के घर
+नूर की लहरें उठी थीं गोशा-ए-अज़कार में
+
+हर्फ़-ए-हक़ जो तूने बोला, काँप उठा हर जिगर
+लरज़िशें तक़दीर की भी थीं तेरे अफ़कार में
+
+क़ल्ब में गूँजी सदाएँ, लफ़्ज़-ए-इल्हाम-ओ-नज़र
+रौशनी महदूद न हो सिर्फ़ इक मीनार में
+
+क़ुद्सियत के जल्वों ने जब रक़्स फ़रमाया मियाँ
+तूर-ए-हस्ती ढह गया बस इक तसव्वुर-कार में
+
+नक़्श ऐसा अपनी तहरीरों में अमजद छोड़ दे
+शमा की मानिंद हो ताबिश तेरे अशआर में`
     },
-    note: "Demonstration poem — replace this sample with your original ghazal.",
+    note: "Published on Sufinama",
     featured: 1
+  },
+  {
+    id: 2,
+    category: "ghazal",
+    title: {
+      ur: "روشن ہے زمانہ مگر اجیارا نہیں ہے",
+      roman: "Roshan Hai Zamana Magar Ujiyara Nahin Hai",
+      hi: "रौशन है ज़माना मगर उजियारा नहीं है"
+    },
+    text: {
+      ur: `روشن ہے زمانہ مگر اجیارا نہیں ہے
+تابش تری صورت کا کہیں سایہ نہیں ہے
+
+تیری ہی نظر سے ہیں بہاروں میں مہک بھی
+جس گل میں ترا نقش ہو مرجھایا نہیں ہے
+
+تیری ہی صدا میں ہے شفا کا وہ سمندر
+جس نے تجھے پایا وہ کبھی ہارا نہیں ہے
+
+دربار میں تیرے ہی بسی جن کی تمنا
+وہ شہ بھی غلاموں میں نظر آیا نہیں ہے
+
+محشر میں ترے دم سے اجالا ہی اجالا
+جس نے تجھے دیکھا وہ بھٹک پایا نہیں ہے
+
+کعبے میں ہے لہرایا ترے نام کا پرچم
+اس گھر میں ترے بن تو کوئی آیا نہیں ہے
+
+محشر میں ترا نام ہی رحمت کا سہارا
+جس نے تجھے ٹھکرایا وہ بچ پایا نہیں ہے
+
+تیری ہی پناہوں میں ہے امجد کی بھی دنیا
+اس در سے کبھی وہ تو بھٹک پایا نہیں ہے
+
+امجد کو ترے در سے ملا نورِ حقیقت
+ورنہ تو کبھی دل یہ چمک پایا نہیں ہے`,
+      roman: `Roshan hai zamana magar ujiyara nahin hai
+Taabish teri soorat ka kahin saaya nahin hai
+
+Teri hi nazar se hain bahaaron mein mahak bhi
+Jis gul mein tera naqsh ho murjhaya nahin hai
+
+Teri hi sada mein hai shifa ka woh samandar
+Jis ne tujhe paaya woh kabhi haara nahin hai
+
+Darbaar mein tere hi basi jin ki tamanna
+Woh shah bhi ghulamon mein nazar aaya nahin hai
+
+Mahshar mein tere dam se ujala hi ujala
+Jis ne tujhe dekha woh bhatak paaya nahin hai
+
+Kaabe mein hai lehraaya tere naam ka parcham
+Is ghar mein tere bin to koi aaya nahin hai
+
+Mahshar mein tera naam hi rahmat ka sahaara
+Jis ne tujhe thukraya woh bach paaya nahin hai
+
+Teri hi panaahon mein hai Amjad ki bhi duniya
+Us dar se kabhi woh to bhatak paaya nahin hai
+
+Amjad ko tere dar se mila noor-e-haqeeqat
+Warna to kabhi dil ye chamak paaya nahin hai`,
+      hi: `रौशन है ज़माना मगर उजियारा नहीं है
+ताबिश तेरी सूरत का कहीं साया नहीं है
+
+तेरी ही नज़र से हैं बहारों में महक भी
+जिस गुल में तेरा नक़्श हो मुरझाया नहीं है
+
+तेरी ही सदा में है शिफ़ा का वो समंदर
+जिसने तुझे पाया वो कभी हारा नहीं है
+
+दरबार में तेरे ही बसी जिनकी तमन्ना
+वो शाह भी ग़ुलामों में नज़र आया नहीं है
+
+महशर में तेरे दम से उजाला ही उजाला
+जिसने तुझे देखा वो भटक पाया नहीं है
+
+काबे में है लहराया तेरे नाम का परचम
+इस घर में तेरे बिन तो कोई आया नहीं है
+
+महशर में तेरा नाम ही रहमत का सहारा
+जिसने तुझे ठुकराया वो बच पाया नहीं है
+
+तेरी ही पनाहों में है अमजद की भी दुनिया
+उस दर से कभी वो तो भटक पाया नहीं है
+
+अमजद को तेरे दर से मिला नूर-ए-हक़ीक़त
+वरना तो कभी दिल ये चमक पाया नहीं है`
+    },
+    note: "Published on Sufinama",
+    featured: 0
+  },
+  {
+    id: 3,
+    category: "ghazal",
+    title: {
+      ur: "ہم نے سوچا تھا کچھ فیصلہ اور ہے",
+      roman: "Hum Ne Socha Tha Kuch Faisla Aur Hai",
+      hi: "हमने सोचा था कुछ फ़ैसला और है"
+    },
+    text: {
+      ur: `ہم نے سوچا تھا کچھ فیصلہ اور ہے
+ہم نے سمجھا تھا اک حادثہ اور ہے
+
+اس کے جلسوں میں کچھ بھی ہمارا نہیں
+ہم ہی شامل ہیں پر فیصلہ اور ہے
+
+جس نے لوٹا ہے اس کو ہی اختیار
+ہم سے بولا گیا مسئلہ اور ہے
+
+ہم نے چاہا تھا اک سلسلہ خیر کا
+ان کے مطلب کا اک سلسلہ اور ہے
+
+ہم نے مانگی تھی روٹی ملی تالیاں
+یہ سیاست ہے اس کا نشہ اور ہے
+
+ہم سمجھتے رہے تھے مسیحا جسے
+آج وہ کہہ رہا واسطہ اور ہے
+
+ہم ہی ٹھہرے گنہ گار ہر بار کیوں
+فیصلے کا تمہارا قلعہ اور ہے
+
+لوگ بھوکے ہیں بچے ہیں بے حال پر
+ان کی تقریر میں مدعا اور ہے
+
+امجدؔ اس دور میں بولتا کیوں نہیں
+اس کے لہجے میں اب فاصلہ اور ہے
+
+امجدؔ آواز دیتا رہا بھیڑ میں
+سب نے سمجھا کہ اک مسخرہ اور ہے`,
+      roman: `Hum ne socha tha kuch faisla aur hai
+Hum ne samjha tha ik haadsa aur hai
+
+Us ke jalson mein kuch bhi hamara nahin
+Hum hi shaamil hain par faisla aur hai
+
+Jis ne loota hai usi ko ikhtiyaar
+Hum se bola gaya masla aur hai
+
+Hum ne chaaha tha ik silsila khair ka
+Un ke matlab ka ik silsila aur hai
+
+Hum ne maangi thi roti, milin taaliyan
+Ye siyasat hai, iska nasha aur hai
+
+Hum samajhte rahe the maseeha jise
+Aaj woh keh raha waasta aur hai
+
+Hum hi thehre gunahgaar har baar kyun
+Faisle ka tumhaara qila aur hai
+
+Log bhooke hain, bachche hain behaal par
+Un ki taqreer mein mudda aur hai
+
+Amjad is daur mein bolta kyun nahin
+Us ke lehje mein ab faasla aur hai
+
+Amjad aawaaz deta raha bheed mein
+Sab ne samjha ke ik maskhara aur hai`,
+      hi: `हमने सोचा था कुछ फ़ैसला और है
+हमने समझा था इक हादसा और है
+
+उसके जलसों में कुछ भी हमारा नहीं
+हम ही शामिल हैं पर फ़ैसला और है
+
+जिसने लूटा है उसी को इख़्तियार
+हमसे बोला गया मसला और है
+
+हमने चाहा था इक सिलसिला ख़ैर का
+उनके मतलब का इक सिलसिला और है
+
+हमने माँगी थी रोटी, मिलीं तालियाँ
+ये सियासत है, इसका नशा और है
+
+हम समझते रहे थे मसीहा जिसे
+आज वो कह रहा वास्ता और है
+
+हम ही ठहरे गुनहगार हर बार क्यों
+फ़ैसले का तुम्हारा क़िला और है
+
+लोग भूखे हैं, बच्चे हैं बेहाल पर
+उनकी तक़रीर में मुद्दआ और है
+
+अमजद इस दौर में बोलता क्यों नहीं
+उसके लहजे में अब फ़ासला और है
+
+अमजद आवाज़ देता रहा भीड़ में
+सबने समझा कि इक मसख़रा और है`
+    },
+    note: "Published on Sufinama",
+    featured: 0
+  },
+  {
+    id: 4,
+    category: "ghazal",
+    title: {
+      ur: "نہ ہی منزل کہیں دیکھے نہ تھا رستہ عیاں اپنا",
+      roman: "Na Hi Manzil Kahin Dekhe Na Tha Rasta Ayan Apna",
+      hi: "न ही मंज़िल कहीं देखे न था रास्ता अयाँ अपना"
+    },
+    text: {
+      ur: `نہ ہی منزل کہیں دیکھے نہ تھا رستہ عیاں اپنا
+کہاں لے کر چلا ہوں دیکھ یہ ٹوٹا مکاں اپنا
+
+سلگتی رہ گزر بے مہر موسم تشنگی دل کی
+مگر یہ عشق پھر بھی مانتا ہے کارواں اپنا
+
+کبھی جو آندھیوں میں بھی ترا بن کر کھڑا تھا میں
+تبھی ویران نگری میں جلایا آشیاں اپنا
+
+وہ جس کی بے رخی نے آج مجھ کو توڑ ڈالا ہے
+اسی کے نام کر آیا تھا کل تک آسماں اپنا
+
+کفن تک نوچ لے جاتے ہیں دنیا والے قبروں سے
+سجا کر کس لیے رکھا تھا ہم نے یہ جہاں اپنا
+
+نہ آیا خواب میں بھی وہ نہ لوٹی چٹھیاں اس کی
+اجڑ کر رہ گیا دل سے وفاؤں کا جہاں اپنا
+
+مجھے کچھ فکر تھی اس کی اسے کچھ غم نہیں میرا
+مٹا کر میں ہی بیٹھا تھا تسلی کا نشاں اپنا
+
+مرے آنسو مری آہیں مری تنہائیاں دیکھو
+کسی دن لوٹ کر آنا یہی ہے امتحاں اپنا
+
+مٹا ڈالا سبھی نے پر نہ مٹ پایا ابھی امجدؔ
+لکھا رہتا ہے ہر صفحہ پہ جیسے اک نشاں اپنا`,
+      roman: `Na hi manzil kahin dekhe na tha rasta ayaan apna
+Kahan lekar chala hoon dekh ye toota makaan apna
+
+Sulagti rahguzar, be-mehr mausam, tishnagi dil ki
+Magar ye ishq phir bhi maanta hai kaarwaan apna
+
+Kabhi jo aandhiyon mein bhi tera ban kar khada tha main
+Tabhi veeran nagri mein jalaya aashiyaan apna
+
+Woh jis ki be-rukhi ne aaj mujh ko tod daala hai
+Usi ke naam kar aaya tha kal tak aasmaan apna
+
+Kafan tak noch le jaate hain duniya waale qabron se
+Saja kar kis liye rakha tha hum ne ye jahaan apna
+
+Na aaya khwaab mein bhi woh, na lauti chitthiyan us ki
+Ujad kar rah gaya dil se wafaon ka jahaan apna
+
+Mujhe kuch fikr thi us ki, use kuch gham nahin mera
+Mita kar main hi baitha tha tasalli ka nishaan apna
+
+Mere aansu, meri aahen, meri tanhaiyan dekho
+Kisi din laut kar aana, yahi hai imtihaan apna
+
+Mita daala sabhi ne par na mit paaya abhi Amjad
+Likha rehta hai har safhe pe jaise ik nishaan apna`,
+      hi: `न ही मंज़िल कहीं देखे न था रास्ता अयाँ अपना
+कहाँ लेकर चला हूँ देख ये टूटा मकाँ अपना
+
+सुलगती रहगुज़र, बे-मेहर मौसम, तिश्नगी दिल की
+मगर ये इश्क़ फिर भी मानता है कारवाँ अपना
+
+कभी जो आँधियों में भी तेरा बनकर खड़ा था मैं
+तभी वीरान नगरी में जलाया आशियाँ अपना
+
+वो जिसकी बेरुख़ी ने आज मुझको तोड़ डाला है
+उसी के नाम कर आया था कल तक आसमाँ अपना
+
+कफ़न तक नोच ले जाते हैं दुनिया वाले क़ब्रों से
+सजाकर किसलिए रखा था हमने ये जहाँ अपना
+
+न आया ख़्वाब में भी वो, न लौटी चिट्ठियाँ उसकी
+उजड़कर रह गया दिल से वफ़ाओं का जहाँ अपना
+
+मुझे कुछ फ़िक्र थी उसकी, उसे कुछ ग़म नहीं मेरा
+मिटाकर मैं ही बैठा था तसल्ली का निशाँ अपना
+
+मेरे आँसू, मेरी आहें, मेरी तन्हाइयाँ देखो
+किसी दिन लौटकर आना, यही है इम्तिहाँ अपना
+
+मिटा डाला सभी ने पर न मिट पाया अभी अमजद
+लिखा रहता है हर सफ़्हे पे जैसे इक निशाँ अपना`
+    },
+    note: "Published on Sufinama",
+    featured: 0
+  },
+  {
+    id: 5,
+    category: "ghazal",
+    title: {
+      ur: "یار کو جو دیکھا دیوانے ہوئے",
+      roman: "Yaar Ko Jo Dekha Deewane Hue",
+      hi: "यार को जो देखा दीवाने हुए"
+    },
+    text: {
+      ur: `یار کو جو دیکھا دیوانے ہوئے
+پنہاں ہو کر کتنے افسانے ہوئے
+
+رہنے کو دل دے دو مجھ کو یار اب
+منہدم سب میرے کاشانے ہوئے
+
+غم بھلانے ہی کی خاطر دہر میں
+جا بجا تعمیر میخانے ہوئے
+
+کون آتا ہے کتابوں کی طرف
+بند اب سارے کتب خانے ہوئے
+
+کل تلک پہچانتے تھے دور سے
+آج ہم غربت میں انجانے ہوئے
+
+مختلف ہیں رنگ غزلوں میں مری
+پڑھ کے تم یوں ہی نہ دیوانے ہوئے`,
+      roman: `Yaar ko jo dekha deewane hue
+Pinhaan ho kar kitne afsaane hue
+
+Rehne ko dil de do mujh ko yaar ab
+Munhadim sab mere kaashaane hue
+
+Gham bhulaane hi ki khaatir dahr mein
+Ja-ba-ja taameer maikhaane hue
+
+Kaun aata hai kitaabon ki taraf
+Band ab saare kutub-khaane hue
+
+Kal talak pehchaante the door se
+Aaj hum ghurbat mein anjaane hue
+
+Mukhtalif hain rang ghazlon mein meri
+Padh ke tum yun hi na deewane hue`,
+      hi: `यार को जो देखा दीवाने हुए
+पिन्हाँ होकर कितने अफ़साने हुए
+
+रहने को दिल दे दो मुझको यार अब
+मुनहदिम सब मेरे काशाने हुए
+
+ग़म भुलाने ही की ख़ातिर दहर में
+जगह-जगह तामीर मयख़ाने हुए
+
+कौन आता है किताबों की तरफ़
+बंद अब सारे कुतुबख़ाने हुए
+
+कल तलक पहचानते थे दूर से
+आज हम ग़ुरबत में अनजाने हुए
+
+मुख़्तलिफ़ हैं रंग ग़ज़लों में मेरी
+पढ़ के तुम यूँ ही न दीवाने हुए`
+    },
+    note: "Published on Sufinama",
+    featured: 0
+  },
+  {
+    id: 6,
+    category: "ghazal",
+    title: {
+      ur: "حق کی راہوں میں جو آیا بس وہی زندہ رہا",
+      roman: "Haq Ki Raahon Mein Jo Aaya Bas Wohi Zinda Raha",
+      hi: "हक़ की राहों में जो आया बस वही ज़िंदा रहा"
+    },
+    text: {
+      ur: `حق کی راہوں میں جو آیا بس وہی زندہ رہا
+خاک میں مل کر بھی دیکھو نور بن چمکا رہا
+
+نام ان کا آج تک تاریخ کے پنوں پہ ہے
+ان کا قول و فیصلہ ہر دور میں زندہ رہا
+
+جن کے سجدوں سے جڑی تھی آسماں کی روشنی
+ان کے سجدوں کا اثر مٹی سے گل کھلتا رہا
+
+جس کو دنیا نے کہا تھا خاک کا اک ذرہ بھر
+اس کے قدموں سے زمیں پر تاج بھی جھکتا رہا
+
+ان کے آنے سے ہی آئی ریگزاروں میں بہار
+نور پھیلا اور اندھیرا دشت سے جاتا رہا
+
+نام ان کا آج بھی مرکز ہے راحت کے لیے
+جو بھی ان کی چھاؤں میں آیا سکوں پاتا رہا
+
+سر جھکائے بادشاہ آئے تھے جن کے در پہ کل
+آج تک وہ بے کسوں کے دل میں بھی زندہ رہا
+
+رہ گیا ہر دم سدا امجدؔ وفا کی راہ پر
+اس کا قصہ بزم اہل دل میں بھی زندہ رہا`,
+      roman: `Haq ki raahon mein jo aaya bas wohi zinda raha
+Khaak mein mil kar bhi dekho noor ban chamka raha
+
+Naam un ka aaj tak tareekh ke pannों pe hai
+Un ka qaul-o-faisla har daur mein zinda raha
+
+Jin ke sajdon se judi thi aasmaan ki raushni
+Un ke sajdon ka asar mitti se gul khilta raha
+
+Jis ko duniya ne kaha tha khaak ka ik zarra bhar
+Us ke qadmon se zameen par taaj bhi jhukta raha
+
+Un ke aane se hi aayi regzaaron mein bahaar
+Noor phaila aur andhera dasht se jaata raha
+
+Naam un ka aaj bhi markaz hai raahat ke liye
+Jo bhi un ki chhaaon mein aaya sukoon paata raha
+
+Sar jhukaaye baadshah aaye the jin ke dar pe kal
+Aaj tak woh bekason ke dil mein bhi zinda raha
+
+Reh gaya har dam sada Amjad wafa ki raah par
+Us ka qissa bazm-e-ahl-e-dil mein bhi zinda raha`,
+      hi: `हक़ की राहों में जो आया बस वही ज़िंदा रहा
+ख़ाक में मिलकर भी देखो नूर बन चमकता रहा
+
+नाम उनका आज तक तारीख़ के पन्नों पे है
+उनका क़ौल-ओ-फ़ैसला हर दौर में ज़िंदा रहा
+
+जिनके सज्दों से जुड़ी थी आसमाँ की रौशनी
+उनके सज्दों का असर मिट्टी से गुल खिलता रहा
+
+जिसको दुनिया ने कहा था ख़ाक का इक ज़र्रा भर
+उसके क़दमों से ज़मीं पर ताज भी झुकता रहा
+
+उनके आने से ही आई रेगज़ारों में बहार
+नूर फैला और अँधेरा दश्त से जाता रहा
+
+नाम उनका आज भी मरकज़ है राहत के लिए
+जो भी उनकी छाँव में आया सुकून पाता रहा
+
+सर झुकाए बादशाह आए थे जिनके दर पे कल
+आज तक वो बेकसों के दिल में भी ज़िंदा रहा
+
+रह गया हर दम सदा अमजद वफ़ा की राह पर
+उसका क़िस्सा बज़्म-ए-अहल-ए-दिल में भी ज़िंदा रहा`
+    },
+    note: "Published on Sufinama",
+    featured: 0
+  },
+  {
+    id: 7,
+    category: "ghazal",
+    title: {
+      ur: "کب تک رہے یہ حال قیامت کہاں کہاں",
+      roman: "Kab Tak Rahe Ye Haal Qayamat Kahan Kahan",
+      hi: "कब तक रहे ये हाल क़यामत कहाँ-कहाँ"
+    },
+    text: {
+      ur: `کب تک رہے یہ حال قیامت کہاں کہاں
+لے جائے گی مجھے یہ ندامت کہاں کہاں
+
+ہر لفظ میں بسی تھی کبھی تیری آرزو
+اب پوچھتی ہے مجھ سے محبت کہاں کہاں
+
+سانسیں بچھا کے تجھ کو پکارا ہے بارہا
+اب ڈوبتی ہے میری طبیعت کہاں کہاں
+
+ہر رہ گزر میں تیری نشانی کا ذکر ہے
+یہ ڈھونڈتی ہے پھر بھی حکایت کہاں کہاں
+
+مجھ سے خفا تھا وقت بھی تیرے فراق میں
+پھر بھی لٹائی میں نے امانت کہاں کہاں
+
+یادوں کے قافلے کو سنبھالا بہت مگر
+اب تو بکھر رہی ہے عنایت کہاں کہاں
+
+ہر آہ میں بسی تھی تیری چپ نگاہ بھی
+اب ڈھونڈتی ہے آنکھ شرارت کہاں کہاں
+
+تیرے لیے ہی زیست کو جھٹلا دیا مگر
+اب ہو رہی ہے مجھ سے شکایت کہاں کہاں
+
+تو ہی تھا جس کا نام لیا تھا ہر ایک دم
+اب ہو رہی ہے مجھ سے بغاوت کہاں کہاں
+
+امجدؔ نے چھوڑ دی ہے تیری راہ دیکھنا
+اب پوچھتی ہے اس سے محبت کہاں کہاں`,
+      roman: `Kab tak rahe ye haal qayamat kahan kahan
+Le jaayegi mujhe ye nadaamat kahan kahan
+
+Har lafz mein basi thi kabhi teri aarzu
+Ab poochhti hai mujh se mohabbat kahan kahan
+
+Saansen bichha ke tujh ko pukaara hai baaraha
+Ab doobti hai meri tabiyat kahan kahan
+
+Har rahguzar mein teri nishaani ka zikr hai
+Ye dhoondhti hai phir bhi hikayat kahan kahan
+
+Mujh se khafa tha waqt bhi tere firaaq mein
+Phir bhi lutaayi main ne amaanat kahan kahan
+
+Yaadon ke qaafile ko sambhaala bahut magar
+Ab to bikhar rahi hai inaayat kahan kahan
+
+Har aah mein basi thi teri chup nigaah bhi
+Ab dhoondhti hai aankh sharaarat kahan kahan
+
+Tere liye hi zeest ko jhutla diya magar
+Ab ho rahi hai mujh se shikaayat kahan kahan
+
+Tu hi tha jis ka naam liya tha har ek dam
+Ab ho rahi hai mujh se baghaawat kahan kahan
+
+Amjad ne chhod di hai teri raah dekhna
+Ab poochhti hai us se mohabbat kahan kahan`,
+      hi: `कब तक रहे ये हाल क़यामत कहाँ-कहाँ
+ले जाएगी मुझे ये नदामत कहाँ-कहाँ
+
+हर लफ़्ज़ में बसी थी कभी तेरी आरज़ू
+अब पूछती है मुझसे मोहब्बत कहाँ-कहाँ
+
+साँसें बिछा के तुझको पुकारा है बारहा
+अब डूबती है मेरी तबीयत कहाँ-कहाँ
+
+हर रहगुज़र में तेरी निशानी का ज़िक्र है
+ये ढूँढती है फिर भी हिकायत कहाँ-कहाँ
+
+मुझसे ख़फ़ा था वक़्त भी तेरे फ़िराक़ में
+फिर भी लुटाई मैंने अमानत कहाँ-कहाँ
+
+यादों के क़ाफ़िले को सँभाला बहुत मगर
+अब तो बिखर रही है इनायत कहाँ-कहाँ
+
+हर आह में बसी थी तेरी चुप निगाह भी
+अब ढूँढती है आँख शरारत कहाँ-कहाँ
+
+तेरे लिए ही ज़ीस्त को झुठला दिया मगर
+अब हो रही है मुझसे शिकायत कहाँ-कहाँ
+
+तू ही था जिसका नाम लिया था हर एक दम
+अब हो रही है मुझसे बग़ावत कहाँ-कहाँ
+
+अमजद ने छोड़ दी है तेरी राह देखना
+अब पूछती है उससे मोहब्बत कहाँ-कहाँ`
+    },
+    note: "Published on Sufinama",
+    featured: 0
+  },
+  {
+    id: 8,
+    category: "ghazal",
+    empty: true,
+    title: { ur: "", roman: "", hi: "" },
+    text: { ur: "", roman: "", hi: "" },
+    note: "",
+    featured: 0
+  },
+  {
+    id: 9,
+    category: "ghazal",
+    empty: true,
+    title: { ur: "", roman: "", hi: "" },
+    text: { ur: "", roman: "", hi: "" },
+    note: "",
+    featured: 0
   }
 ];
+
 
 /*
   These are the available categories. A category appears in the
