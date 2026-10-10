@@ -25,7 +25,6 @@
   --sans:"DM Sans",Arial,sans-serif;
   --serif:"Playfair Display",Georgia,serif;
 }
-  
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:100px}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7}
@@ -119,7 +118,7 @@ nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
 @media(max-width:480px){
 .topline{font-size:7px;letter-spacing:.06em}
 .brand{gap:9px}.brand-mark{width:38px;height:38px;font-size:22px}
-.brand-text strong{font-size:13px}.brand-text small{font-size:7px}
+  .brand-text strong{font-size:13px}.brand-text small{font-size:7px}
 .poetry-grid{grid-template-columns:1fr}
 .poem-card{min-height:175px}
 .poem-reader{padding:25px 18px}
@@ -180,7 +179,7 @@ nav .nav-contact{margin-top:8px;padding:10px;text-align:center}
   <div class="library-intro">
     <div>
       <div class="eyebrow" style="color:var(--burgundy)" data-i18n="collectionLabel">The Collection</div>
-      <h2 data-i18n="collectionTitle">Ghazal, Kalaam and Naat-o-Manqabat</h2>
+      <h2 data-i18n="collectionTitle">Poetry & Kalam</h2>
     </div>
     <p data-i18n="collectionDesc">Browse by literary form, find a title, and open a poem to read its available script versions.</p>
   </div>
@@ -282,58 +281,7 @@ const POEMS = [
       ur: "میری آنکھوں میں ہے جمالِ احمدِ جاجنیر",
       hi: "मेरी आँखों में है जमाल-ए-अहमद-ए-जाजनेर"
     },
-    text: { ur: "مری آنکھوں میں ہے جمال احمد جاجنیر
-مرے قلب میں ہے کمال احمد جاجنیر
-
-ہے شجاعتوں کی مثال احمد جاجنیر
-دل و جان میں ہے خیال احمد جاجنیر
-
-وہ کہ آل زیدیہ واسطیہ کا فخر ہیں
-کہاں مل سکے گی مثال احمد جاجنیر
-
-مرا دل تو بارہا ان کے نام پہ ہو فدا
-کہیں آئے جب بھی سوال احمد جاجنیر
-
-وہ ہو خان غازی یا ہو وہ حضرت شاہ نجم
-ہیں تو آخرش وہ بھی آل احمد جاجنیر
-
-میں تو امجدؔ ان کا بس ایک ادنیٰ غلام ہوں
-میری خوش نصیبی ہوں آل احمد جاجنیر",
-hi: "मिरी आँखों में है जमाल-ए-अहमद-ए-जाजनेर
-मिरे क़ल्ब में है कमाल-ए-अहमद-ए-जाजनेर
-
-है शुजा'अतों की मिसाल अहमद-ए-जाजनेर
-दिल-ओ-जान में है ख़याल-ए-अहमद-ए-जाजनेर
-
-वो कि आल-ए-ज़ेदिया वास्तिया का फ़ख़्र हैं
-कहाँ मिल सकेगी मिसाल-ए-अहमद-ए-जाजनेर
-
-मिरा दिल तो बारहा उन के नाम पे हो फ़िदा
-कहीं आए जब भी सवाल-ए-अहमद-ए-जाजनेर
-
-वो हो ख़ान ग़ाज़ी या हो वो हज़रत-ए-शाह नजम
-हैं तो आख़िरश वो भी आल-ए-अहमद-ए-जाजनेर
-
-मैं तो 'अमजद' उन का बस एक अदना ग़ुलाम हूँ
-मेरी ख़ुश-नसीबी हूँ आल-ए-अहमद-ए-जाजनेर", 
-
-roman: "mirii aa.nkho.n me.n hai jamaal-e-ahmad-e-jaajner
-mire qalb me.n hai kamaal-e-ahmad-e-jaajner
-
-hai shujaa'ato.n kii misaal ahmad-e-jaajner
-dil-o-jaan me.n hai kHayaal-e-ahmad-e-jaajner
-
-vo ki aal-e-zediyaa vaastiyaa kaa fakHr hai.n
-kahaa.n mil sakegii misaal-e-ahmad-e-jaajner
-
-miraa dil to baarhaa un ke naam pe ho fidaa
-kahii.n aa.e jab bhii savaal-e-ahmad-e-jaajner
-
-vo ho KHaan Gaazii yaa ho vo hazrat-e-shaah najam
-hai.n to aaKHirash vo bhii aal-e-ahmad-e-jaajner
-
-mai.n to 'amjad' un kaa bas ek adnaa Gulaam huu.n
-merii KHush-nasiibii huu.n aal-e-ahmad-e-jaajner" },
+    text: { ur: "", hi: "", roman: "" },
     popularity: 113
   },
   {
@@ -456,7 +404,6 @@ const UI = {
     aboutText:"A poet and author from Bihar whose literary interests include devotional poetry, Sufi traditions and Urdu literature. This collection brings together his works in a searchable, multilingual reading space.",
     biographyLink:"Read the biography →",
     contactLink:"Correspond about poetry →",
-    
     all:"All",
     ghazal:"Ghazal",
     naat:"Naat",
@@ -489,8 +436,6 @@ const UI = {
     aboutLabel:"शायर का परिचय",
     aboutText:"बिहार के शायर और लेखक, जिनकी साहित्यिक रुचियों में नातिया व मनक़बती शायरी, सूफ़ी परंपराएँ और उर्दू साहित्य शामिल हैं। यह संग्रह उनकी रचनाओं को खोजने और अलग-अलग लिपियों में पढ़ने की सुविधा देता है।",
     biographyLink:"जीवनी पढ़ें →",
-    contactLink:"शायरी के बारे में संपर्क 
-biographyLink:"जीवनी पढ़ें →",
     contactLink:"शायरी के बारे में संपर्क करें →",
     all:"सभी",
     ghazal:"ग़ज़ल",
@@ -550,7 +495,8 @@ let currentScript = "ur";
 
 const $ = id => document.getElementById(id);
 const tr = key => UI[currentLang][key] || UI.en[key] || key;
- function categoryKey(category) {
+
+function categoryKey(category) {
   return CATEGORIES.includes(category) ? category : "misc";
 }
 
@@ -619,6 +565,7 @@ function renderPoems() {
     const categoryMatch = currentCategory === "all" || poem.category === currentCategory;
     return categoryMatch && searchableText(poem).includes(query);
   });
+
   const sort = $("sortSelect").value;
   if (sort === "az") {
     list.sort((a,b) => titleFor(a).localeCompare(titleFor(b)));
@@ -656,7 +603,7 @@ function renderPoems() {
       title.lang = "hi";
       title.style.fontFamily = '"Noto Serif Devanagari", serif';
     }
-    
+
     const subtitle = document.createElement("p");
     subtitle.className = "poem-subtitle";
     subtitle.textContent = poem.title.roman || "";
@@ -685,39 +632,6 @@ function renderPoems() {
   });
 }
 
-function applyLanguage() {
-  const lang = currentLang;
-
-  document.documentElement.lang =
-    lang === "ur" ? "ur" : lang === "hi" ? "hi" : "en";
-
-  document.documentElement.dir = lang === "ur" ? "rtl" : "ltr";
-
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.dataset.i18n;
-    const translated = UI[lang]?.[key];
-
-    if (translated !== undefined) {
-      el.innerHTML = translated;
-    }
-  });
-
-  const search = document.getElementById("searchInput");
-  search.placeholder = UI[lang].search;
-  search.dir = lang === "ur" ? "rtl" : "ltr";
-
-  document.querySelectorAll("[data-lang]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.lang === lang);
-  });
-
-  renderFilters();
-  renderPoems();
-
-  if (currentPoem) {
-    renderReader(currentPoem);
-  }
-}
-  
 function renderReader(poem) {
   $("readerCategory").textContent = tr(categoryKey(poem.category));
   $("readerTitle").textContent = titleFor(poem);
@@ -731,6 +645,7 @@ function renderReader(poem) {
     $("readerTitle").style.fontFamily = currentLang === "hi"
       ? '"Noto Serif Devanagari", serif' : "var(--serif)";
   }
+
   const body = $("poemBody");
   const availableText = poem.text[currentScript] || "";
 
@@ -769,19 +684,13 @@ document.querySelectorAll("[data-script]").forEach(button => {
   });
 });
 
-  document.querySelectorAll("[data-script]").forEach(button => {
-  button.addEventListener("click", () => {
-    currentScript = button.dataset.script;
-    if (currentPoem) renderReader(currentPoem);
-  });
-});
-
 $("searchInput").addEventListener("input", renderPoems);
 $("sortSelect").addEventListener("change", renderPoems);
 
 $("closeReader").addEventListener("click", () => {
   $("poemReader").hidden = true;
   currentPoem = null;
+});
 });
 
 $("menuToggle").addEventListener("click", () => {
