@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Eternals of Bihar | Syed Amjad Hussain</title>
+  <meta name="description" content="Discover The Eternals of Bihar, the first published book by Syed Amjad Hussain, exploring the people, personalities and legacies that form Bihar's historical memory.">
+  <meta name="theme-color" content="#641f32">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --burgundy: #641f32;
+      --burgundy-dark: #3c111d;
+      --burgundy-light: #85384d;
+      --gold: #b89558;
+      --gold-light: #dec798;
+      --ivory: #f8f5ee;
+      --paper: #fffdf8;
+      --ink: #292421;
+      --muted: #746c65;
+      --line: #e7dfd2;
+      --white: #fff;
+      --shadow: 0 14px 42px rgba(49, 28, 24, .08);
+      --radius: 17px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--ivory);
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1160px, 91%);
+      margin-inline: auto;
+    }
+
+    .serif {
+      font-family: "Playfair Display", serif;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--gold);
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: 2.1px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 29px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font: 600 clamp(2rem, 4.2vw, 3.1rem)/1.18 "Playfair Display", serif;
+      color: var(--burgundy-dark);
+      margin: 13px 0 16px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* Navigation */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,253,248,.96);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      line-height: 1.3;
+    }
+
+    .brand strong {
+      font: 700 1.2rem "Playfair Display", serif;
+      color: var(--burgundy);
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: .67rem;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      font-size: .77rem;
+      font-weight: 600;
+      color: #49413e;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--burgundy);
+    }
+
+    .nav-links .contact-link {
+      padding: 10px 15px;
+      border-radius: 7px;
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .nav-links .contact-link:hover {
+      background: var(--burgundy-dark);
+      color: var(--white);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--burgundy);
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 86px 0 80px;
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at 85% 15%, rgba(184,149,88,.2), transparent 33%),
+        linear-gradient(125deg, #30101a, #641f32 60%, #793348);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      border: 1px solid rgba(222,199,152,.24);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 470px;
+      height: 470px;
+      right: -110px;
+      top: -160px;
+    }
+
+    .hero::after {
+      width: 330px;
+      height: 330px;
+      right: -40px;
+      top: -90px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .hero .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .hero h1 {
+      font: 600 clamp(3rem, 6.3vw, 5.25rem)/1.08 "Playfair Display", serif;
+      letter-spacing: -1.3px;
+      margin: 22px 0 10px;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--gold-light);
+    }
+
+    .hero-subtitle {
+      font: 500 clamp(1.2rem, 2.3vw, 1.65rem)/1.5 "Playfair Display", serif;
+      color: #f1e5d2;
+      margin: 20px 0;
+    }
+
+    .hero-description {
+      max-width: 630px;
+      color: #e7d9d9;
+      font-size: .99rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 19px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      font-size: .86rem;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #261b13;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,.42);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero-note {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.17);
+      color: #d6c5c5;
+      font-size: .8rem;
+    }
+
+    /* Book visual */
+
+    .book-stage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 420px;
+      perspective: 1100px;
+    }
+
+    .book-frame {
+      position: relative;
+      width: min(300px, 82%);
+      aspect-ratio: 3 / 4.25;
+      border-radius: 3px 12px 12px 3px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.25), transparent 8%, transparent 92%, rgba(0,0,0,.12)),
+        linear-gradient(135deg, #875d39, #37221b);
+      box-shadow:
+        18px 25px 45px rgba(0,0,0,.34),
+        inset 5px 0 8px rgba(255,255,255,.1);
+      transform: rotateY(-8deg) rotateX(2deg);
+      transition: transform .35s ease;
+      overflow: hidden;
+    }
+
+    .book-frame:hover {
+      transform: rotateY(0deg) translateY(-5px);
+    }
+
+    .book-inner {
+      position: absolute;
+      inset: 11px;
+      border: 1px solid rgba(222,199,152,.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 22px 16px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(222,199,152,.18), transparent 38%),
+        linear-gradient(145deg, #653447, #351923);
+    }
+
+    .book-ornament {
+      color: var(--gold-light);
+      font-size: 2rem;
+      margin-bottom: 19px;
+    }
+
+    .book-kicker {
+      font-size: .56rem;
+      font-weight: 700;
+      letter-spacing: 2.1px;
+      text-transform: uppercase;
+      color: #e4cfa9;
+    }
+
+    .book-title {
+      font: 600 clamp(1.65rem, 3vw, 2.3rem)/1.15 "Playfair Display", serif;
+      color: #fff8e9;
+      margin: 17px 0;
+    }
+
+    .book-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--gold-light);
+      margin: 6px 0 17px;
+    }
+
+    .book-author {
+      font-size: .75rem;
+      color: #e8d8c4;
+      letter-spacing: .3px;
+    }
+
+    .book-caption {
+      text-align: center;
+      color: #d8c6c6;
+      font-size: .77rem;
+      margin-top: 22px;
+    }
+
+    /* Introduction */
+
+    .intro-section {
+      padding: 85px 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 52px;
+      align-items: start;
+    }
+
+    .intro-copy h2 {
+      font: 600 clamp(2rem, 4vw, 3rem)/1.2 "Playfair Display", serif;
+      color: var(--burgundy-dark);
+      margin: 14px 0 22px;
+    }
+
+    .intro-copy p {
+      color: #625a53;
+      margin-bottom: 17px;
+    }
+
+    .intro-copy strong {
+      color: var(--burgundy);
+    }
+
+    .quote-panel {
+      padding: 32px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .quote-mark {
+      font: 4rem/1 "Playfair Display", serif;
+      color: var(--gold);
+    }
+
+    .quote-panel blockquote {
+      font: 500 1.55rem/1.55 "Playfair Display", serif;
+      color: var(--burgundy-dark);
+      margin: 12px 0 22px;
+    }
+
+    .quote-panel p {
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    /* Themes */
+
+    .themes-section {
+      padding: 84px 0;
+      background: var(--paper);
+      border-block: 1px solid var(--line);
+    }
+
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .theme-card {
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--paper);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .theme-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .theme-number {
+      display: inline-block;
+      color: var(--gold);
+      font: 600 1.6rem "Playfair Display", serif;
+      margin-bottom: 15px;
+    }
+
+    .theme-card h3 {
+      font: 600 1.4rem/1.3 "Playfair Display", serif;
+      color: var(--burgundy-dark);
+      margin-bottom: 11px;
+    }
+
+    .theme-card p {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* Human history */
+
+    .people-section {
+      padding: 85px 0;
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .people-art {
+      min-height: 365px;
+      padding: 33px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(ellipse at 30% 25%, rgba(222,199,152,.3), transparent 35%),
+        linear-gradient(145deg, #8a6245, #4b2630 68%, #35131f);
+      color: var(--white);
+    }
+
+    .people-art .symbol {
+      font-size: 4rem;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: auto;
+    }
+
+    .people-art .art-label {
+      color: var(--gold-light);
+      text-transform: uppercase;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+    }
+
+    .people-art h3 {
+      font: 600 2.15rem/1.2 "Playfair Display", serif;
+      margin-top: 12px;
+    }
+
+    .people-copy h2 {
+      font: 600 clamp(2rem, 4vw, 2.9rem)/1.2 "Playfair Display", serif;
+      color: var(--burgundy-dark);
+      margin: 14px 0 21px;
+    }
+
+    .people-copy p {
+      color: #625a53;
+      margin-bottom: 16px;
+    }
+
+    .people-copy .emphasis {
+      padding: 18px 21px;
+      border-left: 3px solid var(--gold);
+      background: rgba(184,149,88,.1);
+      color: #5d5145;
+      font: 500 1.15rem/1.6 "Playfair Display", serif;
+      margin-top: 21px;
+    }
+
+    /* Author's journey */
+
+    .journey-section {
+      padding: 82px 0;
+      background: #eee6d9;
+    }
+
+    .journey-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .journey-card {
+      padding: 30px;
+      background: rgba(255,253,248,.85);
+      border: 1px solid #dfd2bd;
+      border-radius: 13px;
+    }
+
+    .journey-card .journey-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .journey-card h3 {
+      font: 600 1.65rem/1.3 "Playfair Display", serif;
+      color: var(--burgundy-dark);
+      margin: 12px 0;
+    }
+
+    .journey-card p {
+      color: #625a53;
+      font-size: .91rem;
+    }
+
+    .journey-card a {
+      display: inline-block;
+      color: var(--burgundy);
+      font-weight: 700;
+      margin-top: 18px;
+      font-size: .85rem;
+    }
+
+    .journey-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Book details */
+
+    .details-section {
+      padding: 85px 0;
+    }
+
+    .details-panel {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--burgundy-dark);
+      color: var(--white);
+    }
+
+    .details-heading {
+      padding: 37px;
+      background:
+        radial-gradient(ellipse at 90% 10%, rgba(222,199,152,.2), transparent 34%),
+        linear-gradient(145deg, #713148, #40131f);
+    }
+
+    .details-heading .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .details-heading h2 {
+      font: 600 2.3rem/1.2 "Playfair Display", serif;
+      margin: 16px 0;
+    }
+
+    .details-heading p {
+      color: #e0d0d0;
+      font-size: .9rem;
+    }
+
+    .details-list {
+      padding: 35px 39px;
+      display: grid;
+      align-content: center;
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 125px 1fr;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.13);
+    }
+
+    .detail-row:last-child {
+      border-bottom: 0;
+    }
+
+    .detail-label {
+      color: var(--gold-light);
+      font-size: .83rem;
+      font-weight: 700;
+    }
+
+    .detail-value {
+      color: #f2e6e4;
+      font-size: .91rem;
+    }
+
+    /* Closing */
+
+    .closing-section {
+      padding: 0 0 85px;
+    }
+
+    .closing-box {
+      padding: clamp(30px, 5vw, 58px);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(ellipse at 95% 0%, rgba(184,149,88,.18), transparent 34%),
+        var(--burgundy-dark);
+      color: var(--white);
+    }
+
+    .closing-box .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .closing-box h2 {
+      max-width: 790px;
+      font: 600 clamp(2.1rem, 4.8vw, 3.5rem)/1.16 "Playfair Display", serif;
+      margin: 16px 0 21px;
+    }
+
+    .closing-box p {
+      max-width: 830px;
+      color: #e3d4d5;
+      margin-bottom: 16px;
+    }
+
+    .closing-quote {
+      max-width: 760px;
+      padding: 18px 22px;
+      margin: 26px 0;
+      border-left: 3px solid var(--gold);
+      background: rgba(255,255,255,.05);
+      font: 500 clamp(1.3rem, 2.8vw, 1.8rem)/1.5 "Playfair Display", serif;
+      color: var(--gold-light);
+    }
+
+    /* Footer */
+
+    .site-footer {
+      padding: 48px 0 24px;
+      background: #29141a;
+      color: #eee3df;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap: 40px;
+      padding-bottom: 35px;
+    }
+
+    .footer-brand {
+      font: 600 1.5rem "Playfair Display", serif;
+      color: var(--gold-light);
+      margin-bottom: 13px;
+    }
+
+    .footer-about {
+      max-width: 390px;
+      color: #c8b9b7;
+      font-size: .87rem;
+    }
+
+    .footer-col h3 {
+      color: var(--gold-light);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      margin-bottom: 15px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 9px;
+    }
+
+    .footer-links a {
+      color: #d7c9c6;
+      font-size: .85rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.13);
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      color: #b9a8a7;
+      font-size: .76rem;
+    }
+
+    @media (max-width: 1100px) {
+      .nav-links {
+        gap: 10px;
+      }
+
+      .nav-links a {
+        font-size: .7rem;
+      }
+
+      .hero-grid {
+        gap: 35px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .nav {
+        min-height: 73px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 18px 5%;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 15px 25px rgba(0,0,0,.07);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 10px 0;
+        font-size: .88rem;
+      }
+
+      .nav-links .contact-link {
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      .hero {
+        padding: 68px 0;
+      }
+
+      .hero-grid,
+      .intro-grid,
+      .people-grid,
+      .details-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 20px;
+      }
+
+      .book-stage {
+        min-height: 370px;
+      }
+
+      .themes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .intro-section,
+      .themes-section,
+      .people-section,
+      .journey-section,
+      .details-section {
+        padding: 65px 0;
+      }
+
+      .closing-section {
+        padding-bottom: 65px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid > :first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .container {
+        width: 90%;
+      }
+
+      .brand strong {
+        font-size: 1.05rem;
+      }
+
+      .brand span {
+        font-size: .57rem;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .themes-grid,
+      .journey-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid > :first-child {
+        grid-column: auto;
+      }
+
+      .detail-row {
+        grid-template-columns: 100px 1fr;
+        gap: 12px;
+      }
+
+      .details-heading,
+      .details-list {
+        padding: 27px;
+      }
+
+      .book-stage {
+        min-height: 330px;
+      }
+
+      .book-frame {
+        width: min(260px, 82%);
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container nav">
+
+      <a href="home.html" class="brand" aria-label="Syed Amjad Hussain home">
+        <strong>Syed Amjad Hussain</strong>
+        <span>Author · Historian · Researcher</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >☰ Menu</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="books-articles.html" class="active">Books & Articles</a>
+        <a href="sufi-heritage.html">Sufi Heritage</a>
+        <a href="sheikhpura-heritage.html">Sheikhpura Heritage</a>
+        <a href="research.html">Research</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="social-work.html">Social Work</a>
+        <a href="awards-honours.html">Awards & Honours</a>
+        <a href="home.html#contact" class="contact-link">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="eyebrow">The First Published Book</span>
+
+          <h1>
+            The Eternals
+            <span>of Bihar</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Remembering the people who made Bihar what it is.
+          </p>
+
+          <p class="hero-description">
+            An early literary exploration of Bihar's people, personalities
+            and historical memory, written by Syed Amjad Hussain from a
+            desire to look beyond familiar narratives and remember the
+            individuals whose contributions shaped the region.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#about-book" class="btn btn-gold">Discover the Book ↓</a>
+            <a href="#book-details" class="btn btn-outline">Publication Details</a>
+          </div>
+
+          <p class="hero-note">
+            First published in January 2023 · Notion Press · English
+          </p>
+        </div>
+
+        <div>
+          <div class="book-stage">
+            <!-- Decorative book illustration.
+                 Replace this block with the actual book cover if available. -->
+            <div class="book-frame" role="img"
+              aria-label="Decorative book illustration for The Eternals of Bihar by Syed Amjad Hussain">
+              <div class="book-inner">
+                <div class="book-ornament" aria-hidden="true">✧</div>
+                <div class="book-kicker">A Journey Through Bihar</div>
+                <div class="book-title">The Eternals<br>of Bihar</div>
+                <div class="book-rule"></div>
+                <div class="book-author">SYED AMJAD HUSSAIN</div>
+              </div>
+            </div>
+          </div>
+          <p class="book-caption">
+            The beginning of a literary journey through Bihar's past.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTRODUCTION -->
+    <section class="intro-section" id="about-book">
+      <div class="container intro-grid">
+
+        <div class="intro-copy">
+          <span class="eyebrow">About the Book</span>
+          <h2>A Book About Bihar, Told Through Its People</h2>
+
+          <p>
+            <strong>The Eternals of Bihar</strong> is the first published
+            book by Syed Amjad Hussain and an early reflection of his
+            enduring fascination with Bihar, its people and its history.
+            Published by Notion Press in January 2023, the book emerged
+            from the perspective of a young writer seeking to draw
+            attention to individuals whose lives and contributions
+            form part of Bihar's story.
+          </p>
+
+          <p>
+            For Amjad, Bihar has never been merely a geographical region.
+            It is a land shaped by centuries of scholarship, literature,
+            spirituality, politics, social movements and cultural exchange.
+            Its history has been enriched by people from different
+            backgrounds whose influence can outlive their own times.
+          </p>
+
+          <p>
+            The book grows out of a simple but enduring idea: to understand
+            a place, one must look beyond its borders and events to the
+            people who helped shape its identity.
+          </p>
+
+          <p>
+            <em>The Eternals of Bihar</em> is an attempt to remember them.
+          </p>
+        </div>
+
+        <aside class="quote-panel">
+          <div class="quote-mark" aria-hidden="true">“</div>
+          <blockquote>
+            People may pass away, but the meaning of their lives can
+            continue through the generations that remember them.
+          </blockquote>
+          <p>
+            The central idea behind <em>The Eternals of Bihar</em>:
+            preserving the memory of people through the written word.
+          </p>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- THEMES -->
+    <section class="themes-section">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">The Ideas Behind the Title</span>
+          <h2>Why “The Eternals”?</h2>
+          <p>
+            The title expresses the belief that a meaningful life can
+            continue to influence society long after its owner is gone.
+            People endure through the knowledge, ideas and contributions
+            they leave behind.
+          </p>
+        </div>
+
+        <div class="themes-grid">
+
+          <article class="theme-card">
+            <span class="theme-number">01</span>
+            <h3>Memory</h3>
+            <p>
+              Remembering people is part of understanding the history
+              of a place and the experiences that have shaped it.
+            </p>
+          </article>
+
+          <article class="theme-card">
+            <span class="theme-number">02</span>
+            <h3>Legacy</h3>
+            <p>
+              A person's influence may survive through their writing,
+              scholarship, public service, ideas and lasting work.
+            </p>
+          </article>
+
+          <article class="theme-card">
+            <span class="theme-number">03</span>
+            <h3>People & History</h3>
+            <p>
+              Historical narratives become richer when the people
+              behind institutions, movements and achievements are
+              brought into focus.
+            </p>
+          </article>
+
+          <article class="theme-card">
+            <span class="theme-number">04</span>
+            <h3>Knowledge</h3>
+            <p>
+              Scholars, educators and writers contribute to society
+              by passing knowledge from one generation to another.
+            </p>
+          </article>
+
+          <article class="theme-card">
+            <span class="theme-number">05</span>
+            <h3>Cultural Heritage</h3>
+            <p>
+              Bihar's identity has been shaped by diverse intellectual,
+              literary, spiritual and social traditions.
+            </p>
+          </article>
+
+          <article class="theme-card">
+            <span class="theme-number">06</span>
+            <h3>Preservation</h3>
+            <p>
+              Recording stories and contributions gives future
+              readers an opportunity to revisit the past and ask
+              new questions about it.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BIHAR THROUGH ITS PEOPLE -->
+    <section class="people-section">
+      <div class="container people-grid">
+
+        <div class="people-art">
+          <div class="symbol" aria-hidden="true">✧</div>
+          <span class="art-label">History Is Human</span>
+          <h3>Behind Every Legacy Is a Life.</h3>
+        </div>
+
+        <div class="people-copy">
+          <span class="eyebrow">Bihar Through Its People</span>
+          <h2>Looking Beyond Familiar Narratives</h2>
+
+          <p>
+            Bihar's history is often told through major political
+            developments and widely known historical figures. Yet
+            the story of the region is far larger than any single
+            event or personality.
+          </p>
+
+          <p>
+            Its cultural identity has also been shaped by writers,
+            poets, scholars, social workers, thinkers, educators and
+            countless other individuals whose work forms part of
+            the society around them.
+          </p>
+
+          <p>
+            Looking at history through people brings its human
+            dimension closer to the reader. It encourages us to
+            consider the lives, circumstances, ideas and efforts
+            behind the events we remember.
+          </p>
+
+          <div class="emphasis">
+            Behind every achievement is a person. Behind every
+            institution is a story. Behind every historical period
+            are lives that deserve to be understood.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRESERVING MEMORY -->
+    <section class="journey-section">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">A Writer's Responsibility</span>
+          <h2>Preserving Memory for the Next Generation</h2>
+          <p>
+            Historical memory can fade when names become unfamiliar,
+            stories are no longer retold and contributions disappear
+            from public awareness. Writing is one way to keep the
+            conversation alive.
+          </p>
+        </div>
+
+        <div class="journey-grid">
+
+          <article class="journey-card">
+            <span class="journey-label">The Purpose</span>
+            <h3>To Remember</h3>
+            <p>
+              For Amjad, writing about historical personalities is
+              connected to the responsibility of preserving knowledge.
+              Recording a life or contribution can help make it
+              accessible to readers who might otherwise never
+              encounter that story.
+            </p>
+          </article>
+
+          <article class="journey-card">
+            <span class="journey-label">The Possibility</span>
+            <h3>To Pass Knowledge Forward</h3>
+            <p>
+              A book is a bridge between generations. It allows
+              readers to revisit the past, learn from the experiences
+              of others and develop a deeper understanding of the
+              society in which they live.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- THE BEGINNING OF A LARGER JOURNEY -->
+    <section class="people-section">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">The Author's Journey</span>
+          <h2>The First Chapter of a Larger Story</h2>
+          <p>
+            The Eternals of Bihar marked an early step in Amjad's
+            engagement with historical writing. Later projects would
+            carry that interest into more specialised areas of
+            research, literature and cultural heritage.
+          </p>
+        </div>
+
+        <div class="journey-grid">
+
+          <article class="journey-card">
+            <span class="journey-label">First Published Book · 2023</span>
+            <h3>The Eternals of Bihar</h3>
+            <p>
+              An early exploration of Bihar's people and their
+              legacies, reflecting a young author's curiosity about
+              the region's history and personalities.
+            </p>
+          </article>
+
+          <article class="journey-card">
+            <span class="journey-label">Sufi History & Heritage</span>
+            <h3>Bihar Aur Sufivad</h3>
+            <p>
+              A later work devoted to the Sufi heritage of Bihar,
+              reflecting a deeper engagement with historical sources,
+              spiritual traditions and the region's cultural memory.
+            </p>
+            <a href="books-articles.html">Explore Books & Articles →</a>
+          </article>
+
+          <article class="journey-card">
+            <span class="journey-label">Urdu Literary History</span>
+            <h3>Akhtar Orenvi: Bihar Mein Urdu Sahitya Ke Nirmata</h3>
+            <p>
+              Another part of Amjad's broader literary and research
+              interests, connecting the study of individual
+              personalities with the history of literature in Bihar.
+            </p>
+            <a href="books-articles.html">View Publications →</a>
+          </article>
+
+          <article class="journey-card">
+            <span class="journey-label">Continuing Research</span>
+            <h3>History, Heritage & Memory</h3>
+            <p>
+              His wider work continues to explore Bihar's historical
+              traditions and the importance of documenting stories
+              that deserve careful study and preservation.
+            </p>
+            <a href="research.html">Explore Research →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOK DETAILS -->
+    <section class="details-section" id="book-details">
+      <div class="container">
+
+        <div class="details-panel">
+
+          <div class="details-heading">
+            <span class="eyebrow">Publication Record</span>
+            <h2>Book Details</h2>
+            <p>
+              The publication information for Syed Amjad Hussain's
+              first published book.
+            </p>
+          </div>
+
+          <div class="details-list">
+
+            <div class="detail-row">
+              <span class="detail-label">Title</span>
+              <span class="detail-value">The Eternals of Bihar</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Author</span>
+              <span class="detail-value">Syed Amjad Hussain</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Language</span>
+              <span class="detail-value">English</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Publisher</span>
+              <span class="detail-value">Notion Press</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Publication</span>
+              <span class="detail-value">January 2023</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Significance</span>
+              <span class="detail-value">First published book</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing-section">
+      <div class="container">
+
+        <div class="closing-box">
+          <span class="eyebrow">A Book, A Beginning</span>
+
+          <h2>Some Lives End. Their Stories Need Not.</h2>
+
+          <p>
+            The Eternals of Bihar remains an important part of Syed
+            Amjad Hussain's literary journey because it captures the
+            beginning of his relationship with historical writing.
+            It grew from curiosity, an interest in Bihar and a belief
+            in the enduring significance of human contribution.
+          </p>
+
+          <p>
+            The book is a reminder that the past is not preserved
+            by dates and events alone. It is also preserved by
+            remembering the people whose lives gave those events
+            meaning.
+          </p>
+
+          <div class="closing-quote">
+            Their work can remain. Their ideas can remain.
+            Their stories can remain—and through books,
+            their memory can endure.
+          </div>
+
+          <a href="books-articles.html" class="btn btn-gold">
+            Explore All Publications →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-brand">Syed Amjad Hussain</div>
+          <p class="footer-about">
+            Author, poet, historian and independent research scholar
+            with a profound focus on Sufism and Islam. His work explores
+            literature, historical research, Bihar's heritage and
+            cultural memory.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Explore</h3>
+          <div class="footer-links">
+            <a href="home.html">Home</a>
+            <a href="biography.html">Biography</a>
+            <a href="books-articles.html">Books & Articles</a>
+            <a href="research.html">Research</a>
+            <a href="poetry.html">Poetry</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Discover More</h3>
+          <div class="footer-links">
+            <a href="sufi-heritage.html">Sufi Heritage</a>
+            <a href="sheikhpura-heritage.html">Sheikhpura Heritage</a>
+            <a href="social-work.html">Social Work</a>
+            <a href="awards-honours.html">Awards & Honours</a>
+            <a href="home.html#contact">Contact</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>
+          © <span id="currentYear"></span> Syed Amjad Hussain. All rights reserved.
+        </span>
+        <span>Literature · History · Research · Heritage</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuToggle.textContent = isOpen ? "✕ Close" : "☰ Menu";
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰ Menu";
+      });
+    });
+
+    // Dynamic copyright year
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
+          
