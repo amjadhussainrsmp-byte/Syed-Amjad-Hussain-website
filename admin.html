@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Dashboard | Syed Amjad Hussain</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="stylesheet" href="/admin-assets/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/admin-config.js"></script>
+  <script src="/admin-assets/admin.js" defer></script>
+
+  <style>
+    .hidden { display: none !important; }
+    .admin-shell { max-width: 1200px; margin: 30px auto; }
+    .admin-topbar {
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:12px; margin-bottom:24px;
+    }
+    .admin-topbar h1 { margin:0; }
+    .admin-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;
+    }
+    .admin-nav {
+      display:flex; flex-wrap:wrap; gap:8px; margin:20px 0;
+    }
+    .admin-nav button { width:auto; margin:0; }
+    .admin-note { color:var(--admin-muted); line-height:1.7; }
+    .admin-brand { font-size:13px; letter-spacing:2px; text-transform:uppercase; }
+    .admin-stat { font-size:30px; font-weight:bold; margin:10px 0; }
+    .admin-action { display:flex; gap:10px; flex-wrap:wrap; }
+    .admin-action a { color:inherit; }
+    @media(max-width:600px) {
+      .admin-topbar { align-items:flex-start; }
+      .admin-action button { width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="admin-shell">
+
+    <!-- SETUP MESSAGE -->
+    <section id="setup-screen" class="admin-card hidden">
+      <h1>Admin setup required</h1>
+      <p class="admin-note">
+        The admin configuration could not be loaded. Check that
+        admin-config.js exists in the repository root and that the
+        Supabase URL and publishable key are configured correctly.
+      </p>
+    </section>
+
+    <!-- LOGIN -->
+    <section id="login-screen" class="admin-card hidden">
+      <p class="admin-brand">Syed Amjad Hussain</p>
+      <h1>Admin Portal</h1>
+      <p class="admin-note">
+        Sign in to access the website content management dashboard.
+      </p>
+
+      <form id="login-form">
+        <label for="email">Email address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="username"
+          placeholder="Your admin email"
+          required
+        >
+
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Your password"
+          required
+        >
+
+        <p id="login-error" class="error" role="alert"></p>
+
+        <button type="submit">Sign in securely</button>
+      </form>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="app" class="hidden">
+      <header class="admin-topbar">
+        <div>
+          <p class="admin-brand">Syed Amjad Hussain</p>
+          <h1>Dashboard</h1>
+          <p class="admin-note">Website administration</p>
+        </div>
+        <button id="logout-btn" type="button">Sign out</button>
+      </header>
+
+      <div class="admin-card">
+        <strong>Signed-in account</strong>
+        <p id="admin-email" class="admin-note">Checking account…</p>
+      </div>
+
+      <div class="admin-grid">
+        <article class="admin-card">
+          <h2>Content</h2>
+          <p class="admin-note">
+            Prepare and manage articles, books, poems, awards and heritage
+            records.
+          </p>
+        </article>
+
+        <article class="admin-card">
+          <h2>Messages</h2>
+          <p class="admin-note">
+            Contact messages will be managed here once the secure API is
+            connected.
+          </p>
+        </article>
+
+        <article class="admin-card">
+          <h2>Media library</h2>
+          <p class="admin-note">
+            Prepare images and other media for your website.
+          </p>
+        </article>
+
+        <article class="admin-card">
+          <h2>Site settings</h2>
+          <p class="admin-note">
+            Website settings will be connected in the next steps.
+          </p>
+        </article>
+      </div>
+
+      <section class="admin-card">
+        <h2>Next steps</h2>
+        <p class="admin-note">
+          This is the initial dashboard shell. Content editing, publishing,
+          message management and media uploads are not active yet. They
+          require the secure server-side API and database permissions.
+        </p>
+      </section>
+    </section>
+
+    <footer class="admin-card">
+      <p class="admin-note">
+        © <span id="admin-year"></span> Syed Amjad Hussain · Administration
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("admin-year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
