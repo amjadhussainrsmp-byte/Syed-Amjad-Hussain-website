@@ -15,11 +15,21 @@ module.exports = async function handler(req, res) {
 const serviceRoleKey = process.env.SUPABASE_SECRET_KEY;
   const adminEmail = process.env.ADMIN_EMAIL;
 
-  if (!supabaseUrl || !anonKey || !serviceRoleKey || !adminEmail) {
-    return res.status(500).json({
-      error: "Server configuration is incomplete."
-    });
-  }
+  const missing = [];
+
+if (!supabaseUrl) missing.push("SUPABASE_URL");
+if (!anonKey) missing.push("SUPABASE_PUBLISHABLE_KEY");
+if (!serviceRoleKey) missing.push("SUPABASE_SECRET_KEY");
+if (!adminEmail) missing.push("ADMIN_EMAIL");
+
+if (missing.length > 0) {
+  console.error("Missing environment variables:", missing);
+
+  return res.status(500).json({
+    error: "Server configuration is incomplete.",
+    missing
+  });
+}
 
   const authorization = req.headers.authorization || "";
   const match = authorization.match(/^Bearer\s+(.+)$/i);
