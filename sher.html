@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Sher Collection | Syed Amjad Hussain</title>
+  <meta name="description"
+    content="Read and download sher and couplets by Syed Amjad Hussain, author, poet and Sufi historian.">
+
+  <meta name="theme-color" content="#472127">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&family=Noto+Serif+Devanagari:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --wine: #472127;
+      --wine-dark: #30151b;
+      --gold: #b99a61;
+      --paper: #fbf8f2;
+      --ink: #302327;
+      --muted: #81777a;
+      --border: #e6d9c8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .site-header {
+      background: var(--wine);
+      color: #fffaf0;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: auto;
+      padding: 20px 24px 0;
+    }
+
+    .brand {
+      display: block;
+      font-size: 25px;
+      font-weight: 600;
+      letter-spacing: .2px;
+    }
+
+    .brand-subtitle {
+      display: block;
+      margin-top: 5px;
+      color: #e1cfac;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    #mainNav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 25px;
+      align-items: center;
+      padding: 20px 0 16px;
+    }
+
+    #mainNav a {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #f7eee6;
+      transition: color .2s;
+    }
+
+    #mainNav a:hover,
+    #mainNav a[aria-current="page"] {
+      color: #e7c987;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid #a98a63;
+      background: transparent;
+      color: white;
+      padding: 9px 13px;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 65px 20px 43px;
+      background:
+        radial-gradient(ellipse at top, #f0e5d3 0, transparent 72%),
+        var(--paper);
+    }
+
+    .eyebrow {
+      color: #947345;
+      font: 600 11px Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .hero h1 {
+      margin: 15px 0 10px;
+      color: var(--wine);
+      font-size: clamp(34px, 5vw, 53px);
+      font-weight: 500;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .ornament {
+      margin: 23px auto 0;
+      color: var(--gold);
+      font-size: 23px;
+    }
+
+    main {
+      max-width: 1050px;
+      margin: auto;
+      padding: 0 22px 65px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin: 10px 0 28px;
+    }
+
+    .search-box {
+      flex: 1 1 260px;
+    }
+
+    .search-box input,
+    .toolbar select {
+      width: 100%;
+      min-height: 46px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: white;
+      color: var(--ink);
+      font: 14px Arial, sans-serif;
+    }
+
+    .toolbar select {
+      width: auto;
+      min-width: 145px;
+    }
+
+    .results-count {
+      margin: 0 0 17px;
+      color: var(--muted);
+      font: 12px Arial, sans-serif;
+    }
+
+    .sher-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 23px;
+    }
+
+    .sher-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 29px 25px 20px;
+      background: #fffdf9;
+      border: 1px solid var(--gold);
+      outline: 1px solid #d6c19c;
+      outline-offset: -7px;
+      box-shadow: 0 8px 25px #35201708;
+      text-align: center;
+    }
+
+    .card-number {
+      align-self: center;
+      margin-bottom: 20px;
+      color: #a38a61;
+      font: 11px Arial, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .sher-text {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px 0 24px;
+      overflow-wrap: anywhere;
+    }
+
+    .sher-text p {
+      margin: 0;
+      line-height: 1.9;
+      font-size: 21px;
+      white-space: pre-line;
+    }
+
+    .sher-text .urdu {
+      font-family: "Noto Nastaliq Urdu", serif;
+      font-size: 24px;
+      line-height: 2.3;
+      direction: rtl;
+    }
+
+    .sher-text .hindi {
+      font-family: "Noto Serif Devanagari", serif;
+      font-size: 20px;
+    }
+
+    .sher-text .roman {
+      color: #64575a;
+      font-size: 16px;
+      font-style: italic;
+    }
+
+    .poet-signature {
+      margin: 5px 0 18px;
+      color: var(--wine);
+      font-size: 14px;
+      letter-spacing: .3px;
+    }
+
+    .poet-signature span {
+      color: #9b7a44;
+      font-style: italic;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 17px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      border: 1px solid #eadfcd;
+      border-radius: 20px;
+      color: #76604a;
+      font: 11px Arial, sans-serif;
+    }
+
+    .card-actions {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 13px;
+      border: 1px solid var(--wine);
+      border-radius: 2px;
+      cursor: pointer;
+      font: 12px Arial, sans-serif;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--wine);
+    }
+
+    .btn-primary:hover {
+      background: var(--wine-dark);
+    }
+
+    .btn-secondary {
+      color: var(--wine);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: #f3eadc;
+    }
+
+    .empty-state {
+      padding: 50px 15px;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .site-footer {
+      padding: 27px 20px;
+      background: var(--wine-dark);
+      color: #e9dccc;
+      text-align: center;
+      font: 12px/1.8 Arial, sans-serif;
+    }
+
+    @media (max-width: 700px) {
+      .header-inner { padding: 17px 18px 0; }
+
+      .brand { font-size: 21px; }
+
+      .menu-toggle {
+        display: inline-block;
+        margin-top: 15px;
+      }
+
+      #mainNav {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 9px 0 14px;
+      }
+
+      #mainNav.open { display: flex; }
+
+      #mainNav a { padding: 11px 2px; }
+
+      .hero { padding: 45px 16px 32px; }
+
+      main { padding: 0 14px 45px; }
+
+      .sher-grid { grid-template-columns: 1fr; }
+
+      .sher-card { padding: 27px 21px 19px; }
+
+      .toolbar select { flex: 1 1 130px; }
+    }
+
+    @media print {
+      .site-header, .toolbar, .results-count,
+      .card-actions, .site-footer { display: none !important; }
+
+      .sher-grid { grid-template-columns: 1fr 1fr; }
+
+      .sher-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="home.html">Syed Amjad Hussain</a>
+      <span class="brand-subtitle">Author · Poet · Sufi Historian</span>
+
+      <button class="menu-toggle" id="menuToggle"
+        type="button" aria-expanded="false" aria-controls="mainNav">
+        ☰ Menu
+      </button>
+
+      <nav id="mainNav" aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+        <a href="research.html">Research</a>
+        <a href="sufi-heritage.html">Sufi Heritage</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="sher.html" aria-current="page">Sher Collection</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Poetry · Couplets · Kalam</div>
+    <h1>Sher Collection</h1>
+    <p>A collection of couplets by Syed Amjad Hussain</p>
+    <div class="ornament">— ❖ —</div>
+  </section>
+
+  <main>
+    <div class="toolbar">
+      <div class="search-box">
+        <input id="searchInput" type="search"
+          placeholder="Search sher, words or themes..."
+          aria-label="Search sher">
+      </div>
+
+      <select id="languageFilter" aria-label="Filter by language">
+        <option value="all">All languages</option>
+        <option value="Urdu">Urdu</option>
+        <option value="Hindi">Hindi</option>
+        <option value="Roman Urdu">Roman Urdu</option>
+      </select>
+
+      <select id="categoryFilter" aria-label="Filter by category">
+        <option value="all">All categories</option>
+        <option value="Ghazal">Ghazal</option>
+        <option value="Sufi">Sufi</option>
+        <option value="Love">Love</option>
+        <option value="Life">Life</option>
+        <option value="Reflection">Reflection</option>
+      </select>
+    </div>
+
+    <p class="results-count" id="resultsCount" aria-live="polite"></p>
+    <section class="sher-grid" id="sherGrid"
+      aria-label="Sher collection"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© <span id="year"></span> Syed Amjad Hussain</div>
+    <div>Preserving poetry, language and literary heritage.</div>
+  </footer>
+
+  <!-- Download library for high-quality PNG images -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <script>
+    // PART 2: Add your actual couplets in the array below.
+    // Each entry can include Urdu, Hindi and/or Roman Urdu text.
+    const sherCollection = [
+      {
+        id: 1,
+        urdu: "یہاں اپنا اصل شعر اردو رسم الخط میں لکھیں",
+        hindi: "",
+        roman: "Yahan apna asal sher Roman Urdu mein likhein",
+        category: "Ghazal",
+        language: "Roman Urdu"
+      },
+      {
+        id: 2,
+        urdu: "",
+        hindi: "यहाँ अपना असली शेर देवनागरी में लिखें",
+        roman: "",
+        category: "Reflection",
+        language: "Hindi"
+      }
+    ];
+
+    const grid = document.getElementById("sherGrid");
+    const searchInput = document.getElementById("searchInput");
+    const languageFilter = document.getElementById("languageFilter");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const resultsCount = document.getElementById("resultsCount");
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    function escapeHTML(value = "") {
+      return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
+
+    function renderSher() {
+      const query = searchInput.value.trim().toLocaleLowerCase();
+      const language = languageFilter.value;
+      const category = categoryFilter.value;
+
+      const filtered = sherCollection.filter(sher => {
+        const searchable = [
+          sher.urdu, sher.hindi, sher.roman, sher.category
+        ].join(" ").toLocaleLowerCase();
+
+        return searchable.includes(query)
+          && (language === "all" || sher.language === language)
+          && (category === "all" || sher.category === category);
+      });
+
+      resultsCount.textContent =
+        `${filtered.length} sher found`;
+
+      if (!filtered.length) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            No sher found. Try another word or filter.
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map((sher, index) => `
+        <article class="sher-card" id="sher-${sher.id}">
+          <div class="card-number">SHER · ${String(index + 1).padStart(3, "0")}</div>
+
+          <div class="sher-text">
+            ${sher.urdu ? `<p class="urdu" lang="ur" dir="rtl">${escapeHTML(sher.urdu)}</p>` : ""}
+            ${sher.hindi ? `<p class="hindi" lang="hi">${escapeHTML(sher.hindi)}</p>` : ""}
+            ${sher.roman ? `<p class="roman">${escapeHTML(sher.roman)}</p>` : ""}
+          </div>
+
+          <div class="poet-signature">
+            Syed Amjad Hussain <span>Amjadؔ</span>
+          </div>
+
+          <div class="card-meta">
+            <span class="tag">${escapeHTML(sher.category)}</span>
+            <span class="tag">${escapeHTML(sher.language)}</span>
+          </div>
+
+          <div class="card-actions">
+            <button class="btn btn-primary"
+              type="button" data-download="${sher.id}">
+              ↓ Download Sher
+            </button>
+            <button class="btn btn-secondary"
+              type="button" data-copy="${sher.id}">
+              Copy Text
+            </button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    searchInput.addEventListener("input", renderSher);
+    languageFilter.addEventListener("change", renderSher);
+    categoryFilter.addEventListener("change", renderSher);
+
+    grid.addEventListener("click", async event => {
+      const downloadButton = event.target.closest("[data-download]");
+      const copyButton = event.target.closest("[data-copy]");
+
+      if (downloadButton) {
+        const sher = sherCollection.find(item =>
+          item.id === Number(downloadButton.dataset.download));
+        const card = downloadButton.closest(".sher-card");
+
+        if (!sher || !card) return;
+
+        if (typeof html2canvas !== "function") {
+          alert("Image download could not load. Check your internet connection and try again.");
+          return;
+        }
+
+        const buttonLabel = downloadButton.textContent;
+        downloadButton.disabled = true;
+        downloadButton.textContent = "Preparing image...";
+
+        try {
+          await document.fonts.ready;
+
+          const canvas = await html2canvas(card, {
+            scale: 3,
+            backgroundColor: "#fffdf9",
+            useCORS: true,
+            logging: false
+          });
+
+          const link = document.createElement("a");
+          link.download = `Syed-Amjad-Hussain-Sher-${sher.id}.png`;
+          link.href = canvas.toDataURL("image/png");
+          link.click();
+        } catch (error) {
+          console.error("Sher image download failed:", error);
+          alert("Unable to create the image. Please try again.");
+        } finally {
+          downloadButton.disabled = false;
+          downloadButton.textContent = buttonLabel;
+        }
+      }
+
+      if (copyButton) {
+        const sher = sherCollection.find(item =>
+          item.id === Number(copyButton.dataset.copy));
+
+        if (!sher) return;
+
+        const text = [
+          sher.urdu, sher.hindi, sher.roman,
+          "— Syed Amjad Hussain (Amjadؔ)"
+        ].filter(Boolean).join("\n\n");
+
+        try {
+          await navigator.clipboard.writeText(text);
+          copyButton.textContent = "Copied!";
+          setTimeout(() => copyButton.textContent = "Copy Text", 1500);
+        } catch {
+          prompt("Copy your sher:", text);
+        }
+      }
+    });
+
+    renderSher();
+  </script>
+</body>
+</html>
