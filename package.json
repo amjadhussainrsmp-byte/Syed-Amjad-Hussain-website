@@ -1,0 +1,9 @@
+{
+  "name": "syed-amjad-hussain-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website and secure administration API",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.0.0"
+  }
+}
