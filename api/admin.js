@@ -11,8 +11,8 @@ module.exports = async function handler(req, res) {
   }
 
   const supabaseUrl = process.env.SUPABASE_URL;
-  const anonKey = process.env.SUPABASE_ANON_KEY;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const anonKey = process.env.SUPABASE_PUBLISHABLE_KEY;
+const serviceRoleKey = process.env.SUPABASE_SECRET_KEY;
   const adminEmail = process.env.ADMIN_EMAIL;
 
   if (!supabaseUrl || !anonKey || !serviceRoleKey || !adminEmail) {
