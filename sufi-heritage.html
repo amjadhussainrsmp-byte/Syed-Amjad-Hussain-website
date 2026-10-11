@@ -779,23 +779,40 @@ nav a.active {
 
 <body>
 
-<header class="site-header">
-  <div class="nav-wrap">
-    <a class="brand" href="home.html">
-      Syed Amjad Hussain
-      <small>Ethnographer · Author · Poet · Historian · Humanitarian</small>
-    </a>
 
-    <nav aria-label="Main navigation">
-      <a href="home.html">Home</a>
-      <a href="biography.html">Biography</a>
-      <a href="books-and-articles.html">Books & Articles</a>
-      <a href="sufi-heritage.html" class="active">Sufi Heritage</a>
-      <a href="research.html">Research</a>
-      <a href="poetry.html">Poetry</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
+<div class="topline">
+  <span>Independent Research · Literature · Heritage</span>
+  <span>Bihar, India</span>
+</div>
+
+<header class="site-header">
+  <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
+    <span class="brand-mark" aria-hidden="true">أ</span>
+    <span class="brand-text">
+      <strong>Syed Amjad Hussain</strong>
+      <small>Author · Historian · Poet · Researcher</small>
+    </span>
+  </a>
+
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mainNav"
+    type="button">
+    ☰ Menu
+  </button>
+
+  <nav id="mainNav" aria-label="Main navigation">
+    <a href="home.html">Home</a>
+    <a href="biography.html">Biography</a>
+    <a href="books-and-articles.html">Books & Articles</a>
+    <a href="sufi-heritage.html" class="active" aria-current="page">Sufi Heritage</a>
+    <a href="research.html">Research</a>
+    <a href="poetry.html">Poetry</a>
+    <a href="contact.html" class="nav-contact">Contact</a>
+  </nav>
 </header>
 
 <section class="hero">
@@ -1380,6 +1397,30 @@ nav a.active {
   renderSaints();
 </script>
 
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mainNav.classList.toggle("open");
+
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+    menuToggle.innerHTML = isOpen ? "✕ Close" : "☰ Menu";
+  });
+
+  mainNav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mainNav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+      menuToggle.innerHTML = "☰ Menu";
+    });
+  });
+</script>
 </body>
 </html>
 
