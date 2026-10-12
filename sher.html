@@ -559,12 +559,17 @@
     </div>
   </header>
 
-  <section class="hero">
-    <div class="eyebrow">Poetry · Couplets · Kalam</div>
-    <h1>Sher Collection</h1>
-    <p>A collection of couplets by Syed Amjad Hussain</p>
-    <div class="ornament">— ❖ —</div>
-  </section>
+  
+<section class="hero">
+  <div class="eyebrow">The Poetry of Amjadؔ</div>
+  <h1>Sher Collection</h1>
+  <p>
+    A curated collection of couplets by Syed Amjad Hussain,
+    in Urdu, Hindi and Roman Urdu.
+  </p>
+  <div class="ornament">— ❖ —</div>
+</section>
+
 
   <main>
     <div class="toolbar">
@@ -716,69 +721,134 @@
     languageFilter.addEventListener("change", renderSher);
     categoryFilter.addEventListener("change", renderSher);
 
-    grid.addEventListener("click", async event => {
-      const downloadButton = event.target.closest("[data-download]");
-      const copyButton = event.target.closest("[data-copy]");
+    
+/* Premium sher image with website watermark */
+async function downloadSherImage(sher, button) {
+  if (typeof html2canvas !== "function") {
+    alert("Image library not loaded. Please check your internet connection.");
+    return;
+  }
 
-      if (downloadButton) {
-        const sher = sherCollection.find(item =>
-          item.id === Number(downloadButton.dataset.download));
-        const card = downloadButton.closest(".sher-card");
+  const originalLabel = button.textContent;
+  button.disabled = true;
+  button.textContent = "Preparing image...";
 
-        if (!sher || !card) return;
+  const artwork = document.createElement("div");
+  artwork.className = "sher-download-art";
 
-        if (typeof html2canvas !== "function") {
-          alert("Image download could not load. Check your internet connection and try again.");
-          return;
-        }
+  const addText = (tag, className, text) => {
+    if (!text || !text.trim()) return null;
 
-        const buttonLabel = downloadButton.textContent;
-        downloadButton.disabled = true;
-        downloadButton.textContent = "Preparing image...";
+    const element = document.createElement(tag);
+    element.className = className;
+    element.textContent = text;
+    artwork.appendChild(element);
+    return element;
+  };
 
-        try {
-          await document.fonts.ready;
+  addText("p", "download-kicker", "SHER COLLECTION");
 
-          const canvas = await html2canvas(card, {
-            scale: 3,
-            backgroundColor: "#fffdf9",
-            useCORS: true,
-            logging: false
-          });
+  const poetry = document.createElement("div");
+  poetry.className = "download-poetry";
+  artwork.appendChild(poetry);
 
-          const link = document.createElement("a");
-          link.download = `Syed-Amjad-Hussain-Sher-${sher.id}.png`;
-          link.href = canvas.toDataURL("image/png");
-          link.click();
-        } catch (error) {
-          console.error("Sher image download failed:", error);
-          alert("Unable to create the image. Please try again.");
-        } finally {
-          downloadButton.disabled = false;
-          downloadButton.textContent = buttonLabel;
-        }
-      }
+  [
+    { text: sher.urdu, lang: "urdu" },
+    { text: sher.hindi, lang: "hindi" },
+    { text: sher.roman, lang: "roman" }
+  ].forEach(item => {
+    if (!item.text || !item.text.trim()) return;
 
-      if (copyButton) {
-        const sher = sherCollection.find(item =>
-          item.id === Number(copyButton.dataset.copy));
+    const line = document.createElement("p");
+    line.className = `download-line ${item.lang}`;
+    line.textContent = item.text;
+    poetry.appendChild(line);
+  });
 
-        if (!sher) return;
+  addText("div", "download-divider", "");
+  addText("p", "download-author", "Syed Amjad Hussain");
+  addText("p", "download-takhallus", "Amjadؔ");
+  addText("p", "download-watermark", "SyedAmjadHussain.com");
+  addText("p", "download-category", sher.category || "Poetry");
 
-        const text = [
-          sher.urdu, sher.hindi, sher.roman,
-          "— Syed Amjad Hussain (Amjadؔ)"
-        ].filter(Boolean).join("\n\n");
+  Object.assign(artwork.style, {
+    position: "fixed",
+    left: "-12000px",
+    top: "0",
+    zIndex: "-1"
+  });
 
-        try {
-          await navigator.clipboard.writeText(text);
-          copyButton.textContent = "Copied!";
-          setTimeout(() => copyButton.textContent = "Copy Text", 1500);
-        } catch {
-          prompt("Copy your sher:", text);
-        }
-      }
+  document.body.appendChild(artwork);
+
+  try {
+    await document.fonts.ready;
+
+    const canvas = await html2canvas(artwork, {
+      scale: 3,
+      backgroundColor: "#fffdf8",
+      useCORS: true,
+      logging: false,
+      width: 900,
+      windowWidth: Math.max(window.innerWidth, 900)
     });
+
+    const link = document.createElement("a");
+    link.download = `SyedAmjadHussain-Sher-${sher.id}.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  } catch (error) {
+    console.error("Download failed:", error);
+    alert("Unable to create the image. Please try again.");
+  } finally {
+    artwork.remove();
+    button.disabled = false;
+    button.textContent = originalLabel;
+  }
+}
+
+/* Download and copy buttons */
+grid.addEventListener("click", async event => {
+  const downloadButton = event.target.closest("[data-download]");
+  const copyButton = event.target.closest("[data-copy]");
+
+  if (downloadButton) {
+    const sher = sherCollection.find(
+      item => item.id === Number(downloadButton.dataset.download)
+    );
+
+    if (sher) {
+      await downloadSherImage(sher, downloadButton);
+    }
+  }
+
+  if (copyButton) {
+    const sher = sherCollection.find(
+      item => item.id === Number(copyButton.dataset.copy)
+    );
+
+    if (!sher) return;
+
+    const text = [
+      sher.urdu,
+      sher.hindi,
+      sher.roman,
+      "— Syed Amjad Hussain (Amjadؔ)",
+      "SyedAmjadHussain.com"
+    ].filter(Boolean).join("\n\n");
+
+    try {
+      await navigator.clipboard.writeText(text);
+      const oldLabel = copyButton.textContent;
+      copyButton.textContent = "Copied!";
+
+      setTimeout(() => {
+        copyButton.textContent = oldLabel;
+      }, 1500);
+    } catch {
+      prompt("Copy your sher:", text);
+    }
+  }
+});
 
     renderSher();
   </script>
