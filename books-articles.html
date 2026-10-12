@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Books & Articles | Syed Amjad Hussain</title>
+  <meta name="description" content="Explore books, historical articles, research writings and literary publications by Syed Amjad Hussain, author, poet, historian and independent research scholar.">
+  <meta name="theme-color" content="#4a1726">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --burgundy: #4a1726;
+      --burgundy-dark: #2b0c16;
+      --burgundy-light: #6c293b;
+      --gold: #b99a62;
+      --gold-light: #d7c49b;
+      --ivory: #faf7f0;
+      --paper: #fffdf8;
+      --ink: #292421;
+      --muted: #77716b;
+      --line: #e7dfd2;
+      --white: #ffffff;
+      --shadow: 0 18px 55px rgba(43, 12, 22, .08);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      background: var(--ivory);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .19em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .section-heading {
+      max-width: 690px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      margin-top: 12px;
+      color: var(--burgundy);
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: 1.2;
+    }
+
+    .section-heading p {
+      max-width: 620px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: .96rem;
+    }
+
+    /* =====================================
+       HEADER — MATCHES THE SITE IDENTITY
+    ===================================== */
+
+    .site-header {
+      position: sticky;
+      z-index: 1000;
+      top: 0;
+      background: rgba(250, 247, 240, .97);
+      border-bottom: 1px solid rgba(185, 154, 98, .3);
+      backdrop-filter: blur(16px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 88px;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 1px solid var(--gold);
+      background: var(--burgundy);
+      color: var(--gold-light);
+      font-family: Georgia, serif;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .brand-copy strong {
+      display: block;
+      color: var(--burgundy);
+      font-family: var(--serif);
+      font-size: 1.14rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .63rem;
+      letter-spacing: .035em;
+      line-height: 1.5;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--burgundy);
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 19px;
+    }
+
+    .main-nav a {
+      position: relative;
+      padding: 9px 0;
+      color: #514941;
+      font-size: .77rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: color .2s ease;
+    }
+
+    .main-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: 2px;
+      left: 0;
+      height: 1px;
+      background: var(--gold);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a[aria-current="page"] {
+      color: var(--burgundy);
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a[aria-current="page"]::after {
+      transform: scaleX(1);
+    }
+
+    /* =====================================
+       HERO
+    ===================================== */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 86px;
+      background:
+        radial-gradient(ellipse at 88% 16%, rgba(185,154,98,.15), transparent 33%),
+        linear-gradient(125deg, var(--burgundy-dark), var(--burgundy) 62%, #552034);
+      color: var(--white);
+    }
+
+    .hero::before {
+      position: absolute;
+      top: -145px;
+      right: -100px;
+      width: 470px;
+      height: 470px;
+      border: 1px solid rgba(215,196,155,.2);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero::after {
+      position: absolute;
+      top: -90px;
+      right: -45px;
+      width: 360px;
+      height: 360px;
+      border: 1px solid rgba(215,196,155,.13);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .hero .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin-top: 20px;
+      font-family: var(--serif);
+      font-size: clamp(3.1rem, 6.4vw, 5.5rem);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: 1.05;
+    }
+
+    .hero h1 em {
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+
+    .hero-description {
+      max-width: 640px;
+      margin-top: 25px;
+      color: rgba(255,255,255,.79);
+      font-size: 1.02rem;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 21px;
+      border: 1px solid transparent;
+      font-size: .82rem;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-gold {
+      background: var(--gold);
+      color: var(--burgundy-dark);
+    }
+
+    .button-gold:hover {
+      background: var(--gold-light);
+    }
+
+    .button-outline {
+      border-color: rgba(255,255,255,.4);
+      color: var(--white);
+    }
+
+    .button-outline:hover {
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero-art {
+      position: relative;
+      display: flex;
+      min-height: 300px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-art-frame {
+      position: relative;
+      display: flex;
+      width: 245px;
+      height: 300px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(215,196,155,.65);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.045), transparent),
+        rgba(255,255,255,.025);
+      box-shadow: 22px 24px 0 rgba(0,0,0,.09);
+      transform: rotate(3deg);
+    }
+
+    .hero-art-frame::before {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(215,196,155,.25);
+      content: "";
+    }
+
+    .hero-art-inner {
+      padding: 25px;
+      text-align: center;
+      transform: rotate(-3deg);
+    }
+
+    .hero-art-inner .ornament {
+      color: var(--gold-light);
+      font-family: Georgia, serif;
+      font-size: 2.6rem;
+      line-height: 1;
+    }
+
+    .hero-art-inner .urdu {
+      margin-top: 15px;
+      color: var(--gold-light);
+      font-family: "Noto Nastaliq Urdu", serif;
+      font-size: 1.25rem;
+      line-height: 2.3;
+    }
+
+    .hero-art-inner .art-rule {
+      width: 60px;
+      height: 1px;
+      margin: 15px auto;
+      background: var(--gold);
+    }
+
+    .hero-art-inner strong {
+      display: block;
+      color: var(--white);
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .hero-art-inner small {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255,255,255,.62);
+      font-size: .59rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    /* =====================================
+       INTRODUCTION
+    ===================================== */
+
+    .intro {
+      padding: 64px 0 34px;
+    }
+
+    .intro-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .intro h2 {
+      color: var(--burgundy);
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.3vw, 2.65rem);
+      font-weight: 500;
+      letter-spacing: -.025em;
+      line-height: 1.28;
+    }
+
+    .intro-copy p {
+      margin-bottom: 15px;
+      color: #655e57;
+      font-size: .94rem;
+    }
+
+    .intro-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =====================================
+       PUBLICATION FILTERS
+    ===================================== */
+
+    .catalogue {
+      padding: 60px 0 90px;
+    }
+
+    .catalogue-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .catalogue-top .section-heading {
+      margin-bottom: 0;
+    }
+
+    .search-wrap {
+      width: min(100%, 285px);
+      flex-shrink: 0;
+    }
+
+    .search-wrap label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .search-box span {
+      color: var(--gold);
+      font-size: 1.15rem;
+    }
+
+    .search-box input {
+      width: 100%;
+      min-width: 0;
+      height: 46px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--ink);
+      font-size: .85rem;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(185,154,98,.1);
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 35px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .filter-button {
+      padding: 9px 17px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: #655e57;
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 600;
+      transition: all .2s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      border-color: var(--burgundy);
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .result-count {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    /* =====================================
+       FEATURED BOOK
+    ===================================== */
+
+    .featured-book {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      overflow: hidden;
+      margin-bottom: 62px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .featured-cover-area {
+      position: relative;
+      display: flex;
+      min-height: 420px;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 40px;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(185,154,98,.15), transparent 50%),
+        #eee5d7;
+    }
+
+    .book-cover {
+      position: relative;
+      display: flex;
+      width: 218px;
+      min-height: 320px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 22px;
+      overflow: hidden;
+      border: 1px solid rgba(215,196,155,.65);
+      outline: 1px solid rgba(215,196,155,.35);
+      outline-offset: -8px;
+      background:
+        radial-gradient(ellipse at center, rgba(255,255,255,.045), transparent 65%),
+        linear-gradient(145deg, #62253a, #35101d 85%);
+      box-shadow: 12px 18px 26px rgba(43,12,22,.23);
+      color: var(--gold-light);
+      text-align: center;
+      transform: rotate(-2deg);
+    }
+
+    .book-cover::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10px;
+      height: 100%;
+      border-left: 1px solid rgba(215,196,155,.2);
+      background: rgba(0,0,0,.12);
+      content: "";
+    }
+
+    .cover-top {
+      font-size: .53rem;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+    .cover-ornament {
+      font-family: Georgia, serif;
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .cover-title {
+      font-family: var(--serif);
+      font-size: 2.05rem;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .cover-title span {
+      display: block;
+      margin-top: 7px;
+      font-size: 1.5rem;
+    }
+
+    .cover-subtitle {
+      margin-top: 12px;
+      color: rgba(255,255,255,.78);
+      font-size: .55rem;
+      letter-spacing: .08em;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .cover-author {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .11em;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .featured-details {
+      align-self: center;
+      padding: 52px;
+    }
+
+    .featured-label {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid #e6d7b8;
+      color: #8c6d36;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .featured-details h3 {
+      margin-top: 19px;
+      color: var(--burgundy);
+      font-family: var(--serif);
+      font-size: clamp(2.1rem, 4vw, 3.3rem);
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: 1.15;
+    }
+
+    .featured-author {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    .featured-details > p {
+      margin-top: 20px;
+      color: #625b54;
+      font-size: .92rem;
+      line-height: 1.9;
+    }
+
+    .book-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin-top: 22px;
+      padding: 17px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .book-meta span {
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    .book-meta strong {
+      color: var(--burgundy);
+      font-weight: 700;
+    }
+
+    .featured-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button-burgundy {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .button-burgundy:hover {
+      background: var(--burgundy-light);
+    }
+
+    .button-light {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--burgundy);
+    }
+
+    .button-light:hover {
+      background: var(--ivory);
+    }
+
+    /* =====================================
+       PUBLICATION CARDS
+    ===================================== */
+
+    .publication-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .publication-card {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .publication-card:hover {
+      transform: translateY(-5px);
+      border-color: #d3c19e;
+      box-shadow: 0 16px 38px rgba(43,12,22,.08);
+    }
+
+    .publication-card[hidden] {
+      display: none;
+    }
+
+    .card-visual {
+      position: relative;
+      display: flex;
+      min-height: 210px;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 25px;
+      background: #eee7db;
+    }
+
+    .card-visual::before,
+    .card-visual::after {
+      position: absolute;
+      border: 1px solid rgba(185,154,98,.3);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .card-visual::before {
+      width: 230px;
+      height: 230px;
+    }
+
+    .card-visual::after {
+      width: 180px;
+      height: 180px;
+    }
+
+    .mini-cover {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      width: 132px;
+      min-height: 166px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 17px 12px;
+      border: 1px solid rgba(215,196,155,.65);
+      outline: 1px solid rgba(215,196,155,.3);
+      outline-offset: -6px;
+      background: linear-gradient(145deg, #62253a, #35101d);
+      box-shadow: 7px 10px 15px rgba(43,12,22,.2);
+      color: var(--gold-light);
+      text-align: center;
+      transform: rotate(-2deg);
+    }
+
+    .mini-cover.green {
+      background: linear-gradient(145deg, #344d40, #172d25);
+    }
+
+    .mini-cover.blue {
+      background: linear-gradient(145deg, #35475f, #192537);
+    }
+
+    .mini-cover.brown {
+      background: linear-gradient(145deg, #745536, #3c291b);
+    }
+
+    .mini-cover.cream {
+      background: linear-gradient(145deg, #d8c9aa, #a18a64);
+      color: #422d24;
+    }
+
+    .mini-cover .mini-ornament {
+      font-size: 1.45rem;
+      line-height: 1;
+    }
+
+    .mini-cover .mini-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      line-height: 1.15;
+    }
+
+    .mini-cover .mini-author {
+      font-size: .47rem;
+      letter-spacing: .08em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .card-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 24px;
+    }
+
+    .card-category {
+      color: #997944;
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .card-content h3 {
+      margin-top: 10px;
+      color: var(--burgundy);
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .card-content p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .85rem;
+      line-height: 1.8;
+    }
+
+    .card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 21px;
+    }
+
+    .card-type {
+      color: #8b837a;
+      font-size: .69rem;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--burgundy);
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .text-link span {
+      transition: transform .2s ease;
+    }
+
+    .text-link:hover span {
+      transform: translateX(4px);
+    }
+
+    .empty-state {
+      display: none;
+      padding: 45px 20px;
+      border: 1px dashed var(--line);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .empty-state.visible {
+      display: block;
+    }
+
+    /* =====================================
+       EDITORIAL STATEMENT
+    ===================================== */
+
+    .editorial {
+      position: relative;
+      overflow: hidden;
+      padding: 78px 0;
+      background: #f0e8db;
+    }
+
+    .editorial-inner {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      align-items: start;
+      gap: 28px;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .quote-mark {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 6rem;
+      line-height: .9;
+    }
+
+    .editorial blockquote {
+      color: var(--burgundy);
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.8vw, 2.7rem);
+      font-weight: 400;
+      letter-spacing: -.025em;
+      line-height: 1.45;
+    }
+
+    .editorial p {
+      margin-top: 20px;
+      color: #766d62;
+      font-size: .82rem;
+    }
+
+    /* =====================================
+       WRITING AREAS
+    ===================================== */
+
+    .writing-areas {
+      padding: 85px 0;
+    }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .area-card {
+      padding: 30px;
+      border-top: 2px solid var(--gold);
+      background: var(--paper);
+      box-shadow: 0 8px 30px rgba(43,12,22,.035);
+    }
+
+    .area-number {
+      color: #c6b28d;
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .area-card h3 {
+      margin-top: 22px;
+      color: var(--burgundy);
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
+    }
+
+    .area-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    /* =====================================
+       CONTACT / CONTRIBUTION
+    ===================================== */
+
+    .contact-band {
+      padding: 0 0 85px;
+    }
+
+    .contact-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+      padding: 45px 48px;
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .contact-panel .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .contact-panel h2 {
+      max-width: 650px;
+      margin-top: 13px;
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .contact-panel p {
+      max-width: 620px;
+      margin-top: 12px;
+      color: rgba(255,255,255,.72);
+      font-size: .88rem;
+    }
+
+    .contact-panel .button {
+      flex-shrink: 0;
+    }
+
+    /* =====================================
+       FOOTER
+    ===================================== */
+
+    .site-footer {
+      padding: 35px 0 22px;
+      border-top: 1px solid rgba(185,154,98,.35);
+      background: #f4efe6;
+    }
+
+    .footer-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding-bottom: 24px;
+    }
+
+    .footer-brand strong {
+      display: block;
+      color: var(--burgundy);
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .footer-brand p {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .77rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+    }
+
+    .footer-links a {
+      color: #655e57;
+      font-size: .77rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--burgundy);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: #8b837a;
+      font-size: .7rem;
+    }
+
+    .back-top {
+      color: var(--burgundy);
+      font-weight: 700;
+    }
+
+    /* =====================================
+       RESPONSIVE LAYOUT
+    ===================================== */
+
+    @media (max-width: 1100px) {
+      .header-inner {
+        gap: 15px;
+      }
+
+      .main-nav {
+        gap: 12px;
+      }
+
+      .main-nav a {
+        font-size: .7rem;
+      }
+
+      .brand-copy strong {
+        font-size: 1rem;
+      }
+
+      .brand-copy span {
+        max-width: 235px;
+        font-size: .58rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .header-inner {
+        min-height: 78px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .main-nav {
+        position: fixed;
+        top: 78px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0;
+        overflow-y: auto;
+        padding: 20px 24px 35px;
+        border-top: 1px solid var(--line);
+        background: var(--ivory);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity .2s ease, transform .2s ease;
+      }
+
+      .main-nav.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .main-nav a {
+        padding: 14px 2px;
+        border-bottom: 1px solid var(--line);
+        font-size: .9rem;
+      }
+
+      .main-nav a::after {
+        display: none;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr .55fr;
+        gap: 25px;
+      }
+
+      .hero-art-frame {
+        width: 205px;
+        height: 270px;
+      }
+
+      .intro-inner {
+        gap: 32px;
+      }
+
+      .featured-details {
+        padding: 35px;
+      }
+
+      .publication-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .areas-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 34px, 1160px);
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-mark {
+        width: 43px;
+        height: 43px;
+        font-size: 1.6rem;
+      }
+
+      .brand-copy strong {
+        font-size: .97rem;
+      }
+
+      .brand-copy span {
+        max-width: 225px;
+        font-size: .54rem;
+      }
+
+      .hero {
+        padding: 65px 0 60px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.9rem, 12vw, 4.3rem);
+      }
+
+      .hero-description {
+        font-size: .93rem;
+      }
+
+      .hero-art {
+        min-height: 255px;
+        margin-top: 12px;
+      }
+
+      .hero-art-frame {
+        width: 190px;
+        height: 245px;
+      }
+
+      .hero-art-inner .urdu {
+        font-size: 1.1rem;
+      }
+
+      .intro {
+        padding: 48px 0 20px;
+      }
+
+      .intro-inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .catalogue {
+        padding: 45px 0 60px;
+      }
+
+      .catalogue-top {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .search-wrap {
+        width: 100%;
+      }
+
+      .filter-bar {
+        gap: 8px;
+      }
+
+      .filter-button {
+        padding: 8px 12px;
+        font-size: .73rem;
+      }
+
+      .featured-book {
+        grid-template-columns: 1fr;
+        margin-bottom: 45px;
+      }
+
+      .featured-cover-area {
+        min-height: 340px;
+      }
+
+      .book-cover {
+        width: 195px;
+        min-height: 280px;
+      }
+
+      .featured-details {
+        padding: 27px 23px 30px;
+      }
+
+      .featured-details h3 {
+        font-size: 2.5rem;
+      }
+
+      .publication-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+      }
+
+      .card-visual {
+        min-height: 220px;
+      }
+
+      .editorial {
+        padding: 55px 0;
+      }
+
+      .editorial-inner {
+        grid-template-columns: 36px 1fr;
+        gap: 15px;
+      }
+
+      .quote-mark {
+        font-size: 3.5rem;
+      }
+
+      .writing-areas {
+        padding: 60px 0;
+      }
+
+      .areas-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-band {
+        padding-bottom: 55px;
+      }
+
+      .contact-panel {
+        padding: 30px 23px;
+      }
+
+      .footer-main,
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 10px 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER: keep navigation consistent across the website -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a class="brand" href="home.html" aria-label="Syed Amjad Hussain — Home">
+        <span class="brand-mark" aria-hidden="true">أ</span>
+        <span class="brand-copy">
+          <strong>Syed Amjad Hussain</strong>
+          <span>Ethnographer · Author · Historian · Poet · Humanitarian</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="mainNav"
+        aria-expanded="false">
+        <span id="menuIcon" aria-hidden="true">☰</span>
+      </button>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+        <a href="sufi-heritage.html">The Sufi Heritage of Bihar</a>
+        <a href="research.html">Research</a>
+        <a href="books-articles.html" aria-current="page">Books & Articles</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="sher.html">Sher Collection</a>
+        <a href="awards.html">Awards and Honours</a>
+        <a href="library.html">Library</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+
+        <div>
+          <span class="eyebrow">Books · Articles · Historical Writing</span>
+
+          <h1>
+            Ideas in print.<br>
+            <em>History preserved.</em>
+          </h1>
+
+          <p class="hero-description">
+            A curated collection of books, research writings and literary
+            explorations by Syed Amjad Hussain — bringing together the
+            histories, people, ideas and traditions that deserve to be read,
+            studied and remembered.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-gold" href="#publications">
+              Explore publications <span aria-hidden="true">↘</span>
+            </a>
+            <a class="button button-outline" href="#writing-areas">
+              Areas of writing
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="An editorial book-inspired design">
+          <div class="hero-art-frame">
+            <div class="hero-art-inner">
+              <div class="ornament" aria-hidden="true">✳</div>
+              <div class="urdu" lang="ur" dir="rtl">علم، تاریخ اور ادب</div>
+              <div class="art-rule"></div>
+              <strong>The Written Word</strong>
+              <small>Research · Reflection · Record</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTRODUCTION -->
+    <section class="intro">
+      <div class="container intro-inner">
+
+        <div>
+          <span class="eyebrow">The publication archive</span>
+          <h2>A growing record of research, literature and regional history.</h2>
+        </div>
+
+        <div class="intro-copy">
+          <p>
+            Writing is a way of preserving knowledge and making it accessible
+            beyond the moment in which it is discovered. This page brings
+            together published books and other writings associated with
+            Syed Amjad Hussain's literary and historical interests.
+          </p>
+          <p>
+            Particular attention is given to Bihar's Sufi heritage, historical
+            personalities, Persian and Urdu sources, literary culture and
+            regional memory.
+          </p>
+          <p>
+            Each publication has its own purpose. Together, they reflect an
+            ongoing commitment to reading carefully, documenting responsibly
+            and sharing knowledge with a wider audience.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section class="catalogue" id="publications">
+      <div class="container">
+
+        <div class="catalogue-top">
+          <div class="section-heading">
+            <span class="eyebrow">The catalogue</span>
+            <h2>Books & writings</h2>
+            <p>
+              Browse the collection by type, or search for a title or subject.
+              More publications can be added as the archive grows.
+            </p>
+          </div>
+
+          <div class="search-wrap">
+            <label for="publicationSearch">Find a publication</label>
+            <div class="search-box">
+              <span aria-hidden="true">⌕</span>
+              <input
+                id="publicationSearch"
+                type="search"
+                placeholder="Search titles or subjects…"
+                autocomplete="off">
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Filter publications">
+          <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All publications</button>
+          <button class="filter-button" type="button" data-filter="book" aria-pressed="false">Books</button>
+          <button class="filter-button" type="button" data-filter="research" aria-pressed="false">Research</button>
+          <button class="filter-button" type="button" data-filter="article" aria-pressed="false">Articles & essays</button>
+          <button class="filter-button" type="button" data-filter="literature" aria-pressed="false">Literature</button>
+        </div>
+
+        <!-- FEATURED PUBLICATION -->
+        <article class="featured-book">
+          <div class="featured-cover-area">
+            <!-- Decorative cover illustration, not a reproduction of the real cover -->
+            <div class="book-cover" aria-label="Decorative concept cover for Bihar Aur Sufivad">
+              <div class="cover-top">History · Heritage · Spirituality</div>
+              <div class="cover-ornament" aria-hidden="true">✳</div>
+              <div>
+                <div class="cover-title">Bihar Aur<span>Sufivad</span></div>
+                <div class="cover-subtitle">A study of Sufi traditions in Bihar</div>
+              </div>
+              <div class="cover-author">Syed Amjad Hussain</div>
+            </div>
+          </div>
+
+          <div class="featured-details">
+            <span class="featured-label">Featured book</span>
+
+            <h3>Bihar Aur Sufivad</h3>
+
+            <div class="featured-author">
+              By <strong>Syed Amjad Hussain</strong>
+            </div>
+
+            <p>
+              A book exploring the history of Sufism in Bihar, bringing
+              together discussions of Sufi traditions, spiritual lineages
+              and biographies of Sufi personalities associated with the region.
+              The work reflects an interest in historical sources and the
+              preservation of Bihar's spiritual and cultural heritage.
+            </p>
+
+            <div class="book-meta">
+              <span><strong>Publisher:</strong> Rajmangal Prakashan</span>
+              <span><strong>Published:</strong> 27 April 2025</span>
+              <span><strong>Length:</strong> 308 pages</span>
+            </div>
+
+            <div class="featured-actions">
+              <a class="button button-burgundy" href="bihar-aur-sufivad.html">
+                Discover the book <span aria-hidden="true">→</span>
+              </a>
+              <a
+                class="button button-light"
+                href="https://www.amazon.in/"
+                target="_blank"
+                rel="noopener noreferrer">
+                Find online
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PUBLICATION GRID -->
+        <p class="result-count" id="resultCount" aria-live="polite">
+          Showing 4 publications
+        </p>
+
+        <div class="publication-grid" id="publicationGrid">
+
+          <!-- BOOK -->
+          <article
+            class="publication-card"
+            data-category="book"
+            data-search="the eternals of bihar history bihar personalities book">
+
+            <div class="card-visual">
+              <div class="mini-cover green">
+                <div class="mini-author">Historical writing</div>
+                <div class="mini-ornament" aria-hidden="true">✳</div>
+                <div class="mini-title">The Eternals of Bihar</div>
+                <div class="mini-author">Syed Amjad Hussain</div>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <span class="card-category">Book</span>
+              <h3>The Eternals of Bihar</h3>
+              <p>
+                A title in the author's work on Bihar and its historical
+                personalities. Publication details and a fuller description
+                can be added when confirmed.
+              </p>
+              <div class="card-bottom">
+                <span class="card-type">Historical writing</span>
+                <a class="text-link" href="contact.html">
+                  Enquire <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- BOOK / LITERARY HISTORY -->
+          <article
+            class="publication-card"
+            data-category="book"
+            data-search="akhtar orenvi bihar mein urdu sahitya ke nirmata urdu literature literary history">
+
+            <div class="card-visual">
+              <div class="mini-cover blue">
+                <div class="mini-author">Literary history</div>
+                <div class="mini-ornament" aria-hidden="true">❧</div>
+                <div class="mini-title">Akhtar Orenvi</div>
+                <div class="mini-author">Bihar Mein Urdu Sahitya Ke Nirmata</div>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <span class="card-category">Book / Literary history</span>
+              <h3>Akhtar Orenvi: Bihar Mein Urdu Sahitya Ke Nirmata</h3>
+              <p>
+                A work connected with the study of Akhtar Orenvi and his place
+                in the development of Urdu literature in Bihar.
+              </p>
+              <div class="card-bottom">
+                <span class="card-type">Urdu literary history</span>
+                <a class="text-link" href="contact.html">
+                  Enquire <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- RESEARCH -->
+          <article
+            class="publication-card"
+            data-category="research"
+            data-search="sufi heritage of bihar research sufism khanqah dargah saints history">
+
+            <div class="card-visual">
+              <div class="mini-cover brown">
+                <div class="mini-author">Research & heritage</div>
+                <div class="mini-ornament" aria-hidden="true">✧</div>
+                <div class="mini-title">Sufi Heritage of Bihar</div>
+                <div class="mini-author">Historical inquiry</div>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <span class="card-category">Research collection</span>
+              <h3>The Sufi Heritage of Bihar</h3>
+              <p>
+                Explore research on Sufi traditions, saints, khanqahs, dargahs
+                and the historical memory of Bihar.
+              </p>
+              <div class="card-bottom">
+                <span class="card-type">Research & documentation</span>
+                <a class="text-link" href="sufi-heritage.html">
+                  Explore <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ARTICLES -->
+          <article
+            class="publication-card"
+            data-category="article"
+            data-search="research articles essays history regional heritage historical personalities persian urdu sources">
+
+            <div class="card-visual">
+              <div class="mini-cover cream">
+                <div class="mini-author">Articles & essays</div>
+                <div class="mini-ornament" aria-hidden="true">§</div>
+                <div class="mini-title">Historical Essays</div>
+                <div class="mini-author">Research notes & reflections</div>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <span class="card-category">Articles & essays</span>
+              <h3>Historical Articles & Essays</h3>
+              <p>
+                A space for articles, historical notes and essays on Bihar's
+                heritage, historical personalities and literary traditions.
+                Individual articles can be linked here as they are published.
+              </p>
+              <div class="card-bottom">
+                <span class="card-type">Written contributions</span>
+                <a class="text-link" href="research.html">
+                  View research <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="empty-state" id="emptyState">
+          <strong>No matching publications found.</strong>
+          <p>Try another search term or select a different category.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDITORIAL STATEMENT -->
+    <section class="editorial">
+      <div class="container editorial-inner">
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <div>
+          <blockquote>
+            The written word can preserve what time might otherwise leave
+            behind — a memory, a voice, a place or a chapter of history.
+          </blockquote>
+          <p>On writing, historical memory and the value of documentation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AREAS OF WRITING -->
+    <section class="writing-areas" id="writing-areas">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">Subjects & interests</span>
+          <h2>What the writing explores</h2>
+          <p>
+            The subjects below reflect the broad areas associated with
+            the author's historical, literary and research interests.
+          </p>
+        </div>
+
+        <div class="areas-grid">
+
+          <article class="area-card">
+            <span class="area-number">01</span>
+            <h3>Sufism & spiritual history</h3>
+            <p>
+              Sufi traditions, spiritual lineages, khanqahs, dargahs and
+              the historical development of Sufism in Bihar.
+            </p>
+          </article>
+
+          <article class="area-card">
+            <span class="area-number">02</span>
+            <h3>Bihar's regional heritage</h3>
+            <p>
+              Historical personalities, places, local traditions and
+              cultural memories that form part of Bihar's past.
+            </p>
+          </article>
+
+          <article class="area-card">
+            <span class="area-number">03</span>
+            <h3>Persian & Urdu sources</h3>
+            <p>
+              Historical writings, biographical literature and textual
+              sources that can help illuminate people and institutions.
+            </p>
+          </article>
+
+          <article class="area-card">
+            <span class="area-number">04</span>
+            <h3>Urdu literature</h3>
+            <p>
+              Literary figures, writing traditions and the contribution
+              of Urdu authors to the cultural history of Bihar.
+            </p>
+          </article>
+
+          <article class="area-card">
+            <span class="area-number">05</span>
+            <h3>Historical biographies</h3>
+            <p>
+              Documenting the lives and contributions of scholars,
+              writers, Sufi figures and other historical personalities.
+            </p>
+          </article>
+
+          <article class="area-card">
+            <span class="area-number">06</span>
+            <h3>Research & documentation</h3>
+            <p>
+              Examining sources, comparing accounts and presenting
+              historical material with context and appropriate care.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-band">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <span class="eyebrow">Correspondence & collaboration</span>
+            <h2>Have a publication, reference or research enquiry?</h2>
+            <p>
+              For questions about books, historical writings, source
+              material or potential literary and research collaborations,
+              please get in touch.
+            </p>
+          </div>
+
+          <a class="button button-gold" href="contact.html">
+            Contact Syed Amjad <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer-main">
+        <div class="footer-brand">
+          <strong>Syed Amjad Hussain</strong>
+          <p>Independent research into Sufism, history, literature and heritage.</p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="biography.html">Biography</a>
+          <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+          <a href="research.html">Research</a>
+          <a href="books-articles.html" aria-current="page">Books & Articles</a>
+          <a href="poetry.html">Poetry</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear">2026</span> Syed Amjad Hussain. All rights reserved.</span>
+        <a class="back-top" href="#top" id="backToTop">Back to top ↑</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    /* Mobile navigation */
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+    const menuIcon = document.getElementById("menuIcon");
+
+    function closeMenu() {
+      mainNav.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+      menuIcon.textContent = "☰";
+      document.body.classList.remove("menu-open");
+    }
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = mainNav.classList.toggle("is-open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+
+      menuIcon.textContent = isOpen ? "✕" : "☰";
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    /* Live publication search and category filters */
+    const searchInput = document.getElementById("publicationSearch");
+    const filterButtons = Array.from(
+      document.querySelectorAll(".filter-button")
+    );
+    const publicationCards = Array.from(
+      document.querySelectorAll(".publication-card")
+    );
+    const resultCount = document.getElementById("resultCount");
+    const emptyState = document.getElementById("emptyState");
+
+    let activeFilter = "all";
+
+    function filterPublications() {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      publicationCards.forEach(function (card) {
+        const category = card.dataset.category || "";
+        const searchableText = (
+          card.dataset.search + " " + card.textContent
+        ).toLowerCase();
+
+        const matchesCategory =
+          activeFilter === "all" || category === activeFilter;
+
+        const matchesSearch =
+          query === "" || searchableText.includes(query);
+
+        const shouldShow = matchesCategory && matchesSearch;
+
+        card.hidden = !shouldShow;
+
+        if (shouldShow) {
+          visibleCount++;
+        }
+      });
+
+      resultCount.textContent =
+        "Showing " + visibleCount +
+        (visibleCount === 1 ? " publication" : " publications");
+
+      emptyState.classList.toggle("visible", visibleCount === 0);
+    }
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        activeFilter = button.dataset.filter;
+
+        filterButtons.forEach(function (item) {
+          const isActive = item === button;
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-pressed", String(isActive));
+        });
+
+        filterPublications();
+      });
+    });
+
+    searchInput.addEventListener("input", filterPublications);
+
+    /* Current year */
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    /* Back-to-top anchor */
+    document.getElementById("backToTop").addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>
+
+      
+    
+    
+    
+
+    
