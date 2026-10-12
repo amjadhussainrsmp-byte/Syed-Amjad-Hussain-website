@@ -1,4 +1,3 @@
-
 const { createClient } = require("@supabase/supabase-js");
 
 const ALLOWED_TYPES = [
@@ -9,7 +8,13 @@ const ALLOWED_TYPES = [
   "experience",
   "skill",
   "award",
-  "heritage"
+  "heritage",
+  "ghazal",
+  "nazm",
+  "naat",
+  "manqabat",
+  "salam",
+  "sher"
 ];
 
 const ALLOWED_STATUSES = ["draft", "published"];
@@ -26,7 +31,20 @@ const EDITABLE_FIELDS = [
   "featured",
   "sort_order",
   "seo_title",
-  "seo_description"
+  "seo_description",
+
+  // Multilingual poetry fields
+  "poem_type",
+  "language_primary",
+  "text_urdu",
+  "text_roman",
+  "text_hindi",
+  "poet_name",
+  "takhallus",
+  "radeef",
+  "qaafiya",
+  "beher",
+  "poetry_notes"
 ];
 
 function sendError(res, status, error) {
@@ -55,7 +73,11 @@ module.exports = async function handler(req, res) {
     !ADMIN_EMAIL
   ) {
     console.error("Admin API configuration is incomplete.");
-    return sendError(res, 500, "Server configuration is incomplete.");
+    return sendError(
+      res,
+      500,
+      "Server configuration is incomplete."
+    );
   }
 
   const authorization = req.headers.authorization || "";
@@ -84,30 +106,48 @@ module.exports = async function handler(req, res) {
     const { data, error } = await authClient.auth.getUser(token);
 
     if (error || !data?.user) {
-      return sendError(res, 401, "Your session is invalid or expired.");
+      return sendError(
+        res,
+        401,
+        "Your session is invalid or expired."
+      );
     }
 
     user = data.user;
   } catch (error) {
     console.error("Authentication verification failed.");
-    return sendError(res, 401, "Could not verify your session.");
+
+    return sendError(
+      res,
+      401,
+      "Could not verify your session."
+    );
   }
 
   if (
     !user.email ||
     user.email.toLowerCase() !== ADMIN_EMAIL.trim().toLowerCase()
   ) {
-    return sendError(res, 403, "You are not authorised to manage this site.");
+    return sendError(
+      res,
+      403,
+      "You are not authorised to manage this site."
+    );
   }
 
-  const db = createClient(SUPABASE_URL, SUPABASE_SECRET_KEY, {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false
+  const db = createClient(
+    SUPABASE_URL,
+    SUPABASE_SECRET_KEY,
+    {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false
+      }
     }
-  });
+  );
 
   try {
+    // GET: List all website content
     if (req.method === "GET") {
       const { data, error } = await db
         .from("site_content")
@@ -116,24 +156,44 @@ module.exports = async function handler(req, res) {
 
       if (error) {
         console.error("Content listing failed:", error.message);
-        return sendError(res, 500, "Could not load website content.");
+
+        return sendError(
+          res,
+          500,
+          "Could not load website content."
+        );
       }
 
-      return res.status(200).json({ content: data || [] });
+      return res.status(200).json({
+        content: data || []
+      });
     }
 
+    // POST: Create new content
     if (req.method === "POST") {
       const body = req.body || {};
 
       const title =
-        typeof body.title === "string" ? body.title.trim() : "";
+        typeof body.title === "string"
+          ? body.title.trim()
+          : "";
+
       const type =
-        typeof body.type === "string" ? body.type.trim() : "";
+        typeof body.type === "string"
+          ? body.type.trim()
+          : "";
+
       const slug =
-        typeof body.slug === "string" ? body.slug.trim() : "";
+        typeof body.slug === "string"
+          ? body.slug.trim()
+          : "";
 
       if (!title || !type || !slug) {
-        return sendError(res, 400, "Title, type and slug are required.");
+        return sendError(
+          res,
+          400,
+          "Title, type and slug are required."
+        );
       }
 
       if (!ALLOWED_TYPES.includes(type)) {
@@ -151,7 +211,9 @@ module.exports = async function handler(req, res) {
       const record = {};
 
       for (const field of EDITABLE_FIELDS) {
-        if (Object.prototype.hasOwnProperty.call(body, field)) {
+        if (
+          Object.prototype.hasOwnProperty.call(body, field)
+        ) {
           record[field] = body[field];
         }
       }
@@ -162,21 +224,43 @@ module.exports = async function handler(req, res) {
       record.status = record.status || "draft";
 
       if (!ALLOWED_STATUSES.includes(record.status)) {
-        return sendError(res, 400, "Invalid content status.");
+        return sendError(
+          res,
+          400,
+          "Invalid content status."
+        );
       }
 
-      if (record.featured !== undefined &&
-          typeof record.featured !== "boolean") {
-        return sendError(res, 400, "Featured must be true or false.");
+      if (
+        record.featured !== undefined &&
+        typeof record.featured !== "boolean"
+      ) {
+        return sendError(
+          res,
+          400,
+          "Featured must be true or false."
+        );
       }
 
-      if (record.sort_order !== undefined &&
-          (!Number.isInteger(record.sort_order) || record.sort_order < 0)) {
-        return sendError(res, 400, "Sort order must be a non-negative integer.");
+      if (
+        record.sort_order !== undefined &&
+        (
+          !Number.isInteger(record.sort_order) ||
+          record.sort_order < 0
+        )
+      ) {
+        return sendError(
+          res,
+          400,
+          "Sort order must be a non-negative integer."
+        );
       }
 
       record.published_at =
-        record.status === "published" ? new Date().toISOString() : null;
+        record.status === "published"
+          ? new Date().toISOString()
+          : null;
+
       record.updated_at = new Date().toISOString();
 
       const { data, error } = await db
@@ -187,65 +271,131 @@ module.exports = async function handler(req, res) {
 
       if (error) {
         if (error.code === "23505") {
-          return sendError(res, 409, "That slug is already in use.");
+          return sendError(
+            res,
+            409,
+            "That slug is already in use."
+          );
         }
+
         console.error("Content creation failed:", error.message);
-        return sendError(res, 500, "Could not create content.");
+
+        return sendError(
+          res,
+          500,
+          "Could not create content."
+        );
       }
 
-      return res.status(201).json({ content: data });
+      return res.status(201).json({
+        content: data
+      });
     }
 
+    // PATCH and DELETE require a content ID
     const id =
-      typeof req.query?.id === "string" ? req.query.id : "";
+      typeof req.query?.id === "string"
+        ? req.query.id
+        : "";
 
     if (!id) {
-      return sendError(res, 400, "A content ID is required in the URL.");
+      return sendError(
+        res,
+        400,
+        "A content ID is required in the URL."
+      );
     }
 
+    // PATCH: Update existing content
     if (req.method === "PATCH") {
       const body = req.body || {};
       const updates = {};
 
       for (const field of EDITABLE_FIELDS) {
-        if (Object.prototype.hasOwnProperty.call(body, field)) {
+        if (
+          Object.prototype.hasOwnProperty.call(body, field)
+        ) {
           updates[field] = body[field];
         }
       }
 
       if (Object.keys(updates).length === 0) {
-        return sendError(res, 400, "No editable fields were supplied.");
+        return sendError(
+          res,
+          400,
+          "No editable fields were supplied."
+        );
       }
 
-      if (updates.title !== undefined &&
-          (typeof updates.title !== "string" || !updates.title.trim())) {
-        return sendError(res, 400, "Title cannot be empty.");
+      if (
+        updates.title !== undefined &&
+        (
+          typeof updates.title !== "string" ||
+          !updates.title.trim()
+        )
+      ) {
+        return sendError(
+          res,
+          400,
+          "Title cannot be empty."
+        );
       }
 
-      if (updates.type !== undefined &&
-          !ALLOWED_TYPES.includes(updates.type)) {
+      if (
+        updates.type !== undefined &&
+        !ALLOWED_TYPES.includes(updates.type)
+      ) {
         return sendError(res, 400, "Invalid content type.");
       }
 
-      if (updates.slug !== undefined &&
-          (typeof updates.slug !== "string" ||
-           !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(updates.slug))) {
-        return sendError(res, 400, "Invalid slug format.");
+      if (
+        updates.slug !== undefined &&
+        (
+          typeof updates.slug !== "string" ||
+          !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(updates.slug)
+        )
+      ) {
+        return sendError(
+          res,
+          400,
+          "Invalid slug format."
+        );
       }
 
-      if (updates.status !== undefined &&
-          !ALLOWED_STATUSES.includes(updates.status)) {
-        return sendError(res, 400, "Invalid content status.");
+      if (
+        updates.status !== undefined &&
+        !ALLOWED_STATUSES.includes(updates.status)
+      ) {
+        return sendError(
+          res,
+          400,
+          "Invalid content status."
+        );
       }
 
-      if (updates.featured !== undefined &&
-          typeof updates.featured !== "boolean") {
-        return sendError(res, 400, "Featured must be true or false.");
+      if (
+        updates.featured !== undefined &&
+        typeof updates.featured !== "boolean"
+      ) {
+        return sendError(
+          res,
+          400,
+          "Featured must be true or false."
+        );
       }
 
-      if (updates.sort_order !== undefined &&
-          (!Number.isInteger(updates.sort_order) || updates.sort_order < 0)) {
-        return sendError(res, 400, "Sort order must be a non-negative integer.");
+      if (
+        updates.sort_order !== undefined &&
+        (
+          !Number.isInteger(updates.sort_order) ||
+          updates.sort_order < 0
+        )
+      ) {
+        return sendError(
+          res,
+          400,
+          "Sort order must be a non-negative integer."
+        );
       }
 
       if (updates.status === "published") {
@@ -265,19 +415,36 @@ module.exports = async function handler(req, res) {
 
       if (error) {
         if (error.code === "23505") {
-          return sendError(res, 409, "That slug is already in use.");
+          return sendError(
+            res,
+            409,
+            "That slug is already in use."
+          );
         }
+
         console.error("Content update failed:", error.message);
-        return sendError(res, 500, "Could not update content.");
+
+        return sendError(
+          res,
+          500,
+          "Could not update content."
+        );
       }
 
       if (!data) {
-        return sendError(res, 404, "Content not found.");
+        return sendError(
+          res,
+          404,
+          "Content not found."
+        );
       }
 
-      return res.status(200).json({ content: data });
+      return res.status(200).json({
+        content: data
+      });
     }
 
+    // DELETE: Permanently delete content
     if (req.method === "DELETE") {
       const { data, error } = await db
         .from("site_content")
@@ -288,11 +455,20 @@ module.exports = async function handler(req, res) {
 
       if (error) {
         console.error("Content deletion failed:", error.message);
-        return sendError(res, 500, "Could not delete content.");
+
+        return sendError(
+          res,
+          500,
+          "Could not delete content."
+        );
       }
 
       if (!data) {
-        return sendError(res, 404, "Content not found.");
+        return sendError(
+          res,
+          404,
+          "Content not found."
+        );
       }
 
       return res.status(200).json({
@@ -301,7 +477,16 @@ module.exports = async function handler(req, res) {
       });
     }
   } catch (error) {
-    console.error("Admin API request failed:", error.message);
-    return sendError(res, 500, "An unexpected server error occurred.");
+    console.error(
+      "Admin API request failed:",
+      error.message
+    );
+
+    return sendError(
+      res,
+      500,
+      "An unexpected server error occurred."
+    );
   }
 };
+      
