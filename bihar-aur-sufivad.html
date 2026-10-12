@@ -6,11 +6,28 @@
 <meta name="theme-color" content="#4c2029">
 <meta name="description" content="Bihar Aur Sufivad by Syed Amjad Hussain — a research-driven exploration of Sufi traditions, spiritual lineages, and the history of Sufism in Bihar.">
 <title>Bihar Aur Sufivad | Syed Amjad Hussain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--wine:#4c2029;--wine2:#6a2b36;--gold:#bd965b;--paper:#f7f3eb;--ink:#211d1a;--muted:#6e665f;--line:#ded5c8;--white:#fffdf9;--serif:Georgia,"Times New Roman",serif;--sans:Arial,Helvetica,sans-serif}
+:root{--paper:#f4efe6;--paper-2:#ebe3d7;--ink:#2f2926;--muted:#71665e;--wine:#652e36;--wine2:#652e36;--wine-dark:#472127;--burgundy:#652e36;--burgundy-dark:#472127;--gold:#b89b6a;--line:#d8cdbd;--white:#fffdf8;--serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",Arial,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65}a{color:inherit}img{max-width:100%;display:block}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
 .topline{background:var(--wine);color:#f8eee0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:10px 0}.topline .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-header{background:var(--white);border-bottom:1px solid var(--line)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{font-family:var(--serif);font-size:21px;font-weight:bold;text-decoration:none;line-height:1.15}.brand small{display:block;font:10px var(--sans);letter-spacing:.19em;text-transform:uppercase;color:var(--muted);margin-top:7px}.navlinks{display:flex;gap:25px;align-items:center;font-size:13px}.navlinks a{text-decoration:none;color:#50463f}.navlinks a:hover{color:var(--wine)}.navlinks .back{border:1px solid var(--line);padding:9px 13px;border-radius:2px}
+/* Shared site header: matched to home.html */
+.topline{height:32px;background:var(--burgundy-dark);color:#e9ded0;display:flex;align-items:center;justify-content:space-between;padding:0 5.5%;font-size:9px;letter-spacing:.16em}
+.site-header{height:86px;padding:0 5.5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(90,67,56,.12);position:sticky;top:0;z-index:50;background:rgba(244,239,230,.96);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0;text-decoration:none}
+.brand-mark{height:42px;width:42px;border:1px solid var(--gold);color:var(--burgundy);display:grid;place-items:center;font-family:serif;font-size:27px}
+.brand-text{display:flex;flex-direction:column;line-height:1.3}
+.brand-text strong{font-family:var(--serif);font-size:16px;font-weight:600;letter-spacing:-.02em}
+.brand-text small{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.site-header nav{display:flex;align-items:center;gap:25px;font-size:11px;color:#544942}
+.site-header nav a{text-decoration:none;transition:color .2s;white-space:nowrap}
+.site-header nav a:hover,.site-header nav a[aria-current="page"]{color:var(--burgundy)}
+.nav-contact{border:1px solid var(--line);padding:12px 14px;color:var(--ink)}
+.nav-contact span{color:var(--burgundy);margin-left:9px}
+.menu-toggle{display:none;border:0;background:none;font-size:24px;color:var(--burgundy);cursor:pointer}
+@media(max-width:1050px){.site-header nav{gap:14px}.site-header nav a{font-size:10px}}
 .hero{background:var(--wine);color:var(--white);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 25%,rgba(189,150,91,.18),transparent 42%),linear-gradient(115deg,transparent 50%,rgba(255,255,255,.025) 50%);pointer-events:none}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;gap:7%;align-items:center;padding:76px 0 82px}.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:bold}.hero h1{font:clamp(42px,6.3vw,76px)/.99 var(--serif);letter-spacing:-.04em;margin:20px 0 23px;max-width:660px}.hero h1 em{font-weight:normal;color:#d9bc8d}.lead{font:19px/1.7 var(--serif);color:#f0e6d9;max-width:570px}.hero-meta{display:flex;flex-wrap:wrap;gap:12px 22px;margin:27px 0 30px;font-size:12px;color:#e1d3c3}.hero-meta span:before{content:"✦";color:var(--gold);margin-right:8px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:13px 18px;font-size:12px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--gold);transition:.2s}.btn.gold{background:var(--gold);color:#271b15}.btn.outline{color:var(--white);border-color:#a78a70}.btn:hover{transform:translateY(-2px)}
 .book-stage{min-height:410px;display:flex;align-items:center;justify-content:center;position:relative}.book{width:min(290px,78%);aspect-ratio: .69;position:relative;transform:rotate(2deg);background:linear-gradient(110deg,#30151c,#5a2732 60%,#35171e);box-shadow:22px 24px 35px #1e0d1280, inset 8px 0 9px #0003;border:1px solid #8d6a45;padding:27px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;color:#f5e8cf}.book:before{content:"";position:absolute;inset:9px;border:1px solid #b18a51;pointer-events:none}.book .ornament{font-size:26px;color:var(--gold);margin:9px 0 18px}.book .book-title{font: bold clamp(25px,3vw,34px)/1.13 var(--serif);letter-spacing:.01em}.book .book-title span{display:block;font-style:italic;font-weight:normal;font-size:.82em;margin-top:7px}.book .rule{width:55px;height:1px;background:var(--gold);margin:20px 0}.book .subtitle{font:12px/1.7 var(--serif);color:#e8d6b7;max-width:190px}.book .author{margin-top:auto;padding-bottom:12px;font-size:10px;letter-spacing:.16em;text-transform:uppercase}.book-note{position:absolute;bottom:4px;right:0;color:#c9b7a4;font:italic 12px var(--serif)}
 .section{padding:78px 0}.section.white{background:var(--white)}.section-head{max-width:720px;margin-bottom:38px}.kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--wine2);font-weight:bold}.section h2{font:clamp(31px,4vw,47px)/1.12 var(--serif);letter-spacing:-.025em;margin:12px 0 17px}.section-intro{font:18px/1.75 var(--serif);color:var(--muted);max-width:720px}
@@ -21,170 +38,60 @@ header{background:var(--white);border-bottom:1px solid var(--line)}.nav{min-heig
 .note{font-size:12px;color:var(--muted);margin-top:17px}
 .cta{background:var(--wine);color:var(--white);padding:56px 0}.cta-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}.cta h2{font:clamp(27px,3.5vw,40px) var(--serif);margin:0 0 8px}.cta p{color:#e4d4c6;margin:0}
 footer{background:#29151a;color:#d9c9ba;padding:26px 0;font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.footer-inner a{color:#e8d3ad}
-@media(max-width:760px){.wrap{width:min(100% - 30px,600px)}.nav{padding:17px 0;align-items:flex-start}.brand{font-size:18px}.navlinks{gap:10px;flex-wrap:wrap;justify-content:flex-end;font-size:12px}.navlinks a:not(.back){display:none}.hero-grid{grid-template-columns:1fr;padding:55px 0 52px;gap:20px}.hero h1{font-size:clamp(43px,12vw,64px)}.lead{font-size:17px}.book-stage{min-height:340px}.book{width:230px}.book-note{right:6px}.section{padding:56px 0}.two-col,.author-grid{grid-template-columns:1fr;gap:27px}.feature-grid{grid-template-columns:1fr}.feature{min-height:0}.facts{margin-top:4px}.cta-inner{align-items:flex-start;flex-direction:column}.section h2{font-size:34px}}
+@media(max-width:760px){.wrap{width:min(100% - 30px,600px)}.hero-grid{grid-template-columns:1fr;padding:55px 0 52px;gap:20px}.hero h1{font-size:clamp(43px,12vw,64px)}.lead{font-size:17px}.book-stage{min-height:340px}.book{width:230px}.book-note{right:6px}.section{padding:56px 0}.two-col,.author-grid{grid-template-columns:1fr;gap:27px}.feature-grid{grid-template-columns:1fr}.feature{min-height:0}.facts{margin-top:4px}.cta-inner{align-items:flex-start;flex-direction:column}.section h2{font-size:34px}}
+@media(max-width:780px){
+.topline{padding:0 5%;font-size:7px;letter-spacing:.1em}
+.site-header{height:72px;padding:0 5%}
+.brand-mark{width:36px;height:36px}
+.brand-text strong{font-size:14px}
+.brand-text small{font-size:7px}
+.menu-toggle{display:block}
+.site-header nav{display:none;position:absolute;left:0;right:0;top:72px;background:var(--paper);padding:18px 5% 24px;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
+.site-header nav.open{display:flex}
+.site-header nav a{padding:12px 0;border-bottom:1px solid #e4d9ca;font-size:12px;white-space:normal}
+.site-header nav .nav-contact{padding:12px;margin-top:12px;text-align:center}
+}
+@media(max-width:420px){.topline span:last-child{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-  
-/* Header and navigation refinement */
-header {
-  background: var(--paper);
-  color: var(--ink);
-  border-bottom: 1px solid var(--line);
-  min-height: 86px;
-  padding: 0 5.5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
 
-.header-inner {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-  text-decoration: none;
-}
-
-.brand-mark {
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--gold);
-  color: var(--wine);
-  display: grid;
-  place-items: center;
-  font-family: Georgia, serif;
-  font-size: 27px;
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.4;
-}
-
-.brand-text strong {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.brand-text small {
-  font-size: 9px;
-  color: var(--muted);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-#mainNav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 12px 18px;
-  padding: 0;
-}
-
-#mainNav a {
-  color: var(--ink);
-  text-decoration: none;
-  font: 11px Arial, sans-serif;
-}
-
-#mainNav a:hover,
-#mainNav a[aria-current="page"] {
-  color: var(--wine);
-}
-
-.menu-toggle {
-  display: none;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--wine);
-  padding: 8px 12px;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-@media (max-width: 900px) {
-  header {
-    padding: 12px 5%;
-  }
-
-  .header-inner {
-    flex-wrap: wrap;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  #mainNav {
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0;
-  }
-
-  #mainNav.open {
-    display: flex;
-  }
-
-  #mainNav a {
-    padding: 12px 0;
-    border-top: 1px solid var(--line);
-  }
-}
   
 </style>
 </head>
 <body>
 
 <div class="topline">
-  <div class="wrap">
-    <span>Independent Research · Bihar Heritage</span>
-    <span>History · Spiritual Traditions · Literature</span>
-  </div>
+  <span>INDEPENDENT RESEARCH · LITERATURE · HERITAGE</span>
+  <span>Bihar, India</span>
 </div>
 
-<header>
-  <div class="wrap header-inner">
-    <a class="brand" href="home.html">
-      <span class="brand-mark">أ</span>
-      <span class="brand-text">
-        <strong>Syed Amjad Hussain</strong>
-        <small>Ethnographer · Author · Poet · Historian · Humanitarian</small>
-      </span>
-    </a>
+<header class="site-header">
+  <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
+    <span class="brand-mark">أ</span>
+    <span class="brand-text">
+      <strong>Syed Amjad Hussain</strong>
+      <small>Ethnographer · Author · Historian · Poet · Researcher</small>
+    </span>
+  </a>
 
-    <button class="menu-toggle" id="menuToggle"
-      type="button" aria-expanded="false" aria-controls="mainNav">
-      ☰
-    </button>
+  <button class="menu-toggle" id="menuToggle" type="button"
+    aria-label="Toggle navigation" aria-expanded="false" aria-controls="mainNav">
+    ☰
+  </button>
 
-    <nav id="mainNav" aria-label="Main navigation">
-      <a href="home.html">Home</a>
-      <a href="biography.html">Biography</a>
-      <a href="bihar-aur-sufivad.html" aria-current="page">Bihar Aur Sufivad</a>
-      <a href="research.html">Research</a>
-      <a href="sufi-heritage.html">Sufi Heritage</a>
-      <a href="poetry.html">Poetry</a>
-      <a href="sher.html">Sher Collection</a>
-      <a href="awards-honours.html">Awards and Honours</a>
-    </nav>
-  </div>
+  <nav id="mainNav" aria-label="Main navigation">
+    <a href="home.html">Home</a>
+    <a href="biography.html">Biography</a>
+    <a href="bihar-aur-sufivad.html" aria-current="page">Bihar Aur Sufivad</a>
+    <a href="research.html">Research</a>
+    <a href="sufi-heritage.html">Sufi Heritage of Bihar</a>
+    <a href="poetry.html">Poetry</a>
+    <a href="sher.html">Sher Collection</a>
+    <a href="library.html">Library</a>
+    <a href="media.html">Media</a>
+    <a href="awards-honours.html">Awards and Honours</a>
+    <a class="nav-contact" href="home.html#contact">Get in touch <span>↗</span></a>
+  </nav>
 </header>
 
 <main id="top">
@@ -235,22 +142,18 @@ header {
 <section class="cta"><div class="wrap cta-inner"><div><h2>For book and media enquiries</h2><p>For interviews, reviews, research enquiries, or bibliographic information.</p></div><a class="btn gold" href="mailto:">Contact the author ↗</a></div></section>
 </main>
 <footer><div class="wrap footer-inner"><span>© <span id="year">2026</span> Syed Amjad Hussain. All rights reserved.</span><span><a href="index.html">Main website</a> · Bihar Aur Sufivad</span></div></footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
-  
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
-
-
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 <script>
 const menuToggle = document.getElementById('menuToggle');
 const mainNav = document.getElementById('mainNav');
 
-menuToggle?.addEventListener('click', () => {
+menuToggle.addEventListener('click', () => {
   const isOpen = mainNav.classList.toggle('open');
   menuToggle.setAttribute('aria-expanded', String(isOpen));
   menuToggle.textContent = isOpen ? '×' : '☰';
 });
 </script>
-  
 </body>
 </html>
