@@ -190,7 +190,7 @@ header {
 <main id="top">
 <section class="hero"><div class="wrap hero-grid">
 <div>
-<div class="eyebrow">A research-driven book on Sufism in Bihar</div>
+<div class="eyebrow">A research-driven book on the subject of Sufism in Bihar</div>
 <h1>Bihar Aur <em>Sufivad</em></h1>
 <p class="lead">Exploring the Sufi traditions, spiritual lineages, and historical memory of Bihar—bringing regional histories and literary sources into wider conversation.</p>
 <div class="hero-meta"><span>By Syed Amjad Hussain</span><span>Rajmangal Prakashan</span><span>Published 2025</span></div>
@@ -240,11 +240,17 @@ header {
 const menuToggle = document.getElementById('menuToggle');
 const mainNav = document.getElementById('mainNav');
 
+
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+
 menuToggle?.addEventListener('click', () => {
   const isOpen = mainNav.classList.toggle('open');
   menuToggle.setAttribute('aria-expanded', String(isOpen));
   menuToggle.textContent = isOpen ? '×' : '☰';
 });
+</script>
   
 </body>
 </html>
