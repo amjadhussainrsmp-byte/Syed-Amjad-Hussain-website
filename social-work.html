@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Social Work | Syed Amjad Hussain</title>
+<meta name="description" content="Social work and community service by Syed Amjad Hussain, focusing on education, women's empowerment, youth development and community welfare.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --burgundy: #421b28;
+  --burgundy-dark: #2c151d;
+  --gold: #b99a61;
+  --gold-light: #dfc99c;
+  --paper: #faf7f0;
+  --paper-dark: #f0e8da;
+  --white: #fffdf9;
+  --ink: #282321;
+  --muted: #706861;
+  --line: #e5d9c7;
+  --shadow: 0 18px 50px rgba(49,27,24,.08);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.75;
+}
+
+a { color: inherit; }
+
+button { font: inherit; }
+
+h1, h2, h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  line-height: 1.25;
+}
+
+p { margin: 0 0 16px; }
+
+/* =========================
+   HEADER — MATCH RESEARCH
+========================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(250,247,240,.98);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+}
+
+.header-inner {
+  max-width: 1200px;
+  min-height: 78px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 235px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 47px;
+  height: 47px;
+  flex: 0 0 47px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  outline: 1px solid #b99a6170;
+  outline-offset: -5px;
+  background: var(--burgundy);
+  color: var(--gold-light);
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 27px;
+}
+
+.brand-title {
+  display: block;
+  color: var(--burgundy);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1.15px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#mainNav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+#mainNav a {
+  display: inline-block;
+  padding: 9px 10px;
+  border-radius: 3px;
+  color: #4c403b;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  transition: background .2s, color .2s;
+}
+
+#mainNav a:hover,
+#mainNav a.active {
+  background: #eee4d4;
+  color: var(--burgundy);
+}
+
+.menu-toggle {
+  display: none;
+  padding: 10px 13px;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  background: var(--burgundy);
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 82px 24px 76px;
+  background: linear-gradient(
+    112deg,
+    rgba(44,21,29,.99),
+    rgba(83,36,50,.96)
+  );
+  color: white;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(223,201,156,.22);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::before {
+  width: 450px;
+  height: 450px;
+  right: -120px;
+  top: -220px;
+}
+
+.hero::after {
+  width: 320px;
+  height: 320px;
+  right: -55px;
+  top: -155px;
+}
+
+.hero-inner,
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero-inner { position: relative; }
+
+.eyebrow,
+.section-kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  text-transform: uppercase;
+}
+
+.eyebrow { color: var(--gold-light); }
+
+h1 {
+  max-width: 800px;
+  margin: 17px 0 20px;
+  font-size: clamp(40px, 6vw, 68px);
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  max-width: 760px;
+  color: #eee3dc;
+  font-size: 17px;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 28px;
+}
+
+.hero-tags span {
+  padding: 6px 11px;
+  border: 1px solid #ffffff35;
+  color: #f4e7d5;
+  font-size: 10px;
+  letter-spacing: .6px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.page-wrap { padding: 52px 24px 84px; }
+
+.opening-grid {
+  display: grid;
+  grid-template-columns: 1.4fr .8fr;
+  gap: 25px;
+  align-items: stretch;
+}
+
+.intro-panel,
+.principle-panel,
+.service-card,
+.belief-card,
+.closing-panel {
+  border: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.intro-panel { padding: 32px 34px; }
+
+.section-kicker { color: #987644; }
+
+h2 {
+  margin: 9px 0 17px;
+  color: var(--burgundy);
+  font-size: clamp(28px, 3.2vw, 38px);
+}
+
+h3 {
+  margin: 0 0 10px;
+  color: var(--burgundy);
+  font-size: 22px;
+}
+
+.intro-panel p:last-child { margin-bottom: 0; }
+
+.principle-panel {
+  padding: 28px;
+  background: var(--paper-dark);
+}
+
+.principle-quote {
+  margin: 18px 0 0;
+  padding-top: 17px;
+  border-top: 1px solid #d7c7ad;
+  color: var(--burgundy);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.section { margin-top: 57px; }
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2 { margin-bottom: 0; }
+
+.section-heading p {
+  max-width: 560px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* SERVICE CARDS */
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 17px;
+}
+
+.service-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  min-height: 205px;
+  padding: 25px;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 50px rgba(49,27,24,.12);
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d8c49e;
+  background: #f5eddf;
+  color: var(--burgundy);
+  font-size: 21px;
+}
+
+.service-number {
+  display: block;
+  margin-bottom: 8px;
+  color: #987644;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.service-card h3 { font-size: 21px; }
+
+.service-card p {
+  margin: 0;
+  color: #615851;
+  font-size: 14px;
+}
+
+/* ZENITH SOCIAL FOUNDATION */
+
+.foundation-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding: 30px;
+  border: 1px solid var(--burgundy);
+  background: var(--burgundy);
+  color: #f4e8df;
+}
+
+.foundation-panel h2 { color: #f3dfb9; }
+.foundation-panel p { color: #e8d9d2; }
+.foundation-panel p:last-child { margin-bottom: 0; }
+
+.foundation-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  gap: 12px;
+}
+
+.foundation-item {
+  padding: 14px;
+  border: 1px solid #ffffff2b;
+  background: #ffffff08;
+}
+
+.foundation-item strong {
+  display: block;
+  color: #f3dfb9;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 17px;
+}
+
+.foundation-item span {
+  display: block;
+  margin-top: 4px;
+  color: #e4d4cd;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* PRINCIPLES */
+
+.belief-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 16px;
+}
+
+.belief-card {
+  padding: 24px;
+  border-top: 3px solid var(--gold);
+}
+
+.belief-card h3 { font-size: 20px; }
+
+.belief-card p {
+  margin: 0;
+  color: #615851;
+  font-size: 13px;
+}
+
+.pull-quote {
+  margin: 0;
+  padding: 30px 32px;
+  border-left: 3px solid var(--gold);
+  background: #f1e8d8;
+  color: var(--burgundy);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(22px, 3vw, 30px);
+  line-height: 1.45;
+}
+
+.pull-quote cite {
+  display: block;
+  margin-top: 12px;
+  color: #796b5c;
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+/* FINAL SECTION */
+
+.closing-panel {
+  padding: 30px 32px;
+  background: var(--paper-dark);
+}
+
+.closing-panel h2 { font-size: 30px; }
+
+.closing-panel p {
+  max-width: 850px;
+  color: #5d534b;
+}
+
+.contact-link {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 11px 16px;
+  border: 1px solid var(--gold);
+  background: var(--burgundy);
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  padding: 34px 24px;
+  background: var(--burgundy-dark);
+  color: #e9ded5;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.footer-brand {
+  color: #f1dfbd;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+}
+
+.footer-small {
+  color: #c7b8ae;
+  font-size: 11px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #e6d8ca;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+.footer-links a:hover { color: var(--gold-light); }
+
+.back-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 50;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--burgundy);
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 5px 20px #0002;
+}
+
+/* =========================
+   RESPONSIVE HEADER & PAGE
+========================= */
+
+@media (max-width: 1100px) {
+  .header-inner { gap: 12px; }
+  .brand { min-width: 215px; }
+  #mainNav a { padding: 8px 7px; font-size: 11px; }
+}
+
+@media (max-width: 980px) {
+  .header-inner { flex-wrap: wrap; }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  #mainNav {
+    display: none;
+    flex: 0 0 100%;
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 0 4px;
+  }
+
+  #mainNav.open { display: flex; }
+
+  #mainNav a {
+    display: block;
+    padding: 11px 12px;
+    font-size: 13px;
+    white-space: normal;
+  }
+
+  .opening-grid { grid-template-columns: 1fr; }
+  .foundation-panel { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 680px) {
+  .header-inner {
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .brand {
+    min-width: 0;
+    gap: 9px;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .brand-title { font-size: 16px; }
+
+  .brand-subtitle {
+    max-width: 230px;
+    white-space: normal;
+    font-size: 7px;
+    letter-spacing: .65px;
+  }
+
+  .hero { padding: 61px 20px 55px; }
+  .hero p { font-size: 15px; }
+  .page-wrap { padding: 34px 16px 60px; }
+
+  .intro-panel,
+  .principle-panel { padding: 23px; }
+
+  .section { margin-top: 43px; }
+
+  .section-heading { display: block; }
+
+  .section-heading p { margin-top: 9px; }
+
+  .service-grid,
+  .belief-grid { grid-template-columns: 1fr; }
+
+  .service-card {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .foundation-panel { padding: 23px; }
+
+  .pull-quote {
+    padding: 23px;
+    font-size: 23px;
+  }
+
+  .closing-panel { padding: 24px; }
+
+  .footer-inner { display: block; }
+  .footer-links { margin-top: 14px; }
+  .footer-small:last-child { margin-top: 14px; }
+}
+
+@media (max-width: 390px) {
+  .service-card { display: block; }
+  .service-icon { margin-bottom: 15px; }
+  .foundation-list { grid-template-columns: 1fr; }
+  .brand-subtitle { max-width: 205px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+</style>
+</head>
+
+<body id="top">
+
+<!-- HEADER: navigation labels match research.html.
+     Social Work is added as one additional link. -->
+
+<header class="site-header">
+  <div class="header-inner">
+
+    <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
+      <span class="brand-mark" aria-hidden="true">أ</span>
+      <span>
+        <span class="brand-title">Syed Amjad Hussain</span>
+        <span class="brand-subtitle">Ethnographer · Author · Historian · Poet · Humanitarian</span>
+      </span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mainNav">
+      ☰ Menu
+    </button>
+
+    <nav id="mainNav" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+      <a href="sufi-heritage.html">The Sufi Heritage of Bihar</a>
+      <a href="research.html">Research</a>
+      <a href="poetry.html">Poetry</a>
+      <a href="sher.html">Sher Collection</a>
+      <a href="awards.html">Awards and Honours</a>
+      <a href="social-work.html" class="active" aria-current="page">Social Work</a>
+      <a href="library.html">Library</a>
+      <a href="media.html">Media</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Humanity · Opportunity · Empowerment</div>
+
+      <h1>Social Work</h1>
+
+      <p>
+        Turning concern into action. Turning opportunities into change.
+        For Syed Amjad Hussain, social service is not something he does
+        alongside his life—it is part of the way he sees life.
+      </p>
+
+      <div class="hero-tags">
+        <span>Education</span>
+        <span>Women's Empowerment</span>
+        <span>Youth Development</span>
+        <span>Community Welfare</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-wrap">
+
+    <!-- INTRODUCTION -->
+
+    <section class="opening-grid" id="approach">
+
+      <article class="intro-panel">
+        <div class="section-kicker">A commitment to service</div>
+
+        <h2>Concern Should Become Action</h2>
+
+        <p>
+          His work as an author, poet and historian has taught Syed Amjad
+          Hussain the value of people, their stories and their struggles.
+          His work in the social sphere has given him an opportunity to
+          respond to those struggles in a practical way.
+        </p>
+
+        <p>
+          He believes that society does not always need grand promises.
+          Sometimes, it simply needs someone willing to step forward,
+          listen and help.
+        </p>
+
+        <p>
+          Since June 2025, Syed Amjad Hussain has served as a Founder Member
+          and National President of Zenith Social Foundation, working with
+          volunteers and community partners on initiatives centred around
+          education, youth development, women's empowerment and social welfare.
+        </p>
+
+        <p>
+          His approach is rooted in dignity, opportunity and empowerment.
+          Helping someone should not make them dependent on help; wherever
+          possible, support should help people build confidence, skills and
+          opportunities for a better future.
+        </p>
+      </article>
+
+      <aside class="principle-panel">
+        <div class="section-kicker">A belief in service</div>
+
+        <h3>Help Should Open a Door</h3>
+
+        <p>
+          Whether it is educational material for a student, self-defence
+          training for a girl or encouragement for a young person, a practical
+          act of support can become the beginning of something larger.
+        </p>
+
+        <blockquote class="principle-quote">
+          “The greatest service is not merely to help someone today,
+          but to give them the strength to stand tomorrow.”
+        </blockquote>
+      </aside>
+
+    </section>
+
+    <!-- SOCIAL WORK INITIATIVES -->
+
+    <section class="section" id="initiatives">
+
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Areas of work</div>
+          <h2>Service in Practice</h2>
+        </div>
+
+        <p>
+          Practical assistance, confidence-building and community
+          participation form important parts of this social vision.
+        </p>
+      </div>
+
+      <div class="service-grid">
+
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">✎</div>
+          <div>
+            <span class="service-number">01 · Education</span>
+            <h3>Education: Opening Doors</h3>
+            <p>
+              Supporting efforts to help students from financially weaker
+              backgrounds by providing essential educational materials,
+              including notebooks and pens. A schoolbag may look ordinary,
+              but for a child it can represent a chance to continue learning
+              and believing in a better future. Talent is everywhere,
+              but opportunity is not.
+            </p>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">◇</div>
+          <div>
+            <span class="service-number">02 · Women's empowerment</span>
+            <h3>Empowering Young Women</h3>
+            <p>
+              Supporting initiatives providing free karate and self-defence
+              training for girls. These programmes help young women develop
+              confidence, discipline, physical fitness and the ability to
+              protect themselves. They are about more than martial arts:
+              they are about confidence, independence and self-belief.
+            </p>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">↗</div>
+          <div>
+            <span class="service-number">03 · Youth development</span>
+            <h3>Investing in Young People</h3>
+            <p>
+              Young people should not merely be described as the future.
+              They are the present. They need opportunities today to learn,
+              participate, develop skills and discover their potential.
+              The aim is to encourage education, discipline, confidence
+              and constructive community participation.
+            </p>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">♡</div>
+          <div>
+            <span class="service-number">04 · Community welfare</span>
+            <h3>Community Welfare</h3>
+            <p>
+              Supporting people and communities through practical,
+              ground-level initiatives. The focus is on responding to
+              real needs with respect and compassion, while encouraging
+              cooperation and a stronger sense of shared responsibility.
+            </p>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">◎</div>
+          <div>
+            <span class="service-number">05 · Awareness and outreach</span>
+            <h3>Awareness and Outreach</h3>
+            <p>
+              Helping socially meaningful programmes reach people beyond
+              individual events and into communities. Awareness and outreach
+              can connect people with opportunities, encourage participation
+              and turn goodwill into organised action.
+            </p>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">✦</div>
+          <div>
+            <span class="service-number">06 · Social harmony</span>
+            <h3>Service Without Boundaries</h3>
+            <p>
+              Promoting compassion, cooperation and mutual respect across
+              social and religious boundaries. When someone needs education,
+              support, encouragement or opportunity, the first question
+              should be how to help—not who the person is.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ZENITH SOCIAL FOUNDATION -->
+
+    <section class="section" id="foundation">
+
+      <div class="foundation-panel">
+
+        <div>
+          <div class="section-kicker" style="color:#dfc99c">
+            Organised community service
+          </div>
+
+          <h2>Zenith Social Foundation</h2>
+
+          <p>
+            Since June 2025, Syed Amjad Hussain has been associated with
+            Zenith Social Foundation as a Founder Member and National
+            President.
+          </p>
+
+          <p>
+            Through the Foundation, he has been involved in initiatives
+            focused on education, women's empowerment, youth development,
+            community welfare and awareness.
+          </p>
+
+          <p>
+            The larger purpose is to transform goodwill into organised
+            action and encourage people to contribute constructively
+            to the communities around them.
+          </p>
+        </div>
+
+        <div class="foundation-list">
+
+          <div class="foundation-item">
+            <strong>Education</strong>
+            <span>
+              Supporting students and making basic educational resources
+              more accessible.
+            </span>
+          </div>
+
+          <div class="foundation-item">
+            <strong>Women's Empowerment</strong>
+            <span>
+              Promoting self-defence, confidence and personal development
+              among girls.
+            </span>
+          </div>
+
+          <div class="foundation-item">
+            <strong>Youth Development</strong>
+            <span>
+              Encouraging education, discipline, fitness and constructive
+              engagement.
+            </span>
+          </div>
+
+          <div class="foundation-item">
+            <strong>Community Welfare</strong>
+            <span>
+              Supporting people and communities through practical,
+              ground-level initiatives.
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+
+    <section class="section" id="philosophy">
+
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">The philosophy behind the work</div>
+          <h2>From Charity to Empowerment</h2>
+        </div>
+
+        <p>
+          The goal is not simply to provide something in the moment,
+          but to help make the next step possible.
+        </p>
+      </div>
+
+      <div class="belief-grid">
+
+        <article class="belief-card">
+          <h3>Dignity</h3>
+          <p>
+            Support should honour the person receiving it. Helping someone
+            should never mean diminishing their independence, voice
+            or self-respect.
+          </p>
+        </article>
+
+        <article class="belief-card">
+          <h3>Opportunity</h3>
+          <p>
+            Talent is widely distributed, but opportunities are not.
+            Education, training and encouragement can help close that gap.
+          </p>
+        </article>
+
+        <article class="belief-card">
+          <h3>Shared Humanity</h3>
+          <p>
+            Genuine service should cross unnecessary boundaries and build
+            a culture of compassion, cooperation and mutual respect.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- QUOTATION -->
+
+    <section class="section">
+      <blockquote class="pull-quote">
+        “Don’t just give. Empower. A notebook can help a student study.
+        Training can give a girl confidence. Education can open a door.
+        Encouragement can change someone’s direction. An opportunity
+        can change a life.”
+
+        <cite>Syed Amjad Hussain · Social-work philosophy</cite>
+      </blockquote>
+    </section>
+
+    <!-- CLOSING -->
+
+    <section class="section" id="continuing-work">
+
+      <div class="closing-panel">
+        <div class="section-kicker">The work continues</div>
+
+        <h2>Service Is a Continuing Responsibility</h2>
+
+        <p>
+          Social work rarely has a finish line. There will always be another
+          student who needs support, another young person who needs
+          encouragement, another girl who deserves the confidence to stand
+          independently, and another community that needs someone to listen.
+        </p>
+
+        <p>
+          Amjad's books preserve the stories of those who came before us.
+          His research keeps overlooked histories alive. His poetry gives
+          expression to what the heart feels. His social work allows him
+          to contribute directly to the lives of people around him.
+        </p>
+
+        <p>
+          For Syed Amjad Hussain, social work is ultimately not about how
+          many programmes are organised or how many names appear on a list.
+          It is about the lives touched, the confidence created, the
+          opportunities opened and the hope left behind.
+        </p>
+
+        <blockquote class="principle-quote">
+          “Knowledge should enlighten. Heritage should connect.
+          And service should reach people.”
+        </blockquote>
+
+        <a class="contact-link" href="contact.html">
+          Get in Touch About Social Work →
+        </a>
+      </div>
+
+    </section>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div>
+      <div class="footer-brand">Syed Amjad Hussain</div>
+      <div class="footer-small">
+        Independent research into Sufism, history, literature and heritage.
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="home.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+      <a href="sufi-heritage.html">The Sufi Heritage of Bihar</a>
+      <a href="research.html">Research</a>
+      <a href="social-work.html">Social Work</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-small">
+      © <span id="currentYear"></span> Syed Amjad Hussain. All rights reserved.
+    </div>
+
+  </div>
+</footer>
+
+<a class="back-top" href="#top" aria-label="Back to top">↑</a>
+
+<script>
+(function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", function () {
+      const isOpen = mainNav.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕ Close" : "☰ Menu";
+    });
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰ Menu";
+      });
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 980) {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰ Menu";
+      }
+    });
+  }
+
+  const year = document.getElementById("currentYear");
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+})();
+</script>
+
+</body>
+</html>
+
+        
+
+        
+
+    
+          
