@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", async () => {
   const setupScreen = document.getElementById("setup-screen");
   const loginScreen = document.getElementById("login-screen");
