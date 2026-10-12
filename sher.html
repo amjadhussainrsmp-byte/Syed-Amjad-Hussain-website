@@ -10,10 +10,10 @@
 
   <meta name="theme-color" content="#472127">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&family=Noto+Serif+Devanagari:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -37,62 +37,218 @@
 
     a { color: inherit; text-decoration: none; }
 
-    .site-header {
-      background: var(--wine);
-      color: #fffaf0;
-      border-bottom: 3px solid var(--gold);
-    }
+    
+/* HOMEPAGE-MATCHING HEADER */
+:root {
+  --paper: #f4efe6;
+  --paper-2: #ebe3d7;
+  --ink: #2f2926;
+  --muted: #71665e;
+  --burgundy: #652e36;
+  --burgundy-dark: #472127;
+  --gold: #b89b6a;
+  --line: #d8cdbd;
+  --white: #fffdf8;
+  --sans: "DM Sans", Arial, sans-serif;
+  --serif: "Playfair Display", Georgia, serif;
+}
 
-    .header-inner {
-      max-width: 1180px;
-      margin: auto;
-      padding: 20px 24px 0;
-    }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+}
 
-    .brand {
-      display: block;
-      font-size: 25px;
-      font-weight: 600;
-      letter-spacing: .2px;
-    }
+.topline {
+  height: 32px;
+  background: var(--burgundy-dark);
+  color: #e9ded0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5.5%;
+  font-size: 9px;
+  letter-spacing: .16em;
+}
 
-    .brand-subtitle {
-      display: block;
-      margin-top: 5px;
-      color: #e1cfac;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+.site-header {
+  min-height: 86px;
+  padding: 0 5.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(90, 67, 56, .12);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(244, 239, 230, .96);
+  backdrop-filter: blur(14px);
+}
 
-    #mainNav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px 25px;
-      align-items: center;
-      padding: 20px 0 16px;
-    }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
 
-    #mainNav a {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      color: #f7eee6;
-      transition: color .2s;
-    }
+.brand-mark {
+  height: 42px;
+  width: 42px;
+  border: 1px solid var(--gold);
+  color: var(--burgundy);
+  display: grid;
+  place-items: center;
+  font-family: serif;
+  font-size: 27px;
+}
 
-    #mainNav a:hover,
-    #mainNav a[aria-current="page"] {
-      color: #e7c987;
-    }
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
 
-    .menu-toggle {
-      display: none;
-      border: 1px solid #a98a63;
-      background: transparent;
-      color: white;
-      padding: 9px 13px;
-      cursor: pointer;
-    }
+.brand-text strong {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+.brand-text small {
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+#mainNav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  padding: 0;
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: #544942;
+}
+
+#mainNav a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+#mainNav a:hover,
+#mainNav a[aria-current="page"] {
+  color: var(--burgundy);
+}
+
+#mainNav .nav-contact {
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+  color: var(--ink);
+}
+
+#mainNav .nav-contact span {
+  color: var(--burgundy);
+  margin-left: 9px;
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  color: var(--burgundy);
+  cursor: pointer;
+}
+
+/* Responsive navigation */
+@media (max-width: 1050px) {
+  #mainNav {
+    gap: 12px;
+  }
+
+  #mainNav a {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 780px) {
+  .topline {
+    padding: 0 5%;
+    font-size: 7px;
+    letter-spacing: .1em;
+  }
+
+  .site-header {
+    min-height: 72px;
+    padding: 0 5%;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-text strong {
+    font-size: 14px;
+  }
+
+  .brand-text small {
+    font-size: 7px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  #mainNav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    padding: 18px 5% 24px;
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  #mainNav.open {
+    display: flex;
+  }
+
+  #mainNav a {
+    padding: 12px 0;
+    border-bottom: 1px solid #e4d9ca;
+    font-size: 12px;
+  }
+
+  #mainNav .nav-contact {
+    padding: 12px;
+    margin-top: 12px;
+    text-align: center;
+    border: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 420px) {
+  .topline span:last-child {
+    display: none;
+  }
+}
+
 
     .hero {
       text-align: center;
@@ -536,28 +692,46 @@
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="home.html">Syed Amjad Hussain</a>
-      <span class="brand-subtitle">Author · Poet · Sufi Historian</span>
+  
+<div class="topline">
+  <span>INDEPENDENT RESEARCH · LITERATURE · HERITAGE</span>
+  <span>Bihar, India</span>
+</div>
 
-      <button class="menu-toggle" id="menuToggle"
-        type="button" aria-expanded="false" aria-controls="mainNav">
-        ☰ Menu
-      </button>
+<header class="site-header">
+  <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
+    <span class="brand-mark">أ</span>
+    <span class="brand-text">
+      <strong>Syed Amjad Hussain</strong>
+      <small>Ethnographer · Author · Historian · Poet · Researcher</small>
+    </span>
+  </a>
 
-      <nav id="mainNav" aria-label="Main navigation">
-        <a href="home.html">Home</a>
-        <a href="biography.html">Biography</a>
-        <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
-        <a href="research.html">Research</a>
-        <a href="sufi-heritage.html">Sufi Heritage</a>
-        <a href="poetry.html">Poetry</a>
-        <a href="sher.html" aria-current="page">Sher Collection</a>
-        <a href="awards-honours.html.html">Awards and Honours</a>
-      </nav>
-    </div>
-  </header>
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    type="button"
+    aria-label="Open navigation"
+    aria-expanded="false"
+    aria-controls="mainNav"
+  >☰</button>
+
+  <nav id="mainNav" aria-label="Main navigation">
+    <a href="home.html">Home</a>
+    <a href="biography.html">Biography</a>
+    <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+    <a href="sufi-heritage.html">Sufi Heritage of Bihar</a>
+    <a href="research.html">Research</a>
+    <a href="poetry.html">Poetry</a>
+    <a href="sher.html" aria-current="page">Sher Collection</a>
+    <a href="awards-honours.html">Awards and Honours</a>
+    <a href="library.html">Library</a>
+    <a href="media.html">Media</a>
+    <a class="nav-contact" href="contact.html">
+      Get in touch <span>↗</span>
+    </a>
+  </nav>
+</header>
 
   
 <section class="hero">
