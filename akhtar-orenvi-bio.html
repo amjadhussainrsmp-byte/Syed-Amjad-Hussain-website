@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#652e36">
+  <meta name="description" content="Akhtar Orenvi: Bihar Mein Urdu Sahitya Ke Nirmata by Syed Amjad Hussain — a biographical study of the Urdu writer and poet Akhtar Orenvi and his contribution to Bihar's literary history.">
+  <title>Akhtar Orenvi: Bihar Mein Urdu Sahitya Ke Nirmata | Syed Amjad Hussain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f4efe6;
+      --paper-light: #fffdf9;
+      --ink: #2f2926;
+      --muted: #756a61;
+      --burgundy: #652e36;
+      --burgundy-dark: #472127;
+      --gold: #b89b6a;
+      --line: #d8cdbd;
+      --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+      --sans: "DM Sans", Arial, Helvetica, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.75 var(--sans); }
+    a { color: inherit; }
+    img { max-width: 100%; }
+    .wrap { width: min(1160px, calc(100% - 44px)); margin-inline: auto; }
+    .topline { background: var(--burgundy-dark); color: #f2e7d8; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+    .topline-inner { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; flex-wrap: wrap; }
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,253,249,.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
+    .nav-row { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+    .brand-mark { width: 43px; height: 43px; display: grid; place-items: center; border: 1px solid var(--gold); color: var(--burgundy); font: 28px/1 var(--serif); }
+    .brand-name { font: 600 19px/1.2 var(--serif); }
+    .brand-sub { display: block; margin-top: 5px; color: var(--muted); font: 9px/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+    .main-nav { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 5px 15px; }
+    .main-nav a { padding: 7px 0; border-bottom: 1px solid transparent; text-decoration: none; font-size: 11px; }
+    .main-nav a:hover, .main-nav a:focus-visible, .main-nav a[aria-current="page"] { color: var(--burgundy); border-bottom-color: var(--gold); }
+    .menu-toggle { display: none; padding: 9px 12px; border: 1px solid var(--line); background: transparent; color: var(--burgundy); font: 600 12px var(--sans); cursor: pointer; }
+    .hero { position: relative; overflow: hidden; background: var(--burgundy); color: var(--paper-light); }
+    .hero::before { content: ""; position: absolute; width: 540px; height: 540px; right: -190px; top: -220px; border: 1px solid #b89b6a55; border-radius: 50%; box-shadow: 0 0 0 35px #b89b6a0c, 0 0 0 80px #b89b6a09; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(270px, .85fr); align-items: center; gap: 65px; padding: 78px 0 84px; }
+    .eyebrow { color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 760px; margin: 17px 0 20px; font: 500 clamp(38px, 5.2vw, 65px)/1.08 var(--serif); letter-spacing: -.035em; }
+    h1 em { color: #dfc79e; font-weight: 400; }
+    .hero-copy { max-width: 680px; color: #f0e4d7; font: 18px/1.85 var(--serif); }
+    .hero-meta { margin-top: 25px; color: #e4d2bd; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    .book-stage { min-height: 405px; display: grid; place-items: center; position: relative; }
+    .book-cover { position: relative; display: flex; flex-direction: column; justify-content: space-between; width: min(300px, 82%); min-height: 390px; padding: 29px 24px 24px; overflow: hidden; color: #f7eedf; text-align: center; border: 1px solid #c6a974; outline: 1px solid #c6a97480; outline-offset: 8px; background: linear-gradient(145deg, #733943, #3d1b22 76%); box-shadow: 18px 24px 38px #17090d66; transform: rotate(2deg); }
+    .book-cover::before { content: ""; position: absolute; inset: 12px; border: 1px solid #c6a9749c; pointer-events: none; }
+    .cover-kicker { position: relative; color: #d9bd8d; font-size: 8px; letter-spacing: .2em; text-transform: uppercase; }
+    .cover-title { position: relative; margin: auto 0; font: 600 27px/1.28 var(--serif); }
+    .cover-title span { display: block; margin-top: 12px; font-size: 18px; font-weight: 400; }
+    .cover-rule { position: relative; width: 56px; height: 1px; margin: 18px auto; background: var(--gold); }
+    .cover-author { position: relative; font: 11px/1.6 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+    .cover-caption { max-width: 310px; margin: 24px auto 0; color: #e0cdb9; font-size: 10px; text-align: center; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 45px; padding: 12px 17px; background: var(--gold); color: #251a17; border: 1px solid var(--gold); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); background: #d0b787; }
+    .button.secondary { background: transparent; color: #fff8ef; border-color: #b89b6a99; }
+    .section { padding: 76px 0; }
+    .section.white { background: var(--paper-light); }
+    .section-heading { max-width: 760px; margin-bottom: 35px; }
+    .eyebrow-dark { color: var(--burgundy); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+    h2 { margin: 12px 0 18px; font: 500 clamp(30px, 4vw, 45px)/1.15 var(--serif); letter-spacing: -.025em; }
+    .lead { color: #5f544c; font: 20px/1.8 var(--serif); }
+    .prose { max-width: 850px; color: #504740; }
+    .prose p { margin-bottom: 19px; }
+    .two-col { display: grid; grid-template-columns: .9fr 1.1fr; gap: 65px; align-items: start; }
+    .pullquote { margin: 30px 0; padding: 19px 24px; border-left: 3px solid var(--gold); background: #f0e7da; color: var(--burgundy); font: italic 23px/1.55 var(--serif); }
+    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; border-top: 1px solid var(--line); }
+    .detail { display: flex; justify-content: space-between; gap: 20px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .detail span:first-child { color: var(--muted); font-size: 12px; }
+    .detail strong { text-align: right; font-size: 13px; font-weight: 600; }
+    .themes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
+    .theme-card { min-height: 190px; padding: 25px; border: 1px solid var(--line); background: var(--paper); }
+    .theme-number { color: var(--gold); font: italic 24px var(--serif); }
+    .theme-card h3 { margin: 15px 0 8px; font: 23px/1.2 var(--serif); }
+    .theme-card p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
+    .author-panel { display: grid; grid-template-columns: 150px 1fr; gap: 28px; align-items: center; padding: 30px; border: 1px solid var(--line); background: var(--paper); }
+    .author-monogram { display: grid; place-items: center; width: 130px; height: 130px; border: 1px solid var(--gold); outline: 1px solid #b89b6a66; outline-offset: -9px; background: var(--burgundy); color: #f4e7d4; font: 45px var(--serif); }
+    .author-panel h3 { margin-bottom: 8px; font: 28px var(--serif); }
+    .author-panel p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+    .closing { background: var(--burgundy-dark); color: var(--paper-light); padding: 58px 0; }
+    .closing-inner { display: flex; justify-content: space-between; align-items: center; gap: 35px; }
+    .closing h2 { margin-bottom: 9px; font-size: clamp(27px, 3.5vw, 39px); }
+    .closing p { margin-bottom: 0; color: #dfcfc0; }
+    .site-footer { background: #281419; color: #d9c9ba; padding: 29px 0; font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+    .footer-links { display: flex; gap: 8px 15px; flex-wrap: wrap; }
+    .footer-links a { color: #e7d4b2; text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    @media (max-width: 1050px) {
+      .menu-toggle { display: inline-flex; align-items: center; gap: 8px; }
+      .nav-row { min-height: 74px; }
+      .main-nav { display: none; position: absolute; left: 0; right: 0; top: 100%; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 22px 22px; background: var(--paper-light); border-bottom: 1px solid var(--line); box-shadow: 0 18px 30px #21101618; align-items: stretch; flex-direction: column; gap: 0; }
+      .main-nav.open { display: flex; }
+      .main-nav a { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+      .main-nav a:last-child { border-bottom: 0; }
+    }
+    @media (max-width: 760px) {
+      .wrap { width: calc(100% - 30px); }
+      .topline-inner { font-size: 9px; }
+      .brand { gap: 9px; }
+      .brand-mark { width: 37px; height: 37px; font-size: 25px; }
+      .brand-name { font-size: 16px; }
+      .brand-sub { max-width: 210px; font-size: 8px; letter-spacing: .035em; }
+      .hero-grid { grid-template-columns: 1fr; gap: 30px; padding: 54px 0 60px; }
+      h1 { font-size: clamp(39px, 11vw, 56px); }
+      .hero-copy { font-size: 17px; }
+      .book-stage { min-height: 350px; }
+      .book-cover { width: 245px; min-height: 325px; padding: 25px 20px 20px; }
+      .cover-title { font-size: 23px; }
+      .cover-title span { font-size: 16px; }
+      .section { padding: 55px 0; }
+      .two-col { grid-template-columns: 1fr; gap: 20px; }
+      .themes { grid-template-columns: 1fr; }
+      .detail-grid { grid-template-columns: 1fr; }
+      .author-panel { grid-template-columns: 1fr; padding: 24px; }
+      .author-monogram { width: 105px; height: 105px; }
+      .closing-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline">
+    <div class="wrap topline-inner">
+      <span>Independent Research · Literature · Heritage</span>
+      <span>Bihar, India</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap nav-row">
+      <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
+        <span class="brand-mark" aria-hidden="true">أ</span>
+        <span><span class="brand-name">Syed Amjad Hussain</span><span class="brand-sub">Ethnographer · Author · Historian · Poet · Researcher</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+        <a href="research.html">Research</a>
+        <a href="sufi-heritage.html">Sufi Heritage of Bihar</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="sher.html">Sher Collection</a>
+        <a href="library.html">Library</a>
+        <a href="media.html">Media</a>
+        <a href="awards-honours.html">Awards and Honours</a>
+        <a href="contact.html">Get in touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Book · Urdu Literary History</div>
+          <h1>Akhtar Orenvi: <em>Bihar Mein Urdu Sahitya Ke Nirmata</em></h1>
+          <p class="hero-copy">A biographical study of Akhtar Orenvi, the Urdu writer and poet, and his place in the literary history of Bihar. The book reflects a commitment to documenting the people whose words and ideas have helped shape the region’s literary culture.</p>
+          <div class="hero-meta">Written by Syed Amjad Hussain · Published in 2023</div>
+          <div class="actions">
+            <a class="button" href="#about-book">Explore the book</a>
+            <a class="button secondary" href="books-articles.html">More books and writing</a>
+          </div>
+        </div>
+        <div>
+          <div class="book-stage" aria-label="Decorative book-cover illustration">
+            <div class="book-cover">
+              <div class="cover-kicker">A study in Urdu literary history</div>
+              <div>
+                <div class="cover-title">Akhtar Orenvi<span>Bihar Mein Urdu Sahitya Ke Nirmata</span></div>
+                <div class="cover-rule"></div>
+              </div>
+              <div class="cover-author">Syed Amjad Hussain</div>
+            </div>
+          </div>
+          <p class="cover-caption">A tribute to a literary life and the wider story of Urdu writing in Bihar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="about-book">
+      <div class="wrap two-col">
+        <div class="section-heading">
+          <div class="eyebrow-dark">About the book</div>
+          <h2>Remembering a voice in Bihar’s Urdu literature.</h2>
+          <p class="lead">Literary history is shaped not only by books, but by the writers whose work gives a language its character, depth and memory.</p>
+        </div>
+        <div class="prose">
+          <p><em>Akhtar Orenvi: Bihar Mein Urdu Sahitya Ke Nirmata</em> is a biographical work by Syed Amjad Hussain centred on Akhtar Orenvi, a noted Urdu writer and poet associated with Bihar’s literary tradition.</p>
+          <p>The book’s focus is the life and literary contribution of Akhtar Orenvi, considered within the wider development of Urdu literature in Bihar. By placing a literary personality at the centre of the narrative, the work invites readers to look more closely at the writers who helped develop and sustain the region’s Urdu literary culture.</p>
+          <p>For Amjad, documenting literary figures is part of preserving cultural memory. Writers leave behind more than published pages: they leave ideas, influences and a place in the intellectual history of their time. This book is an effort to keep that contribution visible to readers today and to future generations.</p>
+          <blockquote class="pullquote">“A literary tradition lives on when the lives and work of its writers are remembered.”</blockquote>
+          <p>The page presents the book’s central subject and purpose without inventing a chapter list, quotations from the book, or unsupported publication details.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="themes">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow-dark">The focus</div>
+          <h2>Life, literature and cultural memory.</h2>
+          <p class="lead">The book connects the story of an individual writer with the broader history of Urdu literature in Bihar.</p>
+        </div>
+        <div class="themes">
+          <article class="theme-card">
+            <div class="theme-number">01</div>
+            <h3>Akhtar Orenvi’s life</h3>
+            <p>A biographical focus on the writer and poet at the heart of the book.</p>
+          </article>
+          <article class="theme-card">
+            <div class="theme-number">02</div>
+            <h3>Urdu literature in Bihar</h3>
+            <p>An exploration of the literary setting in which Akhtar Orenvi’s contribution is understood.</p>
+          </article>
+          <article class="theme-card">
+            <div class="theme-number">03</div>
+            <h3>Preserving literary memory</h3>
+            <p>Keeping the names and contributions of regional literary figures accessible to new readers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="details">
+      <div class="wrap two-col">
+        <div class="section-heading">
+          <div class="eyebrow-dark">Bibliographic details</div>
+          <h2>The book at a glance.</h2>
+          <p class="lead">A work from the early stage of Syed Amjad Hussain’s writing journey, focused on Urdu literary history.</p>
+        </div>
+        <div>
+          <div class="detail-grid">
+            <div class="detail"><span>Title</span><strong>Akhtar Orenvi: Bihar Mein Urdu Sahitya Ke Nirmata</strong></div>
+            <div class="detail"><span>Author</span><strong>Syed Amjad Hussain</strong></div>
+            <div class="detail"><span>Subject</span><strong>Biography · Urdu literature</strong></div>
+            <div class="detail"><span>Language</span><strong>Hindi / Urdu literary context</strong></div>
+            <div class="detail"><span>Publisher</span><strong>Notion Press</strong></div>
+            <div class="detail"><span>Publication year</span><strong>2023</strong></div>
+          </div>
+          <p style="margin-top:16px;color:var(--muted);font-size:12px">Publication details shown here are limited to information currently available for this page. Add an ISBN, page count, edition, or purchase link only after confirming the exact details.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="author-panel">
+          <div class="author-monogram" aria-hidden="true">امجدؔ</div>
+          <div>
+            <div class="eyebrow-dark">About the author</div>
+            <h3>Syed Amjad Hussain</h3>
+            <p>Author, poet, historian, humanitarian and independent research scholar from Jamuara, Sheikhpura, Bihar. His work engages with Bihar’s history, Sufism, Urdu literature and cultural heritage. This book reflects his interest in documenting the literary personalities who have shaped the region’s intellectual life.</p>
+            <div class="actions"><a class="button" href="biography.html">Read biography</a><a class="button secondary" style="color:var(--burgundy);border-color:var(--line)" href="the-eternals-of-bihar.html">The Eternals of Bihar</a><a class="button secondary" style="color:var(--burgundy);border-color:var(--line)" href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="wrap closing-inner">
+        <div>
+          <div class="eyebrow">Books · Research · Literary heritage</div>
+          <h2>Discover more of the author’s work.</h2>
+          <p>Explore writing on Bihar’s history, Urdu literature and cultural heritage.</p>
+        </div>
+        <div class="actions">
+          <a class="button" href="books-articles.html">All books and articles</a>
+          <a class="button secondary" href="home.html">Main website</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> Syed Amjad Hussain · Independent Research · Literature · Heritage</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="home.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+        <a href="the-eternals-of-bihar.html">The Eternals of Bihar</a>
+        <a href="research.html">Research</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen = mainNav.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.textContent = isOpen ? "✕ Close" : "☰ Menu";
+      });
+
+      mainNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mainNav.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.textContent = "☰ Menu";
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1050) {
+          mainNav.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.textContent = "☰ Menu";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
