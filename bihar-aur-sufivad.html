@@ -56,6 +56,36 @@ footer{background:#29151a;color:#d9c9ba;padding:26px 0;font-size:12px}.footer-in
 
 
   
+.book-stage {
+  min-height: 410px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.official-book-cover {
+  display: block;
+  width: min(290px, 78%);
+  height: auto;
+  max-height: 460px;
+  object-fit: contain;
+  box-shadow: 18px 22px 35px rgba(0, 0, 0, 0.3);
+  border: 1px solid #b89b6a;
+  transform: rotate(2deg);
+}
+
+@media (max-width: 760px) {
+  .book-stage {
+    min-height: 340px;
+  }
+
+  .official-book-cover {
+    width: 230px;
+    max-width: 78%;
+  }
+}
+  
 </style>
 </head>
 <body>
@@ -103,7 +133,16 @@ footer{background:#29151a;color:#d9c9ba;padding:26px 0;font-size:12px}.footer-in
 <div class="hero-meta"><span>By Syed Amjad Hussain</span><span>Rajmangal Prakashan</span><span>Published 2025</span></div>
 <div class="actions"><a class="btn gold" href="#about">Discover the book ↓</a><a class="btn outline" href="biography.html">About the author</a></div>
 </div>
-<div class="book-stage" aria-label="Stylised book cover illustration for Bihar Aur Sufivad">
+
+<div class="book-stage" aria-label="Official cover of Bihar Aur Sufivad">
+  <img
+    class="official-book-cover"
+    src="https://upload.wikimedia.org/wikipedia/en/c/c7/Bihar_Aur_Sufivad_%28book_cover%29.png"
+    alt="Bihar Aur Sufivad by Syed Amjad Hussain — official book cover"
+    loading="eager"
+  >
+</div>
+
 <div class="book"><div class="ornament">✦ ❧ ✦</div><div class="book-title">BIHAR<span>AUR SUFIVAD</span></div><div class="rule"></div><div class="subtitle">Sufi traditions and the spiritual history of Bihar</div><div class="ornament">۞</div><div class="author">Syed Amjad Hussain</div></div>
 <div class="book-note">Book-cover illustration · replace with official cover</div>
 </div>
