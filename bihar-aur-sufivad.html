@@ -23,14 +23,170 @@ header{background:var(--white);border-bottom:1px solid var(--line)}.nav{min-heig
 footer{background:#29151a;color:#d9c9ba;padding:26px 0;font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.footer-inner a{color:#e8d3ad}
 @media(max-width:760px){.wrap{width:min(100% - 30px,600px)}.nav{padding:17px 0;align-items:flex-start}.brand{font-size:18px}.navlinks{gap:10px;flex-wrap:wrap;justify-content:flex-end;font-size:12px}.navlinks a:not(.back){display:none}.hero-grid{grid-template-columns:1fr;padding:55px 0 52px;gap:20px}.hero h1{font-size:clamp(43px,12vw,64px)}.lead{font-size:17px}.book-stage{min-height:340px}.book{width:230px}.book-note{right:6px}.section{padding:56px 0}.two-col,.author-grid{grid-template-columns:1fr;gap:27px}.feature-grid{grid-template-columns:1fr}.feature{min-height:0}.facts{margin-top:4px}.cta-inner{align-items:flex-start;flex-direction:column}.section h2{font-size:34px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  
+/* Header and navigation refinement */
+header {
+  background: var(--paper);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  min-height: 86px;
+  padding: 0 5.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--gold);
+  color: var(--wine);
+  display: grid;
+  place-items: center;
+  font-family: Georgia, serif;
+  font-size: 27px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+}
+
+.brand-text strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.brand-text small {
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+#mainNav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  padding: 0;
+}
+
+#mainNav a {
+  color: var(--ink);
+  text-decoration: none;
+  font: 11px Arial, sans-serif;
+}
+
+#mainNav a:hover,
+#mainNav a[aria-current="page"] {
+  color: var(--wine);
+}
+
+.menu-toggle {
+  display: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--wine);
+  padding: 8px 12px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  header {
+    padding: 12px 5%;
+  }
+
+  .header-inner {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  #mainNav {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0;
+  }
+
+  #mainNav.open {
+    display: flex;
+  }
+
+  #mainNav a {
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+  }
+}
+  
 </style>
 </head>
 <body>
-<div class="topline"><div class="wrap"><span>Independent Research · Bihar Heritage</span><span>History · Spiritual Traditions · Literature</span></div></div>
-<header><div class="wrap nav">
-<a class="brand" href="#top">Syed Amjad Hussain<small>Ethnographer · Author · Poet · Historian · Humanitarian</small></a>
-<nav class="navlinks" aria-label="Main navigation"><a href="#about">About the book</a><a href="#contents">Themes</a><a href="#author">The author</a><a class="back" href="home.html">← Main website</a></nav>
-</div></header>
+
+<div class="topline">
+  <div class="wrap">
+    <span>Independent Research · Bihar Heritage</span>
+    <span>History · Spiritual Traditions · Literature</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="home.html">
+      <span class="brand-mark">أ</span>
+      <span class="brand-text">
+        <strong>Syed Amjad Hussain</strong>
+        <small>Ethnographer · Author · Poet · Historian · Humanitarian</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+      type="button" aria-expanded="false" aria-controls="mainNav">
+      ☰
+    </button>
+
+    <nav id="mainNav" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="bihar-aur-sufivad.html" aria-current="page">Bihar Aur Sufivad</a>
+      <a href="research.html">Research</a>
+      <a href="sufi-heritage.html">Sufi Heritage</a>
+      <a href="poetry.html">Poetry</a>
+      <a href="sher.html">Sher Collection</a>
+      <a href="awards-honours.html">Awards and Honours</a>
+    </nav>
+  </div>
+</header>
+
 <main id="top">
 <section class="hero"><div class="wrap hero-grid">
 <div>
@@ -80,5 +236,15 @@ footer{background:#29151a;color:#d9c9ba;padding:26px 0;font-size:12px}.footer-in
 </main>
 <footer><div class="wrap footer-inner"><span>© <span id="year">2026</span> Syed Amjad Hussain. All rights reserved.</span><span><a href="index.html">Main website</a> · Bihar Aur Sufivad</span></div></footer>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+
+menuToggle?.addEventListener('click', () => {
+  const isOpen = mainNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+  menuToggle.textContent = isOpen ? '×' : '☰';
+});
+  
 </body>
 </html>
