@@ -351,6 +351,187 @@
 
       .sher-card { break-inside: avoid; }
     }
+  /* Premium sher card and image-download experience */
+.sher-card {
+  background: #fffdf9;
+  border: 1px solid var(--gold);
+  outline: 1px solid #d6c19c;
+  outline-offset: -7px;
+  box-shadow: 0 12px 32px rgba(48, 21, 27, 0.07);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.sher-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(48, 21, 27, 0.12);
+}
+
+.sher-card.is-downloading {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.sher-text {
+  gap: 18px;
+}
+
+.sher-text .urdu {
+  color: #30151b;
+  font-size: 27px;
+  line-height: 2.35;
+}
+
+.sher-text .hindi {
+  color: #30151b;
+  font-size: 22px;
+  line-height: 1.9;
+}
+
+.sher-text .roman {
+  color: #64575a;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.poet-signature {
+  font-weight: 600;
+}
+
+.card-actions .btn {
+  min-height: 40px;
+  font-weight: 600;
+}
+
+.btn:disabled {
+  opacity: .7;
+  cursor: wait;
+}
+
+/* Used only when generating the downloadable image */
+.sher-download-art {
+  position: relative;
+  width: 900px;
+  min-height: 570px;
+  padding: 58px 64px 35px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  box-sizing: border-box;
+  color: #302327;
+  background:
+    radial-gradient(ellipse at top, #f2e7d5 0, transparent 68%),
+    #fffdf8;
+  border: 2px solid #b99a61;
+  outline: 1px solid #b99a61;
+  outline-offset: -13px;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.sher-download-art::before {
+  content: "❖";
+  color: #b99a61;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.sher-download-art .download-kicker {
+  margin: 0 0 30px;
+  color: #947345;
+  font: 600 13px/1.5 Arial, sans-serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.sher-download-art .download-poetry {
+  width: 100%;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 23px;
+}
+
+.sher-download-art .download-line {
+  max-width: 100%;
+  margin: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #30151b;
+  font-size: 31px;
+  line-height: 1.9;
+}
+
+.sher-download-art .download-line.urdu {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 36px;
+  line-height: 2.2;
+  direction: rtl;
+}
+
+.sher-download-art .download-line.hindi {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 30px;
+}
+
+.sher-download-art .download-line.roman {
+  color: #64575a;
+  font-size: 23px;
+  font-style: italic;
+}
+
+.sher-download-art .download-divider {
+  width: 90px;
+  height: 1px;
+  margin: 28px 0 17px;
+  background: #b99a61;
+}
+
+.sher-download-art .download-author {
+  margin: 0;
+  color: #472127;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.sher-download-art .download-takhallus {
+  margin: 7px 0 0;
+  color: #947345;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.sher-download-art .download-watermark {
+  width: 100%;
+  margin: 31px 0 0;
+  padding-top: 15px;
+  border-top: 1px solid #e6d9c8;
+  color: #8a6b43;
+  font: 600 15px/1.5 Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.sher-download-art .download-category {
+  margin: 10px 0 0;
+  color: #81777a;
+  font: 12px/1.5 Arial, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  .sher-text .urdu {
+    font-size: 25px;
+  }
+
+  .sher-card:hover {
+    transform: none;
+  }
+}
   </style>
 </head>
 
@@ -509,7 +690,7 @@
           </div>
 
           <div class="poet-signature">
-            Syed Amjad Hussain <span>Amjadؔ</span>
+            Syed Amjad Hussain
           </div>
 
           <div class="card-meta">
