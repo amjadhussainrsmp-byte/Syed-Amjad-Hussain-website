@@ -163,19 +163,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     </label>`;
   }
 
-  function ensureContentInterface() {
+  
+function ensureContentInterface() {
     let section = $("#content-manager");
 
-    if (section) {
+    // Reuse the empty placeholder already present in admin.html.
+    // Only return if the interface has actually been built.
+    if (section && section.dataset.initialized === "true") {
       bindWorkspaceButtons();
       return;
     }
 
-    section = document.createElement("section");
-    section.id = "content-manager";
-    section.className = "admin-card";
+    // Create the container only if admin.html doesn't contain one.
+    if (!section) {
+      section = document.createElement("section");
+      section.id = "content-manager";
+      app?.appendChild(section);
+    }
+
+    section.classList.add("admin-card");
+    section.dataset.initialized = "true";
 
     section.innerHTML = `
+
       <style>
         #content-manager{margin-top:24px;color:var(--admin-text,#30272a)}
         #content-manager *{box-sizing:border-box}
