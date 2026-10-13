@@ -515,21 +515,38 @@ const TYPES = [
       }
     }
 
-    const payload = {
-      title,
-      type,
-      slug,
-      category: document.getElementById("cm-category").value.trim(),
-      status: document.getElementById("cm-status").value,
-      summary: document.getElementById("cm-summary").value.trim(),
-      body: document.getElementById("cm-body").value,
-      image_url: image || null,
-      seo_title: document.getElementById("cm-seo-title").value.trim(),
-      seo_description:
-        document.getElementById("cm-seo-description").value.trim(),
-      sort_order: sortOrder,
-      featured: document.getElementById("cm-featured").checked
-    };
+    
+const payload = {
+  title,
+  type,
+  slug,
+
+  category: document.getElementById("cm-category").value.trim(),
+  status: document.getElementById("cm-status").value,
+  summary: document.getElementById("cm-summary").value.trim(),
+  body: document.getElementById("cm-body").value,
+
+  image_url: image || null,
+  seo_title: document.getElementById("cm-seo-title").value.trim(),
+  seo_description: document.getElementById("cm-seo-description").value.trim(),
+
+  sort_order: sortOrder,
+  featured: document.getElementById("cm-featured").checked,
+
+  // Poetry Studio fields
+  poem_type: document.getElementById("cm-poem-type").value.trim(),
+  language_primary: document.getElementById("cm-language-primary").value,
+  poet_name: document.getElementById("cm-poet-name").value.trim(),
+  takhallus: document.getElementById("cm-takhallus").value.trim(),
+  radeef: document.getElementById("cm-radeef").value.trim(),
+  qaafiya: document.getElementById("cm-qaafiya").value.trim(),
+  beher: document.getElementById("cm-beher").value.trim(),
+
+  text_urdu: document.getElementById("cm-text-urdu").value,
+  text_roman: document.getElementById("cm-text-roman").value,
+  text_hindi: document.getElementById("cm-text-hindi").value,
+  poetry_notes: document.getElementById("cm-poetry-notes").value
+};
 
     saveButton.disabled = true;
     notice(editingId ? "Updating content..." : "Saving content...");
