@@ -324,6 +324,287 @@ footer{background:#29151a;color:#d9c9ba;padding:25px 0;font-size:12px}.foot{disp
     font-size: 12px;
   }
 
+
+/* =========================================
+   HEADER AND NAVIGATION — MATCH HOME.HTML
+========================================= */
+
+.top {
+  height: 32px;
+  padding: 0 5.5%;
+  display: flex;
+  align-items: center;
+  background: var(--wine2);
+  color: #e9ded0;
+  font-size: 9px;
+  letter-spacing: .16em;
+}
+
+.top .wrap {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.site-header {
+  box-sizing: border-box;
+  height: 86px;
+  padding: 0 5.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid rgba(90, 67, 56, .12);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(244, 239, 230, .96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.site-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: inherit;
+}
+
+.site-header .brand-mark {
+  box-sizing: border-box;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--gold);
+  color: var(--wine);
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 27px;
+  line-height: 1;
+}
+
+.site-header .brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.site-header .brand-text strong {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+.site-header .brand-text small {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+/* Desktop navigation */
+
+.site-header #mainNav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 25px;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: #544942;
+}
+
+.site-header #mainNav a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.site-header #mainNav > a,
+.site-header #mainNav .nav-parent {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.site-header #mainNav a:hover,
+.site-header #mainNav a:focus-visible,
+.site-header #mainNav > a[aria-current="page"] {
+  color: var(--wine);
+}
+
+.site-header #mainNav .nav-contact {
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+  color: var(--ink);
+}
+
+.site-header #mainNav .nav-contact span {
+  color: var(--wine);
+  margin-left: 9px;
+}
+
+/* Dropdown menus */
+
+.site-header #mainNav .nav-dropdown {
+  position: relative;
+}
+
+.site-header #mainNav .nav-parent {
+  cursor: pointer;
+}
+
+.site-header #mainNav .nav-arrow {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 14px;
+  line-height: 1;
+  transition: transform .2s ease;
+}
+
+.site-header #mainNav .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -12px;
+  min-width: 225px;
+  padding: 8px;
+  margin: 0;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 30px rgba(47, 41, 38, .12);
+  z-index: 100;
+}
+
+.site-header #mainNav .dropdown-menu a {
+  display: block;
+  padding: 11px 12px;
+  font-size: 11px;
+  line-height: 1.5;
+  white-space: normal;
+}
+
+.site-header #mainNav .dropdown-menu a:hover,
+.site-header #mainNav .dropdown-menu a:focus-visible {
+  color: var(--wine);
+  background: #ebe3d7;
+}
+
+@media (min-width: 781px) {
+  .site-header #mainNav .nav-dropdown:hover > .dropdown-menu,
+  .site-header #mainNav .nav-dropdown:focus-within > .dropdown-menu {
+    display: block;
+  }
+
+  .site-header #mainNav .nav-dropdown:hover .nav-arrow {
+    transform: rotate(180deg);
+  }
+}
+
+/* Menu toggle */
+
+.site-header .menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: var(--wine);
+  padding: 8px;
+  font-family: var(--sans);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Tablet */
+
+@media (max-width: 1050px) and (min-width: 781px) {
+  .site-header {
+    gap: 12px;
+  }
+
+  .site-header #mainNav {
+    gap: 14px;
+    font-size: 10px;
+  }
+
+  .site-header .brand-text small {
+    letter-spacing: .06em;
+  }
+}
+
+/* Mobile navigation */
+
+@media (max-width: 780px) {
+  .top {
+    padding: 0 5%;
+    font-size: 7px;
+    letter-spacing: .1em;
+  }
+
+  .site-header {
+    height: 72px;
+    padding: 0 5%;
+  }
+
+  .site-header .brand {
+    gap: 9px;
+  }
+
+  .site-header .brand-mark {
+    width: 36px;
+    height: 36px;
+    font-size: 25px;
+  }
+
+  .site-header .brand-text strong {
+    font-size: 14px;
+  }
+
+  .site-header .brand-text small {
+    font-size: 7px;
+    letter-spacing: .04em;
+    white-space: normal;
+    max-width: 225px;
+  }
+
+  .site-header .menu-toggle {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .site-header #mainNav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    padding: 18px 5% 24px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 16px 28px rgba(33, 16, 22, .08);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    font-size: 12px;
+  }
+
   .site-header #mainNav.open {
     display: flex;
   }
@@ -339,23 +620,21 @@ footer{background:#29151a;color:#d9c9ba;padding:25px 0;font-size:12px}.foot{disp
     white-space: normal;
   }
 
-  .site-header #mainNav > a.nav-contact {
+  .site-header #mainNav .nav-contact {
     justify-content: center;
     margin-top: 12px;
-    padding: 12px 14px;
-    border: 1px solid var(--line);
+    padding: 12px;
   }
 
   .site-header #mainNav .nav-dropdown {
     width: 100%;
   }
 
-  /* Mobile submenus stay visible inside the open menu */
   .site-header #mainNav .dropdown-menu {
     display: block;
     position: static;
     min-width: 0;
-    width: auto;
+    width: 100%;
     padding: 2px 0 2px 12px;
     margin: 0 0 8px 10px;
     border: 0;
@@ -367,52 +646,30 @@ footer{background:#29151a;color:#d9c9ba;padding:25px 0;font-size:12px}.foot{disp
   .site-header #mainNav .dropdown-menu a {
     padding: 9px 10px;
     font-size: 11px;
-    border: 0;
-  }
-
-  .site-header #mainNav .nav-arrow {
-    transition: none;
   }
 }
 
-/* Smaller phones */
 @media (max-width: 420px) {
   .site-header {
     padding: 0 4%;
   }
 
-  .site-header .brand {
-    gap: 9px;
-  }
-
   .site-header .brand-mark {
-    width: 36px;
-    height: 36px;
-    font-size: 24px;
+    width: 34px;
+    height: 34px;
+    font-size: 23px;
   }
 
   .site-header .brand-text strong {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .site-header .brand-text small {
-    font-size: 7px;
-    letter-spacing: .04em;
-    white-space: normal;
-    max-width: 225px;
-  }
-
-  .site-header .menu-toggle {
-    font-size: 22px;
+    font-size: 6px;
+    max-width: 205px;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .site-header #mainNav .nav-arrow,
-  .site-header #mainNav .dropdown-menu a {
-    transition: none;
-  }
-}
 </style></head>
 <body>
 <div class="top"><div class="wrap"><span>INDEPENDENT RESEARCH · LITERATURE · HERITAGE</span><span>Bihar, India</span></div></div>
@@ -509,50 +766,38 @@ footer{background:#29151a;color:#d9c9ba;padding:25px 0;font-size:12px}.foot{disp
   <a href="contact.html">Contact</a>
 </span>
 </span></div></footer>
+
 <script>
-  const yearElement = document.getElementById('year');
-
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
-
-  const menuToggle = document.getElementById('menuToggle');
-  const mainNav = document.getElementById('mainNav');
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
 
   if (menuToggle && mainNav) {
-    function closeMenu() {
-      mainNav.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', 'Open navigation');
-      menuToggle.textContent = '☰';
-    }
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
 
-    menuToggle.addEventListener('click', () => {
-      const isOpen = mainNav.classList.toggle('open');
-
-      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute(
-        'aria-label',
-        isOpen ? 'Close navigation' : 'Open navigation'
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
       );
-
-      menuToggle.textContent = isOpen ? '✕' : '☰';
+      menuToggle.textContent = isOpen ? "✕" : "☰";
     });
 
-    mainNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.textContent = "☰";
+      });
     });
 
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 1050) {
-        closeMenu();
-      }
-    });
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') {
-        closeMenu();
-        menuToggle.focus();
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.textContent = "☰";
       }
     });
   }
