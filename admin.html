@@ -74,7 +74,7 @@
     }
 
     main {
-      max-width: 800px;
+      max-width: 850px;
       margin: 30px auto;
       padding: 0 20px 60px;
     }
@@ -87,12 +87,12 @@
     }
 
     .admin-btn {
-      flex: 1 1 200px;
-      padding: 12px 16px;
+      flex: 1 1 180px;
+      padding: 12px 14px;
       background: white;
       border: 1px solid var(--gold);
       color: var(--wine);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       border-radius: 4px;
       cursor: pointer;
@@ -128,6 +128,16 @@
       margin-bottom: 20px;
     }
 
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    @media(max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
     .form-group {
       margin-bottom: 18px;
     }
@@ -151,7 +161,7 @@
     }
 
     textarea.form-control {
-      min-height: 110px;
+      min-height: 100px;
       resize: vertical;
     }
 
@@ -204,23 +214,24 @@
 
 <header class="site-header">
   <h1>Editorial Admin Studio</h1>
-  <p>Content Manager & Publishing Suite</p>
+  <p>Content Manager & Heritage Suite</p>
 </header>
 
 <main>
   <div class="admin-nav">
     <button class="admin-btn active" type="button" onclick="switchTab('poetryStudio', this)">Poetry Studio</button>
     <button class="admin-btn" type="button" onclick="switchTab('sherStudio', this)">Sher Studio</button>
-    <button class="admin-btn" type="button" onclick="switchTab('allContent', this)">All Content Archive</button>
+    <button class="admin-btn" type="button" onclick="switchTab('sufiStudio', this)">Sufi Saints Studio</button>
+    <button class="admin-btn" type="button" onclick="switchTab('allContent', this)">All Archive</button>
   </div>
 
   <!-- Poetry Studio Section -->
   <section id="poetryStudio" class="admin-section active">
-    <h2>Poetry Studio (Ghazal / Naat / Manqabat)</h2>
+    <h2>Poetry Studio (Ghazal / Naat)</h2>
     <form id="poetryForm">
       <div class="form-group">
         <label for="poetryTitle">Main Title *</label>
-        <input type="text" id="poetryTitle" class="form-control" required placeholder="Enter poem title">
+        <input type="text" id="poetryTitle" class="form-control" required placeholder="Enter title">
       </div>
 
       <div class="form-group">
@@ -265,17 +276,16 @@
           <option value="Love">Love</option>
           <option value="Sufi">Sufi</option>
           <option value="Reflection">Reflection</option>
-          <option value="Ishq">Ishq</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="sherUrdu">Urdu Couplet (Nastaliq)</label>
+        <label for="sherUrdu">Urdu Couplet</label>
         <textarea id="sherUrdu" class="form-control" dir="rtl" placeholder="اردو شعر..."></textarea>
       </div>
 
       <div class="form-group">
-        <label for="sherHindi">Hindi Couplet (Devanagari)</label>
+        <label for="sherHindi">Hindi Couplet</label>
         <textarea id="sherHindi" class="form-control" placeholder="हिंदी शेर..."></textarea>
       </div>
 
@@ -289,165 +299,184 @@
     </form>
   </section>
 
-  <!-- All Content Archive Section -->
+  <!-- Sufi Saints Studio Section (Matching sufi-heritage.html fields) -->
+  <section id="sufiStudio" class="admin-section">
+    <h2>Sufi Saints Studio</h2>
+    <form id="sufiForm">
+      <div class="form-group">
+        <label for="saintName">Saint Name *</label>
+        <input type="text" id="saintName" class="form-control" required placeholder="e.g., Hazrat Makhdoom Yahya Maneri">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="shrineLocation">Location / Shrine *</label>
+          <input type="text" id="shrineLocation" class="form-control" required placeholder="e.g., Maner Sharif">
+        </div>
+        <div class="form-group">
+          <label for="eraCentury">Era / Century</label>
+          <input type="text" id="eraCentury" class="form-control" placeholder="e.g., 13th Century">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="saintDesc">Description *</label>
+        <textarea id="saintDesc" class="form-control" required placeholder="A brief spiritual description of the saint..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="saintLink">Profile Link / Path</label>
+        <input type="text" id="saintLink" class="form-control" placeholder="e.g., saints/makhdoom-yahya-maneri.html">
+      </div>
+
+      <button type="submit" id="sufiSaveBtn" class="submit-btn">Save Saint Record</button>
+      <button type="button" id="sufiCancelBtn" class="submit-btn" style="background:#81777a; display:none; margin-left:10px;" onclick="resetSufiForm()">Cancel Edit</button>
+    </form>
+  </section>
+
+  <!-- All Archive Section -->
   <section id="allContent" class="admin-section">
     <h2>All Content Archive</h2>
-    <p style="color:var(--muted); font-size:12px; margin-bottom:15px;">Manage, edit, or delete items in database.</p>
+    
+    <h3 style="color:var(--wine); font-size:15px; margin-top:10px;">Poetry Archive</h3>
+    <div id="poetryArchiveContainer"><p style="color:var(--muted); font-size:12px;">Loading...</p></div>
 
-    <h3 style="color:var(--wine); font-size:16px;">Poetry Collection</h3>
-    <div id="poetryArchiveContainer">
-      <p style="text-align:center; color:var(--muted);">Loading poetry...</p>
-    </div>
+    <br><hr style="border-top: 1px solid var(--border);"><br>
+    
+    <h3 style="color:var(--wine); font-size:15px;">Sher Archive</h3>
+    <div id="sherArchiveContainer"><p style="color:var(--muted); font-size:12px;">Loading...</p></div>
 
     <br><hr style="border-top: 1px solid var(--border);"><br>
 
-    <h3 style="color:var(--wine); font-size:16px;">Sher Collection</h3>
-    <div id="sherArchiveContainer">
-      <p style="text-align:center; color:var(--muted);">Loading shers...</p>
-    </div>
+    <h3 style="color:var(--wine); font-size:15px;">Sufi Saints Archive</h3>
+    <div id="sufiArchiveContainer"><p style="color:var(--muted); font-size:12px;">Loading...</p></div>
   </section>
 </main>
 
 <script>
   let editingPoetryId = null;
   let editingSherId = null;
+  let editingSufiId = null;
 
   function getClient() {
-    return supabase.createClient(
-      window.ADMIN_CONFIG.supabaseUrl,
-      window.ADMIN_CONFIG.supabaseAnonKey
-    );
+    return supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
   }
 
   function switchTab(tabId, element) {
     document.querySelectorAll('.admin-section').forEach(sec => sec.classList.remove('active'));
     document.querySelectorAll('.admin-btn').forEach(btn => btn.classList.remove('active'));
-
     document.getElementById(tabId).classList.add('active');
     element.classList.add('active');
-
-    if (tabId === 'allContent') {
-      loadArchives();
-    }
+    if (tabId === 'allContent') loadArchives();
   }
 
-  function escapeHTML(value = "") {
-    return String(value).replace(/[&<>"']/g, character => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    })[character]);
+  function escapeHTML(val = "") {
+    return String(val).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   }
 
-  // --- POETRY FORM HANDLING ---
+  // Poetry Submission
   document.getElementById('poetryForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const title = document.getElementById('poetryTitle').value.trim();
-    const type = document.getElementById('poetryType').value;
-    const urdu_text = document.getElementById('poetryUrdu').value;
-    const hindi_text = document.getElementById('poetryHindi').value;
-    const roman_text = document.getElementById('poetryRoman').value;
-
+    const data = {
+      title: document.getElementById('poetryTitle').value.trim(),
+      type: document.getElementById('poetryType').value,
+      urdu_text: document.getElementById('poetryUrdu').value,
+      hindi_text: document.getElementById('poetryHindi').value,
+      roman_text: document.getElementById('poetryRoman').value
+    };
     try {
       const client = getClient();
-      let res;
-      if (editingPoetryId) {
-        res = await client.from('poetry').update({ title, type, urdu_text, hindi_text, roman_text }).eq('id', editingPoetryId);
-      } else {
-        res = await client.from('poetry').insert([{ title, type, urdu_text, hindi_text, roman_text }]);
-      }
+      const res = editingPoetryId ? await client.from('poetry').update(data).eq('id', editingPoetryId) : await client.from('poetry').insert([data]);
       if (res.error) throw res.error;
-
-      alert(editingPoetryId ? "Poetry updated!" : "Poetry saved successfully!");
+      alert(editingPoetryId ? "Poetry updated!" : "Poetry saved!");
       resetPoetryForm();
       loadArchives();
-    } catch (err) {
-      alert("Error: " + err.message);
-    }
+    } catch(err) { alert("Error: " + err.message); }
   });
 
-  // --- SHER FORM HANDLING ---
+  // Sher Submission
   document.getElementById('sherForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const category = document.getElementById('sherCategory').value;
-    const sher_urdu = document.getElementById('sherUrdu').value;
-    const sher_hindi = document.getElementById('sherHindi').value;
-    const sher_roman = document.getElementById('sherRoman').value;
-
+    const data = {
+      category: document.getElementById('sherCategory').value,
+      sher_urdu: document.getElementById('sherUrdu').value,
+      sher_hindi: document.getElementById('sherHindi').value,
+      sher_roman: document.getElementById('sherRoman').value,
+      language: 'Roman Urdu'
+    };
     try {
       const client = getClient();
-      let res;
-      if (editingSherId) {
-        res = await client.from('sher').update({ category, sher_urdu, sher_hindi, sher_roman }).eq('id', editingSherId);
-      } else {
-        res = await client.from('sher').insert([{ category, sher_urdu, sher_hindi, sher_roman, language: 'Roman Urdu' }]);
-      }
+      const res = editingSherId ? await client.from('sher').update(data).eq('id', editingSherId) : await client.from('sher').insert([data]);
       if (res.error) throw res.error;
-
-      alert(editingSherId ? "Sher updated!" : "Sher saved successfully!");
+      alert(editingSherId ? "Sher updated!" : "Sher saved!");
       resetSherForm();
       loadArchives();
-    } catch (err) {
-      alert("Error: " + err.message);
-    }
+    } catch(err) { alert("Error: " + err.message); }
   });
 
-  // --- LOAD ARCHIVES ---
-  async function loadArchives() {
-    const poetryBox = document.getElementById("poetryArchiveContainer");
-    const sherBox = document.getElementById("sherArchiveContainer");
-
+  // Sufi Saint Submission (Updated with exact matching fields)
+  document.getElementById('sufiForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = {
+      saint_name: document.getElementById('saintName').value.trim(),
+      shrine_location: document.getElementById('shrineLocation').value.trim(),
+      era_century: document.getElementById('eraCentury').value.trim(),
+      roman_desc: document.getElementById('saintDesc').value.trim(),
+      roman_desc_link: document.getElementById('saintLink').value.trim()
+    };
     try {
       const client = getClient();
+      const res = editingSufiId ? await client.from('sufi_saints').update(data).eq('id', editingSufiId) : await client.from('sufi_saints').insert([data]);
+      if (res.error) throw res.error;
+      alert(editingSufiId ? "Saint record updated!" : "Saint record saved!");
+      resetSufiForm();
+      loadArchives();
+    } catch(err) { alert("Error: " + err.message); }
+  });
 
-      // Load Poetry
-      const { data: poetryData } = await client.from('poetry').select('*').order('id', { ascending: false });
-      if (!poetryData || poetryData.length === 0) {
-        poetryBox.innerHTML = `<p style="color:var(--muted); font-size:12px;">No poetry in database.</p>`;
-      } else {
-        poetryBox.innerHTML = poetryData.map(item => `
-          <div class="archive-item">
-            <div>
-              <strong>${escapeHTML(item.title || 'Untitled')}</strong>
-              <small>(${escapeHTML(item.type || 'Ghazal')})</small>
-            </div>
-            <div class="archive-actions">
-              <button class="btn-action btn-edit" onclick="editPoetry(${item.id})">Edit</button>
-              <button class="btn-action btn-delete" onclick="deleteRecord('poetry', ${item.id})">Delete</button>
-            </div>
-          </div>
-        `).join('');
-      }
+  // Load Archives
+  async function loadArchives() {
+    const client = getClient();
+    
+    // Poetry
+    const { data: pData } = await client.from('poetry').select('*').order('id', { ascending: false });
+    document.getElementById('poetryArchiveContainer').innerHTML = !pData || !pData.length ? `<p style="color:var(--muted); font-size:12px;">No poetry records.</p>` : pData.map(item => `
+      <div class="archive-item">
+        <div><strong>${escapeHTML(item.title)}</strong> <small>(${escapeHTML(item.type)})</small></div>
+        <div class="archive-actions">
+          <button class="btn-action btn-edit" onclick="editPoetry(${item.id})">Edit</button>
+          <button class="btn-action btn-delete" onclick="delRecord('poetry', ${item.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
 
-      // Load Sher
-      const { data: sherData } = await client.from('sher').select('*').order('id', { ascending: false });
-      if (!sherData || sherData.length === 0) {
-        sherBox.innerHTML = `<p style="color:var(--muted); font-size:12px;">No shers in database.</p>`;
-      } else {
-        sherBox.innerHTML = sherData.map(item => `
-          <div class="archive-item">
-            <div>
-              <strong>${escapeHTML((item.sher_roman || item.sher_hindi || item.sher_urdu || '').slice(0, 40))}...</strong>
-              <small>(${escapeHTML(item.category || 'Life')})</small>
-            </div>
-            <div class="archive-actions">
-              <button class="btn-action btn-edit" onclick="editSher(${item.id})">Edit</button>
-              <button class="btn-action btn-delete" onclick="deleteRecord('sher', ${item.id})">Delete</button>
-            </div>
-          </div>
-        `).join('');
-      }
+    // Sher
+    const { data: sData } = await client.from('sher').select('*').order('id', { ascending: false });
+    document.getElementById('sherArchiveContainer').innerHTML = !sData || !sData.length ? `<p style="color:var(--muted); font-size:12px;">No sher records.</p>` : sData.map(item => `
+      <div class="archive-item">
+        <div><strong>${escapeHTML((item.sher_roman || item.sher_urdu || '').slice(0, 35))}...</strong> <small>(${escapeHTML(item.category)})</small></div>
+        <div class="archive-actions">
+          <button class="btn-action btn-edit" onclick="editSher(${item.id})">Edit</button>
+          <button class="btn-action btn-delete" onclick="delRecord('sher', ${item.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
 
-    } catch (err) {
-      console.error(err);
-    }
+    // Sufi Saints
+    const { data: sufiData } = await client.from('sufi_saints').select('*').order('id', { ascending: false });
+    document.getElementById('sufiArchiveContainer').innerHTML = !sufiData || !sufiData.length ? `<p style="color:var(--muted); font-size:12px;">No sufi saint records.</p>` : sufiData.map(item => `
+      <div class="archive-item">
+        <div><strong>${escapeHTML(item.saint_name)}</strong> <small>(${escapeHTML(item.shrine_location || '')})</small></div>
+        <div class="archive-actions">
+          <button class="btn-action btn-edit" onclick="editSufi(${item.id})">Edit</button>
+          <button class="btn-action btn-delete" onclick="delRecord('sufi_saints', ${item.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
   }
 
   async function editPoetry(id) {
-    const client = getClient();
-    const { data } = await client.from('poetry').select('*').eq('id', id).single();
+    const { data } = await getClient().from('poetry').select('*').eq('id', id).single();
     if (data) {
       document.getElementById('poetryTitle').value = data.title || '';
       document.getElementById('poetryType').value = data.type || 'Ghazal';
@@ -457,14 +486,12 @@
       editingPoetryId = id;
       document.getElementById('poetrySaveBtn').textContent = 'Update Poetry';
       document.getElementById('poetryCancelBtn').style.display = 'inline-block';
-
       switchTab('poetryStudio', document.querySelectorAll('.admin-btn')[0]);
     }
   }
 
   async function editSher(id) {
-    const client = getClient();
-    const { data } = await client.from('sher').select('*').eq('id', id).single();
+    const { data } = await getClient().from('sher').select('*').eq('id', id).single();
     if (data) {
       document.getElementById('sherCategory').value = data.category || 'Life';
       document.getElementById('sherUrdu').value = data.sher_urdu || '';
@@ -473,15 +500,28 @@
       editingSherId = id;
       document.getElementById('sherSaveBtn').textContent = 'Update Sher';
       document.getElementById('sherCancelBtn').style.display = 'inline-block';
-
       switchTab('sherStudio', document.querySelectorAll('.admin-btn')[1]);
     }
   }
 
-  async function deleteRecord(table, id) {
-    if (!confirm(`Are you sure you want to delete this item from ${table}?`)) return;
-    const client = getClient();
-    await client.from(table).delete().eq('id', id);
+  async function editSufi(id) {
+    const { data } = await getClient().from('sufi_saints').select('*').eq('id', id).single();
+    if (data) {
+      document.getElementById('saintName').value = data.saint_name || '';
+      document.getElementById('shrineLocation').value = data.shrine_location || '';
+      document.getElementById('eraCentury').value = data.era_century || '';
+      document.getElementById('saintDesc').value = data.roman_desc || '';
+      document.getElementById('saintLink').value = data.roman_desc_link || '';
+      editingSufiId = id;
+      document.getElementById('sufiSaveBtn').textContent = 'Update Saint Record';
+      document.getElementById('sufiCancelBtn').style.display = 'inline-block';
+      switchTab('sufiStudio', document.querySelectorAll('.admin-btn')[2]);
+    }
+  }
+
+  async function delRecord(table, id) {
+    if (!confirm("Are you sure you want to delete this record?")) return;
+    await getClient().from(table).delete().eq('id', id);
     alert("Deleted successfully!");
     loadArchives();
   }
@@ -492,12 +532,17 @@
     document.getElementById('poetrySaveBtn').textContent = 'Save Poetry';
     document.getElementById('poetryCancelBtn').style.display = 'none';
   }
-
   function resetSherForm() {
     document.getElementById('sherForm').reset();
     editingSherId = null;
     document.getElementById('sherSaveBtn').textContent = 'Save Sher';
     document.getElementById('sherCancelBtn').style.display = 'none';
+  }
+  function resetSufiForm() {
+    document.getElementById('sufiForm').reset();
+    editingSufiId = null;
+    document.getElementById('sufiSaveBtn').textContent = 'Save Saint Record';
+    document.getElementById('sufiCancelBtn').style.display = 'none';
   }
 </script>
 </body>
