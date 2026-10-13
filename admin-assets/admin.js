@@ -1,9 +1,8 @@
-// Initialize Supabase if available
 let supabaseClient = null;
-if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
-  supabaseClient = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+if (window.ADMIN_CONFIG && window.ADMIN_CONFIG.supabaseUrl && window.ADMIN_CONFIG.supabaseAnonKey) {
+  supabaseClient = supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
 } else {
-  console.warn("Supabase keys not found in admin-config.js!");
+  console.warn("Supabase keys not found in ADMIN_CONFIG!");
 }
 
 let activeCategory = 'poetry';
