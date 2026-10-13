@@ -2,147 +2,450 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Studio | SyedAmjadHussain.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editorial Admin Studio | Syed Amjad Hussain</title>
+  <meta name="theme-color" content="#472127">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-main: #fbf9f5;
-      --card-bg: #ffffff;
-      --accent-brown: #9a6b38;
-      --text-dark: #222222;
-      --text-muted: #666666;
-      --border-color: #e5dec9;
-      --radius: 12px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg-main); color: var(--text-dark); padding: 20px; }
-    
-    .container { max-width: 800px; margin: 0 auto; }
-    
-    header { margin-bottom: 24px; text-align: center; }
-    header h1 { font-size: 26px; font-weight: 700; color: var(--text-dark); }
-    header p { color: var(--text-muted); font-size: 14px; }
-
-    /* Nav Buttons Tabs */
-    .tab-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .tab-btn {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      padding: 14px 18px;
-      border-radius: var(--radius);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-dark);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: center;
-    }
-
-    .tab-btn:hover { background: #f4efe4; }
-    
-    .tab-btn.active {
-      background: var(--accent-brown);
-      color: #ffffff;
-      border-color: var(--accent-brown);
-      box-shadow: 0 4px 12px rgba(154, 107, 56, 0.2);
-    }
-
-    /* Dynamic Form Card */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    }
-
-    .card-header { margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
-    .card-header h2 { font-size: 20px; color: var(--accent-brown); }
-    .card-header p { font-size: 13px; color: var(--text-muted); }
-
-    .form-group { margin-bottom: 18px; }
-    .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-    .form-input {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      font-size: 14px;
-      outline: none;
-      background: #fafafa;
-    }
-    .form-input:focus { border-color: var(--accent-brown); background: #ffffff; }
-
-    textarea.form-input { resize: vertical; min-height: 90px; }
-
-    .btn-submit {
-      width: 100%;
-      background: var(--accent-brown);
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 15px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    .btn-submit:hover { opacity: 0.9; }
-
-    #content-list { margin-top: 15px; }
-    .item-row { padding: 12px; border-bottom: 1px solid var(--border-color); }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Supabase JS Client & Config -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="admin-config.js"></script>
+
+  <style>
+    :root {
+      --wine: #472127;
+      --wine-dark: #30151b;
+      --gold: #b99a61;
+      --paper: #fbf8f2;
+      --ink: #302327;
+      --muted: #81777a;
+      --border: #e6d9c8;
+      --white: #fffdf8;
+      --sans: "DM Sans", Arial, sans-serif;
+      --serif: "Playfair Display", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .topline {
+      height: 32px;
+      background: var(--wine-dark);
+      color: #e9ded0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5.5%;
+      font-size: 9px;
+      letter-spacing: .16em;
+    }
+
+    .site-header {
+      padding: 25px 5.5% 15px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(244, 239, 230, .96);
+      text-align: center;
+    }
+
+    .site-header h1 {
+      margin: 0 0 5px;
+      font-family: var(--serif);
+      color: var(--wine);
+      font-size: 28px;
+    }
+
+    .site-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px 60px;
+    }
+
+    .admin-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .admin-btn {
+      width: 100%;
+      padding: 14px 20px;
+      background: white;
+      border: 1px solid var(--gold);
+      color: var(--wine);
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .admin-btn:hover, .admin-btn.active {
+      background: var(--wine);
+      color: white;
+      border-color: var(--wine);
+    }
+
+    .admin-section {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--gold);
+      outline: 1px solid #d6c19c;
+      outline-offset: -7px;
+      padding: 30px 25px;
+      box-shadow: 0 12px 32px rgba(48, 21, 27, 0.07);
+    }
+
+    .admin-section.active { display: block; }
+
+    .admin-section h2 {
+      margin-top: 0;
+      font-family: var(--serif);
+      color: var(--wine);
+      font-size: 22px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--wine);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: white;
+      color: var(--ink);
+      font: 14px var(--sans);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      padding: 12px 24px;
+      background: var(--wine);
+      color: white;
+      border: none;
+      border-radius: 3px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .submit-btn:hover { background: var(--wine-dark); }
+
+    .archive-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .archive-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-edit { background: var(--gold); color: white; }
+    .btn-delete { background: var(--wine); color: white; }
+  </style>
 </head>
+
 <body>
 
-  <div class="container">
-    <header>
-      <h1>Editorial Admin Studio</h1>
-      <p>SyedAmjadHussain.com Content Manager</p>
-    </header>
+<div class="topline">
+  <span>EDITORIAL DASHBOARD</span>
+  <span>SyedAmjadHussain.com</span>
+</div>
 
-    <!-- Workspace Selector Tabs -->
-    <div class="tab-grid">
-      <button class="tab-btn active" onclick="switchCategory('poetry', this)">Poetry Studio</button>
-      <button class="tab-btn" onclick="switchCategory('sher', this)">Sher Collection</button>
-      <button class="tab-btn" onclick="switchCategory('awards', this)">Awards & Honours</button>
-      <button class="tab-btn" onclick="switchCategory('books', this)">Books</button>
-      <button class="tab-btn" onclick="switchCategory('articles', this)">Articles</button>
-      <button class="tab-btn" onclick="switchCategory('sufi', this)">Sufi Heritage</button>
-      <button class="tab-btn" onclick="switchCategory('all', this)">All Content</button>
-    </div>
+<header class="site-header">
+  <h1>Editorial Admin Studio</h1>
+  <p>Content Manager & Publishing Suite</p>
+</header>
 
-    <!-- Form Container -->
-    <div class="card" id="form-card">
-      <div class="card-header">
-        <h2 id="form-title">Poetry Studio</h2>
-        <p id="form-desc">Add a ghazal, naat, manqabat, bait, or salam in Urdu, Hindi, and Roman script.</p>
-      </div>
-
-      <form id="admin-form" onsubmit="handleFormSubmit(event)">
-        <!-- Dynamic Fields Inject Here -->
-        <div id="dynamic-fields"></div>
-        <button type="submit" class="btn-submit" id="submit-btn">Save to Archive</button>
-      </form>
-    </div>
+<main>
+  <div class="admin-nav">
+    <button class="admin-btn active" type="button" onclick="switchTab('poetryStudio')">Poetry Studio (Add / Edit Poem)</button>
+    <button class="admin-btn" type="button" onclick="switchTab('allContent')">All Content Archive (View & Manage)</button>
   </div>
 
-  <!-- Main Logic JS -->
-  <script src="admin-assets/admin.js"></script>
+  <!-- Poetry Studio Section -->
+  <section id="poetryStudio" class="admin-section active">
+    <h2>Poetry Studio</h2>
+    <form id="poetryForm">
+      <div class="form-group">
+        <label for="poetryTitle">Main Title *</label>
+        <input type="text" id="poetryTitle" class="form-control" required placeholder="Enter poem or ghazal title">
+      </div>
+
+      <div class="form-group">
+        <label for="poetryType">Record Type *</label>
+        <select id="poetryType" class="form-control">
+          <option value="Ghazal">Ghazal</option>
+          <option value="Naat">Naat</option>
+          <option value="Manqabat">Manqabat</option>
+          <option value="Salam">Salam</option>
+          <option value="Bait">Bait</option>
+          <option value="Sher">Sher</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="poetryUrdu">Urdu Text (Nastaliq)</label>
+        <textarea id="poetryUrdu" class="form-control" dir="rtl" placeholder="اردو متن یہاں لکھیں..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="poetryHindi">Hindi Text (Devanagari)</label>
+        <textarea id="poetryHindi" class="form-control" placeholder="हिंदी टेक्स्ट यहाँ लिखें..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="poetryRoman">Roman Urdu Text</label>
+        <textarea id="poetryRoman" class="form-control" placeholder="Roman text here..."></textarea>
+      </div>
+
+      <button type="submit" id="poetrySaveBtn" class="submit-btn">Save to Archive</button>
+      <button type="button" id="cancelEditBtn" class="submit-btn" style="background:#81777a; display:none; margin-left:10px;" onclick="resetForm()">Cancel Edit</button>
+    </form>
+  </section>
+
+  <!-- All Content Archive Section -->
+  <section id="allContent" class="admin-section">
+    <h2>All Content Archive</h2>
+    <p style="color:var(--muted); font-size:12px; margin-bottom:15px;">Manage, edit, or delete existing published poems.</p>
+    <div id="archiveContainer">
+      <p style="text-align:center; color:var(--muted);">Loading archive...</p>
+    </div>
+  </section>
+</main>
+
+<script>
+  let editingPostId = null;
+
+  function switchTab(tabId) {
+    document.querySelectorAll('.admin-section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('.admin-btn').forEach(btn => btn.classList.remove('active'));
+
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+
+    if (tabId === 'allContent') {
+      loadArchive();
+    }
+  }
+
+  function escapeHTML(value = "") {
+    return String(value).replace(/[&<>"']/g, character => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[character]);
+  }
+
+  // Handle Form Submission (Insert or Update)
+  document.getElementById('poetryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const title = document.getElementById('poetryTitle').value.trim();
+    const type = document.getElementById('poetryType').value;
+    const urdu_text = document.getElementById('poetryUrdu').value;
+    const hindi_text = document.getElementById('poetryHindi').value;
+    const roman_text = document.getElementById('poetryRoman').value;
+
+    if (!window.ADMIN_CONFIG || !window.ADMIN_CONFIG.supabaseUrl) {
+      alert("Supabase configuration missing!");
+      return;
+    }
+
+    try {
+      const supabaseClient = supabase.createClient(
+        window.ADMIN_CONFIG.supabaseUrl,
+        window.ADMIN_CONFIG.supabaseAnonKey
+      );
+
+      let error;
+
+      if (editingPostId) {
+        // Update existing record
+        const res = await supabaseClient
+          .from('poetry')
+          .update({ title, type, urdu_text, hindi_text, roman_text })
+          .eq('id', editingPostId);
+        error = res.error;
+      } else {
+        // Insert new record
+        const res = await supabaseClient
+          .from('poetry')
+          .insert([{ title, type, urdu_text, hindi_text, roman_text }]);
+        error = res.error;
+      }
+
+      if (error) throw error;
+
+      alert(editingPostId ? "Post updated successfully!" : "Saved successfully to Poetry Studio!");
+      resetForm();
+      loadArchive();
+      
+    } catch (err) {
+      alert("Operation failed: " + err.message);
+    }
+  });
+
+  // Load Archive Items
+  async function loadArchive() {
+    const container = document.getElementById("archiveContainer");
+    container.innerHTML = `<p style="text-align:center; color:var(--muted);">Loading archive...</p>`;
+
+    try {
+      const supabaseClient = supabase.createClient(
+        window.ADMIN_CONFIG.supabaseUrl,
+        window.ADMIN_CONFIG.supabaseAnonKey
+      );
+
+      const { data, error } = await supabaseClient
+        .from('poetry')
+        .select('*')
+        .order('id', { ascending: false });
+
+      if (error) throw error;
+
+      if (!data || data.length === 0) {
+        container.innerHTML = `<p style="text-align:center; color:var(--muted);">No poetry found in archive.</p>`;
+        return;
+      }
+
+      container.innerHTML = data.map(item => `
+        <div class="archive-item">
+          <div>
+            <strong style="font-size:15px; color:var(--wine);">${escapeHTML(item.title || 'Untitled')}</strong>
+            <span style="font-size:11px; color:var(--muted); margin-left:8px; text-transform:uppercase;">(${escapeHTML(item.type || 'Ghazal')})</span>
+          </div>
+          <div class="archive-actions">
+            <button class="btn-action btn-edit" onclick="editPost(${item.id})">Edit</button>
+            <button class="btn-action btn-delete" onclick="deletePost(${item.id})">Delete</button>
+          </div>
+        </div>
+      `).join('');
+
+    } catch (err) {
+      container.innerHTML = `<p style="color:red; text-align:center;">Error loading archive: ${err.message}</p>`;
+    }
+  }
+
+  // Populate form for editing
+  async function editPost(id) {
+    try {
+      const supabaseClient = supabase.createClient(
+        window.ADMIN_CONFIG.supabaseUrl,
+        window.ADMIN_CONFIG.supabaseAnonKey
+      );
+
+      const { data, error } = await supabaseClient
+        .from('poetry')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (error) throw error;
+
+      document.getElementById('poetryTitle').value = data.title || '';
+      document.getElementById('poetryType').value = data.type || 'Ghazal';
+      document.getElementById('poetryUrdu').value = data.urdu_text || '';
+      document.getElementById('poetryHindi').value = data.hindi_text || '';
+      document.getElementById('poetryRoman').value = data.roman_text || '';
+
+      editingPostId = id;
+      document.getElementById('poetrySaveBtn').textContent = 'Update Post';
+      document.getElementById('cancelEditBtn').style.display = 'inline-block';
+
+      // Switch to studio tab
+      document.querySelectorAll('.admin-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.admin-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('poetryStudio').classList.add('active');
+      document.querySelector('.admin-btn').classList.add('active');
+
+    } catch (err) {
+      alert("Could not load post for editing: " + err.message);
+    }
+  }
+
+  // Delete Post
+  async function deletePost(id) {
+    if (!confirm("Are you sure you want to delete this poetry record?")) return;
+
+    try {
+      const supabaseClient = supabase.createClient(
+        window.ADMIN_CONFIG.supabaseUrl,
+        window.ADMIN_CONFIG.supabaseAnonKey
+      );
+
+      const { error } = await supabaseClient
+        .from('poetry')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+
+      alert("Post deleted successfully!");
+      loadArchive();
+    } catch (err) {
+      alert("Delete failed: " + err.message);
+    }
+  }
+
+  function resetForm() {
+    document.getElementById('poetryForm').reset();
+    editingPostId = null;
+    document.getElementById('poetrySaveBtn').textContent = 'Save to Archive';
+    document.getElementById('cancelEditBtn').style.display = 'none';
+  }
+</script>
 </body>
 </html>
