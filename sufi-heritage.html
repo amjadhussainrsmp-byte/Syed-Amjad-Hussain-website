@@ -2,1627 +2,347 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#651c2c">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sufi Heritage of Bihar | Syed Amjad Hussain</title>
-  <meta name="description" content="Explore the Sufi saints, khanqahs, dargahs, spiritual traditions and historical heritage of Bihar through the independent research of Syed Amjad Hussain.">
+  <meta name="description" content="Explore the profound Sufi heritage, shrines, and spiritual legacy of Bihar curated by Syed Amjad Hussain.">
+  <meta name="theme-color" content="#472127">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Supabase JS Client & Config -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin-config.js"></script>
 
   <style>
     :root {
-      --wine: #651c2c;
-      --wine-dark: #3f101b;
-      --wine-light: #84394a;
-      --gold: #bd9855;
-      --cream: #faf7f0;
-      --paper: #fffdf8;
-      --ink: #292321;
-      --muted: #756c66;
-      --line: #e8ddcf;
-      --shadow: 0 12px 35px rgba(55, 28, 25, .08);
+      --wine: #472127;
+      --wine-dark: #30151b;
+      --gold: #b99a61;
+      --paper: #fbf8f2;
+      --ink: #302327;
+      --muted: #81777a;
+      --border: #e6d9c8;
+      --white: #fffdf8;
+      --sans: "DM Sans", Arial, sans-serif;
+      --serif: "Playfair Display", Georgia, serif;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      background: var(--cream);
       color: var(--ink);
-      font-family: "DM Sans", sans-serif;
-      line-height: 1.75;
+      background: var(--paper);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
     }
 
-    img {
-      max-width: 100%;
+    a { color: inherit; text-decoration: none; }
+
+    .topline {
+      height: 32px;
+      background: var(--wine-dark);
+      color: #e9ded0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5.5%;
+      font-size: 9px;
+      letter-spacing: .16em;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .site-header {
+      min-height: 86px;
+      padding: 0 5.5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(90, 67, 56, .12);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244, 239, 230, .96);
+      backdrop-filter: blur(14px);
     }
 
-    button, input, select {
-      font: inherit;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    button, a {
-      -webkit-tap-highlight-color: transparent;
+    .brand-mark {
+      height: 42px;
+      width: 42px;
+      border: 1px solid var(--gold);
+      color: var(--wine);
+      display: grid;
+      place-items: center;
+      font-family: serif;
+      font-size: 27px;
     }
 
-    
-/* Header — matched to research.html */
-
-.topline {
-  min-height: 32px;
-  padding: 7px 5.5%;
-  background: var(--wine-dark);
-  color: #e5d5c3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  font-size: 9px;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  min-height: 83px;
-  padding: 14px 5.5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  background: rgba(250, 247, 240, .97);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(12px);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  flex-shrink: 0;
-  color: var(--wine);
-  text-decoration: none;
-  font-family: "DM Sans", sans-serif;
-  font-size: inherit;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.brand-mark {
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  border: 1px solid var(--gold);
-  color: var(--wine);
-  font-family: "Noto Nastaliq Urdu", serif;
-  font-size: 26px;
-}
-
-.brand-text strong {
-  display: block;
-  font-family: "Playfair Display", serif;
-  font-weight: 600;
-  font-size: 17px;
-  line-height: 1.35;
-}
-
-.brand-text small {
-  display: block;
-  margin-top: 4px;
-  color: var(--muted);
-  font-family: "DM Sans", sans-serif;
-  font-size: 8px;
-  font-weight: 400;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  gap: 23px;
-}
-
-nav a {
-  color: #544942;
-  font-size: 10px;
-  font-weight: 400;
-  white-space: nowrap;
-  transition: color .2s ease;
-}
-
-nav a:hover,
-nav a.active {
-  color: var(--wine);
-}
-
-nav a.active {
-  font-weight: 700;
-}
-
-.nav-contact {
-  border: 1px solid var(--wine);
-  padding: 10px 15px;
-  color: var(--wine);
-}
-
-.nav-contact:hover {
-  background: var(--wine);
-  color: var(--paper);
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  border: 1px solid var(--line);
-  padding: 8px 11px;
-  color: var(--wine);
-  cursor: pointer;
-}
-
-/* Tablet navigation */
-@media (max-width: 1050px) {
-  nav {
-    gap: 13px;
-  }
-
-  nav a {
-    font-size: 9px;
-  }
-
-  .brand-text strong {
-    font-size: 15px;
-  }
-
-  .brand-text small {
-    font-size: 7px;
-  }
-}
-
-/* Mobile navigation */
-@media (max-width: 780px) {
-  .site-header {
-    min-height: 75px;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: 18px 5.5% 23px;
-    background: var(--cream);
-    border-bottom: 1px solid var(--line);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-
-  nav.open {
-    display: flex;
-  }
-
-  nav a {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-    font-size: 11px;
-    white-space: normal;
-  }
-
-  nav .nav-contact {
-    margin-top: 10px;
-    padding: 12px;
-    text-align: center;
-    border: 1px solid var(--wine);
-  }
-}
-
-/* Small phones */
-@media (max-width: 420px) {
-  .topline {
-    font-size: 7px;
-    letter-spacing: .07em;
-  }
-
-  .brand {
-    gap: 9px;
-  }
-
-  .brand-mark {
-    width: 38px;
-    height: 38px;
-    font-size: 22px;
-  }
-
-  .brand-text strong {
-    font-size: 13px;
-  }
-
-  .brand-text small {
-    max-width: 190px;
-    line-height: 1.7;
-  }
-}
-
-    .hero {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 80% 20%, rgba(189,152,85,.18), transparent 34%),
-        linear-gradient(125deg, var(--wine-dark), var(--wine));
-      color: white;
-      padding: 92px 24px 82px;
-    }
-
-    .hero::before {
-      content: "بिहार";
-      position: absolute;
-      z-index: -1;
-      right: 2%;
-      bottom: -70px;
-      color: rgba(255,255,255,.045);
-      font-family: "Noto Nastaliq Urdu", serif;
-      font-size: clamp(100px, 22vw, 260px);
-      line-height: 1.5;
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      max-width: 1050px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .eyebrow {
-      color: #e0c48c;
-      text-transform: uppercase;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-    }
-
-    h1, h2, h3 {
-      font-family: "Playfair Display", serif;
-      line-height: 1.28;
-    }
-
-    .hero h1 {
-      max-width: 900px;
-      margin: 17px auto;
-      font-size: clamp(38px, 6.5vw, 70px);
+    .brand-text strong {
+      font-family: var(--serif);
+      font-size: 16px;
       font-weight: 600;
     }
 
-    .hero .subtitle {
-      margin: 0 auto 12px;
-      color: #ead6b4;
-      font-family: "Noto Nastaliq Urdu", serif;
-      font-size: clamp(18px, 3vw, 25px);
-      line-height: 2.2;
+    .brand-text small {
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-top: 3px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 65px 20px 45px;
+      background: radial-gradient(ellipse at top, #f0e5d3 0, transparent 72%), var(--paper);
+    }
+
+    .hero h1 {
+      margin: 15px 0 10px;
+      color: var(--wine);
+      font-family: var(--serif);
+      font-size: clamp(34px, 5vw, 50px);
     }
 
     .hero p {
-      max-width: 730px;
-      margin: 14px auto 0;
-      color: #f0e6df;
-      font-size: 15px;
+      max-width: 700px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 16px;
     }
 
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
+    main {
+      max-width: 1050px;
+      margin: auto;
+      padding: 0 22px 65px;
+    }
+
+    .saints-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
       margin-top: 30px;
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 11px 19px;
-      border: 1px solid var(--gold);
-      border-radius: 3px;
-      background: var(--gold);
-      color: #271a10;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: .2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button.outline {
-      background: transparent;
-      color: white;
-      border-color: rgba(255,255,255,.55);
-    }
-
-    .page-container {
-      max-width: 1190px;
-      margin: auto;
-      padding: 55px 24px 80px;
-    }
-
-    .intro {
-      max-width: 850px;
-      margin: 0 auto 65px;
-      text-align: center;
-    }
-
-    .section-label {
-      color: #98743a;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    .intro h2,
-    .section-heading h2 {
-      margin: 8px 0 15px;
-      color: var(--wine);
-      font-size: clamp(30px, 4vw, 43px);
-    }
-
-    .intro p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .section {
-      margin-bottom: 75px;
-    }
-
-    .section-heading {
-      margin-bottom: 25px;
-    }
-
-    .section-heading p {
-      max-width: 720px;
-      color: var(--muted);
-      font-size: 13px;
-      margin: 0;
-    }
-
-    .section-heading h2 {
-      margin-bottom: 10px;
-    }
-
-    .ornament {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin: 22px auto;
-      color: var(--gold);
-    }
-
-    .ornament::before,
-    .ornament::after {
-      content: "";
-      width: 55px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin: 30px 0 0;
-    }
-
-    .stat {
-      padding: 21px 12px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      text-align: center;
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--wine);
-      font-family: "Playfair Display", serif;
-      font-size: 23px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .feature-card {
-      padding: 26px 23px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      transition: .2s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-    }
-
-    .feature-icon {
-      display: flex;
-      width: 45px;
-      height: 45px;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #dfcda9;
-      border-radius: 50%;
-      color: var(--wine);
-      font-size: 21px;
-      margin-bottom: 18px;
-    }
-
-    .feature-card h3 {
-      margin: 0 0 10px;
-      color: var(--wine);
-      font-size: 23px;
-    }
-
-    .feature-card p {
-      color: var(--muted);
-      font-size: 13px;
-      margin: 0;
-    }
-
-    .search-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 22px 0;
-    }
-
-    .search-tools input,
-    .search-tools select {
-      min-width: 190px;
-      flex: 1;
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      background: var(--paper);
-      color: var(--ink);
-      outline: none;
-    }
-
-    .search-tools input:focus,
-    .search-tools select:focus {
-      border-color: var(--gold);
-    }
-
-    .saint-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
     .saint-card {
+      background: #fffdf9;
+      border: 1px solid var(--gold);
+      outline: 1px solid #d6c19c;
+      outline-offset: -7px;
+      padding: 25px 22px;
+      box-shadow: 0 10px 25px rgba(48, 21, 27, 0.05);
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      transition: .2s ease;
+      justify-content: space-between;
+      transition: transform .2s ease;
     }
 
     .saint-card:hover {
       transform: translateY(-3px);
-      box-shadow: var(--shadow);
     }
 
-    .saint-image {
-      height: 175px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at center, rgba(189,152,85,.16), transparent 60%),
-        linear-gradient(140deg, #6b2636, #39101b);
-      color: #e4c991;
-      font-size: 43px;
-    }
-
-    .saint-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .saint-content {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      padding: 20px;
+    .saint-card h3 {
+      margin: 0 0 8px;
+      color: var(--wine);
+      font-family: var(--serif);
+      font-size: 20px;
     }
 
     .saint-location {
-      color: #98743a;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .saint-content h3 {
-      margin: 8px 0;
-      color: var(--wine);
-      font-size: 22px;
-    }
-
-    .saint-content p {
-      color: var(--muted);
       font-size: 12px;
-      margin: 0 0 16px;
+      color: #947345;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .saint-desc {
+      font-size: 14px;
+      color: var(--ink);
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     .saint-link {
-      align-self: flex-start;
-      margin-top: auto;
-      padding-bottom: 3px;
-      border-bottom: 1px solid var(--gold);
-      color: var(--wine);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .empty-state {
-      display: none;
-      padding: 30px;
-      background: var(--paper);
-      border: 1px dashed var(--line);
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .order-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 15px;
-    }
-
-    .order-item {
-      padding: 22px;
-      border-left: 3px solid var(--gold);
-      background: var(--paper);
-      border-top: 1px solid var(--line);
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .order-item h3 {
-      margin: 0 0 7px;
-      color: var(--wine);
-      font-size: 22px;
-    }
-
-    .order-item p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .district-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 15px;
-    }
-
-    .district-card {
-      padding: 20px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-    }
-
-    .district-card h3 {
-      color: var(--wine);
-      margin: 0 0 8px;
-      font-size: 21px;
-    }
-
-    .district-card p {
-      color: var(--muted);
-      font-size: 12px;
-      margin: 0;
-    }
-
-    .research-box {
-      padding: 35px;
-      background: #f0e7d8;
-      border: 1px solid #e1d1b8;
-    }
-
-    .research-box h2 {
-      color: var(--wine);
-      font-size: 32px;
-      margin: 8px 0 14px;
-    }
-
-    .research-box p {
-      max-width: 800px;
-      color: #655448;
-      font-size: 13px;
-    }
-
-    .source-list {
-      padding-left: 20px;
-      color: #655448;
-      font-size: 13px;
-    }
-
-    .contribute {
-      padding: 38px 25px;
+      display: inline-block;
+      padding: 8px 14px;
       background: var(--wine);
       color: white;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 2px;
       text-align: center;
+      transition: background 0.2s;
     }
 
-    .contribute h2 {
-      font-size: 32px;
-      margin: 0 0 12px;
-    }
-
-    .contribute p {
-      max-width: 700px;
-      margin: 0 auto 22px;
-      color: #eee0d7;
-      font-size: 13px;
-    }
-
-    footer {
-      padding: 34px 20px;
+    .saint-link:hover {
       background: var(--wine-dark);
-      color: #f1e8df;
+    }
+
+    .site-footer {
+      padding: 25px 20px;
+      background: var(--wine-dark);
+      color: #e9dccc;
       text-align: center;
+      font-size: 12px;
     }
-
-    .footer-name {
-      font-family: "Playfair Display", serif;
-      font-size: 22px;
-    }
-
-    footer p {
-      margin: 7px 0;
-      color: #d4c3b9;
-      font-size: 11px;
-    }
-
-    footer a {
-      color: #e5c78d;
-    }
-
-    @media (max-width: 900px) {
-      .nav-wrap {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      nav {
-        justify-content: flex-start;
-      }
-
-      .feature-grid,
-      .saint-grid,
-      .district-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 580px) {
-      .hero {
-        padding: 65px 20px;
-      }
-
-      .page-container {
-        padding: 40px 16px 60px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-grid,
-      .saint-grid,
-      .district-grid,
-      .order-list {
-        grid-template-columns: 1fr;
-      }
-
-      .search-tools input,
-      .search-tools select {
-        min-width: 100%;
-      }
-
-      .research-box {
-        padding: 25px 20px;
-      }
-    }
-    /* Navigation dropdowns */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.site-header nav {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-}
-
-.nav-dropdown {
-  position: relative;
-}
-
-.nav-parent {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.nav-arrow {
-  font-size: 15px;
-  transition: transform 0.2s ease;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: -12px;
-  min-width: 220px;
-  padding: 8px;
-  background: var(--paper, #f4efe6);
-  border: 1px solid var(--line, #d8cdbd);
-  box-shadow: 0 12px 28px rgba(47, 25, 24, 0.12);
-  z-index: 120;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 11px 12px;
-  white-space: normal !important;
-  line-height: 1.5;
-  text-decoration: none;
-}
-
-.dropdown-menu a:hover {
-  background: var(--paper-2, #ebe3d7);
-  color: var(--wine, #652e36);
-}
-
-.nav-dropdown:hover .dropdown-menu,
-.nav-dropdown:focus-within .dropdown-menu,
-.nav-dropdown.dropdown-open .dropdown-menu {
-  display: block;
-}
-
-.nav-dropdown:hover .nav-arrow,
-.nav-dropdown.dropdown-open .nav-arrow {
-  transform: rotate(180deg);
-}
-
-.menu-toggle {
-  display: none;
-  border: 0;
-  background: none;
-  color: var(--wine, #652e36);
-  font-size: 25px;
-  cursor: pointer;
-}
-
-/* Mobile navigation */
-@media (max-width: 780px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .site-header nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    max-height: calc(100vh - 72px);
-    overflow-y: auto;
-    padding: 14px 5% 22px;
-    background: var(--paper, #f4efe6);
-    border-bottom: 1px solid var(--line, #d8cdbd);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-
-  .site-header nav.open {
-    display: flex;
-  }
-
-  .site-header nav > a,
-  .nav-parent {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line, #d8cdbd);
-    font-size: 13px;
-  }
-
-  .nav-dropdown {
-    width: 100%;
-  }
-
-  .dropdown-menu {
-    display: none;
-    position: static;
-    min-width: 0;
-    padding: 4px 0 8px 14px;
-    border: 0;
-    border-left: 2px solid var(--gold, #b89b6a);
-    box-shadow: none;
-    background: transparent;
-  }
-
-  .nav-dropdown.dropdown-open .dropdown-menu {
-    display: block;
-  }
-
-  .dropdown-menu a {
-    padding: 10px 12px;
-    font-size: 12px;
-  }
-
-  .site-header nav .nav-contact {
-    justify-content: center;
-    margin-top: 12px;
-    padding: 12px;
-    border: 1px solid var(--line, #d8cdbd);
-  }
-}
   </style>
 </head>
 
 <body>
 
-
 <div class="topline">
-  <span>Independent Research · Literature · Heritage</span>
-  <span>Bihar, India</span>
+  <span>SUFI HERITAGE · BIHAR RESEARCH</span>
+  <span>SyedAmjadHussain.com</span>
 </div>
 
 <header class="site-header">
-  <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
-    <span class="brand-mark" aria-hidden="true">أ</span>
+  <a class="brand" href="home.html">
+    <span class="brand-mark">أ</span>
     <span class="brand-text">
       <strong>Syed Amjad Hussain</strong>
-      <small>Ethnographer · Author · Historian · Poet · Humanitarian</small>
+      <small>Researcher & Sufi Historian</small>
     </span>
   </a>
-
-  <button class="menu-toggle" id="menuToggle"
-  aria-label="Open navigation"
-  aria-expanded="false"
-  aria-controls="mainNav">☰</button>
-
-<nav id="mainNav" aria-label="Main navigation">
-
-  <a href="home.html">Home</a>
-
-  <a href="biography.html">Biography</a>
-
-  <div class="nav-dropdown">
-    <a href="books-articles.html" class="nav-parent">
-      Books &amp; Articles <span class="nav-arrow">⌄</span>
-    </a>
-    <div class="dropdown-menu">
-      <a href="the-eternals-of-bihar.html">The Eternals of Bihar</a>
-      <a href="akhtar-orenvi-bio.html">Akhtar Orenvi</a>
-      <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
-    </div>
-  </div>
-
-  <div class="nav-dropdown">
-    <a href="poetry.html" class="nav-parent">
-      Poetry <span class="nav-arrow">⌄</span>
-    </a>
-    <div class="dropdown-menu">
-      <a href="sher.html">Sher Collection</a>
-    </div>
-  </div>
-
-  <a href="social-work.html">Social Work</a>
-
-  <a href="awards-honours.html">Awards &amp; Honours</a>
-
-  <div class="nav-dropdown">
-    <a href="research.html" class="nav-parent" aria-current="page">
-      Research <span class="nav-arrow">⌄</span>
-    </a>
-    <div class="dropdown-menu">
-      <a href="sufi-heritage.html">Sufi Heritage of Bihar</a>
-      <a href="sheikhpura-history.html">Sheikhpura History</a>
-      <a href="ancestral-heritage.html">Ancestral Heritage</a>
-    </div>
-  </div>
-
-  <a href="media.html">Media</a>
-
-  <a class="nav-contact" href="contact.html">
-    Contact <span>↗</span>
-  </a>
-
-</nav>
 </header>
 
 <section class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">History · Spirituality · Heritage</div>
-    <h1>The Sufi Heritage of Bihar</h1>
-    <div class="subtitle" lang="ur" dir="rtl">بہار کی صوفیانہ میراث</div>
-
-    <p>
-      Exploring the saints, spiritual traditions, khanqahs, dargahs and
-      historical legacy that form an important part of Bihar's cultural past.
-    </p>
-
-    <div class="hero-actions">
-      <a class="button" href="#saints">Explore Sufi Saints</a>
-      <a class="button outline" href="#districts">Explore Regions</a>
-    </div>
-  </div>
+  <span style="color:var(--gold); font-size:11px; letter-spacing:2px; text-transform:uppercase;">Spiritual Lineage</span>
+  <h1>Sufi Heritage of Bihar</h1>
+  <p>A comprehensive repository of saints, shrines, and spiritual masters who illuminated the soil of Bihar.</p>
 </section>
 
-<main class="page-container">
+<main>
+  <div style="margin-bottom:20px;">
+    <input id="saintSearch" type="search" placeholder="Search saints or shrines..." style="width:100%; max-width:400px; padding:12px; border:1px solid var(--border); border-radius:3px; background:white; font-size:14px;">
+  </div>
 
-  <section class="intro">
-    <div class="section-label">A Historical Research Initiative by Syed Amjad Hussain</div>
-    <h2>Let's Discover Bihar's Sufi Past</h2>
-    <div class="ornament">✦</div>
-
-    <p>
-      Bihar occupies an important place in the history of Sufism in the
-      Indian subcontinent. Its spiritual heritage is associated with
-      Sufi scholars, mystics, khanqahs, dargahs, literary traditions and
-      networks of learning that developed across different regions over
-      several centuries.
-    </p>
-
-    <p>
-      This section brings together historical information about Bihar's
-      Sufi heritage, with particular attention to documentary sources,
-      local traditions, Persian and Urdu writings, and the preservation
-      of regional history.
-    </p>
-
-    <div class="stats">
-      <div class="stat">
-        <strong>Sufi Saints</strong>
-        <span>Biographies and historical profiles</span>
-      </div>
-      <div class="stat">
-        <strong>Khanqahs and Dargahs</strong>
-        <span>Centres of spiritual and intellectual life</span>
-      </div>
-      <div class="stat">
-        <strong>Heritage</strong>
-        <span>Places, manuscripts and local traditions</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="explore">
-    <div class="section-heading">
-      <div class="section-label">Explore the Collection</div>
-      <h2>Inside Bihar's Sufi Heritage</h2>
-      <p>
-        Explore different aspects of the region's spiritual, historical
-        and literary traditions.
-      </p>
-    </div>
-
-    <div class="feature-grid">
-      <article class="feature-card">
-        <div class="feature-icon">✧</div>
-        <h3>Sufi Saints</h3>
-        <p>
-          Biographical profiles of Sufi saints, scholars and spiritual
-          figures associated with Bihar.
-        </p>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">⌂</div>
-        <h3>Khanqahs & Dargahs</h3>
-        <p>
-          Historical accounts of spiritual centres, shrines and their
-          roles in regional society.
-        </p>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">❖</div>
-        <h3>Sufi Orders</h3>
-        <p>
-          Research into Sufi silsilas, their historical development and
-          their presence in Bihar.
-        </p>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">▤</div>
-        <h3>Manuscripts & Sources</h3>
-        <p>
-          Persian and Urdu texts, historical records, inscriptions and
-          published sources relevant to Sufi history.
-        </p>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">⌖</div>
-        <h3>Regional Heritage</h3>
-        <p>
-          Explore Sufi heritage associated with Bihar's towns, villages
-          and districts.
-        </p>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">✒</div>
-        <h3>Literature & Teachings</h3>
-        <p>
-          Study Sufi literature, Persian and Urdu writings, poetry and
-          the intellectual contributions of Sufi scholars.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" id="saints">
-    <div class="section-heading">
-      <div class="section-label">Biographical Directory</div>
-      <h2>Sufi Saints of Bihar</h2>
-      <p>
-        Search the directory by name, place or subject. The collection can
-        be expanded as further documented biographies are added.
-      </p>
-    </div>
-
-    <div class="search-tools">
-      <input
-        type="search"
-        id="saintSearch"
-        placeholder="Search saints, places or keywords..."
-        aria-label="Search Sufi saints"
-      >
-
-      <select id="saintRegion" aria-label="Filter saints by region">
-        <option value="all">All regions</option>
-        <option value="Bihar Sharif">Bihar Sharif</option>
-        <option value="Maner Sharif">Maner Sharif</option>
-        <option value="Sheikhpura">Sheikhpura</option>
-        <option value="Lakhisarai">Lakhisarai</option>
-        <option value="Other Bihar">Other Bihar</option>
-      </select>
-    </div>
-
-    <div class="saint-grid" id="saintGrid"></div>
-    <div class="empty-state" id="saintEmpty">
-      No matching profiles were found. Try another name or region.
-    </div>
-  </section>
-
-  <section class="section" id="orders">
-    <div class="section-heading">
-      <div class="section-label">Spiritual Traditions</div>
-      <h2>Sufi Orders & Silsilas</h2>
-      <p>
-        An introductory directory of Sufi traditions relevant to the
-        study of Bihar's spiritual history.
-      </p>
-    </div>
-
-    <div class="order-list">
-      <article class="order-item">
-        <h3>Chishtiyya</h3>
-        <p>
-          A major Sufi order in South Asian history. This section can
-          document its teachers, institutions and historical presence
-          in Bihar using reliable sources.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Firdausiyya</h3>
-        <p>
-          An important tradition for research into Bihar's Sufi heritage.
-          Document its historical figures, spiritual lineages and
-          regional centres with appropriate references.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Suhrawardiyya</h3>
-        <p>
-          Research the historical development of the order and its
-          connections with the wider intellectual and spiritual
-          networks of the Indian subcontinent.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Naqshbandiyya</h3>
-        <p>
-          Research the historical development of the order and its
-          connections with the wider intellectual and spiritual
-          networks of the Indian subcontinent.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Jajneriyya</h3>
-        <p>
-          Research the historical development of the order and its
-          connections with the wider intellectual and spiritual
-          networks of the Indian subcontinent.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Zahidiyya</h3>
-        <p>
-          Research the historical development of the order and its
-          connections with the wider intellectual and spiritual
-          networks of the Indian subcontinent.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Shattariyya</h3>
-        <p>
-          Research the historical development of the order and its
-          connections with the wider intellectual and spiritual
-          networks of the Indian subcontinent.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Mujeebiyya</h3>
-        <p>
-          Research the historical development of the order and its
-          connections with the wider intellectual and spiritual
-          networks of the Indian subcontinent.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Razaviyya</h3>
-        <p>
-          Research the historical development of the order and its
-          connections with the wider intellectual and spiritual
-          networks of the Indian subcontinent.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Warsiyya</h3>
-        <p>
-          Research the historical development of the order and its
-          connections with the wider intellectual and spiritual
-          networks of the Indian subcontinent.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Husamiyya</h3>
-        <p>
-          Research the historical development of the order and its
-          connections with the wider intellectual and spiritual
-          networks of the Indian subcontinent.
-        </p>
-      </article>
-
-      <article class="order-item">
-        <h3>Other Sufi Traditions</h3>
-        <p>
-          Additional orders and local traditions can be included as
-          their historical presence in Bihar is documented.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" id="districts">
-    <div class="section-heading">
-      <div class="section-label">Geographical Directory</div>
-      <h2>Explore by Region</h2>
-      <p>
-        A developing regional directory of places connected with
-        Bihar's Sufi history.
-      </p>
-    </div>
-
-    <div class="district-grid">
-      <article class="district-card">
-        <h3>Bihar Sharif</h3>
-        <p>
-          Explore documented Sufi sites, religious institutions and
-          historical traditions associated with the region.
-        </p>
-      </article>
-
-      <article class="district-card">
-        <h3>Maner Sharif</h3>
-        <p>
-          Research the region's Sufi heritage, historic shrines and
-          its place in the history of Bihar.
-        </p>
-      </article>
-
-      <article class="district-card">
-        <h3>Sheikhpura</h3>
-        <p>
-          Document local Sufi figures, historic settlements, khanqahs
-          and the regional heritage of Sheikhpura. Famous sites are Matokhar Sharif, Pind Sharif, Badi Dargah, Jamalpur Bigha, Jamuara etc.
-        </p>
-      </article>
-
-      <article class="district-card">
-        <h3>Kachchi Dargah Sharif</h3>
-        <p>
-          A regional heritage entry for documented historical material
-          concerning Hazrat Syed Shahabuddin Suharwardi Kashgari alias Pir Jagjot and the associated site.
-        </p>
-      </article>
-
-      <article class="district-card">
-        <h3>Kako Sharif, Jehanabad</h3>
-        <p>
-          Record historical information about Khanqah Firdausiya,
-          its associated personalities and documentary sources.
-        </p>
-      </article>
-
-      <article class="district-card">
-        <h3>Pakki Dargah Sharif</h3>
-        <p>
-          Develop a source-based entry documenting the area's Sufi
-          history, shrine traditions and relevant historical records.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" id="methodology">
-    <div class="research-box">
-      <div class="section-label">Research Principles</div>
-      <h2>History Through Sources</h2>
-
-      <p>
-        The purpose of this project is to document Bihar's Sufi heritage
-        through historical research and responsible presentation of
-        evidence. Biographical traditions, shrine histories and local
-        accounts deserve careful study alongside documentary records.
-      </p>
-
-      <p>Research entries may draw upon:</p>
-
-      <ul class="source-list">
-        <li>Persian and Urdu historical works and biographical dictionaries.</li>
-        <li>Manuscripts, inscriptions and archival documents.</li>
-        <li>Published academic studies and regional histories.</li>
-        <li>Records preserved by khanqahs, shrines and local institutions.</li>
-        <li>Oral histories, clearly identified as oral testimony.</li>
-      </ul>
-
-      <p>
-        Dates, genealogies, spiritual affiliations and historical claims
-        should be included with references wherever possible. Unverified
-        traditions should be identified as such rather than presented
-        as established historical facts.
-      </p>
-    </div>
-  </section>
-
-  <section class="contribute" id="contribute">
-    <h2>Help Preserve Bihar's Sufi Heritage</h2>
-    <p>
-      Do you have a manuscript reference, historical photograph, published
-      source or documented information about a Sufi saint or heritage site
-      in Bihar? Contributions with clear provenance can help enrich this
-      research collection.
-    </p>
-
-    <!-- Replace the email below with your preferred public research email. -->
-    <a class="button" href="mailto:iamthesyedamjadhussain@gmail.com?subject=Sufi%20Heritage%20of%20Bihar">
-      Share Historical Information
-    </a>
-  </section>
-
+  <div class="saints-grid" id="saintsGrid">
+    <p style="text-align:center; color:var(--muted); grid-column: 1/-1;">Loading Sufi heritage records...</p>
+  </div>
 </main>
 
-<footer>
-  <div class="footer-name">Syed Amjad Hussain</div>
-  <p>Author · Poet · Historian · Independent Research Scholar</p>
-  <p>Sufi Heritage of Bihar — A Historical Research Collection</p>
-  <p>© <span id="currentYear"></span> Syed Amjad Hussain. All rights reserved.</p>
-  <p><a href="home.html">Return to Homepage</a></p>
+<footer class="site-footer">
+  <div>© <span id="year"></span> Syed Amjad Hussain</div>
+  <div>Preserving the spiritual legacy of Bihar.</div>
 </footer>
-  </footer>
 
 <script>
-  /*
-    ADD OR EDIT SAINTS HERE.
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    Each entry can contain:
-    name       = saint's name
-    region     = region used by the filter above
-    place      = place associated with the saint
-    summary    = short, source-based introduction
-    image      = direct image URL, or leave empty
-    articleUrl = link to a full biography on your website
-
-    Add only details you have checked against reliable sources.
-  */
-
-  const SAINTS = [
+  // Aapke saare purane static saints (Aap yahan apne baaki sabhi saints aur unke links add kar sakte hain)
+  let staticSaints = [
     {
-      name: " Hazrat Makhdoom Shaykh Sharfuddin Ahmad Yahya Maneri",
-      region: "Bihar Sharif",
-      place: "Badi Dargah, Bihar Sharif, Nalanda, Bihar",
-      summary: "A major Sufi figure associated with Bihar's spiritual and intellectual history. Add a detailed, referenced biography.",
-      image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Badi_Dargah_I.jpg/1920px-Badi_Dargah_I.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20080624154454",
-      articleUrl: "saints/sharfuddin-maneri.html"
+      name: "Hazrat Makhdoom Yahya Maneri",
+      location: "Maner Sharif",
+      era: "13th Century",
+      desc: "A great Suhrawardi saint whose spiritual grace established Bihar as a center of mysticism.",
+      link: "saints/makhdoom-yahya-maneri.html"
     },
     {
-      name: "Hazrat Makhdoom Shaikh Shah Shoaib Firdausi Sheikhpurvi",
-      region: "Sheikhpura",
-      place: "Badi Dargah, Sheikhpura district, Bihar",
-      summary: "A Sufi figure associated with the Firdausiyya tradition and the historical heritage of Sheikhpura. Add verified dates and references.",
-      image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Badi_Dargah%2C_Sheikhpura.jpg/1920px-Badi_Dargah%2C_Sheikhpura.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      articleUrl: "saints/shah-shoaib-firdausi.html"
+      name: "Hazrat Sharafuddin Ahmed Yahya Maneri",
+      location: "Bihar Sharif",
+      era: "14th Century",
+      desc: "Author of 'Maktubat-e-Sadi', the towering pillar of Firdausi silsila and Sufi epistemology.",
+      link: "saints/sharafuddin-maneri.html"
     },
     {
-      name: "Hazrat Khwaja Is'haaq Maghribi",
-      region: "Sheikhpura",
-      place: "Matokhar Sharif, Sheikhpura district, Bihar",
-      summary: "Associated with the Sufi heritage of Matokhar Sharif. Expand this entry with documented biographical details and historical sources.",
-      image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Matokhar_Dargah.jpg/1920px-Matokhar_Dargah.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      articleUrl: "saints/khwaja-ishaq-maghribi.html"
+      name: "Hazrat Shah Muhammad Munim Pak",
+      location: "Mitan Ghat, Patna",
+      era: "18th Century",
+      desc: "Prominent master of the Qadiri/Munnemi silsila and author of profound spiritual treatises.",
+      link: "saints/shah-muhammad-munim.html"
     },
     {
-      name: "Hazrat Makhdoom Kamaluddin Yahya Maneri",
-      region: "Maner Sharif",
-      place: "Badi Dargah, Maner Sharif, Patna, Bihar",
-      summary: "Use this entry for additional research on the historical and spiritual legacy associated with the name. Check for duplication before publishing.",
-      image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/The_mosque%2C_and_tomb_of_Hazrat_Makhdum_Yahya_Maneri_%28b.1263%29%2C_steel_engraving_by_Roberts_and_Payne%2C_1852.jpg/1920px-The_mosque%2C_and_tomb_of_Hazrat_Makhdum_Yahya_Maneri_%28b.1263%29%2C_steel_engraving_by_Roberts_and_Payne%2C_1852.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      articleUrl: "saints/makhdoom-kamaluddin-yahya-maneri.html"
+      name: "Hazrat Makhdoom Shah Aamun",
+      location: "Bihar Sharif",
+      era: "14th Century",
+      desc: "A revered Firdausi saint known for his deep spiritual illumination and service to humanity.",
+      link: "saints/makhdoom-shah-aamun.html"
     },
     {
-      name: " Hazrat Makhdoom Shah Jalal Maneri",
-      region: "Maner Sharif",
-      place: "Badi Dargah, Maner Sharif, Patna, Bihar",
-      summary: "A major Sufi figure associated with Bihar's spiritual and intellectual history. Add a detailed, referenced biography.",
-      image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Maner_Sharif_Dargah%2Cback_side.jpg/1920px-Maner_Sharif_Dargah%2Cback_side.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      articleUrl: "saints/shah-jalal-maneri.html"
+      name: "Hazrat Syed Ahmed Jajneri",
+      location: "Jajner Sharif",
+      era: "Ancestral Heritage",
+      desc: "A distinguished Sufi figure connected with profound ancestral and spiritual legacy.",
+      link: "saints/syed-ahmed-jajneri.html"
     },
     {
-      name: " Hazrat Makhdoom Syed Ahmad Chiramposh",
-      region: "Bihar Sharif",
-      place: "Amber Sharif Dargah, Bihar Sharif, Nalanda, Bihar",
-      summary: "A major Sufi figure associated with Bihar's spiritual and intellectual history. Add a detailed, referenced biography.",
-      image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Bihar_Sharif_Junction_Station_Board.jpg/1920px-Bihar_Sharif_Junction_Station_Board.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      articleUrl: "saints/syed-ahmad-chiramposh.html"
-    },
-    {
-      name: " Hazrat Makhdoom Syed Ahmed Jajneri",
-      region: "Sheikhpura",
-      place: "Nadiawan, Sheikhpura, Bihar",
-      summary: "A major Sufi figure associated with Bihar's spiritual and intellectual history. Add a detailed, referenced biography.",
-      image: "",
-      articleUrl: "saints/syed-ahmad-jajneri.html"
-    },
-    {
-      name: " Hazrat Makhdooma Bibi Kamaal",
-      region: "Kako Sharif",
-      place: "Kako Sharif, Jehanabad, Bihar",
-      summary: "A major Sufi figure associated with Bihar's spiritual and intellectual history. Add a detailed, referenced biography.",
-      image: "",
-      articleUrl: "saints/bibi-kamaal.html"
-    },
-    {
-      name: " Hazrat Makhdoom Shaykh Shah Abdul Aziz Maneri",
-      region: "Maner Sharif",
-      place: "Badi Dargah, Maner Sharif, Patna, Bihar",
-      summary: "A major Sufi figure associated with Bihar's spiritual and intellectual history. Add a detailed, referenced biography.",
-      image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Maner_Sharif_30.jpg/1920px-Maner_Sharif_30.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      articleUrl: "saints/abdul-aziz-maneri.html"
-    },
-
-    /*
-    ADD MORE ENTRIES BELOW, SEPARATED BY COMMAS:
-
-    ,{
-      name: "Full Name of the Sufi Saint",
-      region: "Lakhisarai",
-      place: "Name of town or village, Bihar",
-      summary: "A concise introduction supported by historical sources.",
-      image: "https://example.com/saint-photo.jpg",
-      articleUrl: "https://your-website.example/saint-biography.html"
+      name: "Hazrat Badruddin Badr Alam",
+      location: "Bihari Sharif",
+      era: "14th Century",
+      desc: "Renowned saint of Bihar known for his saintly piety and spiritual discourses.",
+      link: "saints/badruddin-badr-alam.html"
     }
-    */
+    // Aap GitHub wale baaki saints yahan isi format mein aage jod sakte hain
   ];
 
-  const saintGrid = document.getElementById("saintGrid");
-  const saintSearch = document.getElementById("saintSearch");
-  const saintRegion = document.getElementById("saintRegion");
-  const saintEmpty = document.getElementById("saintEmpty");
+  async function loadSaintsPage() {
+    let allSaints = [...staticSaints];
 
-  function escapeHTML(value = "") {
-    return String(value).replace(/[&<>"']/g, character => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    })[character]);
-  }
-
-  function safeLink(value = "") {
-    if (!value) return "";
-
-    try {
-      const url = new URL(value, window.location.href);
-
-      if (url.protocol === "https:" || url.protocol === "http:") {
-        return url.href;
-      }
-    } catch (error) {}
-
-    return "";
-  }
-
-  function renderSaints() {
-    const query = saintSearch.value.trim().toLowerCase();
-    const region = saintRegion.value;
-
-    const filtered = SAINTS.filter(saint => {
-      const searchable = [
-        saint.name,
-        saint.region,
-        saint.place,
-        saint.summary
-      ].join(" ").toLowerCase();
-
-      const matchesQuery = searchable.includes(query);
-      const matchesRegion = region === "all" || saint.region === region;
-
-      return matchesQuery && matchesRegion;
-    });
-
-    saintGrid.innerHTML = filtered.map(saint => {
-      const imageUrl = safeLink(saint.image);
-      const articleUrl = safeLink(saint.articleUrl);
-
-      const image = imageUrl
-        ? `<img src="${escapeHTML(imageUrl)}" alt="${escapeHTML(saint.name)}" loading="lazy" onerror="this.parentElement.textContent='✧'">`
-        : "✧";
-
-      const link = articleUrl
-        ? `<a class="saint-link" href="${escapeHTML(articleUrl)}">Read Biography ↗</a>`
-        : "";
-
-      return `
-        <article class="saint-card">
-          <div class="saint-image">${image}</div>
-          <div class="saint-content">
-            <div class="saint-location">${escapeHTML(saint.place || saint.region || "Bihar")}</div>
-            <h3>${escapeHTML(saint.name)}</h3>
-            <p>${escapeHTML(saint.summary || "A historical profile will be added.")}</p>
-            ${link}
-          </div>
-        </article>
-      `;
-    }).join("");
-
-    saintEmpty.style.display = filtered.length ? "none" : "block";
-  }
-
-  saintSearch.addEventListener("input", renderSaints);
-  saintRegion.addEventListener("change", renderSaints);
-
-  document.getElementById("currentYear").textContent =
-    new Date().getFullYear();
-
-  renderSaints();
-</script>
-
-<script>
-(() => {
-  const toggle = document.getElementById("menuToggle");
-  const nav = document.getElementById("mainNav");
-
-  if (!toggle || !nav) return;
-
-  toggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("open");
-
-    toggle.setAttribute("aria-expanded", String(isOpen));
-    toggle.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation" : "Open navigation"
-    );
-    toggle.textContent = isOpen ? "×" : "☰";
-  });
-
-  nav.querySelectorAll(".nav-parent").forEach(parent => {
-    parent.addEventListener("click", event => {
-      if (window.innerWidth <= 780) {
-        const dropdown = parent.closest(".nav-dropdown");
-
-        if (!dropdown.classList.contains("dropdown-open")) {
-          event.preventDefault();
-
-          nav.querySelectorAll(".nav-dropdown.dropdown-open")
-            .forEach(item => item.classList.remove("dropdown-open"));
-
-          dropdown.classList.add("dropdown-open");
+    if (window.ADMIN_CONFIG && window.ADMIN_CONFIG.supabaseUrl) {
+      try {
+        const client = supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
+        const { data, error } = await client.from('sufi_saints').select('*').order('id', { ascending: false });
+        
+        if (!error && data && data.length > 0) {
+          const dbSaints = data.map(item => ({
+            name: item.saint_name,
+            location: item.shrine_location || 'Bihar',
+            era: item.era_century || 'Sufi Era',
+            desc: item.roman_desc || 'Spiritual master of Bihar.',
+            link: item.roman_desc_link || '#'
+          }));
+          allSaints = [...dbSaints, ...allSaints];
         }
+      } catch (err) {
+        console.error("Could not fetch database saints:", err);
       }
-    });
-  });
+    }
 
-  nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      if (
-        window.innerWidth <= 780 &&
-        !link.classList.contains("nav-parent")
-      ) {
-        nav.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.setAttribute("aria-label", "Open navigation");
-        toggle.textContent = "☰";
-      }
+    renderSaints(allSaints);
+
+    document.getElementById("saintSearch").addEventListener("input", function(e) {
+      const query = e.target.value.toLowerCase();
+      const filtered = allSaints.filter(s => 
+        s.name.toLowerCase().includes(query) || 
+        s.location.toLowerCase().includes(query) || 
+        s.desc.toLowerCase().includes(query)
+      );
+      renderSaints(filtered);
     });
-  });
-})();
+  }
+
+  function renderSaints(saintsArray) {
+    const grid = document.getElementById("saintsGrid");
+    if (!saintsArray.length) {
+      grid.innerHTML = `<p style="text-align:center; color:var(--muted); grid-column: 1/-1;">No saints found matching your search.</p>`;
+      return;
+    }
+
+    grid.innerHTML = saintsArray.map(saint => `
+      <article class="saint-card">
+        <div>
+          <div class="saint-location">${saint.location} ${saint.era ? '• ' + saint.era : ''}</div>
+          <h3>${saint.name}</h3>
+          <p class="saint-desc">${saint.desc}</p>
+        </div>
+        <a href="${saint.link}" class="saint-link">Read Full Profile →</a>
+      </article>
+    `).join("");
+  }
+
+  window.addEventListener('DOMContentLoaded', loadSaintsPage);
 </script>
 </body>
 </html>
-
-      
