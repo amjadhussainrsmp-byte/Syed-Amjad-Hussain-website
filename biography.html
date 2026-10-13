@@ -97,6 +97,86 @@ footer{background:#29151a;color:#d9c9ba;padding:25px 0;font-size:12px}.foot{disp
 
 .site-header #mainNav > a,
 .site-header #mainNav .nav-parent {
+
+/* ==========================================
+   HEADER — MATCH HOME.HTML
+========================================== */
+
+.site-header {
+  box-sizing: border-box;
+  height: 86px;
+  padding: 0 5.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid rgba(90, 67, 56, .12);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(244, 239, 230, .96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.site-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-header .brand-mark {
+  box-sizing: border-box;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--gold);
+  color: var(--wine);
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 27px;
+  line-height: 1;
+}
+
+.site-header .brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.site-header .brand-text strong {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+.site-header .brand-text small {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+/* Main navigation */
+.site-header #mainNav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: #544942;
+}
+
+.site-header #mainNav > a,
+.site-header #mainNav .nav-parent {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -105,6 +185,7 @@ footer{background:#29151a;color:#d9c9ba;padding:25px 0;font-size:12px}.foot{disp
   color: inherit;
   background: transparent;
   text-decoration: none;
+  font: inherit;
   white-space: nowrap;
   transition: color .2s ease;
 }
@@ -116,12 +197,10 @@ footer{background:#29151a;color:#d9c9ba;padding:25px 0;font-size:12px}.foot{disp
   color: var(--wine);
 }
 
-/* Current page */
 .site-header #mainNav > a[aria-current="page"] {
   color: var(--wine);
 }
 
-/* Gold contact link */
 .site-header #mainNav > a.nav-contact {
   display: inline-flex;
   align-items: center;
