@@ -744,6 +744,8 @@ main { padding: 42px 0 85px; }
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin-config.js"></script>
 <script>
 "use strict";
 
@@ -755,7 +757,7 @@ main { padding: 42px 0 85px; }
 */
 
 
-const POEMS = [
+let POEMS = [
   {
     id: 1,
     category: "ghazal",
@@ -1873,8 +1875,84 @@ document.querySelectorAll("#mainNav a").forEach(link => {
 $("currentYear").textContent = new Date().getFullYear();
 
 /* Render the collection immediately. */
+
 renderFilters();
 renderPoems();
+
+/* Load published poetry from the secure admin-managed content table. */
+async function loadPublishedPoetry() {
+  try {
+    if (
+      !window.supabase ||
+      !window.ADMIN_CONFIG?.supabaseUrl ||
+      !window.ADMIN_CONFIG?.supabaseAnonKey
+    ) {
+      console.warn("Public Supabase configuration is unavailable.");
+      return;
+    }
+
+    const client = window.supabase.createClient(
+      window.ADMIN_CONFIG.supabaseUrl,
+      window.ADMIN_CONFIG.supabaseAnonKey
+    );
+
+    const { data, error } = await client
+      .from("site_content")
+      .select("*")
+      .eq("status", "published")
+      .in("type", [
+        "poem", "ghazal", "nazm",
+        "naat", "manqabat", "salam", "sher"
+      ])
+      .order("sort_order", { ascending: true });
+
+    if (error) throw error;
+
+    const existingIds = new Set(
+      POEMS.map(poem => String(poem.dbSlug || ""))
+    );
+
+    const databasePoems = (data || [])
+      .filter(record => !existingIds.has(String(record.slug)))
+      .map((record, index) => ({
+        id: "db-" + record.id,
+        dbSlug: record.slug,
+        category: record.poem_type || record.type || "other",
+        title: {
+          ur: record.title || "",
+          roman: record.title || "",
+          hi: record.title || ""
+        },
+        text: {
+          ur: record.text_urdu || "",
+          roman: record.text_roman || "",
+          hi: record.text_hindi || ""
+        },
+        note: record.poetry_notes || record.summary || "",
+        featured: Number(record.sort_order ?? 1000) + index
+      }))
+      .filter(poem =>
+        poem.text.ur || poem.text.roman || poem.text.hi
+      );
+
+    POEMS = [
+      ...POEMS.filter(poem => !poem.dbSlug),
+      ...databasePoems
+    ];
+
+    renderFilters();
+    renderPoems();
+
+    console.info(
+      `Loaded ${databasePoems.length} additional published poetry records.`
+    );
+  } catch (error) {
+    console.error("Could not load published poetry:", error);
+  }
+}
+
+loadPublishedPoetry();
+  
 </script>
 
 </body>
