@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Poetry Studio | SyedAmjadHussain.com</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --wine: #652e36;
+  --wine-dark: #472127;
+  --gold: #b89555;
+  --paper: #f7f2e9;
+  --card: #fffdf9;
+  --ink: #302927;
+  --muted: #766d68;
+  --line: #e7ddd0;
+  --green: #286748;
+  --red: #a52c35;
+  --shadow: 0 14px 40px rgba(55,30,27,.07);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.6;
+}
+
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+.topbar {
+  background: linear-gradient(115deg,var(--wine-dark),var(--wine));
+  color: white;
+  padding: 20px clamp(16px,4vw,42px);
+  border-bottom: 3px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.logo {
+  width: 46px;
+  height: 46px;
+  border: 1px solid #d9bd83;
+  color: #f0d9a5;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 25px "Noto Nastaliq Urdu", serif;
+}
+
+.brand h1 {
+  margin: 0;
+  font: 600 23px "Playfair Display", serif;
+}
+
+.brand p {
+  margin: 3px 0 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: #ead8c4;
+}
+
+.top-actions, .actions, .record-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wrap {
+  max-width: 1450px;
+  margin: auto;
+  padding: 28px clamp(14px,3vw,38px) 55px;
+}
+
+.intro { margin-bottom: 22px; }
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.intro h2 {
+  margin: 5px 0;
+  font: 600 clamp(28px,4vw,42px) "Playfair Display", serif;
+}
+
+.intro p, .muted { color: var(--muted); }
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0,1.05fr) minmax(0,1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.panel, .login-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(16px,2vw,25px);
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.panel h3 {
+  margin: 0 0 4px;
+  font: 600 22px "Playfair Display", serif;
+}
+
+.sub {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 13px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field.wide { grid-column: 1/-1; }
+
+.field label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .045em;
+  color: #634c46;
+}
+
+.field input, .field select, .field textarea,
+.toolbar input, .toolbar select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #dcd0c4;
+  background: #fffdfa;
+  border-radius: 9px;
+  padding: 11px 12px;
+  color: var(--ink);
+  outline: none;
+}
+
+.field input:focus, .field select:focus,
+.field textarea:focus, .toolbar input:focus,
+.toolbar select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px #b8955520;
+}
+
+.field textarea {
+  min-height: 118px;
+  resize: vertical;
+  line-height: 1.85;
+}
+
+.field textarea.urdu {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 19px;
+  line-height: 2.2;
+}
+
+.field textarea.hindi { font-size: 17px; }
+
+.hint { font-size: 11px; color: var(--muted); }
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: 9px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.primary { background: var(--wine); color: white; }
+.primary:hover { background: var(--wine-dark); }
+.secondary { background: #f3e9dc; color: var(--wine); border-color: #e2d0bd; }
+.ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+.danger { background: #fff0ef; color: var(--red); border-color: #f0c8c5; }
+.small { padding: 7px 10px; font-size: 11px; }
+
+.section-title {
+  margin: 22px 0 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.divider { height: 1px; background: var(--line); margin: 20px 0; }
+
+.status {
+  display: none;
+  padding: 12px 14px;
+  border-radius: 9px;
+  margin-bottom: 17px;
+  font-size: 13px;
+}
+
+.status.show { display: block; }
+.status.ok { background: #e8f4ec; color: #205d3d; }
+.status.error { background: #fff0ef; color: #8e2229; }
+.status.info { background: #f3e9dc; color: var(--wine); }
+
+.login-shell { max-width: 470px; margin: 6vh auto; }
+.login-card h2 { font: 600 30px "Playfair Display",serif; margin: 4px 0; }
+.login-card p { color: var(--muted); font-size: 13px; }
+
+.hidden { display: none !important; }
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 160px 130px;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.count { font-size: 12px; color: var(--muted); }
+
+.record {
+  border: 1px solid var(--line);
+  background: #fffefa;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+
+.record h4 {
+  margin: 0 0 5px;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.record-meta {
+  font-size: 11px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.pill {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: #f2e8dc;
+  color: var(--wine);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pill.published { background: #e6f2e8; color: var(--green); }
+.pill.draft { background: #f7ead4; color: #8a5b16; }
+
+.record-actions { margin-top: 11px; }
+
+.empty {
+  text-align: center;
+  padding: 28px 12px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.checkbox-row input { accent-color: var(--wine); }
+
+.preview {
+  background: #fbf6ee;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 16px;
+}
+
+.preview h4 { margin: 0 0 8px; }
+.preview p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.preview .p-urdu {
+  font: 18px/2.2 "Noto Nastaliq Urdu",serif;
+  direction: rtl;
+  text-align: right;
+}
+
+@media(max-width:950px) {
+  .layout { grid-template-columns: 1fr; }
+  .toolbar { grid-template-columns: 1fr 1fr; }
+  .toolbar input { grid-column: 1/-1; }
+}
+
+@media(max-width:540px) {
+  .field-grid, .toolbar { grid-template-columns: 1fr; }
+  .field.wide, .toolbar input { grid-column: auto; }
+  .top-actions { width: 100%; }
+  .top-actions .btn { flex: 1; }
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">ع</div>
+    <div>
+      <h1>SyedAmjadHussain.com</h1>
+      <p>Poetry Studio · Private Content Manager</p>
+    </div>
+  </div>
+
+  <div class="top-actions hidden" id="top-actions">
+    <button class="btn secondary" id="refresh-top" type="button">↻ Refresh</button>
+    <button class="btn secondary" id="logout" type="button">Sign out</button>
+    <a class="btn ghost" href="poetry.html" target="_blank" rel="noopener">View Poetry ↗</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+
+  <section id="login-view" class="login-shell">
+    <div class="login-card">
+      <div class="eyebrow">Restricted access</div>
+      <h2>Poetry Studio</h2>
+      <p>Sign in using the administrator account authorised for your website.</p>
+
+      <form id="login-form">
+        <div class="field">
+          <label for="email">ADMIN EMAIL</label>
+          <input id="email" type="email" autocomplete="username" required>
+        </div>
+
+        <div class="field" style="margin-top:13px">
+          <label for="password">PASSWORD</label>
+          <input id="password" type="password" autocomplete="current-password" required>
+        </div>
+
+        <button class="btn primary" style="width:100%;margin-top:17px" type="submit">
+          Sign in securely
+        </button>
+      </form>
+
+      <p class="hint">This page uses your existing Supabase authentication and server-side API. Never place a Supabase secret or service-role key in browser code.</p>
+    </div>
+  </section>
+
+  <section id="studio-view" class="hidden">
+    <div class="intro">
+      <div class="eyebrow">Ghazal · Nazm · Sher · More</div>
+      <h2>Your Poetry Studio</h2>
+      <p>Manage your multilingual poetry, keep drafts private, and publish when ready.</p>
+    </div>
+
+    <div class="layout">
+      <section class="panel">
+        <h3 id="form-title">Add a new poem</h3>
+        <p class="sub">Fields marked * are required. Preserve line breaks in your verses.</p>
+
+        <form id="poem-form">
+          <input type="hidden" id="record-id">
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="title">TITLE / MATLA *</label>
+              <input id="title" maxlength="250" required placeholder="Title of your ghazal or poem">
+            </div>
+
+            <div class="field">
+              <label for="type">POETRY TYPE *</label>
+              <select id="type" required>
+                <option value="ghazal">Ghazal</option>
+                <option value="poem">Poem</option>
+                <option value="nazm">Nazm</option>
+                <option value="naat">Naat</option>
+                <option value="manqabat">Manqabat</option>
+                <option value="salam">Salam</option>
+                <option value="sher">Sher / Couplets</option>
+                <option value="bait">Bait</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="slug">URL SLUG *</label>
+              <input id="slug" required pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="meri-ghazal">
+              <span class="hint">Lowercase letters, numbers and hyphens only.</span>
+            </div>
+
+            <div class="field">
+              <label for="status-field">PUBLICATION STATUS</label>
+              <select id="status-field">
+                <option value="draft">Draft — private</option>
+                <option value="published">Published</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="language">PRIMARY LANGUAGE</label>
+              <select id="language">
+                <option value="Multilingual">Multilingual</option>
+                <option value="Urdu">Urdu</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Roman Urdu">Roman Urdu</option>
+                <option value="Arabic">Arabic</option>
+                <option value="English">English</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="sort-order">DISPLAY ORDER</label>
+              <input id="sort-order" type="number" min="0" step="1" value="0">
+            </div>
+
+            <div class="field wide">
+              <label for="summary">SHORT DESCRIPTION (OPTIONAL)</label>
+              <textarea id="summary" rows="2" placeholder="Brief introduction to the poem"></textarea>
+            </div>
+          </div>
+
+          <div class="section-title">Poetry text · preserve line breaks</div>
+
+          <div class="field-grid">
+            <div class="field wide">
+              <label for="urdu">URDU — اردو</label>
+              <textarea id="urdu" class="urdu" dir="rtl" lang="ur" rows="7" placeholder="یہاں اپنا کلام درج کریں"></textarea>
+            </div>
+
+            <div class="field wide">
+              <label for="roman">ROMAN URDU / HINGLISH</label>
+              <textarea id="roman" rows="7" placeholder="Yahan apna kalaam likhein..."></textarea>
+            </div>
+
+            <div class="field wide">
+              <label for="hindi">HINDI — देवनागरी</label>
+              <textarea id="hindi" class="hindi" lang="hi" rows="7" placeholder="यहाँ अपना कलाम लिखें..."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="takhallus">TAKHALLUS</label>
+              <input id="takhallus" placeholder="Amjad / امجدؔ">
+            </div>
+
+            <div class="field">
+              <label for="poet-name">POET NAME</label>
+              <input id="poet-name" value="Syed Amjad Hussain">
+            </div>
+
+            <div class="field">
+              <label for="radeef">RADEEF</label>
+              <input id="radeef" placeholder="Optional">
+            </div>
+
+            <div class="field">
+              <label for="qaafiya">QAAFIYA</label>
+              <input id="qaafiya" placeholder="Optional">
+            </div>
+
+            <div class="field wide">
+              <label for="beher">BEHER / METRE</label>
+              <input id="beher" placeholder="Optional">
+            </div>
+
+            <div class="field wide">
+              <label for="notes">POETRY NOTES / ISLAH / SOURCES</label>
+              <textarea id="notes" rows="3" placeholder="Editorial notes for your reference"></textarea>
+            </div>
+
+            <div class="field wide">
+              <label for="image-url">IMAGE URL (OPTIONAL)</label>
+              <input id="image-url" type="url" placeholder="https://...">
+            </div>
+
+            <label class="checkbox-row wide">
+              <input id="featured" type="checkbox">
+              Feature this poem, if supported by the public page
+            </label>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="save-btn" type="submit">Save draft</button>
+            <button class="btn secondary" id="preview-btn" type="button">Preview text</button>
+            <button class="btn ghost" id="reset-btn" type="button">Clear form</button>
+          </div>
+
+          <div id="preview" class="preview hidden">
+            <h4 id="preview-heading"></h4>
+            <p id="preview-urdu" class="p-urdu"></p>
+            <p id="preview-roman"></p>
+            <p id="preview-hindi"></p>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="list-head">
+          <div>
+            <h3>Saved poetry</h3>
+            <p class="sub" style="margin:4px 0 0">Search, edit, publish, unpublish or delete.</p>
+          </div>
+          <button class="btn secondary small" id="refresh" type="button">↻ Refresh</button>
+        </div>
+
+        <div class="toolbar">
+          <input id="search" type="search" placeholder="Search title, slug or text…">
+          <select id="filter-type">
+            <option value="">All poetry types</option>
+            <option value="ghazal">Ghazal</option>
+            <option value="poem">Poem</option>
+            <option value="nazm">Nazm</option>
+            <option value="naat">Naat</option>
+            <option value="manqabat">Manqabat</option>
+            <option value="salam">Salam</option>
+            <option value="sher">Sher</option>
+            <option value="bait">Bait</option>
+          </select>
+          <select id="filter-status">
+            <option value="">All statuses</option>
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+          </select>
+        </div>
+
+        <div class="list-head" style="margin-bottom:10px">
+          <span id="count" class="count">Sign in to load records.</span>
+        </div>
+
+        <div id="record-list">
+          <div class="empty">Sign in to load your saved poetry.</div>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin-config.js"></script>
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = id => document.getElementById(id);
+  const TYPES = ["poem","ghazal","nazm","naat","manqabat","salam","sher","bait"];
+
+  let supabase = null;
+  let allRecords = [];
+  let busy = false;
+
+  function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+      "&":"&amp;", "<":"&lt;", ">":"&gt;",
+      '"':"&quot;", "'":"&#39;"
+    })[char]);
+  }
+
+  function message(text, kind="info") {
+    const el = $("status");
+    el.textContent = text;
+    el.className = "status show " + kind;
+  }
+
+  function slugify(value) {
+    return String(value || "")
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 180);
+  }
+
+  async function getToken() {
+    const { data, error } = await supabase.auth.getSession();
+
+    if (error || !data.session?.access_token) {
+      throw new Error("Your session has expired. Please sign in again.");
+    }
+
+    return data.session.access_token;
+  }
+
+  async function apiRequest(method, body, id) {
+    const token = await getToken();
+    let url = "/api/admin";
+
+    if (id) url += "?id=" + encodeURIComponent(id);
+
+    const options = {
+      method,
+      headers: {
+        "Authorization": "Bearer " + token
+      }
+    };
+
+    if (body !== undefined) {
+      options.headers["Content-Type"] = "application/json";
+      options.body = JSON.stringify(body);
+    }
+
+    const response = await fetch(url, options);
+    const result = await response.json().catch(() => ({}));
+
+    if (response.status === 401) {
+      await supabase.auth.signOut();
+      showLogin();
+      throw new Error(result.error || "Please sign in again.");
+    }
+
+    if (!response.ok) {
+      throw new Error(result.error || "The server request failed.");
+    }
+
+    return result;
+  }
+
+  function showLogin() {
+    $("login-view").classList.remove("hidden");
+    $("studio-view").classList.add("hidden");
+    $("top-actions").classList.add("hidden");
+  }
+
+  function showStudio() {
+    $("login-view").classList.add("hidden");
+    $("studio-view").classList.remove("hidden");
+    $("top-actions").classList.remove("hidden");
+  }
+
+  function readForm() {
+    const title = $("title").value.trim();
+    const type = $("type").value;
+    const slug = $("slug").value.trim();
+
+    if (!title || !type || !slug) {
+      throw new Error("Title, poetry type and slug are required.");
+    }
+
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+      throw new Error("Use lowercase letters, numbers and single hyphens in the slug.");
+    }
+
+    const sortOrder = Number($("sort-order").value || 0);
+
+    if (!Number.isInteger(sortOrder) || sortOrder < 0) {
+      throw new Error("Display order must be a non-negative whole number.");
+    }
+
+    const urdu = $("urdu").value.trim();
+    const roman = $("roman").value.trim();
+    const hindi = $("hindi").value.trim();
+
+    if (!urdu && !roman && !hindi) {
+      throw new Error("Enter the poem in at least one language.");
+    }
+
+    return {
+      title,
+      type,
+      slug,
+      status: $("status-field").value,
+      category: type,
+      poem_type: type,
+      language_primary: $("language").value,
+      summary: $("summary").value.trim(),
+      text_urdu: urdu,
+      text_roman: roman,
+      text_hindi: hindi,
+      poet_name: $("poet-name").value.trim(),
+      takhallus: $("takhallus").value.trim(),
+      radeef: $("radeef").value.trim(),
+      qaafiya: $("qaafiya").value.trim(),
+      beher: $("beher").value.trim(),
+      poetry_notes: $("notes").value.trim(),
+      image_url: $("image-url").value.trim(),
+      featured: $("featured").checked,
+      sort_order: sortOrder
+    };
+  }
+
+  function resetForm() {
+    $("poem-form").reset();
+    $("record-id").value = "";
+    $("poet-name").value = "Syed Amjad Hussain";
+    $("sort-order").value = "0";
+    $("status-field").value = "draft";
+    $("form-title").textContent = "Add a new poem";
+    $("save-btn").textContent = "Save draft";
+    $("preview").classList.add("hidden");
+  }
+
+  function editRecord(record) {
+    $("record-id").value = record.id || "";
+    $("title").value = record.title || "";
+    $("type").value = TYPES.includes(record.type) ? record.type : "poem";
+    $("slug").value = record.slug || "";
+    $("status-field").value = record.status || "draft";
+    $("language").value = record.language_primary || "Multilingual";
+    $("sort-order").value = Number.isInteger(record.sort_order) ? record.sort_order : 0;
+    $("summary").value = record.summary || "";
+    $("urdu").value = record.text_urdu || "";
+    $("roman").value = record.text_roman || "";
+    $("hindi").value = record.text_hindi || "";
+    $("takhallus").value = record.takhallus || "";
+    $("poet-name").value = record.poet_name || "Syed Amjad Hussain";
+    $("radeef").value = record.radeef || "";
+    $("qaafiya").value = record.qaafiya || "";
+    $("beher").value = record.beher || "";
+    $("notes").value = record.poetry_notes || "";
+    $("image-url").value = record.image_url || "";
+    $("featured").checked = record.featured === true;
+
+    $("form-title").textContent = "Edit poetry record";
+    $("save-btn").textContent = "Update record";
+    $("preview").classList.add("hidden");
+    $("poem-form").scrollIntoView({behavior:"smooth",block:"start"});
+  }
+
+  function recordMatches(record, query) {
+    return [
+      record.title, record.slug, record.text_urdu,
+      record.text_roman, record.text_hindi, record.summary
+    ].join(" ").toLowerCase().includes(query);
+        }
+
+  function renderRecords() {
+    const query = $("search").value.trim().toLowerCase();
+    const type = $("filter-type").value;
+    const status = $("filter-status").value;
+
+    const records = allRecords.filter(record => {
+      const recordType = record.poem_type || record.type;
+      return TYPES.includes(recordType) &&
+        (!query || recordMatches(record, query)) &&
+        (!type || recordType === type) &&
+        (!status || record.status === status);
+    });
+
+    $("count").textContent =
+      records.length + " shown · " + allRecords.length + " poetry records loaded";
+
+    if (!records.length) {
+      $("record-list").innerHTML =
+        '<div class="empty">No matching poetry records. Create one using the form.</div>';
+      return;
+    }
+
+    $("record-list").innerHTML = records.map(record => {
+      const status = record.status || "draft";
+      const type = record.poem_type || record.type || "poem";
+
+      return `
+        <article class="record">
+          <div class="list-head">
+            <div>
+              <h4>${escapeHTML(record.title || "Untitled")}</h4>
+              <div class="record-meta">
+                ${escapeHTML(type)} · ${escapeHTML(record.slug || "no-slug")}
+              </div>
+            </div>
+            <span class="pill ${status === "published" ? "published" : "draft"}">
+              ${escapeHTML(status)}
+            </span>
+          </div>
+
+          <div class="record-meta" style="margin-top:7px">
+            ${escapeHTML(record.language_primary || "Language not specified")}
+            ${record.featured ? " · Featured" : ""}
+          </div>
+
+          <div class="record-actions">
+            <button class="btn secondary small" data-action="edit" data-id="${escapeHTML(record.id)}">Edit</button>
+            <button class="btn ${status === "published" ? "ghost" : "primary"} small"
+              data-action="toggle" data-id="${escapeHTML(record.id)}">
+              ${status === "published" ? "Unpublish" : "Publish"}
+            </button>
+            <button class="btn danger small" data-action="delete" data-id="${escapeHTML(record.id)}">Delete</button>
+          </div>
+        </article>`;
+    }).join("");
+  }
+
+  async function loadRecords() {
+    $("record-list").innerHTML = '<div class="empty">Loading saved poetry…</div>';
+
+    try {
+      const result = await apiRequest("GET");
+
+      allRecords = (result.content || []).filter(record =>
+        TYPES.includes(record.type) || TYPES.includes(record.poem_type)
+      );
+
+      allRecords.sort((a,b) =>
+        String(b.updated_at || "").localeCompare(String(a.updated_at || ""))
+      );
+
+      renderRecords();
+    } catch (error) {
+      $("record-list").innerHTML = '<div class="empty">Could not load records.</div>';
+      message(error.message, "error");
+    }
+  }
+
+  $("login-form").addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const button = event.submitter;
+    button.disabled = true;
+    button.textContent = "Signing in…";
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: $("email").value.trim(),
+        password: $("password").value
+      });
+
+      if (error) throw error;
+
+      showStudio();
+      message("Signed in. Loading your poetry…", "info");
+      await loadRecords();
+    } catch (error) {
+      message(error.message || "Sign-in failed.", "error");
+    } finally {
+      button.disabled = false;
+      button.textContent = "Sign in securely";
+    }
+  });
+
+  $("logout").addEventListener("click", async () => {
+    try {
+      await supabase.auth.signOut();
+    } finally {
+      showLogin();
+      message("You have signed out.", "ok");
+    }
+  });
+
+  $("refresh").addEventListener("click", loadRecords);
+  $("refresh-top").addEventListener("click", loadRecords);
+  $("search").addEventListener("input", renderRecords);
+  $("filter-type").addEventListener("change", renderRecords);
+  $("filter-status").addEventListener("change", renderRecords);
+
+  $("title").addEventListener("input", () => {
+    if (!$("record-id").value) {
+      $("slug").value = slugify($("title").value);
+    }
+  });
+
+  $("reset-btn").addEventListener("click", resetForm);
+
+  $("preview-btn").addEventListener("click", () => {
+    $("preview-heading").textContent = $("title").value || "Untitled poem";
+    $("preview-urdu").textContent = $("urdu").value;
+    $("preview-roman").textContent = $("roman").value;
+    $("preview-hindi").textContent = $("hindi").value;
+    $("preview").classList.remove("hidden");
+  });
+
+  $("poem-form").addEventListener("submit", async event => {
+    event.preventDefault();
+    if (busy) return;
+
+    busy = true;
+    const button = $("save-btn");
+    button.disabled = true;
+
+    try {
+      const payload = readForm();
+      const id = $("record-id").value;
+
+      button.textContent = payload.status === "published" ? "Publishing…" : "Saving…";
+
+      await apiRequest(id ? "PATCH" : "POST", payload, id);
+
+      message(
+        payload.status === "published"
+          ? "Poetry published successfully."
+          : "Poetry saved as a draft.",
+        "ok"
+      );
+
+      resetForm();
+      await loadRecords();
+    } catch (error) {
+      message(error.message || "Could not save this record.", "error");
+    } finally {
+      busy = false;
+      button.disabled = false;
+      button.textContent = $("record-id").value ? "Update record" : "Save draft";
+    }
+  });
+
+  $("record-list").addEventListener("click", async event => {
+    const button = event.target.closest("button[data-action]");
+    if (!button) return;
+
+    const record = allRecords.find(item => String(item.id) === button.dataset.id);
+    if (!record) return;
+
+    if (button.dataset.action === "edit") {
+      editRecord(record);
+      return;
+  }
+
+    if (button.dataset.action === "delete") {
+      const confirmed = confirm(
+        'Permanently delete "' + (record.title || "this poetry record") + '"? This cannot be undone.'
+      );
+      if (!confirmed) return;
+
+      button.disabled = true;
+
+      try {
+        await apiRequest("DELETE", undefined, record.id);
+        message("Poetry record deleted.", "ok");
+        await loadRecords();
+      } catch (error) {
+        message(error.message, "error");
+        button.disabled = false;
+      }
+      return;
+    }
+
+    if (button.dataset.action === "toggle") {
+      const nextStatus = record.status === "published" ? "draft" : "published";
+
+      if (nextStatus === "published" &&
+          !confirm('Publish "' + (record.title || "this record") + '" now?')) {
+        return;
+      }
+
+      button.disabled = true;
+
+      try {
+        await apiRequest("PATCH", {status:nextStatus}, record.id);
+        message(
+          nextStatus === "published" ? "Poetry published." : "Poetry moved to drafts.",
+          "ok"
+        );
+        await loadRecords();
+      } catch (error) {
+        message(error.message, "error");
+        button.disabled = false;
+      }
+    }
+  });
+
+  if (
+    !window.ADMIN_CONFIG?.supabaseUrl ||
+    !window.ADMIN_CONFIG?.supabaseAnonKey ||
+    !window.supabase?.createClient
+  ) {
+    message("Could not load admin-config.js or the Supabase library. Check the file paths and connection.", "error");
+    return;
+  }
+
+  supabase = window.supabase.createClient(
+    window.ADMIN_CONFIG.supabaseUrl,
+    window.ADMIN_CONFIG.supabaseAnonKey,
+    {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+      }
+    }
+  );
+
+  supabase.auth.getSession().then(async ({data,error}) => {
+    if (error || !data.session) {
+      showLogin();
+      return;
+    }
+
+    try {
+      await getToken();
+      showStudio();
+      await loadRecords();
+    } catch (_) {
+      showLogin();
+    }
+  });
+})();
+</script>
+</body>
+</html>
+
+
+          
+  
