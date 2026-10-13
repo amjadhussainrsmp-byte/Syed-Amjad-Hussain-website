@@ -774,6 +774,147 @@ nav a.active {
         padding: 25px 20px;
       }
     }
+    /* Navigation dropdowns */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-parent {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-arrow {
+  font-size: 15px;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -12px;
+  min-width: 220px;
+  padding: 8px;
+  background: var(--paper, #f4efe6);
+  border: 1px solid var(--line, #d8cdbd);
+  box-shadow: 0 12px 28px rgba(47, 25, 24, 0.12);
+  z-index: 120;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 11px 12px;
+  white-space: normal !important;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: var(--paper-2, #ebe3d7);
+  color: var(--wine, #652e36);
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu,
+.nav-dropdown.dropdown-open .dropdown-menu {
+  display: block;
+}
+
+.nav-dropdown:hover .nav-arrow,
+.nav-dropdown.dropdown-open .nav-arrow {
+  transform: rotate(180deg);
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: none;
+  color: var(--wine, #652e36);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Mobile navigation */
+@media (max-width: 780px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-header nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    padding: 14px 5% 22px;
+    background: var(--paper, #f4efe6);
+    border-bottom: 1px solid var(--line, #d8cdbd);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .site-header nav.open {
+    display: flex;
+  }
+
+  .site-header nav > a,
+  .nav-parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line, #d8cdbd);
+    font-size: 13px;
+  }
+
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: static;
+    min-width: 0;
+    padding: 4px 0 8px 14px;
+    border: 0;
+    border-left: 2px solid var(--gold, #b89b6a);
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .nav-dropdown.dropdown-open .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .site-header nav .nav-contact {
+    justify-content: center;
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid var(--line, #d8cdbd);
+  }
+}
   </style>
 </head>
 
@@ -794,29 +935,59 @@ nav a.active {
     </span>
   </a>
 
-  <button
-    class="menu-toggle"
-    id="menuToggle"
-    aria-label="Open navigation menu"
-    aria-expanded="false"
-    aria-controls="mainNav"
-    type="button">
-    ☰ Menu
-  </button>
+  <button class="menu-toggle" id="menuToggle"
+  aria-label="Open navigation"
+  aria-expanded="false"
+  aria-controls="mainNav">☰</button>
 
-  <nav id="mainNav" aria-label="Main navigation">
-    <a href="home.html">Home</a>
-    <a href="biography.html">Biography</a>
-    <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
-    <a href="sufi-heritage.html" class="active" aria-current="page">The Sufi Heritage of Bihar</a>
-    <a href="research.html">Research</a>
-    <a href="poetry.html">Poetry</a>
-    <a href="sher.html.html">Sher Collection</a>
-    <a href="awards-honours.html">Awards and Honours</a>
-    <a href="library.html">Library</a>
-    <a href="media.html">Media</a>
-    <a href="contact.html" class="nav-contact">Contact</a>
-  </nav>
+<nav id="mainNav" aria-label="Main navigation">
+
+  <a href="home.html">Home</a>
+
+  <a href="biography.html">Biography</a>
+
+  <div class="nav-dropdown">
+    <a href="books-articles.html" class="nav-parent">
+      Books &amp; Articles <span class="nav-arrow">⌄</span>
+    </a>
+    <div class="dropdown-menu">
+      <a href="the-eternals-of-bihar.html">The Eternals of Bihar</a>
+      <a href="akhtar-orenvi-bio.html">Akhtar Orenvi</a>
+      <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+    </div>
+  </div>
+
+  <div class="nav-dropdown">
+    <a href="poetry.html" class="nav-parent">
+      Poetry <span class="nav-arrow">⌄</span>
+    </a>
+    <div class="dropdown-menu">
+      <a href="sher.html">Sher Collection</a>
+    </div>
+  </div>
+
+  <a href="social-work.html">Social Work</a>
+
+  <a href="awards-honours.html">Awards &amp; Honours</a>
+
+  <div class="nav-dropdown">
+    <a href="research.html" class="nav-parent" aria-current="page">
+      Research <span class="nav-arrow">⌄</span>
+    </a>
+    <div class="dropdown-menu">
+      <a href="sufi-heritage.html">Sufi Heritage of Bihar</a>
+      <a href="sheikhpura-history.html">Sheikhpura History</a>
+      <a href="ancestral-heritage.html">Ancestral Heritage</a>
+    </div>
+  </div>
+
+  <a href="media.html">Media</a>
+
+  <a class="nav-contact" href="contact.html">
+    Contact <span>↗</span>
+  </a>
+
+</nav>
 </header>
 
 <section class="hero">
@@ -1402,28 +1573,54 @@ nav a.active {
 </script>
 
 <script>
-  const menuToggle = document.getElementById("menuToggle");
-  const mainNav = document.getElementById("mainNav");
+(() => {
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
 
-  menuToggle.addEventListener("click", () => {
-    const isOpen = mainNav.classList.toggle("open");
+  if (!toggle || !nav) return;
 
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute(
+  toggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute(
       "aria-label",
-      isOpen ? "Close navigation menu" : "Open navigation menu"
+      isOpen ? "Close navigation" : "Open navigation"
     );
-    menuToggle.innerHTML = isOpen ? "✕ Close" : "☰ Menu";
+    toggle.textContent = isOpen ? "×" : "☰";
   });
 
-  mainNav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      mainNav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Open navigation menu");
-      menuToggle.innerHTML = "☰ Menu";
+  nav.querySelectorAll(".nav-parent").forEach(parent => {
+    parent.addEventListener("click", event => {
+      if (window.innerWidth <= 780) {
+        const dropdown = parent.closest(".nav-dropdown");
+
+        if (!dropdown.classList.contains("dropdown-open")) {
+          event.preventDefault();
+
+          nav.querySelectorAll(".nav-dropdown.dropdown-open")
+            .forEach(item => item.classList.remove("dropdown-open"));
+
+          dropdown.classList.add("dropdown-open");
+        }
+      }
     });
   });
+
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      if (
+        window.innerWidth <= 780 &&
+        !link.classList.contains("nav-parent")
+      ) {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open navigation");
+        toggle.textContent = "☰";
+      }
+    });
+  });
+})();
 </script>
 </body>
 </html>
