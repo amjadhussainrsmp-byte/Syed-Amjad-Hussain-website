@@ -1117,13 +1117,22 @@
   -webkit-backdrop-filter: blur(14px);
 }
 
+
 .site-header .brand {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
   text-decoration: none;
   line-height: 1.3;
+}
+
+.site-header .brand-mark,
+.site-header .brand-text {
+  margin-top: 0;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .site-header .brand-mark {
