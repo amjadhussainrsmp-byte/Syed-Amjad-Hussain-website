@@ -1400,7 +1400,161 @@
   }
 }
       
-  </style>
+  
+/* Final header/menu/footer alignment with biography.html */
+.top {
+  height: auto;
+  min-height: 32px;
+  padding: 7px 5.5%;
+  line-height: 1.4;
+}
+.top .container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.site-header {
+  height: auto;
+  min-height: 82px;
+  padding: 0 max(20px, calc((100% - 1120px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+.site-header .brand { min-width: 0; }
+.site-header .brand-text { min-width: 0; }
+.site-header .brand-text small { white-space: normal; }
+.site-header #mainNav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.site-header #mainNav > a,
+.site-header #mainNav .nav-parent {
+  font-size: 10px;
+}
+.site-header .menu-toggle { display: none; }
+.site-header #mainNav .dropdown-menu { border-radius: 2px; }
+footer {
+  background: #29151a;
+  color: #d9c9ba;
+  padding: 25px 0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+}
+footer .footer-links {
+  display: inline;
+  color: #e8d3ad;
+}
+footer .footer-links a {
+  color: #e8d3ad;
+  font-size: 12px;
+  white-space: nowrap;
+}
+footer .footer-links a:hover { color: #fffdf9; }
+@media (max-width: 980px) {
+  .site-header {
+    min-height: 74px;
+    padding: 12px 5%;
+    position: sticky;
+  }
+  .site-header .brand-text strong { font-size: 16px; }
+  .site-header .brand-text small {
+    font-size: 8px;
+    letter-spacing: .06em;
+    max-width: 240px;
+  }
+  .site-header .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+  }
+  .site-header #mainNav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100dvh - 110px);
+    overflow-y: auto;
+    padding: 10px 5% 20px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 16px 28px rgba(33,16,22,.08);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    z-index: 1001;
+  }
+  .site-header #mainNav.open { display: flex; }
+  .site-header #mainNav > a,
+  .site-header #mainNav .nav-parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    white-space: normal;
+    font-size: 12px;
+  }
+  .site-header #mainNav .nav-dropdown { width: 100%; }
+  .site-header #mainNav .dropdown-menu {
+    display: block;
+    position: static;
+    width: 100%;
+    min-width: 0;
+    padding: 2px 0 2px 12px;
+    margin: 0 0 7px 8px;
+    border: 0;
+    border-left: 1px solid var(--gold);
+    box-shadow: none;
+    background: transparent;
+  }
+  .site-header #mainNav .dropdown-menu a {
+    display: block;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .site-header #mainNav .nav-contact {
+    justify-content: center;
+    margin-top: 10px;
+    padding: 11px;
+  }
+}
+@media (max-width: 540px) {
+  .top { padding: 7px 15px; font-size: 7px; }
+  .top .container { gap: 8px; }
+  .site-header { padding: 11px 15px; }
+  .site-header .brand { gap: 9px; }
+  .site-header .brand-mark { width: 36px; height: 36px; font-size: 24px; }
+  .site-header .brand-text strong { font-size: 14px; }
+  .site-header .brand-text small {
+    max-width: 220px;
+    font-size: 6.5px;
+    line-height: 1.5;
+    letter-spacing: .02em;
+  }
+  .foot { display: block; }
+  footer .footer-links { display: block; margin-top: 7px; }
+  footer .footer-links a { white-space: normal; }
+}
+
+</style>
 </head>
 
 
@@ -1974,52 +2128,20 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-
-      <div class="footer-grid">
-        <div>
-          <div class="footer-brand">Syed Amjad Hussain</div>
-          <p class="footer-about">
-            Author, poet, historian and independent research scholar
-            with a profound focus on Sufism and Islam. His work explores
-            literature, Bihar's heritage, historical research and
-            community service.
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h3>Explore</h3>
-          <div class="footer-links">
-            <a href="home.html">Home</a>
-            <a href="biography.html">Biography</a>
-            <a href="books-articles.html">Books & Articles</a>
-            <a href="research.html">Research</a>
-            <a href="poetry.html">Poetry</a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h3>More</h3>
-          <div class="footer-links">
-            <a href="awards-honours.html">Awards & Honours</a>
-            <a href="social-work.html">Social Work</a>
-            <a href="sufi-heritage.html">Sufi Heritage</a>
-            <a href="sheikhpura-heritage.html">Sheikhpura Heritage</a>
-            <a href="home.html#contact">Contact</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>
-          © <span id="currentYear"></span> Syed Amjad Hussain. All rights reserved.
-        </span>
-        <span>Literature · History · Research · Social Service</span>
-      </div>
-
-    </div>
-  </footer>
+  <footer>
+  <div class="container foot">
+    <span>© <span id="year">2026</span> Syed Amjad Hussain</span>
+    <span class="footer-links">
+      <a href="home.html">Home</a> ·
+      <a href="biography.html">Biography</a> ·
+      <a href="books-articles.html">Books &amp; Articles</a> ·
+      <a href="research.html">Research</a> ·
+      <a href="poetry.html">Poetry</a> ·
+      <a href="awards-honours.html" aria-current="page">Awards &amp; Honours</a> ·
+      <a href="contact.html">Contact</a>
+    </span>
+  </div>
+</footer>
 
   <script>
     // Mobile navigation
@@ -2058,7 +2180,7 @@ if (menuToggle && mainNav) {
   });
 }
     // Automatic copyright year
-    document.getElementById("currentYear").textContent =
+    document.getElementById("year").textContent =
       new Date().getFullYear();
 
     // Search and year filtering for awards
