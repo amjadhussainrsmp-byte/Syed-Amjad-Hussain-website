@@ -241,14 +241,14 @@ const TYPES = [
 
   <label class="cm-field">
     Primary language
-    <select id="cm-language-primary">
-      <option value="">Not specified</option>
-      <option value="Urdu">Urdu</option>
-      <option value="Hindi">Hindi</option>
-      <option value="Roman Urdu">Roman Urdu</option>
-      <option value="Arabic">Arabic</option>
-      <option value="Multilingual">Multilingual</option>
-    </select>
+    
+<select id="cm-language-primary">
+  <option value="">Not specified</option>
+  <option value="urdu">Urdu</option>
+  <option value="roman">Roman Urdu</option>
+  <option value="hindi">Hindi</option>
+</select>
+
   </label>
 
   <label class="cm-field">
