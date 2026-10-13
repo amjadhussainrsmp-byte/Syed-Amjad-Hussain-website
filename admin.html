@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Editorial & Heritage Admin Studio | Syed Amjad Hussain</title>
-  <meta name="theme-color" content="#30151b">
+  <title>Admin Panel | SyedAmjadHussain's Official Website</title>
+  <meta name="theme-color" content="#472127">
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Supabase JS & Config -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -17,58 +17,55 @@
 
   <style>
     :root {
-      --bg-main: #12090b;
-      --bg-card: #1c1014;
-      --bg-input: #26161b;
-      --accent-wine: #472127;
-      --accent-gold: #d4af37;
-      --gold-light: #f3e5ab;
-      --gold-glow: rgba(212, 175, 55, 0.15);
-      --text-primary: #f7f3ec;
-      --text-muted: #a39598;
-      --border-color: rgba(212, 175, 55, 0.25);
-      --border-focus: rgba(212, 175, 55, 0.7);
+      --bg-paper: #fbf8f2;
+      --bg-card: #fffdf8;
+      --bg-input: #ffffff;
+      --wine: #472127;
+      --wine-dark: #30151b;
+      --gold: #b99a61;
+      --gold-light: #f4ece1;
+      --gold-dark: #8c703b;
+      --text-ink: #302327;
+      --text-muted: #756a6d;
+      --border-color: #e6d9c8;
+      --border-accent: #d6c19c;
       --danger: #9e2a2b;
       --sans: 'Plus Jakarta Sans', sans-serif;
-      --serif: 'Cinzel', serif;
+      --serif: 'Cinzel', 'Playfair Display', Georgia, serif;
       --urdu: 'Noto Nastaliq Urdu', serif;
     }
 
-    * { box-sizing: border-box; transition: all 0.25s ease; }
+    * { box-sizing: border-box; transition: all 0.2s ease; }
 
     body {
       margin: 0;
-      background: var(--bg-main);
-      color: var(--text-primary);
+      background: var(--bg-paper);
+      color: var(--text-ink);
       font-family: var(--sans);
       font-size: 14px;
       line-height: 1.6;
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(71, 33, 39, 0.4) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
-      background-attachment: fixed;
       min-height: 100vh;
     }
 
     /* Top Banner */
     .topbar {
       height: 38px;
-      background: #0a0405;
-      border-bottom: 1px solid var(--border-color);
+      background: var(--wine-dark);
+      color: #e9ded0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 6%;
+      padding: 0 5.5%;
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--accent-gold);
     }
 
     .topbar-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      color: #d6c19c;
       font-weight: 600;
     }
 
@@ -76,34 +73,48 @@
       content: '';
       width: 6px;
       height: 6px;
-      background: var(--accent-gold);
+      background: var(--gold);
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent-gold);
     }
 
-    /* Header */
+    /* Grand Header Section */
     .site-header {
-      padding: 35px 6% 25px;
+      padding: 45px 5.5% 30px;
       text-align: center;
-      background: rgba(28, 16, 20, 0.6);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(180deg, #f3ece0 0%, #fbf8f2 100%);
+      border-bottom: 2px solid var(--gold);
+      position: relative;
+    }
+
+    .site-header::after {
+      content: '';
+      display: block;
+      width: 120px;
+      height: 3px;
+      background: var(--gold);
+      margin: 18px auto 0;
+      border-radius: 2px;
     }
 
     .site-header h1 {
       margin: 0;
       font-family: var(--serif);
-      color: var(--gold-light);
-      font-size: clamp(24px, 4vw, 36px);
-      letter-spacing: 1px;
-      font-weight: 600;
+      color: var(--wine);
+      font-size: clamp(26px, 4.5vw, 42px);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: capitalize;
+      line-height: 1.25;
+      text-shadow: 0 1px 2px rgba(71, 33, 39, 0.08);
     }
 
     .site-header p {
-      margin: 8px 0 0;
-      color: var(--text-muted);
+      margin: 10px 0 0;
+      color: var(--gold-dark);
       font-size: 13px;
-      letter-spacing: 0.5px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     /* Main Container */
@@ -118,7 +129,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
     @media(max-width: 650px) { .stats-grid { grid-template-columns: 1fr; } }
@@ -126,43 +137,39 @@
     .stat-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 18px 20px;
+      border-radius: 6px;
+      padding: 16px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-
-    .stat-card:hover {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 20px var(--gold-glow);
+      box-shadow: 0 4px 12px rgba(71, 33, 39, 0.03);
     }
 
     .stat-info span { display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; }
-    .stat-info strong { font-size: 22px; font-family: var(--serif); color: var(--gold-light); }
-    .stat-icon { font-size: 24px; opacity: 0.7; }
+    .stat-info strong { font-size: 24px; font-family: var(--serif); color: var(--wine); }
+    .stat-icon { font-size: 24px; opacity: 0.8; }
 
     /* Navigation Tabs */
     .nav-tabs {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 25px;
-      background: var(--bg-card);
-      padding: 6px;
-      border-radius: 10px;
+      background: #eee6d8;
+      padding: 5px;
+      border-radius: 8px;
       border: 1px solid var(--border-color);
       overflow-x: auto;
     }
 
     .tab-btn {
       flex: 1;
-      padding: 12px 18px;
+      padding: 12px 16px;
       background: transparent;
       border: none;
       color: var(--text-muted);
       font-size: 13px;
       font-weight: 600;
-      border-radius: 6px;
+      border-radius: 5px;
       cursor: pointer;
       white-space: nowrap;
       display: flex;
@@ -171,38 +178,38 @@
       gap: 8px;
     }
 
-    .tab-btn:hover { color: var(--text-primary); background: rgba(212, 175, 55, 0.05); }
+    .tab-btn:hover { color: var(--wine); background: rgba(255, 255, 255, 0.5); }
 
     .tab-btn.active {
-      background: linear-gradient(135deg, var(--accent-wine), #5a262e);
-      color: var(--gold-light);
-      box-shadow: 0 4px 15px rgba(71, 33, 39, 0.5);
-      border: 1px solid var(--border-color);
+      background: var(--wine);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(71, 33, 39, 0.2);
     }
 
     /* Form Panels */
     .panel {
       display: none;
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
+      border: 1px solid var(--gold);
+      outline: 1px solid var(--border-accent);
+      outline-offset: -7px;
+      border-radius: 4px;
       padding: 35px 30px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      position: relative;
+      box-shadow: 0 10px 25px rgba(48, 21, 27, 0.05);
     }
 
-    .panel.active { display: block; animation: fadeIn 0.3s ease; }
+    .panel.active { display: block; animation: fadeIn 0.25s ease; }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(5px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .panel-title {
       font-family: var(--serif);
-      color: var(--accent-gold);
+      color: var(--wine);
       font-size: 20px;
-      margin: 0 0 25px;
+      margin: 0 0 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -219,40 +226,39 @@
 
     @media(max-width: 700px) { .form-row { grid-template-columns: 1fr; } }
 
-    .form-group { margin-bottom: 22px; }
+    .form-group { margin-bottom: 20px; }
 
     .form-group label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.5px;
-      color: var(--gold-light);
+      color: var(--wine);
       text-transform: uppercase;
     }
 
     .form-control {
       width: 100%;
-      padding: 13px 16px;
+      padding: 11px 14px;
       background: var(--bg-input);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
-      color: var(--text-primary);
+      border-radius: 4px;
+      color: var(--text-ink);
       font-family: var(--sans);
       font-size: 14px;
       outline: none;
     }
 
     .form-control:focus {
-      border-color: var(--border-focus);
-      box-shadow: 0 0 12px var(--gold-glow);
-      background: #2e1a21;
+      border-color: var(--gold-dark);
+      box-shadow: 0 0 0 3px rgba(185, 154, 97, 0.15);
     }
 
     textarea.form-control {
-      min-height: 120px;
+      min-height: 110px;
       resize: vertical;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     textarea.urdu-input {
@@ -260,11 +266,6 @@
       font-size: 18px;
       direction: rtl;
       line-height: 2.2;
-    }
-
-    select.form-control option {
-      background: var(--bg-card);
-      color: var(--text-primary);
     }
 
     /* Buttons */
@@ -275,14 +276,13 @@
     }
 
     .btn-primary {
-      padding: 13px 28px;
-      background: linear-gradient(135deg, #c5a038, #9e7d23);
-      color: #0d0608;
+      padding: 12px 26px;
+      background: var(--wine);
+      color: #ffffff;
       border: none;
-      border-radius: 6px;
-      font-weight: 700;
+      border-radius: 4px;
+      font-weight: 600;
       font-size: 13px;
-      letter-spacing: 0.5px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -290,69 +290,67 @@
     }
 
     .btn-primary:hover {
-      background: linear-gradient(135deg, #e3ba46, #b8932b);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-      transform: translateY(-1px);
+      background: var(--wine-dark);
+      box-shadow: 0 4px 12px rgba(48, 21, 27, 0.2);
     }
 
     .btn-secondary {
-      padding: 13px 22px;
-      background: transparent;
-      color: var(--text-muted);
+      padding: 12px 20px;
+      background: #f4ece1;
+      color: var(--wine);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
+      border-radius: 4px;
       font-weight: 600;
       cursor: pointer;
     }
 
-    .btn-secondary:hover { background: rgba(255, 255, 255, 0.05); color: var(--text-primary); }
+    .btn-secondary:hover { background: var(--border-color); }
 
     .btn-export {
-      padding: 8px 16px;
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid var(--accent-gold);
-      color: var(--gold-light);
-      border-radius: 6px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      border-radius: 4px;
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
     }
 
-    .btn-export:hover { background: var(--accent-gold); color: #000; }
+    .btn-export:hover { background: #ffffff; color: var(--wine); }
 
     /* Archive Items List */
     .archive-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-top: 15px;
+      gap: 10px;
+      margin-top: 12px;
     }
 
     .archive-card {
       background: var(--bg-input);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 16px 20px;
+      border-radius: 4px;
+      padding: 14px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .archive-card:hover { border-color: var(--accent-gold); }
+    .archive-card:hover { border-color: var(--gold-dark); }
 
-    .archive-title { font-weight: 600; font-size: 15px; color: var(--text-primary); }
-    .archive-meta { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+    .archive-title { font-weight: 600; font-size: 14px; color: var(--wine); }
+    .archive-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
     .action-btn {
       padding: 6px 12px;
       font-size: 11px;
-      border-radius: 4px;
+      border-radius: 3px;
       border: none;
       cursor: pointer;
       font-weight: 600;
     }
 
-    .action-edit { background: var(--accent-gold); color: #000; margin-right: 6px; }
     .action-delete { background: var(--danger); color: #fff; }
 
   </style>
@@ -361,13 +359,14 @@
 <body>
 
 <div class="topbar">
-  <span class="topbar-badge">SYSTEM OPERATIONAL</span>
+  <span class="topbar-badge">CENTRAL DASHBOARD</span>
   <button class="btn-export" onclick="exportBackup()">📥 Export JSON Backup</button>
 </div>
 
+<!-- Updated Grand Banner Header -->
 <header class="site-header">
-  <h1>Editorial & Heritage Studio</h1>
-  <p>Syed Amjad Hussain — Centralized Literary Control Panel</p>
+  <h1>SyedAmjadHussain's official website Admin Panel</h1>
+  <p>Poetry, Sher & Sufi Heritage Management System</p>
 </header>
 
 <div class="container">
@@ -545,13 +544,13 @@
       <span>Database Records Archive</span>
     </div>
 
-    <h4 style="color:var(--gold-light); margin:20px 0 10px;">📜 Poetry Records</h4>
+    <h4 style="color:var(--wine); margin:20px 0 10px;">📜 Poetry Records</h4>
     <div id="poetryArchiveList" class="archive-list">Loading...</div>
 
-    <h4 style="color:var(--gold-light); margin:30px 0 10px;">✒️ Sher Records</h4>
+    <h4 style="color:var(--wine); margin:30px 0 10px;">✒️ Sher Records</h4>
     <div id="sherArchiveList" class="archive-list">Loading...</div>
 
-    <h4 style="color:var(--gold-light); margin:30px 0 10px;">🕌 Sufi Saints Records</h4>
+    <h4 style="color:var(--wine); margin:30px 0 10px;">🕌 Sufi Saints Records</h4>
     <div id="sufiArchiveList" class="archive-list">Loading...</div>
   </div>
 
