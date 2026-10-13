@@ -17,6 +17,145 @@
 @media(max-width:420px){.topline span:last-child{display:none}.hero-actions{gap:18px;flex-wrap:wrap}.portrait-frame{height:330px}.floating-note{left:-20px;padding:12px}.proof-strip strong{font-size:12px}.library-symbol{display:none}.library-card-art{height:150px}.library-card-art strong{font-size:18px}.library-card-copy h3{font-size:14px}.library-search input{font-size:10px}.library-search button{font-size:9px;padding:11px}.filter-chip{padding:7px 10px}.book-meta{gap:15px}.book-meta strong{font-size:9px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 
+    /* =========================================
+   PREMIUM NAVIGATION DROPDOWNS
+   Matches the existing website design
+========================================= */
+
+.site-header #mainNav .nav-dropdown {
+  position: relative;
+}
+
+.site-header #mainNav .nav-parent {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.site-header #mainNav .nav-arrow {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 14px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+/* Dropdown panel */
+.site-header #mainNav .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -14px;
+  min-width: 225px;
+  padding: 9px;
+  margin-top: 10px;
+
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 30px rgba(47, 41, 38, 0.12);
+
+  z-index: 100;
+}
+
+/* Dropdown links */
+.site-header #mainNav .dropdown-menu a {
+  display: block;
+  padding: 11px 12px;
+
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.5;
+  white-space: normal;
+
+  border: 0;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Hover and keyboard focus */
+.site-header #mainNav .dropdown-menu a:hover,
+.site-header #mainNav .dropdown-menu a:focus-visible {
+  color: var(--burgundy);
+  background: var(--paper-2);
+}
+
+/* Desktop dropdown interaction */
+@media (min-width: 781px) {
+  .site-header #mainNav .nav-dropdown:hover > .dropdown-menu,
+  .site-header #mainNav .nav-dropdown:focus-within > .dropdown-menu {
+    display: block;
+  }
+
+  .site-header #mainNav .nav-dropdown:hover .nav-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Keep dropdown open while moving the pointer into it */
+  .site-header #mainNav .dropdown-menu {
+    margin-top: 0;
+    padding-top: 10px;
+  }
+}
+
+/* =========================================
+   MOBILE NAVIGATION
+   Preserves the existing nav.open system
+========================================= */
+
+@media (max-width: 780px) {
+  .site-header #mainNav .nav-dropdown {
+    display: block;
+    width: 100%;
+  }
+
+  .site-header #mainNav .nav-parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .site-header #mainNav .dropdown-menu {
+    display: block;
+    position: static;
+    min-width: 0;
+    width: auto;
+
+    margin: 0 0 8px 10px;
+    padding: 2px 0 2px 12px;
+
+    background: transparent;
+    border: 0;
+    border-left: 1px solid var(--gold);
+    box-shadow: none;
+  }
+
+  .site-header #mainNav .dropdown-menu a {
+    padding: 9px 10px;
+    font-size: 11px;
+    line-height: 1.6;
+    border: 0;
+  }
+
+  .site-header #mainNav .nav-dropdown .nav-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .site-header #mainNav .nav-dropdown:hover .nav-arrow {
+    transform: none;
+  }
+}
+
+/* Reduced-motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .site-header #mainNav .nav-arrow,
+  .site-header #mainNav .dropdown-menu a {
+    transition: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -29,17 +168,83 @@
     </a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
     <nav id="mainNav" aria-label="Main navigation">
+
+  <!-- 1. Home -->
   <a href="home.html">Home</a>
+
+  <!-- 2. Biography -->
   <a href="biography.html">Biography</a>
-  <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
-  <a href="sufi-heritage.html">Sufi Heritage of Bihar</a>
-  <a href="research.html">Research</a>
-  <a href="poetry.html">Poetry</a>
-  <a href="sher.html">Sher Collection</a>
-  <a href="awards-honours.html">Awards and Honours</a>
-  <a href="library.html">Library</a>
+
+  <!-- 3. Books & Articles -->
+  <div class="nav-dropdown">
+    <a href="books-articles.html" class="nav-parent">
+      Books &amp; Articles
+      <span class="nav-arrow">⌄</span>
+    </a>
+
+    <div class="dropdown-menu">
+      <a href="the-eternals-of-bihar.html">
+        The Eternals of Bihar
+      </a>
+
+      <a href="akhtar-orenvi-bio.html">
+        Akhtar Orenvi
+      </a>
+
+      <a href="bihar-aur-sufivad.html">
+        Bihar Aur Sufivad
+      </a>
+    </div>
+  </div>
+
+  <!-- 4. Poetry -->
+  <div class="nav-dropdown">
+    <a href="poetry.html" class="nav-parent">
+      Poetry
+      <span class="nav-arrow">⌄</span>
+    </a>
+
+    <div class="dropdown-menu">
+      <a href="sher.html">Sher Collection</a>
+    </div>
+  </div>
+
+  <!-- 5. Social Work -->
+  <a href="social-work.html">Social Work</a>
+
+  <!-- 6. Awards & Honours -->
+  <a href="awards-honours.html">Awards &amp; Honours</a>
+
+  <!-- 7. Research -->
+  <div class="nav-dropdown">
+    <a href="research.html" class="nav-parent">
+      Research
+      <span class="nav-arrow">⌄</span>
+    </a>
+
+    <div class="dropdown-menu">
+      <a href="sufi-heritage.html">
+        Sufi Heritage of Bihar
+      </a>
+
+      <a href="sheikhpura-history.html">
+        Sheikhpura History
+      </a>
+
+      <a href="ancestral-heritage.html">
+        Ancestral Heritage
+      </a>
+    </div>
+  </div>
+
+  <!-- 8. Media -->
   <a href="media.html">Media</a>
-  <a class="nav-contact" href="contact.html">Get in touch <span>↗</span></a>
+
+  <!-- 9. Contact -->
+  <a class="nav-contact" href="contact.html">
+    Contact <span>↗</span>
+  </a>
+
     </nav>
   </header>
 
