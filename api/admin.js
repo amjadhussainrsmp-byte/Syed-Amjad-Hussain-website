@@ -288,10 +288,10 @@ if (
         console.error("Content creation failed:", error.message);
 
         return sendError(
-          res,
-          500,
-          "Could not create content."
-        );
+  res,
+  500,
+  "Could not create content: " + error.message
+);
       }
 
       return res.status(201).json({
