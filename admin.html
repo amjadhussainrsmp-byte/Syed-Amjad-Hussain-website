@@ -2,184 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#652e36">
-  <title>Admin Studio | Syed Amjad Hussain</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Studio | SyedAmjadHussain.com</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="/admin-assets/admin.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/admin-config.js"></script>
-  <script src="/admin-assets/admin.js" defer></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg:#f4efe6; --paper:#fffdf8; --ink:#2f2926; --muted:#766b63;
-      --wine:#652e36; --wine-dark:#472127; --gold:#b89b6a; --line:#e2d7c8;
-      --green:#3c7156; --red:#a33b3b; --shadow:0 14px 38px rgba(55,35,29,.07);
+      --bg-main: #fbf9f5;
+      --card-bg: #ffffff;
+      --accent-brown: #9a6b38;
+      --text-dark: #222222;
+      --text-muted: #666666;
+      --border-color: #e5dec9;
+      --radius: 12px;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:24px}
-    body{margin:0;padding:0;background:radial-gradient(ellipse at top right,rgba(184,155,106,.12),transparent 32rem),var(--bg);color:var(--ink);font:15px/1.65 "DM Sans",Arial,sans-serif}
-    button,input,select,textarea{font:inherit}
-    a{color:inherit}
-    .hidden{display:none!important}
-    .studio-wrap{width:min(1440px,100%);margin:auto;padding:clamp(14px,3vw,32px)}
-    .studio-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;margin-bottom:22px;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
-    .brand-lockup{display:flex;align-items:center;gap:12px;min-width:0}
-    .brand-mark{width:46px;height:46px;display:grid;place-items:center;flex:none;border-radius:13px;background:var(--wine);color:#fff9ef;font:26px "Playfair Display",Georgia,serif}
-    .brand-name{margin:0;font-weight:700;font-size:15px}
-    .brand-sub{margin:2px 0 0;color:var(--muted);font-size:12px}
-    .top-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-    .studio-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 15px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;cursor:pointer}
-    .studio-btn.primary{background:var(--wine);border-color:var(--wine);color:white}
-    .studio-btn.primary:hover{background:var(--wine-dark)}
-    .eyebrow{margin:0 0 8px;color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
-    h1,h2,h3{line-height:1.25}
-    h1,.display-title{font-family:"Playfair Display",Georgia,serif}
-    h1{font-size:clamp(30px,4vw,48px);letter-spacing:-.03em;margin:0}
-    h2{font-size:21px;margin:0 0 8px}
-    h3{font-size:16px;margin:0 0 8px}
-    p{margin-top:0}
-    .muted{color:var(--muted)}
-    .studio-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,3vw,28px);box-shadow:var(--shadow)}
-    .studio-hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(220px,.7fr);gap:25px;align-items:center;padding:clamp(24px,5vw,52px);color:#fff9ef;background:linear-gradient(125deg,var(--wine-dark),var(--wine) 68%,#79454a);border-radius:24px;box-shadow:0 20px 45px rgba(71,33,39,.15);position:relative;overflow:hidden}
-    .studio-hero:after{content:"ا";position:absolute;right:6%;top:-50px;color:rgba(255,255,255,.055);font:260px/1 serif;pointer-events:none}
-    .studio-hero>*{position:relative;z-index:1}
-    .studio-hero .eyebrow{color:#e3c58e}
-    .studio-hero p{max-width:650px;color:rgba(255,249,239,.8)}
-    .hero-side{padding:19px;border:1px solid rgba(255,255,255,.2);border-radius:15px;background:rgba(255,255,255,.07)}
-    .hero-side strong{display:block;margin-bottom:6px;font-size:13px}
-    .hero-side p{margin:0;font-size:13px}
-    .account-card{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
-    .account-card p{margin:3px 0}
-    .account-email{font-size:14px;font-weight:700;overflow-wrap:anywhere}
-    .secure-label{display:flex;align-items:center;gap:8px;color:var(--green);font-size:12px;font-weight:700}
-    .secure-dot{width:9px;height:9px;flex:none;border-radius:50%;background:var(--green)}
-    .workspace-head{margin:34px 2px 15px}
-    .workspace-head p{margin:5px 0 0;font-size:14px}
-    .workspace-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .workspace-card{display:flex;flex-direction:column;align-items:flex-start;min-height:190px;padding:20px;background:var(--paper);border:1px solid var(--line);border-radius:16px;text-decoration:none;box-shadow:0 6px 20px rgba(55,35,29,.025);transition:transform .18s,border-color .18s}
-    .workspace-card:hover{transform:translateY(-2px);border-color:#c6ad86}
-    .workspace-icon{display:grid;place-items:center;width:42px;height:42px;margin-bottom:14px;border-radius:12px;background:#f1e8dc;color:var(--wine);font-size:21px}
-    .workspace-card p{margin:0 0 15px;color:var(--muted);font-size:13px;line-height:1.55}
-    .card-link{margin-top:auto;color:var(--wine);font-size:12px;font-weight:700}
-    .notice-card{display:flex;align-items:flex-start;gap:12px;margin-top:20px;padding:17px 19px;border:1px solid var(--line);border-radius:14px;background:rgba(255,253,248,.72);font-size:13px}
-    .notice-card p{margin:0;color:var(--muted)}
-    .notice-card strong{display:block;color:var(--ink);margin-bottom:3px}
-    .studio-footer{display:flex;justify-content:space-between;gap:12px;margin-top:28px;padding:16px 3px;color:var(--muted);font-size:11px}
-    .login-shell{min-height:75vh;display:grid;place-items:center}
-    .login-card{width:min(470px,100%);padding:clamp(22px,4vw,36px);background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
-    .login-card label{display:block;margin:15px 0 6px;font-size:13px;font-weight:700}
-    .login-card input{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}
-    .login-card button{width:100%;margin-top:14px}
-    .error{color:var(--red)}
-    #content-manager{margin-top:24px}
-    @media(max-width:850px){.workspace-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.studio-hero{grid-template-columns:1fr}.hero-side{max-width:600px}}
-    @media(max-width:560px){.studio-wrap{padding:12px}.studio-top{align-items:flex-start;padding:13px;flex-direction:column}.top-actions{width:100%;justify-content:stretch}.top-actions>*{flex:1}.workspace-grid{grid-template-columns:1fr}.workspace-card{min-height:0}.account-card{align-items:flex-start;flex-direction:column}.studio-footer{flex-direction:column}.studio-hero{border-radius:18px}}
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg-main); color: var(--text-dark); padding: 20px; }
+    
+    .container { max-width: 800px; margin: 0 auto; }
+    
+    header { margin-bottom: 24px; text-align: center; }
+    header h1 { font-size: 26px; font-weight: 700; color: var(--text-dark); }
+    header p { color: var(--text-muted); font-size: 14px; }
+
+    /* Nav Buttons Tabs */
+    .tab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .tab-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .tab-btn:hover { background: #f4efe4; }
+    
+    .tab-btn.active {
+      background: var(--accent-brown);
+      color: #ffffff;
+      border-color: var(--accent-brown);
+      box-shadow: 0 4px 12px rgba(154, 107, 56, 0.2);
+    }
+
+    /* Dynamic Form Card */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .card-header { margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+    .card-header h2 { font-size: 20px; color: var(--accent-brown); }
+    .card-header p { font-size: 13px; color: var(--text-muted); }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .form-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      background: #fafafa;
+    }
+    .form-input:focus { border-color: var(--accent-brown); background: #ffffff; }
+
+    textarea.form-input { resize: vertical; min-height: 90px; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--accent-brown);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn-submit:hover { opacity: 0.9; }
+
+    #content-list { margin-top: 15px; }
+    .item-row { padding: 12px; border-bottom: 1px solid var(--border-color); }
   </style>
+
+  <!-- Supabase JS Client & Config -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin-config.js"></script>
 </head>
 <body>
-  <main class="studio-wrap">
-    <section id="setup-screen" class="hidden">
-      <div class="login-shell"><div class="login-card">
-        <p class="eyebrow">Initial configuration</p>
-        <h1>Admin Studio</h1>
-        <p class="muted">The public Supabase configuration is missing. Check <code>admin-config.js</code> and ensure it is loaded before the admin script.</p>
-      </div></div>
-    </section>
 
-    <section id="login-screen" class="hidden">
-      <div class="login-shell"><div class="login-card">
-        <div class="brand-lockup" style="margin-bottom:24px">
-          <div class="brand-mark">A</div><div><p class="brand-name">SyedAmjadHussain.com</p><p class="brand-sub">Private editorial administration</p></div>
-        </div>
-        <p class="eyebrow">Secure sign-in</p>
-        <h1>Welcome back.</h1>
-        <p class="muted">Sign in to manage poetry, books, awards and the Sufi heritage archive.</p>
-        <form id="login-form">
-          <label for="email">Administrator email</label>
-          <input id="email" name="email" type="email" autocomplete="username" placeholder="Enter your admin email" required>
-          <label for="password">Password</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
-          <p id="login-error" class="error" role="alert" aria-live="polite"></p>
-          <button class="studio-btn primary" type="submit">Sign in securely →</button>
-        </form>
-        <p class="muted" style="font-size:12px;margin:20px 0 0">Restricted access · Never share your administrator credentials.</p>
-      </div></div>
-    </section>
+  <div class="container">
+    <header>
+      <h1>Editorial Admin Studio</h1>
+      <p>SyedAmjadHussain.com Content Manager</p>
+    </header>
 
-    <section id="app" class="hidden">
-      <header class="studio-top">
-        <div class="brand-lockup"><div class="brand-mark">A</div><div><p class="brand-name">SyedAmjadHussain.com</p><p class="brand-sub">Editorial &amp; archive administration</p></div></div>
-        <div class="top-actions">
-          <a class="studio-btn" href="/home.html" target="_blank" rel="noopener noreferrer">View website ↗</a>
-          <button id="logout-btn" class="studio-btn" type="button">Sign out</button>
-        </div>
-      </header>
+    <!-- Workspace Selector Tabs -->
+    <div class="tab-grid">
+      <button class="tab-btn active" onclick="switchCategory('poetry', this)">Poetry Studio</button>
+      <button class="tab-btn" onclick="switchCategory('sher', this)">Sher Collection</button>
+      <button class="tab-btn" onclick="switchCategory('awards', this)">Awards & Honours</button>
+      <button class="tab-btn" onclick="switchCategory('books', this)">Books</button>
+      <button class="tab-btn" onclick="switchCategory('articles', this)">Articles</button>
+      <button class="tab-btn" onclick="switchCategory('sufi', this)">Sufi Heritage</button>
+      <button class="tab-btn" onclick="switchCategory('all', this)">All Content</button>
+    </div>
 
-      <section class="studio-hero">
-        <div>
-          <p class="eyebrow">Administrator workspace</p>
-          <h1 class="display-title">Your work. One considered space.</h1>
-          <p>Manage your writing, publications, awards and historical research through a clear, focused editorial workspace.</p>
-        </div>
-        <aside class="hero-side"><strong>Editorial principle</strong><p>Save drafts while preparing content. Review titles, text and destination before publishing.</p></aside>
-      </section>
-
-      <section class="studio-card account-card" aria-label="Signed-in account">
-        <div><p class="eyebrow" style="margin-bottom:4px">Signed in as</p><p id="admin-email" class="account-email">Checking account…</p></div>
-        <div class="secure-label"><span class="secure-dot"></span> Authenticated session</div>
-      </section>
-
-      <div class="workspace-head" id="workspace">
-        <p class="eyebrow">Choose a workspace</p><h2>What would you like to manage?</h2>
-        <p class="muted">Each section is designed for a different kind of content.</p>
+    <!-- Form Container -->
+    <div class="card" id="form-card">
+      <div class="card-header">
+        <h2 id="form-title">Poetry Studio</h2>
+        <p id="form-desc">Add a ghazal, naat, manqabat, bait, or salam in Urdu, Hindi, and Roman script.</p>
       </div>
 
-      <nav class="workspace-grid" aria-label="Admin workspace shortcuts">
-        <a class="workspace-card" href="#content-manager" data-workspace="poetry">
-          <span class="workspace-icon">ع</span><h3>Poetry Studio</h3>
-          <p>Ghazals, naats, manqabats, bait and salams, with Urdu, Hindi and Roman text.</p><span class="card-link">Open poetry tools ↓</span>
-        </a>
-        <a class="workspace-card" href="#content-manager" data-workspace="sher">
-          <span class="workspace-icon">❞</span><h3>Sher Collection</h3>
-          <p>Add and manage individual couplets in Urdu, Hindi and Roman Urdu.</p><span class="card-link">Manage shers ↓</span>
-        </a>
-        <a class="workspace-card" href="#content-manager" data-workspace="award">
-          <span class="workspace-icon">◇</span><h3>Awards &amp; Honours</h3>
-          <p>Record award names, years, awarding bodies and supporting details.</p><span class="card-link">Manage awards ↓</span>
-        </a>
-        <a class="workspace-card" href="#content-manager" data-workspace="book">
-          <span class="workspace-icon">▤</span><h3>Books</h3>
-          <p>Manage book titles, publishers, publication years and book information.</p><span class="card-link">Manage books ↓</span>
-        </a>
-        <a class="workspace-card" href="#content-manager" data-workspace="article">
-          <span class="workspace-icon">✎</span><h3>Articles</h3>
-          <p>Add articles, research writings, summaries and publication details.</p><span class="card-link">Manage articles ↓</span>
-        </a>
-        <a class="workspace-card" href="#content-manager" data-workspace="heritage">
-          <span class="workspace-icon">✧</span><h3>Sufi Heritage &amp; Saints</h3>
-          <p>Add a saint’s name, short biography and link to the full profile page.</p><span class="card-link">Manage saints ↓</span>
-        </a>
-      </nav>
+      <form id="admin-form" onsubmit="handleFormSubmit(event)">
+        <!-- Dynamic Fields Inject Here -->
+        <div id="dynamic-fields"></div>
+        <button type="submit" class="btn-submit" id="submit-btn">Save to Archive</button>
+      </form>
+    </div>
+  </div>
 
-      <section id="content-manager"></section>
-
-      <aside class="notice-card">
-        <span class="secure-dot" aria-hidden="true"></span>
-        <p><strong>Secure administration</strong>Content changes are handled through the authenticated admin API. Public pages must be configured to display each published content type; saving alone does not guarantee that a page will show it.</p>
-      </aside>
-    </section>
-
-    <footer class="studio-footer">
-      <span>© <span id="admin-year"></span> Syed Amjad Hussain</span><span>Private administration · SyedAmjadHussain.com</span>
-    </footer>
-  </main>
-  <script>document.getElementById("admin-year").textContent = new Date().getFullYear();</script>
+  <!-- Main Logic JS -->
+  <script src="admin-assets/admin.js"></script>
 </body>
 </html>
