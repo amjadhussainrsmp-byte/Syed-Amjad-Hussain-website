@@ -77,7 +77,7 @@
       border-radius: 50%;
     }
 
-    /* Grand Header Section */
+    /* Grand Banner Header */
     .site-header {
       padding: 45px 5.5% 30px;
       text-align: center;
@@ -100,10 +100,9 @@
       margin: 0;
       font-family: var(--serif);
       color: var(--wine);
-      font-size: clamp(26px, 4.5vw, 42px);
+      font-size: clamp(24px, 4.2vw, 40px);
       font-weight: 700;
       letter-spacing: 0.5px;
-      text-transform: capitalize;
       line-height: 1.25;
       text-shadow: 0 1px 2px rgba(71, 33, 39, 0.08);
     }
@@ -119,7 +118,7 @@
 
     /* Main Container */
     .container {
-      max-width: 1050px;
+      max-width: 1100px;
       margin: 35px auto 60px;
       padding: 0 20px;
     }
@@ -127,12 +126,13 @@
     /* Overview Stats Bar */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
       margin-bottom: 28px;
     }
 
-    @media(max-width: 650px) { .stats-grid { grid-template-columns: 1fr; } }
+    @media(max-width: 800px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width: 500px) { .stats-grid { grid-template-columns: 1fr; } }
 
     .stat-card {
       background: var(--bg-card);
@@ -163,7 +163,7 @@
 
     .tab-btn {
       flex: 1;
-      padding: 12px 16px;
+      padding: 12px 14px;
       background: transparent;
       border: none;
       color: var(--text-muted);
@@ -175,7 +175,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .tab-btn:hover { color: var(--wine); background: rgba(255, 255, 255, 0.5); }
@@ -256,7 +256,7 @@
     }
 
     textarea.form-control {
-      min-height: 110px;
+      min-height: 120px;
       resize: vertical;
       line-height: 1.6;
     }
@@ -363,36 +363,42 @@
   <button class="btn-export" onclick="exportBackup()">📥 Export JSON Backup</button>
 </div>
 
-<!-- Updated Grand Banner Header -->
 <header class="site-header">
   <h1>SyedAmjadHussain's official website Admin Panel</h1>
-  <p>Poetry, Sher & Sufi Heritage Management System</p>
+  <p>Poetry, Sher, Sufi Heritage & Sheikhpura History Manager</p>
 </header>
 
 <div class="container">
 
-  <!-- Overview Stats -->
+  <!-- Overview Stats Bar -->
   <div class="stats-grid">
     <div class="stat-card">
       <div class="stat-info">
-        <span>Total Ghazals & Poems</span>
+        <span>Ghazals & Poems</span>
         <strong id="statPoetry">--</strong>
       </div>
       <div class="stat-icon">📜</div>
     </div>
     <div class="stat-card">
       <div class="stat-info">
-        <span>Single Couplets (Sher)</span>
+        <span>Single Couplets</span>
         <strong id="statSher">--</strong>
       </div>
       <div class="stat-icon">✒️</div>
     </div>
     <div class="stat-card">
       <div class="stat-info">
-        <span>Sufi Saints Managed</span>
+        <span>Sufi Saints</span>
         <strong id="statSaints">--</strong>
       </div>
       <div class="stat-icon">🕌</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-info">
+        <span>Sheikhpura History</span>
+        <strong id="statSheikhpura">--</strong>
+      </div>
+      <div class="stat-icon">🏛️</div>
     </div>
   </div>
 
@@ -401,7 +407,8 @@
     <button class="tab-btn active" onclick="switchPanel('poetryPanel', this)">📜 Poetry Studio</button>
     <button class="tab-btn" onclick="switchPanel('sherPanel', this)">✒️ Sher Studio</button>
     <button class="tab-btn" onclick="switchPanel('sufiPanel', this)">🕌 Sufi Saints Studio</button>
-    <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">🗂️ All Content Archive</button>
+    <button class="tab-btn" onclick="switchPanel('sheikhpuraPanel', this)">🏛️ Sheikhpura History</button>
+    <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">🗂️ All Archive</button>
   </nav>
 
   <!-- Poetry Studio Panel -->
@@ -538,6 +545,56 @@
     </form>
   </div>
 
+  <!-- NEW: Sheikhpura History Panel -->
+  <div id="sheikhpuraPanel" class="panel">
+    <div class="panel-title">
+      <span>Manage Sheikhpura History Content</span>
+    </div>
+    <form id="sheikhpuraForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="skCategory" class="form-control">
+            <option value="Overview">Overview & Origin</option>
+            <option value="Sufi Heritage">Sufi Lineage & Shrines</option>
+            <option value="Monuments">Monuments & Landmarks</option>
+            <option value="Key Facts">Historical Milestones & Facts</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Title *</label>
+          <input type="text" id="skTitle" class="form-control" required placeholder="e.g. Foundation of Sheikhpura">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Subtitle / Location</label>
+          <input type="text" id="skSubtitle" class="form-control" placeholder="e.g. Medieval Period Heritage">
+        </div>
+        <div class="form-group">
+          <label>Year / Era</label>
+          <input type="text" id="skEra" class="form-control" placeholder="e.g. 15th Century">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Detailed Historical Content *</label>
+        <textarea id="skContent" class="form-control" required placeholder="Provide historical facts, research details, and narrative..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Image URL (Optional)</label>
+        <input type="text" id="skImage" class="form-control" placeholder="e.g. images/sheikhpura-monument.jpg">
+      </div>
+
+      <div class="btn-group">
+        <button type="submit" class="btn-primary">💾 Save Sheikhpura Record</button>
+        <button type="button" class="btn-secondary" onclick="resetSheikhpuraForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
   <!-- Archive Panel -->
   <div id="archivePanel" class="panel">
     <div class="panel-title">
@@ -552,12 +609,15 @@
 
     <h4 style="color:var(--wine); margin:30px 0 10px;">🕌 Sufi Saints Records</h4>
     <div id="sufiArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:30px 0 10px;">🏛️ Sheikhpura History Records</h4>
+    <div id="sheikhpuraArchiveList" class="archive-list">Loading...</div>
   </div>
 
 </div>
 
 <script>
-  let editingPoetryId = null, editingSherId = null, editingSufiId = null;
+  let editingPoetryId = null, editingSherId = null, editingSufiId = null, editingSheikhpuraId = null;
 
   function getClient() {
     return supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
@@ -576,10 +636,12 @@
       const { count: pCount } = await client.from('poetry').select('*', { count: 'exact', head: true });
       const { count: sCount } = await client.from('sher').select('*', { count: 'exact', head: true });
       const { count: sfCount } = await client.from('sufi_saints').select('*', { count: 'exact', head: true });
+      const { count: skCount } = await client.from('sheikhpura_history').select('*', { count: 'exact', head: true });
 
       document.getElementById('statPoetry').textContent = pCount || 0;
       document.getElementById('statSher').textContent = sCount || 0;
       document.getElementById('statSaints').textContent = sfCount || 0;
+      document.getElementById('statSheikhpura').textContent = skCount || 0;
     } catch(err) { console.error("Stats error:", err); }
   }
 
@@ -644,6 +706,27 @@
     } catch(err) { alert("Error: " + err.message); }
   });
 
+  // Save Sheikhpura History Record
+  document.getElementById('sheikhpuraForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = {
+      category: document.getElementById('skCategory').value,
+      title: document.getElementById('skTitle').value.trim(),
+      subtitle: document.getElementById('skSubtitle').value.trim(),
+      year_era: document.getElementById('skEra').value.trim(),
+      content_text: document.getElementById('skContent').value.trim(),
+      image_url: document.getElementById('skImage').value.trim()
+    };
+    try {
+      const client = getClient();
+      const res = editingSheikhpuraId ? await client.from('sheikhpura_history').update(data).eq('id', editingSheikhpuraId) : await client.from('sheikhpura_history').insert([data]);
+      if (res.error) throw res.error;
+      alert("Sheikhpura History Record Saved!");
+      resetSheikhpuraForm();
+      updateStats();
+    } catch(err) { alert("Error: " + err.message); }
+  });
+
   // Load Archives
   async function loadArchives() {
     const client = getClient();
@@ -686,6 +769,19 @@
         </div>
       </div>
     `).join('');
+
+    const { data: skData } = await client.from('sheikhpura_history').select('*').order('id', { ascending: false });
+    document.getElementById('sheikhpuraArchiveList').innerHTML = (!skData || !skData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : skData.map(i => `
+      <div class="archive-card">
+        <div>
+          <div class="archive-title">${i.title}</div>
+          <div class="archive-meta">Category: ${i.category} ${i.year_era ? '| Era: ' + i.year_era : ''}</div>
+        </div>
+        <div>
+          <button class="action-btn action-delete" onclick="deleteRecord('sheikhpura_history', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
   }
 
   async function deleteRecord(table, id) {
@@ -701,7 +797,8 @@
     const { data: p } = await client.from('poetry').select('*');
     const { data: s } = await client.from('sher').select('*');
     const { data: sf } = await client.from('sufi_saints').select('*');
-    const backup = { poetry: p, sher: s, sufi_saints: sf, exported_at: new Date().toISOString() };
+    const { data: sk } = await client.from('sheikhpura_history').select('*');
+    const backup = { poetry: p, sher: s, sufi_saints: sf, sheikhpura_history: sk, exported_at: new Date().toISOString() };
     const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
@@ -712,6 +809,7 @@
   function resetPoetryForm() { document.getElementById('poetryForm').reset(); editingPoetryId = null; }
   function resetSherForm() { document.getElementById('sherForm').reset(); editingSherId = null; }
   function resetSufiForm() { document.getElementById('sufiForm').reset(); editingSufiId = null; }
+  function resetSheikhpuraForm() { document.getElementById('sheikhpuraForm').reset(); editingSheikhpuraId = null; }
 
   window.addEventListener('DOMContentLoaded', updateStats);
 </script>
