@@ -7,10 +7,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   const loginError = document.getElementById("login-error");
   const logoutButton = document.getElementById("logout-btn");
 
-  const TYPES = [
-    "project", "article", "book", "poem",
-    "experience", "skill", "award", "heritage"
-  ];
+  
+const TYPES = [
+  "project",
+  "article",
+  "book",
+  "poem",
+  "ghazal",
+  "nazm",
+  "naat",
+  "manqabat",
+  "salam",
+  "sher",
+  "experience",
+  "skill",
+  "award",
+  "heritage"
+];
 
   let editingId = null;
   let contentRecords = [];
@@ -209,11 +222,88 @@ document.addEventListener("DOMContentLoaded", async () => {
         <label class="cm-field cm-wide">
           Full content
           <textarea id="cm-body" rows="10"
-            placeholder="Write the article, biography, poem or record here..."></textarea>
-        </label>
+  placeholder="Write the article, biography, poem or record here..."></textarea>
+</label>
 
-        <label class="cm-field cm-wide">
-          Image URL (optional)
+
+<div class="cm-wide poetry-studio">
+  <h3>Poetry Studio — Multilingual Text</h3>
+  <p class="cm-muted">
+    Add your poetry in any or all available scripts.
+    Preserve line breaks when entering your verses.
+  </p>
+
+  <label class="cm-field">
+    Poem form
+    <input id="cm-poem-type"
+      placeholder="Ghazal, Nazm, Naat, Sher...">
+  </label>
+
+  <label class="cm-field">
+    Primary language
+    <select id="cm-language-primary">
+      <option value="">Not specified</option>
+      <option value="Urdu">Urdu</option>
+      <option value="Hindi">Hindi</option>
+      <option value="Roman Urdu">Roman Urdu</option>
+      <option value="Arabic">Arabic</option>
+      <option value="Multilingual">Multilingual</option>
+    </select>
+  </label>
+
+  <label class="cm-field">
+    Poet name
+    <input id="cm-poet-name"
+      placeholder="Syed Amjad Hussain">
+  </label>
+
+  <label class="cm-field">
+    Takhallus
+    <input id="cm-takhallus"
+      placeholder="Amjad / امجدؔ">
+  </label>
+
+  <label class="cm-field">
+    Radeef
+    <input id="cm-radeef">
+  </label>
+
+  <label class="cm-field">
+    Qaafiya
+    <input id="cm-qaafiya">
+  </label>
+
+  <label class="cm-field">
+    Beher / metre
+    <input id="cm-beher">
+  </label>
+
+  <label class="cm-field cm-wide">
+    Urdu — اردو
+    <textarea id="cm-text-urdu"
+      dir="rtl" lang="ur" rows="7"></textarea>
+  </label>
+
+  <label class="cm-field cm-wide">
+    Roman Urdu / Hinglish
+    <textarea id="cm-text-roman" rows="7"></textarea>
+  </label>
+
+  <label class="cm-field cm-wide">
+    Hindi — देवनागरी
+    <textarea id="cm-text-hindi"
+      lang="hi" rows="7"></textarea>
+  </label>
+
+  <label class="cm-field cm-wide">
+    Poetry notes and islah
+    <textarea id="cm-poetry-notes" rows="4"></textarea>
+  </label>
+</div>
+
+
+<label class="cm-field cm-wide">
+  Image URL (optional)
           <input id="cm-image" type="url" placeholder="https://...">
         </label>
 
