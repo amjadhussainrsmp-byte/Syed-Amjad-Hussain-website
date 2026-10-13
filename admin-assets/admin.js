@@ -164,17 +164,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   
+
 function ensureContentInterface() {
     let section = $("#content-manager");
 
-    // Reuse the empty placeholder already present in admin.html.
-    // Only return if the interface has actually been built.
+    // Reuse the existing placeholder.
     if (section && section.dataset.initialized === "true") {
       bindWorkspaceButtons();
       return;
     }
 
-    // Create the container only if admin.html doesn't contain one.
+    // Create the container only if it doesn't exist.
     if (!section) {
       section = document.createElement("section");
       section.id = "content-manager";
