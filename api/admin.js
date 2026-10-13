@@ -124,16 +124,23 @@ module.exports = async function handler(req, res) {
     );
   }
 
-  if (
-    !user.email ||
-    user.email.toLowerCase() !== ADMIN_EMAIL.trim().toLowerCase()
-  ) {
-    return sendError(
-      res,
-      403,
-      "You are not authorised to manage this site."
-    );
-  }
+  
+const allowedEmails = (process.env.ADMIN_EMAIL || "")
+  .split(",")
+  .map(email => email.trim().toLowerCase())
+  .filter(Boolean);
+
+if (
+  !user.email ||
+  !allowedEmails.includes(user.email.toLowerCase())
+) {
+  return sendError(
+    res,
+    403,
+    "You are not authorised to manage this site."
+  );
+}
+
 
   const db = createClient(
     SUPABASE_URL,
