@@ -241,27 +241,27 @@
       border: 1px solid var(--gold);
       outline: 1px solid #d6c19c;
       outline-offset: -7px;
-      padding: 35px 30px;
+      padding: 40px 35px;
       box-shadow: 0 12px 32px rgba(48, 21, 27, 0.07);
+      text-align: center;
     }
 
     .poetry-header {
-      text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 15px;
+      padding-bottom: 18px;
     }
 
     .poetry-title {
       font-family: var(--serif);
-      font-size: 24px;
+      font-size: 28px;
       color: var(--wine);
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
 
     .poetry-type {
       color: #a38a61;
-      font: 11px Arial, sans-serif;
+      font: 600 12px Arial, sans-serif;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
@@ -269,14 +269,13 @@
     .poetry-body {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      text-align: center;
+      gap: 28px;
     }
 
     .poetry-body .urdu {
       font-family: "Noto Nastaliq Urdu", serif;
-      font-size: 25px;
-      line-height: 2.35;
+      font-size: 26px;
+      line-height: 2.5;
       color: #30151b;
       direction: rtl;
       white-space: pre-line;
@@ -284,28 +283,28 @@
 
     .poetry-body .hindi {
       font-family: "Noto Serif Devanagari", serif;
-      font-size: 20px;
-      line-height: 1.9;
+      font-size: 21px;
+      line-height: 2.1;
       color: #30151b;
       white-space: pre-line;
     }
 
     .poetry-body .roman {
       color: #64575a;
-      font-size: 16px;
-      line-height: 1.9;
+      font-size: 17px;
+      line-height: 2;
       font-style: italic;
       white-space: pre-line;
     }
 
     .poetry-footer {
-      margin-top: 25px;
-      text-align: center;
+      margin-top: 30px;
       color: var(--wine);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 15px;
       border-top: 1px solid var(--border);
-      padding-top: 15px;
+      padding-top: 18px;
+      letter-spacing: 0.5px;
     }
 
     .empty-state {
@@ -397,7 +396,6 @@
     })[character]);
   }
 
-  // Supabase se live poetry fetch karne ka function
   async function loadPoetryFromSupabase() {
     const container = document.getElementById("poetryContainer");
 
