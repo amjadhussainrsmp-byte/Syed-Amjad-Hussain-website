@@ -10,13 +10,10 @@
 
   <meta name="theme-color" content="#472127">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Supabase JS Client & Config -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="admin-config.js"></script>
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -27,11 +24,6 @@
       --ink: #302327;
       --muted: #81777a;
       --border: #e6d9c8;
-      --paper-2: #ebe3d7;
-      --line: #d8cdbd;
-      --white: #fffdf8;
-      --sans: "DM Sans", Arial, sans-serif;
-      --serif: "Playfair Display", Georgia, serif;
     }
 
     * { box-sizing: border-box; }
@@ -40,161 +32,230 @@
       margin: 0;
       color: var(--ink);
       background: var(--paper);
-      font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.65;
+      font-family: Georgia, "Times New Roman", serif;
     }
 
     a { color: inherit; text-decoration: none; }
 
-    .topline {
-      height: 32px;
-      background: var(--wine-dark);
-      color: #e9ded0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5.5%;
-      font-size: 9px;
-      letter-spacing: .16em;
-    }
+    
+/* HOMEPAGE-MATCHING HEADER */
+:root {
+  --paper: #f4efe6;
+  --paper-2: #ebe3d7;
+  --ink: #2f2926;
+  --muted: #71665e;
+  --burgundy: #652e36;
+  --burgundy-dark: #472127;
+  --gold: #b89b6a;
+  --line: #d8cdbd;
+  --white: #fffdf8;
+  --sans: "DM Sans", Arial, sans-serif;
+  --serif: "Playfair Display", Georgia, serif;
+}
 
-    .site-header {
-      min-height: 86px;
-      padding: 0 5.5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      border-bottom: 1px solid rgba(90, 67, 56, .12);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(244, 239, 230, .96);
-      backdrop-filter: blur(14px);
-    }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-    }
+.topline {
+  height: 32px;
+  background: var(--burgundy-dark);
+  color: #e9ded0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5.5%;
+  font-size: 9px;
+  letter-spacing: .16em;
+}
 
-    .brand-mark {
-      height: 42px;
-      width: 42px;
-      border: 1px solid var(--gold);
-      color: var(--wine);
-      display: grid;
-      place-items: center;
-      font-family: serif;
-      font-size: 27px;
-    }
+.site-header {
+  min-height: 86px;
+  padding: 0 5.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(90, 67, 56, .12);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(244, 239, 230, .96);
+  backdrop-filter: blur(14px);
+}
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.3;
-    }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
 
-    .brand-text strong {
-      font-family: var(--serif);
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: -.02em;
-    }
+.brand-mark {
+  height: 42px;
+  width: 42px;
+  border: 1px solid var(--gold);
+  color: var(--burgundy);
+  display: grid;
+  place-items: center;
+  font-family: serif;
+  font-size: 27px;
+}
 
-    .brand-text small {
-      font-size: 9px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 5px;
-    }
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
 
-    #mainNav {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      gap: 12px 20px;
-      padding: 0;
-      margin: 0;
-      font-family: var(--sans);
-      font-size: 11px;
-      color: #544942;
-    }
+.brand-text strong {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
 
-    #mainNav a {
-      color: inherit;
-      text-decoration: none;
-      transition: color .2s;
-    }
+.brand-text small {
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
+}
 
-    #mainNav a:hover,
-    #mainNav a[aria-current="page"] {
-      color: var(--wine);
-    }
+#mainNav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  padding: 0;
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: #544942;
+}
 
-    #mainNav .nav-contact {
-      border: 1px solid var(--line);
-      padding: 12px 14px;
-      color: var(--ink);
-    }
+#mainNav a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .2s;
+}
 
-    #mainNav .nav-contact span {
-      color: var(--wine);
-      margin-left: 9px;
-    }
+#mainNav a:hover,
+#mainNav a[aria-current="page"] {
+  color: var(--burgundy);
+}
 
-    .menu-toggle {
-      display: none;
-      border: 0;
-      background: none;
-      font-size: 24px;
-      color: var(--wine);
-      cursor: pointer;
-    }
+#mainNav .nav-contact {
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+  color: var(--ink);
+}
 
-    @media (max-width: 1050px) {
-      #mainNav { gap: 12px; }
-      #mainNav a { font-size: 10px; }
-    }
+#mainNav .nav-contact span {
+  color: var(--burgundy);
+  margin-left: 9px;
+}
 
-    @media (max-width: 780px) {
-      .topline { padding: 0 5%; font-size: 7px; letter-spacing: .1em; }
-      .site-header { min-height: 72px; padding: 0 5%; }
-      .brand-mark { width: 36px; height: 36px; }
-      .brand-text strong { font-size: 14px; }
-      .brand-text small { font-size: 7px; }
-      .menu-toggle { display: block; }
-      #mainNav {
-        display: none;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: var(--paper);
-        padding: 18px 5% 24px;
-        border-bottom: 1px solid var(--line);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-      }
-      #mainNav.open { display: flex; }
-      #mainNav a { padding: 12px 0; border-bottom: 1px solid #e4d9ca; font-size: 12px; }
-      #mainNav .nav-contact { padding: 12px; margin-top: 12px; text-align: center; border: 1px solid var(--line); }
-    }
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  color: var(--burgundy);
+  cursor: pointer;
+}
 
-    @media (max-width: 420px) {
-      .topline span:last-child { display: none; }
-    }
+/* Responsive navigation */
+@media (max-width: 1050px) {
+  #mainNav {
+    gap: 12px;
+  }
+
+  #mainNav a {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 780px) {
+  .topline {
+    padding: 0 5%;
+    font-size: 7px;
+    letter-spacing: .1em;
+  }
+
+  .site-header {
+    min-height: 72px;
+    padding: 0 5%;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-text strong {
+    font-size: 14px;
+  }
+
+  .brand-text small {
+    font-size: 7px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  #mainNav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    padding: 18px 5% 24px;
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  #mainNav.open {
+    display: flex;
+  }
+
+  #mainNav a {
+    padding: 12px 0;
+    border-bottom: 1px solid #e4d9ca;
+    font-size: 12px;
+  }
+
+  #mainNav .nav-contact {
+    padding: 12px;
+    margin-top: 12px;
+    text-align: center;
+    border: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 420px) {
+  .topline span:last-child {
+    display: none;
+  }
+}
+
 
     .hero {
       text-align: center;
       padding: 65px 20px 43px;
-      background: radial-gradient(ellipse at top, #f0e5d3 0, transparent 72%), var(--paper);
+      background:
+        radial-gradient(ellipse at top, #f0e5d3 0, transparent 72%),
+        var(--paper);
     }
 
     .eyebrow {
@@ -238,7 +299,9 @@
       margin: 10px 0 28px;
     }
 
-    .search-box { flex: 1 1 260px; }
+    .search-box {
+      flex: 1 1 260px;
+    }
 
     .search-box input,
     .toolbar select {
@@ -252,7 +315,10 @@
       font: 14px Arial, sans-serif;
     }
 
-    .toolbar select { width: auto; min-width: 145px; }
+    .toolbar select {
+      width: auto;
+      min-width: 145px;
+    }
 
     .results-count {
       margin: 0 0 17px;
@@ -276,14 +342,8 @@
       border: 1px solid var(--gold);
       outline: 1px solid #d6c19c;
       outline-offset: -7px;
-      box-shadow: 0 12px 32px rgba(48, 21, 27, 0.07);
-      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: 0 8px 25px #35201708;
       text-align: center;
-    }
-
-    .sher-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 36px rgba(48, 21, 27, 0.12);
     }
 
     .card-number {
@@ -299,7 +359,7 @@
       flex: 1;
       flex-direction: column;
       justify-content: center;
-      gap: 18px;
+      gap: 15px;
       padding: 10px 0 24px;
       overflow-wrap: anywhere;
     }
@@ -313,23 +373,19 @@
 
     .sher-text .urdu {
       font-family: "Noto Nastaliq Urdu", serif;
-      font-size: 27px;
-      line-height: 2.35;
-      color: #30151b;
+      font-size: 24px;
+      line-height: 2.3;
       direction: rtl;
     }
 
     .sher-text .hindi {
       font-family: "Noto Serif Devanagari", serif;
-      font-size: 22px;
-      line-height: 1.9;
-      color: #30151b;
+      font-size: 20px;
     }
 
     .sher-text .roman {
       color: #64575a;
       font-size: 16px;
-      line-height: 1.9;
       font-style: italic;
     }
 
@@ -337,8 +393,12 @@
       margin: 5px 0 18px;
       color: var(--wine);
       font-size: 14px;
-      font-weight: 600;
       letter-spacing: .3px;
+    }
+
+    .poet-signature span {
+      color: #9b7a44;
+      font-style: italic;
     }
 
     .card-meta {
@@ -370,22 +430,32 @@
       border-radius: 2px;
       cursor: pointer;
       font: 12px Arial, sans-serif;
-      font-weight: 600;
       transition: .2s;
     }
 
-    .btn-primary { color: white; background: var(--wine); }
-    .btn-primary:hover { background: var(--wine-dark); }
-    .btn-secondary { color: var(--wine); background: transparent; }
-    .btn-secondary:hover { background: #f3eadc; }
-    .btn:disabled { opacity: .7; cursor: wait; }
+    .btn-primary {
+      color: white;
+      background: var(--wine);
+    }
+
+    .btn-primary:hover {
+      background: var(--wine-dark);
+    }
+
+    .btn-secondary {
+      color: var(--wine);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: #f3eadc;
+    }
 
     .empty-state {
       padding: 50px 15px;
       text-align: center;
       color: var(--muted);
       line-height: 1.8;
-      grid-column: 1 / -1;
     }
 
     .site-footer {
@@ -396,123 +466,233 @@
       font: 12px/1.8 Arial, sans-serif;
     }
 
-    .sher-download-art {
-      position: relative;
-      width: 900px;
-      min-height: 570px;
-      padding: 58px 64px 35px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      box-sizing: border-box;
-      color: #302327;
-      background: radial-gradient(ellipse at top, #f2e7d5 0, transparent 68%), #fffdf8;
-      border: 2px solid #b99a61;
-      outline: 1px solid #b99a61;
-      outline-offset: -13px;
-      text-align: center;
-      font-family: Georgia, "Times New Roman", serif;
+    @media (max-width: 700px) {
+      .header-inner { padding: 17px 18px 0; }
+
+      .brand { font-size: 21px; }
+
+      .menu-toggle {
+        display: inline-block;
+        margin-top: 15px;
+      }
+
+      #mainNav {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 9px 0 14px;
+      }
+
+      #mainNav.open { display: flex; }
+
+      #mainNav a { padding: 11px 2px; }
+
+      .hero { padding: 45px 16px 32px; }
+
+      main { padding: 0 14px 45px; }
+
+      .sher-grid { grid-template-columns: 1fr; }
+
+      .sher-card { padding: 27px 21px 19px; }
+
+      .toolbar select { flex: 1 1 130px; }
     }
 
-    .sher-download-art::before {
-      content: "❖";
-      color: #b99a61;
-      font-size: 25px;
-      margin-bottom: 20px;
-    }
+    @media print {
+      .site-header, .toolbar, .results-count,
+      .card-actions, .site-footer { display: none !important; }
 
-    .sher-download-art .download-kicker {
-      margin: 0 0 30px;
-      color: #947345;
-      font: 600 13px/1.5 Arial, sans-serif;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
+      .sher-grid { grid-template-columns: 1fr 1fr; }
 
-    .sher-download-art .download-poetry {
-      width: 100%;
-      margin: auto 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 23px;
+      .sher-card { break-inside: avoid; }
     }
+  /* Premium sher card and image-download experience */
+.sher-card {
+  background: #fffdf9;
+  border: 1px solid var(--gold);
+  outline: 1px solid #d6c19c;
+  outline-offset: -7px;
+  box-shadow: 0 12px 32px rgba(48, 21, 27, 0.07);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
 
-    .sher-download-art .download-line {
-      max-width: 100%;
-      margin: 0;
-      overflow-wrap: anywhere;
-      white-space: pre-line;
-      color: #30151b;
-      font-size: 31px;
-      line-height: 1.9;
-    }
+.sher-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(48, 21, 27, 0.12);
+}
 
-    .sher-download-art .download-line.urdu {
-      font-family: "Noto Nastaliq Urdu", serif;
-      font-size: 36px;
-      line-height: 2.2;
-      direction: rtl;
-    }
+.sher-card.is-downloading {
+  transform: none !important;
+  box-shadow: none !important;
+}
 
-    .sher-download-art .download-line.hindi {
-      font-family: "Noto Serif Devanagari", serif;
-      font-size: 30px;
-    }
+.sher-text {
+  gap: 18px;
+}
 
-    .sher-download-art .download-line.roman {
-      color: #64575a;
-      font-size: 23px;
-      font-style: italic;
-    }
+.sher-text .urdu {
+  color: #30151b;
+  font-size: 27px;
+  line-height: 2.35;
+}
 
-    .sher-download-art .download-divider {
-      width: 90px;
-      height: 1px;
-      margin: 28px 0 17px;
-      background: #b99a61;
-    }
+.sher-text .hindi {
+  color: #30151b;
+  font-size: 22px;
+  line-height: 1.9;
+}
 
-    .sher-download-art .download-author {
-      margin: 0;
-      color: #472127;
-      font-size: 23px;
-      font-weight: 600;
-    }
+.sher-text .roman {
+  color: #64575a;
+  font-size: 16px;
+  line-height: 1.9;
+}
 
-    .sher-download-art .download-takhallus {
-      margin: 7px 0 0;
-      color: #947345;
-      font-size: 18px;
-      font-style: italic;
-    }
+.poet-signature {
+  font-weight: 600;
+}
 
-    .sher-download-art .download-watermark {
-      width: 100%;
-      margin: 31px 0 0;
-      padding-top: 15px;
-      border-top: 1px solid #e6d9c8;
-      color: #8a6b43;
-      font: 600 15px/1.5 Arial, sans-serif;
-      letter-spacing: 2px;
-    }
+.card-actions .btn {
+  min-height: 40px;
+  font-weight: 600;
+}
 
-    .sher-download-art .download-category {
-      margin: 10px 0 0;
-      color: #81777a;
-      font: 12px/1.5 Arial, sans-serif;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+.btn:disabled {
+  opacity: .7;
+  cursor: wait;
+}
+
+/* Used only when generating the downloadable image */
+.sher-download-art {
+  position: relative;
+  width: 900px;
+  min-height: 570px;
+  padding: 58px 64px 35px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  box-sizing: border-box;
+  color: #302327;
+  background:
+    radial-gradient(ellipse at top, #f2e7d5 0, transparent 68%),
+    #fffdf8;
+  border: 2px solid #b99a61;
+  outline: 1px solid #b99a61;
+  outline-offset: -13px;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.sher-download-art::before {
+  content: "❖";
+  color: #b99a61;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.sher-download-art .download-kicker {
+  margin: 0 0 30px;
+  color: #947345;
+  font: 600 13px/1.5 Arial, sans-serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.sher-download-art .download-poetry {
+  width: 100%;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 23px;
+}
+
+.sher-download-art .download-line {
+  max-width: 100%;
+  margin: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #30151b;
+  font-size: 31px;
+  line-height: 1.9;
+}
+
+.sher-download-art .download-line.urdu {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 36px;
+  line-height: 2.2;
+  direction: rtl;
+}
+
+.sher-download-art .download-line.hindi {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 30px;
+}
+
+.sher-download-art .download-line.roman {
+  color: #64575a;
+  font-size: 23px;
+  font-style: italic;
+}
+
+.sher-download-art .download-divider {
+  width: 90px;
+  height: 1px;
+  margin: 28px 0 17px;
+  background: #b99a61;
+}
+
+.sher-download-art .download-author {
+  margin: 0;
+  color: #472127;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.sher-download-art .download-takhallus {
+  margin: 7px 0 0;
+  color: #947345;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.sher-download-art .download-watermark {
+  width: 100%;
+  margin: 31px 0 0;
+  padding-top: 15px;
+  border-top: 1px solid #e6d9c8;
+  color: #8a6b43;
+  font: 600 15px/1.5 Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.sher-download-art .download-category {
+  margin: 10px 0 0;
+  color: #81777a;
+  font: 12px/1.5 Arial, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  .sher-text .urdu {
+    font-size: 25px;
+  }
+
+  .sher-card:hover {
+    transform: none;
+  }
+}
   </style>
 </head>
 
 <body>
-
+  
 <div class="topline">
   <span>INDEPENDENT RESEARCH · LITERATURE · HERITAGE</span>
   <span>Bihar, India</span>
@@ -527,7 +707,14 @@
     </span>
   </a>
 
-  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav">☰</button>
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    type="button"
+    aria-label="Open navigation"
+    aria-expanded="false"
+    aria-controls="mainNav"
+  >☰</button>
 
   <nav id="mainNav" aria-label="Main navigation">
     <a href="home.html">Home</a>
@@ -540,351 +727,616 @@
     <a href="awards-honours.html">Awards and Honours</a>
     <a href="library.html">Library</a>
     <a href="media.html">Media</a>
-    <a class="nav-contact" href="contact.html">Get in touch <span>↗</span></a>
+    <a class="nav-contact" href="contact.html">
+      Get in touch <span>↗</span>
+    </a>
   </nav>
 </header>
 
+  
 <section class="hero">
   <div class="eyebrow">The Poetry of Amjadؔ</div>
   <h1>Sher Collection</h1>
-  <p>A curated collection of couplets by Syed Amjad Hussain, in Urdu, Hindi and Roman Urdu.</p>
+  <p>
+    A curated collection of couplets by Syed Amjad Hussain,
+    in Urdu, Hindi and Roman Urdu.
+  </p>
   <div class="ornament">— ❖ —</div>
 </section>
 
-<main>
-  <div class="toolbar">
-    <div class="search-box">
-      <input id="searchInput" type="search" placeholder="Search sher, words or themes..." aria-label="Search sher">
+
+  <main>
+    <div class="toolbar">
+      <div class="search-box">
+        <input id="searchInput" type="search"
+          placeholder="Search sher, words or themes..."
+          aria-label="Search sher">
+      </div>
+
+      <select id="languageFilter" aria-label="Filter by language">
+        <option value="all">All languages</option>
+        <option value="Urdu">Urdu</option>
+        <option value="Hindi">Hindi</option>
+        <option value="Roman Urdu">Roman Urdu</option>
+      </select>
+
+      
+<select id="categoryFilter" aria-label="Filter by category">
+  <option value="all">All categories</option>
+  <option value="Ghazal">Ghazal</option>
+  <option value="Sufi">Sufi</option>
+  <option value="Love">Love</option>
+  <option value="Life">Life</option>
+  <option value="Reflection">Reflection</option>
+  <option value="Ishq">Ishq</option>
+  <option value="Separation">Separation</option>
+  <option value="Heartbreak">Heartbreak</option>
+  <option value="Hope">Hope</option>
+  <option value="Philosophy">Philosophy</option>
+  <option value="Spirituality">Spirituality</option>
+  <option value="Tasawwuf">Tasawwuf</option>
+  <option value="Divine Love">Divine Love</option>
+  <option value="Patience">Patience</option>
+  <option value="Destiny">Destiny</option>
+  <option value="Tanhai">Tanhai</option>
+  <option value="Wafa">Wafa</option>
+  <option value="Hijr">Hijr</option>
+  <option value="Visal">Visal</option>
+  <option value="Humanity">Humanity</option>
+  <option value="Social Commentary">Social Commentary</option>
+  <option value="Nature">Nature</option>
+</select>
+
     </div>
 
-    <select id="languageFilter" aria-label="Filter by language">
-      <option value="all">All languages</option>
-      <option value="Urdu">Urdu</option>
-      <option value="Hindi">Hindi</option>
-      <option value="Roman Urdu">Roman Urdu</option>
-    </select>
+    <p class="results-count" id="resultsCount" aria-live="polite"></p>
+    <section class="sher-grid" id="sherGrid"
+      aria-label="Sher collection"></section>
+  </main>
 
-    <select id="categoryFilter" aria-label="Filter by category">
-      <option value="all">All categories</option>
-      <option value="Ghazal">Ghazal</option>
-      <option value="Sufi">Sufi</option>
-      <option value="Love">Love</option>
-      <option value="Life">Life</option>
-      <option value="Reflection">Reflection</option>
-      <option value="Ishq">Ishq</option>
-      <option value="Separation">Separation</option>
-      <option value="Heartbreak">Heartbreak</option>
-      <option value="Hope">Hope</option>
-      <option value="Philosophy">Philosophy</option>
-      <option value="Spirituality">Spirituality</option>
-      <option value="Tasawwuf">Tasawwuf</option>
-      <option value="Divine Love">Divine Love</option>
-      <option value="Patience">Patience</option>
-      <option value="Destiny">Destiny</option>
-      <option value="Tanhai">Tanhai</option>
-      <option value="Wafa">Wafa</option>
-      <option value="Hijr">Hijr</option>
-      <option value="Visal">Visal</option>
-      <option value="Humanity">Humanity</option>
-      <option value="Social Commentary">Social Commentary</option>
-      <option value="Nature">Nature</option>
-    </select>
-  </div>
+  <footer class="site-footer">
+    <div>© <span id="year"></span> Syed Amjad Hussain</div>
+    <div>Preserving poetry, language and literary heritage.</div>
+  </footer>
 
-  <p class="results-count" id="resultsCount" aria-live="polite"></p>
-  <section class="sher-grid" id="sherGrid" aria-label="Sher collection"></section>
-</main>
+  <!-- Download library for high-quality PNG images -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-<footer class="site-footer">
-  <div>© <span id="year"></span> Syed Amjad Hussain</div>
-  <div>Preserving poetry, language and literary heritage.</div>
-</footer>
+  <script>
+    // PART 2: Add your actual couplets in the array below.
+    // Each entry can include Urdu, Hindi and/or Roman Urdu text.
+    const sherCollection = [
+      
+{
+  id: 1,
+  urdu: "اک مرشدِ برحق سے ہے امجد کا تعلق\nپروا نہیں اس کو سزا کی نہ جزا کی",
+  hindi: "इक मुर्शिद-ए-बर-हक़ से है अमजद का तअल्लुक़\nपरवाह नहीं उसको सज़ा की न जज़ा की",
+  roman: "Ik murshid-e-bar-haq se hai Amjad ka ta'alluq\nParwah nahi.n usko, sazaa ki na jazaa ki",
+  category: "Sufi",
+  language: "Roman Urdu"
+},
+      
+{
+  id: 2,
+  urdu: "صحراے آرزو میں ملی تازگی مجھے\nسیرِ چمن سے بڑھ کے لگی تشنگی مجھے",
+  hindi: "सहरा-ए-आरज़ू में मिली ताज़गी मुझे\nसैर-ए-चमन से बढ़ के लगी तिश्नगी मुझे",
+  roman: "Sehra-e-aarzu mein mili taazgi mujhe\nSair-e-chaman se badh ke lagi tishnagi mujhe",
+  category: "Life",
+  language: "Roman Urdu"
+},
+      
+{
+  id: 3,
+  urdu: "منزل کی اب طلب ہی نہیں رہ گئی ذرا\nاتنی پسند آ گئی آوارگی مجھے",
+  hindi: "मंज़िल की अब तलब ही नहीं रह गई ज़रा\nइतनी पसंद आ गई आवारगी मुझे",
+  roman: "Manzil ki ab talab hi nahin reh gayi zara\nItni pasand aa gayi aawargi mujhe",
+  category: "Life",
+  language: "Roman Urdu"
+},
+      
+{
+  id: 4,
+  urdu: "تیری زلفوں کے سائے میں سکوں دل کو جو ملتا ہے\nزمانے بھر کا کوئی بھی نشہ ایسا نہیں ہوتا",
+  hindi: "तिरी ज़ुल्फ़ों के साए में सुकूँ दिल को जो मिलता है\nज़माने भर का कोई भी नशा ऐसा नहीं होता",
+  roman: "Teri zulfon ke saaye mein sukoon dil ko jo milta hai\nZamaane bhar ka koi bhi nasha aisa nahin hota",
+  category: "Love",
+  language: "Roman Urdu"
+},
+      
+{
+  id: 5,
+  urdu: "چلا جب سے مقدر کا سفر تیری گلی کی اور\nہمارا پاؤں پھر راہوں میں بھی مبہم نہیں ہوتا",
+  hindi: "चला जब से मुक़द्दर का सफ़र तेरी गली की ओर\nहमारा पाँव फिर राहों में भी मुबहम नहीं होता",
+  roman: "Chala jab se muqaddar ka safar teri gali ki aur\nHamara paaon phir raahon mein bhi mubham nahin hota",
+  category: "Love",
+  language: "Roman Urdu"
+},
+      
+{
+  id: 6,
+  urdu: "اگر آنکھوں میں آنسو ہیں تو وہ تو موتیاں ٹھہرے\nمحبت میں بہا آنسو کبھی شبنم نہیں ہوتا",
+  hindi: "अगर आँखों में आँसू हैं तो वो तो मोतियाँ ठहरे\nमोहब्बत में बहा आँसू कभी शबनम नहीं होता",
+  roman: "Agar aankhon mein aansu hain to woh to motiyaan thehre\nMohabbat mein baha aansu kabhi shabnam nahin hota",
+  category: "Love",
+  language: "Roman Urdu"
+},
+      
+{
+  id: 7,
+  urdu: "امجد کو کہاں فکر ہے دنیا کے ستم کی\nاس پر تو ہمیشہ ہی عنایت ہے خدا کی",
+  hindi: "अमजद को कहाँ फ़िक्र है दुनिया के सितम की\nउस पर तो हमेशा ही इनायत है ख़ुदा की",
+  roman: "Amjad ko kahaan fikr hai duniya ke sitam ki\nUs par to hamesha hi inaayat hai Khuda ki",
+  category: "Sufi",
+  language: "Roman Urdu"
+},
+      
+{
+  id: 8,
+  urdu: "دشمن کا ستم سہ کے ہنسے ہم تو یہ بولے\nتاثیر یہ رنگت ہے مرے صبر و رضا کی",
+  hindi: "दुश्मन का सितम सह के हँसे हम तो ये बोले\nतासीर ये रंगत है मिरे सब्र-ओ-रज़ा की",
+  roman: "Dushman ka sitam seh ke hanse hum to ye bole\nTaaseer ye rangat hai mere sabr-o-raza ki",
+  category: "Sufi",
+  language: "Roman Urdu"
+},
+      
+{
+  id: 9,
+  urdu: "برسوں سے دل میں درد چھپائے کھڑا ہوں میں\nآنسو کا کوئی قطرہ اثر ہو نہیں رہا",
+  hindi: "बरसों से दिल में दर्द छुपाए खड़ा हूँ मैं\nआँसू का कोई कतरा असर हो नहीं रहा",
+  roman: "Barson se dil mein dard chhupaye khada hoon main\nAansu ka koi qatra asar ho nahin raha",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 10,
+  urdu: "آباد پھر یہ دل کا نگر ہو نہیں رہا\nہو جانا چاہیے نا، مگر ہو نہیں رہا",
+  hindi: "आबाद फिर ये दिल का नगर हो नहीं रहा\nहो जाना चाहिए न, मगर हो नहीं रहा",
+  roman: "Aabaad phir ye dil ka nagar ho nahin raha\nHo jaana chahiye na, magar ho nahin raha",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 11,
+  urdu: "رنگ و بو کی بزم میں یہ بے دلی کیسی یہاں\nپھول تو سارے کھلے ہیں، باغباں کوئی نہ ہو",
+  hindi: "रंग-ओ-बू की बज़्म में ये बे-दिली कैसी यहाँ\nफूल तो सारे खिले हैं बाग़बाँ कोई न हो",
+  roman: "Rang-o-boo ki bazm mein ye be-dili kaisi yahaan\nPhool to saare khile hain, baaghbaan koi na ho",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 12,
+  urdu: "اب وہاں چل کر رہیں امجد جہاں کوئی نہ ہو\nہم ہوں اور وہ ہوں، وہاں درمیاں کوئی نہ ہو",
+  hindi: "अब वहाँ चल कर रहें अमजद जहाँ कोई न हो\nहम हों और वो हों वहाँ पर दरमियाँ कोई न हो",
+  roman: "Ab wahaan chal kar rahein Amjad jahaan koi na ho\nHum hon aur woh hon wahaan, darmiyaan koi na ho",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 13,
+  urdu: "خاکِ در اُن کے بنے کاش آج سرمہ آنکھ کا\nدیدہ و دل کو سجائیں یا الٰہ العالمین",
+  hindi: "ख़ाक-ए-दर उन के बने काश आज सुर्मा आँख का\nदीदा-ओ-दिल को सजाएँ या इलाह-अल-आलमीं",
+  roman: "Khaak-e-dar unke bane kaash aaj surma aankh ka\nDeeda-o-dil ko sajaaen ya Ilaah-al-aalameen",
+  category: "Sufi",
+  language: "Roman Urdu"
+},
+{
+  id: 14,
+  urdu: "موجِ طوفانوں نے گھیرا ہے ہماری ناؤ کو\nناؤ ساحل سے لگائیں یا الٰہ العالمین",
+  hindi: "मौज-ए-तूफ़ानों ने घेरा है हमारी नाव को\nनाव साहिल से लगाएँ या इलाह-अल-आलमीं",
+  roman: "Mauj-e-toofaanon ne ghera hai hamaari naao ko\nNaao saahil se lagaaen ya Ilaah-al-aalameen",
+  category: "Sufi",
+  language: "Roman Urdu"
+},
+{
+  id: 15,
+  urdu: "اہلِ دل کے لیے تو دردِ جگر کافی ہے\nبے وفاؤں سے کوئی آس لگایا نہ کرو",
+  hindi: "अहल-ए-दिल के लिए तो दर्दे-जिगर काफ़ी है\nबे-वफ़ाओं से कोई आस लगाया न करो",
+  roman: "Ahl-e-dil ke liye to dard-e-jigar kaafi hai\nBewafaaon se koi aas lagaaya na karo",
+  category: "Love",
+  language: "Roman Urdu"
+},
+{
+  id: 16,
+  urdu: "جب بجھا ہی دیا ہے تم نے میرے دل کا چراغ\nاپنے ہاتھوں کو ہواؤں سے بچایا نہ کرو",
+  hindi: "जब बुझा ही दिया है तुम ने मेरे दिल का चिराग़\nअपने हाथों को हवाओं से बचाया न करो",
+  roman: "Jab bujha hi diya hai tumne mere dil ka chiraagh\nApne haathon ko hawaaon se bachaaya na karo",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 17,
+  urdu: "وہ دل کی بات جو ہونٹوں پہ آ نہ پائی کبھی\nملے گا اُس کا صلہ کب ہمیں، خدا جانے",
+  hindi: "वो दिल की बात जो होंठों पे आ न पाई कभी\nमिलेगा उस का सिला कब हमें ख़ुदा जाने",
+  roman: "Woh dil ki baat jo honthon pe aa na paayi kabhi\nMilega uska sila kab humein, Khuda jaane",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 18,
+  urdu: "تری نگاہ کے اک جام پر نثار ہیں ہم\nبھلے ہی ٹوٹ کے بکھرے ہوں سارے پیمانے",
+  hindi: "तिरी निगाह के इक जाम पर निसार हैं हम\nभले ही टूट के बिखरे हों सारे पैमाने",
+  roman: "Teri nigaah ke ik jaam par nisaar hain hum\nBhale hi toot ke bikhre hon saare paimaane",
+  category: "Love",
+  language: "Roman Urdu"
+},
+{
+  id: 19,
+  urdu: "پاؤں کے آبِلے کہتے ہیں مسافر سے یہی\nراستہ کوئی نہیں کوئے ملامت کے سوا",
+  hindi: "पाँव के आबले कहते हैं मुसाफ़िर से यही\nरास्ता कोई नहीं कु-ए-मलामत के सिवा",
+  roman: "Paaon ke aable kehte hain musaafir se yahi\nRaasta koi nahin koo-e-malaamat ke siwa",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 20,
+  urdu: "مفلسی شہر میں سب کچھ ہی مٹا دیتی ہے\nپاس رہتا ہی نہیں کچھ بھی شرافت کے سوا",
+  hindi: "मुफ़लिसी शहर में सब कुछ ही मिटा देती है\nपास रहता ही नहीं कुछ भी शराफ़त के सिवा",
+  roman: "Muflisi shehar mein sab kuchh hi mita deti hai\nPaas rehta hi nahin kuchh bhi sharaafat ke siwa",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 21,
+  urdu: "سایۂ فضل ہے امجد پہ مسلسل یارو\nجو چلا صدق سے والد کے عمل کے پیچھے",
+  hindi: "साया-ए-फ़ज़्ल है अमजद पे मुसलसल यारो\nजो चला सिद्क़ से वालिद के अमल के पीछे",
+  roman: "Saaya-e-fazl hai Amjad pe musalsal yaaro\nJo chala sidq se waalid ke amal ke peechhe",
+  category: "Sufi",
+  language: "Roman Urdu"
+},
+{
+  id: 22,
+  urdu: "طوفانِ بحرِ عشق میں ڈوبی ہے زندگی\nساحل پہ لے کے آئی ہے موجِ بلا کے ہاتھ",
+  hindi: "तूफ़ान-ए-बहर-ए-इश्क़ में डूबी है ज़िन्दगी\nसाहिल पे ले के आई है मौज-ए-बला के हाथ",
+  roman: "Toofaan-e-bahr-e-ishq mein doobi hai zindagi\nSaahil pe le ke aayi hai mauj-e-balaa ke haath",
+  category: "Love",
+  language: "Roman Urdu"
+},
+{
+  id: 23,
+  urdu: "امجد شبِ فراق میں رویا ہے اس قدر\nدامن دھلا ہے اشکِ رخِ التجا کے ہاتھ",
+  hindi: "अमजद शब-ए-फ़िराक़ में रोया है इस क़दर\nदामन धुला है अश्क-ए-रुख़-ए-इल्तिजा के हाथ",
+  roman: "Amjad shab-e-firaaq mein roya hai is qadar\nDaaman dhula hai ashk-e-rukh-e-iltija ke haath",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 24,
+  urdu: "ازل کے تیر سے ہرگز نہیں ڈرتا دلِ ناداں\nلگا کر بیٹھتے ہیں ہم نشانے پر نشاں اپنا",
+  hindi: "अज़ल के तीर से हरगिज़ नहीं डरता दिल-ए-नादाँ\nलगा कर बैठते हैं हम निशाने पर निशाँ अपना",
+  roman: "Azal ke teer se hargiz nahin darta dil-e-naadaan\nLaga kar baithte hain hum nishaane par nishaan apna",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 25,
+  urdu: "محبت کے سفر میں ہر قدم پر آزمائش تھی\nدیا ہم نے ثبوتِ عشق دے کر دو جہاں اپنا",
+  hindi: "मोहब्बत के सफ़र में हर क़दम पर आज़माइश थी\nदिया हम ने सुबूत-ए-इश्क़ दे कर दो जहाँ अपना",
+  roman: "Mohabbat ke safar mein har qadam par aazmaaish thi\nDiya humne saboot-e-ishq de kar do jahaan apna",
+  category: "Love",
+  language: "Roman Urdu"
+},
+{
+  id: 26,
+  urdu: "مجھ کو تھی محفلوں کی بہت آرزو مگر\nبزمِ جہاں سے دور ہی رہنے میں خیر ہے",
+  hindi: "मुझ को थी महफ़िलों की बहुत आरज़ू मगर\nबज़्म-ए-जहाँ से दूर ही रहने में ख़ैर है",
+  roman: "Mujhko thi mehfilon ki bahut aarzoo magar\nBazm-e-jahaan se door hi rehne mein khair hai",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 27,
+  urdu: "اکسیرِ محبت ہی بقا دیتی ہے دل کو\nورنہ تو یہاں سود و زیاں کچھ بھی نہیں ہے",
+  hindi: "इक्सीर-ए-मोहब्बत ही बक़ा देती है दिल को\nवरना तो यहाँ सूद-ओ-ज़ियाँ कुछ भी नहीं है",
+  roman: "Iksir-e-mohabbat hi baqa deti hai dil ko\nWarna to yahaan sood-o-ziyaan kuchh bhi nahin hai",
+  category: "Love",
+  language: "Roman Urdu"
+},
+{
+  id: 28,
+  urdu: "درد وہ ہے کہ مکمل ہو طبیبوں کا ہنر\nپر یہ ایسا ہے کہ مرہم بھی لگائے نہ بنے",
+  hindi: "दर्द वो है कि मुकम्मल हो तबीबों का हुनर\nपर ये ऐसा है कि मरहम भी लगाए न बने",
+  roman: "Dard woh hai ke mukammal ho tabeebon ka hunar\nPar ye aisa hai ke marham bhi lagaaye na bane",
+  category: "Love",
+  language: "Roman Urdu"
+},
+{
+  id: 29,
+  urdu: "تیری محفل میں عجب رسمِ وفا ہے کہ جہاں\nحالِ دل اپنا کسی کو بھی بتائے نہ بنے",
+  hindi: "तेरी महफ़िल में अजब रस्म-ए-वफ़ा है कि जहाँ\nहाल-ए-दिल अपना किसी को भी बताए न बने",
+  roman: "Teri mehfil mein ajab rasm-e-wafa hai ke jahaan\nHaal-e-dil apna kisi ko bhi bataaye na bane",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 30,
+  urdu: "زباں پہ حرفِ شکایت نہ آ سکی امجد\nمیں دردِ عشق کو دل میں چھپا کے بھول گیا",
+  hindi: "ज़बाँ पे हर्फ़-ए-शिकायत न आ सकी अमजद\nमैं दर्दे-इश्क़ को दिल में छुपा के भूल गया",
+  roman: "Zabaan pe harf-e-shikaayat na aa saki Amjad\nMain dard-e-ishq ko dil mein chhupa ke bhool gaya",
+  category: "Love",
+  language: "Roman Urdu"
+},
+{
+  id: 31,
+  urdu: "نگاہِ شوق کا پردہ گرا کے بھول گیا\nاثرِ غم کو فقط مسکرا کے بھول گیا",
+  hindi: "निगाह-ए-शौक़ का पर्दा गिरा के भूल गया\nअसर-ए-ग़म को फ़क़त मुस्कुरा के भूल गया",
+  roman: "Nigaah-e-shauq ka parda gira ke bhool gaya\nAsar-e-gham ko faqat muskura ke bhool gaya",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 32,
+  urdu: "فضاے دشتِ تمنا اداس ہے کب سے\nبلا کی تشنگیِ روزگار ہے آ جا",
+  hindi: "फ़ज़ा-ए-दश्त-ए-तमन्ना उदास है कब से\nबला की तिश्नगी-ए-रोज़गार है आ जा",
+  roman: "Faza-e-dasht-e-tamanna udaas hai kab se\nBalaa ki tishnagi-e-rozgaar hai, aa ja",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 33,
+  urdu: "یہ فاصلے تو مٹائیں گے منتظر دیدے\nفراقِ یار میں دل بے قرار ہے آ جا",
+  hindi: "ये फ़ासले तो मिटाएंगे मुंतज़िर दीदे\nफ़िराक़-ए-यार में दिल बे-क़रार है आ जा",
+  roman: "Ye faasle to mitaayenge muntazir deedey\nFiraaq-e-yaar mein dil beqaraar hai, aa ja",
+  category: "Love",
+  language: "Roman Urdu"
+},
+{
+  id: 34,
+  urdu: "آئی نہ کوئی ٹھیس کبھی میرے عزم کو\nپختہ ارادہ عاشقِ ناشاد سے ہوا",
+  hindi: "आई न कोई ठेस कभी मेरे अज़्म को\nपुख़्ता इरादा आशिक़-ए-नाशाद से हुआ",
+  roman: "Aayi na koi thes kabhi mere azm ko\nPukhta iraada aashiq-e-naashaad se hua",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 35,
+  urdu: "دیوانہ کام کر گیا جو ساد سے ہوا\nوہ کارنامہ کب کسی استاد سے ہوا",
+  hindi: "दीवाना काम कर गया जो साद से हुआ\nवो कारनामा कब किसी उस्ताद से हुआ",
+  roman: "Deewaana kaam kar gaya jo saad se hua\nWoh kaarnaama kab kisi ustaad se hua",
+  category: "Life",
+  language: "Roman Urdu"
+},
+{
+  id: 36,
+  urdu: "امجد ہماری بات پہ وہ مسکرا دیے\nان کی ہنسی پہ اپنی انا اب مٹائیے",
+  hindi: "अमजद हमारी बात पे वो मुस्कुरा दिए\nउनकी हँसी पे अपनी अना अब मिटाइए",
+  roman: "Amjad hamaari baat pe woh muskura diye\nUnki hansi pe apni ana ab mitaaiye",
+  category: "Love",
+  language: "Roman Urdu"
+},
+{
+  id: 37,
+  urdu: "عارض پہ ان کے رنگِ حیا دیکھنے کے بعد\nجی چاہتا ہے حسن پہ صدقے ہی جائیے",
+  hindi: "आरिज़ पे उनके रंग-ए-हया देखने के बाद\nजी चाहता है हुस्न पे सदके ही जाइए",
+  roman: "Aariz pe unke rang-e-haya dekhne ke baad\nJi chahta hai husn pe sadqe hi jaaiye",
+  category: "Love",
+  language: "Roman Urdu"
+}
+      
+  
+      
+      
+    ];
 
-<!-- html2canvas Library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    const grid = document.getElementById("sherGrid");
+    const searchInput = document.getElementById("searchInput");
+    const languageFilter = document.getElementById("languageFilter");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const resultsCount = document.getElementById("resultsCount");
 
-<script>
-  // Aapke saare ke saare 37 purane shers yahan securely maujood hain
-  let sherCollection = [
-    { id: 1, urdu: "اک مرشدِ برحق سے ہے امجد کا تعلق\nپروا نہیں اس کو سزا کی نہ جزا کی", hindi: "इक मुर्शिद-ए-बर-हक़ से है अमजद का तअल्लुक़\nपरवाह नहीं उसको सज़ा की न जज़ा की", roman: "Ik murshid-e-bar-haq se hai Amjad ka ta'alluq\nParwah nahi.n usko, sazaa ki na jazaa ki", category: "Sufi", language: "Roman Urdu" },
-    { id: 2, urdu: "صحراے آرزو میں ملی تازگی مجھے\nسیرِ چمن سے بڑھ کے لگی تشنگی مجھے", hindi: "सहरा-ए-आरज़ू में मिली ताज़गी मुझे\nसैर-ए-चमन से बढ़ के लगी तिश्नगी मुझे", roman: "Sehra-e-aarzu mein mili taazgi mujhe\nSair-e-chaman se badh ke lagi tishnagi mujhe", category: "Life", language: "Roman Urdu" },
-    { id: 3, urdu: "منزل کی اب طلب ہی نہیں رہ گئی ذرا\nاتنی پسند آ گئی آوارگی مجھے", hindi: "मंज़िल की अब तलब ही नहीं रह गई ज़रा\nइतनी पसंद आ गई आवारगी मुझे", roman: "Manzil ki ab talab hi nahin reh gayi zara\nItni pasand aa gayi aawargi mujhe", category: "Life", language: "Roman Urdu" },
-    { id: 4, urdu: "تیری زلفوں کے سائے میں سکوں دل کو جو ملتا ہے\nزمانے بھر کا کوئی بھی نشہ ایسا نہیں होता", hindi: "तिरी ज़ुल्फ़ों के साए में सुकूँ दिल को जो मिलता है\nज़माने भर का कोई भी नशा ऐसा नहीं होता", roman: "Teri zulfon ke saaye mein sukoon dil ko jo milta hai\nZamaane bhar ka koi bhi nasha aisa nahin hota", category: "Love", language: "Roman Urdu" },
-    { id: 5, urdu: "چلا جب سے مقدر کا سفر تیری گلی کی اور\nہمارا پاؤں پھر راہوں میں بھی مبہم نہیں ہوتا", hindi: "चला जब से मुक़द्दर का सफ़र तेरी गली की ओर\nहमारा पाँव फिर राहों में भी मुबहम नहीं होता", roman: "Chala jab se muqaddar ka safar teri gali ki aur\nHamara paaon phir raahon mein bhi mubham nahin hota", category: "Love", language: "Roman Urdu" },
-    { id: 6, urdu: "اگر آنکھوں میں آنسو ہیں تو وہ تو موتیاں ٹھہرے\nمحبت میں بہا آنسو کبھی شبنم نہیں होता", hindi: "अगर आँखों में आँसू हैं तो वो तो मोतियाँ ठहरे\nमोहब्बत में बहा आँसू कभी शबनम नहीं होता", roman: "Agar aankhon mein aansu hain to woh to motiyaan thehre\nMohabbat में baha aansu kabhi shabnam nahin hota", category: "Love", language: "Roman Urdu" },
-    { id: 7, urdu: "امجد کو کہاں فکر ہے دنیا کے ستم کی\nاس پر تو ہمیشہ ہی عنایت ہے خدا کی", hindi: "अमजद को कहाँ फ़िक्र है दुनिया के सितम की\nउस पर तो हमेशा ही इनायत है ख़ुदा की", roman: "Amjad ko kahaan fikr hai duniya ke sitam ki\nUs par to hamesha hi inaayat hai Khuda ki", category: "Sufi", language: "Roman Urdu" },
-    { id: 8, urdu: "دشمن کا ستم سہ کے ہنسے ہم تو یہ بولے\nتاثیر یہ رنگت ہے مرے صبر و رضا کی", hindi: "दुश्मन का सितम सह के हँसे हम तो ये बोले\nतासीर ये रंगत है मिरे सब्र-ओ-रज़ा की", roman: "Dushman ka sitam seh ke hanse hum to ye bole\nTaaseer ye rangat hai mere sabr-o-raza ki", category: "Sufi", language: "Roman Urdu" },
-    { id: 9, urdu: "برسوں سے دل میں درد چھپائے کھڑا ہوں میں\nآنسو کا کوئی قطرہ اثر ہو نہیں رہا", hindi: "बरसों से दिल में दर्द छुपाए खड़ा हूँ मैं\nआँसू का कोई कतरा असर हो नहीं रहा", roman: "Barson se dil mein dard chhupaye khada hoon main\nAansu ka koi qatra asar ho nahin raha", category: "Life", language: "Roman Urdu" },
-    { id: 10, urdu: "آباد پھر یہ دل کا نگر ہو نہیں रहा\nہو جانا چاہیے نا، مگر ہو نہیں रहा", hindi: "आबाद फिर ये दिल का नगर हो नहीं रहा\nहो जाना चाहिए न, मगर हो नहीं रहा", roman: "Aabaad phir ye dil ka nagar ho nahin raha\nHo jaana chahiye na, magar ho nahin raha", category: "Life", language: "Roman Urdu" },
-    { id: 11, urdu: "رنگ و بو کی بزم میں یہ بے دلی کیسی یہاں\nپھول تو سارے کھلے ہیں، باغباں کوئی نہ ہو",_hindi: "रंग-ओ-बू की बज़्म में ये बे-दिली कैसी यहाँ\nफूल तो सारे खिले हैं बाग़बाँ कोई न हो", roman: "Rang-o-boo ki bazm mein ye be-dili kaisi yahaan\nPhool to saare khile hain, baaghbaan koi na ho", category: "Life", language: "Roman Urdu" },
-    { id: 12, urdu: "اب وہاں چل کر رہیں امجد جہاں کوئی نہ ہو\nہم ہوں اور وہ ہوں، وہاں درمیاں کوئی نہ ہو", hindi: "अब वहाँ चल कर रहें अमजद जहाँ कोई न हो\nहम हों और वो हों वहाँ पर दरमियाँ कोई न हो", roman: "Ab wahaan chal kar rahein Amjad jahaan koi na ho\nHum hon aur woh hon wahaan, darmiyaan koi na ho", category: "Life", language: "Roman Urdu" },
-    { id: 13, urdu: "خاکِ در اُن کے बने काश آج سرمہ آنکھ کا\nدیدہ و دل کو سجائیں یا الٰہ العالمین", hindi: "ख़ाक-ए-दर उन के बने काश आज सुर्मा आँख का\nदीदा-ओ-दिल को सजाएँ या इलाह-अल-आलमीं", roman: "Khaak-e-dar unke bane kaash aaj surma aankh ka\nDeeda-o-dil ko sajaaen ya Ilaah-al-aalameen", category: "Sufi", language: "Roman Urdu" },
-{ id: 14, urdu: "موجِ طوفانوں نے گھیرا ہے ہماری ناؤ کو\nناؤ ساحل سے لگائیں یا الٰہ العالمین", hindi: "मौज-ए-तूफ़ानों ने घेरा है हमारी नाव को\nनाव साहिल से लगाएँ या इलाह-अल-आलमीं", roman: "Mauj-e-toofaanon ne ghera hai hamaari naao ko\nNaao saahil se lagaaen ya Ilaah-al-aalameen", category: "Sufi", language: "Roman Urdu" },
-    { id: 15, urdu: "اہلِ دل کے لیے تو دردِ جگر کافی ہے\nبے وفاؤں سے کوئی آس لگایا نہ करो", hindi: "अहल-ए-दिल के लिए तो दर्दे-जिगर काफ़ी है\nबे-वफ़ाओं से कोई आस लगाया न करो", roman: "Ahl-e-dil ke liye to dard-e-jigar kaafi hai\nBewafaaon se koi aas lagaaya na karo", category: "Love", language: "Roman Urdu" },
-    { id: 16, urdu: "जब بجھا ہی دیا है तुम ने मेरे دل का چراغ\nاپنے हाथों को ہواؤں سے بچایا نہ करो", hindi: "जब बुझा ही दिया है तुम ने मेरे दिल का चिराग़\nअपने हाथों को हवाओं से बचाया न करो", roman: "Jab bujha hi diya hai tumne mere dil ka chiraagh\nApne haathon ko hawaaon se bachaaya na karo", category: "Life", language: "Roman Urdu" },
-    { id: 17, urdu: "वो دل کی بات جو ہونٹوں پہ آ نہ پائی کبھی\nملے گا اُس کا صلہ کب ہمیں، خدا جانے", hindi: "वो दिल की बात जो होंठों पे आ न पाई कभी\nमिलेगा उस का सिला कब हमें ख़ुदा जाने", roman: "Woh dil ki baat jo honthon pe aa na paayi kabhi\nMilega uska sila kab humein, Khuda jaane", category: "Life", language: "Roman Urdu" },
-    { id: 18, urdu: "تری نگاہ के اک جام पर निसार हैं हम\nभले ही टूट के बिखरे हों सारे पैमाने", hindi: "तिरी निगाह के इक जाम पर निसार हैं हम\nभले ही टूट के बिखरे हों सारे पैमाने", roman: "Teri nigaah ke ik jaam par nisaar hain hum\nBhale hi toot ke bikhre hon saare paimaane", category: "Love", language: "Roman Urdu" },
-    { id: 19, urdu: "पाँव के आबले कहते हैं मुसाफ़िर से यही\nरास्ता कोई नहीं कु-ए-मलामत के सिवा", hindi: "पाँव के आबले कहते हैं मुसाफ़िर से यही\nरास्ता कोई नहीं कु-ए-मलामत के सिवा", roman: "Paaon ke aable kehte hain musaafir se yahi\nRaasta koi nahin koo-e-malaamat ke siwa", category: "Life", language: "Roman Urdu" },
-    { id: 20, urdu: "मुफ़लिसी शहर में सब कुछ ही मिटा देती है\nपास रहता ही नहीं कुछ भी शराफ़त के सिवा", hindi: "मुफ़लिसी शहर में सब कुछ ही मिटा देती है\nपास रहता ही नहीं कुछ भी शराफ़त के सिवा", roman: "Muflisi shehar mein sab kuchh hi mita deti hai\nPaas rehta hi nahin kuchh bhi sharaafat ke siwa", category: "Life", language: "Roman Urdu" },
-    { id: 21, urdu: "साया-ए-फ़ज़्ल है अमजद पे मुसलसल यारो\nजो चला सिद्क़ से वालिद के अमल के पीछे", hindi: "साया-ए-फ़ज़्ल है अमजद पे मुसलसल यारो\nजो चला सिद्क़ से वालिद के अमल के पीछे", roman: "Saaya-e-fazl hai Amjad pe musalsal yaaro\nJo chala sidq se waalid ke amal ke peechhe", category: "Sufi", language: "Roman Urdu" },
-    { id: 22, urdu: "तूफ़ान-ए-बहर-ए-इश्क़ में डूबी है ज़िन्दगी\nसाहिल पे ले के आई है मौज-ए-बला के हाथ", hindi: "तूफ़ान-ए-बहर-ए-इश्क़ में डूबी है ज़िन्दगी\nसाहिल पे ले के आई है मौज-ए-बला के हाथ", roman: "Toofaan-e-bahr-e-ishq mein doobi hai zindagi\nSaahil pe le ke aayi hai mauj-e-balaa ke haath", category: "Love", language: "Roman Urdu" },
-    { id: 23, urdu: "अमजद शब-ए-फ़िराक़ में रोया है इस क़दर\nदामन धुला है अश्क-ए-रुख़-ए-इल्तिजा के हाथ", hindi: "अमजद शब-ए-फ़िराक़ में रोया है इस क़दर\nदामन धुला है अश्क-ए-रुख़-ए-इल्तिजा के हाथ", roman: "Amjad shab-e-firaaq mein roya hai is qadar\nDaaman dhula hai ashk-e-rukh-e-iltija ke haath", category: "Life", language: "Roman Urdu" },
-    { id: 24, urdu: "अज़ल के तीर से हरगिज़ नहीं डरता दिल-ए-नादाँ\nलगा कर बैठते हैं हम निशाने पर निशाँ अपना", hindi: "अज़ल के तीर से हरगिज़ नहीं डरता दिल-ए-नादाँ\nलगा कर बैठते हैं हम निशाने पर निशाँ अपना", roman: "Azal ke teer se hargiz nahin darta dil-e-naadaan\nLaga kar baithte hain hum nishaane par nishaan apna", category: "Life", language: "Roman Urdu" },
-    { id: 25, urdu: "मोहब्बत के सफ़र में हर क़दम पर आज़माइश थी\nदिया हम ने सुबूत-ए-इश्क़ दे कर दो जहाँ अपना", hindi: "मोहब्बत के सफ़र में हर क़दम पर आज़माइश थी\nदिया हम ने सुबूत-ए-इश्क़ दे कर दो जहाँ अपना", roman: "Mohabbat ke safar mein har qadam par aazmaaish thi\nDiya humne saboot-e-ishq de kar do jahaan apna", category: "Love", language: "Roman Urdu" },
-    { id: 26, urdu: "मुझ को थी महफ़िलों की बहुत आरज़ू मगर\nबज़्म-ए-जहाँ से دور ہی रहने में ख़ैर है", hindi: "मुझ को थी महफ़िलों की बहुत आरज़ू मगर\nबज़्म-ए-जहाँ से دور ہی रहने में ख़ैर है", roman: "Mujhko thi mehfilon ki bahut aarzoo magar\nBazm-e-jahaan se door hi rehne mein khair hai", category: "Life", language: "Roman Urdu" },
-    { id: 27, urdu: "इक्सीर-ए-मोहब्बत ही बक़ा देती है दिल को\nवरना तो यहाँ सूद-ओ-ज़ियाँ कुछ भी नहीं है", hindi: "इक्सीर-ए-मोहब्बत ही बक़ा देती है दिल को\nवरना तो यहाँ सूद-ओ-ज़ियाँ कुछ भी नहीं है", roman: "Iksir-e-mohabbat hi baqa deti hai dil ko\nWarna to yahaan sood-o-ziyaan kuchh bhi nahin hai", category: "Love", language: "Roman Urdu" },
-    { id: 28, urdu: "दर्द वो है कि मुकम्मल हो तबीबों का हुनर\nपर ये ऐसा है कि مرہم भी लगाए न बने", hindi: "दर्द वो है कि मुकम्मल हो तबीबों का हुनर\nपर ये ऐसा है कि مرہم भी लगाए न बने", roman: "Dard woh hai ke mukammal ho tabeebon ka hunar\nPar ye aisa hai ke marham bhi lagaaye na bane", category: "Love", language: "Roman Urdu" },
-    { id: 29, urdu: "तेरी महफ़िल में अजब रस्म-ए-वफ़ा है कि जहाँ\nहाल-ए-दिल अपना किसी को भी बताए न बने", hindi: "तेरी महफ़िल में अजब रस्म-ए-वफ़ा है कि जहाँ\nहाल-ए-दिल अपना किसी को भी बताए न बने", roman: "Teri mehfil mein ajab rasm-e-wafa hai ke jahaan\nHaal-e-dil apna kisi ko bhi bataaye न bane", category: "Life", language: "Roman Urdu" },
-    { id: 30, urdu: "ज़बाँ पे हर्फ़-ए-शिकायत न आ सकी अमजद\nमैं दर्दे-इश्क़ को दिल में छुपा के भूल गया", hindi: "ज़बाँ पे हर्फ़-ए-शिकायत न आ सकी अमजद\nमैं दर्दे-इश्क़ को दिल में छुपा के भूल गया", roman: "Zabaan pe harf-e-shikaayat na aa saki Amjad\nMain dard-e-ishq ko दिल में chhupa ke bhool gaya", category: "Love", language: "Roman Urdu" },
-    { id: 31, urdu: "निगाह-ए-शौक़ का पर्दा गिरा के भूल गया\nअसर-ए-ग़म को फ़क़त मुस्कुरा के भूल गया", hindi: "निगाह-ए-शौक़ का पर्दा गिरा के भूल गया\nअसर-ए-ग़म को फ़क़त मुस्कुरा के भूल गया", roman: "Nigaah-e-shauq ka parda gira ke bhool gaya\nAsar-e-gham ko faqat muskura ke bhool गया", category: "Life", language: "Roman Urdu" },
-    { id: 32, urdu: "फ़ज़ा-ए-दश्त-ए-तमन्ना उदास है कब से\nबला की तिश्नगी-ए-रोज़गार है आ जा", hindi: "फ़ज़ा-ए-दश्त-ए-तमन्ना उदास है कब से\nबला की तिश्नगी-ए-रोज़गार है आ जा", roman: "Faza-e-dasht-e-tamanna udaas hai kab से\nBalaa ki tishnagi-e-rozgaar hai, aa ja", category: "Life", language: "Roman Urdu" },
-    { id: 33, urdu: "ये फ़ासले तो मिटाएंगे मुंतज़िर दीदे\nफ़िराक़-ए-यार में दिल बे-क़रार है आ जा", hindi: "ये फ़ासले तो मिटाएंगे मुंतज़िर दीदे\nफ़िराक़-ए-यार में दिल बे-क़रार है आ जा", roman: "Ye faasle to mitaayenge muntazir deedey\nFiraaq-e-yaar mein dil beqaraar hai, aa ja", category: "Love", language: "Roman Urdu" },
-    { id: 34, urdu: "आई न कोई ठेस कभी मेरे अज़्म को\nपुख़्ता इरादा आशिक़-ए-नाशाद से हुआ", hindi: "आई न कोई ठेस कभी मेरे अज़्म को\nपुख़्ता इरादा आशिक़-ए-नाशाद से हुआ", roman: "Aayi na koi thes kabhi mere azm ko\nPukhta iraada aashiq-e-naashaad से हुआ", category: "Life", language: "Roman Urdu" },
-    { id: 35, urdu: "दीवाना काम कर गया जो साद से हुआ\nवो कारनामा कब किसी उस्ताद से हुआ", hindi: "दीवाना काम कर गया जो साद से हुआ\nवो कारनामा कब किसी उस्ताद से हुआ", roman: "Deewaana kaam kar gaya jo saad se hua\nWoh kaarnaama kab kisi ustaad से हुआ", category: "Life", language: "Roman Urdu" },
-    { id: 36, urdu: "अमजद हमारी बात पे वो मुस्कुरा दिए\nउनकी हँसी पे अपनी अना अब मिटाइए", hindi: "अमजद हमारी बात पे वो मुस्कुरा दिए\nउनकी हँसी पे अपनी अना अब मिटाइए", roman: "Amjad hamaari baat pe woh muskura diye\nUnki hansi pe apni ana ab mitaaiye", category: "Love", language: "Roman Urdu" },
-    { id: 37, urdu: "आरिज़ पे उनके रंग-ए-हया देखने के बाद\nजी चाहता है हुस्न पे सदके ही जाइए", hindi: "आरिज़ पे उनके रंग-ए-हया देखने के बाद\nजी चाहता है हुस्न पे सदके ही जाइए", roman: "Aariz pe unke rang-e-haya dekhne ke baad\nJi chahta hai husn pe sadqe hi jaaiye", category: "Love", language: "Roman Urdu" }
-  ];
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-  // Supabase se naye shers fetch karke purane walo ke sath jodna
-  async function loadShersFromSupabase() {
-    if (!window.ADMIN_CONFIG || !window.ADMIN_CONFIG.supabaseUrl) {
-      renderSher();
-      return;
-    }
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
 
-    try {
-      const supabaseClient = supabase.createClient(
-        window.ADMIN_CONFIG.supabaseUrl,
-        window.ADMIN_CONFIG.supabaseAnonKey
-      );
-
-      const { data, error } = await supabaseClient
-        .from('sher')
-        .select('*')
-        .order('id', { ascending: false });
-
-      if (error) throw error;
-
-      if (data && data.length > 0) {
-        const supabaseShers = data.map(item => ({
-          id: item.id,
-          urdu: item.sher_urdu || item.urdu || '',
-          hindi: item.sher_hindi || item.hindi || '',
-          roman: item.sher_roman || item.roman || '',
-          category: item.category || 'Life',
-          language: 'Roman Urdu'
-        }));
-        // Naye shers ko upar aur purane shers ko niche rakhna
-        sherCollection = [...supabaseShers, ...sherCollection];
-      }
-    } catch (err) {
-      console.error("Error fetching shers from Supabase:", err);
-    } finally {
-      renderSher();
-    }
-  }
-
-  const grid = document.getElementById("sherGrid");
-  const searchInput = document.getElementById("searchInput");
-  const languageFilter = document.getElementById("languageFilter");
-  const categoryFilter = document.getElementById("categoryFilter");
-  const resultsCount = document.getElementById("resultsCount");
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  const menuToggle = document.getElementById("menuToggle");
-  const mainNav = document.getElementById("mainNav");
-
-  menuToggle.addEventListener("click", () => {
-    const isOpen = mainNav.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  function escapeHTML(value = "") {
-    return String(value).replace(/[&<>"']/g, character => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    })[character]);
-  }
-
-  function renderSher() {
-    const query = searchInput.value.trim().toLocaleLowerCase();
-    const language = languageFilter.value;
-    const category = categoryFilter.value;
-
-    const filtered = sherCollection.filter(sher => {
-      const searchable = [
-        sher.urdu, sher.hindi, sher.roman, sher.category
-      ].join(" ").toLocaleLowerCase();
-
-      return searchable.includes(query)
-        && (language === "all" || sher.language === language)
-        && (category === "all" || sher.category === category);
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-    resultsCount.textContent = `${filtered.length} sher found`;
-
-    if (!filtered.length) {
-      grid.innerHTML = `
-        <div class="empty-state">
-          No sher found. Try another word or filter.
-        </div>`;
-      return;
+    function escapeHTML(value = "") {
+      return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
     }
 
-    grid.innerHTML = filtered.map((sher, index) => `
-      <article class="sher-card" id="sher-${sher.id}">
-        <div class="card-number">SHER · ${String(index + 1).padStart(3, "0")}</div>
+    function renderSher() {
+      const query = searchInput.value.trim().toLocaleLowerCase();
+      const language = languageFilter.value;
+      const category = categoryFilter.value;
 
-        <div class="sher-text">
-          ${sher.urdu ? `<p class="urdu" lang="ur" dir="rtl">${escapeHTML(sher.urdu)}</p>` : ""}
-          ${sher.hindi ? `<p class="hindi" lang="hi">${escapeHTML(sher.hindi)}</p>` : ""}
-          ${sher.roman ? `<p class="roman">${escapeHTML(sher.roman)}</p>` : ""}
-        </div>
+      const filtered = sherCollection.filter(sher => {
+        const searchable = [
+          sher.urdu, sher.hindi, sher.roman, sher.category
+        ].join(" ").toLocaleLowerCase();
 
-        <div class="poet-signature">
-          Syed Amjad Hussain
-        </div>
-
-        <div class="card-meta">
-          <span class="tag">${escapeHTML(sher.category)}</span>
-          <span class="tag">${escapeHTML(sher.language)}</span>
-        </div>
-
-        <div class="card-actions">
-          <button class="btn btn-primary" type="button" data-download="${sher.id}">
-            ↓ Download Sher
-          </button>
-          <button class="btn btn-secondary" type="button" data-copy="${sher.id}">
-            Copy Text
-          </button>
-        </div>
-      </article>
-    `).join("");
-  }
-
-  searchInput.addEventListener("input", renderSher);
-  languageFilter.addEventListener("change", renderSher);
-  categoryFilter.addEventListener("change", renderSher);
-
-  // Watermark Image Generation
-  async function downloadSherImage(sher, button) {
-    if (typeof html2canvas !== "function") {
-      alert("Image library not loaded.");
-      return;
-    }
-
-    const originalLabel = button.textContent;
-    button.disabled = true;
-    button.textContent = "Preparing image...";
-
-    const artwork = document.createElement("div");
-    artwork.className = "sher-download-art";
-
-    const addText = (tag, className, text) => {
-      if (!text || !text.trim()) return null;
-      const element = document.createElement(tag);
-      element.className = className;
-      element.textContent = text;
-      artwork.appendChild(element);
-      return element;
-    };
-
-    addText("p", "download-kicker", "SHER COLLECTION");
-
-    const poetry = document.createElement("div");
-    poetry.className = "download-poetry";
-    artwork.appendChild(poetry);
-
-    [
-      { text: sher.urdu, lang: "urdu" },
-      { text: sher.hindi, lang: "hindi" },
-      { text: sher.roman, lang: "roman" }
-    ].forEach(item => {
-      if (!item.text || !item.text.trim()) return;
-      const line = document.createElement("p");
-      line.className = `download-line ${item.lang}`;
-      line.textContent = item.text;
-      poetry.appendChild(line);
-    });
-
-    addText("div", "download-divider", "");
-    addText("p", "download-author", "Syed Amjad Hussain");
-    addText("p", "download-takhallus", "Amjadؔ");
-    addText("p", "download-watermark", "SyedAmjadHussain.com");
-    addText("p", "download-category", sher.category || "Poetry");
-
-    Object.assign(artwork.style, {
-      position: "fixed",
-      left: "-12000px",
-      top: "0",
-      zIndex: "-1"
-    });
-
-    document.body.appendChild(artwork);
-
-    try {
-      await document.fonts.ready;
-      const canvas = await html2canvas(artwork, {
-        scale: 3,
-        backgroundColor: "#fffdf8",
-        useCORS: true,
-        logging: false,
-        width: 900,
-        windowWidth: Math.max(window.innerWidth, 900)
+        return searchable.includes(query)
+          && (language === "all" || sher.language === language)
+          && (category === "all" || sher.category === category);
       });
 
-      const link = document.createElement("a");
-      link.download = `SyedAmjadHussain-Sher-${sher.id}.png`;
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    } catch (error) {
-      console.error("Download failed:", error);
-      alert("Unable to create the image.");
-    } finally {
-      artwork.remove();
-      button.disabled = false;
-      button.textContent = originalLabel;
+      resultsCount.textContent =
+        `${filtered.length} sher found`;
+
+      if (!filtered.length) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            No sher found. Try another word or filter.
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map((sher, index) => `
+        <article class="sher-card" id="sher-${sher.id}">
+          <div class="card-number">SHER · ${String(index + 1).padStart(3, "0")}</div>
+
+          <div class="sher-text">
+            ${sher.urdu ? `<p class="urdu" lang="ur" dir="rtl">${escapeHTML(sher.urdu)}</p>` : ""}
+            ${sher.hindi ? `<p class="hindi" lang="hi">${escapeHTML(sher.hindi)}</p>` : ""}
+            ${sher.roman ? `<p class="roman">${escapeHTML(sher.roman)}</p>` : ""}
+          </div>
+
+          <div class="poet-signature">
+            Syed Amjad Hussain
+          </div>
+
+          <div class="card-meta">
+            <span class="tag">${escapeHTML(sher.category)}</span>
+            <span class="tag">${escapeHTML(sher.language)}</span>
+          </div>
+
+          <div class="card-actions">
+            <button class="btn btn-primary"
+              type="button" data-download="${sher.id}">
+              ↓ Download Sher
+            </button>
+            <button class="btn btn-secondary"
+              type="button" data-copy="${sher.id}">
+              Copy Text
+            </button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    searchInput.addEventListener("input", renderSher);
+    languageFilter.addEventListener("change", renderSher);
+    categoryFilter.addEventListener("change", renderSher);
+
+    
+/* Premium sher image with website watermark */
+async function downloadSherImage(sher, button) {
+  if (typeof html2canvas !== "function") {
+    alert("Image library not loaded. Please check your internet connection.");
+    return;
+  }
+
+  const originalLabel = button.textContent;
+  button.disabled = true;
+  button.textContent = "Preparing image...";
+
+  const artwork = document.createElement("div");
+  artwork.className = "sher-download-art";
+
+  const addText = (tag, className, text) => {
+    if (!text || !text.trim()) return null;
+
+    const element = document.createElement(tag);
+    element.className = className;
+    element.textContent = text;
+    artwork.appendChild(element);
+    return element;
+  };
+
+  addText("p", "download-kicker", "SHER COLLECTION");
+
+  const poetry = document.createElement("div");
+  poetry.className = "download-poetry";
+  artwork.appendChild(poetry);
+
+  [
+    { text: sher.urdu, lang: "urdu" },
+    { text: sher.hindi, lang: "hindi" },
+    { text: sher.roman, lang: "roman" }
+  ].forEach(item => {
+    if (!item.text || !item.text.trim()) return;
+
+    const line = document.createElement("p");
+    line.className = `download-line ${item.lang}`;
+    line.textContent = item.text;
+    poetry.appendChild(line);
+  });
+
+  addText("div", "download-divider", "");
+  addText("p", "download-author", "Syed Amjad Hussain");
+  addText("p", "download-takhallus", "Amjadؔ");
+  addText("p", "download-watermark", "SyedAmjadHussain.com");
+  addText("p", "download-category", sher.category || "Poetry");
+
+  Object.assign(artwork.style, {
+    position: "fixed",
+    left: "-12000px",
+    top: "0",
+    zIndex: "-1"
+  });
+
+  document.body.appendChild(artwork);
+
+  try {
+    await document.fonts.ready;
+
+    const canvas = await html2canvas(artwork, {
+      scale: 3,
+      backgroundColor: "#fffdf8",
+      useCORS: true,
+      logging: false,
+      width: 900,
+      windowWidth: Math.max(window.innerWidth, 900)
+    });
+
+    const link = document.createElement("a");
+    link.download = `SyedAmjadHussain-Sher-${sher.id}.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  } catch (error) {
+    console.error("Download failed:", error);
+    alert("Unable to create the image. Please try again.");
+  } finally {
+    artwork.remove();
+    button.disabled = false;
+    button.textContent = originalLabel;
+  }
+}
+
+/* Download and copy buttons */
+grid.addEventListener("click", async event => {
+  const downloadButton = event.target.closest("[data-download]");
+  const copyButton = event.target.closest("[data-copy]");
+
+  if (downloadButton) {
+    const sher = sherCollection.find(
+      item => item.id === Number(downloadButton.dataset.download)
+    );
+
+    if (sher) {
+      await downloadSherImage(sher, downloadButton);
     }
   }
 
-  grid.addEventListener("click", async event => {
-    const downloadButton = event.target.closest("[data-download]");
-    const copyButton = event.target.closest("[data-copy]");
+  if (copyButton) {
+    const sher = sherCollection.find(
+      item => item.id === Number(copyButton.dataset.copy)
+    );
 
-    if (downloadButton) {
-      const sher = sherCollection.find(item => item.id === Number(downloadButton.dataset.download));
-      if (sher) await downloadSherImage(sher, downloadButton);
+    if (!sher) return;
+
+    const text = [
+      sher.urdu,
+      sher.hindi,
+      sher.roman,
+      "— Syed Amjad Hussain (Amjadؔ)",
+      "SyedAmjadHussain.com"
+    ].filter(Boolean).join("\n\n");
+
+    try {
+      await navigator.clipboard.writeText(text);
+      const oldLabel = copyButton.textContent;
+      copyButton.textContent = "Copied!";
+
+      setTimeout(() => {
+        copyButton.textContent = oldLabel;
+      }, 1500);
+    } catch {
+      prompt("Copy your sher:", text);
     }
+  }
+});
 
-    if (copyButton) {
-      const sher = sherCollection.find(item => item.id === Number(copyButton.dataset.copy));
-      if (!sher) return;
-
-      const text = [
-        sher.urdu, sher.hindi, sher.roman,
-        "— Syed Amjad Hussain (Amjadؔ)",
-        "SyedAmjadHussain.com"
-      ].filter(Boolean).join("\n\n");
-
-      try {
-        await navigator.clipboard.writeText(text);
-        const oldLabel = copyButton.textContent;
-        copyButton.textContent = "Copied!";
-        setTimeout(() => { copyButton.textContent = oldLabel; }, 1500);
-      } catch {
-        prompt("Copy your sher:", text);
-      }
-    }
-  });
-
-  // Page load hone par Supabase aur purana data load hoga
-  window.addEventListener('DOMContentLoaded', loadShersFromSupabase);
-</script>
+    renderSher();
+  </script>
 </body>
 </html>
-
-  
