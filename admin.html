@@ -121,19 +121,19 @@
     /* Overview Stats Bar */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
       margin-bottom: 32px;
     }
 
-    @media(max-width: 800px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media(max-width: 500px) { .stats-grid { grid-template-columns: 1fr; } }
+    @media(max-width: 900px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media(max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 
     .stat-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 20px;
+      padding: 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -149,14 +149,8 @@
       background: var(--gold);
     }
 
-    .stat-card:hover {
-      border-color: var(--gold);
-      box-shadow: 0 8px 25px var(--gold-glow);
-      transform: translateY(-2px);
-    }
-
-    .stat-info span { display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
-    .stat-info strong { font-size: 26px; font-family: var(--serif); color: var(--wine); }
+    .stat-info span { display: block; font-size: 10px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
+    .stat-info strong { font-size: 22px; font-family: var(--serif); color: var(--wine); }
 
     /* Navigation Tabs */
     .nav-tabs {
@@ -417,6 +411,12 @@
         <strong id="statSheikhpura">--</strong>
       </div>
     </div>
+    <div class="stat-card">
+      <div class="stat-info">
+        <span>Gallery Photos</span>
+        <strong id="statGallery">--</strong>
+      </div>
+    </div>
   </div>
 
   <!-- Navigation Tabs -->
@@ -425,6 +425,7 @@
     <button class="tab-btn" onclick="switchPanel('sherPanel', this)">Sher</button>
     <button class="tab-btn" onclick="switchPanel('sufiPanel', this)">Saints</button>
     <button class="tab-btn" onclick="switchPanel('sheikhpuraPanel', this)">History</button>
+    <button class="tab-btn" onclick="switchPanel('galleryPanel', this)">Gallery</button>
     <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">Archive</button>
   </nav>
 
@@ -644,6 +645,40 @@
     </form>
   </div>
 
+  <!-- Gallery Studio Panel -->
+  <div id="galleryPanel" class="panel">
+    <div class="panel-title">
+      <span id="galleryFormTitle">Upload & Manage Gallery Media</span>
+    </div>
+    <form id="galleryForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Image Caption *</label>
+          <input type="text" id="galCaption" class="form-control" required placeholder="e.g. Annual Sukhan Sabha Gathering">
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select id="galCategory" class="form-control">
+            <option value="Events">Literary Event</option>
+            <option value="Shrines">Shrines & Heritage</option>
+            <option value="Portraits">Portraits & Editorial</option>
+            <option value="General">General</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Image URL *</label>
+        <input type="url" id="galUrl" class="form-control" required placeholder="https://.../image.jpg">
+      </div>
+
+      <div class="btn-group">
+        <button type="submit" id="galSaveBtn" class="btn-primary">Save Gallery Media</button>
+        <button type="button" class="btn-secondary" onclick="resetGalleryForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
   <!-- Archive Panel -->
   <div id="archivePanel" class="panel">
     <div class="panel-title">
@@ -661,12 +696,15 @@
 
     <h4 style="color:var(--wine); margin:30px 0 10px;">Sheikhpura History Records</h4>
     <div id="sheikhpuraArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:30px 0 10px;">Gallery Media Records</h4>
+    <div id="galleryArchiveList" class="archive-list">Loading...</div>
   </div>
 
 </div>
 
 <script>
-  let editingPoetryId = null, editingSherId = null, editingSufiId = null, editingSheikhpuraId = null;
+  let editingPoetryId = null, editingSherId = null, editingSufiId = null, editingSheikhpuraId = null, editingGalleryId = null;
 
   function getClient() {
     return supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
@@ -690,15 +728,17 @@
       const { count: sCount } = await client.from('sher').select('*', { count: 'exact', head: true });
       const { count: sfCount } = await client.from('sufi_saints').select('*', { count: 'exact', head: true });
       const { count: skCount } = await client.from('sheikhpura_history').select('*', { count: 'exact', head: true });
+      const { count: gCount } = await client.from('gallery_media').select('*', { count: 'exact', head: true });
 
       document.getElementById('statPoetry').textContent = pCount || 0;
       document.getElementById('statSher').textContent = sCount || 0;
       document.getElementById('statSaints').textContent = sfCount || 0;
       document.getElementById('statSheikhpura').textContent = skCount || 0;
+      document.getElementById('statGallery').textContent = gCount || 0;
     } catch(err) { console.error("Stats error:", err); }
   }
 
-  // Poetry Save / Update Handler
+  // Poetry Handler
   document.getElementById('poetryForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -742,7 +782,7 @@
     document.getElementById('poetrySaveBtn').textContent = "Save Poetry Record";
   }
 
-  // Sher Save / Update Handler
+  // Sher Handler
   document.getElementById('sherForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -784,7 +824,7 @@
     document.getElementById('sherSaveBtn').textContent = "Save Sher Record";
   }
 
-  // Sufi Saint Save / Update Handler
+  // Sufi Saint Handler
   document.getElementById('sufiForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -838,7 +878,7 @@
     document.getElementById('sufiSaveBtn').textContent = "Save Saint Record";
   }
 
-  // Sheikhpura History Save / Update Handler
+  // Sheikhpura History Handler
   document.getElementById('sheikhpuraForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -882,7 +922,45 @@
     document.getElementById('skSaveBtn').textContent = "Save Sheikhpura Record";
   }
 
-  // Load Archives with Edit & Delete Actions
+  // Gallery Media Handler
+  document.getElementById('galleryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = {
+      caption: document.getElementById('galCaption').value.trim(),
+      category: document.getElementById('galCategory').value,
+      image_url: document.getElementById('galUrl').value.trim()
+    };
+    try {
+      const client = getClient();
+      const res = editingGalleryId ? await client.from('gallery_media').update(data).eq('id', editingGalleryId) : await client.from('gallery_media').insert([data]);
+      if (res.error) throw res.error;
+      alert(editingGalleryId ? "Gallery Media Updated!" : "Gallery Media Saved!");
+      resetGalleryForm();
+      updateStats();
+    } catch(err) { alert("Error: " + err.message); }
+  });
+
+  async function editGallery(id) {
+    const client = getClient();
+    const { data } = await client.from('gallery_media').select('*').eq('id', id).single();
+    if (!data) return;
+    editingGalleryId = id;
+    document.getElementById('galleryFormTitle').textContent = "Editing Media: " + data.caption;
+    document.getElementById('galCaption').value = data.caption || '';
+    document.getElementById('galCategory').value = data.category || 'General';
+    document.getElementById('galUrl').value = data.image_url || '';
+    document.getElementById('galSaveBtn').textContent = "Update Media Record";
+    switchPanel('galleryPanel', document.querySelectorAll('.tab-btn')[4]);
+  }
+
+  function resetGalleryForm() {
+    document.getElementById('galleryForm').reset();
+    editingGalleryId = null;
+    document.getElementById('galleryFormTitle').textContent = "Upload & Manage Gallery Media";
+    document.getElementById('galSaveBtn').textContent = "Save Gallery Media";
+  }
+
+  // Load Archives
   async function loadArchives() {
     const client = getClient();
 
@@ -941,6 +1019,20 @@
         </div>
       </div>
     `).join('');
+
+    const { data: gData } = await client.from('gallery_media').select('*').order('id', { ascending: false });
+    document.getElementById('galleryArchiveList').innerHTML = (!gData || !gData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : gData.map(i => `
+      <div class="archive-card">
+        <div>
+          <div class="archive-title">${escapeHTML(i.caption)}</div>
+          <div class="archive-meta">Category: ${escapeHTML(i.category || 'General')}</div>
+        </div>
+        <div>
+          <button class="action-btn action-edit" onclick="editGallery(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('gallery_media', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
   }
 
   async function deleteRecord(table, id) {
@@ -957,7 +1049,8 @@
     const { data: s } = await client.from('sher').select('*');
     const { data: sf } = await client.from('sufi_saints').select('*');
     const { data: sk } = await client.from('sheikhpura_history').select('*');
-    const backup = { poetry: p, sher: s, sufi_saints: sf, sheikhpura_history: sk, exported_at: new Date().toISOString() };
+    const { data: g } = await client.from('gallery_media').select('*');
+    const backup = { poetry: p, sher: s, sufi_saints: sf, sheikhpura_history: sk, gallery_media: g, exported_at: new Date().toISOString() };
     const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
