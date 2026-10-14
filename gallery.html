@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery | Syed Amjad Hussain </title>
+  <meta name="theme-color" content="#30151b">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Supabase JS & Config -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin-config.js"></script>
+
+  <style>
+    :root {
+      --bg-paper: #fbf8f2;
+      --bg-card: #fffdf9;
+      --wine: #472127;
+      --wine-dark: #291115;
+      --gold: #c5a038;
+      --gold-light: #f7eedc;
+      --gold-dark: #917223;
+      --text-ink: #2b1d22;
+      --text-muted: #78676c;
+      --border-color: #e3d2ba;
+      --sans: 'Plus Jakarta Sans', sans-serif;
+      --serif: 'Cinzel', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+    body {
+      background: var(--bg-paper);
+      color: var(--text-ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: radial-gradient(circle at 50% 0%, rgba(197, 160, 56, 0.08) 0%, transparent 70%);
+    }
+
+    /* Top Bar */
+    .topbar {
+      height: 42px;
+      background: var(--wine-dark);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(197, 160, 56, 0.3);
+    }
+
+    .topbar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #fcefb4;
+      font-weight: 600;
+    }
+
+    .topbar-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    /* Navigation Header */
+    .main-nav {
+      background: var(--wine);
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .nav-brand {
+      font-family: var(--serif);
+      color: var(--gold-light);
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: #ffffff;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 4px;
+    }
+
+    /* Banner Section */
+    .hero-banner {
+      padding: 60px 6% 40px;
+      text-align: center;
+      background: linear-gradient(180deg, #f3ebda 0%, var(--bg-paper) 100%);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-banner h1 {
+      font-family: var(--serif);
+      color: var(--wine);
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .hero-banner p {
+      color: var(--gold-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto 80px;
+      padding: 0 24px;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* Category Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 35px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 9px 20px;
+      background: #f4ece1;
+      border: 1px solid var(--border-color);
+      color: var(--wine);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--wine);
+      color: var(--gold-light);
+      border-color: var(--gold);
+      box-shadow: 0 4px 12px rgba(71, 33, 39, 0.2);
+    }
+
+    /* Gallery Grid Layout */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 28px;
+    }
+
+    .gallery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(71, 33, 39, 0.04);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(197, 160, 56, 0.18);
+    }
+
+    .gallery-img-wrapper {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      background: #f0e7d5;
+      position: relative;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-info {
+      padding: 18px 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .gallery-tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .gallery-title {
+      font-family: var(--serif);
+      color: var(--wine);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .empty-msg {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+      font-family: var(--serif);
+      font-size: 16px;
+    }
+
+    /* Image Lightbox Overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(24, 12, 16, 0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .lightbox.active { display: flex; animation: fadeIn 0.25s ease; }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 85vh;
+      border: 2px solid var(--gold);
+      border-radius: 6px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 30px;
+      color: var(--gold-light);
+      font-size: 32px;
+      cursor: pointer;
+      font-family: var(--sans);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--wine-dark);
+      color: var(--gold-light);
+      text-align: center;
+      padding: 30px 6%;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      border-top: 2px solid var(--gold);
+    }
+
+    @media(max-width: 768px) {
+      .main-nav { flex-direction: column; gap: 15px; }
+      .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <span class="topbar-badge">Official Literary & Historical Archive</span>
+  <span>Syed Amjad Hussain</span>
+</div>
+
+<nav class="main-nav">
+  <a href="index.html" class="nav-brand">Janab Mir Syed Amjad Hussain</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="poetry.html">Poetry</a></li>
+    <li><a href="saints.html">Sufi Saints</a></li>
+    <li><a href="sheikhpura.html">Sheikhpura</a></li>
+    <li><a href="gallery.html" class="active">Gallery</a></li>
+  </ul>
+</nav>
+
+<header class="hero-banner">
+  <h1>Visual Gallery & Chronicles</h1>
+  <p>Literary Gatherings, Heritage Sites & Historical Moments</p>
+</header>
+
+<div class="container">
+
+  <!-- Category Filter Buttons -->
+  <div class="filter-tabs">
+    <button class="filter-btn active" onclick="filterCategory('All', this)">All Media</button>
+    <button class="filter-btn" onclick="filterCategory('Events', this)">Literary Events</button>
+    <button class="filter-btn" onclick="filterCategory('Shrines', this)">Shrines & Heritage</button>
+    <button class="filter-btn" onclick="filterCategory('Portraits', this)">Portraits</button>
+    <button class="filter-btn" onclick="filterCategory('General', this)">General</button>
+  </div>
+
+  <!-- Dynamic Gallery Grid -->
+  <div id="galleryContainer" class="gallery-grid">
+    <div class="empty-msg">Loading royal gallery...</div>
+  </div>
+
+</div>
+
+<!-- Fullscreen Image View Modal -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightboxImg" class="lightbox-content" src="" alt="Full View">
+</div>
+
+<footer>
+  <p>© Janab Mir Syed Amjad Hussain Qadri Jajneri. All Rights Reserved.</p>
+</footer>
+
+<script>
+  let allGalleryData = [];
+
+  async function loadWebsiteGallery() {
+    try {
+      const client = supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
+      
+      const { data, error } = await client
+        .from('gallery_media')
+        .select('*')
+        .order('id', { ascending: false });
+
+      if (error || !data || data.length === 0) {
+        document.getElementById('galleryContainer').innerHTML = '<div class="empty-msg">No published photos found in gallery.</div>';
+        return;
+      }
+
+      allGalleryData = data;
+      renderGallery(allGalleryData);
+
+    } catch (err) {
+      console.error("Gallery Error:", err);
+      document.getElementById('galleryContainer').innerHTML = '<div class="empty-msg">Unable to fetch gallery records.</div>';
+    }
+  }
+
+  function renderGallery(items) {
+    const container = document.getElementById('galleryContainer');
+    if (items.length === 0) {
+      container.innerHTML = '<div class="empty-msg">No images found in this category.</div>';
+      return;
+    }
+
+    container.innerHTML = items.map(item => `
+      <div class="gallery-card" onclick="openLightbox('${item.image_url}')">
+        <div class="gallery-img-wrapper">
+          <img src="${item.image_url}" alt="${escapeHTML(item.caption)}" loading="lazy" />
+        </div>
+        <div class="gallery-info">
+          <span class="gallery-tag">${escapeHTML(item.category || 'General')}</span>
+          <h3 class="gallery-title">${escapeHTML(item.caption)}</h3>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function filterCategory(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    if (category === 'All') {
+      renderGallery(allGalleryData);
+    } else {
+      const filtered = allGalleryData.filter(i => (i.category || 'General').toLowerCase() === category.toLowerCase());
+      renderGallery(filtered);
+    }
+  }
+
+  function openLightbox(url) {
+    document.getElementById('lightboxImg').src = url;
+    document.getElementById('lightbox').classList.add('active');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+
+  function escapeHTML(str = '') {
+    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  }
+
+  window.addEventListener('DOMContentLoaded', loadWebsiteGallery);
+</script>
+
+</body>
+</html>
