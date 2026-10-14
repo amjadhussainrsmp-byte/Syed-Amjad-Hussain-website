@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +15,7 @@
   <style>
     :root {
       --burgundy: #641f32;
-      --burgundy-dark: #3c111d;
+      --burgundy-dark: #40131f;
       --burgundy-light: #85384d;
       --gold: #b89558;
       --gold-light: #dec798;
@@ -38,7 +37,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 95px;
     }
 
     body {
@@ -100,83 +99,202 @@
       color: var(--muted);
     }
 
-    /* Navigation */
+    /* Top Bar & Navigation */
+    .top {
+      height: 32px;
+      padding: 0 5.5%;
+      display: flex;
+      align-items: center;
+      background: var(--burgundy-dark);
+      color: #e9ded0;
+      font-size: 9px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .top .wrap {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
 
     .site-header {
+      box-sizing: border-box;
+      height: 86px;
+      padding: 0 5.5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
       position: sticky;
       top: 0;
       z-index: 1000;
       background: rgba(255,253,248,.96);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(90,67,56,.12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
-    .nav {
-      min-height: 82px;
+    .site-header .brand {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 22px;
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
+      gap: 12px;
       flex-shrink: 0;
+      text-decoration: none;
       line-height: 1.3;
     }
 
-    .brand strong {
-      font: 700 1.2rem "Playfair Display", serif;
+    .site-header .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--gold);
+      color: var(--burgundy);
+      display: grid;
+      place-items: center;
+      font: 27px/1 "Playfair Display", serif;
+    }
+
+    .site-header .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+    }
+
+    .site-header .brand-text strong {
+      font: 600 16px "Playfair Display", serif;
+      letter-spacing: -.02em;
       color: var(--burgundy);
     }
 
-    .brand span {
+    .site-header .brand-text small {
+      margin-top: 5px;
       color: var(--muted);
-      font-size: .67rem;
-      letter-spacing: 1.1px;
+      font: 9px "DM Sans", sans-serif;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      margin-top: 4px;
+      white-space: nowrap;
     }
 
-    .nav-links {
+    .site-header #mainNav {
       display: flex;
       align-items: center;
-      gap: 15px;
+      justify-content: flex-end;
+      gap: 25px;
+      font: 500 11px "DM Sans", sans-serif;
+      color: #544942;
     }
 
-    .nav-links a {
-      font-size: .77rem;
-      font-weight: 600;
-      color: #49413e;
+    .site-header #mainNav a {
+      color: inherit;
+      text-decoration: none;
       transition: color .2s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--burgundy);
-    }
-
-    .nav-links .contact-link {
-      padding: 10px 15px;
-      border-radius: 7px;
-      background: var(--burgundy);
-      color: var(--white);
-    }
-
-    .nav-links .contact-link:hover {
-      background: var(--burgundy-dark);
-      color: var(--white);
-    }
-
-    .menu-toggle {
-      display: none;
-      border: 1px solid var(--line);
+    .site-header #mainNav > a,
+    .site-header #mainNav .nav-parent {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 0;
+      border: 0;
       background: transparent;
+      white-space: nowrap;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .site-header #mainNav a:hover,
+    .site-header #mainNav a:focus-visible,
+    .site-header #mainNav > a[aria-current="page"] {
       color: var(--burgundy);
-      border-radius: 8px;
-      padding: 8px 12px;
+    }
+
+    .site-header #mainNav .nav-contact {
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      color: var(--ink);
+    }
+
+    .site-header #mainNav .nav-contact span {
+      color: var(--burgundy);
+      margin-left: 9px;
+    }
+
+    .site-header #mainNav .nav-dropdown {
+      position: relative;
+    }
+
+    .site-header #mainNav .nav-parent {
       cursor: pointer;
+    }
+
+    .site-header #mainNav .nav-arrow {
+      color: var(--gold);
+      font-size: 14px;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+
+    .site-header #mainNav .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      min-width: 225px;
+      padding: 8px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 30px rgba(47,41,38,.12);
+      z-index: 100;
+    }
+
+    .site-header #mainNav .dropdown-menu a {
+      display: block;
+      padding: 11px 12px;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.5;
+      white-space: normal;
+    }
+
+    .site-header #mainNav .dropdown-menu a:hover {
+      color: var(--burgundy);
+      background: #ebe3d7;
+    }
+
+    @media (min-width: 781px) {
+      .site-header #mainNav .nav-dropdown:hover > .dropdown-menu,
+      .site-header #mainNav .nav-dropdown:focus-within > .dropdown-menu {
+        display: block;
+      }
+
+      .site-header #mainNav .nav-dropdown:hover .nav-arrow {
+        transform: rotate(180deg);
+      }
+    }
+
+    .site-header .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: 1px solid var(--line);
+      background: rgba(255,253,248,.72);
+      color: var(--burgundy);
+      font: 700 24px/1 "DM Sans", sans-serif;
+      cursor: pointer;
+    }
+
+    .site-header .menu-toggle:hover {
+      background: var(--white);
+      border-color: var(--gold);
     }
 
     /* Hero */
@@ -704,10 +822,11 @@
 
     /* Footer */
 
-    .site-footer {
-      padding: 48px 0 24px;
-      background: #29141a;
-      color: #eee3df;
+    footer {
+      background: #29151a !important;
+      color: #d9c9ba !important;
+      padding: 48px 0 24px !important;
+      font-size: 12px !important;
     }
 
     .footer-grid {
@@ -763,55 +882,98 @@
     }
 
     @media (max-width: 1100px) {
-      .nav-links {
-        gap: 10px;
-      }
-
-      .nav-links a {
-        font-size: .7rem;
-      }
-
       .hero-grid {
         gap: 35px;
       }
     }
 
-    @media (max-width: 800px) {
-      .nav {
-        min-height: 73px;
+    @media (max-width: 780px) {
+      .top {
+        padding: 0 5%;
+        font-size: 7px;
+        letter-spacing: .1em;
       }
 
-      .menu-toggle {
-        display: block;
+      .site-header {
+        height: 72px;
+        padding: 0 5%;
+        gap: 10px;
       }
 
-      .nav-links {
+      .site-header .brand { gap: 9px; }
+      .site-header .brand-mark {
+        width: 36px;
+        height: 36px;
+        font-size: 25px;
+      }
+
+      .site-header .brand-text strong { font-size: 14px; }
+
+      .site-header .brand-text small {
+        font-size: 7px;
+        letter-spacing: .04em;
+        white-space: normal;
+        max-width: 225px;
+      }
+
+      .site-header .menu-toggle { display: flex; }
+
+      .site-header #mainNav {
         display: none;
         position: absolute;
-        top: 72px;
+        top: 100%;
         left: 0;
         right: 0;
-        padding: 18px 5%;
+        max-height: calc(100vh - 72px);
+        overflow-y: auto;
+        padding: 18px 5% 24px;
         background: var(--paper);
         border-bottom: 1px solid var(--line);
-        box-shadow: 0 15px 25px rgba(0,0,0,.07);
+        box-shadow: 0 16px 28px rgba(33,16,22,.08);
         flex-direction: column;
         align-items: stretch;
+        justify-content: flex-start;
         gap: 0;
+        font-size: 12px;
       }
 
-      .nav-links.open {
+      .site-header #mainNav.open { display: flex; }
+
+      .site-header #mainNav > a,
+      .site-header #mainNav .nav-parent {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+        white-space: normal;
       }
 
-      .nav-links a {
-        padding: 10px 0;
-        font-size: .88rem;
+      .site-header #mainNav .nav-contact {
+        justify-content: center;
+        margin-top: 12px;
+        padding: 12px;
       }
 
-      .nav-links .contact-link {
-        text-align: center;
-        margin-top: 8px;
+      .site-header #mainNav .nav-dropdown { width: 100%; }
+
+      .site-header #mainNav .dropdown-menu {
+        display: block;
+        position: static;
+        min-width: 0;
+        width: 100%;
+        padding: 2px 0 2px 12px;
+        margin: 0 0 8px 10px;
+        border: 0;
+        border-left: 1px solid var(--gold);
+        box-shadow: none;
+        background: transparent;
+      }
+
+      .site-header #mainNav .dropdown-menu a {
+        padding: 9px 10px;
+        font-size: 11px;
       }
 
       .hero {
@@ -861,14 +1023,6 @@
     @media (max-width: 540px) {
       .container {
         width: 90%;
-      }
-
-      .brand strong {
-        font-size: 1.05rem;
-      }
-
-      .brand span {
-        font-size: .57rem;
       }
 
       .hero h1 {
@@ -926,38 +1080,26 @@
 
 <body>
 
+  <div class="top"><div class="wrap"><span>INDEPENDENT RESEARCH · LITERATURE · HERITAGE</span><span>Bihar, India</span></div></div>
+
   <!-- NAVIGATION -->
   <header class="site-header">
-    <div class="container nav">
-
-      <a href="home.html" class="brand" aria-label="Syed Amjad Hussain home">
-        <strong>Syed Amjad Hussain</strong>
-        <span>Author · Historian · Researcher</span>
-      </a>
-
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="navLinks"
-      >☰ Menu</button>
-
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="home.html">Home</a>
-        <a href="biography.html">Biography</a>
-        <a href="books-articles.html" class="active">Books & Articles</a>
-        <a href="sufi-heritage.html">Sufi Heritage</a>
-        <a href="sheikhpura-heritage.html">Sheikhpura Heritage</a>
-        <a href="research.html">Research</a>
-        <a href="poetry.html">Poetry</a>
-        <a href="sher.html.html">Sher Collection</a>
-        <a href="social-work.html">Social Work</a>
-        <a href="awards-honours.html">Awards & Honours</a>
-        <a href="home.html#contact" class="contact-link">Contact</a>
-      </nav>
-
-    </div>
+    <a aria-label="Syed Amjad Hussain home" class="brand" href="home.html">
+      <span aria-hidden="true" class="brand-mark">أ</span>
+      <span class="brand-text"><strong>Syed Amjad Hussain</strong><small>Ethnographer · Author · Historian · Poet · Researcher</small></span>
+    </a>
+    <button aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation" class="menu-toggle" id="menuToggle" type="button">☰</button>
+    <nav aria-label="Main navigation" id="mainNav">
+      <a href="home.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <div class="nav-dropdown"><a class="nav-parent" href="books-articles.html">Books &amp; Articles <span class="nav-arrow">⌄</span></a><div class="dropdown-menu"><a href="the-eternals-of-bihar.html" class="active" aria-current="page">The Eternals of Bihar</a><a href="akhtar-orenvi-bio.html">Akhtar Orenvi</a><a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a></div></div>
+      <div class="nav-dropdown"><a class="nav-parent" href="poetry.html">Poetry <span class="nav-arrow">⌄</span></a><div class="dropdown-menu"><a href="sher.html">Sher Collection</a></div></div>
+      <a href="social-work.html">Social Work</a>
+      <a href="awards-honours.html">Awards &amp; Honours</a>
+      <div class="nav-dropdown"><a class="nav-parent" href="research.html">Research <span class="nav-arrow">⌄</span></a><div class="dropdown-menu"><a href="sufi-heritage.html">Sufi Heritage of Bihar</a><a href="sheikhpura-history.html">Sheikhpura History</a><a href="ancestral-heritage.html">Ancestral Heritage</a></div></div>
+      <a href="media.html">Media</a>
+      <a class="nav-contact" href="contact.html">Contact <span>↗</span></a>
+    </nav>
   </header>
 
   <main>
@@ -1395,7 +1537,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
+  <footer>
     <div class="container">
 
       <div class="footer-grid">
@@ -1415,7 +1557,7 @@
           <div class="footer-links">
             <a href="home.html">Home</a>
             <a href="biography.html">Biography</a>
-            <a href="books-articles.html">Books & Articles</a>
+            <a href="books-articles.html">Books &amp; Articles</a>
             <a href="research.html">Research</a>
             <a href="poetry.html">Poetry</a>
           </div>
@@ -1425,10 +1567,10 @@
           <h3>Discover More</h3>
           <div class="footer-links">
             <a href="sufi-heritage.html">Sufi Heritage</a>
-            <a href="sheikhpura-heritage.html">Sheikhpura Heritage</a>
+            <a href="sheikhpura-history.html">Sheikhpura History</a>
             <a href="social-work.html">Social Work</a>
-            <a href="awards-honours.html">Awards & Honours</a>
-            <a href="home.html#contact">Contact</a>
+            <a href="awards-honours.html">Awards &amp; Honours</a>
+            <a href="contact.html">Contact</a>
           </div>
         </div>
 
@@ -1447,27 +1589,38 @@
   <script>
     // Mobile navigation
     const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
+    const mainNav = document.getElementById("mainNav");
 
-    menuToggle.addEventListener("click", function () {
-      const isOpen = navLinks.classList.toggle("open");
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", function () {
+        const isOpen = mainNav.classList.toggle("open");
 
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
-      );
-      menuToggle.textContent = isOpen ? "✕ Close" : "☰ Menu";
-    });
-
-    navLinks.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open navigation menu");
-        menuToggle.textContent = "☰ Menu";
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation" : "Open navigation"
+        );
+        menuToggle.textContent = isOpen ? "✕" : "☰";
       });
-    });
+
+      mainNav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          mainNav.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation");
+          menuToggle.textContent = "☰";
+        });
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          mainNav.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation");
+          menuToggle.textContent = "☰";
+        }
+      });
+    }
 
     // Dynamic copyright year
     document.getElementById("currentYear").textContent =
@@ -1476,4 +1629,3 @@
 
 </body>
 </html>
-          
