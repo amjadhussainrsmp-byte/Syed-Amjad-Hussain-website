@@ -1,432 +1,1678 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gallery | Syed Amjad Hussain </title>
-  <meta name="theme-color" content="#30151b">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fonts & Icons -->
+  <title>Gallery | Syed Amjad Hussain</title>
+  <meta name="description" content="Explore photographs documenting the literary journey, Sufi heritage research, historical places, cultural events and public engagements of Syed Amjad Hussain.">
+  <meta name="theme-color" content="#652e36">
+
+  <link rel="canonical" href="https://syed-amjad-hussain-website.vercel.app/gallery.html">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Supabase JS & Config -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="admin-config.js"></script>
+  <!-- Your existing website design system -->
+  <link rel="stylesheet" href="assets/css/heritage.css">
 
+  <!-- Gallery-specific styling only -->
   <style>
-    :root {
-      --bg-paper: #fbf8f2;
-      --bg-card: #fffdf9;
-      --wine: #472127;
-      --wine-dark: #291115;
-      --gold: #c5a038;
-      --gold-light: #f7eedc;
-      --gold-dark: #917223;
-      --text-ink: #2b1d22;
-      --text-muted: #78676c;
-      --border-color: #e3d2ba;
-      --sans: 'Plus Jakarta Sans', sans-serif;
-      --serif: 'Cinzel', Georgia, serif;
+    /* =========================================
+       GALLERY PAGE
+       Scoped styles preserve the global design
+       ========================================= */
+
+    .gallery-page {
+      --gallery-wine: #652e36;
+      --gallery-wine-dark: #472127;
+      --gallery-gold: #b18a4a;
+      --gallery-paper: #f8f4ed;
+      --gallery-card: #fffdf9;
+      --gallery-border: rgba(101, 46, 54, 0.15);
+      --gallery-muted: #766d67;
+
+      font-family: "DM Sans", sans-serif;
+      padding-bottom: 72px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-
-    body {
-      background: var(--bg-paper);
-      color: var(--text-ink);
-      font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.7;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background-image: radial-gradient(circle at 50% 0%, rgba(197, 160, 56, 0.08) 0%, transparent 70%);
+    .gallery-page *,
+    .gallery-lightbox * {
+      box-sizing: border-box;
     }
 
-    /* Top Bar */
-    .topbar {
-      height: 42px;
-      background: var(--wine-dark);
-      color: var(--gold-light);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 6%;
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(197, 160, 56, 0.3);
+    .gallery-page button,
+    .gallery-lightbox button,
+    .gallery-page input {
+      font: inherit;
     }
 
-    .topbar-badge {
+    .gallery-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(48px, 8vw, 92px) 22px;
+      color: #fffaf2;
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at 15% 15%,
+          rgba(177, 138, 74, 0.20),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 85% 85%,
+          rgba(255, 255, 255, 0.07),
+          transparent 35%
+        ),
+        linear-gradient(
+          135deg,
+          #472127 0%,
+          #652e36 58%,
+          #793e43 100%
+        );
+      border-bottom: 3px solid var(--gallery-gold);
+    }
+
+    .gallery-hero::before,
+    .gallery-hero::after {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border: 1px solid rgba(221, 187, 124, 0.20);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .gallery-hero::before {
+      top: -105px;
+      left: -60px;
+    }
+
+    .gallery-hero::after {
+      right: -75px;
+      bottom: -125px;
+      width: 260px;
+      height: 260px;
+    }
+
+    .gallery-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .gallery-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      color: #fcefb4;
-      font-weight: 600;
-    }
-
-    .topbar-badge::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      background: var(--gold);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--gold);
-    }
-
-    /* Navigation Header */
-    .main-nav {
-      background: var(--wine);
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid var(--gold);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    }
-
-    .nav-brand {
-      font-family: var(--serif);
-      color: var(--gold-light);
-      font-size: 18px;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: #e5c994;
+      font-size: 0.76rem;
       font-weight: 700;
-      text-decoration: none;
-      letter-spacing: 1px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--gold-light);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
+      letter-spacing: 0.19em;
       text-transform: uppercase;
     }
 
-    .nav-links a:hover, .nav-links a.active {
-      color: #ffffff;
-      border-bottom: 2px solid var(--gold);
-      padding-bottom: 4px;
+    .gallery-eyebrow::before,
+    .gallery-eyebrow::after {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: currentColor;
     }
 
-    /* Banner Section */
-    .hero-banner {
-      padding: 60px 6% 40px;
-      text-align: center;
-      background: linear-gradient(180deg, #f3ebda 0%, var(--bg-paper) 100%);
-      border-bottom: 1px solid var(--border-color);
+    .gallery-hero h1 {
+      margin: 0;
+      color: #fffaf2;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.035em;
     }
 
-    .hero-banner h1 {
-      font-family: var(--serif);
-      color: var(--wine);
-      font-size: clamp(26px, 4vw, 42px);
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
+    .gallery-hero p {
+      max-width: 650px;
+      margin: 22px auto 0;
+      color: rgba(255, 250, 242, 0.83);
+      font-size: clamp(0.96rem, 2vw, 1.08rem);
+      line-height: 1.9;
     }
 
-    .hero-banner p {
-      color: var(--gold-dark);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+    .gallery-hero-rule {
+      width: 65px;
+      height: 3px;
+      margin: 28px auto 0;
+      background: var(--gallery-gold);
+      border-radius: 5px;
     }
 
-    /* Main Container */
-    .container {
-      max-width: 1200px;
-      margin: 40px auto 80px;
-      padding: 0 24px;
-      width: 100%;
-      flex: 1;
-    }
-
-    /* Category Filter Tabs */
-    .filter-tabs {
+    .gallery-breadcrumbs {
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 35px;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+      padding: 17px 20px;
+      color: var(--gallery-muted);
+      font-size: 0.84rem;
     }
 
-    .filter-btn {
-      padding: 9px 20px;
-      background: #f4ece1;
-      border: 1px solid var(--border-color);
-      color: var(--wine);
-      border-radius: 20px;
-      font-size: 12px;
+    .gallery-breadcrumbs a {
+      color: var(--gallery-wine);
+      text-decoration: none;
+    }
+
+    .gallery-breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+
+    .gallery-breadcrumbs .separator {
+      color: var(--gallery-gold);
+    }
+
+    .gallery-container {
+      width: min(1220px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .gallery-intro {
+      max-width: 760px;
+      margin: 22px auto 35px;
+      text-align: center;
+    }
+
+    .gallery-intro h2 {
+      margin: 0 0 12px;
+      color: var(--gallery-wine);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
       font-weight: 600;
+    }
+
+    .gallery-intro p {
+      margin: 0;
+      color: var(--gallery-muted);
+      font-size: 0.97rem;
+      line-height: 1.85;
+    }
+
+    .gallery-toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .gallery-search-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .gallery-search-icon {
+      position: absolute;
+      top: 50%;
+      left: 17px;
+      color: var(--gallery-muted);
+      font-size: 1.1rem;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    #gallerySearch {
+      display: block;
+      width: 100%;
+      min-height: 49px;
+      padding: 12px 16px 12px 45px;
+      color: inherit;
+      background: var(--gallery-card);
+      border: 1px solid var(--gallery-border);
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    #gallerySearch:focus {
+      border-color: var(--gallery-gold);
+      box-shadow: 0 0 0 3px rgba(177, 138, 74, 0.14);
+    }
+
+    .gallery-count {
+      color: var(--gallery-muted);
+      font-size: 0.88rem;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .gallery-count strong {
+      color: var(--gallery-wine);
+    }
+
+    .gallery-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 0 34px;
+    }
+
+    .gallery-filter {
+      min-height: 41px;
+      padding: 9px 17px;
+      color: var(--gallery-wine);
+      background: transparent;
+      border: 1px solid var(--gallery-border);
+      border-radius: 999px;
       cursor: pointer;
-      letter-spacing: 1px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
     }
 
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--wine);
-      color: var(--gold-light);
-      border-color: var(--gold);
-      box-shadow: 0 4px 12px rgba(71, 33, 39, 0.2);
+    .gallery-filter:hover {
+      border-color: var(--gallery-gold);
+      transform: translateY(-1px);
     }
 
-    /* Gallery Grid Layout */
+    .gallery-filter[aria-pressed="true"] {
+      color: #fffaf2;
+      background: var(--gallery-wine);
+      border-color: var(--gallery-wine);
+    }
+
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
     }
 
     .gallery-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
+      min-width: 0;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(71, 33, 39, 0.04);
-      cursor: pointer;
-      position: relative;
+      background: var(--gallery-card);
+      border: 1px solid var(--gallery-border);
+      border-radius: 10px;
+      box-shadow: 0 5px 22px rgba(55, 35, 25, 0.045);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
     }
 
     .gallery-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(197, 160, 56, 0.18);
+      border-color: rgba(177, 138, 74, 0.55);
+      box-shadow: 0 14px 35px rgba(55, 35, 25, 0.12);
+      transform: translateY(-4px);
     }
 
-    .gallery-img-wrapper {
-      width: 100%;
-      height: 250px;
-      overflow: hidden;
-      background: #f0e7d5;
+    .gallery-card[hidden] {
+      display: none !important;
+    }
+
+    .gallery-image-button {
       position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      padding: 0;
+      overflow: hidden;
+      background: #e9e0d4;
+      border: 0;
+      cursor: zoom-in;
     }
 
-    .gallery-card img {
+    .gallery-image-button img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      transition: transform 0.45s ease;
     }
 
-    .gallery-card:hover img {
-      transform: scale(1.05);
+    .gallery-card:hover .gallery-image-button img {
+      transform: scale(1.045);
     }
 
-    .gallery-info {
-      padding: 18px 20px;
-      border-top: 1px solid var(--border-color);
+    .gallery-image-button:focus-visible {
+      outline: 3px solid var(--gallery-gold);
+      outline-offset: -4px;
     }
 
-    .gallery-tag {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--gold-dark);
-      font-weight: 700;
-      margin-bottom: 5px;
-      display: block;
-    }
-
-    .gallery-title {
-      font-family: var(--serif);
-      color: var(--wine);
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    .empty-msg {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text-muted);
-      font-family: var(--serif);
-      font-size: 16px;
-    }
-
-    /* Image Lightbox Overlay */
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(24, 12, 16, 0.92);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .lightbox.active { display: flex; animation: fadeIn 0.25s ease; }
-
-    .lightbox-content {
-      max-width: 90%;
-      max-height: 85vh;
-      border: 2px solid var(--gold);
-      border-radius: 6px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    }
-
-    .lightbox-close {
+    .gallery-image-overlay {
       position: absolute;
-      top: 20px; right: 30px;
-      color: var(--gold-light);
-      font-size: 32px;
-      cursor: pointer;
-      font-family: var(--sans);
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 14px;
+      background: linear-gradient(
+        to top,
+        rgba(25, 15, 14, 0.48),
+        transparent 42%
+      );
+      opacity: 0;
+      transition: opacity 0.25s ease;
     }
 
-    /* Footer */
-    footer {
-      background: var(--wine-dark);
-      color: var(--gold-light);
+    .gallery-card:hover .gallery-image-overlay,
+    .gallery-image-button:focus-visible .gallery-image-overlay {
+      opacity: 1;
+    }
+
+    .gallery-zoom-icon {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      color: #fff;
+      background: rgba(71, 33, 39, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50%;
+      font-size: 1.15rem;
+    }
+
+    .gallery-card-body {
+      padding: 17px 18px 19px;
+    }
+
+    .gallery-card-category {
+      display: inline-block;
+      margin-bottom: 9px;
+      color: var(--gallery-gold);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .gallery-card-caption {
+      margin: 0;
+      color: var(--gallery-wine-dark);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+
+    .gallery-status {
+      padding: 52px 22px;
+      color: var(--gallery-muted);
       text-align: center;
-      padding: 30px 6%;
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      border-top: 2px solid var(--gold);
+      background: var(--gallery-card);
+      border: 1px dashed var(--gallery-border);
+      border-radius: 10px;
     }
 
-    @media(max-width: 768px) {
-      .main-nav { flex-direction: column; gap: 15px; }
-      .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+    .gallery-status[hidden] {
+      display: none !important;
+    }
+
+    .gallery-status-icon {
+      display: block;
+      margin-bottom: 13px;
+      color: var(--gallery-gold);
+      font-size: 2rem;
+    }
+
+    .gallery-status h3 {
+      margin: 0 0 10px;
+      color: var(--gallery-wine);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.45rem;
+    }
+
+    .gallery-status p {
+      max-width: 570px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .gallery-retry {
+      margin-top: 18px;
+      padding: 10px 18px;
+      color: #fffaf2;
+      background: var(--gallery-wine);
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .gallery-retry:hover {
+      background: var(--gallery-wine-dark);
+    }
+
+    .gallery-note {
+      margin-top: 35px;
+      padding: 20px 24px;
+      color: var(--gallery-muted);
+      background: rgba(177, 138, 74, 0.075);
+      border-left: 3px solid var(--gallery-gold);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+
+    /* =========================================
+       FULL-SCREEN IMAGE VIEWER
+       ========================================= */
+
+    .gallery-lightbox[hidden] {
+      display: none !important;
+    }
+
+    .gallery-lightbox {
+      position: fixed;
+      z-index: 99999;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 65px 24px 28px;
+      background: rgba(18, 13, 13, 0.96);
+      color: #fffaf2;
+    }
+
+    .gallery-lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      display: grid;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .gallery-lightbox-close:hover {
+      background: var(--gallery-wine);
+    }
+
+    .gallery-lightbox-stage {
+      display: flex;
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .gallery-lightbox-image {
+      display: block;
+      max-width: min(100%, 1200px);
+      max-height: calc(100vh - 180px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .gallery-lightbox-arrow {
+      flex: 0 0 auto;
+      display: grid;
+      width: 43px;
+      height: 43px;
+      place-items: center;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    .gallery-lightbox-arrow:hover {
+      background: var(--gallery-wine);
+    }
+
+    .gallery-lightbox-caption {
+      max-width: 850px;
+      margin: 18px auto 0;
+      color: #fffaf2;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .gallery-lightbox-counter {
+      margin-top: 8px;
+      color: #d9c7a8;
+      font-size: 0.8rem;
+    }
+
+    body.gallery-viewer-open {
+      overflow: hidden;
+    }
+
+    /* =========================================
+       DARK THEME
+       Works with common theme attributes/classes
+       ========================================= */
+
+    html[data-theme="dark"] .gallery-page,
+    body.dark-theme .gallery-page,
+    html.dark .gallery-page,
+    body[data-theme="dark"] .gallery-page {
+      --gallery-card: #211d1c;
+      --gallery-border: rgba(224, 202, 169, 0.16);
+      --gallery-muted: #c0b5a9;
+    }
+
+    html[data-theme="dark"] .gallery-intro h2,
+    body.dark-theme .gallery-intro h2,
+    html.dark .gallery-intro h2,
+    body[data-theme="dark"] .gallery-intro h2,
+    html[data-theme="dark"] .gallery-card-caption,
+    body.dark-theme .gallery-card-caption,
+    html.dark .gallery-card-caption,
+    body[data-theme="dark"] .gallery-card-caption,
+    html[data-theme="dark"] .gallery-status h3,
+    body.dark-theme .gallery-status h3,
+    html.dark .gallery-status h3,
+    body[data-theme="dark"] .gallery-status h3,
+    html[data-theme="dark"] .gallery-filter,
+    body.dark-theme .gallery-filter,
+    html.dark .gallery-filter,
+    body[data-theme="dark"] .gallery-filter,
+    html[data-theme="dark"] .gallery-count strong,
+    body.dark-theme .gallery-count strong,
+    html.dark .gallery-count strong,
+    body[data-theme="dark"] .gallery-count strong {
+      color: #e8d5b5;
+    }
+
+    html[data-theme="dark"] #gallerySearch,
+    body.dark-theme #gallerySearch,
+    html.dark #gallerySearch,
+    body[data-theme="dark"] #gallerySearch {
+      color: #f8f0e4;
+    }
+
+    html[data-theme="dark"] .gallery-filter[aria-pressed="true"],
+    body.dark-theme .gallery-filter[aria-pressed="true"],
+    html.dark .gallery-filter[aria-pressed="true"],
+    body[data-theme="dark"] .gallery-filter[aria-pressed="true"] {
+      color: #fffaf2;
+      background: #652e36;
+    }
+
+    html[data-theme="dark"] .gallery-note,
+    body.dark-theme .gallery-note,
+    html.dark .gallery-note,
+    body[data-theme="dark"] .gallery-note {
+      background: rgba(177, 138, 74, 0.10);
+    }
+
+    /* =========================================
+       RESPONSIVE LAYOUT
+       ========================================= */
+
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .gallery-toolbar {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-count {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .gallery-hero {
+        padding: 52px 19px 58px;
+      }
+
+      .gallery-container {
+        width: min(100% - 28px, 1220px);
+      }
+
+      .gallery-intro {
+        margin-top: 14px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 19px;
+      }
+
+      .gallery-card-body {
+        padding: 15px 16px 17px;
+      }
+
+      .gallery-filters {
+        justify-content: flex-start;
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+
+      .gallery-filter {
+        padding: 8px 13px;
+        font-size: 0.81rem;
+      }
+
+      .gallery-lightbox {
+        padding: 65px 10px 24px;
+      }
+
+      .gallery-lightbox-stage {
+        gap: 6px;
+      }
+
+      .gallery-lightbox-image {
+        max-width: calc(100% - 68px);
+        max-height: calc(100vh - 185px);
+      }
+
+      .gallery-lightbox-arrow {
+        width: 31px;
+        height: 38px;
+        border-radius: 8px;
+      }
+
+      .gallery-note {
+        padding: 16px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-page *,
+      .gallery-lightbox * {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="topbar">
-  <span class="topbar-badge">Official Literary & Historical Archive</span>
-  <span>Syed Amjad Hussain</span>
-</div>
+  <!-- =======================================
+       SHARED WEBSITE HEADER
+       Keep this consistent with other pages
+       ======================================= -->
 
-<nav class="main-nav">
-  <a href="index.html" class="nav-brand">Janab Mir Syed Amjad Hussain</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="poetry.html">Poetry</a></li>
-    <li><a href="saints.html">Sufi Saints</a></li>
-    <li><a href="sheikhpura.html">Sheikhpura</a></li>
-    <li><a href="gallery.html" class="active">Gallery</a></li>
-  </ul>
-</nav>
-
-<header class="hero-banner">
-  <h1>Visual Gallery & Chronicles</h1>
-  <p>Literary Gatherings, Heritage Sites & Historical Moments</p>
-</header>
-
-<div class="container">
-
-  <!-- Category Filter Buttons -->
-  <div class="filter-tabs">
-    <button class="filter-btn active" onclick="filterCategory('All', this)">All Media</button>
-    <button class="filter-btn" onclick="filterCategory('Events', this)">Literary Events</button>
-    <button class="filter-btn" onclick="filterCategory('Shrines', this)">Shrines & Heritage</button>
-    <button class="filter-btn" onclick="filterCategory('Portraits', this)">Portraits</button>
-    <button class="filter-btn" onclick="filterCategory('General', this)">General</button>
+  <div class="topline">
+    <span>Independent Research · Literature · Heritage</span>
+    <span>Bihar, India</span>
   </div>
 
-  <!-- Dynamic Gallery Grid -->
-  <div id="galleryContainer" class="gallery-grid">
-    <div class="empty-msg">Loading royal gallery...</div>
-  </div>
+  <header class="site-header">
+    <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
+      <span class="brand-mark" aria-hidden="true">أ</span>
+      <span class="brand-text">
+        <strong>Syed Amjad Hussain</strong>
+        <small>Ethnographer · Author · Historian · Poet · Humanitarian</small>
+      </span>
+    </a>
 
-</div>
+    <div class="header-actions">
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Switch website theme"
+      >
+        ☾ Dark
+      </button>
 
-<!-- Fullscreen Image View Modal -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-  <span class="lightbox-close">&times;</span>
-  <img id="lightboxImg" class="lightbox-content" src="" alt="Full View">
-</div>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mainNav"
+      >
+        ☰ Menu
+      </button>
+    </div>
 
-<footer>
-  <p>© Janab Mir Syed Amjad Hussain Qadri Jajneri. All Rights Reserved.</p>
-</footer>
+    <nav id="mainNav" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+      <a href="sufi-heritage.html">Sufi Heritage</a>
+      <a href="research.html">Research</a>
+      <a href="books-articles.html">Books &amp; Articles</a>
+      <a href="poetry.html">Poetry</a>
+      <a href="sher.html">Sher Collection</a>
+      <a href="awards-honours.html">Awards &amp; Honours</a>
+      <a href="library.html">Library</a>
+      <a href="media.html">Media</a>
+      <a href="gallery.html" aria-current="page">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-<script>
-  let allGalleryData = [];
+  <main class="gallery-page">
 
-  async function loadWebsiteGallery() {
-    try {
-      const client = supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
-      
-      const { data, error } = await client
-        .from('gallery_media')
-        .select('*')
-        .order('id', { ascending: false });
+    <!-- HERO -->
+    <section class="gallery-hero">
+      <div class="gallery-hero-inner">
+        <div class="gallery-eyebrow">Moments · Memories · Heritage</div>
 
-      if (error || !data || data.length === 0) {
-        document.getElementById('galleryContainer').innerHTML = '<div class="empty-msg">No published photos found in gallery.</div>';
-        return;
-      }
+        <h1>Photo Gallery</h1>
 
-      allGalleryData = data;
-      renderGallery(allGalleryData);
+        <p>
+          A visual archive of literary gatherings, research journeys,
+          Sufi heritage, historical places, recognitions and meaningful
+          moments from the journey of Syed Amjad Hussain.
+        </p>
 
-    } catch (err) {
-      console.error("Gallery Error:", err);
-      document.getElementById('galleryContainer').innerHTML = '<div class="empty-msg">Unable to fetch gallery records.</div>';
-    }
-  }
+        <div class="gallery-hero-rule"></div>
+      </div>
+    </section>
 
-  function renderGallery(items) {
-    const container = document.getElementById('galleryContainer');
-    if (items.length === 0) {
-      container.innerHTML = '<div class="empty-msg">No images found in this category.</div>';
-      return;
-    }
+    <!-- BREADCRUMBS -->
+    <div class="gallery-breadcrumbs" aria-label="Breadcrumb">
+      <a href="home.html">Home</a>
+      <span class="separator" aria-hidden="true">/</span>
+      <span aria-current="page">Gallery</span>
+    </div>
 
-    container.innerHTML = items.map(item => `
-      <div class="gallery-card" onclick="openLightbox('${item.image_url}')">
-        <div class="gallery-img-wrapper">
-          <img src="${item.image_url}" alt="${escapeHTML(item.caption)}" loading="lazy" />
+    <!-- GALLERY -->
+    <section class="gallery-container" aria-labelledby="galleryHeading">
+
+      <div class="gallery-intro">
+        <h2 id="galleryHeading">A Journey Through Images</h2>
+        <p>
+          Browse photographs from literary events, historical and spiritual
+          sites, portraits, public engagements and other moments worth
+          preserving. Select any photograph to view it in detail.
+        </p>
+      </div>
+
+      <!-- SEARCH + RESULT COUNT -->
+      <div class="gallery-toolbar">
+        <div class="gallery-search-wrap">
+          <span class="gallery-search-icon" aria-hidden="true">⌕</span>
+          <input
+            type="search"
+            id="gallerySearch"
+            placeholder="Search photographs, places or captions..."
+            aria-label="Search gallery"
+            autocomplete="off"
+          >
         </div>
-        <div class="gallery-info">
-          <span class="gallery-tag">${escapeHTML(item.category || 'General')}</span>
-          <h3 class="gallery-title">${escapeHTML(item.caption)}</h3>
+
+        <div class="gallery-count" aria-live="polite">
+          Showing <strong id="galleryVisibleCount">0</strong>
+          of <strong id="galleryTotalCount">0</strong> photographs
         </div>
       </div>
-    `).join('');
-  }
 
-  function filterCategory(category, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+      <!-- CATEGORY FILTERS -->
+      <div class="gallery-filters" role="group" aria-label="Filter gallery">
 
-    if (category === 'All') {
-      renderGallery(allGalleryData);
-    } else {
-      const filtered = allGalleryData.filter(i => (i.category || 'General').toLowerCase() === category.toLowerCase());
-      renderGallery(filtered);
-    }
-  }
+        <button
+          class="gallery-filter"
+          type="button"
+          data-filter="all"
+          aria-pressed="true"
+        >
+          All Media
+        </button>
 
-  function openLightbox(url) {
-    document.getElementById('lightboxImg').src = url;
-    document.getElementById('lightbox').classList.add('active');
-  }
+        <button
+          class="gallery-filter"
+          type="button"
+          data-filter="literary events"
+          aria-pressed="false"
+        >
+          Literary Events
+        </button>
 
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
-  }
+        <button
+          class="gallery-filter"
+          type="button"
+          data-filter="shrines & heritage"
+          aria-pressed="false"
+        >
+          Shrines &amp; Heritage
+        </button>
 
-  function escapeHTML(str = '') {
-    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
-  }
+        <button
+          class="gallery-filter"
+          type="button"
+          data-filter="portraits"
+          aria-pressed="false"
+        >
+          Portraits
+        </button>
 
-  window.addEventListener('DOMContentLoaded', loadWebsiteGallery);
-</script>
+        <button
+          class="gallery-filter"
+          type="button"
+          data-filter="general"
+          aria-pressed="false"
+        >
+          General
+        </button>
+
+      </div>
+
+      <!-- LOADING / ERROR / EMPTY STATES -->
+      <div
+        class="gallery-status"
+        id="galleryStatus"
+        role="status"
+        aria-live="polite"
+      >
+        <span class="gallery-status-icon" aria-hidden="true">◌</span>
+        <h3 id="galleryStatusTitle">Loading the gallery</h3>
+        <p id="galleryStatusMessage">
+          Please wait while the photographs are being retrieved.
+        </p>
+        <button
+          class="gallery-retry"
+          id="galleryRetry"
+          type="button"
+          hidden
+        >
+          Try Again
+        </button>
+      </div>
+
+      <!-- PHOTOGRAPHS ARE INSERTED HERE -->
+      <div class="gallery-grid" id="galleryGrid"></div>
+
+      <div class="gallery-note">
+        <strong>About this archive</strong><br>
+        This gallery documents selected moments from literary, cultural,
+        historical and heritage-related activities. Captions and categories
+        are displayed according to the information available for each image.
+      </div>
+
+    </section>
+  </main>
+
+  <!-- =======================================
+       SHARED WEBSITE FOOTER
+       ======================================= -->
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="home.html">
+          <span class="brand-mark" aria-hidden="true">أ</span>
+          <span class="brand-text">
+            <strong>Syed Amjad Hussain</strong>
+            <small>Ethnographer · Author · Historian · Poet · Humanitarian</small>
+          </span>
+        </a>
+
+        <p>
+          Independent research, literature, history and the preservation
+          of Bihar's Sufi heritage.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="biography.html">Biography</a>
+        <a href="research.html">Research</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="sufi-heritage.html">Sufi Heritage</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © <span id="footerYear"></span> Syed Amjad Hussain.
+          All rights reserved.
+        </p>
+        <a href="home.html">SyedAmjadHussain.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =======================================
+       ACCESSIBLE FULL-SCREEN IMAGE VIEWER
+       ======================================= -->
+
+  <div
+    class="gallery-lightbox"
+    id="galleryLightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Photograph viewer"
+    aria-describedby="lightboxCaption"
+    hidden
+  >
+    <button
+      class="gallery-lightbox-close"
+      id="lightboxClose"
+      type="button"
+      aria-label="Close image viewer"
+    >
+      &times;
+    </button>
+
+    <div class="gallery-lightbox-stage">
+      <button
+        class="gallery-lightbox-arrow"
+        id="lightboxPrevious"
+        type="button"
+        aria-label="Previous photograph"
+      >
+        &#8249;
+      </button>
+
+      <img
+        class="gallery-lightbox-image"
+        id="lightboxImage"
+        src=""
+        alt=""
+      >
+
+      <button
+        class="gallery-lightbox-arrow"
+        id="lightboxNext"
+        type="button"
+        aria-label="Next photograph"
+      >
+        &#8250;
+      </button>
+    </div>
+
+    <div
+      class="gallery-lightbox-caption"
+      id="lightboxCaption"
+    ></div>
+
+    <div
+      class="gallery-lightbox-counter"
+      id="lightboxCounter"
+      aria-live="polite"
+    ></div>
+  </div>
+
+  <!-- =======================================
+       DEPENDENCIES
+       ======================================= -->
+
+  <!-- Supabase browser client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Your existing public configuration -->
+  <script src="admin-config.js"></script>
+
+  <!-- Your existing global menu and theme functionality -->
+  <script src="assets/js/site.js"></script>
+
+  <!-- =======================================
+       GALLERY FUNCTIONALITY
+       ======================================= -->
+
+  <script>
+    (() => {
+      "use strict";
+
+      const grid = document.getElementById("galleryGrid");
+      const status = document.getElementById("galleryStatus");
+      const statusTitle = document.getElementById("galleryStatusTitle");
+      const statusMessage = document.getElementById("galleryStatusMessage");
+      const retryButton = document.getElementById("galleryRetry");
+      const searchInput = document.getElementById("gallerySearch");
+      const visibleCount = document.getElementById("galleryVisibleCount");
+      const totalCount = document.getElementById("galleryTotalCount");
+      const filterButtons = [
+        ...document.querySelectorAll(".gallery-filter")
+      ];
+
+      const lightbox = document.getElementById("galleryLightbox");
+      const lightboxImage = document.getElementById("lightboxImage");
+      const lightboxCaption = document.getElementById("lightboxCaption");
+      const lightboxCounter = document.getElementById("lightboxCounter");
+      const lightboxClose = document.getElementById("lightboxClose");
+      const lightboxPrevious = document.getElementById("lightboxPrevious");
+      const lightboxNext = document.getElementById("lightboxNext");
+
+      let supabaseClient = null;
+      let galleryItems = [];
+      let visibleItems = [];
+      let activeFilter = "all";
+      let activeImageIndex = 0;
+      let lastFocusedElement = null;
+      let requestInProgress = false;
+
+      /*
+       * Validate image links.
+       * Only absolute HTTPS URLs are accepted for external images.
+       */
+      function safeImageUrl(value) {
+        if (typeof value !== "string" || !value.trim()) {
+          return null;
+        }
+
+        try {
+          const url = new URL(value.trim());
+
+          if (url.protocol !== "https:") {
+            return null;
+          }
+
+          return url.href;
+        } catch {
+          return null;
+        }
+      }
+
+      function normalize(value) {
+        return String(value || "")
+          .normalize("NFKC")
+          .toLocaleLowerCase()
+          .trim();
+      }
+
+      function showStatus(title, message, options = {}) {
+        statusTitle.textContent = title;
+        statusMessage.textContent = message;
+        retryButton.hidden = !options.retry;
+        status.hidden = false;
+      }
+
+      function hideStatus() {
+        status.hidden = true;
+      }
+
+      function normalizeCategory(value) {
+        const category = normalize(value);
+
+        if (
+          category === "literary events" ||
+          category === "literary event" ||
+          category === "events" ||
+          category === "literary"
+        ) {
+          return "literary events";
+        }
+
+        if (
+          category === "shrines & heritage" ||
+          category === "shrines and heritage" ||
+          category === "shrine" ||
+          category === "shrines" ||
+          category === "heritage"
+        ) {
+          return "shrines & heritage";
+        }
+
+        if (
+          category === "portrait" ||
+          category === "portraits"
+        ) {
+          return "portraits";
+        }
+
+        return "general";
+      }
+
+      function displayCategory(value) {
+        const category = normalizeCategory(value);
+
+        const labels = {
+          "literary events": "Literary Events",
+          "shrines & heritage": "Shrines & Heritage",
+          "portraits": "Portraits",
+          "general": "General"
+        };
+
+        return labels[category] || "General";
+      }
+
+      /*
+       * Safely create a card using DOM methods rather than
+       * inserting database values into HTML strings.
+       */
+      function createGalleryCard(item, index) {
+        const card = document.createElement("article");
+        card.className = "gallery-card";
+
+        card.dataset.index = String(index);
+        card.dataset.category = normalizeCategory(item.category);
+
+        const searchText = [
+          item.caption,
+          item.category,
+          item.image_url
+        ].join(" ");
+
+        card.dataset.search = normalize(searchText);
+
+        const imageButton = document.createElement("button");
+        imageButton.className = "gallery-image-button";
+        imageButton.type = "button";
+        imageButton.dataset.openIndex = String(index);
+        imageButton.setAttribute(
+          "aria-label",
+          "Open photograph: " + (item.caption || "Gallery photograph")
+        );
+
+        const image = document.createElement("img");
+        image.src = item.image_url;
+        image.alt = item.caption || "Photograph from the gallery";
+        image.loading = "lazy";
+        image.decoding = "async";
+
+        image.addEventListener("error", () => {
+          card.hidden = true;
+          updateVisibleItems();
+        }, { once: true });
+
+        const overlay = document.createElement("span");
+        overlay.className = "gallery-image-overlay";
+        overlay.setAttribute("aria-hidden", "true");
+
+        const zoomIcon = document.createElement("span");
+        zoomIcon.className = "gallery-zoom-icon";
+        zoomIcon.textContent = "↗";
+
+        overlay.appendChild(zoomIcon);
+        imageButton.append(image, overlay);
+
+        const body = document.createElement("div");
+        body.className = "gallery-card-body";
+
+        const category = document.createElement("span");
+        category.className = "gallery-card-category";
+        category.textContent = displayCategory(item.category);
+
+        const caption = document.createElement("h3");
+        caption.className = "gallery-card-caption";
+        caption.textContent = item.caption || "Untitled photograph";
+
+        body.append(category, caption);
+        card.append(imageButton, body);
+
+        return card;
+      }
+
+      function renderGallery() {
+        grid.replaceChildren();
+
+        const fragment = document.createDocumentFragment();
+
+        galleryItems.forEach((item, index) => {
+          fragment.appendChild(createGalleryCard(item, index));
+        });
+
+        grid.appendChild(fragment);
+
+        totalCount.textContent = String(galleryItems.length);
+
+        updateVisibleItems();
+      }
+
+      /*
+       * Apply both the selected category and the search term.
+       */
+      function updateVisibleItems() {
+        const query = normalize(searchInput.value);
+        const cards = [...grid.querySelectorAll(".gallery-card")];
+
+        visibleItems = [];
+
+        cards.forEach((card) => {
+          const index = Number(card.dataset.index);
+          const item = galleryItems[index];
+
+          if (!item) {
+            card.hidden = true;
+            return;
+          }
+
+          const categoryMatch =
+            activeFilter === "all" ||
+            normalizeCategory(item.category) === activeFilter;
+
+          const searchMatch =
+            !query ||
+            card.dataset.search.includes(query);
+
+          const shouldShow =
+            categoryMatch &&
+            searchMatch &&
+            card.dataset.imageFailed !== "true";
+
+          card.hidden = !shouldShow;
+
+          if (shouldShow) {
+            visibleItems.push(item);
+          }
+        });
+
+        visibleCount.textContent = String(visibleItems.length);
+
+        if (galleryItems.length === 0) {
+          showStatus(
+            "Your gallery is waiting",
+            "No photographs are available yet. Add published photographs through your gallery management workflow."
+          );
+          return;
+        }
+
+        if (visibleItems.length === 0) {
+          showStatus(
+            "No photographs found",
+            "Try another search term or select a different category."
+          );
+        } else {
+          hideStatus();
+        }
+      }
+
+      /*
+       * Create the Supabase client using the existing public config.
+       * Never put a service-role key in this browser-side code.
+       */
+      function initializeSupabase() {
+        const config = window.ADMIN_CONFIG;
+
+        if (
+          !window.supabase ||
+          typeof window.supabase.createClient !== "function"
+        ) {
+          throw new Error(
+            "The Supabase browser library could not be loaded."
+          );
+        }
+
+        if (!config) {
+          throw new Error(
+            "admin-config.js did not provide ADMIN_CONFIG."
+          );
+        }
+
+        const supabaseUrl = config.supabaseUrl;
+        const anonKey = config.supabaseAnonKey;
+
+        if (
+          typeof supabaseUrl !== "string" ||
+          typeof anonKey !== "string" ||
+          !supabaseUrl.trim() ||
+          !anonKey.trim()
+        ) {
+          throw new Error(
+            "The public Supabase URL or anonymous key is missing from admin-config.js."
+          );
+        }
+
+        let parsedUrl;
+
+        try {
+          parsedUrl = new URL(supabaseUrl);
+        } catch {
+          throw new Error(
+            "The Supabase project URL in admin-config.js is invalid."
+          );
+        }
+
+        if (
+          parsedUrl.protocol !== "https:" ||
+          !parsedUrl.hostname.endsWith(".supabase.co")
+        ) {
+          throw new Error(
+            "The configured Supabase URL must be a valid HTTPS Supabase project URL."
+          );
+        }
+
+        supabaseClient = window.supabase.createClient(
+          parsedUrl.origin,
+          anonKey
+        );
+      }
+
+      /*
+       * Retrieve gallery records.
+       * Expected columns: id, image_url, caption, category.
+       */
+      async function loadGallery() {
+        if (requestInProgress) {
+          return;
+        }
+
+        requestInProgress = true;
+        retryButton.disabled = true;
+
+        showStatus(
+          "Loading the gallery",
+          "Please wait while the photographs are being retrieved."
+        );
+
+        grid.replaceChildren();
+        galleryItems = [];
+        visibleItems = [];
+
+        try {
+          if (!supabaseClient) {
+            initializeSupabase();
+          }
+
+          const { data, error } = await supabaseClient
+            .from("gallery_media")
+            .select("id, image_url, caption, category")
+            .order("id", { ascending: false });
+
+          if (error) {
+            throw error;
+          }
+
+          const rows = Array.isArray(data) ? data : [];
+
+          galleryItems = rows
+            .map((row) => {
+              const imageUrl = safeImageUrl(row.image_url);
+
+              if (!imageUrl) {
+                return null;
+              }
+
+              return {
+                id: row.id,
+                image_url: imageUrl,
+                caption:
+                  typeof row.caption === "string"
+                    ? row.caption.trim()
+                    : "",
+                category: normalizeCategory(row.category)
+              };
+            })
+            .filter(Boolean);
+
+          renderGallery();
+
+        } catch (error) {
+          console.error("Gallery loading error:", error);
+
+          galleryItems = [];
+          visibleItems = [];
+          grid.replaceChildren();
+
+          totalCount.textContent = "0";
+          visibleCount.textContent = "0";
+
+          showStatus(
+            "Unable to load the gallery",
+            "Please check the Supabase configuration, the gallery_media table, network access and the table's read permissions. The browser console may contain more details.",
+            { retry: true }
+          );
+
+        } finally {
+          requestInProgress = false;
+          retryButton.disabled = false;
+        }
+      }
+
+      /*
+       * Category filters.
+       */
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter || "all";
+
+          filterButtons.forEach((otherButton) => {
+            otherButton.setAttribute(
+              "aria-pressed",
+              String(otherButton === button)
+            );
+          });
+
+          updateVisibleItems();
+        });
+      });
+
+      searchInput.addEventListener("input", updateVisibleItems);
+
+      retryButton.addEventListener("click", loadGallery);
+
+      /*
+       * Find an item in the currently visible result set.
+       */
+      function openLightbox(item) {
+        if (!item || !item.image_url) {
+          return;
+        }
+
+        lastFocusedElement = document.activeElement;
+
+        const index = visibleItems.findIndex(
+          (visibleItem) => visibleItem.id === item.id
+        );
+
+        activeImageIndex = Math.max(0, index);
+
+        renderLightboxImage();
+
+        lightbox.hidden = false;
+        document.body.classList.add("gallery-viewer-open");
+
+        lightboxClose.focus();
+      }
+
+      function renderLightboxImage() {
+        const item = visibleItems[activeImageIndex];
+
+        if (!item) {
+          closeLightbox();
+          return;
+        }
+
+        lightboxImage.src = item.image_url;
+        lightboxImage.alt = item.caption || "Gallery photograph";
+        lightboxCaption.textContent =
+          item.caption || "Untitled photograph";
+
+        lightboxCounter.textContent =
+          (activeImageIndex + 1) + " of " + visibleItems.length;
+
+        const hasMultipleImages = visibleItems.length > 1;
+
+        lightboxPrevious.hidden = !hasMultipleImages;
+        lightboxNext.hidden = !hasMultipleImages;
+      }
+
+      function moveLightbox(direction) {
+        if (visibleItems.length < 2) {
+          return;
+        }
+
+        activeImageIndex =
+          (
+            activeImageIndex +
+            direction +
+            visibleItems.length
+          ) % visibleItems.length;
+
+        renderLightboxImage();
+      }
+
+      function closeLightbox() {
+        if (lightbox.hidden) {
+          return;
+        }
+
+        lightbox.hidden = true;
+        lightboxImage.removeAttribute("src");
+        lightboxImage.alt = "";
+
+        document.body.classList.remove("gallery-viewer-open");
+
+        if (
+          lastFocusedElement &&
+          typeof lastFocusedElement.focus === "function"
+        ) {
+          lastFocusedElement.focus();
+        }
+      }
+
+      grid.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-open-index]");
+
+        if (!button) {
+          return;
+        }
+
+        const index = Number(button.dataset.openIndex);
+        const item = galleryItems[index];
+
+        if (!item) {
+          return;
+        }
+
+        openLightbox(item);
+      });
+
+      lightboxClose.addEventListener("click", closeLightbox);
+
+      lightboxPrevious.addEventListener("click", () => {
+        moveLightbox(-1);
+      });
+
+      lightboxNext.addEventListener("click", () => {
+        moveLightbox(1);
+      });
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (lightbox.hidden) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeLightbox();
+        }
+
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          moveLightbox(-1);
+        }
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          moveLightbox(1);
+        }
+
+        /*
+         * Keep keyboard focus inside the modal viewer.
+         */
+        if (event.key === "Tab") {
+          const focusable = [
+            lightboxClose,
+            lightboxPrevious,
+            lightboxNext
+          ].filter((element) => {
+            return (
+              !element.hidden &&
+              !element.disabled &&
+              element.offsetParent !== null
+            );
+          });
+
+          if (focusable.length === 0) {
+            event.preventDefault();
+            lightboxClose.focus();
+            return;
+          }
+
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (
+            event.shiftKey &&
+            document.activeElement === first
+          ) {
+            event.preventDefault();
+            last.focus();
+          } else if (
+            !event.shiftKey &&
+            document.activeElement === last
+          ) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
+      /*
+       * Optional touch-swipe support for mobile viewers.
+       */
+      let touchStartX = null;
+
+      lightbox.addEventListener("touchstart", (event) => {
+        if (event.touches.length === 1) {
+          touchStartX = event.touches[0].clientX;
+        }
+      }, { passive: true });
+
+      lightbox.addEventListener("touchend", (event) => {
+        if (
+          touchStartX === null ||
+          !event.changedTouches.length
+        ) {
+          return;
+        }
+
+        const deltaX =
+          event.changedTouches[0].clientX - touchStartX;
+
+        touchStartX = null;
+
+        if (Math.abs(deltaX) > 65) {
+          moveLightbox(deltaX < 0 ? 1 : -1);
+        }
+      }, { passive: true });
+
+      /*
+       * Footer year.
+       */
+      document.getElementById("footerYear").textContent =
+        String(new Date().getFullYear());
+
+      /*
+       * Start the gallery.
+       */
+      loadGallery();
+
+    })();
+  </script>
 
 </body>
 </html>
+
+      
+        
+        
+  
+      
+        
