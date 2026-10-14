@@ -415,63 +415,25 @@
       font-size: .8rem;
     }
 
-    /* Book visual */
-
+        /* Book Cover Image Style */
     .book-stage {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 420px;
-      perspective: 1100px;
+      padding: 10px;
     }
 
-    .book-frame {
-      position: relative;
-      width: min(300px, 82%);
-      aspect-ratio: 3 / 4.25;
-      border-radius: 3px 12px 12px 3px;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.25), transparent 8%, transparent 92%, rgba(0,0,0,.12)),
-        linear-gradient(135deg, #875d39, #37221b);
-      box-shadow:
-        18px 25px 45px rgba(0,0,0,.34),
-        inset 5px 0 8px rgba(255,255,255,.1);
-      transform: rotateY(-8deg) rotateX(2deg);
-      transition: transform .35s ease;
-      overflow: hidden;
+    .book-cover-img {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+      transition: transform 0.35s ease;
     }
 
-    .book-frame:hover {
-      transform: rotateY(0deg) translateY(-5px);
-    }
-
-    .book-inner {
-      position: absolute;
-      inset: 11px;
-      border: 1px solid rgba(222,199,152,.7);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 22px 16px;
-      background:
-        radial-gradient(circle at 50% 30%, rgba(222,199,152,.18), transparent 38%),
-        linear-gradient(145deg, #653447, #351923);
-    }
-
-    .book-ornament {
-      color: var(--gold-light);
-      font-size: 2rem;
-      margin-bottom: 19px;
-    }
-
-    .book-kicker {
-      font-size: .56rem;
-      font-weight: 700;
-      letter-spacing: 2.1px;
-      text-transform: uppercase;
-      color: #e4cfa9;
+    .book-cover-img:hover {
+      transform: translateY(-6px) scale(1.02);
     }
 
     .book-title {
@@ -1119,18 +1081,18 @@ footer .footer-links {
         </div>
 
         <div>
+                  <div>
           <div class="book-stage">
-            <!-- Decorative book illustration.
-                 Replace this block with the actual book cover if available. -->
-            <div class="book-frame" role="img"
-              aria-label="Decorative book illustration for The Eternals of Bihar by Syed Amjad Hussain">
-              <div class="book-inner">
-                <div class="book-ornament" aria-hidden="true">✧</div>
-                <div class="book-kicker">A Journey Through Bihar</div>
-                <div class="book-title">The Eternals<br>of Bihar</div>
-                <div class="book-rule"></div>
-                <div class="book-author">SYED AMJAD HUSSAIN</div>
-              </div>
+            <img 
+              src="https://mlclxpjceapirkdrewdv.supabase.co/storage/v1/object/public/gallery/714p2mkzqNL._AC_UF1000,1000_QL80_FMwebp_.webp" 
+              alt="The Eternals of Bihar Book Cover" 
+              class="book-cover-img"
+            />
+          </div>
+          <p class="book-caption">
+            The beginning of a literary journey through Bihar's past.
+          </p>
+        </div>
             </div>
           </div>
           <p class="book-caption">
