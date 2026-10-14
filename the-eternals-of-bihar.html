@@ -822,12 +822,11 @@
 
     /* Footer */
 
-    footer {
-      background: #29151a !important;
-      color: #d9c9ba !important;
-      padding: 48px 0 24px !important;
-      font-size: 12px !important;
-    }
+    .site-footer {
+  padding: 48px 0 24px;
+  background: #29141a;
+  color: #eee3df;
+}
 
     .footer-grid {
       display: grid;
@@ -899,7 +898,13 @@
         padding: 0 5%;
         gap: 10px;
       }
-
+        .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+  .footer-grid > :first-child {
+    grid-column: 1 / -1;
+  }
       .site-header .brand { gap: 9px; }
       .site-header .brand-mark {
         width: 36px;
