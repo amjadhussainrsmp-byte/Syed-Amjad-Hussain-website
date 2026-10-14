@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Panel | Janab Syed Amjad Hussain Jajneri's Official Website</title>
-  <meta name="theme-color" content="#472127">
+  <title>Admin Panel | Janab Mir Syed Amjad Hussain Qadri Jajneri's Official Website</title>
+  <meta name="theme-color" content="#30151b">
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Supabase JS & Config -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -17,25 +17,27 @@
 
   <style>
     :root {
+      --bg-main: #180c10;
       --bg-paper: #fbf8f2;
-      --bg-card: #fffdf8;
+      --bg-card: #fffdf9;
       --bg-input: #ffffff;
       --wine: #472127;
-      --wine-dark: #30151b;
-      --gold: #b99a61;
-      --gold-light: #f4ece1;
-      --gold-dark: #8c703b;
-      --text-ink: #302327;
-      --text-muted: #756a6d;
-      --border-color: #e6d9c8;
-      --border-accent: #d6c19c;
-      --danger: #9e2a2b;
+      --wine-dark: #291115;
+      --gold: #c5a038;
+      --gold-light: #f7eedc;
+      --gold-dark: #917223;
+      --gold-glow: rgba(197, 160, 56, 0.18);
+      --text-ink: #2b1d22;
+      --text-muted: #78676c;
+      --border-color: #e3d2ba;
+      --border-accent: #c5a038;
+      --danger: #a4243b;
       --sans: 'Plus Jakarta Sans', sans-serif;
-      --serif: 'Cinzel', 'Playfair Display', Georgia, serif;
+      --serif: 'Cinzel', Georgia, serif;
       --urdu: 'Noto Nastaliq Urdu', serif;
     }
 
-    * { box-sizing: border-box; transition: all 0.2s ease; }
+    * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
     body {
       margin: 0;
@@ -43,92 +45,85 @@
       color: var(--text-ink);
       font-family: var(--sans);
       font-size: 14px;
-      line-height: 1.6;
+      line-height: 1.65;
       min-height: 100vh;
+      background-image: radial-gradient(circle at 50% 0%, rgba(197, 160, 56, 0.06) 0%, transparent 60%);
     }
 
-    /* Top Banner */
+    /* Top Royal Banner */
     .topbar {
-      height: 38px;
+      height: 42px;
       background: var(--wine-dark);
-      color: #e9ded0;
+      color: var(--gold-light);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 5.5%;
+      padding: 0 6%;
       font-size: 11px;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
+      border-bottom: 1px solid rgba(197, 160, 56, 0.3);
     }
 
     .topbar-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      color: #d6c19c;
+      gap: 8px;
+      color: #fcefb4;
       font-weight: 600;
     }
 
     .topbar-badge::before {
       content: '';
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       background: var(--gold);
       border-radius: 50%;
+      box-shadow: 0 0 10px var(--gold);
     }
 
-    /* Grand Banner Header */
+    /* Grand Header Section */
     .site-header {
-      padding: 45px 5.5% 30px;
+      padding: 50px 6% 35px;
       text-align: center;
-      background: linear-gradient(180deg, #f3ece0 0%, #fbf8f2 100%);
-      border-bottom: 2px solid var(--gold);
+      background: linear-gradient(180deg, #f4ecd9 0%, var(--bg-paper) 100%);
+      border-bottom: 3px solid var(--gold);
       position: relative;
-    }
-
-    .site-header::after {
-      content: '';
-      display: block;
-      width: 120px;
-      height: 3px;
-      background: var(--gold);
-      margin: 18px auto 0;
-      border-radius: 2px;
     }
 
     .site-header h1 {
       margin: 0;
       font-family: var(--serif);
       color: var(--wine);
-      font-size: clamp(24px, 4.2vw, 40px);
+      font-size: clamp(22px, 3.8vw, 36px);
       font-weight: 700;
-      letter-spacing: 0.5px;
-      line-height: 1.25;
-      text-shadow: 0 1px 2px rgba(71, 33, 39, 0.08);
+      letter-spacing: 1px;
+      line-height: 1.3;
+      text-shadow: 0 1px 2px rgba(71, 33, 39, 0.1);
     }
 
     .site-header p {
       margin: 10px 0 0;
       color: var(--gold-dark);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
       text-transform: uppercase;
     }
 
     /* Main Container */
     .container {
       max-width: 1100px;
-      margin: 35px auto 60px;
-      padding: 0 20px;
+      margin: 40px auto 70px;
+      padding: 0 24px;
     }
 
     /* Overview Stats Bar */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 28px;
+      gap: 18px;
+      margin-bottom: 32px;
     }
 
     @media(max-width: 800px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -137,28 +132,43 @@
     .stat-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 16px 20px;
+      border-radius: 8px;
+      padding: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(71, 33, 39, 0.03);
+      box-shadow: 0 6px 20px rgba(71, 33, 39, 0.04);
+      position: relative;
+      overflow: hidden;
     }
 
-    .stat-info span { display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; }
-    .stat-info strong { font-size: 24px; font-family: var(--serif); color: var(--wine); }
-    .stat-icon { font-size: 24px; opacity: 0.8; }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--gold);
+    }
+
+    .stat-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 25px var(--gold-glow);
+      transform: translateY(-2px);
+    }
+
+    .stat-info span { display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
+    .stat-info strong { font-size: 26px; font-family: var(--serif); color: var(--wine); }
 
     /* Navigation Tabs */
     .nav-tabs {
       display: flex;
       gap: 8px;
-      margin-bottom: 25px;
-      background: #eee6d8;
-      padding: 5px;
-      border-radius: 8px;
+      margin-bottom: 30px;
+      background: #ece1cc;
+      padding: 6px;
+      border-radius: 10px;
       border: 1px solid var(--border-color);
       overflow-x: auto;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
     }
 
     .tab-btn {
@@ -167,9 +177,9 @@
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
       white-space: nowrap;
       display: flex;
@@ -178,12 +188,13 @@
       gap: 6px;
     }
 
-    .tab-btn:hover { color: var(--wine); background: rgba(255, 255, 255, 0.5); }
+    .tab-btn:hover { color: var(--wine); background: rgba(255, 255, 255, 0.6); }
 
     .tab-btn.active {
       background: var(--wine);
-      color: #ffffff;
-      box-shadow: 0 2px 8px rgba(71, 33, 39, 0.2);
+      color: var(--gold-light);
+      box-shadow: 0 4px 15px rgba(71, 33, 39, 0.3);
+      border: 1px solid rgba(197, 160, 56, 0.4);
     }
 
     /* Form Panels */
@@ -191,59 +202,59 @@
       display: none;
       background: var(--bg-card);
       border: 1px solid var(--gold);
-      outline: 1px solid var(--border-accent);
-      outline-offset: -7px;
-      border-radius: 4px;
-      padding: 35px 30px;
-      box-shadow: 0 10px 25px rgba(48, 21, 27, 0.05);
+      outline: 2px solid var(--border-color);
+      outline-offset: -8px;
+      border-radius: 8px;
+      padding: 40px 35px;
+      box-shadow: 0 15px 35px rgba(48, 21, 27, 0.06);
     }
 
-    .panel.active { display: block; animation: fadeIn 0.25s ease; }
+    .panel.active { display: block; animation: fadeIn 0.3s ease; }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(5px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .panel-title {
       font-family: var(--serif);
       color: var(--wine);
-      font-size: 20px;
-      margin: 0 0 22px;
+      font-size: 22px;
+      margin: 0 0 25px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 14px;
     }
 
     /* Form Inputs */
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 22px;
     }
 
     @media(max-width: 700px) { .form-row { grid-template-columns: 1fr; } }
 
-    .form-group { margin-bottom: 20px; }
+    .form-group { margin-bottom: 22px; }
 
     .form-group label {
       display: block;
-      margin-bottom: 7px;
+      margin-bottom: 8px;
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       color: var(--wine);
       text-transform: uppercase;
     }
 
     .form-control {
       width: 100%;
-      padding: 11px 14px;
+      padding: 13px 16px;
       background: var(--bg-input);
       border: 1px solid var(--border-color);
-      border-radius: 4px;
+      border-radius: 6px;
       color: var(--text-ink);
       font-family: var(--sans);
       font-size: 14px;
@@ -251,55 +262,59 @@
     }
 
     .form-control:focus {
-      border-color: var(--gold-dark);
-      box-shadow: 0 0 0 3px rgba(185, 154, 97, 0.15);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px var(--gold-glow);
+      background: #fff;
     }
 
     textarea.form-control {
-      min-height: 120px;
+      min-height: 130px;
       resize: vertical;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     textarea.urdu-input {
       font-family: var(--urdu);
-      font-size: 18px;
+      font-size: 20px;
       direction: rtl;
-      line-height: 2.2;
+      line-height: 2.3;
     }
 
     /* Buttons */
     .btn-group {
       display: flex;
-      gap: 12px;
-      margin-top: 10px;
+      gap: 14px;
+      margin-top: 15px;
     }
 
     .btn-primary {
-      padding: 12px 26px;
-      background: var(--wine);
-      color: #ffffff;
-      border: none;
-      border-radius: 4px;
-      font-weight: 600;
+      padding: 14px 30px;
+      background: linear-gradient(135deg, var(--wine) 0%, var(--wine-dark) 100%);
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      font-weight: 700;
       font-size: 13px;
+      letter-spacing: 1px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(71, 33, 39, 0.2);
     }
 
     .btn-primary:hover {
-      background: var(--wine-dark);
-      box-shadow: 0 4px 12px rgba(48, 21, 27, 0.2);
+      background: linear-gradient(135deg, #5c2d34 0%, var(--wine) 100%);
+      box-shadow: 0 6px 20px rgba(197, 160, 56, 0.3);
+      transform: translateY(-1px);
     }
 
     .btn-secondary {
-      padding: 12px 20px;
+      padding: 14px 24px;
       background: #f4ece1;
       color: var(--wine);
       border: 1px solid var(--border-color);
-      border-radius: 4px;
+      border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
     }
@@ -307,52 +322,57 @@
     .btn-secondary:hover { background: var(--border-color); }
 
     .btn-export {
-      padding: 6px 14px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: #fff;
-      border-radius: 4px;
+      padding: 7px 16px;
+      background: rgba(197, 160, 56, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      border-radius: 6px;
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 1px;
       cursor: pointer;
     }
 
-    .btn-export:hover { background: #ffffff; color: var(--wine); }
+    .btn-export:hover { background: var(--gold); color: #fff; }
 
     /* Archive Items List */
     .archive-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 12px;
+      gap: 12px;
+      margin-top: 15px;
     }
 
     .archive-card {
       background: var(--bg-input);
       border: 1px solid var(--border-color);
-      border-radius: 4px;
-      padding: 14px 18px;
+      border-radius: 6px;
+      padding: 16px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
 
-    .archive-card:hover { border-color: var(--gold-dark); }
+    .archive-card:hover { border-color: var(--gold); box-shadow: 0 4px 12px var(--gold-glow); }
 
-    .archive-title { font-weight: 600; font-size: 14px; color: var(--wine); }
-    .archive-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .archive-title { font-weight: 700; font-size: 15px; color: var(--wine); font-family: var(--serif); }
+    .archive-meta { font-size: 12px; color: var(--text-muted); margin-top: 3px; font-weight: 500; }
 
     .action-btn {
-      padding: 6px 12px;
+      padding: 7px 14px;
       font-size: 11px;
-      border-radius: 3px;
+      border-radius: 4px;
       border: none;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
-    .action-edit { background: var(--gold); color: #000; margin-right: 6px; }
-    .action-delete { background: var(--danger); color: #fff; }
+    .action-edit { background: var(--gold); color: #fff; margin-right: 8px; box-shadow: 0 2px 6px rgba(197, 160, 56, 0.3); }
+    .action-edit:hover { background: var(--gold-dark); }
+    .action-delete { background: var(--danger); color: #fff; box-shadow: 0 2px 6px rgba(164, 36, 59, 0.3); }
+    .action-delete:hover { background: #821b2e; }
 
   </style>
 </head>
@@ -360,13 +380,13 @@
 <body>
 
 <div class="topbar">
-  <span class="topbar-badge">CENTRAL DASHBOARD</span>
-  <button class="btn-export" onclick="exportBackup()">Export JSON Backup</button>
+  <span class="topbar-badge">Royal Editorial Studio</span>
+  <button class="btn-export" onclick="exportBackup()">Export Backup</button>
 </div>
 
 <header class="site-header">
   <h1>Janab Mir Syed Amjad Hussain Qadri Jajneri's official website Admin Panel</h1>
-  <p>Poetry, Heritage & History Manager</p>
+  <p>Supreme Literary, Heritage & History Control Center</p>
 </header>
 
 <div class="container">
@@ -378,38 +398,34 @@
         <span>Ghazals & Poems</span>
         <strong id="statPoetry">--</strong>
       </div>
-      <div class="stat-icon">📜</div>
     </div>
     <div class="stat-card">
       <div class="stat-info">
         <span>Single Couplets</span>
         <strong id="statSher">--</strong>
       </div>
-      <div class="stat-icon">✒️</div>
     </div>
     <div class="stat-card">
       <div class="stat-info">
         <span>Sufi Saints</span>
         <strong id="statSaints">--</strong>
       </div>
-      <div class="stat-icon">🕌</div>
     </div>
     <div class="stat-card">
       <div class="stat-info">
         <span>Sheikhpura History</span>
         <strong id="statSheikhpura">--</strong>
       </div>
-      <div class="stat-icon">🏛️</div>
     </div>
   </div>
 
   <!-- Navigation Tabs -->
   <nav class="nav-tabs">
-    <button class="tab-btn active" onclick="switchPanel('poetryPanel', this)">Poetry Studio</button>
-    <button class="tab-btn" onclick="switchPanel('sherPanel', this)">Sher Studio</button>
-    <button class="tab-btn" onclick="switchPanel('sufiPanel', this)">Sufi Saints Studio</button>
-    <button class="tab-btn" onclick="switchPanel('sheikhpuraPanel', this)">Sheikhpura History</button>
-    <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">All Archive</button>
+    <button class="tab-btn active" onclick="switchPanel('poetryPanel', this)">Poetry</button>
+    <button class="tab-btn" onclick="switchPanel('sherPanel', this)">Sher</button>
+    <button class="tab-btn" onclick="switchPanel('sufiPanel', this)">Saints</button>
+    <button class="tab-btn" onclick="switchPanel('sheikhpuraPanel', this)">History</button>
+    <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">Archive</button>
   </nav>
 
   <!-- Poetry Studio Panel -->
@@ -442,12 +458,12 @@
 
       <div class="form-group">
         <label>Urdu Text (Nastaliq Line-by-Line)</label>
-        <textarea id="poetryUrdu" class="form-control urdu-input" placeholder="مصرع اول...&#10;مصرع ثانی..."></textarea>
+        <textarea id="poetryUrdu" class="form-control urdu-input" placeholder="Misra 1...&#10;Misra 2..."></textarea>
       </div>
 
       <div class="form-group">
         <label>Hindi Text (Devanagari)</label>
-        <textarea id="poetryHindi" class="form-control" placeholder="हिंदी पंक्तियाँ..."></textarea>
+        <textarea id="poetryHindi" class="form-control" placeholder="Hindi panktiyan..."></textarea>
       </div>
 
       <div class="form-group">
@@ -487,12 +503,12 @@
 
       <div class="form-group">
         <label>Urdu Couplet (2 Misre)</label>
-        <textarea id="sherUrdu" class="form-control urdu-input" placeholder="پہلا مصرع...&#10;دوسرا مصرع..."></textarea>
+        <textarea id="sherUrdu" class="form-control urdu-input" placeholder="Misra 1...&#10;Misra 2..."></textarea>
       </div>
 
       <div class="form-group">
         <label>Hindi Couplet</label>
-        <textarea id="sherHindi" class="form-control" placeholder="पहला मिसरा...&#10;दूसरा मिसरा..."></textarea>
+        <textarea id="sherHindi" class="form-control" placeholder="Misra 1...&#10;Misra 2..."></textarea>
       </div>
 
       <div class="form-group">
@@ -507,7 +523,7 @@
     </form>
   </div>
 
-  <!-- Sufi Saints Panel (Updated with all section fields) -->
+  <!-- Sufi Saints Panel -->
   <div id="sufiPanel" class="panel">
     <div class="panel-title">
       <span id="sufiFormTitle">Manage Sufi Saints & Shrines of Bihar</span>
@@ -520,18 +536,18 @@
         </div>
         <div class="form-group">
           <label>Title / Honorific</label>
-          <input type="text" id="saintHonorific" class="form-control" placeholder="e.g. Makhdoom-ul-Mulk, Sheikh-ul-Islam">
+          <input type="text" id="saintHonorific" class="form-control" placeholder="e.g. Makhdoom-ul-Mulk">
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label>Silsila / Order</label>
-          <input type="text" id="saintSilsila" class="form-control" placeholder="e.g. Firdausi Order / Suhrawardi">
+          <input type="text" id="saintSilsila" class="form-control" placeholder="e.g. Firdausi Order">
         </div>
         <div class="form-group">
           <label>Birth & Death Dates (Wisaal)</label>
-          <input type="text" id="saintDates" class="form-control" placeholder="e.g. 1263 CE – 1381 CE">
+          <input type="text" id="saintDates" class="form-control" placeholder="e.g. 1263 CE - 1381 CE">
         </div>
       </div>
 
@@ -542,7 +558,7 @@
         </div>
         <div class="form-group">
           <label>Era / Century</label>
-          <input type="text" id="eraCentury" class="form-control" placeholder="e.g. 13th Century">
+          <input type="text" id="eraCentury" class="form-control" placeholder="e.g. 14th Century">
         </div>
       </div>
 
@@ -553,7 +569,7 @@
 
       <div class="form-group">
         <label>Full Biography & Historical Life</label>
-        <textarea id="saintBio" class="form-control" style="min-height:140px;" placeholder="Detailed life narrative..."></textarea>
+        <textarea id="saintBio" class="form-control" style="min-height:150px;" placeholder="Detailed life narrative..."></textarea>
       </div>
 
       <div class="form-group">
@@ -682,7 +698,7 @@
     } catch(err) { console.error("Stats error:", err); }
   }
 
-  // Save / Update Poetry
+  // Poetry Save / Update Handler
   document.getElementById('poetryForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -726,7 +742,7 @@
     document.getElementById('poetrySaveBtn').textContent = "Save Poetry Record";
   }
 
-  // Save / Update Sher
+  // Sher Save / Update Handler
   document.getElementById('sherForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -768,7 +784,7 @@
     document.getElementById('sherSaveBtn').textContent = "Save Sher Record";
   }
 
-  // Save / Update Sufi Saint
+  // Sufi Saint Save / Update Handler
   document.getElementById('sufiForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -822,7 +838,7 @@
     document.getElementById('sufiSaveBtn').textContent = "Save Saint Record";
   }
 
-  // Save / Update Sheikhpura History Record
+  // Sheikhpura History Save / Update Handler
   document.getElementById('sheikhpuraForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -866,7 +882,7 @@
     document.getElementById('skSaveBtn').textContent = "Save Sheikhpura Record";
   }
 
-  // Load Archives with Edit & Delete Buttons
+  // Load Archives with Edit & Delete Actions
   async function loadArchives() {
     const client = getClient();
 
