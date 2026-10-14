@@ -351,6 +351,7 @@
       font-weight: 600;
     }
 
+    .action-edit { background: var(--gold); color: #000; margin-right: 6px; }
     .action-delete { background: var(--danger); color: #fff; }
 
   </style>
@@ -360,7 +361,7 @@
 
 <div class="topbar">
   <span class="topbar-badge">CENTRAL DASHBOARD</span>
-  <button class="btn-export" onclick="exportBackup()">📥 Export JSON Backup</button>
+  <button class="btn-export" onclick="exportBackup()">Export JSON Backup</button>
 </div>
 
 <header class="site-header">
@@ -404,17 +405,17 @@
 
   <!-- Navigation Tabs -->
   <nav class="nav-tabs">
-    <button class="tab-btn active" onclick="switchPanel('poetryPanel', this)">📜 Poetry Studio</button>
-    <button class="tab-btn" onclick="switchPanel('sherPanel', this)">✒️ Sher Studio</button>
-    <button class="tab-btn" onclick="switchPanel('sufiPanel', this)">🕌 Sufi Saints Studio</button>
-    <button class="tab-btn" onclick="switchPanel('sheikhpuraPanel', this)">🏛️ Sheikhpura History</button>
-    <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">🗂️ All Archive</button>
+    <button class="tab-btn active" onclick="switchPanel('poetryPanel', this)">Poetry Studio</button>
+    <button class="tab-btn" onclick="switchPanel('sherPanel', this)">Sher Studio</button>
+    <button class="tab-btn" onclick="switchPanel('sufiPanel', this)">Sufi Saints Studio</button>
+    <button class="tab-btn" onclick="switchPanel('sheikhpuraPanel', this)">Sheikhpura History</button>
+    <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">All Archive</button>
   </nav>
 
   <!-- Poetry Studio Panel -->
   <div id="poetryPanel" class="panel active">
     <div class="panel-title">
-      <span>Publish / Edit Poetry (Ghazal / Naat / Nazm)</span>
+      <span id="poetryFormTitle">Publish / Edit Poetry (Ghazal / Naat / Nazm)</span>
     </div>
     <form id="poetryForm">
       <div class="form-row">
@@ -455,7 +456,7 @@
       </div>
 
       <div class="btn-group">
-        <button type="submit" class="btn-primary">💾 Save Poetry Record</button>
+        <button type="submit" id="poetrySaveBtn" class="btn-primary">Save Poetry Record</button>
         <button type="button" class="btn-secondary" onclick="resetPoetryForm()">Reset</button>
       </div>
     </form>
@@ -464,7 +465,7 @@
   <!-- Sher Studio Panel -->
   <div id="sherPanel" class="panel">
     <div class="panel-title">
-      <span>Publish / Edit Couplets (Sher)</span>
+      <span id="sherFormTitle">Publish / Edit Couplets (Sher)</span>
     </div>
     <form id="sherForm">
       <div class="form-row">
@@ -500,21 +501,38 @@
       </div>
 
       <div class="btn-group">
-        <button type="submit" class="btn-primary">💾 Save Sher Record</button>
+        <button type="submit" id="sherSaveBtn" class="btn-primary">Save Sher Record</button>
         <button type="button" class="btn-secondary" onclick="resetSherForm()">Reset</button>
       </div>
     </form>
   </div>
 
-  <!-- Sufi Saints Panel -->
+  <!-- Sufi Saints Panel (Updated with all section fields) -->
   <div id="sufiPanel" class="panel">
     <div class="panel-title">
-      <span>Manage Sufi Saints & Shrines of Bihar</span>
+      <span id="sufiFormTitle">Manage Sufi Saints & Shrines of Bihar</span>
     </div>
     <form id="sufiForm">
-      <div class="form-group">
-        <label>Saint Name *</label>
-        <input type="text" id="saintName" class="form-control" required placeholder="e.g. Hazrat Makhdoom Yahya Maneri">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Saint Name *</label>
+          <input type="text" id="saintName" class="form-control" required placeholder="e.g. Hazrat Makhdoom Yahya Maneri">
+        </div>
+        <div class="form-group">
+          <label>Title / Honorific</label>
+          <input type="text" id="saintHonorific" class="form-control" placeholder="e.g. Makhdoom-ul-Mulk, Sheikh-ul-Islam">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Silsila / Order</label>
+          <input type="text" id="saintSilsila" class="form-control" placeholder="e.g. Firdausi Order / Suhrawardi">
+        </div>
+        <div class="form-group">
+          <label>Birth & Death Dates (Wisaal)</label>
+          <input type="text" id="saintDates" class="form-control" placeholder="e.g. 1263 CE – 1381 CE">
+        </div>
       </div>
 
       <div class="form-row">
@@ -529,8 +547,23 @@
       </div>
 
       <div class="form-group">
-        <label>Description / Biography *</label>
+        <label>Short Description / Overview *</label>
         <textarea id="saintDesc" class="form-control" required placeholder="Spiritual lineage, history, and contributions..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Full Biography & Historical Life</label>
+        <textarea id="saintBio" class="form-control" style="min-height:140px;" placeholder="Detailed life narrative..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Major Literary Works & Letters</label>
+        <textarea id="saintWorks" class="form-control" placeholder="e.g. Maktubat-e-Sadi..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Spiritual Teachings & Philosophy</label>
+        <textarea id="saintTeachings" class="form-control" placeholder="Core mystical teachings..."></textarea>
       </div>
 
       <div class="form-group">
@@ -539,16 +572,16 @@
       </div>
 
       <div class="btn-group">
-        <button type="submit" class="btn-primary">💾 Save Saint Record</button>
+        <button type="submit" id="sufiSaveBtn" class="btn-primary">Save Saint Record</button>
         <button type="button" class="btn-secondary" onclick="resetSufiForm()">Reset</button>
       </div>
     </form>
   </div>
 
-  <!-- NEW: Sheikhpura History Panel -->
+  <!-- Sheikhpura History Panel -->
   <div id="sheikhpuraPanel" class="panel">
     <div class="panel-title">
-      <span>Manage Sheikhpura History Content</span>
+      <span id="skFormTitle">Manage Sheikhpura History Content</span>
     </div>
     <form id="sheikhpuraForm">
       <div class="form-row">
@@ -589,7 +622,7 @@
       </div>
 
       <div class="btn-group">
-        <button type="submit" class="btn-primary">💾 Save Sheikhpura Record</button>
+        <button type="submit" id="skSaveBtn" class="btn-primary">Save Sheikhpura Record</button>
         <button type="button" class="btn-secondary" onclick="resetSheikhpuraForm()">Reset</button>
       </div>
     </form>
@@ -601,16 +634,16 @@
       <span>Database Records Archive</span>
     </div>
 
-    <h4 style="color:var(--wine); margin:20px 0 10px;">📜 Poetry Records</h4>
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Poetry Records</h4>
     <div id="poetryArchiveList" class="archive-list">Loading...</div>
 
-    <h4 style="color:var(--wine); margin:30px 0 10px;">✒️ Sher Records</h4>
+    <h4 style="color:var(--wine); margin:30px 0 10px;">Sher Records</h4>
     <div id="sherArchiveList" class="archive-list">Loading...</div>
 
-    <h4 style="color:var(--wine); margin:30px 0 10px;">🕌 Sufi Saints Records</h4>
+    <h4 style="color:var(--wine); margin:30px 0 10px;">Sufi Saints Records</h4>
     <div id="sufiArchiveList" class="archive-list">Loading...</div>
 
-    <h4 style="color:var(--wine); margin:30px 0 10px;">🏛️ Sheikhpura History Records</h4>
+    <h4 style="color:var(--wine); margin:30px 0 10px;">Sheikhpura History Records</h4>
     <div id="sheikhpuraArchiveList" class="archive-list">Loading...</div>
   </div>
 
@@ -623,11 +656,15 @@
     return supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
   }
 
+  function escapeHTML(str = '') {
+    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  }
+
   function switchPanel(panelId, btn) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(panelId).classList.add('active');
-    btn.classList.add('active');
+    if (btn) btn.classList.add('active');
   }
 
   async function updateStats() {
@@ -645,7 +682,7 @@
     } catch(err) { console.error("Stats error:", err); }
   }
 
-  // Save Poetry
+  // Save / Update Poetry
   document.getElementById('poetryForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -666,7 +703,30 @@
     } catch(err) { alert("Error: " + err.message); }
   });
 
-  // Save Sher
+  async function editPoetry(id) {
+    const client = getClient();
+    const { data } = await client.from('poetry').select('*').eq('id', id).single();
+    if (!data) return;
+    editingPoetryId = id;
+    document.getElementById('poetryFormTitle').textContent = "Editing Poetry: " + data.title;
+    document.getElementById('poetryTitle').value = data.title || '';
+    document.getElementById('poetryType').value = data.type || 'Ghazal';
+    document.getElementById('poetryBeher').value = data.notes || '';
+    document.getElementById('poetryUrdu').value = data.urdu_text || '';
+    document.getElementById('poetryHindi').value = data.hindi_text || '';
+    document.getElementById('poetryRoman').value = data.roman_text || '';
+    document.getElementById('poetrySaveBtn').textContent = "Update Poetry Record";
+    switchPanel('poetryPanel', document.querySelectorAll('.tab-btn')[0]);
+  }
+
+  function resetPoetryForm() {
+    document.getElementById('poetryForm').reset();
+    editingPoetryId = null;
+    document.getElementById('poetryFormTitle').textContent = "Publish / Edit Poetry (Ghazal / Naat / Nazm)";
+    document.getElementById('poetrySaveBtn').textContent = "Save Poetry Record";
+  }
+
+  // Save / Update Sher
   document.getElementById('sherForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -686,27 +746,83 @@
     } catch(err) { alert("Error: " + err.message); }
   });
 
-  // Save Sufi Saint
+  async function editSher(id) {
+    const client = getClient();
+    const { data } = await client.from('sher').select('*').eq('id', id).single();
+    if (!data) return;
+    editingSherId = id;
+    document.getElementById('sherFormTitle').textContent = "Editing Sher #" + id;
+    document.getElementById('sherCategory').value = data.category || 'Life';
+    document.getElementById('sherTags').value = data.language || '';
+    document.getElementById('sherUrdu').value = data.sher_urdu || '';
+    document.getElementById('sherHindi').value = data.sher_hindi || '';
+    document.getElementById('sherRoman').value = data.sher_roman || '';
+    document.getElementById('sherSaveBtn').textContent = "Update Sher Record";
+    switchPanel('sherPanel', document.querySelectorAll('.tab-btn')[1]);
+  }
+
+  function resetSherForm() {
+    document.getElementById('sherForm').reset();
+    editingSherId = null;
+    document.getElementById('sherFormTitle').textContent = "Publish / Edit Couplets (Sher)";
+    document.getElementById('sherSaveBtn').textContent = "Save Sher Record";
+  }
+
+  // Save / Update Sufi Saint
   document.getElementById('sufiForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
       saint_name: document.getElementById('saintName').value.trim(),
+      title_honorific: document.getElementById('saintHonorific').value.trim(),
+      silsila: document.getElementById('saintSilsila').value.trim(),
+      birth_death_date: document.getElementById('saintDates').value.trim(),
       shrine_location: document.getElementById('shrineLocation').value.trim(),
       era_century: document.getElementById('eraCentury').value.trim(),
       roman_desc: document.getElementById('saintDesc').value.trim(),
+      biography_full: document.getElementById('saintBio').value.trim(),
+      key_works: document.getElementById('saintWorks').value.trim(),
+      teachings: document.getElementById('saintTeachings').value.trim(),
       roman_desc_link: document.getElementById('saintLink').value.trim()
     };
     try {
       const client = getClient();
       const res = editingSufiId ? await client.from('sufi_saints').update(data).eq('id', editingSufiId) : await client.from('sufi_saints').insert([data]);
       if (res.error) throw res.error;
-      alert("Sufi Saint Record Saved!");
+      alert(editingSufiId ? "Saint Record Updated!" : "Sufi Saint Record Saved!");
       resetSufiForm();
       updateStats();
     } catch(err) { alert("Error: " + err.message); }
   });
 
-  // Save Sheikhpura History Record
+  async function editSufi(id) {
+    const client = getClient();
+    const { data } = await client.from('sufi_saints').select('*').eq('id', id).single();
+    if (!data) return;
+    editingSufiId = id;
+    document.getElementById('sufiFormTitle').textContent = "Editing Saint: " + data.saint_name;
+    document.getElementById('saintName').value = data.saint_name || '';
+    document.getElementById('saintHonorific').value = data.title_honorific || '';
+    document.getElementById('saintSilsila').value = data.silsila || '';
+    document.getElementById('saintDates').value = data.birth_death_date || '';
+    document.getElementById('shrineLocation').value = data.shrine_location || '';
+    document.getElementById('eraCentury').value = data.era_century || '';
+    document.getElementById('saintDesc').value = data.roman_desc || '';
+    document.getElementById('saintBio').value = data.biography_full || '';
+    document.getElementById('saintWorks').value = data.key_works || '';
+    document.getElementById('saintTeachings').value = data.teachings || '';
+    document.getElementById('saintLink').value = data.roman_desc_link || '';
+    document.getElementById('sufiSaveBtn').textContent = "Update Saint Record";
+    switchPanel('sufiPanel', document.querySelectorAll('.tab-btn')[2]);
+  }
+
+  function resetSufiForm() {
+    document.getElementById('sufiForm').reset();
+    editingSufiId = null;
+    document.getElementById('sufiFormTitle').textContent = "Manage Sufi Saints & Shrines of Bihar";
+    document.getElementById('sufiSaveBtn').textContent = "Save Saint Record";
+  }
+
+  // Save / Update Sheikhpura History Record
   document.getElementById('sheikhpuraForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const data = {
@@ -727,7 +843,30 @@
     } catch(err) { alert("Error: " + err.message); }
   });
 
-  // Load Archives
+  async function editSheikhpura(id) {
+    const client = getClient();
+    const { data } = await client.from('sheikhpura_history').select('*').eq('id', id).single();
+    if (!data) return;
+    editingSheikhpuraId = id;
+    document.getElementById('skFormTitle').textContent = "Editing History: " + data.title;
+    document.getElementById('skCategory').value = data.category || 'Overview';
+    document.getElementById('skTitle').value = data.title || '';
+    document.getElementById('skSubtitle').value = data.subtitle || '';
+    document.getElementById('skEra').value = data.year_era || '';
+    document.getElementById('skContent').value = data.content_text || '';
+    document.getElementById('skImage').value = data.image_url || '';
+    document.getElementById('skSaveBtn').textContent = "Update History Record";
+    switchPanel('sheikhpuraPanel', document.querySelectorAll('.tab-btn')[3]);
+  }
+
+  function resetSheikhpuraForm() {
+    document.getElementById('sheikhpuraForm').reset();
+    editingSheikhpuraId = null;
+    document.getElementById('skFormTitle').textContent = "Manage Sheikhpura History Content";
+    document.getElementById('skSaveBtn').textContent = "Save Sheikhpura Record";
+  }
+
+  // Load Archives with Edit & Delete Buttons
   async function loadArchives() {
     const client = getClient();
 
@@ -735,10 +874,11 @@
     document.getElementById('poetryArchiveList').innerHTML = (!pData || !pData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : pData.map(i => `
       <div class="archive-card">
         <div>
-          <div class="archive-title">${i.title}</div>
-          <div class="archive-meta">Type: ${i.type} ${i.notes ? '| Meter: ' + i.notes : ''}</div>
+          <div class="archive-title">${escapeHTML(i.title)}</div>
+          <div class="archive-meta">Type: ${escapeHTML(i.type || '')} ${i.notes ? '| Meter: ' + escapeHTML(i.notes) : ''}</div>
         </div>
         <div>
+          <button class="action-btn action-edit" onclick="editPoetry(${i.id})">Edit</button>
           <button class="action-btn action-delete" onclick="deleteRecord('poetry', ${i.id})">Delete</button>
         </div>
       </div>
@@ -748,10 +888,11 @@
     document.getElementById('sherArchiveList').innerHTML = (!sData || !sData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : sData.map(i => `
       <div class="archive-card">
         <div>
-          <div class="archive-title">${(i.sher_roman || i.sher_urdu || 'Couplet').slice(0, 45)}...</div>
-          <div class="archive-meta">Category: ${i.category}</div>
+          <div class="archive-title">${escapeHTML((i.sher_roman || i.sher_urdu || 'Couplet').slice(0, 45))}...</div>
+          <div class="archive-meta">Category: ${escapeHTML(i.category || '')}</div>
         </div>
         <div>
+          <button class="action-btn action-edit" onclick="editSher(${i.id})">Edit</button>
           <button class="action-btn action-delete" onclick="deleteRecord('sher', ${i.id})">Delete</button>
         </div>
       </div>
@@ -761,10 +902,11 @@
     document.getElementById('sufiArchiveList').innerHTML = (!sfData || !sfData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : sfData.map(i => `
       <div class="archive-card">
         <div>
-          <div class="archive-title">${i.saint_name}</div>
-          <div class="archive-meta">Shrine: ${i.shrine_location || 'Bihar'} | Era: ${i.era_century || 'Sufi Era'}</div>
+          <div class="archive-title">${escapeHTML(i.saint_name)}</div>
+          <div class="archive-meta">Shrine: ${escapeHTML(i.shrine_location || 'Bihar')} | Era: ${escapeHTML(i.era_century || 'Sufi Era')}</div>
         </div>
         <div>
+          <button class="action-btn action-edit" onclick="editSufi(${i.id})">Edit</button>
           <button class="action-btn action-delete" onclick="deleteRecord('sufi_saints', ${i.id})">Delete</button>
         </div>
       </div>
@@ -774,10 +916,11 @@
     document.getElementById('sheikhpuraArchiveList').innerHTML = (!skData || !skData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : skData.map(i => `
       <div class="archive-card">
         <div>
-          <div class="archive-title">${i.title}</div>
-          <div class="archive-meta">Category: ${i.category} ${i.year_era ? '| Era: ' + i.year_era : ''}</div>
+          <div class="archive-title">${escapeHTML(i.title)}</div>
+          <div class="archive-meta">Category: ${escapeHTML(i.category || '')} ${i.year_era ? '| Era: ' + escapeHTML(i.year_era) : ''}</div>
         </div>
         <div>
+          <button class="action-btn action-edit" onclick="editSheikhpura(${i.id})">Edit</button>
           <button class="action-btn action-delete" onclick="deleteRecord('sheikhpura_history', ${i.id})">Delete</button>
         </div>
       </div>
@@ -805,11 +948,6 @@
     a.download = `backup_syed_amjad_hussain_${Date.now()}.json`;
     a.click();
   }
-
-  function resetPoetryForm() { document.getElementById('poetryForm').reset(); editingPoetryId = null; }
-  function resetSherForm() { document.getElementById('sherForm').reset(); editingSherId = null; }
-  function resetSufiForm() { document.getElementById('sufiForm').reset(); editingSufiId = null; }
-  function resetSheikhpuraForm() { document.getElementById('sheikhpuraForm').reset(); editingSheikhpuraId = null; }
 
   window.addEventListener('DOMContentLoaded', updateStats);
 </script>
