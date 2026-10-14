@@ -645,7 +645,7 @@
     </form>
   </div>
 
-  <!-- Gallery Studio Panel -->
+  <!-- Gallery Studio Panel (With Direct File Upload) -->
   <div id="galleryPanel" class="panel">
     <div class="panel-title">
       <span id="galleryFormTitle">Upload & Manage Gallery Media</span>
@@ -668,12 +668,17 @@
       </div>
 
       <div class="form-group">
-        <label>Image URL *</label>
-        <input type="url" id="galUrl" class="form-control" required placeholder="https://.../image.jpg">
+        <label>Select Photo from Device *</label>
+        <input type="file" id="galFile" class="form-control" accept="image/*">
+      </div>
+
+      <div class="form-group">
+        <label>Or Paste Image URL (Alternative)</label>
+        <input type="url" id="galUrl" class="form-control" placeholder="https://.../image.jpg">
       </div>
 
       <div class="btn-group">
-        <button type="submit" id="galSaveBtn" class="btn-primary">Save Gallery Media</button>
+        <button type="submit" id="galSaveBtn" class="btn-primary">Upload & Save Media</button>
         <button type="button" class="btn-secondary" onclick="resetGalleryForm()">Reset</button>
       </div>
     </form>
