@@ -506,14 +506,78 @@ input[type="file"].form-control { padding:10px !important; }
 }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
 
+
+
+/* AUTH GATE — premium login screen */
+#loginGate[hidden], #adminApp[hidden] { display:none !important; }
+#loginGate { min-height:100vh; display:grid; place-items:center; padding:28px 16px; position:relative; overflow:hidden; background:radial-gradient(ellipse at 15% 10%,rgba(198,157,83,.19),transparent 34%),radial-gradient(ellipse at 90% 85%,rgba(101,28,44,.30),transparent 36%),#170e13; color:#f7efe4; }
+#loginGate::before { content:""; position:absolute; width:540px; height:540px; border:1px solid rgba(221,190,126,.16); border-radius:50%; top:-300px; right:-120px; box-shadow:0 0 0 34px rgba(221,190,126,.025),0 0 0 70px rgba(221,190,126,.02); pointer-events:none; }
+#loginGate::after { content:""; position:absolute; width:440px; height:440px; border:1px solid rgba(221,190,126,.12); border-radius:50%; bottom:-300px; left:-140px; box-shadow:0 0 0 32px rgba(221,190,126,.025),0 0 0 66px rgba(221,190,126,.02); pointer-events:none; }
+.login-shell { width:min(100%,460px); position:relative; z-index:1; }
+.login-brand { text-align:center; margin-bottom:24px; }
+.login-monogram { width:66px;height:66px;display:grid;place-items:center;margin:0 auto 16px;border-radius:22px;border:1px solid rgba(224,194,125,.65);background:linear-gradient(145deg,#4d202c,#25141b);color:#e5c783;font-family:Georgia,serif;font-size:29px;box-shadow:0 14px 36px rgba(0,0,0,.25); }
+.login-eyebrow { color:#d8b96f;text-transform:uppercase;letter-spacing:3px;font-size:10px;font-weight:800;margin-bottom:10px; }
+.login-brand h1 { font-family:Georgia,'Times New Roman',serif;color:#fff8eb;font-size:clamp(23px,5vw,31px);line-height:1.2;margin:0 0 9px;font-weight:600; }
+.login-brand p { color:#c3b3b0;font-size:13px;line-height:1.6;margin:0; }
+.login-card { background:linear-gradient(145deg,rgba(255,250,241,.98),rgba(242,231,213,.98));color:#342129;padding:clamp(24px,6vw,36px);border-radius:22px;border:1px solid rgba(229,200,143,.65);box-shadow:0 28px 80px rgba(0,0,0,.38); }
+.login-card h2 { font-family:Georgia,'Times New Roman',serif;font-size:25px;margin:0 0 7px;color:#4b202b; }
+.login-intro { font-size:13px;line-height:1.6;color:#806d69;margin:0 0 24px; }
+.login-field { margin-bottom:17px; }
+.login-field label { display:block;font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:#67404a;margin-bottom:8px; }
+.login-field input { box-sizing:border-box;width:100%;height:49px;padding:0 14px;border-radius:11px;border:1px solid #d8c7b7;background:#fffdf8;color:#332129;font-size:15px;outline:none;transition:border-color .2s,box-shadow .2s; }
+.login-field input:focus { border-color:#9d7540;box-shadow:0 0 0 3px rgba(184,141,70,.16); }
+.login-submit { width:100%;min-height:49px;border:0;border-radius:11px;background:linear-gradient(135deg,#6c2939,#3d1722);color:#fff6e5;font-size:13px;font-weight:800;letter-spacing:.6px;cursor:pointer;box-shadow:0 8px 18px rgba(74,27,40,.22);transition:transform .2s,box-shadow .2s; }
+.login-submit:hover { transform:translateY(-1px);box-shadow:0 12px 24px rgba(74,27,40,.27); }
+.login-submit:disabled { opacity:.65;cursor:wait;transform:none; }
+#loginError { display:none;margin:0 0 15px;padding:11px 12px;border-radius:9px;background:#fbe7e5;border:1px solid #edc0ba;color:#8a2f2a;font-size:12px;line-height:1.5; }
+.login-security { display:flex;align-items:center;justify-content:center;gap:7px;color:#8a7770;font-size:11px;margin-top:18px;text-align:center; }
+.login-security span { color:#92713b;font-size:14px; }
+.login-foot { color:#88777a;text-align:center;font-size:11px;margin-top:19px;letter-spacing:.3px; }
+#adminApp .topbar { display:flex;align-items:center;justify-content:space-between;gap:12px; }
+#logoutBtn { border:1px solid rgba(221,190,126,.38);background:rgba(255,255,255,.07);color:#f5e5c3;border-radius:9px;padding:9px 13px;font-weight:700;cursor:pointer; }
+#logoutBtn:hover { background:rgba(255,255,255,.14); }
+@media(max-width:480px) { #loginGate { padding:20px 14px; } .login-card { border-radius:18px; } .login-monogram { width:58px;height:58px;border-radius:19px; } }
+
   </style>
 </head>
 
 <body>
 
+<!-- Login is the only visible screen until a valid Supabase Auth session exists. -->
+<section id="loginGate" aria-labelledby="loginTitle">
+  <div class="login-shell">
+    <div class="login-brand">
+      <div class="login-monogram" aria-hidden="true">ع</div>
+      <div class="login-eyebrow">Private Administration</div>
+      <h1>Syed Amjad Hussain</h1>
+      <p>Literary · Heritage · Research</p>
+    </div>
+    <div class="login-card">
+      <h2 id="loginTitle">Welcome back</h2>
+      <p class="login-intro">Sign in to access the website’s publishing studio and protected content controls.</p>
+      <div id="loginError" role="alert" aria-live="polite"></div>
+      <form id="adminLoginForm" autocomplete="on">
+        <div class="login-field">
+          <label for="adminLoginEmail">Administrator email</label>
+          <input type="email" id="adminLoginEmail" name="email" autocomplete="username" placeholder="you@example.com" required>
+        </div>
+        <div class="login-field">
+          <label for="adminLoginPassword">Password</label>
+          <input type="password" id="adminLoginPassword" name="password" autocomplete="current-password" placeholder="Enter your password" required>
+        </div>
+        <button class="login-submit" id="adminLoginSubmit" type="submit">SIGN IN SECURELY&nbsp; →</button>
+      </form>
+      <div class="login-security"><span>✦</span> Authenticated access · Supabase</div>
+    </div>
+    <div class="login-foot">© SyedAmjadHussain.com · Authorised access only</div>
+  </div>
+</section>
+
+<div id="adminApp" hidden>
+
 <div class="topbar">
   <span class="topbar-badge">Royal Editorial Studio</span>
-  <button class="btn-export" onclick="exportBackup()">Export Backup</button>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><button class="btn-export" onclick="exportBackup()">Export Backup</button><button id="logoutBtn" type="button">Sign out</button></div>
 </div>
 
 <header class="site-header">
@@ -850,7 +914,10 @@ input[type="file"].form-control { padding:10px !important; }
   let editingPoetryId = null, editingSherId = null, editingSufiId = null, editingSheikhpuraId = null, editingGalleryId = null;
 
   function getClient() {
-    return supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
+    if (!window.__adminSupabaseClient) {
+      window.__adminSupabaseClient = supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
+    }
+    return window.__adminSupabaseClient;
   }
 
   function escapeHTML(str = '') {
@@ -1201,7 +1268,95 @@ input[type="file"].form-control { padding:10px !important; }
     a.click();
   }
 
-  window.addEventListener('DOMContentLoaded', updateStats);
+  // Statistics load only after the authenticated dashboard is revealed.
+</script>
+</div><!-- /#adminApp -->
+
+<script>
+  // Supabase Auth controls visibility. The dashboard stays hidden unless a valid session exists.
+  (function () {
+    const gate = document.getElementById('loginGate');
+    const app = document.getElementById('adminApp');
+    const form = document.getElementById('adminLoginForm');
+    const errorBox = document.getElementById('loginError');
+    const submitBtn = document.getElementById('adminLoginSubmit');
+
+    function showLogin(message) {
+      app.hidden = true;
+      gate.hidden = false;
+      if (message) {
+        errorBox.textContent = message;
+        errorBox.style.display = 'block';
+      }
+    }
+
+    function showDashboard() {
+      errorBox.style.display = 'none';
+      gate.hidden = true;
+      app.hidden = false;
+      if (typeof updateStats === 'function') updateStats();
+    }
+
+    async function initialiseAuth() {
+      try {
+        if (!window.ADMIN_CONFIG || !window.ADMIN_CONFIG.supabaseUrl || !window.ADMIN_CONFIG.supabaseAnonKey || !window.supabase) {
+          showLogin('Admin configuration could not be loaded. Check admin-config.js and try again.');
+          return;
+        }
+        const client = getClient();
+        const { data, error } = await client.auth.getSession();
+        if (error) throw error;
+        if (data && data.session && data.session.user) showDashboard();
+        else showLogin();
+        client.auth.onAuthStateChange((_event, session) => {
+          if (session && session.user) showDashboard();
+          else showLogin();
+        });
+      } catch (err) {
+        showLogin('Unable to verify your session. Please sign in again.');
+        console.error('Admin auth initialisation error:', err);
+      }
+    }
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      errorBox.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'VERIFYING ACCESS…';
+      try {
+        const email = document.getElementById('adminLoginEmail').value.trim();
+        const password = document.getElementById('adminLoginPassword').value;
+        const client = getClient();
+        const { data, error } = await client.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        if (!data || !data.session) throw new Error('Sign-in was not completed. Please try again.');
+        form.reset();
+        showDashboard();
+      } catch (err) {
+        showLogin('Sign-in failed. Check your email and password, or create/confirm the admin user in Supabase Authentication.');
+        console.error('Admin sign-in error:', err);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'SIGN IN SECURELY&nbsp; →';
+      }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', async function () {
+      try {
+        const { error } = await getClient().auth.signOut();
+        if (error) throw error;
+        showLogin();
+      } catch (err) {
+        alert('Sign out failed. Please refresh the page and try again.');
+        console.error('Admin sign-out error:', err);
+      }
+    });
+
+    // Hide editing UI immediately; auth check decides what becomes visible.
+    showLogin();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialiseAuth);
+    else initialiseAuth();
+  })();
 </script>
 </body>
 </html>
