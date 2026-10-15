@@ -512,10 +512,72 @@
       letter-spacing: 1px;
       text-transform: uppercase;
     }
+
+
+    /* Shared website navigation dropdowns */
+    .site-header { overflow: visible; }
+    .site-header .nav-dropdown { position: relative; }
+    .site-header #mainNav .nav-parent { display: inline-flex; align-items: center; gap: 5px; }
+    .site-header .nav-arrow { color: var(--gold); transition: transform .2s ease; }
+    .site-header .dropdown-menu {
+      display: none; position: absolute; top: 100%; left: -12px; min-width: 225px;
+      padding: 8px; margin: 0; background: var(--paper); border: 1px solid var(--line);
+      box-shadow: 0 14px 30px rgba(47, 41, 38, .12); z-index: 110;
+    }
+    .site-header .dropdown-menu a { display: block; padding: 11px 12px; font-size: 11px; line-height: 1.5; white-space: normal; }
+    .site-header .dropdown-menu a:hover,
+    .site-header .dropdown-menu a[aria-current="page"] { color: var(--wine); background: var(--paper-2); }
+    @media (min-width: 781px) {
+      .site-header .nav-dropdown:hover > .dropdown-menu,
+      .site-header .nav-dropdown:focus-within > .dropdown-menu { display: block; }
+      .site-header .nav-dropdown:hover .nav-arrow { transform: rotate(180deg); }
+    }
+    @media (max-width: 780px) {
+      .site-header { position: sticky; top: 0; }
+      .site-header #mainNav {
+        display: none; position: absolute; top: 100%; left: 0; right: 0;
+        max-height: calc(100vh - 72px); overflow-y: auto; padding: 18px 5% 24px;
+        background: var(--paper); border-bottom: 1px solid var(--line);
+        box-shadow: 0 16px 28px rgba(33, 16, 22, .08);
+        flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0;
+      }
+      .site-header #mainNav.open { display: flex; }
+      .site-header #mainNav > a,
+      .site-header #mainNav .nav-parent {
+        display: flex; justify-content: space-between; align-items: center;
+        width: 100%; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 12px;
+      }
+      .site-header #mainNav .nav-dropdown { width: 100%; }
+      .site-header .dropdown-menu {
+        display: block; position: static; min-width: 0; width: 100%; padding: 2px 0 2px 12px;
+        margin: 0 0 8px 10px; border: 0; border-left: 1px solid var(--gold);
+        box-shadow: none; background: transparent;
+      }
+      .site-header .dropdown-menu a { padding: 9px 10px; font-size: 11px; }
+      .site-header #mainNav .nav-contact {
+        justify-content: center; margin-top: 12px; padding: 12px; border: 1px solid var(--line);
+      }
+    }
+
+    /* Shared website footer */
+    .site-footer { padding: 30px 5.5% 18px; background: var(--wine-dark); color: #e9dccc; text-align: left; font: 12px/1.8 var(--sans); }
+    .footer-inner { max-width: 1120px; margin: 0 auto; }
+    .footer-brand { display: inline-flex; color: #e9dccc; }
+    .footer-brand .brand-mark { color: var(--gold); }
+    .footer-brand .brand-text strong { color: #fffdf8; }
+    .footer-brand .brand-text small { color: #d2c0b5; }
+    .site-footer p { margin: 16px 0 22px; color: #d2c0b5; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px 20px; padding-top: 15px; border-top: 1px solid rgba(233, 220, 204, .22); }
+    .footer-bottom a { color: #e8d3ad; }
+    @media (max-width: 600px) {
+      .site-footer { padding: 25px 5% 16px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+
   </style>
 </head>
 
-<body>
+<body id="top">
 
 <div class="topline">
   <span>INDEPENDENT RESEARCH · LITERATURE · HERITAGE</span>
@@ -524,7 +586,7 @@
 
 <header class="site-header">
   <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
-    <span class="brand-mark">أ</span>
+    <span class="brand-mark" aria-hidden="true">أ</span>
     <span class="brand-text">
       <strong>Syed Amjad Hussain</strong>
       <small>Ethnographer · Author · Historian · Poet · Researcher</small>
@@ -536,15 +598,32 @@
   <nav id="mainNav" aria-label="Main navigation">
     <a href="home.html">Home</a>
     <a href="biography.html">Biography</a>
-    <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
-    <a href="sufi-heritage.html">Sufi Heritage of Bihar</a>
-    <a href="research.html">Research</a>
-    <a href="poetry.html">Poetry</a>
-    <a href="sher.html" aria-current="page">Sher Collection</a>
-    <a href="awards-honours.html">Awards and Honours</a>
-    <a href="library.html">Library</a>
+    <div class="nav-dropdown">
+      <a href="books-articles.html" class="nav-parent">Books &amp; Articles <span class="nav-arrow">⌄</span></a>
+      <div class="dropdown-menu">
+        <a href="the-eternals-of-bihar.html">The Eternals of Bihar</a>
+        <a href="akhtar-orenvi-bio.html">Akhtar Orenvi</a>
+        <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+      </div>
+    </div>
+    <div class="nav-dropdown">
+      <a href="poetry.html" class="nav-parent">Poetry <span class="nav-arrow">⌄</span></a>
+      <div class="dropdown-menu">
+        <a href="sher.html" aria-current="page">Sher Collection</a>
+      </div>
+    </div>
+    <a href="social-work.html">Social Work</a>
+    <a href="awards-honours.html">Awards &amp; Honours</a>
+    <div class="nav-dropdown">
+      <a href="research.html" class="nav-parent">Research <span class="nav-arrow">⌄</span></a>
+      <div class="dropdown-menu">
+        <a href="sufi-heritage.html">Sufi Heritage of Bihar</a>
+        <a href="sheikhpura-history.html">Sheikhpura History</a>
+        <a href="ancestral-heritage.html">Ancestral Heritage</a>
+      </div>
+    </div>
     <a href="media.html">Media</a>
-    <a class="nav-contact" href="contact.html">Get in touch <span>↗</span></a>
+    <a class="nav-contact" href="contact.html">Contact <span>↗</span></a>
   </nav>
 </header>
 
@@ -600,8 +679,21 @@
 </main>
 
 <footer class="site-footer">
-  <div>© <span id="year"></span> Syed Amjad Hussain</div>
-  <div>Preserving poetry, language and literary heritage.</div>
+  <div class="footer-inner">
+    <a class="brand footer-brand" href="home.html" aria-label="Syed Amjad Hussain home">
+      <span class="brand-mark" aria-hidden="true">أ</span>
+      <span class="brand-text">
+        <strong>Syed Amjad Hussain</strong>
+        <small>Ethnographer · Author · Historian · Poet · Researcher</small>
+      </span>
+    </a>
+    <p>Independent scholarship. Literary expression. Cultural memory.</p>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Syed Amjad Hussain</span>
+      <span>Preserving poetry, language and literary heritage.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
 </footer>
 
 <!-- html2canvas Library -->
@@ -675,10 +767,34 @@ Parwah nahi.n usko, sazaa ki na jazaa ki`,
   const menuToggle = document.getElementById("menuToggle");
   const mainNav = document.getElementById("mainNav");
 
-  menuToggle.addEventListener("click", () => {
-    const isOpen = mainNav.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-  });
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    mainNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.matchMedia("(max-width: 780px)").matches) {
+          mainNav.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation");
+          menuToggle.textContent = "☰";
+        }
+      });
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.textContent = "☰";
+      }
+    });
+  }
 
   function escapeHTML(value = "") {
     return String(value).replace(/[&<>"']/g, character => ({
