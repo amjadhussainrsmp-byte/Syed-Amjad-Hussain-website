@@ -608,15 +608,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script>
-  // Aapke saare ke saare 37 purane shers yahan bilkul safe hain
+  // Aapke shers yahan store honge
   let sherCollection = [
-    { id: 1, urdu: "اک مرشدِ برحق سے ہے امجد کا تعلق 
-      پروا نہیں اس کو سزا کی نہ جزا کی", 
-    hindi: "इक मुर्शिद-ए-बर-हक़ से है अमजद का तअल्लुक़
-    परवाह नहीं उसको सज़ा की न जज़ा की", 
-    roman: "Ik murshid-e-bar-haq se hai Amjad ka ta'alluq
-    Parwah nahi.n usko, sazaa ki na jazaa ki", category: "Sufi", language: "Roman Urdu" },
-      ];
+    {
+      id: 1,
+
+      urdu: `اک مرشدِ برحق سے ہے امجد کا تعلق
+پروا نہیں اس کو سزا کی نہ جزا کی`,
+
+      hindi: `इक मुर्शिद-ए-बर-हक़ से है अमजद का तअल्लुक़
+परवाह नहीं उसको सज़ा की न जज़ा की`,
+
+      roman: `Ik murshid-e-bar-haq se hai Amjad ka ta'alluq
+Parwah nahi.n usko, sazaa ki na jazaa ki`,
+
+      category: "Sufi",
+      language: "Roman Urdu"
+    }
+  ];
 
   async function loadShersFromSupabase() {
     if (!window.ADMIN_CONFIG || !window.ADMIN_CONFIG.supabaseUrl) {
