@@ -156,6 +156,95 @@
     transition: none;
   }
 }
+
+
+/* =====================================================
+   HOMEPAGE CONTENT POLISH — keeps header, navigation,
+   footer, author's portrait and the real book cover intact
+===================================================== */
+:root{--gold-bright:#c4a36e;--soft-shadow:0 22px 55px rgba(58,39,30,.09)}
+body{overflow-x:hidden}
+.hero{isolation:isolate;overflow:visible}
+.hero:before{content:"";position:absolute;z-index:-1;left:-8vw;top:25px;width:53vw;height:500px;pointer-events:none;background:radial-gradient(ellipse at 30% 40%,rgba(218,201,174,.34),transparent 68%)}
+.hero .eyebrow{letter-spacing:.17em}
+.hero h1{max-width:690px;font-size:clamp(43px,5.2vw,72px);line-height:1.08;letter-spacing:-.052em}
+.hero h1 em{background:linear-gradient(110deg,var(--burgundy),#8a5054);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-lede{font-size:15px;max-width:500px}
+.hero-actions .button{box-shadow:0 8px 18px rgba(47,41,38,.11)}
+.portrait-frame{box-shadow:var(--soft-shadow);outline:1px solid rgba(184,155,106,.72);outline-offset:8px}
+.portrait-frame img{transition:transform .7s ease;filter:saturate(.78) contrast(1.02)}
+.hero-visual:hover .portrait-frame img{transform:scale(1.025)}
+.floating-note{border:1px solid rgba(184,155,106,.42);box-shadow:0 18px 45px rgba(47,35,27,.14)}
+.proof-strip{position:relative}
+.proof-strip:before{content:"";position:absolute;top:0;left:5.5%;right:5.5%;height:1px;background:linear-gradient(90deg,transparent,#c4a36e,transparent)}
+.proof-strip strong{line-height:1.35}
+.feature-section{position:relative}
+.section-heading h2{letter-spacing:-.045em}
+.book-feature{box-shadow:0 22px 60px rgba(55,38,28,.075);border:1px solid rgba(184,155,106,.28);overflow:hidden}
+.book-art{background:radial-gradient(ellipse at 50% 45%,#e7d9c5 0%,#e9dfd1 58%,#eee6dc 100%)}
+.real-book-cover{display:block;width:min(72%,270px);max-width:100%;transform:rotate(-2deg);filter:drop-shadow(12px 16px 13px rgba(45,29,25,.24));transition:transform .35s ease,filter .35s ease;line-height:0}
+.real-book-cover:hover{transform:translateY(-5px) rotate(0deg);filter:drop-shadow(15px 20px 17px rgba(45,29,25,.27))}
+.real-book-cover img{display:block;width:100%;height:auto;max-height:390px;object-fit:contain;border:1px solid rgba(94,64,47,.25)}
+.book-info{padding-top:52px;padding-bottom:52px}
+.book-info h3{letter-spacing:-.035em}
+.book-meta{padding-top:5px;border-top:1px solid rgba(184,155,106,.34)}
+.book-meta div{min-width:105px;max-width:100%}
+.book-meta strong{line-height:1.6}
+.mini-book{transition:background .25s ease,padding .25s ease;border-top:1px solid transparent}
+.mini-book:hover{background:rgba(255,253,248,.55);padding-left:15px;padding-right:12px}
+.research-band{position:relative;overflow:hidden;background:radial-gradient(ellipse at 95% 5%,rgba(135,81,82,.25),transparent 40%),var(--burgundy-dark)}
+.research-band:after{content:"✳";position:absolute;right:3%;bottom:-100px;font-size:290px;line-height:1;color:rgba(211,183,136,.045);pointer-events:none}
+.research-inner{position:relative;z-index:1}
+.research-intro h2{letter-spacing:-.045em}
+.research-item{position:relative}
+.research-item:hover .research-index{color:#f0d6a6}
+.split-section{position:relative}
+.heritage-image{box-shadow:var(--soft-shadow)}
+.heritage-image:after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,253,248,.62);pointer-events:none}
+.about-copy p{font-size:13px}
+.signature{border-bottom:1px solid rgba(184,155,106,.55);display:inline-block;padding-bottom:8px;padding-right:30px}
+.poetry-section{position:relative;background:linear-gradient(115deg,#e9e0d4,#e3d7c8)}
+.poetry-inner{position:relative}
+.verse-card{position:relative;box-shadow:0 22px 55px rgba(44,29,27,.18);border:1px solid #b99b6b;outline:1px solid rgba(196,161,107,.6);outline-offset:-10px;padding:42px 34px 34px;background:radial-gradient(ellipse at 50% 0%,#593039 0%,#472127 65%)}
+.verse-card-top{display:flex;align-items:center;justify-content:center;gap:14px;color:#d3b788}
+.verse-star{font-size:17px}
+.verse-rule{width:72px;height:1px;background:#a98b61;margin:19px auto 4px}
+.urdu-sample{font-size:clamp(20px,2.1vw,27px);line-height:2.25}
+.verse-divider{margin:6px 0 12px}
+.verse-translation{line-height:1.8;color:#e5d7c7}
+.verse-card-footer{display:flex;justify-content:space-between;margin:20px 4px 0;padding-top:12px;border-top:1px solid rgba(196,161,107,.35);font-size:9px;letter-spacing:.12em;color:#d3b788;text-transform:uppercase}
+.library-card{overflow:hidden;box-shadow:0 5px 18px rgba(49,36,28,.025)}
+.library-card-art{overflow:hidden}
+.library-card-art:after{content:"";position:absolute;inset:9px;border:1px solid rgba(224,204,168,.3);pointer-events:none}
+.library-card-copy a{display:inline-block;padding-bottom:3px;border-bottom:1px solid rgba(184,155,106,.6)}
+.library-card-copy a:hover{letter-spacing:.02em}
+.press-section{background:linear-gradient(120deg,#eee6da,#e9dfd1)}
+.press-inner{border-left:2px solid var(--gold);padding-left:32px}
+.contact-section{background:radial-gradient(ellipse at 100% 0%,rgba(176,127,115,.18),transparent 40%),var(--burgundy)}
+.contact-form{padding:25px;background:rgba(56,23,30,.22);border:1px solid rgba(211,183,136,.34)}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-color:#d3b788;box-shadow:0 0 0 3px rgba(211,183,136,.13)}
+.button:focus-visible,.text-link:focus-visible,.real-book-cover:focus-visible{outline:2px solid var(--gold-bright);outline-offset:4px}
+@media(max-width:780px){
+ .hero:before{width:100vw;height:400px;left:-5vw;top:0}
+ .hero h1{font-size:clamp(40px,10vw,58px)}
+ .portrait-frame{outline-offset:5px}
+ .real-book-cover{width:min(74%,245px)}
+ .real-book-cover img{max-height:350px}
+ .book-info{padding-top:34px;padding-bottom:35px}
+ .verse-card{padding:34px 24px 28px}
+ .urdu-sample{font-size:21px}
+ .press-inner{padding-left:20px}
+ .contact-form{padding:18px}
+}
+@media(max-width:420px){
+ .real-book-cover{width:min(78%,220px)}
+ .book-meta{gap:16px}
+ .verse-card{padding:30px 19px 25px}
+ .urdu-sample{font-size:18px;line-height:2.5}
+ .verse-translation{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){.portrait-frame img,.real-book-cover{transition:none}}
+
   </style>
 </head>
 <body>
