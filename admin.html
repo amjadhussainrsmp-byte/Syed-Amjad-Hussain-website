@@ -50,7 +50,6 @@
       background-image: radial-gradient(circle at 50% 0%, rgba(197, 160, 56, 0.06) 0%, transparent 60%);
     }
 
-    /* Top Royal Banner */
     .topbar {
       height: 42px;
       background: var(--wine-dark);
@@ -82,7 +81,6 @@
       box-shadow: 0 0 10px var(--gold);
     }
 
-    /* Grand Header Section */
     .site-header {
       padding: 50px 6% 35px;
       text-align: center;
@@ -99,7 +97,6 @@
       font-weight: 700;
       letter-spacing: 1px;
       line-height: 1.3;
-      text-shadow: 0 1px 2px rgba(71, 33, 39, 0.1);
     }
 
     .site-header p {
@@ -111,33 +108,27 @@
       text-transform: uppercase;
     }
 
-    /* Main Container */
     .container {
       max-width: 1100px;
       margin: 40px auto 70px;
       padding: 0 24px;
     }
 
-    /* Overview Stats Bar */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
       margin-bottom: 32px;
     }
 
-    @media(max-width: 900px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media(max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width: 1100px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media(max-width: 700px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 
     .stat-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 6px 20px rgba(71, 33, 39, 0.04);
+      padding: 14px;
       position: relative;
       overflow: hidden;
     }
@@ -149,25 +140,23 @@
       background: var(--gold);
     }
 
-    .stat-info span { display: block; font-size: 10px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
-    .stat-info strong { font-size: 22px; font-family: var(--serif); color: var(--wine); }
+    .stat-info span { display: block; font-size: 9px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
+    .stat-info strong { font-size: 18px; font-family: var(--serif); color: var(--wine); }
 
-    /* Navigation Tabs */
     .nav-tabs {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       margin-bottom: 30px;
       background: #ece1cc;
       padding: 6px;
       border-radius: 10px;
       border: 1px solid var(--border-color);
       overflow-x: auto;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
     }
 
     .tab-btn {
       flex: 1;
-      padding: 12px 14px;
+      padding: 12px 10px;
       background: transparent;
       border: none;
       color: var(--text-muted);
@@ -176,13 +165,7 @@
       border-radius: 6px;
       cursor: pointer;
       white-space: nowrap;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
     }
-
-    .tab-btn:hover { color: var(--wine); background: rgba(255, 255, 255, 0.6); }
 
     .tab-btn.active {
       background: var(--wine);
@@ -191,7 +174,6 @@
       border: 1px solid rgba(197, 160, 56, 0.4);
     }
 
-    /* Form Panels */
     .panel {
       display: none;
       background: var(--bg-card);
@@ -203,26 +185,17 @@
       box-shadow: 0 15px 35px rgba(48, 21, 27, 0.06);
     }
 
-    .panel.active { display: block; animation: fadeIn 0.3s ease; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .panel.active { display: block; }
 
     .panel-title {
       font-family: var(--serif);
       color: var(--wine);
       font-size: 22px;
       margin: 0 0 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 14px;
     }
 
-    /* Form Inputs */
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -258,28 +231,12 @@
     .form-control:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 4px var(--gold-glow);
-      background: #fff;
     }
 
-    textarea.form-control {
-      min-height: 130px;
-      resize: vertical;
-      line-height: 1.7;
-    }
+    textarea.form-control { min-height: 120px; resize: vertical; }
+    textarea.urdu-input { font-family: var(--urdu); font-size: 20px; direction: rtl; line-height: 2.3; }
 
-    textarea.urdu-input {
-      font-family: var(--urdu);
-      font-size: 20px;
-      direction: rtl;
-      line-height: 2.3;
-    }
-
-    /* Buttons */
-    .btn-group {
-      display: flex;
-      gap: 14px;
-      margin-top: 15px;
-    }
+    .btn-group { display: flex; gap: 14px; margin-top: 15px; }
 
     .btn-primary {
       padding: 14px 30px;
@@ -291,16 +248,6 @@
       font-size: 13px;
       letter-spacing: 1px;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 4px 15px rgba(71, 33, 39, 0.2);
-    }
-
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #5c2d34 0%, var(--wine) 100%);
-      box-shadow: 0 6px 20px rgba(197, 160, 56, 0.3);
-      transform: translateY(-1px);
     }
 
     .btn-secondary {
@@ -313,8 +260,6 @@
       cursor: pointer;
     }
 
-    .btn-secondary:hover { background: var(--border-color); }
-
     .btn-export {
       padding: 7px 16px;
       background: rgba(197, 160, 56, 0.15);
@@ -323,19 +268,10 @@
       border-radius: 6px;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 1px;
       cursor: pointer;
     }
 
-    .btn-export:hover { background: var(--gold); color: #fff; }
-
-    /* Archive Items List */
-    .archive-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 15px;
-    }
+    .archive-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
 
     .archive-card {
       background: var(--bg-input);
@@ -345,231 +281,54 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
-
-    .archive-card:hover { border-color: var(--gold); box-shadow: 0 4px 12px var(--gold-glow); }
 
     .archive-title { font-weight: 700; font-size: 15px; color: var(--wine); font-family: var(--serif); }
-    .archive-meta { font-size: 12px; color: var(--text-muted); margin-top: 3px; font-weight: 500; }
+    .archive-meta { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
 
-    .action-btn {
-      padding: 7px 14px;
-      font-size: 11px;
-      border-radius: 4px;
-      border: none;
-      cursor: pointer;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
+    .action-btn { padding: 7px 14px; font-size: 11px; border-radius: 4px; border: none; cursor: pointer; font-weight: 700; }
+    .action-edit { background: var(--gold); color: #fff; margin-right: 8px; }
+    .action-delete { background: var(--danger); color: #fff; }
 
-    .action-edit { background: var(--gold); color: #fff; margin-right: 8px; box-shadow: 0 2px 6px rgba(197, 160, 56, 0.3); }
-    .action-edit:hover { background: var(--gold-dark); }
-    .action-delete { background: var(--danger); color: #fff; box-shadow: 0 2px 6px rgba(164, 36, 59, 0.3); }
-    .action-delete:hover { background: #821b2e; }
-
-
-/* ═══════════════════════════════════════════════════════════════
-   SIGNATURE EDITION — premium editorial command centre
-   Presentation-only layer. Existing HTML IDs and JavaScript stay intact.
-   ═══════════════════════════════════════════════════════════════ */
-:root {
-  --bg-main: #16090e !important;
-  --bg-paper: #f5f0e7 !important;
-  --bg-card: #fffdf8 !important;
-  --bg-input: #fffefa !important;
-  --wine: #4b1426 !important;
-  --wine-dark: #200a12 !important;
-  --gold: #c9a45b !important;
-  --gold-light: #f7ecd3 !important;
-  --gold-dark: #947039 !important;
-  --gold-glow: rgba(201,164,91,.19) !important;
-  --text-ink: #26171c !important;
-  --text-muted: #85747a !important;
-  --border-color: #e8ddcc !important;
-  --border-accent: #c9a45b !important;
-}
-* { transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
-html { background:#16090e; }
-body {
-  background: #f5f0e7 !important;
-  background-image: radial-gradient(ellipse at 50% -20%, rgba(201,164,91,.19), transparent 55%), linear-gradient(180deg,#f5f0e7 0%,#eee5d7 100%) !important;
-  color:#26171c !important;
-}
-.topbar {
-  min-height:48px !important; height:auto !important; padding:11px clamp(18px,5vw,76px) !important;
-  background:#16090e !important; border:0 !important; border-bottom:1px solid rgba(201,164,91,.5) !important;
-  color:#e9d9b7 !important; letter-spacing:2.1px !important; font-size:10px !important;
-}
-.topbar-badge { letter-spacing:2.4px !important; }
-.topbar-badge::before { width:6px !important; height:6px !important; }
-.btn-export { border-radius:999px !important; padding:9px 17px !important; background:rgba(201,164,91,.1) !important; border-color:rgba(201,164,91,.65) !important; color:#ead8ae !important; }
-.btn-export:hover { background:#c9a45b !important; color:#200a12 !important; }
-.site-header {
-  position:relative !important; overflow:hidden !important; text-align:left !important;
-  padding:clamp(36px,6vw,76px) clamp(22px,8vw,120px) clamp(38px,5vw,64px) !important;
-  background: radial-gradient(ellipse at 85% 20%,rgba(201,164,91,.17),transparent 36%), linear-gradient(120deg,#200a12 0%,#4b1426 58%,#35101d 100%) !important;
-  border:0 !important; border-bottom:4px solid #c9a45b !important; color:#fff9ed !important;
-}
-.site-header::before { content:'✦'; position:absolute; right:clamp(25px,9vw,130px); top:50%; transform:translateY(-55%); font-size:clamp(90px,17vw,210px); line-height:1; color:rgba(201,164,91,.11); pointer-events:none; }
-.site-header::after { content:''; position:absolute; left:clamp(22px,8vw,120px); right:clamp(22px,8vw,120px); bottom:15px; height:1px; background:linear-gradient(90deg,rgba(201,164,91,.6),transparent 70%); }
-.site-header h1 { position:relative; z-index:1; max-width:1000px; color:#fff8e9 !important; font-family:'Cinzel',Georgia,serif !important; font-size:clamp(24px,4vw,43px) !important; line-height:1.28 !important; letter-spacing:.3px !important; text-shadow:none !important; }
-.site-header p { position:relative; z-index:1; color:#d9bb79 !important; font-size:10px !important; letter-spacing:clamp(1.5px,.35vw,4px) !important; margin-top:18px !important; }
-.container { max-width:1440px !important; margin:0 auto !important; padding:36px clamp(16px,5vw,72px) 80px !important; }
-.stats-grid { grid-template-columns:repeat(5,minmax(0,1fr)) !important; gap:14px !important; margin-bottom:30px !important; }
-.stat-card {
-  min-height:112px !important; padding:22px 19px !important; align-items:flex-start !important; justify-content:center !important;
-  border:1px solid #e6d7bf !important; border-radius:13px !important; background:linear-gradient(145deg,#fffefa,#f8f0e2) !important;
-  box-shadow:0 7px 20px rgba(50,18,29,.055) !important;
-}
-.stat-card::before { top:16px !important; left:0 !important; width:3px !important; height:calc(100% - 32px) !important; border-radius:0 5px 5px 0 !important; background:linear-gradient(#d9bc77,#a67b39) !important; }
-.stat-card::after { content:'✦'; position:absolute; right:14px; top:12px; color:rgba(173,132,61,.23); font-size:18px; }
-.stat-info span { font-size:9px !important; letter-spacing:1.5px !important; line-height:1.5 !important; margin-bottom:9px !important; }
-.stat-info strong { font-family:'Plus Jakarta Sans',sans-serif !important; font-size:30px !important; line-height:1 !important; font-weight:700 !important; color:#4b1426 !important; }
-.nav-tabs {
-  position:sticky !important; top:10px !important; z-index:20 !important; display:flex !important; flex-wrap:nowrap !important;
-  gap:5px !important; margin:0 0 24px !important; padding:7px !important; overflow-x:auto !important;
-  background:#211017 !important; border:1px solid rgba(201,164,91,.42) !important; border-radius:14px !important;
-  box-shadow:0 12px 30px rgba(32,10,18,.16) !important; scrollbar-width:thin !important;
-}
-.tab-btn { flex:1 0 auto !important; min-height:44px !important; padding:12px 18px !important; border-radius:9px !important; color:#d7c7bd !important; font-size:12px !important; letter-spacing:.2px !important; }
-.tab-btn:hover { background:rgba(255,255,255,.07) !important; color:#f8e8c5 !important; }
-.tab-btn.active { color:#241018 !important; background:linear-gradient(135deg,#e0c27d,#b88d46) !important; border:1px solid #f1d99c !important; box-shadow:0 4px 14px rgba(201,164,91,.22) !important; }
-.panel {
-  background:rgba(255,253,248,.97) !important; border:1px solid #e4d3b8 !important; outline:0 !important; border-radius:17px !important;
-  padding:clamp(22px,4vw,48px) !important; box-shadow:0 18px 55px rgba(46,16,27,.075),0 2px 5px rgba(46,16,27,.025) !important;
-}
-.panel.active { animation:signatureRise .34s ease both !important; }
-@keyframes signatureRise { from {opacity:0;transform:translateY(7px)} to {opacity:1;transform:translateY(0)} }
-.panel-title {
-  position:relative !important; gap:16px !important; margin:0 0 32px !important; padding:0 0 20px !important;
-  color:#4b1426 !important; font-family:'Cinzel',Georgia,serif !important; font-size:clamp(19px,2.2vw,26px) !important; line-height:1.4 !important;
-  border-bottom:1px solid #e8ddcc !important;
-}
-.panel-title::after { content:''; position:absolute; left:0; bottom:-1px; width:76px; height:3px; border-radius:4px; background:linear-gradient(90deg,#9e753a,#d9bc77); }
-.form-row { gap:24px !important; }
-.form-group { margin-bottom:24px !important; }
-.form-group label { margin-bottom:9px !important; color:#5b2938 !important; font-size:10px !important; letter-spacing:1.25px !important; }
-.form-control {
-  min-height:48px !important; padding:14px 16px !important; border:1px solid #e4d9c9 !important; border-radius:9px !important;
-  background:#fffefa !important; color:#281a20 !important; font-size:14px !important; box-shadow:inset 0 1px 2px rgba(39,15,24,.018) !important;
-}
-.form-control:hover { border-color:#cbb58f !important; }
-.form-control:focus { border-color:#ad8545 !important; background:#fff !important; box-shadow:0 0 0 4px rgba(201,164,91,.15) !important; }
-textarea.form-control { min-height:150px !important; line-height:1.8 !important; }
-textarea.urdu-input { font-size:23px !important; line-height:2.35 !important; background:#fffcf4 !important; }
-.btn-group { display:flex !important; flex-wrap:wrap !important; gap:12px !important; margin-top:26px !important; padding-top:22px !important; border-top:1px solid #eee5d8 !important; }
-.btn-primary { padding:14px 23px !important; min-height:48px !important; border-radius:9px !important; background:linear-gradient(135deg,#5a1a30,#2a0d18) !important; color:#fff5df !important; border:1px solid #a98143 !important; box-shadow:0 7px 17px rgba(75,20,38,.17) !important; font-size:12px !important; letter-spacing:.55px !important; }
-.btn-primary:hover { transform:translateY(-2px) !important; box-shadow:0 11px 24px rgba(75,20,38,.23) !important; }
-.btn-secondary { padding:13px 21px !important; min-height:48px !important; border-radius:9px !important; border:1px solid #dfd0b9 !important; background:#f7f0e5 !important; color:#542538 !important; }
-.btn-secondary:hover { background:#eee1cc !important; }
-.archive-list { gap:10px !important; }
-.archive-card { gap:16px !important; padding:18px 20px !important; border-radius:10px !important; border:1px solid #e8ddcc !important; background:#fffefa !important; }
-.archive-card:hover { transform:translateY(-1px) !important; border-color:#c9a45b !important; box-shadow:0 8px 20px rgba(75,20,38,.07) !important; }
-.archive-title { color:#4b1426 !important; font-family:'Plus Jakarta Sans',sans-serif !important; font-size:14px !important; }
-.archive-meta { color:#85747a !important; line-height:1.7 !important; }
-.action-btn { padding:8px 13px !important; border-radius:7px !important; }
-.action-edit { background:#c9a45b !important; color:#25131a !important; }
-.action-delete { background:#8f263e !important; }
-#archivePanel h4 { font-family:'Cinzel',Georgia,serif !important; font-size:16px !important; letter-spacing:.2px !important; }
-input[type="file"].form-control { padding:10px !important; }
-::selection { background:#4b1426; color:#fff3d5; }
-@media(max-width:900px) {
- .stats-grid { grid-template-columns:repeat(3,minmax(0,1fr)) !important; }
- .site-header { padding-left:24px !important; padding-right:24px !important; }
- .site-header::after { left:24px !important; right:24px !important; }
-}
-@media(max-width:600px) {
- .topbar { padding:10px 15px !important; gap:10px !important; font-size:8px !important; letter-spacing:1.1px !important; }
- .topbar-badge { letter-spacing:1.2px !important; }
- .btn-export { padding:8px 11px !important; font-size:9px !important; }
- .site-header { padding:36px 20px 39px !important; }
- .site-header h1 { font-size:24px !important; max-width:90% !important; }
- .site-header p { font-size:9px !important; line-height:1.9 !important; letter-spacing:1.3px !important; max-width:90% !important; }
- .site-header::before { right:7px !important; top:25% !important; font-size:95px !important; }
- .site-header::after { left:20px !important; right:20px !important; }
- .container { padding:22px 13px 45px !important; }
- .stats-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:9px !important; margin-bottom:20px !important; }
- .stat-card { min-height:95px !important; padding:17px 13px !important; border-radius:10px !important; }
- .stat-info span { font-size:8px !important; letter-spacing:.8px !important; }
- .stat-info strong { font-size:26px !important; }
- .nav-tabs { top:5px !important; border-radius:11px !important; padding:5px !important; gap:4px !important; margin-bottom:16px !important; }
- .tab-btn { min-height:40px !important; padding:10px 13px !important; font-size:11px !important; }
- .panel { padding:22px 16px !important; border-radius:13px !important; }
- .panel-title { font-size:19px !important; margin-bottom:25px !important; padding-bottom:17px !important; }
- .form-group { margin-bottom:19px !important; }
- .form-control { min-height:46px !important; padding:12px 13px !important; font-size:14px !important; }
- .btn-group { flex-direction:column !important; }
- .btn-group button { width:100% !important; justify-content:center !important; }
- .archive-card { align-items:flex-start !important; flex-direction:column !important; padding:15px !important; }
- .archive-card .action-btn { margin:5px 6px 0 0 !important; }
-}
-@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
-
-
-
-/* AUTH GATE — premium login screen */
-#loginGate[hidden], #adminApp[hidden] { display:none !important; }
-#loginGate { min-height:100vh; display:grid; place-items:center; padding:28px 16px; position:relative; overflow:hidden; background:radial-gradient(ellipse at 15% 10%,rgba(198,157,83,.19),transparent 34%),radial-gradient(ellipse at 90% 85%,rgba(101,28,44,.30),transparent 36%),#170e13; color:#f7efe4; }
-#loginGate::before { content:""; position:absolute; width:540px; height:540px; border:1px solid rgba(221,190,126,.16); border-radius:50%; top:-300px; right:-120px; box-shadow:0 0 0 34px rgba(221,190,126,.025),0 0 0 70px rgba(221,190,126,.02); pointer-events:none; }
-#loginGate::after { content:""; position:absolute; width:440px; height:440px; border:1px solid rgba(221,190,126,.12); border-radius:50%; bottom:-300px; left:-140px; box-shadow:0 0 0 32px rgba(221,190,126,.025),0 0 0 66px rgba(221,190,126,.02); pointer-events:none; }
-.login-shell { width:min(100%,460px); position:relative; z-index:1; }
-.login-brand { text-align:center; margin-bottom:24px; }
-.login-monogram { width:66px;height:66px;display:grid;place-items:center;margin:0 auto 16px;border-radius:22px;border:1px solid rgba(224,194,125,.65);background:linear-gradient(145deg,#4d202c,#25141b);color:#e5c783;font-family:Georgia,serif;font-size:29px;box-shadow:0 14px 36px rgba(0,0,0,.25); }
-.login-eyebrow { color:#d8b96f;text-transform:uppercase;letter-spacing:3px;font-size:10px;font-weight:800;margin-bottom:10px; }
-.login-brand h1 { font-family:Georgia,'Times New Roman',serif;color:#fff8eb;font-size:clamp(23px,5vw,31px);line-height:1.2;margin:0 0 9px;font-weight:600; }
-.login-brand p { color:#c3b3b0;font-size:13px;line-height:1.6;margin:0; }
-.login-card { background:linear-gradient(145deg,rgba(255,250,241,.98),rgba(242,231,213,.98));color:#342129;padding:clamp(24px,6vw,36px);border-radius:22px;border:1px solid rgba(229,200,143,.65);box-shadow:0 28px 80px rgba(0,0,0,.38); }
-.login-card h2 { font-family:Georgia,'Times New Roman',serif;font-size:25px;margin:0 0 7px;color:#4b202b; }
-.login-intro { font-size:13px;line-height:1.6;color:#806d69;margin:0 0 24px; }
-.login-field { margin-bottom:17px; }
-.login-field label { display:block;font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:#67404a;margin-bottom:8px; }
-.login-field input { box-sizing:border-box;width:100%;height:49px;padding:0 14px;border-radius:11px;border:1px solid #d8c7b7;background:#fffdf8;color:#332129;font-size:15px;outline:none;transition:border-color .2s,box-shadow .2s; }
-.login-field input:focus { border-color:#9d7540;box-shadow:0 0 0 3px rgba(184,141,70,.16); }
-.login-submit { width:100%;min-height:49px;border:0;border-radius:11px;background:linear-gradient(135deg,#6c2939,#3d1722);color:#fff6e5;font-size:13px;font-weight:800;letter-spacing:.6px;cursor:pointer;box-shadow:0 8px 18px rgba(74,27,40,.22);transition:transform .2s,box-shadow .2s; }
-.login-submit:hover { transform:translateY(-1px);box-shadow:0 12px 24px rgba(74,27,40,.27); }
-.login-submit:disabled { opacity:.65;cursor:wait;transform:none; }
-#loginError { display:none;margin:0 0 15px;padding:11px 12px;border-radius:9px;background:#fbe7e5;border:1px solid #edc0ba;color:#8a2f2a;font-size:12px;line-height:1.5; }
-.login-security { display:flex;align-items:center;justify-content:center;gap:7px;color:#8a7770;font-size:11px;margin-top:18px;text-align:center; }
-.login-security span { color:#92713b;font-size:14px; }
-.login-foot { color:#88777a;text-align:center;font-size:11px;margin-top:19px;letter-spacing:.3px; }
-#adminApp .topbar { display:flex;align-items:center;justify-content:space-between;gap:12px; }
-#logoutBtn { border:1px solid rgba(221,190,126,.38);background:rgba(255,255,255,.07);color:#f5e5c3;border-radius:9px;padding:9px 13px;font-weight:700;cursor:pointer; }
-#logoutBtn:hover { background:rgba(255,255,255,.14); }
-@media(max-width:480px) { #loginGate { padding:20px 14px; } .login-card { border-radius:18px; } .login-monogram { width:58px;height:58px;border-radius:19px; } }
-
+    #loginGate[hidden], #adminApp[hidden] { display:none !important; }
+    #loginGate { min-height:100vh; display:grid; place-items:center; padding:28px 16px; background:#170e13; color:#f7efe4; }
+    .login-shell { width:min(100%,460px); }
+    .login-brand { text-align:center; margin-bottom:24px; }
+    .login-monogram { width:66px;height:66px;display:grid;place-items:center;margin:0 auto 16px;border-radius:22px;border:1px solid rgba(224,194,125,.65);background:#4d202c;color:#e5c783;font-size:29px; }
+    .login-card { background:#fffdf8;color:#342129;padding:36px;border-radius:22px;border:1px solid rgba(229,200,143,.65); }
+    .login-field { margin-bottom:17px; }
+    .login-field label { display:block;font-size:11px;font-weight:800;text-transform:uppercase;color:#67404a;margin-bottom:8px; }
+    .login-field input { width:100%;height:49px;padding:0 14px;border-radius:11px;border:1px solid #d8c7b7;background:#fffdf8; }
+    .login-submit { width:100%;height:49px;border:0;border-radius:11px;background:#6c2939;color:#fff6e5;font-weight:800;cursor:pointer; }
+    #loginError { display:none;margin-bottom:15px;padding:11px;background:#fbe7e5;color:#8a2f2a;font-size:12px;border-radius:9px; }
+    #logoutBtn { border:1px solid rgba(221,190,126,.38);background:rgba(255,255,255,.07);color:#f5e5c3;border-radius:9px;padding:9px 13px;font-weight:700;cursor:pointer; }
   </style>
 </head>
 
 <body>
 
-<!-- Login is the only visible screen until a valid Supabase Auth session exists. -->
-<section id="loginGate" aria-labelledby="loginTitle">
+<section id="loginGate">
   <div class="login-shell">
     <div class="login-brand">
-      <div class="login-monogram" aria-hidden="true">ع</div>
-      <div class="login-eyebrow">Private Administration</div>
+      <div class="login-monogram">ع</div>
       <h1>Syed Amjad Hussain</h1>
-      <p>Literary · Heritage · Research</p>
+      <p>Secure Administration Studio</p>
     </div>
     <div class="login-card">
-      <h2 id="loginTitle">Welcome back</h2>
-      <p class="login-intro">Sign in to access the website’s publishing studio and protected content controls.</p>
-      <div id="loginError" role="alert" aria-live="polite"></div>
-      <form id="adminLoginForm" autocomplete="on">
+      <h2>Welcome back</h2>
+      <div id="loginError"></div>
+      <form id="adminLoginForm">
         <div class="login-field">
-          <label for="adminLoginEmail">Administrator email</label>
-          <input type="email" id="adminLoginEmail" name="email" autocomplete="username" placeholder="you@example.com" required>
+          <label>Administrator Email</label>
+          <input type="email" id="adminLoginEmail" required placeholder="you@example.com">
         </div>
         <div class="login-field">
-          <label for="adminLoginPassword">Password</label>
-          <input type="password" id="adminLoginPassword" name="password" autocomplete="current-password" placeholder="Enter your password" required>
+          <label>Password</label>
+          <input type="password" id="adminLoginPassword" required placeholder="Password">
         </div>
-        <button class="login-submit" id="adminLoginSubmit" type="submit">SIGN IN SECURELY&nbsp; →</button>
+        <button class="login-submit" id="adminLoginSubmit" type="submit">SIGN IN SECURELY →</button>
       </form>
-      <div class="login-security"><span>✦</span> Authenticated access · Supabase</div>
     </div>
-    <div class="login-foot">© SyedAmjadHussain.com · Authorised access only</div>
   </div>
 </section>
 
@@ -577,11 +336,14 @@ input[type="file"].form-control { padding:10px !important; }
 
 <div class="topbar">
   <span class="topbar-badge">Royal Editorial Studio</span>
-  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><button class="btn-export" onclick="exportBackup()">Export Backup</button><button id="logoutBtn" type="button">Sign out</button></div>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <button class="btn-export" onclick="exportBackup()">Export Backup</button>
+    <button id="logoutBtn" type="button">Sign out</button>
+  </div>
 </div>
 
 <header class="site-header">
-  <h1>Janab Mir Syed Amjad Hussain Qadri Jajneri's official website Admin Panel</h1>
+  <h1>Janab Mir Syed Amjad Hussain Qadri Jajneri's Official Admin Panel</h1>
   <p>Supreme Literary, Heritage & History Control Center</p>
 </header>
 
@@ -589,36 +351,13 @@ input[type="file"].form-control { padding:10px !important; }
 
   <!-- Overview Stats Bar -->
   <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-info">
-        <span>Ghazals & Poems</span>
-        <strong id="statPoetry">--</strong>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-info">
-        <span>Single Couplets</span>
-        <strong id="statSher">--</strong>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-info">
-        <span>Sufi Saints</span>
-        <strong id="statSaints">--</strong>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-info">
-        <span>Sheikhpura History</span>
-        <strong id="statSheikhpura">--</strong>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-info">
-        <span>Gallery Photos</span>
-        <strong id="statGallery">--</strong>
-      </div>
-    </div>
+    <div class="stat-card"><div class="stat-info"><span>Poetry</span><strong id="statPoetry">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Sher</span><strong id="statSher">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Saints</span><strong id="statSaints">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>History</span><strong id="statSheikhpura">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Awards</span><strong id="statAwards">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Books</span><strong id="statBooks">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Gallery</span><strong id="statGallery">--</strong></div></div>
   </div>
 
   <!-- Navigation Tabs -->
@@ -627,306 +366,157 @@ input[type="file"].form-control { padding:10px !important; }
     <button class="tab-btn" onclick="switchPanel('sherPanel', this)">Sher</button>
     <button class="tab-btn" onclick="switchPanel('sufiPanel', this)">Saints</button>
     <button class="tab-btn" onclick="switchPanel('sheikhpuraPanel', this)">History</button>
+    <button class="tab-btn" onclick="switchPanel('awardsPanel', this)">Awards</button>
+    <button class="tab-btn" onclick="switchPanel('booksPanel', this)">Books</button>
     <button class="tab-btn" onclick="switchPanel('galleryPanel', this)">Gallery</button>
     <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">Archive</button>
   </nav>
 
-  <!-- Poetry Studio Panel -->
+  <!-- Poetry Panel -->
   <div id="poetryPanel" class="panel active">
-    <div class="panel-title">
-      <span id="poetryFormTitle">Publish / Edit Poetry (Ghazal / Naat / Nazm)</span>
-    </div>
+    <div class="panel-title"><span id="poetryFormTitle">Publish / Edit Poetry</span></div>
     <form id="poetryForm">
       <div class="form-row">
-        <div class="form-group">
-          <label>Poetry Title *</label>
-          <input type="text" id="poetryTitle" class="form-control" required placeholder="e.g. Harf-e-Musarrat">
-        </div>
-        <div class="form-group">
-          <label>Category Type *</label>
+        <div class="form-group"><label>Title *</label><input type="text" id="poetryTitle" class="form-control" required></div>
+        <div class="form-group"><label>Type *</label>
           <select id="poetryType" class="form-control">
-            <option value="Ghazal">Ghazal</option>
-            <option value="Naat">Naat</option>
-            <option value="Manqabat">Manqabat</option>
-            <option value="Nazm">Nazm</option>
-            <option value="Salam">Salam</option>
+            <option value="Ghazal">Ghazal</option><option value="Naat">Naat</option><option value="Nazm">Nazm</option>
           </select>
         </div>
       </div>
-
-      <div class="form-group">
-        <label>Meter / Beher (Optional)</label>
-        <input type="text" id="poetryBeher" class="form-control" placeholder="e.g. Bahr-e-Raml Musamman Makhboon">
-      </div>
-
-      <div class="form-group">
-        <label>Urdu Text (Nastaliq Line-by-Line)</label>
-        <textarea id="poetryUrdu" class="form-control urdu-input" placeholder="Misra 1...&#10;Misra 2..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Hindi Text (Devanagari)</label>
-        <textarea id="poetryHindi" class="form-control" placeholder="Hindi panktiyan..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Roman Urdu Text</label>
-        <textarea id="poetryRoman" class="form-control" placeholder="Roman Urdu verses..."></textarea>
-      </div>
-
-      <div class="btn-group">
-        <button type="submit" id="poetrySaveBtn" class="btn-primary">Save Poetry Record</button>
-        <button type="button" class="btn-secondary" onclick="resetPoetryForm()">Reset</button>
-      </div>
+      <div class="form-group"><label>Meter / Beher</label><input type="text" id="poetryBeher" class="form-control"></div>
+      <div class="form-group"><label>Urdu Text</label><textarea id="poetryUrdu" class="form-control urdu-input"></textarea></div>
+      <div class="form-group"><label>Hindi Text</label><textarea id="poetryHindi" class="form-control"></textarea></div>
+      <div class="form-group"><label>Roman Text</label><textarea id="poetryRoman" class="form-control"></textarea></div>
+      <div class="btn-group"><button type="submit" class="btn-primary">Save Poetry</button></div>
     </form>
   </div>
 
-  <!-- Sher Studio Panel -->
+  <!-- Sher Panel -->
   <div id="sherPanel" class="panel">
-    <div class="panel-title">
-      <span id="sherFormTitle">Publish / Edit Couplets (Sher)</span>
-    </div>
+    <div class="panel-title">Publish / Edit Couplets (Sher)</div>
     <form id="sherForm">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Theme Category *</label>
-          <select id="sherCategory" class="form-control">
-            <option value="Life">Life (Zindagi)</option>
-            <option value="Love">Love (Ishq)</option>
-            <option value="Sufi">Sufi / Mysticism</option>
-            <option value="Reflection">Reflection (Fikr)</option>
-            <option value="Philosophy">Philosophy (Falsafa)</option>
-            <option value="Hope">Hope (Ummeed)</option>
-            <option value="Nature">Nature (Prakriti)</option>
-            <option value="Separation">Seperation (Doori)</option>
-            <option value="Heartbreak">Heartbreak (Dil Toota)</option>
-            <option value="Spirituality">Sufism (Sufivad)</option>
-            <option value="Tasawwuf">Sufi Poetry (Sufi)</option>
-            <option value="Divine Love">Divine Love</option>
-            <option value="Patience">Patience</option>
-            <option value="Destiny">Destiny</option>
-            <option value="Tanhai">Tanhai</option>
-            <option value="Hijr">Hijr</option>
-            <option value="Wafa">Wafa</option>
-            <option value="Visal">Visal</option>
-            <option value="Humanity">Humanity</option>
-            <option value="Social Commentary">Social Commentary</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Tags (Comma Separated)</label>
-          <input type="text" id="sherTags" class="form-control" placeholder="e.g. Khudi, Sabr, Ishq">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Urdu Couplet (2 Misre)</label>
-        <textarea id="sherUrdu" class="form-control urdu-input" placeholder="Misra 1...&#10;Misra 2..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Hindi Couplet</label>
-        <textarea id="sherHindi" class="form-control" placeholder="Misra 1...&#10;Misra 2..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Roman Urdu Couplet</label>
-        <textarea id="sherRoman" class="form-control" placeholder="First line...&#10;Second line..."></textarea>
-      </div>
-
-      <div class="btn-group">
-        <button type="submit" id="sherSaveBtn" class="btn-primary">Save Sher Record</button>
-        <button type="button" class="btn-secondary" onclick="resetSherForm()">Reset</button>
-      </div>
+      <div class="form-group"><label>Category</label><input type="text" id="sherCategory" class="form-control"></div>
+      <div class="form-group"><label>Urdu</label><textarea id="sherUrdu" class="form-control urdu-input"></textarea></div>
+      <div class="form-group"><label>Hindi</label><textarea id="sherHindi" class="form-control"></textarea></div>
+      <div class="form-group"><label>Roman</label><textarea id="sherRoman" class="form-control"></textarea></div>
+      <div class="btn-group"><button type="submit" class="btn-primary">Save Sher</button></div>
     </form>
   </div>
 
   <!-- Sufi Saints Panel -->
   <div id="sufiPanel" class="panel">
-    <div class="panel-title">
-      <span id="sufiFormTitle">Manage Sufi Saints & Shrines of Bihar</span>
-    </div>
+    <div class="panel-title">Manage Sufi Saints</div>
     <form id="sufiForm">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Saint Name *</label>
-          <input type="text" id="saintName" class="form-control" required placeholder="e.g. Hazrat Makhdoom Yahya Maneri">
-        </div>
-        <div class="form-group">
-          <label>Title / Honorific</label>
-          <input type="text" id="saintHonorific" class="form-control" placeholder="e.g. Makhdoom-ul-Mulk">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Silsila / Order</label>
-          <input type="text" id="saintSilsila" class="form-control" placeholder="e.g. Firdausi Order">
-        </div>
-        <div class="form-group">
-          <label>Birth & Death Dates (Wisaal)</label>
-          <input type="text" id="saintDates" class="form-control" placeholder="e.g. 1263 CE - 1381 CE">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Shrine Location *</label>
-          <input type="text" id="shrineLocation" class="form-control" required placeholder="e.g. Maner Sharif">
-        </div>
-        <div class="form-group">
-          <label>Era / Century</label>
-          <input type="text" id="eraCentury" class="form-control" placeholder="e.g. 14th Century">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Short Description / Overview *</label>
-        <textarea id="saintDesc" class="form-control" required placeholder="Spiritual lineage, history, and contributions..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Full Biography & Historical Life</label>
-        <textarea id="saintBio" class="form-control" style="min-height:150px;" placeholder="Detailed life narrative..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Major Literary Works & Letters</label>
-        <textarea id="saintWorks" class="form-control" placeholder="e.g. Maktubat-e-Sadi..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Spiritual Teachings & Philosophy</label>
-        <textarea id="saintTeachings" class="form-control" placeholder="Core mystical teachings..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Profile Link / Relative File Path</label>
-        <input type="text" id="saintLink" class="form-control" placeholder="e.g. saints/makhdoom-yahya-maneri.html">
-      </div>
-
-      <div class="btn-group">
-        <button type="submit" id="sufiSaveBtn" class="btn-primary">Save Saint Record</button>
-        <button type="button" class="btn-secondary" onclick="resetSufiForm()">Reset</button>
-      </div>
+      <div class="form-group"><label>Saint Name *</label><input type="text" id="saintName" class="form-control" required></div>
+      <div class="form-group"><label>Location</label><input type="text" id="shrineLocation" class="form-control"></div>
+      <div class="form-group"><label>Description</label><textarea id="saintDesc" class="form-control"></textarea></div>
+      <div class="btn-group"><button type="submit" class="btn-primary">Save Saint</button></div>
     </form>
   </div>
 
-  <!-- Sheikhpura History Panel -->
+  <!-- History Panel -->
   <div id="sheikhpuraPanel" class="panel">
-    <div class="panel-title">
-      <span id="skFormTitle">Manage Sheikhpura History Content</span>
-    </div>
+    <div class="panel-title">Manage Sheikhpura History</div>
     <form id="sheikhpuraForm">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Category *</label>
-          <select id="skCategory" class="form-control">
-            <option value="Overview">Overview & Origin</option>
-            <option value="Sufi Heritage">Sufi Lineage & Shrines</option>
-            <option value="Monuments">Monuments & Landmarks</option>
-            <option value="Key Facts">Historical Milestones & Facts</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Title *</label>
-          <input type="text" id="skTitle" class="form-control" required placeholder="e.g. Foundation of Sheikhpura">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Subtitle / Location</label>
-          <input type="text" id="skSubtitle" class="form-control" placeholder="e.g. Medieval Period Heritage">
-        </div>
-        <div class="form-group">
-          <label>Year / Era</label>
-          <input type="text" id="skEra" class="form-control" placeholder="e.g. 15th Century">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Detailed Historical Content *</label>
-        <textarea id="skContent" class="form-control" required placeholder="Provide historical facts, research details, and narrative..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Image URL (Optional)</label>
-        <input type="text" id="skImage" class="form-control" placeholder="e.g. images/sheikhpura-monument.jpg">
-      </div>
-
-      <div class="btn-group">
-        <button type="submit" id="skSaveBtn" class="btn-primary">Save Sheikhpura Record</button>
-        <button type="button" class="btn-secondary" onclick="resetSheikhpuraForm()">Reset</button>
-      </div>
+      <div class="form-group"><label>Title *</label><input type="text" id="skTitle" class="form-control" required></div>
+      <div class="form-group"><label>Content</label><textarea id="skContent" class="form-control"></textarea></div>
+      <div class="btn-group"><button type="submit" class="btn-primary">Save History</button></div>
     </form>
   </div>
 
-  <!-- Gallery Studio Panel (With Direct File Upload) -->
-  <div id="galleryPanel" class="panel">
-    <div class="panel-title">
-      <span id="galleryFormTitle">Upload & Manage Gallery Media</span>
-    </div>
-    <form id="galleryForm">
+  <!-- Awards Panel -->
+  <div id="awardsPanel" class="panel">
+    <div class="panel-title"><span id="awardsFormTitle">Manage Awards & Honours</span></div>
+    <form id="awardsForm">
       <div class="form-row">
-        <div class="form-group">
-          <label>Image Caption *</label>
-          <input type="text" id="galCaption" class="form-control" required placeholder="e.g. Annual Sukhan Sabha Gathering">
-        </div>
-        <div class="form-group">
-          <label>Category</label>
-          <select id="galCategory" class="form-control">
-            <option value="Events">Literary Event</option>
-            <option value="Shrines">Shrines & Heritage</option>
-            <option value="Portraits">Portraits & Editorial</option>
-            <option value="General">General</option>
+        <div class="form-group"><label>Award Title *</label><input type="text" id="awardTitle" class="form-control" required></div>
+        <div class="form-group"><label>Conferring Organization *</label><input type="text" id="awardOrg" class="form-control" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Year Conferred *</label><input type="text" id="awardYear" class="form-control" required></div>
+        <div class="form-group"><label>Category</label>
+          <select id="awardCategory" class="form-control">
+            <option value="Literary">Literary Excellence</option>
+            <option value="Research">Historical Research</option>
+            <option value="Social">Social Leadership</option>
           </select>
         </div>
       </div>
-
-      <div class="form-group">
-        <label>Select Photo from Device *</label>
-        <input type="file" id="galFile" class="form-control" accept="image/*">
+      <div class="form-group"><label>Description / Citation</label><textarea id="awardDesc" class="form-control"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Award Image File</label><input type="file" id="awardFile" class="form-control" accept="image/*"></div>
+        <div class="form-group"><label>Or Image URL</label><input type="url" id="awardUrl" class="form-control"></div>
       </div>
+      <div class="form-group"><label>Certificate Link (Optional)</label><input type="url" id="awardCertUrl" class="form-control"></div>
+      <div class="btn-group"><button type="submit" id="awardSaveBtn" class="btn-primary">Save Award Record</button></div>
+    </form>
+  </div>
 
-      <div class="form-group">
-        <label>Or Paste Image URL (Alternative)</label>
-        <input type="url" id="galUrl" class="form-control" placeholder="https://.../image.jpg">
+  <!-- Books Panel -->
+  <div id="booksPanel" class="panel">
+    <div class="panel-title"><span id="booksFormTitle">Manage Books, Research & Articles</span></div>
+    <form id="booksForm">
+      <div class="form-row">
+        <div class="form-group"><label>Publication Title *</label><input type="text" id="bookTitle" class="form-control" required></div>
+        <div class="form-group"><label>Category Type *</label>
+          <select id="bookCategory" class="form-control">
+            <option value="book">Book</option>
+            <option value="research">Research</option>
+            <option value="article">Article & Essay</option>
+            <option value="literature">Literature</option>
+          </select>
+        </div>
       </div>
+      <div class="form-row">
+        <div class="form-group"><label>Publisher</label><input type="text" id="bookPublisher" class="form-control"></div>
+        <div class="form-group"><label>Published Year</label><input type="text" id="bookYear" class="form-control"></div>
+      </div>
+      <div class="form-group"><label>Description</label><textarea id="bookDesc" class="form-control"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Cover Image File</label><input type="file" id="bookFile" class="form-control" accept="image/*"></div>
+        <div class="form-group"><label>Or Cover Image URL</label><input type="url" id="bookUrl" class="form-control"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>External Link</label><input type="url" id="bookLink" class="form-control"></div>
+        <div class="form-group"><label>Search Keywords</label><input type="text" id="bookSearch" class="form-control"></div>
+      </div>
+      <div class="btn-group"><button type="submit" id="bookSaveBtn" class="btn-primary">Save Publication Record</button></div>
+    </form>
+  </div>
 
-      <div class="btn-group">
-        <button type="submit" id="galSaveBtn" class="btn-primary">Upload & Save Media</button>
-        <button type="button" class="btn-secondary" onclick="resetGalleryForm()">Reset</button>
-      </div>
+  <!-- Gallery Panel -->
+  <div id="galleryPanel" class="panel">
+    <div class="panel-title">Upload Gallery Media</div>
+    <form id="galleryForm">
+      <div class="form-group"><label>Caption *</label><input type="text" id="galCaption" class="form-control" required></div>
+      <div class="form-group"><label>Select Photo File</label><input type="file" id="galFile" class="form-control" accept="image/*"></div>
+      <div class="form-group"><label>Or URL</label><input type="url" id="galUrl" class="form-control"></div>
+      <div class="btn-group"><button type="submit" class="btn-primary">Upload & Save Media</button></div>
     </form>
   </div>
 
   <!-- Archive Panel -->
   <div id="archivePanel" class="panel">
-    <div class="panel-title">
-      <span>Database Records Archive</span>
-    </div>
+    <div class="panel-title">Database Records Archive</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Awards Records</h4>
+    <div id="awardsArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Books & Articles Records</h4>
+    <div id="booksArchiveList" class="archive-list">Loading...</div>
 
     <h4 style="color:var(--wine); margin:20px 0 10px;">Poetry Records</h4>
     <div id="poetryArchiveList" class="archive-list">Loading...</div>
 
-    <h4 style="color:var(--wine); margin:30px 0 10px;">Sher Records</h4>
-    <div id="sherArchiveList" class="archive-list">Loading...</div>
-
-    <h4 style="color:var(--wine); margin:30px 0 10px;">Sufi Saints Records</h4>
-    <div id="sufiArchiveList" class="archive-list">Loading...</div>
-
-    <h4 style="color:var(--wine); margin:30px 0 10px;">Sheikhpura History Records</h4>
-    <div id="sheikhpuraArchiveList" class="archive-list">Loading...</div>
-
-    <h4 style="color:var(--wine); margin:30px 0 10px;">Gallery Media Records</h4>
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Gallery Media Records</h4>
     <div id="galleryArchiveList" class="archive-list">Loading...</div>
   </div>
 
 </div>
 
 <script>
-  let editingPoetryId = null, editingSherId = null, editingSufiId = null, editingSheikhpuraId = null, editingGalleryId = null;
+  let editingPoetryId = null, editingSherId = null, editingSufiId = null, editingSheikhpuraId = null, editingGalleryId = null, editingAwardId = null, editingBookId = null;
 
   function getClient() {
     if (!window.__adminSupabaseClient) {
@@ -953,309 +543,204 @@ input[type="file"].form-control { padding:10px !important; }
       const { count: sCount } = await client.from('sher').select('*', { count: 'exact', head: true });
       const { count: sfCount } = await client.from('sufi_saints').select('*', { count: 'exact', head: true });
       const { count: skCount } = await client.from('sheikhpura_history').select('*', { count: 'exact', head: true });
+      const { count: aCount } = await client.from('awards').select('*', { count: 'exact', head: true });
+      const { count: bCount } = await client.from('books_articles').select('*', { count: 'exact', head: true });
       const { count: gCount } = await client.from('gallery_media').select('*', { count: 'exact', head: true });
 
       document.getElementById('statPoetry').textContent = pCount || 0;
       document.getElementById('statSher').textContent = sCount || 0;
       document.getElementById('statSaints').textContent = sfCount || 0;
       document.getElementById('statSheikhpura').textContent = skCount || 0;
+      document.getElementById('statAwards').textContent = aCount || 0;
+      document.getElementById('statBooks').textContent = bCount || 0;
       document.getElementById('statGallery').textContent = gCount || 0;
     } catch(err) { console.error("Stats error:", err); }
   }
 
-  // Poetry Handler
+  // Poetry Form
   document.getElementById('poetryForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const data = {
-      title: document.getElementById('poetryTitle').value.trim(),
-      type: document.getElementById('poetryType').value,
-      notes: document.getElementById('poetryBeher').value.trim(),
-      urdu_text: document.getElementById('poetryUrdu').value,
-      hindi_text: document.getElementById('poetryHindi').value,
-      roman_text: document.getElementById('poetryRoman').value
-    };
-    try {
-      const client = getClient();
-      const res = editingPoetryId ? await client.from('poetry').update(data).eq('id', editingPoetryId) : await client.from('poetry').insert([data]);
-      if (res.error) throw res.error;
-      alert("Poetry Saved Successfully!");
-      resetPoetryForm();
-      updateStats();
-    } catch(err) { alert("Error: " + err.message); }
-  });
-
-  async function editPoetry(id) {
+    const data = { title: document.getElementById('poetryTitle').value.trim(), type: document.getElementById('poetryType').value, notes: document.getElementById('poetryBeher').value.trim(), urdu_text: document.getElementById('poetryUrdu').value, hindi_text: document.getElementById('poetryHindi').value, roman_text: document.getElementById('poetryRoman').value };
     const client = getClient();
-    const { data } = await client.from('poetry').select('*').eq('id', id).single();
-    if (!data) return;
-    editingPoetryId = id;
-    document.getElementById('poetryFormTitle').textContent = "Editing Poetry: " + data.title;
-    document.getElementById('poetryTitle').value = data.title || '';
-    document.getElementById('poetryType').value = data.type || 'Ghazal';
-    document.getElementById('poetryBeher').value = data.notes || '';
-    document.getElementById('poetryUrdu').value = data.urdu_text || '';
-    document.getElementById('poetryHindi').value = data.hindi_text || '';
-    document.getElementById('poetryRoman').value = data.roman_text || '';
-    document.getElementById('poetrySaveBtn').textContent = "Update Poetry Record";
-    switchPanel('poetryPanel', document.querySelectorAll('.tab-btn')[0]);
-  }
-
-  function resetPoetryForm() {
+    const res = editingPoetryId ? await client.from('poetry').update(data).eq('id', editingPoetryId) : await client.from('poetry').insert([data]);
+    if (res.error) { alert("Error: " + res.error.message); return; }
+    alert("Poetry Saved Successfully!");
     document.getElementById('poetryForm').reset();
     editingPoetryId = null;
-    document.getElementById('poetryFormTitle').textContent = "Publish / Edit Poetry (Ghazal / Naat / Nazm)";
-    document.getElementById('poetrySaveBtn').textContent = "Save Poetry Record";
-  }
+    updateStats();
+  });
 
-  // Sher Handler
+  // Sher Form
   document.getElementById('sherForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const data = {
-      category: document.getElementById('sherCategory').value,
-      language: document.getElementById('sherTags').value.trim() || 'Roman Urdu',
-      sher_urdu: document.getElementById('sherUrdu').value,
-      sher_hindi: document.getElementById('sherHindi').value,
-      sher_roman: document.getElementById('sherRoman').value
-    };
-    try {
-      const client = getClient();
-      const res = editingSherId ? await client.from('sher').update(data).eq('id', editingSherId) : await client.from('sher').insert([data]);
-      if (res.error) throw res.error;
-      alert("Sher Saved Successfully!");
-      resetSherForm();
-      updateStats();
-    } catch(err) { alert("Error: " + err.message); }
-  });
-
-  async function editSher(id) {
+    const data = { category: document.getElementById('sherCategory').value, sher_urdu: document.getElementById('sherUrdu').value, sher_hindi: document.getElementById('sherHindi').value, sher_roman: document.getElementById('sherRoman').value };
     const client = getClient();
-    const { data } = await client.from('sher').select('*').eq('id', id).single();
-    if (!data) return;
-    editingSherId = id;
-    document.getElementById('sherFormTitle').textContent = "Editing Sher #" + id;
-    document.getElementById('sherCategory').value = data.category || 'Life';
-    document.getElementById('sherTags').value = data.language || '';
-    document.getElementById('sherUrdu').value = data.sher_urdu || '';
-    document.getElementById('sherHindi').value = data.sher_hindi || '';
-    document.getElementById('sherRoman').value = data.sher_roman || '';
-    document.getElementById('sherSaveBtn').textContent = "Update Sher Record";
-    switchPanel('sherPanel', document.querySelectorAll('.tab-btn')[1]);
-  }
-
-  function resetSherForm() {
+    const res = editingSherId ? await client.from('sher').update(data).eq('id', editingSherId) : await client.from('sher').insert([data]);
+    if (res.error) { alert("Error: " + res.error.message); return; }
+    alert("Sher Saved Successfully!");
     document.getElementById('sherForm').reset();
     editingSherId = null;
-    document.getElementById('sherFormTitle').textContent = "Publish / Edit Couplets (Sher)";
-    document.getElementById('sherSaveBtn').textContent = "Save Sher Record";
-  }
+    updateStats();
+  });
 
-  // Sufi Saint Handler
+  // Sufi Saints Form
   document.getElementById('sufiForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const data = {
-      saint_name: document.getElementById('saintName').value.trim(),
-      title_honorific: document.getElementById('saintHonorific').value.trim(),
-      silsila: document.getElementById('saintSilsila').value.trim(),
-      birth_death_date: document.getElementById('saintDates').value.trim(),
-      shrine_location: document.getElementById('shrineLocation').value.trim(),
-      era_century: document.getElementById('eraCentury').value.trim(),
-      roman_desc: document.getElementById('saintDesc').value.trim(),
-      biography_full: document.getElementById('saintBio').value.trim(),
-      key_works: document.getElementById('saintWorks').value.trim(),
-      teachings: document.getElementById('saintTeachings').value.trim(),
-      roman_desc_link: document.getElementById('saintLink').value.trim()
-    };
-    try {
-      const client = getClient();
-      const res = editingSufiId ? await client.from('sufi_saints').update(data).eq('id', editingSufiId) : await client.from('sufi_saints').insert([data]);
-      if (res.error) throw res.error;
-      alert(editingSufiId ? "Saint Record Updated!" : "Sufi Saint Record Saved!");
-      resetSufiForm();
-      updateStats();
-    } catch(err) { alert("Error: " + err.message); }
-  });
-
-  async function editSufi(id) {
+    const data = { saint_name: document.getElementById('saintName').value.trim(), shrine_location: document.getElementById('shrineLocation').value.trim(), roman_desc: document.getElementById('saintDesc').value.trim() };
     const client = getClient();
-    const { data } = await client.from('sufi_saints').select('*').eq('id', id).single();
-    if (!data) return;
-    editingSufiId = id;
-    document.getElementById('sufiFormTitle').textContent = "Editing Saint: " + data.saint_name;
-    document.getElementById('saintName').value = data.saint_name || '';
-    document.getElementById('saintHonorific').value = data.title_honorific || '';
-    document.getElementById('saintSilsila').value = data.silsila || '';
-    document.getElementById('saintDates').value = data.birth_death_date || '';
-    document.getElementById('shrineLocation').value = data.shrine_location || '';
-    document.getElementById('eraCentury').value = data.era_century || '';
-    document.getElementById('saintDesc').value = data.roman_desc || '';
-    document.getElementById('saintBio').value = data.biography_full || '';
-    document.getElementById('saintWorks').value = data.key_works || '';
-    document.getElementById('saintTeachings').value = data.teachings || '';
-    document.getElementById('saintLink').value = data.roman_desc_link || '';
-    document.getElementById('sufiSaveBtn').textContent = "Update Saint Record";
-    switchPanel('sufiPanel', document.querySelectorAll('.tab-btn')[2]);
-  }
-
-  function resetSufiForm() {
+    const res = editingSufiId ? await client.from('sufi_saints').update(data).eq('id', editingSufiId) : await client.from('sufi_saints').insert([data]);
+    if (res.error) { alert("Error: " + res.error.message); return; }
+    alert("Saint Saved Successfully!");
     document.getElementById('sufiForm').reset();
     editingSufiId = null;
-    document.getElementById('sufiFormTitle').textContent = "Manage Sufi Saints & Shrines of Bihar";
-    document.getElementById('sufiSaveBtn').textContent = "Save Saint Record";
-  }
+    updateStats();
+  });
 
-  // Sheikhpura History Handler
+  // Sheikhpura History Form
   document.getElementById('sheikhpuraForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const data = {
-      category: document.getElementById('skCategory').value,
-      title: document.getElementById('skTitle').value.trim(),
-      subtitle: document.getElementById('skSubtitle').value.trim(),
-      year_era: document.getElementById('skEra').value.trim(),
-      content_text: document.getElementById('skContent').value.trim(),
-      image_url: document.getElementById('skImage').value.trim()
-    };
-    try {
-      const client = getClient();
-      const res = editingSheikhpuraId ? await client.from('sheikhpura_history').update(data).eq('id', editingSheikhpuraId) : await client.from('sheikhpura_history').insert([data]);
-      if (res.error) throw res.error;
-      alert("Sheikhpura History Record Saved!");
-      resetSheikhpuraForm();
-      updateStats();
-    } catch(err) { alert("Error: " + err.message); }
-  });
-
-  async function editSheikhpura(id) {
+    const data = { title: document.getElementById('skTitle').value.trim(), content_text: document.getElementById('skContent').value.trim() };
     const client = getClient();
-    const { data } = await client.from('sheikhpura_history').select('*').eq('id', id).single();
-    if (!data) return;
-    editingSheikhpuraId = id;
-    document.getElementById('skFormTitle').textContent = "Editing History: " + data.title;
-    document.getElementById('skCategory').value = data.category || 'Overview';
-    document.getElementById('skTitle').value = data.title || '';
-    document.getElementById('skSubtitle').value = data.subtitle || '';
-    document.getElementById('skEra').value = data.year_era || '';
-    document.getElementById('skContent').value = data.content_text || '';
-    document.getElementById('skImage').value = data.image_url || '';
-    document.getElementById('skSaveBtn').textContent = "Update History Record";
-    switchPanel('sheikhpuraPanel', document.querySelectorAll('.tab-btn')[3]);
-  }
-
-  function resetSheikhpuraForm() {
+    const res = editingSheikhpuraId ? await client.from('sheikhpura_history').update(data).eq('id', editingSheikhpuraId) : await client.from('sheikhpura_history').insert([data]);
+    if (res.error) { alert("Error: " + res.error.message); return; }
+    alert("History Saved Successfully!");
     document.getElementById('sheikhpuraForm').reset();
     editingSheikhpuraId = null;
-    document.getElementById('skFormTitle').textContent = "Manage Sheikhpura History Content";
-    document.getElementById('skSaveBtn').textContent = "Save Sheikhpura Record";
-  }
+    updateStats();
+  });
 
-  // Gallery Media Handler
-  document.getElementById('galleryForm').addEventListener('submit', async function(e) {
+  // Awards Form with File Upload
+  document.getElementById('awardsForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const data = {
-      caption: document.getElementById('galCaption').value.trim(),
-      category: document.getElementById('galCategory').value,
-      image_url: document.getElementById('galUrl').value.trim()
-    };
     try {
       const client = getClient();
-      const res = editingGalleryId ? await client.from('gallery_media').update(data).eq('id', editingGalleryId) : await client.from('gallery_media').insert([data]);
+      const fileInput = document.getElementById('awardFile');
+      let imageUrl = document.getElementById('awardUrl').value.trim();
+
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const fileName = `award_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+        const { error: uploadErr } = await client.storage.from('gallery').upload(fileName, file);
+        if (uploadErr) throw uploadErr;
+        const { data: publicUrlData } = client.storage.from('gallery').getPublicUrl(fileName);
+        imageUrl = publicUrlData.publicUrl;
+      }
+
+      const data = {
+        title: document.getElementById('awardTitle').value.trim(),
+        organization: document.getElementById('awardOrg').value.trim(),
+        award_year: document.getElementById('awardYear').value.trim(),
+        category: document.getElementById('awardCategory').value,
+        description: document.getElementById('awardDesc').value.trim(),
+        image_url: imageUrl,
+        certificate_url: document.getElementById('awardCertUrl').value.trim()
+      };
+
+      const res = editingAwardId ? await client.from('awards').update(data).eq('id', editingAwardId) : await client.from('awards').insert([data]);
       if (res.error) throw res.error;
-      alert(editingGalleryId ? "Gallery Media Updated!" : "Gallery Media Saved!");
-      resetGalleryForm();
+      alert("Award Record Saved Successfully!");
+      document.getElementById('awardsForm').reset();
+      editingAwardId = null;
       updateStats();
     } catch(err) { alert("Error: " + err.message); }
   });
 
-  async function editGallery(id) {
-    const client = getClient();
-    const { data } = await client.from('gallery_media').select('*').eq('id', id).single();
-    if (!data) return;
-    editingGalleryId = id;
-    document.getElementById('galleryFormTitle').textContent = "Editing Media: " + data.caption;
-    document.getElementById('galCaption').value = data.caption || '';
-    document.getElementById('galCategory').value = data.category || 'General';
-    document.getElementById('galUrl').value = data.image_url || '';
-    document.getElementById('galSaveBtn').textContent = "Update Media Record";
-    switchPanel('galleryPanel', document.querySelectorAll('.tab-btn')[4]);
-  }
+  // Books Form with File Upload
+  document.getElementById('booksForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    try {
+      const client = getClient();
+      const fileInput = document.getElementById('bookFile');
+      let imageUrl = document.getElementById('bookUrl').value.trim();
 
-  function resetGalleryForm() {
-    document.getElementById('galleryForm').reset();
-    editingGalleryId = null;
-    document.getElementById('galleryFormTitle').textContent = "Upload & Manage Gallery Media";
-    document.getElementById('galSaveBtn').textContent = "Save Gallery Media";
-  }
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const fileName = `book_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+        const { error: uploadErr } = await client.storage.from('gallery').upload(fileName, file);
+        if (uploadErr) throw uploadErr;
+        const { data: publicUrlData } = client.storage.from('gallery').getPublicUrl(fileName);
+        imageUrl = publicUrlData.publicUrl;
+      }
 
-  // Load Archives
+      const data = {
+        title: document.getElementById('bookTitle').value.trim(),
+        category: document.getElementById('bookCategory').value,
+        publisher: document.getElementById('bookPublisher').value.trim(),
+        pub_year: document.getElementById('bookYear').value.trim(),
+        description: document.getElementById('bookDesc').value.trim(),
+        cover_image_url: imageUrl,
+        external_link: document.getElementById('bookLink').value.trim(),
+        search_keywords: document.getElementById('bookSearch').value.trim()
+      };
+
+      const res = editingBookId ? await client.from('books_articles').update(data).eq('id', editingBookId) : await client.from('books_articles').insert([data]);
+      if (res.error) throw res.error;
+      alert("Publication Record Saved Successfully!");
+      document.getElementById('booksForm').reset();
+      editingBookId = null;
+      updateStats();
+    } catch(err) { alert("Error: " + err.message); }
+  });
+
+  // Gallery Form with File Upload
+  document.getElementById('galleryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    try {
+      const client = getClient();
+      const fileInput = document.getElementById('galFile');
+      let imageUrl = document.getElementById('galUrl').value.trim();
+
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const fileName = `gallery_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+        const { error: uploadErr } = await client.storage.from('gallery').upload(fileName, file);
+        if (uploadErr) throw uploadErr;
+        const { data: publicUrlData } = client.storage.from('gallery').getPublicUrl(fileName);
+        imageUrl = publicUrlData.publicUrl;
+      }
+
+      const data = { caption: document.getElementById('galCaption').value.trim(), image_url: imageUrl };
+      const res = editingGalleryId ? await client.from('gallery_media').update(data).eq('id', editingGalleryId) : await client.from('gallery_media').insert([data]);
+      if (res.error) throw res.error;
+      alert("Gallery Media Saved Successfully!");
+      document.getElementById('galleryForm').reset();
+      editingGalleryId = null;
+      updateStats();
+    } catch(err) { alert("Error: " + err.message); }
+  });
+
   async function loadArchives() {
     const client = getClient();
 
+    const { data: aData } = await client.from('awards').select('*').order('id', { ascending: false });
+    document.getElementById('awardsArchiveList').innerHTML = (!aData || !aData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : aData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.title)} (${escapeHTML(i.award_year)})</div><div class="archive-meta">By: ${escapeHTML(i.organization)}</div></div>
+        <div><button class="action-btn action-delete" onclick="deleteRecord('awards', ${i.id})">Delete</button></div>
+      </div>
+    `).join('');
+
+    const { data: bData } = await client.from('books_articles').select('*').order('id', { ascending: false });
+    document.getElementById('booksArchiveList').innerHTML = (!bData || !bData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : bData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.title)}</div><div class="archive-meta">Category: ${escapeHTML(i.category)}</div></div>
+        <div><button class="action-btn action-delete" onclick="deleteRecord('books_articles', ${i.id})">Delete</button></div>
+      </div>
+    `).join('');
+
     const { data: pData } = await client.from('poetry').select('*').order('id', { ascending: false });
-    document.getElementById('poetryArchiveList').innerHTML = (!pData || !pData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : pData.map(i => `
+    document.getElementById('poetryArchiveList').innerHTML = (!pData || !pData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : pData.map(i => `
       <div class="archive-card">
-        <div>
-          <div class="archive-title">${escapeHTML(i.title)}</div>
-          <div class="archive-meta">Type: ${escapeHTML(i.type || '')} ${i.notes ? '| Meter: ' + escapeHTML(i.notes) : ''}</div>
-        </div>
-        <div>
-          <button class="action-btn action-edit" onclick="editPoetry(${i.id})">Edit</button>
-          <button class="action-btn action-delete" onclick="deleteRecord('poetry', ${i.id})">Delete</button>
-        </div>
-      </div>
-    `).join('');
-
-    const { data: sData } = await client.from('sher').select('*').order('id', { ascending: false });
-    document.getElementById('sherArchiveList').innerHTML = (!sData || !sData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : sData.map(i => `
-      <div class="archive-card">
-        <div>
-          <div class="archive-title">${escapeHTML((i.sher_roman || i.sher_urdu || 'Couplet').slice(0, 45))}...</div>
-          <div class="archive-meta">Category: ${escapeHTML(i.category || '')}</div>
-        </div>
-        <div>
-          <button class="action-btn action-edit" onclick="editSher(${i.id})">Edit</button>
-          <button class="action-btn action-delete" onclick="deleteRecord('sher', ${i.id})">Delete</button>
-        </div>
-      </div>
-    `).join('');
-
-    const { data: sfData } = await client.from('sufi_saints').select('*').order('id', { ascending: false });
-    document.getElementById('sufiArchiveList').innerHTML = (!sfData || !sfData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : sfData.map(i => `
-      <div class="archive-card">
-        <div>
-          <div class="archive-title">${escapeHTML(i.saint_name)}</div>
-          <div class="archive-meta">Shrine: ${escapeHTML(i.shrine_location || 'Bihar')} | Era: ${escapeHTML(i.era_century || 'Sufi Era')}</div>
-        </div>
-        <div>
-          <button class="action-btn action-edit" onclick="editSufi(${i.id})">Edit</button>
-          <button class="action-btn action-delete" onclick="deleteRecord('sufi_saints', ${i.id})">Delete</button>
-        </div>
-      </div>
-    `).join('');
-
-    const { data: skData } = await client.from('sheikhpura_history').select('*').order('id', { ascending: false });
-    document.getElementById('sheikhpuraArchiveList').innerHTML = (!skData || !skData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : skData.map(i => `
-      <div class="archive-card">
-        <div>
-          <div class="archive-title">${escapeHTML(i.title)}</div>
-          <div class="archive-meta">Category: ${escapeHTML(i.category || '')} ${i.year_era ? '| Era: ' + escapeHTML(i.year_era) : ''}</div>
-        </div>
-        <div>
-          <button class="action-btn action-edit" onclick="editSheikhpura(${i.id})">Edit</button>
-          <button class="action-btn action-delete" onclick="deleteRecord('sheikhpura_history', ${i.id})">Delete</button>
-        </div>
+        <div><div class="archive-title">${escapeHTML(i.title)}</div></div>
+        <div><button class="action-btn action-delete" onclick="deleteRecord('poetry', ${i.id})">Delete</button></div>
       </div>
     `).join('');
 
     const { data: gData } = await client.from('gallery_media').select('*').order('id', { ascending: false });
-    document.getElementById('galleryArchiveList').innerHTML = (!gData || !gData.length) ? '<p style="color:var(--text-muted)">No records found.</p>' : gData.map(i => `
+    document.getElementById('galleryArchiveList').innerHTML = (!gData || !gData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : gData.map(i => `
       <div class="archive-card">
-        <div>
-          <div class="archive-title">${escapeHTML(i.caption)}</div>
-          <div class="archive-meta">Category: ${escapeHTML(i.category || 'General')}</div>
-        </div>
-        <div>
-          <button class="action-btn action-edit" onclick="editGallery(${i.id})">Edit</button>
-          <button class="action-btn action-delete" onclick="deleteRecord('gallery_media', ${i.id})">Delete</button>
-        </div>
+        <div><div class="archive-title">${escapeHTML(i.caption)}</div></div>
+        <div><button class="action-btn action-delete" onclick="deleteRecord('gallery_media', ${i.id})">Delete</button></div>
       </div>
     `).join('');
   }
@@ -1270,39 +755,29 @@ input[type="file"].form-control { padding:10px !important; }
 
   async function exportBackup() {
     const client = getClient();
+    const { data: a } = await client.from('awards').select('*');
+    const { data: b } = await client.from('books_articles').select('*');
     const { data: p } = await client.from('poetry').select('*');
-    const { data: s } = await client.from('sher').select('*');
-    const { data: sf } = await client.from('sufi_saints').select('*');
-    const { data: sk } = await client.from('sheikhpura_history').select('*');
     const { data: g } = await client.from('gallery_media').select('*');
-    const backup = { poetry: p, sher: s, sufi_saints: sf, sheikhpura_history: sk, gallery_media: g, exported_at: new Date().toISOString() };
-    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `backup_syed_amjad_hussain_${Date.now()}.json`;
-    a.click();
+    const blob = new Blob([JSON.stringify({ awards: a, books_articles: b, poetry: p, gallery_media: g }, null, 2)], { type: 'application/json' });
+    const aTag = document.createElement('a');
+    aTag.href = URL.createObjectURL(blob);
+    aTag.download = `backup_${Date.now()}.json`;
+    aTag.click();
   }
-
-  // Statistics load only after the authenticated dashboard is revealed.
 </script>
-</div><!-- /#adminApp -->
 
 <script>
-  // Supabase Auth controls visibility. The dashboard stays hidden unless a valid session exists.
   (function () {
     const gate = document.getElementById('loginGate');
     const app = document.getElementById('adminApp');
     const form = document.getElementById('adminLoginForm');
     const errorBox = document.getElementById('loginError');
-    const submitBtn = document.getElementById('adminLoginSubmit');
 
-    function showLogin(message) {
+    function showLogin(msg) {
       app.hidden = true;
       gate.hidden = false;
-      if (message) {
-        errorBox.textContent = message;
-        errorBox.style.display = 'block';
-      }
+      if (msg) { errorBox.textContent = msg; errorBox.style.display = 'block'; }
     }
 
     function showDashboard() {
@@ -1312,66 +787,38 @@ input[type="file"].form-control { padding:10px !important; }
       if (typeof updateStats === 'function') updateStats();
     }
 
-    async function initialiseAuth() {
+    async function initAuth() {
       try {
-        if (!window.ADMIN_CONFIG || !window.ADMIN_CONFIG.supabaseUrl || !window.ADMIN_CONFIG.supabaseAnonKey || !window.supabase) {
-          showLogin('Admin configuration could not be loaded. Check admin-config.js and try again.');
-          return;
-        }
         const client = getClient();
-        const { data, error } = await client.auth.getSession();
-        if (error) throw error;
-        if (data && data.session && data.session.user) showDashboard();
+        const { data } = await client.auth.getSession();
+        if (data && data.session) showDashboard();
         else showLogin();
-        client.auth.onAuthStateChange((_event, session) => {
-          if (session && session.user) showDashboard();
+        client.auth.onAuthStateChange((_, session) => {
+          if (session) showDashboard();
           else showLogin();
         });
-      } catch (err) {
-        showLogin('Unable to verify your session. Please sign in again.');
-        console.error('Admin auth initialisation error:', err);
-      }
+      } catch (err) { showLogin('Session check failed.'); }
     }
 
-    form.addEventListener('submit', async function (event) {
-      event.preventDefault();
-      errorBox.style.display = 'none';
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'VERIFYING ACCESS…';
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
       try {
         const email = document.getElementById('adminLoginEmail').value.trim();
         const password = document.getElementById('adminLoginPassword').value;
-        const client = getClient();
-        const { data, error } = await client.auth.signInWithPassword({ email, password });
+        const { error } = await getClient().auth.signInWithPassword({ email, password });
         if (error) throw error;
-        if (!data || !data.session) throw new Error('Sign-in was not completed. Please try again.');
-        form.reset();
         showDashboard();
-      } catch (err) {
-        showLogin('Sign-in failed. Check your email and password, or create/confirm the admin user in Supabase Authentication.');
-        console.error('Admin sign-in error:', err);
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'SIGN IN SECURELY&nbsp; →';
-      }
+      } catch (err) { showLogin('Sign-in failed. Check credentials.'); }
     });
 
-    document.getElementById('logoutBtn').addEventListener('click', async function () {
-      try {
-        const { error } = await getClient().auth.signOut();
-        if (error) throw error;
-        showLogin();
-      } catch (err) {
-        alert('Sign out failed. Please refresh the page and try again.');
-        console.error('Admin sign-out error:', err);
-      }
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await getClient().auth.signOut();
+      showLogin();
     });
 
-    // Hide editing UI immediately; auth check decides what becomes visible.
-    showLogin();
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialiseAuth);
-    else initialiseAuth();
+    initAuth();
   })();
 </script>
+</div>
 </body>
 </html>
