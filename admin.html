@@ -117,18 +117,22 @@
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 12px;
+      gap: 14px;
       margin-bottom: 32px;
     }
 
     @media(max-width: 1100px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
-    @media(max-width: 700px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 
     .stat-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 14px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 6px 20px rgba(71, 33, 39, 0.04);
       position: relative;
       overflow: hidden;
     }
@@ -140,12 +144,12 @@
       background: var(--gold);
     }
 
-    .stat-info span { display: block; font-size: 9px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
-    .stat-info strong { font-size: 18px; font-family: var(--serif); color: var(--wine); }
+    .stat-info span { display: block; font-size: 10px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
+    .stat-info strong { font-size: 20px; font-family: var(--serif); color: var(--wine); }
 
     .nav-tabs {
       display: flex;
-      gap: 6px;
+      gap: 8px;
       margin-bottom: 30px;
       background: #ece1cc;
       padding: 6px;
@@ -156,7 +160,7 @@
 
     .tab-btn {
       flex: 1;
-      padding: 12px 10px;
+      padding: 12px 14px;
       background: transparent;
       border: none;
       color: var(--text-muted);
@@ -166,6 +170,8 @@
       cursor: pointer;
       white-space: nowrap;
     }
+
+    .tab-btn:hover { color: var(--wine); background: rgba(255, 255, 255, 0.6); }
 
     .tab-btn.active {
       background: var(--wine);
@@ -185,13 +191,21 @@
       box-shadow: 0 15px 35px rgba(48, 21, 27, 0.06);
     }
 
-    .panel.active { display: block; }
+    .panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     .panel-title {
       font-family: var(--serif);
       color: var(--wine);
       font-size: 22px;
       margin: 0 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 14px;
     }
@@ -231,9 +245,10 @@
     .form-control:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 4px var(--gold-glow);
+      background: #fff;
     }
 
-    textarea.form-control { min-height: 120px; resize: vertical; }
+    textarea.form-control { min-height: 130px; resize: vertical; line-height: 1.7; }
     textarea.urdu-input { font-family: var(--urdu); font-size: 20px; direction: rtl; line-height: 2.3; }
 
     .btn-group { display: flex; gap: 14px; margin-top: 15px; }
@@ -289,6 +304,24 @@
     .action-btn { padding: 7px 14px; font-size: 11px; border-radius: 4px; border: none; cursor: pointer; font-weight: 700; }
     .action-edit { background: var(--gold); color: #fff; margin-right: 8px; }
     .action-delete { background: var(--danger); color: #fff; }
+
+    /* SIGNATURE EDITION UI */
+    :root {
+      --bg-main: #16090e !important;
+      --bg-paper: #f5f0e7 !important;
+      --bg-card: #fffdf8 !important;
+      --bg-input: #fffefa !important;
+      --wine: #4b1426 !important;
+      --wine-dark: #200a12 !important;
+      --gold: #c9a45b !important;
+      --gold-light: #f7ecd3 !important;
+      --gold-dark: #947039 !important;
+      --gold-glow: rgba(201,164,91,.19) !important;
+      --text-ink: #26171c !important;
+      --text-muted: #85747a !important;
+      --border-color: #e8ddcc !important;
+      --border-accent: #c9a45b !important;
+    }
 
     #loginGate[hidden], #adminApp[hidden] { display:none !important; }
     #loginGate { min-height:100vh; display:grid; place-items:center; padding:28px 16px; background:#170e13; color:#f7efe4; }
@@ -388,40 +421,52 @@
       <div class="form-group"><label>Urdu Text</label><textarea id="poetryUrdu" class="form-control urdu-input"></textarea></div>
       <div class="form-group"><label>Hindi Text</label><textarea id="poetryHindi" class="form-control"></textarea></div>
       <div class="form-group"><label>Roman Text</label><textarea id="poetryRoman" class="form-control"></textarea></div>
-      <div class="btn-group"><button type="submit" class="btn-primary">Save Poetry</button></div>
+      <div class="btn-group">
+        <button type="submit" id="poetrySaveBtn" class="btn-primary">Save Poetry</button>
+        <button type="button" class="btn-secondary" onclick="resetPoetryForm()">Reset</button>
+      </div>
     </form>
   </div>
 
   <!-- Sher Panel -->
   <div id="sherPanel" class="panel">
-    <div class="panel-title">Publish / Edit Couplets (Sher)</div>
+    <div class="panel-title"><span id="sherFormTitle">Publish / Edit Couplets (Sher)</span></div>
     <form id="sherForm">
       <div class="form-group"><label>Category</label><input type="text" id="sherCategory" class="form-control"></div>
       <div class="form-group"><label>Urdu</label><textarea id="sherUrdu" class="form-control urdu-input"></textarea></div>
       <div class="form-group"><label>Hindi</label><textarea id="sherHindi" class="form-control"></textarea></div>
       <div class="form-group"><label>Roman</label><textarea id="sherRoman" class="form-control"></textarea></div>
-      <div class="btn-group"><button type="submit" class="btn-primary">Save Sher</button></div>
+      <div class="btn-group">
+        <button type="submit" id="sherSaveBtn" class="btn-primary">Save Sher</button>
+        <button type="button" class="btn-secondary" onclick="resetSherForm()">Reset</button>
+      </div>
     </form>
   </div>
 
   <!-- Sufi Saints Panel -->
   <div id="sufiPanel" class="panel">
-    <div class="panel-title">Manage Sufi Saints</div>
+    <div class="panel-title"><span id="sufiFormTitle">Manage Sufi Saints</span></div>
     <form id="sufiForm">
       <div class="form-group"><label>Saint Name *</label><input type="text" id="saintName" class="form-control" required></div>
       <div class="form-group"><label>Location</label><input type="text" id="shrineLocation" class="form-control"></div>
       <div class="form-group"><label>Description</label><textarea id="saintDesc" class="form-control"></textarea></div>
-      <div class="btn-group"><button type="submit" class="btn-primary">Save Saint</button></div>
+      <div class="btn-group">
+        <button type="submit" id="sufiSaveBtn" class="btn-primary">Save Saint</button>
+        <button type="button" class="btn-secondary" onclick="resetSufiForm()">Reset</button>
+      </div>
     </form>
   </div>
 
   <!-- History Panel -->
   <div id="sheikhpuraPanel" class="panel">
-    <div class="panel-title">Manage Sheikhpura History</div>
+    <div class="panel-title"><span id="skFormTitle">Manage Sheikhpura History</span></div>
     <form id="sheikhpuraForm">
       <div class="form-group"><label>Title *</label><input type="text" id="skTitle" class="form-control" required></div>
       <div class="form-group"><label>Content</label><textarea id="skContent" class="form-control"></textarea></div>
-      <div class="btn-group"><button type="submit" class="btn-primary">Save History</button></div>
+      <div class="btn-group">
+        <button type="submit" id="skSaveBtn" class="btn-primary">Save History</button>
+        <button type="button" class="btn-secondary" onclick="resetSheikhpuraForm()">Reset</button>
+      </div>
     </form>
   </div>
 
@@ -449,7 +494,10 @@
         <div class="form-group"><label>Or Image URL</label><input type="url" id="awardUrl" class="form-control"></div>
       </div>
       <div class="form-group"><label>Certificate Link (Optional)</label><input type="url" id="awardCertUrl" class="form-control"></div>
-      <div class="btn-group"><button type="submit" id="awardSaveBtn" class="btn-primary">Save Award Record</button></div>
+      <div class="btn-group">
+        <button type="submit" id="awardSaveBtn" class="btn-primary">Save Award Record</button>
+        <button type="button" class="btn-secondary" onclick="resetAwardsForm()">Reset</button>
+      </div>
     </form>
   </div>
 
@@ -481,24 +529,30 @@
         <div class="form-group"><label>External Link</label><input type="url" id="bookLink" class="form-control"></div>
         <div class="form-group"><label>Search Keywords</label><input type="text" id="bookSearch" class="form-control"></div>
       </div>
-      <div class="btn-group"><button type="submit" id="bookSaveBtn" class="btn-primary">Save Publication Record</button></div>
+      <div class="btn-group">
+        <button type="submit" id="bookSaveBtn" class="btn-primary">Save Publication Record</button>
+        <button type="button" class="btn-secondary" onclick="resetBooksForm()">Reset</button>
+      </div>
     </form>
   </div>
 
   <!-- Gallery Panel -->
   <div id="galleryPanel" class="panel">
-    <div class="panel-title">Upload Gallery Media</div>
+    <div class="panel-title"><span id="galleryFormTitle">Upload & Manage Gallery Media</span></div>
     <form id="galleryForm">
       <div class="form-group"><label>Caption *</label><input type="text" id="galCaption" class="form-control" required></div>
       <div class="form-group"><label>Select Photo File</label><input type="file" id="galFile" class="form-control" accept="image/*"></div>
       <div class="form-group"><label>Or URL</label><input type="url" id="galUrl" class="form-control"></div>
-      <div class="btn-group"><button type="submit" class="btn-primary">Upload & Save Media</button></div>
+      <div class="btn-group">
+        <button type="submit" id="galSaveBtn" class="btn-primary">Upload & Save Media</button>
+        <button type="button" class="btn-secondary" onclick="resetGalleryForm()">Reset</button>
+      </div>
     </form>
   </div>
 
   <!-- Archive Panel -->
   <div id="archivePanel" class="panel">
-    <div class="panel-title">Database Records Archive</div>
+    <div class="panel-title"><span>Database Records Archive</span></div>
 
     <h4 style="color:var(--wine); margin:20px 0 10px;">Awards Records</h4>
     <div id="awardsArchiveList" class="archive-list">Loading...</div>
@@ -508,6 +562,15 @@
 
     <h4 style="color:var(--wine); margin:20px 0 10px;">Poetry Records</h4>
     <div id="poetryArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Sher Records</h4>
+    <div id="sherArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Sufi Saints Records</h4>
+    <div id="sufiArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">History Records</h4>
+    <div id="sheikhpuraArchiveList" class="archive-list">Loading...</div>
 
     <h4 style="color:var(--wine); margin:20px 0 10px;">Gallery Media Records</h4>
     <div id="galleryArchiveList" class="archive-list">Loading...</div>
@@ -564,11 +627,33 @@
     const client = getClient();
     const res = editingPoetryId ? await client.from('poetry').update(data).eq('id', editingPoetryId) : await client.from('poetry').insert([data]);
     if (res.error) { alert("Error: " + res.error.message); return; }
-    alert("Poetry Saved Successfully!");
-    document.getElementById('poetryForm').reset();
-    editingPoetryId = null;
+    alert(editingPoetryId ? "Poetry Updated!" : "Poetry Saved Successfully!");
+    resetPoetryForm();
     updateStats();
   });
+
+  async function editPoetry(id) {
+    const client = getClient();
+    const { data } = await client.from('poetry').select('*').eq('id', id).single();
+    if (!data) return;
+    editingPoetryId = id;
+    document.getElementById('poetryFormTitle').textContent = "Editing Poetry: " + data.title;
+    document.getElementById('poetryTitle').value = data.title || '';
+    document.getElementById('poetryType').value = data.type || 'Ghazal';
+    document.getElementById('poetryBeher').value = data.notes || '';
+    document.getElementById('poetryUrdu').value = data.urdu_text || '';
+    document.getElementById('poetryHindi').value = data.hindi_text || '';
+    document.getElementById('poetryRoman').value = data.roman_text || '';
+    document.getElementById('poetrySaveBtn').textContent = "Update Poetry Record";
+    switchPanel('poetryPanel', document.querySelectorAll('.tab-btn')[0]);
+  }
+
+  function resetPoetryForm() {
+    document.getElementById('poetryForm').reset();
+    editingPoetryId = null;
+    document.getElementById('poetryFormTitle').textContent = "Publish / Edit Poetry";
+    document.getElementById('poetrySaveBtn').textContent = "Save Poetry";
+  }
 
   // Sher Form
   document.getElementById('sherForm').addEventListener('submit', async function(e) {
@@ -577,11 +662,31 @@
     const client = getClient();
     const res = editingSherId ? await client.from('sher').update(data).eq('id', editingSherId) : await client.from('sher').insert([data]);
     if (res.error) { alert("Error: " + res.error.message); return; }
-    alert("Sher Saved Successfully!");
-    document.getElementById('sherForm').reset();
-    editingSherId = null;
+    alert(editingSherId ? "Sher Updated!" : "Sher Saved Successfully!");
+    resetSherForm();
     updateStats();
   });
+
+  async function editSher(id) {
+    const client = getClient();
+    const { data } = await client.from('sher').select('*').eq('id', id).single();
+    if (!data) return;
+    editingSherId = id;
+    document.getElementById('sherFormTitle').textContent = "Editing Sher #" + id;
+    document.getElementById('sherCategory').value = data.category || '';
+    document.getElementById('sherUrdu').value = data.sher_urdu || '';
+    document.getElementById('sherHindi').value = data.sher_hindi || '';
+    document.getElementById('sherRoman').value = data.sher_roman || '';
+    document.getElementById('sherSaveBtn').textContent = "Update Sher Record";
+    switchPanel('sherPanel', document.querySelectorAll('.tab-btn')[1]);
+  }
+
+  function resetSherForm() {
+    document.getElementById('sherForm').reset();
+    editingSherId = null;
+    document.getElementById('sherFormTitle').textContent = "Publish / Edit Couplets (Sher)";
+    document.getElementById('sherSaveBtn').textContent = "Save Sher";
+  }
 
   // Sufi Saints Form
   document.getElementById('sufiForm').addEventListener('submit', async function(e) {
@@ -590,11 +695,30 @@
     const client = getClient();
     const res = editingSufiId ? await client.from('sufi_saints').update(data).eq('id', editingSufiId) : await client.from('sufi_saints').insert([data]);
     if (res.error) { alert("Error: " + res.error.message); return; }
-    alert("Saint Saved Successfully!");
-    document.getElementById('sufiForm').reset();
-    editingSufiId = null;
+    alert(editingSufiId ? "Saint Updated!" : "Saint Saved Successfully!");
+    resetSufiForm();
     updateStats();
   });
+
+  async function editSufi(id) {
+    const client = getClient();
+    const { data } = await client.from('sufi_saints').select('*').eq('id', id).single();
+    if (!data) return;
+    editingSufiId = id;
+    document.getElementById('sufiFormTitle').textContent = "Editing Saint: " + data.saint_name;
+    document.getElementById('saintName').value = data.saint_name || '';
+    document.getElementById('shrineLocation').value = data.shrine_location || '';
+    document.getElementById('saintDesc').value = data.roman_desc || '';
+    document.getElementById('sufiSaveBtn').textContent = "Update Saint Record";
+    switchPanel('sufiPanel', document.querySelectorAll('.tab-btn')[2]);
+  }
+
+  function resetSufiForm() {
+    document.getElementById('sufiForm').reset();
+    editingSufiId = null;
+    document.getElementById('sufiFormTitle').textContent = "Manage Sufi Saints";
+    document.getElementById('sufiSaveBtn').textContent = "Save Saint";
+  }
 
   // Sheikhpura History Form
   document.getElementById('sheikhpuraForm').addEventListener('submit', async function(e) {
@@ -603,13 +727,31 @@
     const client = getClient();
     const res = editingSheikhpuraId ? await client.from('sheikhpura_history').update(data).eq('id', editingSheikhpuraId) : await client.from('sheikhpura_history').insert([data]);
     if (res.error) { alert("Error: " + res.error.message); return; }
-    alert("History Saved Successfully!");
-    document.getElementById('sheikhpuraForm').reset();
-    editingSheikhpuraId = null;
+    alert(editingSheikhpuraId ? "History Updated!" : "History Saved Successfully!");
+    resetSheikhpuraForm();
     updateStats();
   });
 
-  // Awards Form with File Upload
+  async function editSheikhpura(id) {
+    const client = getClient();
+    const { data } = await client.from('sheikhpura_history').select('*').eq('id', id).single();
+    if (!data) return;
+    editingSheikhpuraId = id;
+    document.getElementById('skFormTitle').textContent = "Editing History: " + data.title;
+    document.getElementById('skTitle').value = data.title || '';
+    document.getElementById('skContent').value = data.content_text || '';
+    document.getElementById('skSaveBtn').textContent = "Update History Record";
+    switchPanel('sheikhpuraPanel', document.querySelectorAll('.tab-btn')[3]);
+  }
+
+  function resetSheikhpuraForm() {
+    document.getElementById('sheikhpuraForm').reset();
+    editingSheikhpuraId = null;
+    document.getElementById('skFormTitle').textContent = "Manage Sheikhpura History";
+    document.getElementById('skSaveBtn').textContent = "Save History";
+  }
+
+  // Awards Form
   document.getElementById('awardsForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     try {
@@ -638,14 +780,37 @@
 
       const res = editingAwardId ? await client.from('awards').update(data).eq('id', editingAwardId) : await client.from('awards').insert([data]);
       if (res.error) throw res.error;
-      alert("Award Record Saved Successfully!");
-      document.getElementById('awardsForm').reset();
-      editingAwardId = null;
+      alert(editingAwardId ? "Award Updated!" : "Award Record Saved Successfully!");
+      resetAwardsForm();
       updateStats();
     } catch(err) { alert("Error: " + err.message); }
   });
 
-  // Books Form with File Upload
+  async function editAward(id) {
+    const client = getClient();
+    const { data } = await client.from('awards').select('*').eq('id', id).single();
+    if (!data) return;
+    editingAwardId = id;
+    document.getElementById('awardsFormTitle').textContent = "Editing Award: " + data.title;
+    document.getElementById('awardTitle').value = data.title || '';
+    document.getElementById('awardOrg').value = data.organization || '';
+    document.getElementById('awardYear').value = data.award_year || '';
+    document.getElementById('awardCategory').value = data.category || 'Literary';
+    document.getElementById('awardDesc').value = data.description || '';
+    document.getElementById('awardUrl').value = data.image_url || '';
+    document.getElementById('awardCertUrl').value = data.certificate_url || '';
+    document.getElementById('awardSaveBtn').textContent = "Update Award Record";
+    switchPanel('awardsPanel', document.querySelectorAll('.tab-btn')[4]);
+  }
+
+  function resetAwardsForm() {
+    document.getElementById('awardsForm').reset();
+    editingAwardId = null;
+    document.getElementById('awardsFormTitle').textContent = "Manage Awards & Honours";
+    document.getElementById('awardSaveBtn').textContent = "Save Award Record";
+  }
+
+  // Books Form
   document.getElementById('booksForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     try {
@@ -675,14 +840,38 @@
 
       const res = editingBookId ? await client.from('books_articles').update(data).eq('id', editingBookId) : await client.from('books_articles').insert([data]);
       if (res.error) throw res.error;
-      alert("Publication Record Saved Successfully!");
-      document.getElementById('booksForm').reset();
-      editingBookId = null;
+      alert(editingBookId ? "Publication Updated!" : "Publication Record Saved Successfully!");
+      resetBooksForm();
       updateStats();
     } catch(err) { alert("Error: " + err.message); }
   });
 
-  // Gallery Form with File Upload
+  async function editBook(id) {
+    const client = getClient();
+    const { data } = await client.from('books_articles').select('*').eq('id', id).single();
+    if (!data) return;
+    editingBookId = id;
+    document.getElementById('booksFormTitle').textContent = "Editing Publication: " + data.title;
+    document.getElementById('bookTitle').value = data.title || '';
+    document.getElementById('bookCategory').value = data.category || 'book';
+    document.getElementById('bookPublisher').value = data.publisher || '';
+    document.getElementById('bookYear').value = data.pub_year || '';
+    document.getElementById('bookDesc').value = data.description || '';
+    document.getElementById('bookUrl').value = data.cover_image_url || '';
+    document.getElementById('bookLink').value = data.external_link || '';
+    document.getElementById('bookSearch').value = data.search_keywords || '';
+    document.getElementById('bookSaveBtn').textContent = "Update Publication Record";
+    switchPanel('booksPanel', document.querySelectorAll('.tab-btn')[5]);
+  }
+
+  function resetBooksForm() {
+    document.getElementById('booksForm').reset();
+    editingBookId = null;
+    document.getElementById('booksFormTitle').textContent = "Manage Books, Research & Articles";
+    document.getElementById('bookSaveBtn').textContent = "Save Publication Record";
+  }
+
+  // Gallery Form
   document.getElementById('galleryForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     try {
@@ -702,13 +891,32 @@
       const data = { caption: document.getElementById('galCaption').value.trim(), image_url: imageUrl };
       const res = editingGalleryId ? await client.from('gallery_media').update(data).eq('id', editingGalleryId) : await client.from('gallery_media').insert([data]);
       if (res.error) throw res.error;
-      alert("Gallery Media Saved Successfully!");
-      document.getElementById('galleryForm').reset();
-      editingGalleryId = null;
+      alert(editingGalleryId ? "Gallery Media Updated!" : "Gallery Media Saved Successfully!");
+      resetGalleryForm();
       updateStats();
     } catch(err) { alert("Error: " + err.message); }
   });
 
+  async function editGallery(id) {
+    const client = getClient();
+    const { data } = await client.from('gallery_media').select('*').eq('id', id).single();
+    if (!data) return;
+    editingGalleryId = id;
+    document.getElementById('galleryFormTitle').textContent = "Editing Media: " + data.caption;
+    document.getElementById('galCaption').value = data.caption || '';
+    document.getElementById('galUrl').value = data.image_url || '';
+    document.getElementById('galSaveBtn').textContent = "Update Media Record";
+    switchPanel('galleryPanel', document.querySelectorAll('.tab-btn')[6]);
+  }
+
+  function resetGalleryForm() {
+    document.getElementById('galleryForm').reset();
+    editingGalleryId = null;
+    document.getElementById('galleryFormTitle').textContent = "Upload & Manage Gallery Media";
+    document.getElementById('galSaveBtn').textContent = "Upload & Save Media";
+  }
+
+  // Load Archives
   async function loadArchives() {
     const client = getClient();
 
@@ -716,7 +924,10 @@
     document.getElementById('awardsArchiveList').innerHTML = (!aData || !aData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : aData.map(i => `
       <div class="archive-card">
         <div><div class="archive-title">${escapeHTML(i.title)} (${escapeHTML(i.award_year)})</div><div class="archive-meta">By: ${escapeHTML(i.organization)}</div></div>
-        <div><button class="action-btn action-delete" onclick="deleteRecord('awards', ${i.id})">Delete</button></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editAward(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('awards', ${i.id})">Delete</button>
+        </div>
       </div>
     `).join('');
 
@@ -724,7 +935,10 @@
     document.getElementById('booksArchiveList').innerHTML = (!bData || !bData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : bData.map(i => `
       <div class="archive-card">
         <div><div class="archive-title">${escapeHTML(i.title)}</div><div class="archive-meta">Category: ${escapeHTML(i.category)}</div></div>
-        <div><button class="action-btn action-delete" onclick="deleteRecord('books_articles', ${i.id})">Delete</button></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editBook(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('books_articles', ${i.id})">Delete</button>
+        </div>
       </div>
     `).join('');
 
@@ -732,7 +946,43 @@
     document.getElementById('poetryArchiveList').innerHTML = (!pData || !pData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : pData.map(i => `
       <div class="archive-card">
         <div><div class="archive-title">${escapeHTML(i.title)}</div></div>
-        <div><button class="action-btn action-delete" onclick="deleteRecord('poetry', ${i.id})">Delete</button></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editPoetry(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('poetry', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
+    const { data: sData } = await client.from('sher').select('*').order('id', { ascending: false });
+    document.getElementById('sherArchiveList').innerHTML = (!sData || !sData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : sData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML((i.sher_roman || i.sher_urdu || 'Couplet').slice(0, 35))}...</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editSher(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('sher', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
+    const { data: sfData } = await client.from('sufi_saints').select('*').order('id', { ascending: false });
+    document.getElementById('sufiArchiveList').innerHTML = (!sfData || !sfData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : sfData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.saint_name)}</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editSufi(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('sufi_saints', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
+    const { data: skData } = await client.from('sheikhpura_history').select('*').order('id', { ascending: false });
+    document.getElementById('sheikhpuraArchiveList').innerHTML = (!skData || !skData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : skData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.title)}</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editSheikhpura(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('sheikhpura_history', ${i.id})">Delete</button>
+        </div>
       </div>
     `).join('');
 
@@ -740,7 +990,10 @@
     document.getElementById('galleryArchiveList').innerHTML = (!gData || !gData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : gData.map(i => `
       <div class="archive-card">
         <div><div class="archive-title">${escapeHTML(i.caption)}</div></div>
-        <div><button class="action-btn action-delete" onclick="deleteRecord('gallery_media', ${i.id})">Delete</button></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editGallery(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('gallery_media', ${i.id})">Delete</button>
+        </div>
       </div>
     `).join('');
   }
