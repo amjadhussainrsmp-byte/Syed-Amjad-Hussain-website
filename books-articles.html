@@ -2471,6 +2471,71 @@
     if (yearElement) yearElement.textContent = new Date().getFullYear();
   </script>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin-config.js"></script>
+
+<script>
+  async function appendAdminPublications() {
+    try {
+      const client = supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
+      
+      const { data, error } = await client
+        .from('books_articles')
+        .select('*')
+        .order('id', { ascending: false });
+
+      if (error || !data || data.length === 0) return;
+
+      const grid = document.getElementById('publicationGrid');
+      if (!grid) return;
+
+      // Naye items ki HTML generate karein
+      const dynamicHTML = data.map(item => `
+        <article
+          class="publication-card"
+          data-category="${item.category || 'book'}"
+          data-search="${item.search_keywords || item.title}">
+
+          <div class="card-visual">
+            <img
+              class="publication-cover-image"
+              src="${item.cover_image_url || 'https://mlclxpjceapirkdrewdv.supabase.co/storage/v1/object/public/gallery/The%20Eternals%20of%20Bihar.webp'}"
+              alt="Cover of ${item.title}"
+              loading="lazy">
+          </div>
+
+          <div class="card-content">
+            <span class="card-category">${item.category.toUpperCase()}</span>
+            <h3>${item.title}</h3>
+            <p>${item.description || ''}</p>
+            <div class="card-bottom">
+              <span class="card-type">${item.publisher || 'Published Work'}</span>
+              <a class="text-link" href="${item.external_link || 'contact.html'}">
+                View <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      // Purane static cards ke sath naye cards ko jod dein (prepend ya append)
+      grid.insertAdjacentHTML('beforeend', dynamicHTML);
+
+      // Agar page par filter/search function hai toh use update kar dein
+      if (typeof filterPublications === 'function') {
+        // publicationCards list ko dobara refresh karein agar zaroori ho
+        window.publicationCards = Array.from(document.querySelectorAll(".publication-card"));
+        filterPublications();
+      }
+    } catch(err) {
+      console.error("Error appending admin publications:", err);
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', appendAdminPublications);
+</script>
+  
+
 </body>
 </html>
 
