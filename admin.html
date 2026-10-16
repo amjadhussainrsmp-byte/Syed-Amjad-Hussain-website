@@ -383,7 +383,7 @@
 <div class="container">
 
   <!-- Overview Stats Bar -->
-  <div class="stats-grid">
+  <div class="stats-grid" style="grid-template-columns: repeat(8, 1fr);">
     <div class="stat-card"><div class="stat-info"><span>Poetry</span><strong id="statPoetry">--</strong></div></div>
     <div class="stat-card"><div class="stat-info"><span>Sher</span><strong id="statSher">--</strong></div></div>
     <div class="stat-card"><div class="stat-info"><span>Saints</span><strong id="statSaints">--</strong></div></div>
@@ -391,6 +391,7 @@
     <div class="stat-card"><div class="stat-info"><span>Awards</span><strong id="statAwards">--</strong></div></div>
     <div class="stat-card"><div class="stat-info"><span>Books</span><strong id="statBooks">--</strong></div></div>
     <div class="stat-card"><div class="stat-info"><span>Gallery</span><strong id="statGallery">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Directory</span><strong id="statDirectory">--</strong></div></div>
   </div>
 
   <!-- Navigation Tabs -->
@@ -398,6 +399,7 @@
     <button class="tab-btn active" onclick="switchPanel('poetryPanel', this)">Poetry</button>
     <button class="tab-btn" onclick="switchPanel('sherPanel', this)">Sher</button>
     <button class="tab-btn" onclick="switchPanel('sufiPanel', this)">Saints</button>
+    <button class="tab-btn" onclick="switchPanel('directoryPanel', this)">Directory</button>
     <button class="tab-btn" onclick="switchPanel('sheikhpuraPanel', this)">History</button>
     <button class="tab-btn" onclick="switchPanel('awardsPanel', this)">Awards</button>
     <button class="tab-btn" onclick="switchPanel('booksPanel', this)">Books</button>
@@ -453,6 +455,37 @@
       <div class="btn-group">
         <button type="submit" id="sufiSaveBtn" class="btn-primary">Save Saint</button>
         <button type="button" class="btn-secondary" onclick="resetSufiForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- New Directory Panel (Khanqahs & Dargahs of Bihar) -->
+  <div id="directoryPanel" class="panel">
+    <div class="panel-title"><span id="dirFormTitle">Manage Khanqahs & Dargahs of Bihar Directory</span></div>
+    <form id="directoryForm">
+      <div class="form-row">
+        <div class="form-group"><label>Shrine / Institution Name *</label><input type="text" id="dirName" class="form-control" required placeholder="e.g. Khanqah Maner Sharif"></div>
+        <div class="form-group"><label>District *</label><input type="text" id="dirDistrict" class="form-control" required placeholder="e.g. Patna"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Location / Town *</label><input type="text" id="dirLocation" class="form-control" required placeholder="e.g. Maner"></div>
+        <div class="form-group"><label>Site Type *</label>
+          <select id="dirType" class="form-control">
+            <option value="Khanqah">Khanqah</option>
+            <option value="Dargah">Dargah / Mazar</option>
+            <option value="Combined">Khanqah & Dargah</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Associated Saint / Figure</label><input type="text" id="dirSaint" class="form-control" placeholder="e.g. Hazrat Makhdoom..."></div>
+        <div class="form-group"><label>Silsila (Lineage)</label><input type="text" id="dirSilsila" class="form-control" placeholder="e.g. Suhrawardiyya"></div>
+      </div>
+      <div class="form-group"><label>Description Note *</label><textarea id="dirNote" class="form-control" required placeholder="Detailed historical note..."></textarea></div>
+      <div class="form-group"><label>Reference Source URL</label><input type="url" id="dirSource" class="form-control" placeholder="https://..."></div>
+      <div class="btn-group">
+        <button type="submit" id="dirSaveBtn" class="btn-primary">Save Directory Record</button>
+        <button type="button" class="btn-secondary" onclick="resetDirectoryForm()">Reset</button>
       </div>
     </form>
   </div>
@@ -569,6 +602,9 @@
     <h4 style="color:var(--wine); margin:20px 0 10px;">Sufi Saints Records</h4>
     <div id="sufiArchiveList" class="archive-list">Loading...</div>
 
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Directory Records (Khanqahs & Dargahs)</h4>
+    <div id="directoryArchiveList" class="archive-list">Loading...</div>
+
     <h4 style="color:var(--wine); margin:20px 0 10px;">History Records</h4>
     <div id="sheikhpuraArchiveList" class="archive-list">Loading...</div>
 
@@ -579,7 +615,7 @@
 </div>
 
 <script>
-  let editingPoetryId = null, editingSherId = null, editingSufiId = null, editingSheikhpuraId = null, editingGalleryId = null, editingAwardId = null, editingBookId = null;
+  let editingPoetryId = null, editingSherId = null, editingSufiId = null, editingDirectoryId = null, editingSheikhpuraId = null, editingGalleryId = null, editingAwardId = null, editingBookId = null;
 
   function getClient() {
     if (!window.__adminSupabaseClient) {
@@ -605,6 +641,7 @@
       const { count: pCount } = await client.from('poetry').select('*', { count: 'exact', head: true });
       const { count: sCount } = await client.from('sher').select('*', { count: 'exact', head: true });
       const { count: sfCount } = await client.from('sufi_saints').select('*', { count: 'exact', head: true });
+      const { count: dCount } = await client.from('bihar_directory').select('*', { count: 'exact', head: true });
       const { count: skCount } = await client.from('sheikhpura_history').select('*', { count: 'exact', head: true });
       const { count: aCount } = await client.from('awards').select('*', { count: 'exact', head: true });
       const { count: bCount } = await client.from('books_articles').select('*', { count: 'exact', head: true });
@@ -613,6 +650,7 @@
       document.getElementById('statPoetry').textContent = pCount || 0;
       document.getElementById('statSher').textContent = sCount || 0;
       document.getElementById('statSaints').textContent = sfCount || 0;
+      document.getElementById('statDirectory').textContent = dCount || 0;
       document.getElementById('statSheikhpura').textContent = skCount || 0;
       document.getElementById('statAwards').textContent = aCount || 0;
       document.getElementById('statBooks').textContent = bCount || 0;
@@ -720,6 +758,52 @@
     document.getElementById('sufiSaveBtn').textContent = "Save Saint";
   }
 
+  // Directory Form (Khanqahs & Dargahs of Bihar)
+  document.getElementById('directoryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById('dirName').value.trim(),
+      district: document.getElementById('dirDistrict').value.trim(),
+      location: document.getElementById('dirLocation').value.trim(),
+      type: document.getElementById('dirType').value,
+      saint: document.getElementById('dirSaint').value.trim(),
+      silsila: document.getElementById('dirSilsila').value.trim(),
+      note: document.getElementById('dirNote').value.trim(),
+      source: document.getElementById('dirSource').value.trim()
+    };
+    const client = getClient();
+    const res = editingDirectoryId ? await client.from('bihar_directory').update(data).eq('id', editingDirectoryId) : await client.from('bihar_directory').insert([data]);
+    if (res.error) { alert("Error: " + res.error.message); return; }
+    alert(editingDirectoryId ? "Directory Entry Updated!" : "Directory Entry Saved Successfully!");
+    resetDirectoryForm();
+    updateStats();
+  });
+
+  async function editDirectory(id) {
+    const client = getClient();
+    const { data } = await client.from('bihar_directory').select('*').eq('id', id).single();
+    if (!data) return;
+    editingDirectoryId = id;
+    document.getElementById('dirFormTitle').textContent = "Editing Directory Entry: " + data.name;
+    document.getElementById('dirName').value = data.name || '';
+    document.getElementById('dirDistrict').value = data.district || '';
+    document.getElementById('dirLocation').value = data.location || '';
+    document.getElementById('dirType').value = data.type || 'Khanqah';
+    document.getElementById('dirSaint').value = data.saint || '';
+    document.getElementById('dirSilsila').value = data.silsila || '';
+    document.getElementById('dirNote').value = data.note || '';
+    document.getElementById('dirSource').value = data.source || '';
+    document.getElementById('dirSaveBtn').textContent = "Update Directory Record";
+    switchPanel('directoryPanel', document.querySelectorAll('.tab-btn')[3]);
+  }
+
+  function resetDirectoryForm() {
+    document.getElementById('directoryForm').reset();
+    editingDirectoryId = null;
+    document.getElementById('dirFormTitle').textContent = "Manage Khanqahs & Dargahs of Bihar Directory";
+    document.getElementById('dirSaveBtn').textContent = "Save Directory Record";
+  }
+
   // Sheikhpura History Form
   document.getElementById('sheikhpuraForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -741,7 +825,7 @@
     document.getElementById('skTitle').value = data.title || '';
     document.getElementById('skContent').value = data.content_text || '';
     document.getElementById('skSaveBtn').textContent = "Update History Record";
-    switchPanel('sheikhpuraPanel', document.querySelectorAll('.tab-btn')[3]);
+    switchPanel('sheikhpuraPanel', document.querySelectorAll('.tab-btn')[4]);
   }
 
   function resetSheikhpuraForm() {
@@ -800,7 +884,7 @@
     document.getElementById('awardUrl').value = data.image_url || '';
     document.getElementById('awardCertUrl').value = data.certificate_url || '';
     document.getElementById('awardSaveBtn').textContent = "Update Award Record";
-    switchPanel('awardsPanel', document.querySelectorAll('.tab-btn')[4]);
+    switchPanel('awardsPanel', document.querySelectorAll('.tab-btn')[5]);
   }
 
   function resetAwardsForm() {
@@ -861,7 +945,7 @@
     document.getElementById('bookLink').value = data.external_link || '';
     document.getElementById('bookSearch').value = data.search_keywords || '';
     document.getElementById('bookSaveBtn').textContent = "Update Publication Record";
-    switchPanel('booksPanel', document.querySelectorAll('.tab-btn')[5]);
+    switchPanel('booksPanel', document.querySelectorAll('.tab-btn')[6]);
   }
 
   function resetBooksForm() {
@@ -906,7 +990,7 @@
     document.getElementById('galCaption').value = data.caption || '';
     document.getElementById('galUrl').value = data.image_url || '';
     document.getElementById('galSaveBtn').textContent = "Update Media Record";
-    switchPanel('galleryPanel', document.querySelectorAll('.tab-btn')[6]);
+    switchPanel('galleryPanel', document.querySelectorAll('.tab-btn')[7]);
   }
 
   function resetGalleryForm() {
@@ -975,6 +1059,17 @@
       </div>
     `).join('');
 
+    const { data: dData } = await client.from('bihar_directory').select('*').order('id', { ascending: false });
+    document.getElementById('directoryArchiveList').innerHTML = (!dData || !dData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : dData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.name)}</div><div class="archive-meta">District: ${escapeHTML(i.district)} (${escapeHTML(i.type)})</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editDirectory(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('bihar_directory', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
     const { data: skData } = await client.from('sheikhpura_history').select('*').order('id', { ascending: false });
     document.getElementById('sheikhpuraArchiveList').innerHTML = (!skData || !skData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : skData.map(i => `
       <div class="archive-card">
@@ -1008,7 +1103,7 @@
 
   async function exportBackup() {
     const client = getClient();
-    const tables = ['awards', 'books_articles', 'poetry', 'sher', 'sufi_saints', 'sheikhpura_history', 'gallery_media'];
+    const tables = ['awards', 'books_articles', 'poetry', 'sher', 'sufi_saints', 'bihar_directory', 'sheikhpura_history', 'gallery_media'];
     const backup = { exported_at: new Date().toISOString(), format_version: 1, tables: {} };
     try {
       for (const table of tables) {
