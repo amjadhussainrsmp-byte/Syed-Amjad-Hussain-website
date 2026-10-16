@@ -1076,26 +1076,325 @@ const sites = [
     saint: "Associated with Hazrat Shaykh Sharfuddin Ahmad Yahya Maneri",
     silsila: "Firdausiyya",
     note: "A chillah or spiritual retreat site related to Makhdoom-e-Jahan, Badi Dargah, Bihar Sharif, Nalanda.",
+const sites = [
+  {
+    name: "Khanqah Maner Sharif",
+    district: "Patna",
+    location: "Maner",
+    type: "Combined",
+    saint: "Hazrat Makhdoom Kamaluddin Yahya Maneri",
+    silsila: "Suhrawardiyya",
+    note: "A major historic Sufi centre associated with the Bari Dargah and the spiritual legacy of Makhdoom Yahya Maneri. The complex also preserves important examples of Indo-Islamic architecture.",
+    source: "https://tourism.bihar.gov.in/en/destinations/patna/maner-sharif"
+  },
+  {
+    name: "Badi Dargah",
+    district: "Nalanda",
+    location: "Bihar Sharif",
+    type: "Dargah",
+    saint: "Hazrat Makhdoom Shaykh Sharfuddin Ahmad Yahya Maneri",
+    silsila: "Firdausiyya",
+    note: "One of Bihar's most prominent Sufi shrines, associated with Makhdoom-e-Jahan and a longstanding tradition of spiritual instruction and learning.",
+    source: "https://tourism.bihar.gov.in/en/destinations/nalanda/badi-dargah"
+  },
+  {
+    name: "Chhoti Dargah",
+    district: "Patna",
+    location: "Maner",
+    type: "Dargah",
+    saint: "Hazrat Makhdoom Shah Daulat Maneri",
+    silsila: "Firdausiyya",
+    note: "The celebrated mausoleum of Shah Daulat, completed under Ibrahim Khan in the early seventeenth century. It is noted for its dome, carved details and inscriptions.",
+    source: "https://tourism.bihar.gov.in/en/destinations/patna/maner-sharif"
+  },
+  {
+    name: "Khanqah Mujeebiyya",
+    district: "Patna",
+    location: "Phulwari Sharif",
+    type: "Combined",
+    saint: "Hazrat Pir Shah Mujeebullah Qadri and the institution's spiritual lineage",
+    silsila: "Qadiriyya",
+    note: "A historic centre of Sufi learning with a library containing books and manuscripts. The institution is an important part of Phulwari Sharif's religious heritage.",
+    source: "https://tourism.bihar.gov.in/en/destinations/patna/khanquah-mujeebia-and-library"
+  },
+  {
+    name: "Khanqah Emadiyya",
+    district: "Patna",
+    location: "Mangal Talab, Patna City",
+    type: "Khanqah",
+    saint: "Hazrat Khwaja Emaduddin Qalandar",
+    silsila: "Qalandariyya; Qadiriyya affiliation is also reported",
+    note: "A historic khanqah and madrasa near Mangal Talab, associated with Hazrat Khwaja Emaduddin Qalandar. The institution has a longstanding tradition of religious education and public service.",
+    source: "https://khanquahemadia.org/history.html"
+  },
+  {
+    name: "Khanqah Munemiyya–Qamariyya",
+    district: "Patna",
+    location: "Mithan Ghat, Patna City",
+    type: "Khanqah",
+    saint: "Hazrat Makhdoom Shah Muhammad Munim Pak Baz",
+    silsila: "Abulolai–Qadri–Munemi",
+    note: "A historic Sufi institution at Mithan Ghat, associated with the spiritual legacy of Makhdoom Munim Pak Baz. Its history and lineage are documented in specialist directories.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Shah Arzani",
+    district: "Patna",
+    location: "Sultanganj, Patna",
+    type: "Khanqah",
+    saint: "Hazrat Deewan Shah Arzan",
+    silsila: "Arzaniyya; verify the precise lineage",
+    note: "A Sufi institution listed in specialist khanqah directories. Further research is needed to document its history, spiritual lineage and present custodianship.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Hasania",
+    district: "Patna",
+    location: "Khwaja Kalan, Patna City",
+    type: "Khanqah",
+    saint: "Verification required",
+    silsila: "Hasani tradition",
+    note: "A khanqah listed in Sufinama's directory, associated with the Hasani spiritual tradition of Khwaja Kalan. Further institutional history can be added after verification.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Faiyazia",
+    district: "Patna",
+    location: "Simli Sharif, Patna City",
+    type: "Khanqah",
+    saint: "Hazrat Syed Shah Ali Hussain Baqi",
+    silsila: "Faiyaziyya",
+    note: "A Sufi institution at Simli Sharif. The name and location appear in specialist directories; its historical lineage and the identity of its associated saints should be confirmed from institutional sources.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Balkhia",
+    district: "Patna",
+    location: "Fatuha",
+    type: "Khanqah",
+    saint: "Hazrat Muzaffar Shams Balkhi",
+    silsila: "Firdausiyya–Balkhiyya",
+    note: "A khanqah associated with the Balkhi spiritual tradition and listed in Sufinama's directory. Further historical documentation is needed to establish its chronology and lineage.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Muazzam",
+    district: "Nalanda",
+    location: "Bihar Sharif",
+    type: "Khanqah",
+    saint: "Hazrat Makhdoom Shaykh Sharfuddin Ahmad Yahya Maneri",
+    silsila: "Firdausiyya",
+    note: "A khanqah listed in specialist directories and relevant to documenting the Firdausi tradition in Bihar Sharif. Its precise historical association requires further verification.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Balkhia-Firdausia",
+    district: "Nalanda",
+    location: "Bhaisasur, Bihar Sharif",
+    type: "Khanqah",
+    saint: "Balkhi-Firdausi spiritual lineage",
+    silsila: "Firdausiyya",
+    note: "A khanqah listed in Sufinama's directory at Bhaisasur, Bihar Sharif. Further research is needed to document its associated saints and institutional history.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Sajjadiyya",
+    district: "Nalanda",
+    location: "Panhessa Sharif",
+    type: "Combined",
+    saint: "Hazrat Shah Ahmad Sajjad",
+    silsila: "Sajjadiyya",
+    note: "Associated in local accounts with Shah Ahmad Sajjad, described as the brother of Shah Abul Muhasin Muhammad Sajjad, founder of Imarat-e-Shariah, Patna. The relationship and institutional history should be verified through reliable biographical sources.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Dargah Hazrat Makhdoom Sultan Syed Ahmad Charamposh",
+    district: "Nalanda",
+    location: "Amber, Bihar Sharif",
+    type: "Dargah",
+    saint: "Hazrat Makhdoom Sultan Syed Shah Ahmad Charamposh",
+    silsila: "Further verification required",
+    note: "A historic shrine in Bihar Sharif, locally known as Hazrat Charamposh Dargah. Its identification and relationship to other shrines described as Chhoti Dargah should be established carefully.",
+    source: "https://bstdc.bihar.gov.in/sufi_circuit.htm"
+  },
+  {
+    name: "Dargah Hazrat Bibi Kamal",
+    district: "Jehanabad",
+    location: "Kako",
+    type: "Dargah",
+    saint: "Hazrat Bibi Kamal, daughter of Pir Jagjot Syed Shahabuddin Suhrawardi",
+    silsila: "Suhrawardiyya",
+    note: "A recognised Sufi pilgrimage site near Kako, associated with the revered woman saint Bibi Kamal and included in Bihar's Sufi tourism circuit.",
+    source: "https://tourism.bihar.gov.in/en/circuits/sufi-circuit"
+  },
+  {
+    name: "Khanqah Faridiyya",
+    district: "Jehanabad",
+    location: "Kako",
+    type: "Khanqah",
+    saint: "Hazrat Shah Fareed; further identification required",
+    silsila: "Faridiyya",
+    note: "Listed in a directory of dargahs and khanqahs. Further local documentation is needed to confirm the associated saint, lineage and institutional history.",
     source: "https://www.aiumb.org/sufism/dargahs-in-india/"
   },
   {
-    name: "Khanqah Qadria",
+    name: "Dargah Hazrat Shah Sulaiman Lagar Zameen",
+    district: "Jehanabad",
+    location: "Kako",
+    type: "Dargah",
+    saint: "Hazrat Shah Sulaiman Lagar Zameen",
+    silsila: "Suhrawardiyya",
+    note: "Local tradition identifies him as the husband of Hazrat Bibi Kamal, brother of Hazrat Shah Jalal Maneri and son of Hazrat Shah Abdul Aziz Maneri. These genealogical relationships should be supported with reliable historical sources.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Amthua Sharif",
+    district: "Jehanabad",
+    location: "Amthua",
+    type: "Dargah",
+    saint: "Hazrat Syed Shah Muhammad Hayaat Rahmani",
+    silsila: "Rahmaniyya",
+    note: "A shrine listed in a specialist directory. Additional research is needed to document the saint's biography, the shrine's history and its annual observances.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Khwaja Daud Chishti",
+    district: "Jehanabad",
+    location: "Kendui",
+    type: "Dargah",
+    saint: "Hazrat Khwaja Daud Chishti",
+    silsila: "Chishtiyya",
+    note: "A Chishti-associated shrine identified in the All India Ulama & Mashaikh Board's directory. Further historical and local documentation is recommended.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Shamsiyya",
+    district: "Arwal",
+    location: "Arwal",
+    type: "Khanqah",
+    saint: "Hazrat Makhdoom Syed Shah Shamsuddin Ahmad Mehmud Sufaid Baaz Kintoori",
+    silsila: "Further verification required",
+    note: "A khanqah listed in a directory of Sufi institutions. Its exact location, lineage and historical background should be confirmed with local sources.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Qadriyya–Muhammadiyya",
+    district: "Aurangabad",
+    location: "Amjhar Sharif, Haspura area",
+    type: "Combined",
+    saint: "Hazrat Saiyadana Muhammad Jilani Amjhari Quadri",
+    silsila: "Qadiriyya",
+    note: "Associated with the Amjhar Sharif shrine complex, a recognised pilgrimage destination in Aurangabad district. Bihar Tourism identifies the site as an important centre visited by devotees, particularly during its annual observance.",
+    source: "https://tourism.bihar.gov.in/en/destinations/aurangabad/amjhar-sharif"
+  },
+  {
+    name: "Khanqah Qadriyya–Abdaliyya",
+    district: "Aurangabad",
+    location: "Old Town, Daudnagar",
+    type: "Khanqah",
+    saint: "Further verification required",
+    silsila: "Qadiriyya–Abdaliyya",
+    note: "A khanqah listed in Sufinama's directory at Daudnagar. Its associated saints, historical development and present custodianship require further verification.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Firdausiyya",
+    district: "Aurangabad",
+    location: "Simla, near Kasma",
+    type: "Khanqah",
+    saint: "Firdausi spiritual lineage",
+    silsila: "Firdausiyya",
+    note: "A khanqah listed in Sufinama's directory. Its exact village location, historical background and lineage should be confirmed locally.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Dargah of Hazrat Makhdoom Shaikh Shah Shoaib Firdausi",
+    district: "Sheikhpura",
+    location: "Badi Dargah, Sheikhpura",
+    type: "Dargah",
+    saint: "Hazrat Makhdoom Shaikh Shah Shoaib Firdausi",
+    silsila: "Firdausiyya",
+    note: "A significant shrine in Sheikhpura's Sufi heritage, associated with the Firdausi tradition and the historical religious landscape of the district.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Munemiyya–Shakiriyya",
+    district: "Sheikhpura",
+    location: "Pind Sharif, Sheikhpura",
+    type: "Combined",
+    saint: "Hazrat Syed Tajuddin Shakir",
+    silsila: "Abulolai–Qadri–Munemi",
+    note: "A known khanqah and shrine in the Sheikhpura region. Its institutional history, lineage and exact site details should be documented through local and specialist sources.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Shahbaziya",
+    district: "Bhagalpur",
+    location: "Maulana Chak",
+    type: "Khanqah",
+    saint: "Hazrat Syed Shah Shahbaz Muhammad Bhagalpuri",
+    silsila: "Shattariyya–Shahbaziyya",
+    note: "A khanqah listed in a directory of Bihar's Sufi institutions. Further research is needed to verify the lineage, history and current institutional details.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Peer Damaria",
+    district: "Bhagalpur",
+    location: "Khalifa Bagh",
+    type: "Khanqah",
+    saint: "Peer Damaria tradition",
+    silsila: "Further verification required",
+    note: "A Sufi institution listed in a specialist directory. Its associated saint, exact location and spiritual lineage need further documentation.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Hazrat Shah Imdad Ali",
+    district: "Bhagalpur",
+    location: "Qazi Wali Chak",
+    type: "Dargah",
+    saint: "Hazrat Shah Imdad Ali",
+    silsila: "Further verification required",
+    note: "A shrine listed in the All India Ulama & Mashaikh Board's Bihar directory. Additional biographical and historical research would strengthen this entry.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Faridiyya",
+    district: "Bhojpur",
+    location: "Ara",
+    type: "Khanqah",
+    saint: "Further verification required",
+    silsila: "Faridiyya",
+    note: "A khanqah listed in a specialist directory of Sufi institutions. The associated saint, founding date and current custodianship require further verification.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Hujra Chillah Makhdoom-e-Jahan",
+    district: "Bhojpur",
+    location: "Bihia",
+    type: "Dargah",
+    saint: "Associated with Hazrat Shaykh Sharfuddin Ahmad Yahya Maneri",
+    silsila: "Firdausiyya",
+    note: "A site described as a chillah or spiritual retreat associated with Makhdoom-e-Jahan. Its precise historical connection with the saint and the Badi Dargah at Bihar Sharif should be documented from reliable sources.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Qadiriyya",
     district: "Gaya",
     location: "Manpur",
     type: "Khanqah",
-    saint: "Verification required",
+    saint: "Further verification required",
     silsila: "Qadiriyya",
-    note: 
-    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+    note: "A khanqah listed in specialist directories. Its associated spiritual guide, institutional history and exact address require further research.",
+    source: "https://sufinama.org/khanqah"
   },
   {
     name: "Khanqah Munemiyya Mazahiriyya",
     district: "Gaya",
     location: "Abgila",
     type: "Khanqah",
-    saint: "Verification required",
+    saint: "Further verification required",
     silsila: "Munemiyya",
-    note: 
+    note: "A khanqah listed in Sufinama's directory. Further documentation is needed to identify its founding figures, historical development and current custodians.",
     source: "https://sufinama.org/khanqah"
   },
   {
@@ -1105,7 +1404,7 @@ const sites = [
     type: "Khanqah",
     saint: "Hazrat Syed Shah Durwesh Ashraf",
     silsila: "Ashrafiyya",
-    note: 
+    note: "A Sufi institution listed in specialist directories. Further research is required to establish its historical background and spiritual lineage.",
     source: "https://sufinama.org/khanqah"
   },
   {
@@ -1115,7 +1414,7 @@ const sites = [
     type: "Dargah",
     saint: "Hazrat Shah Ahlullah Munemi",
     silsila: "Munemiyya",
-    note: 
+    note: "A shrine listed in a directory of dargahs. Its historical context and the saint's biography should be documented through reliable local and specialist sources.",
     source: "https://www.aiumb.org/sufism/dargahs-in-india/"
   },
   {
@@ -1125,7 +1424,7 @@ const sites = [
     type: "Dargah",
     saint: "Hazrat Syed Shah Ata Husain Fani Chishti Munemi",
     silsila: "Munemiyya",
-    note: 
+    note: "A shrine listed in a specialist directory. Further research is needed to document the saint's biography, the shrine's location and its place in the regional Sufi tradition.",
     source: "https://www.aiumb.org/sufism/dargahs-in-india/"
   },
   {
@@ -1133,9 +1432,9 @@ const sites = [
     district: "Buxar",
     location: "Chausa",
     type: "Dargah",
-    saint: "Qazi Shamsuddin",
+    saint: "Hazrat Qazi Shamsuddin",
     silsila: "Firdausiyya",
-    note: 
+    note: "A shrine listed in a national directory of dargahs. Its saintly affiliation and historical details should be verified through additional sources.",
     source: "https://www.aiumb.org/sufism/dargahs-in-india/"
   },
   {
@@ -1143,9 +1442,9 @@ const sites = [
     district: "Saran",
     location: "Karim Chak, Chhapra",
     type: "Dargah",
-    saint: "Hakim Farhatullah",
+    saint: "Hazrat Hakim Farhatullah",
     silsila: "Further verification required",
-    note: 
+    note: "A shrine listed in a specialist directory. Additional research is required to document the saint's biography, the shrine's history and its precise location.",
     source: "https://www.aiumb.org/sufism/dargahs-in-india/"
   },
   {
@@ -1155,10 +1454,10 @@ const sites = [
     type: "Dargah",
     saint: "Hazrat Shah Fida Ahmad Abdul Karim",
     silsila: "Further verification required",
-    note: 
+    note: "A shrine listed in a directory of Sufi dargahs. Its exact location, associated lineage and historical background need further verification.",
     source: "https://www.aiumb.org/sufism/dargahs-in-india/"
   }
-  ];
+];
 
   const directory = document.getElementById("directory");
 const searchInput = document.getElementById("searchInput");
