@@ -609,7 +609,8 @@ main {
       <a href="../sher.html">Sher Collection</a>
       <a href="../awards-honours.html">Awards & Honours</a>
       <a href="../research.html">Research</a>
-      <a href="../sufi-heritage.html">Sufi Heritage</a>
+      <a href="../sufi-heritage.html" class="active">Sufi Heritage</a>
+      <a href="admin.html" style="color: var(--wine); font-weight: 700;">Admin Panel</a>
       <a href="../contact.html">Contact</a>
     </nav>
   </div>
@@ -759,6 +760,7 @@ main {
       <a href="../biography.html">Biography</a>
       <a href="../research.html">Research</a>
       <a href="../sufi-heritage.html">Sufi Heritage</a>
+      <a href="admin.html">Admin Panel</a>
       <a href="../contact.html">Contact</a>
     </div>
   </div>
@@ -769,11 +771,7 @@ main {
 <script>
 "use strict";
 
-/* Bihar Khanqahs & Dargahs Directory
-   Historical details should be independently verified.
-*/
-
-const sites = [
+const defaultSites = [
   {
     name: "Khanqah Maner Sharif",
     district: "Patna",
@@ -1156,6 +1154,9 @@ const sites = [
   }
 ];
 
+// Load sites from localStorage if available, otherwise use defaults
+let sites = JSON.parse(localStorage.getItem("bihar_sufi_sites")) || defaultSites;
+
 const directory = document.getElementById("directory");
 const searchInput = document.getElementById("searchInput");
 const districtFilter = document.getElementById("districtFilter");
@@ -1169,9 +1170,7 @@ if (
   !typeFilter ||
   !resultCount
 ) {
-  console.error(
-    "Directory error: one or more required HTML elements are missing."
-  );
+  console.error("Directory error: one or more required HTML elements are missing.");
 } else {
   const totalCount = document.getElementById("totalCount");
   const districtCount = document.getElementById("districtCount");
@@ -1201,11 +1200,8 @@ if (
   }
 
   function mapSearch(site) {
-    const query =
-      `${site.name}, ${site.location}, ${site.district}, Bihar, India`;
-
-    return "https://www.google.com/maps/search/?api=1&query=" +
-      encodeURIComponent(query);
+    const query = `${site.name}, ${site.location}, ${site.district}, Bihar, India`;
+    return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query);
   }
 
   function getSearchText(site) {
@@ -1226,31 +1222,22 @@ if (
     const type = typeFilter.value;
 
     const filtered = sites.filter(site => {
-      const matchesQuery =
-        !query || getSearchText(site).includes(query);
-
-      const matchesDistrict =
-        !district || site.district === district;
-
-      const matchesType =
-        !type || site.type === type;
-
+      const matchesQuery = !query || getSearchText(site).includes(query);
+      const matchesDistrict = !district || site.district === district;
+      const matchesType = !type || site.type === type;
       return matchesQuery && matchesDistrict && matchesType;
     });
 
-    resultCount.textContent =
-      `Showing ${filtered.length} of ${sites.length} entries`;
+    resultCount.textContent = `Showing ${filtered.length} of ${sites.length} entries`;
 
     if (!filtered.length) {
       directory.innerHTML = `
         <div class="no-results">
           <h3>No matching entries found</h3>
-          <p>
-            Try another spelling, town, saint's name or district.
-          </p>
+          <p>Try another spelling, town, saint's name or district.</p>
         </div>`;
       return;
-     }
+    }
 
     directory.innerHTML = filtered.map((site, index) => `
       <article class="place-card">
@@ -1298,7 +1285,7 @@ if (
           </a>
 
           <a class="action-link"
-             href="${escapeHTML(site.source)}"
+             href="${escapeHTML(site.source || '#')}"
              target="_blank"
              rel="noopener noreferrer">
             Reference ↗
@@ -1367,3 +1354,5 @@ if (
 </script>
 </body>
 </html>
+
+        
