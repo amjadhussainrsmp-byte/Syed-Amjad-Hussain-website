@@ -1,1 +1,1297 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Khanqahs & Dargahs of Bihar | Syed Amjad Hussain</title>
+<meta name="description" content="An independent research directory of the historic khanqahs, dargahs and Sufi heritage sites of Bihar, India, organised by district.">
+<meta name="theme-color" content="#f8f4ec">
+<meta property="og:title" content="Khanqahs & Dargahs of Bihar">
+<meta property="og:description" content="Explore the Sufi heritage of Bihar through a district-wise directory of khanqahs, dargahs and historic shrines.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #f8f4ec;
+  --paper-light: #fffdf8;
+  --wine: #652b36;
+  --wine-dark: #472127;
+  --wine-soft: #f1e4e4;
+  --gold: #b18a49;
+  --gold-light: #e8d7b5;
+  --ink: #302923;
+  --muted: #786e65;
+  --line: #e6dac9;
+  --green: #526b53;
+  --shadow: 0 12px 34px rgba(71,33,39,.07);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.75;
+}
+
+a { color: inherit; }
+
+button, input, select { font: inherit; }
+
+button, a, input, select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible, button:focus-visible,
+input:focus-visible, select:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,253,248,.97);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+
+.header-inner {
+  max-width: 1240px;
+  margin: auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.brand {
+  color: var(--wine-dark);
+  text-decoration: none;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.brand small {
+  display: block;
+  margin-top: 5px;
+  font: 10px "DM Sans", sans-serif;
+  color: var(--muted);
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 5px 17px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #51453e;
+  font-size: 12px;
+  font-weight: 600;
+  transition: color .2s;
+}
+
+.nav a:hover, .nav a.active { color: var(--wine); }
+
+.menu-toggle {
+  display: none;
+  border: 1px solid var(--line);
+  color: var(--wine);
+  background: var(--paper-light);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 76px 24px 66px;
+  background:
+    radial-gradient(ellipse at 85% 10%, rgba(177,138,73,.14), transparent 38%),
+    linear-gradient(125deg, #fffaf1, #f2e8da);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero::after {
+  content: "﷽";
+  position: absolute;
+  right: 6%;
+  bottom: -35px;
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: clamp(130px, 21vw, 270px);
+  color: rgba(101,43,54,.055);
+  pointer-events: none;
+  line-height: 1.5;
+}
+
+.hero-inner {
+  max-width: 1180px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--wine);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+  line-height: 1.25;
+}
+
+h1 {
+  max-width: 800px;
+  margin: 18px 0 15px;
+  color: var(--wine-dark);
+  font-size: clamp(37px, 6vw, 65px);
+  letter-spacing: -1.3px;
+}
+
+.hero p {
+  max-width: 720px;
+  color: #675a50;
+  font-size: 16px;
+  margin: 0;
+}
+
+.hero-note {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 9px 14px;
+  background: rgba(255,253,248,.75);
+  border: 1px solid var(--gold-light);
+  border-radius: 5px;
+  color: #665039;
+  font-size: 12px;
+}
+
+main {
+  max-width: 1240px;
+  margin: auto;
+  padding: 38px 24px 70px;
+}
+
+.intro {
+  max-width: 870px;
+  margin-bottom: 30px;
+}
+
+.intro h2, .sources h2 {
+  margin: 0 0 12px;
+  color: var(--wine-dark);
+  font-size: 28px;
+}
+
+.intro p { color: var(--muted); margin: 0; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 28px 0 36px;
+}
+
+.stat {
+  padding: 19px;
+  border: 1px solid var(--line);
+  background: var(--paper-light);
+  border-radius: 10px;
+}
+
+.stat strong {
+  display: block;
+  color: var(--wine);
+  font: 700 28px "Playfair Display", serif;
+}
+
+.stat span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.directory-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.directory-heading h2 {
+  margin: 0;
+  color: var(--wine-dark);
+  font-size: 30px;
+}
+
+.result-count {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(170px, .8fr) minmax(150px, .7fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.field {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid #dfd1bf;
+  border-radius: 7px;
+  background: var(--paper-light);
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.field:focus {
+  border-color: var(--gold);
+  outline: 2px solid rgba(177,138,73,.15);
+}
+
+.filter-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 25px;
+}
+
+.filter-hint { color: var(--muted); font-size: 11px; }
+
+.reset-btn {
+  cursor: pointer;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--wine);
+  padding: 8px 13px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.directory {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.place-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 21px;
+  background: var(--paper-light);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(71,33,39,.025);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+
+.place-card:hover {
+  transform: translateY(-3px);
+  border-color: #cfb78f;
+  box-shadow: var(--shadow);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 13px;
+}
+
+.card-number {
+  font: 600 12px "DM Sans", sans-serif;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.type-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--wine-soft);
+  color: var(--wine);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.place-card h3 {
+  margin: 0 0 8px;
+  font-size: 21px;
+  color: var(--wine-dark);
+  overflow-wrap: anywhere;
+}
+
+.place-location {
+  margin: 0 0 12px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.place-note {
+  margin: 0 0 17px;
+  color: #6f655c;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.place-card .actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #eee5d8;
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--wine);
+  background: #fffdf8;
+}
+
+.action-link.primary {
+  color: white;
+  background: var(--wine);
+  border-color: var(--wine);
+}
+
+.action-link:hover { border-color: var(--gold); }
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 50px 20px;
+  background: var(--paper-light);
+  border: 1px dashed var(--gold-light);
+  border-radius: 10px;
+}
+
+.no-results h3 { color: var(--wine); margin: 0 0 8px; }
+.no-results p { color: var(--muted); font-size: 13px; }
+
+.editorial-note {
+  margin-top: 36px;
+  padding: 23px;
+  border-left: 3px solid var(--gold);
+  background: #f1e8da;
+  border-radius: 0 8px 8px 0;
+}
+
+.editorial-note h3 {
+  margin: 0 0 8px;
+  color: var(--wine-dark);
+  font-size: 20px;
+}
+
+.editorial-note p {
+  margin: 0;
+  color: #65594e;
+  font-size: 13px;
+}
+
+.sources {
+  margin-top: 55px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.sources > p {
+  max-width: 850px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.source-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.source-list a {
+  display: block;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: var(--paper-light);
+  border-radius: 7px;
+  color: var(--wine);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.source-list a:hover { border-color: var(--gold); }
+
+.source-list small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.site-footer {
+  background: var(--wine-dark);
+  color: #f5eadb;
+  padding: 34px 24px;
+}
+
+.footer-inner {
+  max-width: 1180px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-brand {
+  font: 700 21px "Playfair Display", serif;
+}
+
+.footer-inner p {
+  margin: 7px 0 0;
+  color: #d8c4b9;
+  font-size: 11px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+
+.footer-links a {
+  color: #f5eadb;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.back-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 50;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--wine);
+  color: white;
+  font-size: 19px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 980px) {
+  .nav { gap: 6px 11px; }
+  .nav a { font-size: 11px; }
+  .directory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .header-inner { padding: 13px 17px; }
+  .brand { font-size: 19px; }
+  .menu-toggle { display: block; }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 13px 20px 18px;
+    background: var(--paper-light);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+  }
+  .nav.open { display: flex; }
+  .nav a { padding: 10px 0; font-size: 13px; border-bottom: 1px solid #f0e7dc; }
+  .hero { padding: 55px 20px 48px; }
+  main { padding: 30px 17px 50px; }
+  .filters { grid-template-columns: 1fr; }
+  .directory { grid-template-columns: 1fr; }
+  .stats { gap: 8px; }
+  .stat { padding: 13px 10px; }
+  .stat strong { font-size: 23px; }
+  .stat span { font-size: 10px; }
+  .directory-heading { align-items: start; flex-direction: column; gap: 4px; }
+  .source-list { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .hero p { font-size: 14px; }
+}
+
+@media print {
+  .site-header, .filters, .filter-bottom, .actions,
+  .back-top, .site-footer { display: none !important; }
+  body { background: white; }
+  .hero { padding: 25px 0; background: white; }
+  main { padding: 15px 0; }
+  .directory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .place-card { break-inside: avoid; box-shadow: none; }
+}
+</style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../home.html">
+      Syed Amjad Hussain
+      <small>Ethnographer · Author · Historian</small>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Open navigation" aria-expanded="false">☰ Menu</button>
+
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+      <a href="../home.html">Home</a>
+      <a href="../biography.html">Biography</a>
+      <a href="../books-articles.html">Books & Articles</a>
+      <a href="../poetry.html">Poetry</a>
+      <a href="../sher.html">Sher Collection</a>
+      <a href="../awards-honours.html">Awards & Honours</a>
+      <a href="../research.html">Research</a>
+      <a href="../sufi-heritage.html">Sufi Heritage</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Bihar's Living Heritage</div>
+    <h1>Khanqahs & Dargahs of Bihar</h1>
+    <p>
+      A district-wise directory of Bihar's Sufi khanqahs, dargahs,
+      mazars and historic centres of spiritual learning. Explore the
+      places, people and traditions that form an important part of
+      the region's cultural and religious history.
+    </p>
+    <div class="hero-note">An independent heritage research directory · Continuously expandable</div>
+  </div>
+</section>
+
+<main>
+  <section class="intro">
+    <h2>Discover Bihar's Sufi Landscape</h2>
+    <p>
+      From the historic shrines of Maner and Bihar Sharif to the khanqahs
+      of Patna, Gaya, Bhagalpur, Aurangabad and Sheikhpura, Bihar preserves
+      a rich network of spiritual institutions. Search by name, saint,
+      location or district to explore the directory.
+    </p>
+  </section>
+
+  <section class="stats" aria-label="Directory overview">
+    <div class="stat">
+      <strong id="totalCount">—</strong>
+      <span>Directory entries</span>
+    </div>
+    <div class="stat">
+      <strong id="districtCount">—</strong>
+      <span>Districts represented</span>
+    </div>
+    <div class="stat">
+      <strong>14th–21st c.</strong>
+      <span>Historical and living traditions</span>
+    </div>
+  </section>
+
+  <section id="directorySection">
+    <div class="directory-heading">
+      <h2>Browse the Directory</h2>
+      <span class="result-count" id="resultCount" aria-live="polite"></span>
+    </div>
+
+    <div class="filters">
+      <input class="field" id="searchInput" type="search"
+        placeholder="Search a shrine, saint, town or silsila…"
+        aria-label="Search the directory">
+
+      <select class="field" id="districtFilter" aria-label="Filter by district">
+        <option value="">All districts</option>
+      </select>
+
+      <select class="field" id="typeFilter" aria-label="Filter by site type">
+        <option value="">All site types</option>
+        <option value="Khanqah">Khanqah</option>
+        <option value="Dargah">Dargah / Mazar</option>
+        <option value="Combined">Khanqah & Dargah</option>
+      </select>
+    </div>
+
+    <div class="filter-bottom">
+      <span class="filter-hint">Tip: try a saint's name, village or district.</span>
+      <button class="reset-btn" id="resetFilters" type="button">Clear filters ↺</button>
+    </div>
+
+    <div class="directory" id="directory" aria-live="polite"></div>
+  </section>
+
+  <aside class="editorial-note">
+    <h3>A note on historical accuracy</h3>
+    <p>
+      This is a working research directory, not a claim that every site in
+      Bihar has been documented. Names may have alternative spellings, and
+      some listings identify a town or shrine complex rather than a single
+      monument. Silsila affiliations, dates, saint biographies, custodians
+      and Urs dates should be verified from reliable historical works,
+      inscriptions and the institutions concerned before publication as
+      definitive facts. A listing does not imply endorsement of any
+      particular religious belief or practice.
+    </p>
+  </aside>
+
+  <section class="sources" id="sources">
+    <h2>Research & Reference Sources</h2>
+    <p>
+      These sources provide starting points for further research. Official
+      tourism pages are especially useful for visitor information and
+      descriptions of recognised heritage destinations; specialist
+      directories can help identify additional institutions that warrant
+      independent verification.
+    </p>
+
+    <div class="source-list">
+      <a href="https://tourism.bihar.gov.in/en/circuits/sufi-circuit" target="_blank" rel="noopener">
+        Bihar Tourism — Sufi Circuit
+        <small>Government of Bihar · Official circuit and destination listings</small>
+      </a>
+      <a href="https://tourism.bihar.gov.in/en/destinations/patna/maner-sharif" target="_blank" rel="noopener">
+        Maner Sharif
+        <small>Bihar Tourism · Historical shrine complex</small>
+      </a>
+      <a href="https://tourism.bihar.gov.in/en/destinations/patna/khanquah-mujeebia-and-library" target="_blank" rel="noopener">
+        Khanquah Mujeebia and Library
+        <small>Bihar Tourism · Phulwari Sharif, Patna</small>
+      </a>
+      <a href="https://tourism.bihar.gov.in/en/destinations/nalanda/badi-dargah" target="_blank" rel="noopener">
+        Badi Dargah
+        <small>Bihar Tourism · Bihar Sharif, Nalanda</small>
+      </a>
+      <a href="https://tourism.bihar.gov.in/en/destinations/aurangabad/amjhar-sharif" target="_blank" rel="noopener">
+        Amjhar Sharif
+        <small>Bihar Tourism · Aurangabad district</small>
+      </a>
+      <a href="https://sufinama.org/khanqah" target="_blank" rel="noopener">
+        Sufinama — Khanqah Directory
+        <small>Specialist reference directory · Institution names and locations</small>
+      </a>
+      <a href="https://www.aiumb.org/sufism/dargahs-in-india/" target="_blank" rel="noopener">
+        All India Ulama & Mashaikh Board — Dargahs in India
+        <small>Supplementary directory of dargahs and khanqahs</small>
+      </a>
+      <a href="https://bstdc.bihar.gov.in/sufi_circuit.htm" target="_blank" rel="noopener">
+        Bihar State Tourism Development Corporation — Sufi Circuit
+        <small>Tourism information and historic destinations</small>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Syed Amjad Hussain</div>
+      <p>Ethnographer · Author · Historian · Poet · Researcher</p>
+      <p>Independent documentation of Bihar's history and Sufi heritage.</p>
+    </div>
+    <div class="footer-links">
+      <a href="../home.html">Home</a>
+      <a href="../biography.html">Biography</a>
+      <a href="../research.html">Research</a>
+      <a href="../sufi-heritage.html">Sufi Heritage</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
+
+<script>
+"use strict";
+
+/*
+  Directory note:
+  The entries below are initial research leads from published directories
+  and official tourism material. Verify details locally before treating
+  each listing as a fully researched historical record.
+*/
+
+const sites = [
+  {
+    name: "Khanqah Maner Sharif",
+    district: "Patna",
+    location: "Maner",
+    type: "Combined",
+    saint: "Hazrat Makhdoom Kamaluddin Yahya Maneri",
+    silsila: "Suhrawardiyya",
+    note: "A major historic Sufi centre associated with the Bari Dargah. The complex also preserves important examples of Indo-Islamic architecture.",
+    source: "https://tourism.bihar.gov.in/en/destinations/patna/maner-sharif"
+  },
+  {
+    name: "Bari Dargah (Badi Dargah)",
+    district: "Nalanda",
+    location: "Bihar Sharif",
+    type: "Dargah",
+    saint: "Hazrat Makhdoom Shaykh Sharfuddin Ahmad Yahya Maneri",
+    silsila: "Firdausiyya",
+    note: "One of Bihar's most prominent Sufi shrines, associated with Makhdoom-e-Jahan and a longstanding tradition of spiritual instruction and learning.",
+    source: "https://tourism.bihar.gov.in/en/destinations/nalanda/badi-dargah"
+  },
+  {
+    name: "Chhoti Dargah",
+    district: "Patna",
+    location: "Maner",
+    type: "Dargah",
+    saint: "Hazrat Makhdoom Shah Daulat Maneri",
+    silsila: "Firdausiyya",
+    note: "The celebrated mausoleum of Shah Daulat, completed under Ibrahim Khan in the early seventeenth century. It is noted for its dome, carved details and inscriptions.",
+    source: "https://tourism.bihar.gov.in/en/destinations/patna/maner-sharif"
+  },
+  {
+    name: "Khanqah Mujeebia",
+    district: "Patna",
+    location: "Phulwari Sharif",
+    type: "Combined",
+    saint: "Hazrat Pir Shah Mujeebullah Qadri and the institution's spiritual lineage",
+    silsila: "Qadiriyya",
+    note: "A historic centre of Sufi learning with a library containing books and manuscripts. The institution is an important part of Phulwari Sharif's religious heritage.",
+    source: "https://tourism.bihar.gov.in/en/destinations/patna/khanquah-mujeebia-and-library"
+  },
+  {
+    name: "Khanqah Emadia",
+    district: "Patna",
+    location: "Mangal Talab, Patna City",
+    type: "Khanqah",
+    saint: "Associated with Hazrat Emaduddin Qalandar",
+    silsila: "Emadiyya",
+    note: "A khanqah and madrasa near Mangal Talab, documented in Bihar's official tourism descriptions. Further institutional history should be verified.",
+    source: "https://betastate.bihar.gov.in/iprdwebsite/sufi-circuit"
+  },
+  {
+    name: "Khanqah Munemiyya–Qamariyya",
+    district: "Patna",
+    location: "Mithan Ghat, Patna City",
+    type: "Khanqah",
+    saint: "Associated with Hazrat Makhdoom Shah Muhammad Munim Pak Baz",
+    silsila: "Abulolai-Qadri-Munemi",
+    note: "A historic religious site on the Ganga in Patna City. Government descriptions associate the location with Makhdoom Munnem's teaching and an annual observance.",
+    source: "https://betastate.bihar.gov.in/iprdwebsite/sufi-circuit"
+  },
+  {
+    name: "Khanqah Shah Arzani",
+    district: "Patna",
+    location: "Sultanganj, Patna",
+    type: "Khanqah",
+    saint: "Hazrat Deewaan Shah Arzaan",
+    silsila: "Arzaniyya",
+    note: 
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Hasania",
+    district: "Patna",
+    location: "Khwaja Kalan, Patna City",
+    type: "Khanqah",
+    saint: "Associated with the Hasani tradition",
+    silsila: "Hasani tradition",
+    note: 
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Faiyazia",
+    district: "Patna",
+    location: "Simli Sharif, Patna City",
+    type: "Khanqah",
+    saint: "Hazrat Syed Shah Ali Hussain Baqi",
+    silsila: "Faiyaziyya",
+    note: 
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Balkhia",
+    district: "Patna",
+    location: "Fatuha",
+    type: "Khanqah",
+    saint: "Associated with Hazrat Muzaffar Shams Balkhi",
+    silsila: "Firdausiyya–Balkhiyya",
+    note: 
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Muazzam",
+    district: "Nalanda",
+    location: "Bihar Sharif",
+    type: "Khanqah",
+    saint: "Hazrat Makhdoom Shaykh Sharfuddin Ahmad Yahya Maneri",
+    silsila: "Firdausiyya",
+    note: "It is a research lead for documenting the Firdausi tradition in Bihar Sharif.",
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Balkhia-Firdausia",
+    district: "Nalanda",
+    location: "Bhaisasur, Bihar Sharif",
+    type: "Khanqah",
+    saint: "Balkhi-Firdausi spiritual lineage",
+    silsila: "Firdausiyya",
+    note: 
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Sajjadiyya",
+    district: "Nalanda",
+    location: "Panhessa Sharif",
+    type: "Khanqah",
+    saint: "Hazrat Shah Ahmad Sajjad",
+    silsila: "Sajjadiyya",
+    note: "Dargah of the brother of Shah Abul Muhasin Muhammad Sajjad, founder of Imarat-e-Shariah, Patna"
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Dargah Hazrat Makhdoom Sultan Syed Ahmad Charamposh",
+    district: "Nalanda",
+    location: "Amber, Bihar Sharif",
+    type: "Dargah",
+    saint: "Makhdoom Sultan Syed Shah Ahmad Charamposh",
+    silsila: "Further verification required",
+    note: "A historic shrine in Bihar Sharif, also described in tourism material as Chhoti Dargah. Local people call it Hazrat Charamposh Dargah.",
+    source: "https://bstdc.bihar.gov.in/sufi_circuit.htm"
+  },
+  {
+    name: "Dargah Hazrat Bibi Kamal",
+    district: "Jehanabad",
+    location: "Kako",
+    type: "Dargah",
+    saint: "Hazrat Bibi Kamal bin Pir Jagjot Syed Shahabuddin Suharwardi",
+    silsila: "Suharwardiyya",
+    note: "A recognised Sufi pilgrimage site near Kako, associated with the revered woman saint Bibi Kamal and included in Bihar's Sufi tourism circuit.",
+    source: "https://tourism.bihar.gov.in/en/circuits/sufi-circuit"
+  },
+  {
+    name: "Khanqah Faridiyya",
+    district: "Jehanabad",
+    location: "Kako",
+    type: "Khanqah",
+    saint: "Hazrat Shah Fareed (more research required)",
+    silsila: "Faridiyya",
+    note: "Listed in the All India Ulama & Mashaikh Board's directory of dargahs and khanqahs. Further local documentation is needed.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Hazrat Shah Sulaiman Lagar Zameen",
+    district: "Jehanabad",
+    location: "Kako",
+    type: "Dargah",
+    saint: "Hazrat Sulaiman Lagar Zameen bin Shah Abdul Aziz Maneri",
+    silsila: "Suharwardiyya",
+    note: "Dargah of Husband of Hazrat Bibi Kamal, brother of Hazrat Shah Jalal Maneri and son of Hazrat Shah Abdul Aziz Maneri"
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Amthua Sharif",
+    district: "Jehanabad",
+    location: "Amthua",
+    type: "Dargah",
+    saint: "Hazrat Syed Shah Muhammad Hayaat Rahmani",
+    silsila: "Rahmaniyya",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Khwaja Daud Chishti",
+    district: "Jehanabad",
+    location: "Kendui",
+    type: "Dargah",
+    saint: "Hazrat Khwaja Daud Chishti",
+    silsila: "Chishtiyya",
+    note: "A Chishti-associated shrine identified in the All India Ulama & Mashaikh Board's directory.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Shamsiyya",
+    district: "Arwal",
+    location: "Arwal",
+    type: "Khanqah",
+    saint: "Hazrat Makhdoom Syed Shah Shamsuddin Ahmed Mehmud Sufaid Baaz Kintoori",
+    silsila: "Further verification required",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Qadriyya–Muhammadiyya",
+    district: "Aurangabad",
+    location: "Amjhar, Haspura area",
+    type: "Dargah",
+    saint: "Hazrat Saiyadana Muhammad Jilani Amjhari Quadri",
+    silsila: "Qadiriyya",
+    note: "A recognised pilgrimage destination in Aurangabad district. Bihar Tourism describes the shrine as an important centre visited by devotees, especially during its annual observance.",
+    source: "https://tourism.bihar.gov.in/en/destinations/aurangabad/amjhar-sharif"
+  },
+  {
+    name: "Khanqah Qadriyya–Abdaliyya",
+    district: "Aurangabad",
+    location: "Old Town, Daudnagar",
+    type: "Khanqah",
+    saint: "Verification required",
+    silsila: "Qadiriyya-Abdaliyya",
+    note:
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Firdausiyya",
+    district: "Aurangabad",
+    location: "Simla, near Kasma",
+    type: "Khanqah",
+    saint: "Firdausi spiritual lineage",
+    silsila: "Firdausiyya",
+    note: 
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Dargah of Hazrat Makhdoom Shaikh Shah Shoaib Firdausi",
+    district: "Sheikhpura",
+    location: "Badi Dargah, Sheikhpura",
+    type: "Dargah",
+    saint: "Hazrat Makhdoom Shaikh Shah Shoaib Firdausi",
+    silsila: "Firdausiyya",
+    note: "A significant shrine in Sheikhpura's Sufi heritage, associated with the Firdausi tradition and the historical religious landscape of the district.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Munemiyya–Shakiriyya",
+    district: "Sheikhpura",
+    location: "Pind Sharif, Sheikhpura",
+    type: "Combined",
+    saint: "Hazrat Syed Tajuddin Shakir",
+    silsila: "Abulolai–Qadri–Munemi",
+    note: "A known khanqah and shrine in the Sheikhpura region.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Shahbaziya",
+    district: "Bhagalpur",
+    location: "Maulana Chak",
+    type: "Khanqah",
+    saint: "Hazrat Syed Shahbaz Muhammad Bhagalpuri",
+    silsila: "Shattariyya–Shahbaziyya",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Peer Damaria",
+    district: "Bhagalpur",
+    location: "Khalifa Bagh",
+    type: "Khanqah",
+    saint: "Hazrat Peer Damariyya",
+    silsila: "Further verification required",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Hazrat Shah Imdad Ali",
+    district: "Bhagalpur",
+    location: "Qazi Wali Chak",
+    type: "Dargah",
+    saint: "Hazrat Shah Imdad Ali",
+    silsila: "Further verification required",
+    note: "A shrine listed in the All India Ulama & Mashaikh Board's Bihar directory. Additional biography and inscription research would improve this record.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Faridiyya",
+    district: "Bhojpur",
+    location: "Ara",
+    type: "Khanqah",
+    saint: "Verification required",
+    silsila: "Faridiyya",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Hujra Chillah Makhdoom-e-Jahan",
+    district: "Bhojpur",
+    location: "Bihia",
+    type: "Dargah",
+    saint: "Associated with Hazrat Shaykh Sharfuddin Ahmad Yahya Maneri",
+    silsila: "Firdausiyya",
+    note: "A chillah or spiritual retreat site related to Makhdoom-e-Jahan, Badi Dargah, Bihar Sharif, Nalanda.",
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Qadria",
+    district: "Gaya",
+    location: "Manpur",
+    type: "Khanqah",
+    saint: "Verification required",
+    silsila: "Qadiriyya",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Khanqah Munemiyya Mazahiriyya",
+    district: "Gaya",
+    location: "Abgila",
+    type: "Khanqah",
+    saint: "Verification required",
+    silsila: "Munemiyya",
+    note: 
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Khanqah Ashrafiyya",
+    district: "Gaya",
+    location: "Bitho Sharif",
+    type: "Khanqah",
+    saint: "Hazrat Syed Shah Durwesh Ashraf",
+    silsila: "Ashrafiyya",
+    note: 
+    source: "https://sufinama.org/khanqah"
+  },
+  {
+    name: "Dargah Hazrat Shah Ahlullah Munemi",
+    district: "Gaya",
+    location: "Peer Bigha, Chakand",
+    type: "Dargah",
+    saint: "Hazrat Shah Ahlullah Munemi",
+    silsila: "Munemiyya",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Hazrat Shah Ata Husain Fani Munemi",
+    district: "Gaya",
+    location: "Gaya",
+    type: "Dargah",
+    saint: "Hazrat Syed Shah Ata Husain Fani Chishti Munemi",
+    silsila: "Munemiyya",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Hazrat Qazi Shamsuddin",
+    district: "Buxar",
+    location: "Chausa",
+    type: "Dargah",
+    saint: "Qazi Shamsuddin",
+    silsila: "Firdausiyya",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Hazrat Hakim Farhatullah",
+    district: "Saran",
+    location: "Karim Chak, Chhapra",
+    type: "Dargah",
+    saint: "Hakim Farhatullah",
+    silsila: "Further verification required",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  },
+  {
+    name: "Dargah Hazrat Shah Fida Ahmad Abdul Karim",
+    district: "Darbhanga",
+    location: "Darbhanga",
+    type: "Dargah",
+    saint: "Hazrat Shah Fida Ahmad Abdul Karim",
+    silsila: "Further verification required",
+    note: 
+    source: "https://www.aiumb.org/sufism/dargahs-in-india/"
+  }
+  ];
+
+  const directory = document.getElementById("directory");
+const searchInput = document.getElementById("searchInput");
+const districtFilter = document.getElementById("districtFilter");
+const typeFilter = document.getElementById("typeFilter");
+const resultCount = document.getElementById("resultCount");
+
+const uniqueDistricts = [...new Set(sites.map(site => site.district))]
+  .sort((a, b) => a.localeCompare(b));
+
+document.getElementById("totalCount").textContent = sites.length + "+";
+document.getElementById("districtCount").textContent = uniqueDistricts.length + "+";
+
+uniqueDistricts.forEach(district => {
+  const option = document.createElement("option");
+  option.value = district;
+  option.textContent = district;
+  districtFilter.appendChild(option);
+});
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+}
+
+function mapSearch(site) {
+  const query = `${site.name}, ${site.location}, ${site.district}, Bihar, India`;
+  return "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(query);
+}
+
+function getSearchText(site) {
+  return [
+    site.name, site.district, site.location,
+    site.type, site.saint, site.silsila, site.note
+  ].join(" ").toLocaleLowerCase();
+}
+
+function renderSites() {
+  const query = searchInput.value.trim().toLocaleLowerCase();
+  const district = districtFilter.value;
+  const type = typeFilter.value;
+
+  const filtered = sites.filter(site => {
+    const matchesQuery = !query || getSearchText(site).includes(query);
+    const matchesDistrict = !district || site.district === district;
+    const matchesType = !type || site.type === type;
+    return matchesQuery && matchesDistrict && matchesType;
+  });
+
+  resultCount.textContent =
+    `Showing ${filtered.length} of ${sites.length} entries`;
+
+  if (!filtered.length) {
+    directory.innerHTML = `
+      <div class="no-results">
+        <h3>No matching entries found</h3>
+        <p>Try a different spelling, town, saint's name or district.</p>
+      </div>`;
+    return;
+  }
+
+  directory.innerHTML = filtered.map((site, index) => `
+    <article class="place-card">
+      <div class="card-top">
+        <span class="card-number">${String(index + 1).padStart(2, "0")}</span>
+        <span class="type-tag">${escapeHTML(
+          site.type === "Combined" ? "Khanqah & Dargah" :
+          site.type === "Dargah" ? "Dargah / Mazar" : "Khanqah"
+        )}</span>
+      </div>
+      <h3>${escapeHTML(site.name)}</h3>
+      <p class="place-location">⌖ ${escapeHTML(site.location)}, ${escapeHTML(site.district)}, Bihar</p>
+      <p class="place-note">${escapeHTML(site.note)}</p>
+      <p class="place-note">
+        <strong>Associated figure:</strong> ${escapeHTML(site.saint)}<br>
+        <strong>Silsila:</strong> ${escapeHTML(site.silsila)}
+      </p>
+      <div class="actions">
+        <a class="action-link primary"
+           href="${mapSearch(site)}"
+           target="_blank" rel="noopener">View map ↗</a>
+        <a class="action-link"
+           href="${escapeHTML(site.source)}"
+           target="_blank" rel="noopener">Reference ↗</a>
+      </div>
+    </article>
+  `).join("");
+}
+
+searchInput.addEventListener("input", renderSites);
+districtFilter.addEventListener("change", renderSites);
+typeFilter.addEventListener("change", renderSites);
+
+document.getElementById("resetFilters").addEventListener("click", () => {
+  searchInput.value = "";
+  districtFilter.value = "";
+  typeFilter.value = "";
+  renderSites();
+  searchInput.focus();
+});
+
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+menuToggle.addEventListener("click", () => {
+  const open = mainNav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(open));
+  menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+  menuToggle.textContent = open ? "✕ Close" : "☰ Menu";
+});
+
+mainNav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰ Menu";
+  });
+});
+
+document.getElementById("backTop").addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+renderSites();
+</script>
+</body>
+</html>
+
+  
+  
