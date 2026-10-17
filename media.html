@@ -286,7 +286,140 @@ body{overflow-x:hidden}
     @media(max-width:900px){.media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:780px){.media-hero{padding:58px 0 42px}.media-hero:after{font-size:150px;right:-15px;top:0}.media-toolbar{align-items:stretch;flex-direction:column}.media-search{width:100%}.media-grid{gap:11px}.media-card-body{padding:16px 14px 18px}.media-card h3{font-size:16px}.media-cta{padding:27px 22px;align-items:flex-start;flex-direction:column;margin-top:50px}}
     @media(max-width:420px){.media-grid{grid-template-columns:1fr}.media-card h3{font-size:18px}.media-stats div{padding:13px 10px}.media-stats strong{font-size:21px}.media-stats span{font-size:7px}}
-  </style>
+  
+/* ── Premium editorial redesign: Media & Press ── */
+:root{
+  --media-ink:#261b1b;
+  --media-wine:#581e2a;
+  --media-wine2:#762f3c;
+  --media-gold:#c9a96e;
+  --media-cream:#f7f1e7;
+  --media-line:#dfd1bd;
+}
+body{background:var(--media-cream)}
+.media-hero{
+  min-height:560px;
+  padding:76px 0 66px;
+  color:#fffaf1;
+  background:
+    radial-gradient(ellipse at 82% 20%,rgba(201,169,110,.18),transparent 28%),
+    radial-gradient(ellipse at 100% 100%,rgba(164,77,86,.32),transparent 36%),
+    linear-gradient(118deg,#3f1720 0%,#5b202d 54%,#71303a 100%);
+  isolation:isolate;
+}
+.media-hero:before{
+  content:"";
+  position:absolute;inset:18px;
+  border:1px solid rgba(201,169,110,.28);
+  pointer-events:none;
+}
+.media-hero:after{
+  content:"أ";
+  position:absolute;right:7%;top:3%;
+  font-family:"Noto Nastaliq Urdu",serif;
+  font-size:clamp(220px,33vw,440px);
+  line-height:1;color:rgba(233,210,166,.10);
+  transform:rotate(-5deg);pointer-events:none;
+}
+.media-hero-inner{max-width:1160px;padding:25px 3.5%;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);column-gap:7%;align-items:center}
+.media-hero .eyebrow{color:#e8c98e}
+.media-hero .eyebrow-line{background:#d7b778;width:42px}
+.media-hero h1{max-width:720px;font-size:clamp(48px,6.7vw,88px);letter-spacing:-.055em;line-height:1.02;margin:28px 0 25px;color:#fffaf1}
+.media-hero h1 em{color:#e8c98e;font-style:italic}
+.media-lede{color:#f0e3d8;max-width:590px;font-size:15px;line-height:2}
+.media-stats{
+  grid-column:1/-1;max-width:760px;width:100%;
+  background:rgba(255,250,241,.06);
+  border:1px solid rgba(231,204,151,.32);
+  margin-top:45px;backdrop-filter:blur(6px);
+}
+.media-stats>div{background:transparent;padding:20px 24px}
+.media-stats strong{display:block;font-family:var(--serif);font-size:35px;font-weight:500;color:#f0d49a;line-height:1.1}
+.media-stats span{display:block;color:#e8d9ca;font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-top:8px}
+.media-hero-inner:after{
+  content:"THE PRESS ARCHIVE\A INDEPENDENT SCHOLARSHIP · LITERARY HERITAGE";
+  white-space:pre;justify-self:end;align-self:center;
+  grid-column:2;grid-row:1;
+  width:min(100%,330px);min-height:270px;
+  display:flex;align-items:flex-end;justify-content:flex-start;
+  padding:25px;box-sizing:border-box;
+  border:1px solid rgba(231,204,151,.5);
+  outline:1px solid rgba(231,204,151,.22);outline-offset:8px;
+  background:
+    linear-gradient(145deg,rgba(255,248,230,.12),rgba(255,248,230,.015)),
+    repeating-linear-gradient(45deg,transparent 0 17px,rgba(231,204,151,.06) 18px 19px);
+  color:#e9cf9a;font-size:10px;letter-spacing:.18em;line-height:2.2;
+  text-align:left;position:relative;z-index:1;
+}
+.media-hero-inner .media-stats{position:relative;z-index:2}
+.media-toolbar{align-items:end;padding-top:86px;margin-bottom:28px;gap:30px}
+.media-toolbar h2{font-size:clamp(34px,4.3vw,52px);line-height:1.12;letter-spacing:-.045em;margin:17px 0 0}
+.media-toolbar h2 em{font-style:italic}
+.media-search{border:1px solid #d8c7ae;background:#fffdf8;box-shadow:0 8px 24px rgba(52,29,26,.04)}
+.media-search input{min-width:240px;padding:15px 17px;color:#332526}
+.media-search button{background:var(--media-wine);padding:0 20px;letter-spacing:.04em}
+.media-filters{gap:9px;margin:0 0 32px;padding-bottom:20px;border-bottom:1px solid var(--media-line)}
+.media-filter{border:1px solid #d8c7ae;background:rgba(255,253,248,.68);padding:11px 16px;color:#594a43;font-size:10px;letter-spacing:.02em;transition:all .2s}
+.media-filter:hover,.media-filter.active{background:var(--media-wine);border-color:var(--media-wine);color:#fff9ee}
+.media-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.media-card{
+  position:relative;overflow:hidden;background:#fffdf8;border:1px solid #e4d8c8;
+  box-shadow:0 7px 22px rgba(55,34,29,.035);
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+.media-card:before{content:"";height:3px;position:absolute;top:0;left:0;right:0;background:linear-gradient(90deg,#8b3d48,#c9a96e 55%,#8b3d48);transform:scaleX(0);transform-origin:left;transition:transform .28s ease;z-index:2}
+.media-card:hover{transform:translateY(-6px);box-shadow:0 18px 38px rgba(55,34,29,.11);border-color:#cbb58f}
+.media-card:hover:before{transform:scaleX(1)}
+.media-card-top{background:#f1e8d9;color:#5b2630;padding:18px 20px;border-bottom:1px solid #e2d3be}
+.media-number{font-size:25px;color:#8a5e35}
+.media-tag{color:#8c6d4b;font-size:8px;letter-spacing:.16em}
+.media-card-body{padding:23px 22px 25px;min-height:235px}
+.media-outlet{font-size:9px;letter-spacing:.17em;color:#8e693b;margin-bottom:14px}
+.media-card h3{font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#332425;letter-spacing:-.012em;margin:0 0 25px}
+.media-link{margin-top:auto;align-self:flex-start;color:#642631;border-bottom:1px solid #c7a86d;padding-bottom:5px;font-size:10px;font-weight:700;letter-spacing:.03em}
+.media-link span{color:#a47a3f;margin-left:10px}
+.media-card:nth-child(1){grid-column:span 2;background:linear-gradient(135deg,#fffdf8,#f1e5d4)}
+.media-card:nth-child(1) .media-card-top{background:#5a202b;color:#fff8ec;border-bottom:0}
+.media-card:nth-child(1) .media-number{font-size:34px;color:#e6c78c}
+.media-card:nth-child(1) .media-tag{color:#f2dfb9}
+.media-card:nth-child(1) .media-card-body{padding:30px 32px 33px;min-height:250px}
+.media-card:nth-child(1) .media-card-body:before{content:"FEATURED STORY";display:block;font-size:8px;letter-spacing:.2em;color:#987343;margin-bottom:14px}
+.media-card:nth-child(1) h3{font-size:clamp(22px,2.5vw,31px);line-height:1.42;max-width:760px}
+.media-card:nth-child(1):after{content:"“";position:absolute;right:20px;bottom:-80px;font-family:Georgia,serif;font-size:250px;line-height:1;color:rgba(126,63,53,.055);pointer-events:none}
+.site-footer{margin-top:0}
+@media(max-width:900px){
+ .media-hero-inner{grid-template-columns:1fr;gap:25px}
+ .media-hero-inner:after{grid-column:1;grid-row:2;justify-self:start;width:min(100%,420px);min-height:150px}
+ .media-stats{grid-column:1;grid-row:3;margin-top:18px}
+ .media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .media-card:nth-child(1){grid-column:span 2}
+}
+@media(max-width:600px){
+ .media-hero{padding:46px 0 45px;min-height:auto}
+ .media-hero:before{inset:9px}
+ .media-hero:after{right:0;top:6%;font-size:210px}
+ .media-hero-inner{padding:18px 5%;width:92%}
+ .media-hero h1{font-size:clamp(43px,12vw,61px);margin:21px 0}
+ .media-lede{font-size:14px;line-height:1.85}
+ .media-hero-inner:after{min-height:120px;padding:17px;font-size:8px;margin:8px 8px 0}
+ .media-stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:16px}
+ .media-stats>div{padding:13px 8px}
+ .media-stats strong{font-size:26px}
+ .media-stats span{font-size:7px;letter-spacing:.08em}
+ .media-toolbar{padding-top:58px;align-items:stretch;flex-direction:column}
+ .media-search{width:100%}
+ .media-search input{min-width:0;width:100%;flex:1}
+ .media-search button{padding:0 13px}
+ .media-grid{grid-template-columns:1fr;gap:14px}
+ .media-card:nth-child(1){grid-column:auto}
+ .media-card:nth-child(1) .media-card-body{padding:24px 22px;min-height:0}
+ .media-card:nth-child(1) h3{font-size:23px}
+ .media-card-body{min-height:0;padding:21px}
+ .media-card h3{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.media-card,.media-card:before,.media-filter{transition:none}}
+
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -431,7 +564,7 @@ body{overflow-x:hidden}
         <div class="media-card-body">
           <p class="media-outlet">Navbharat Times</p>
           <h3>इमाम अहमद रजा खान बरेलवी पर सय्यद अमजद हुसैन लिखेंगे किताब, कई और सूफियों पर है तैयारी</h3>
-          <a class="media-link" href="https://navbharattimes.indiatimes.com/state/uttar-pradesh/bareilly/syed-amjad-hussain-will-write-book-on-imam-ahmed-raza-khan-bareli/amp_articleshow/104015266.cms" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
+          <a class="media-link" href="https://navbharattimes.indiatimes.com/state/uttar-pradesh/bareilly/syed-amjad-hussain-will-write-book-on-imam-ahmed-raza-khan-barelvi/amp_articleshow/104015266.cms" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
       <article class="media-card">
@@ -511,7 +644,7 @@ body{overflow-x:hidden}
         <div class="media-card-body">
           <p class="media-outlet">News24 Hindi</p>
           <h3>अब सूफीवाद पर लिखेंगे युवा लेखक सय्यद अमजद हुसैन</h3>
-          <a class="media-link" href="https://hindi.news24online.com/state/bihar/bihar-news-book-written-on-life-of-akhtar-oranvi-creator-of-urdu-literature/258994/" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
+          <a class="media-link" href="https://hindi.news24online.com/state/now-young-writer-syed-amjad-hussain-will-write-on-sufism/407907/" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
       <article class="media-card">
