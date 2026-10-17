@@ -404,6 +404,7 @@
     <button class="tab-btn" onclick="switchPanel('awardsPanel', this)">Awards</button>
     <button class="tab-btn" onclick="switchPanel('booksPanel', this)">Books</button>
     <button class="tab-btn" onclick="switchPanel('galleryPanel', this)">Gallery</button>
+    <button class="tab-btn" onclick="switchPanel('mediaPressPanel', this); loadMediaPress();">Media & Press</button>
     <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">Archive</button>
   </nav>
 
@@ -583,6 +584,37 @@
     </form>
   </div>
 
+  <!-- Media & Press Editor -->
+  <div id="mediaPressPanel" class="panel">
+    <div class="panel-title"><span id="mediaPressFormTitle">Manage Media & Press Coverage</span></div>
+    <p style="color:var(--text-muted);margin-top:-12px">Add, edit, publish, unpublish or remove press coverage shown on media.html. Changes are stored in Supabase.</p>
+    <form id="mediaPressForm">
+      <div class="form-row">
+        <div class="form-group"><label>Publication / Outlet *</label><input id="mpOutlet" class="form-control" required maxlength="180" placeholder="e.g. Dainik Bhaskar"></div>
+        <div class="form-group"><label>Category *</label>
+          <select id="mpCategory" class="form-control">
+            <option value="PRESS COVERAGE">Press Coverage</option>
+            <option value="PROFILE">Profile</option>
+            <option value="PUBLIC ENGAGEMENT">Public Engagement</option>
+            <option value="BOOKS & RESEARCH">Books & Research</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label>Headline / Title *</label><textarea id="mpTitle" class="form-control" required maxlength="500" placeholder="Headline as published"></textarea></div>
+      <div class="form-group"><label>Publication URL *</label><input id="mpUrl" type="url" class="form-control" required placeholder="https://..."></div>
+      <div class="form-row">
+        <div class="form-group"><label>Display order (smaller first)</label><input id="mpOrder" type="number" class="form-control" value="100" step="1"></div>
+        <div class="form-group" style="display:flex;align-items:center;gap:10px;padding-top:25px"><input id="mpPublished" type="checkbox" checked style="width:18px;height:18px"><label for="mpPublished" style="margin:0">Published on public page</label></div>
+      </div>
+      <div class="btn-group">
+        <button type="submit" id="mpSaveBtn" class="btn-primary">Save Media Entry</button>
+        <button type="button" class="btn-secondary" onclick="resetMediaPressForm()">Reset</button>
+      </div>
+    </form>
+    <h3 style="color:var(--wine);margin-top:36px">Existing Media Entries</h3>
+    <div id="mediaPressArchiveList" class="archive-list">Select this tab to load entries.</div>
+  </div>
+
   <!-- Archive Panel -->
   <div id="archivePanel" class="panel">
     <div class="panel-title"><span>Database Records Archive</span></div>
@@ -607,6 +639,9 @@
 
     <h4 style="color:var(--wine); margin:20px 0 10px;">History Records</h4>
     <div id="sheikhpuraArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Media & Press Records</h4>
+    <div id="mediaPressArchiveListSecondary" class="archive-list">Open Media & Press tab to load.</div>
 
     <h4 style="color:var(--wine); margin:20px 0 10px;">Gallery Media Records</h4>
     <div id="galleryArchiveList" class="archive-list">Loading...</div>
@@ -1000,6 +1035,101 @@
     document.getElementById('galSaveBtn').textContent = "Upload & Save Media";
   }
 
+
+  // Media & Press editor. Requires the media_press table and RLS policies in media_press_setup.sql.
+  let editingMediaPressId = null;
+  async function loadMediaPress() {
+    const list = document.getElementById('mediaPressArchiveList');
+    list.innerHTML = '<p style="color:var(--text-muted)">Loading entries…</p>';
+    try {
+      const { data, error } = await getClient().from('media_press').select('*').order('sort_order', { ascending: true }).order('id', { ascending: false });
+      if (error) throw error;
+      const markup = (!data || !data.length) ? '<p style="color:var(--text-muted)">No media entries yet. Add the first one using the form above.</p>' : data.map(item => `
+        <div class="archive-card">
+          <div style="min-width:0;max-width:70%">
+            <div class="archive-title">${escapeHTML(item.outlet)} — ${escapeHTML(item.title)}</div>
+            <div class="archive-meta">${escapeHTML(item.category)} · Order ${Number(item.sort_order)||0} · ${item.published ? 'Published' : 'Hidden'}</div>
+            <div class="archive-meta" style="overflow-wrap:anywhere">${escapeHTML(item.url)}</div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="action-btn action-edit" onclick="editMediaPress(${Number(item.id)})">Edit</button>
+            <button class="action-btn action-delete" onclick="deleteMediaPress(${Number(item.id)})">Delete</button>
+          </div>
+        </div>`).join('');
+      list.innerHTML = markup;
+      const secondary = document.getElementById('mediaPressArchiveListSecondary');
+      if (secondary) secondary.innerHTML = markup;
+    } catch (error) {
+      console.error('Could not load media_press:', error);
+      list.innerHTML = '<p style="color:var(--danger)">Could not load media entries. Check that media_press_setup.sql was run and Supabase permissions are configured. Details: ' + escapeHTML(error.message) + '</p>';
+    }
+  }
+
+  document.getElementById('mediaPressForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const saveButton = document.getElementById('mpSaveBtn');
+    saveButton.disabled = true;
+    try {
+      const data = {
+        outlet: document.getElementById('mpOutlet').value.trim(),
+        title: document.getElementById('mpTitle').value.trim(),
+        url: document.getElementById('mpUrl').value.trim(),
+        category: document.getElementById('mpCategory').value,
+        sort_order: Number.parseInt(document.getElementById('mpOrder').value, 10) || 0,
+        published: document.getElementById('mpPublished').checked
+      };
+      if (!/^https?:\/\//i.test(data.url)) throw new Error('Enter a valid http:// or https:// publication URL.');
+      const query = editingMediaPressId
+        ? await getClient().from('media_press').update(data).eq('id', editingMediaPressId)
+        : await getClient().from('media_press').insert([data]);
+      if (query.error) throw query.error;
+      alert(editingMediaPressId ? 'Media entry updated.' : 'Media entry saved.');
+      resetMediaPressForm();
+      await loadMediaPress();
+    } catch (error) {
+      console.error(error);
+      alert('Could not save media entry: ' + error.message);
+    } finally {
+      saveButton.disabled = false;
+    }
+  });
+
+  async function editMediaPress(id) {
+    try {
+      const { data, error } = await getClient().from('media_press').select('*').eq('id', id).single();
+      if (error) throw error;
+      editingMediaPressId = id;
+      document.getElementById('mpOutlet').value = data.outlet || '';
+      document.getElementById('mpTitle').value = data.title || '';
+      document.getElementById('mpUrl').value = data.url || '';
+      document.getElementById('mpCategory').value = data.category || 'PRESS COVERAGE';
+      document.getElementById('mpOrder').value = data.sort_order ?? 100;
+      document.getElementById('mpPublished').checked = Boolean(data.published);
+      document.getElementById('mediaPressFormTitle').textContent = 'Editing: ' + data.outlet;
+      document.getElementById('mpSaveBtn').textContent = 'Update Media Entry';
+      switchPanel('mediaPressPanel', [...document.querySelectorAll('.tab-btn')].find(btn => btn.textContent.trim() === 'Media & Press'));
+      document.getElementById('mediaPressForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (error) { alert('Could not open entry: ' + error.message); }
+  }
+
+  async function deleteMediaPress(id) {
+    if (!confirm('Delete this media entry permanently?')) return;
+    try {
+      const { error } = await getClient().from('media_press').delete().eq('id', id);
+      if (error) throw error;
+      await loadMediaPress();
+    } catch (error) { alert('Could not delete entry: ' + error.message); }
+  }
+
+  function resetMediaPressForm() {
+    document.getElementById('mediaPressForm').reset();
+    document.getElementById('mpOrder').value = 100;
+    document.getElementById('mpPublished').checked = true;
+    editingMediaPressId = null;
+    document.getElementById('mediaPressFormTitle').textContent = 'Manage Media & Press Coverage';
+    document.getElementById('mpSaveBtn').textContent = 'Save Media Entry';
+  }
+
   // Load Archives
   async function loadArchives() {
     const client = getClient();
@@ -1103,7 +1233,7 @@
 
   async function exportBackup() {
     const client = getClient();
-    const tables = ['awards', 'books_articles', 'poetry', 'sher', 'sufi_saints', 'bihar_directory', 'sheikhpura_history', 'gallery_media'];
+    const tables = ['awards', 'books_articles', 'poetry', 'sher', 'sufi_saints', 'bihar_directory', 'sheikhpura_history', 'gallery_media', 'media_press'];
     const backup = { exported_at: new Date().toISOString(), format_version: 1, tables: {} };
     try {
       for (const table of tables) {

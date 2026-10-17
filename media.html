@@ -686,6 +686,8 @@ body{background:var(--media-cream)}
     <p>Independent scholarship. Literary expression. Cultural memory.</p>
     <div class="footer-bottom"><span>© <span id="year"></span> Syed Amjad Hussain</span><span>Built around history, words & heritage.</span><a href="#home">Back to top ↑</a></div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin-config.js"></script>
   <script>
     const menuToggle = document.getElementById('menuToggle');
     const mainNav = document.getElementById('mainNav');
@@ -703,7 +705,7 @@ body{background:var(--media-cream)}
     document.getElementById('year').textContent = new Date().getFullYear();
 
     const mediaSearch = document.getElementById('mediaSearch');
-    const mediaCards = [...document.querySelectorAll('.media-card')];
+    let mediaCards = [...document.querySelectorAll('.media-card')];
     const mediaFilters = [...document.querySelectorAll('.media-filter')];
     const mediaEmpty = document.getElementById('mediaEmpty');
     let activeMediaFilter = 'all';
@@ -730,7 +732,52 @@ body{background:var(--media-cream)}
     }));
     mediaSearch?.addEventListener('input', filterMedia);
     document.getElementById('mediaSearchButton')?.addEventListener('click', filterMedia);
+
     mediaSearch?.addEventListener('keydown', event => { if (event.key === 'Enter') filterMedia(); });
+
+    // If Supabase is configured and media_press has records, use the live database.
+    // The existing embedded cards remain as a graceful fallback if the table is empty/unavailable.
+    async function loadLiveMediaPress() {
+      try {
+        if (!window.ADMIN_CONFIG?.supabaseUrl || !window.ADMIN_CONFIG?.supabaseAnonKey || !window.supabase) return;
+        const client = window.supabase.createClient(
+          window.ADMIN_CONFIG.supabaseUrl,
+          window.ADMIN_CONFIG.supabaseAnonKey,
+          { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } }
+        );
+        const { data, error } = await client.from('media_press')
+          .select('id,outlet,title,url,category,sort_order,published')
+          .eq('published', true)
+          .order('sort_order', { ascending: true })
+          .order('id', { ascending: false });
+        if (error || !data || !data.length) return;
+        const safe = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+          '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+        })[char]);
+        const validUrl = value => {
+          try { const url = new URL(value); return ['http:', 'https:'].includes(url.protocol) ? url.href : ''; }
+          catch { return ''; }
+        };
+        const grid = document.getElementById('mediaGrid');
+        grid.innerHTML = data.map((item, index) => {
+          const href = validUrl(item.url);
+          if (!href) return '';
+          return `<article class="media-card">
+            <div class="media-card-top"><span class="media-number">${String(index + 1).padStart(2, '0')}</span><span class="media-tag">${safe(item.category || 'PRESS COVERAGE')}</span></div>
+            <div class="media-card-body">
+              <p class="media-outlet">${safe(item.outlet)}</p>
+              <h3>${safe(item.title)}</h3>
+              <a class="media-link" href="${safe(href)}" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
+            </div>
+          </article>`;
+        }).join('');
+        mediaCards = [...document.querySelectorAll('.media-card')];
+        filterMedia();
+      } catch (error) {
+        console.warn('Live media list unavailable; showing embedded press entries.', error);
+      }
+    }
+    loadLiveMediaPress();
   </script>
 </body>
 </html>
