@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#652e36">
+<meta name="description" content="Official statements, public messages and reflections from Syed Amjad Hussain, author, poet and independent historian.">
+<title>Official Statements & Messages | Syed Amjad Hussain</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --wine: #652e36;
+  --wine-dark: #472127;
+  --wine-light: #854751;
+  --gold: #c6a56b;
+  --gold-light: #e7d3ad;
+  --cream: #f7f2e9;
+  --paper: #fffdf8;
+  --ink: #302425;
+  --muted: #786b63;
+  --line: #e4d8c8;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(1160px, 90%);
+  margin: auto;
+}
+
+.topline {
+  background: var(--wine-dark);
+  color: #e8d8c5;
+  text-align: center;
+  padding: 9px 15px;
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+
+header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 10;
+}
+
+.nav-wrap {
+  width: min(1200px, 92%);
+  min-height: 88px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--wine);
+  letter-spacing: -.04em;
+}
+
+.brand-subtitle {
+  font-size: 8px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 19px;
+}
+
+.nav-links a {
+  font-size: 10px;
+  color: #514343;
+  transition: color .2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--wine);
+}
+
+.nav-links a.active {
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 6px;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  color: var(--wine);
+  border: 1px solid var(--line);
+  padding: 9px 12px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 82% 20%, rgba(201,169,110,.18), transparent 28%),
+    radial-gradient(ellipse at 100% 100%, rgba(164,77,86,.28), transparent 36%),
+    linear-gradient(118deg, #3f1720, #5b202d 55%, #71303a);
+  color: var(--paper);
+  padding: 86px 0 80px;
+}
+
+.hero:before {
+  content: "";
+  position: absolute;
+  inset: 17px;
+  border: 1px solid rgba(201,169,110,.3);
+  pointer-events: none;
+}
+
+.hero:after {
+  content: "أ";
+  position: absolute;
+  right: 5%;
+  top: -75px;
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: clamp(250px, 35vw, 450px);
+  line-height: 1;
+  color: rgba(232,210,166,.07);
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 7%;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #927047;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.hero .eyebrow { color: var(--gold-light); }
+
+.eyebrow-line {
+  width: 32px;
+  height: 1px;
+  display: inline-block;
+  background: var(--gold);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -.055em;
+  line-height: 1.04;
+  font-size: clamp(46px, 6vw, 78px);
+  margin: 27px 0 24px;
+}
+
+.hero h1 em {
+  font-weight: 500;
+  color: #e7c98f;
+}
+
+.hero-description {
+  max-width: 580px;
+  font-size: 13px;
+  line-height: 2;
+  color: #e5d6ca;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--gold-light);
+  color: var(--wine-dark);
+  padding: 14px 19px;
+  font-size: 10px;
+  font-weight: 700;
+  transition: transform .2s, background .2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background: #f2dfbb;
+}
+
+.button-outline {
+  background: transparent;
+  border: 1px solid rgba(231,211,173,.5);
+  color: var(--paper);
+}
+
+.button-outline:hover { background: rgba(255,255,255,.08); }
+
+.hero-quote {
+  border: 1px solid rgba(211,183,136,.55);
+  outline: 1px solid rgba(211,183,136,.2);
+  outline-offset: 8px;
+  padding: 31px 29px;
+  background: rgba(255,255,255,.035);
+}
+
+.quote-mark {
+  font-family: Georgia, serif;
+  color: var(--gold-light);
+  font-size: 88px;
+  line-height: .8;
+  margin-bottom: 18px;
+}
+
+.hero-quote blockquote {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 27px);
+  line-height: 1.65;
+  color: #fff7eb;
+}
+
+.quote-caption {
+  display: block;
+  margin-top: 22px;
+  color: var(--gold-light);
+  font-size: 8px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+/* MAIN CONTENT */
+
+.main-section { padding: 83px 0 88px; }
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 31px;
+}
+
+.section-heading h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(32px, 4.4vw, 49px);
+  letter-spacing: -.045em;
+  line-height: 1.15;
+  margin: 13px 0 0;
+}
+
+.section-heading h2 em {
+  color: var(--wine);
+  font-weight: 500;
+}
+
+.section-intro {
+  max-width: 510px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+  margin-top: 14px;
+}
+
+.search-box {
+  display: flex;
+  min-width: 320px;
+  background: var(--paper);
+  border: 1px solid #d8c7ae;
+  padding: 6px;
+  gap: 5px;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 12px;
+  color: var(--ink);
+  font-size: 11px;
+}
+
+.search-box button {
+  border: 0;
+  background: var(--wine);
+  color: white;
+  padding: 0 16px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 22px;
+  margin-bottom: 28px;
+}
+
+.filter-btn {
+  background: rgba(255,253,248,.65);
+  border: 1px solid #d8c7ae;
+  color: #65554c;
+  padding: 10px 14px;
+  font-size: 9px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--wine);
+  border-color: var(--wine);
+  color: white;
+}
+
+/* MESSAGE CARDS */
+
+.message-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.message-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 285px;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid #e1d4c3;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+
+.message-card:before {
+  content: "";
+  height: 3px;
+  position: absolute;
+  inset: 0 0 auto;
+  background: linear-gradient(90deg, var(--wine), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s;
+}
+
+.message-card:hover {
+  transform: translateY(-5px);
+  border-color: #cbb58f;
+  box-shadow: 0 17px 36px rgba(55,34,29,.09);
+}
+
+.message-card:hover:before { transform: scaleX(1); }
+.message-card[hidden] { display: none; }
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 20px 14px;
+  border-bottom: 1px solid #eee5d9;
+}
+
+.card-category {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-weight: 700;
+  color: #96764c;
+}
+
+.card-symbol {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #dfceb0;
+  color: var(--wine);
+  font-family: var(--serif);
+  font-size: 19px;
+}
+
+.card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 22px 21px 24px;
+}
+
+.card-content h3 {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.38;
+  font-weight: 500;
+  margin: 0 0 12px;
+  color: #352627;
+}
+
+.card-content p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+  margin: 0 0 23px;
+}
+
+.card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  color: var(--wine);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 5px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.empty-state {
+  display: none;
+  padding: 30px;
+  text-align: center;
+  border: 1px dashed var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.empty-state.show { display: block; }
+
+/* NOTE */
+
+.authenticity-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  background: #eee5d8;
+  border: 1px solid #dfd0bb;
+  padding: 25px 27px;
+  margin-top: 35px;
+}
+
+.note-symbol {
+  color: #9c7746;
+  font-family: var(--serif);
+  font-size: 29px;
+}
+
+.authenticity-note h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 19px;
+  margin: 0 0 6px;
+}
+
+.authenticity-note p {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+/* CONTACT STRIP */
+
+.contact-strip {
+  background: var(--wine-dark);
+  color: var(--paper);
+  padding: 67px 0;
+}
+
+.contact-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+}
+
+.contact-strip h2 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 500;
+  letter-spacing: -.035em;
+  line-height: 1.2;
+  margin: 13px 0;
+}
+
+.contact-strip h2 em { color: var(--gold-light); }
+
+.contact-strip p {
+  max-width: 570px;
+  color: #d4c5b8;
+  font-size: 11px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+/* FOOTER */
+
+footer {
+  background: #2f1b20;
+  color: #e8d9cc;
+  padding: 35px 0 22px;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: #f7ead6;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links a {
+  color: #d1bfae;
+  font-size: 9px;
+}
+
+.footer-links a:hover { color: var(--gold-light); }
+
+.copyright {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #56373c;
+  font-size: 9px;
+  color: #b9a69b;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: 9px; }
+  .message-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .nav-wrap { min-height: 75px; }
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 20px 5%;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 22px #3020200c;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 19px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 12px; }
+  .hero { padding: 58px 0 55px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 35px; }
+  .hero-quote { max-width: 540px; }
+  .section-heading { align-items: stretch; flex-direction: column; }
+  .search-box { min-width: 0; width: 100%; }
+  .contact-inner { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 520px) {
+  .container { width: 89%; }
+  .hero:before { inset: 9px; }
+  .hero h1 { font-size: clamp(42px, 11vw, 57px); }
+  .hero-description { font-size: 12px; }
+  .hero-quote { padding: 23px; }
+  .hero-quote blockquote { font-size: 20px; }
+  .main-section { padding: 56px 0 58px; }
+  .message-grid { grid-template-columns: 1fr; gap: 13px; }
+  .message-card { min-height: 0; }
+  .card-content h3 { font-size: 20px; }
+  .authenticity-note { padding: 19px; }
+  .contact-strip { padding: 53px 0; }
+  .footer-inner { align-items: flex-start; flex-direction: column; }
+  .footer-links { gap: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *:before, *:after { transition: none !important; }
+}
+</style>
+</head>
+
+<body>
+<div class="topline">OFFICIAL WEBSITE · AUTHOR · HISTORIAN · POET</div>
+
+<header>
+  <div class="nav-wrap">
+    <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
+      <span class="brand-name">Syed Amjad Hussain</span>
+      <span class="brand-subtitle">Author · Historian · Poet</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Open navigation" aria-expanded="false">☰</button>
+
+    <nav class="nav-links" id="mainNav" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="bihar-aur-sufivad.html">Books</a>
+      <a href="books-articles.html">Articles</a>
+      <a href="sufi-heritage.html">Sufi Heritage</a>
+      <a href="research.html">Research</a>
+      <a href="poetry.html">Poetry</a>
+      <a href="awards-honours.html">Honours</a>
+      <a href="media.html">Media</a>
+      <a href="official-statements.html" class="active">Statements</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">
+          <span class="eyebrow-line"></span>
+          Official voice · Personal reflections
+        </div>
+
+        <h1>Statements<br>&amp; <em>Messages.</em></h1>
+
+        <p class="hero-description">
+          A considered space for official announcements, public messages and
+          reflections on literature, heritage, learning and social harmony.
+          A place for thoughtful words, shared with sincerity and responsibility.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="#messages">Explore messages <span>↘</span></a>
+          <a class="button button-outline" href="contact.html">Official enquiries <span>↗</span></a>
+        </div>
+      </div>
+
+      <aside class="hero-quote">
+        <div class="quote-mark">“</div>
+        <blockquote>
+          Words matter most when they are guided by sincerity, knowledge
+          and a sense of responsibility.
+        </blockquote>
+        <span class="quote-caption">Notes on writing, heritage &amp; public life</span>
+      </aside>
+    </div>
+  </section>
+
+  <section class="main-section" id="messages">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            The message desk
+          </div>
+          <h2>Words with <em>purpose.</em></h2>
+          <p class="section-intro">
+            Browse topics for future statements, announcements and personal
+            reflections. Official messages can be added here as they are issued.
+          </p>
+        </div>
+
+        <label class="search-box">
+          <input id="messageSearch" type="search"
+            placeholder="Search messages or themes…" aria-label="Search messages">
+          <button type="button" id="searchButton">Search ↗</button>
+        </label>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter message categories">
+        <button class="filter-btn active" data-filter="all" type="button">All topics</button>
+        <button class="filter-btn" data-filter="literature" type="button">Literature &amp; learning</button>
+        <button class="filter-btn" data-filter="culture" type="button">Culture &amp; harmony</button>
+        <button class="filter-btn" data-filter="announcement" type="button">Announcements</button>
+        <button class="filter-btn" data-filter="remembrance" type="button">Remembrance</button>
+        <button class="filter-btn" data-filter="youth" type="button">Youth &amp; society</button>
+        <button class="filter-btn" data-filter="author" type="button">Author’s notes</button>
+      </div>
+
+      <div class="message-grid" id="messageGrid">
+
+        <article class="message-card" data-category="literature"
+          data-search="literature learning reading writing knowledge">
+          <div class="card-head">
+            <span class="card-category">Literature &amp; learning</span>
+            <span class="card-symbol">أ</span>
+          </div>
+          <div class="card-content">
+            <h3>A Note on Literature &amp; Learning</h3>
+            <p>A space for considered reflections on reading, writing, education and the responsibility that comes with sharing knowledge.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="message-card" data-category="culture"
+          data-search="sufism compassion social harmony culture heritage">
+          <div class="card-head">
+            <span class="card-category">Culture &amp; harmony</span>
+            <span class="card-symbol">✦</span>
+          </div>
+          <div class="card-content">
+            <h3>Sufism, Compassion &amp; Social Harmony</h3>
+            <p>Reflections on the ethical and human values associated with Sufi traditions, expressed with care and respect for diverse communities.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="message-card" data-category="announcement"
+          data-search="official announcement news confirmed engagement update">
+          <div class="card-head">
+            <span class="card-category">Official announcements</span>
+            <span class="card-symbol">§</span>
+          </div>
+          <div class="card-content">
+            <h3>News &amp; Official Announcements</h3>
+            <p>Important announcements, confirmed engagements and updates published directly through this official website.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="message-card" data-category="remembrance"
+          data-search="commemorative historical remembrance anniversaries people places">
+          <div class="card-head">
+            <span class="card-category">Remembrance</span>
+            <span class="card-symbol">❧</span>
+          </div>
+          <div class="card-content">
+            <h3>Remembering People &amp; Places</h3>
+            <p>Notes marking literary anniversaries, historical remembrance and people whose contributions deserve thoughtful attention.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="message-card" data-category="youth"
+          data-search="youth society young readers curiosity education culture">
+          <div class="card-head">
+            <span class="card-category">Youth &amp; society</span>
+            <span class="card-symbol">◇</span>
+          </div>
+          <div class="card-content">
+            <h3>A Message to Young Readers</h3>
+            <p>Encouraging curiosity, thoughtful reading, cultural understanding and responsible engagement with history and literature.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="message-card" data-category="author"
+          data-search="author notes writing desk books forthcoming publications">
+          <div class="card-head">
+            <span class="card-category">Author’s notes</span>
+            <span class="card-symbol">✎</span>
+          </div>
+          <div class="card-content">
+            <h3>A Note on Literature &amp; Learning</h3>
+            <p>A space for considered reflections on reading, writing, education and the responsibility that comes with sharing knowledge.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="message-card" data-category="culture"
+          data-search="sufism compassion social harmony culture heritage">
+          <div class="card-head">
+            <span class="card-category">Culture &amp; harmony</span>
+            <span class="card-symbol">✦</span>
+          </div>
+          <div class="card-content">
+            <h3>Sufism, Compassion &amp; Social Harmony</h3>
+            <p>Reflections on the ethical and human values associated with Sufi traditions, expressed with care and respect for diverse communities.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="message-card" data-category="announcement"
+          data-search="official announcement news confirmed engagement update">
+          <div class="card-head">
+            <span class="card-category">Official announcements</span>
+            <span class="card-symbol">§</span>
+          </div>
+          <div class="card-content">
+            <h3>News &amp; Official Announcements</h3>
+            <p>Important announcements, confirmed engagements and updates published directly through this official website.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="message-card" data-category="remembrance"
+          data-search="commemorative historical remembrance anniversaries people places">
+          <div class="card-head">
+            <span class="card-category">Remembrance</span>
+            <span class="card-symbol">❧</span>
+          </div>
+          <div class="card-content">
+            <h3>Remembering People &amp; Places</h3>
+            <p>Notes marking literary anniversaries, historical remembrance and people whose contributions deserve thoughtful attention.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="message-card" data-category="youth"
+          data-search="youth society young readers curiosity education culture">
+          <div class="card-head">
+            <span class="card-category">Youth &amp; society</span>
+            <span class="card-symbol">◇</span>
+          </div>
+          <div class="card-content">
+            <h3>A Message to Young Readers</h3>
+            <p>Encouraging curiosity, thoughtful reading, cultural understanding and responsible engagement with history and literature.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="message-card" data-category="author"
+          data-search="author notes writing desk books forthcoming publications">
+          <div class="card-head">
+            <span class="card-category">Author’s notes</span>
+            <span class="card-symbol">✎</span>
+          </div>
+          <div class="card-content">
+            <h3>Notes from the Writing Desk</h3>
+            <p>Updates about current writing, forthcoming publications and the ideas behind ongoing literary work.</p>
+            <a class="card-action" href="contact.html">Contact <span>↗</span></a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        No topics match your search. Try another word or choose a different category.
+      </div>
+
+      <aside class="authenticity-note">
+        <div class="note-symbol">✦</div>
+        <div>
+          <h3>A note on authenticity</h3>
+          <p>
+            The cards above are topic categories, not claims that a particular
+            statement has already been issued. New messages should be published
+            here with their date and final approved text. This helps keep the
+            page accurate, transparent and genuinely official.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="contact-strip">
+    <div class="container contact-inner">
+      <div>
+        <div class="eyebrow" style="color:var(--gold-light)">
+          <span class="eyebrow-line"></span>
+          Correspondence
+        </div>
+        <h2>For enquiries &amp; <em>official communication.</em></h2>
+        <p>
+          For a media enquiry, an invitation, a request for a comment or
+          clarification regarding an official message, please use the contact page.
+        </p>
+      </div>
+      <a class="button" href="contact.html">Contact the author <span>↗</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="home.html" class="footer-brand">Syed Amjad Hussain</a>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="biography.html">Biography</a>
+        <a href="books-articles.html">Books &amp; Articles</a>
+        <a href="research.html">Research</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      © <span id="year"></span> Syed Amjad Hussain. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+menuToggle.addEventListener("click", () => {
+  const open = mainNav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(open));
+  menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+  menuToggle.textContent = open ? "×" : "☰";
+});
+
+mainNav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+    menuToggle.textContent = "☰";
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const searchInput = document.getElementById("messageSearch");
+const cards = [...document.querySelectorAll(".message-card")];
+const filterButtons = [...document.querySelectorAll(".filter-btn")];
+const emptyState = document.getElementById("emptyState");
+let activeFilter = "all";
+
+function filterMessages() {
+  const query = searchInput.value.trim().toLowerCase();
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const categoryMatches =
+      activeFilter === "all" || card.dataset.category === activeFilter;
+    const textMatches =
+      !query || (card.dataset.search + " " + card.textContent)
+        .toLowerCase().includes(query);
+    const visible = categoryMatches && textMatches;
+
+    card.hidden = !visible;
+    if (visible) visibleCount++;
+  });
+
+  emptyState.classList.toggle("show", visibleCount === 0);
+}
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+    filterButtons.forEach(item =>
+      item.classList.toggle("active", item === button)
+    );
+    filterMessages();
+  });
+});
+
+searchInput.addEventListener("input", filterMessages);
+document.getElementById("searchButton").addEventListener("click", filterMessages);
+searchInput.addEventListener("keydown", event => {
+  if (event.key === "Enter") filterMessages();
+});
+</script>
+</body>
+</html>
