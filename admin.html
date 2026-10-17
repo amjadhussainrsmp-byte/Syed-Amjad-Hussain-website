@@ -632,8 +632,13 @@
       <div class="form-row">
         <div class="form-group"><label>Title *</label><input type="text" id="poetryTitle" class="form-control" required></div>
         <div class="form-group"><label>Type *</label>
-          <select id="poetryType" class="form-control">
-            <option value="Ghazal">Ghazal</option><option value="Naat">Naat</option><option value="Nazm">Nazm</option>
+          <select id="poetryType" class="form-control" required>
+            <option value="Ghazal">Ghazal</option>
+            <option value="Naat">Naat</option>
+            <option value="Manqabat">Manqabat</option>
+            <option value="Salam">Salam</option>
+            <option value="Bait">Bait</option>
+            <option value="Sher">Sher</option>
           </select>
         </div>
       </div>
@@ -652,7 +657,31 @@
   <div id="sherPanel" class="panel">
     <div class="panel-title"><span id="sherFormTitle">Publish / Edit Couplets (Sher)</span></div>
     <form id="sherForm">
-      <div class="form-group"><label>Category</label><input type="text" id="sherCategory" class="form-control"></div>
+      <div class="form-group"><label for="sherCategory">Category</label>
+        <select id="sherCategory" class="form-control" required>
+          <option value="Sufi">Sufi</option>
+          <option value="Love">Love</option>
+          <option value="Life">Life</option>
+          <option value="Reflection">Reflection</option>
+          <option value="Ishq">Ishq</option>
+          <option value="Separation">Separation</option>
+          <option value="Heartbreak">Heartbreak</option>
+          <option value="Hope">Hope</option>
+          <option value="Philosophy">Philosophy</option>
+          <option value="Spirituality">Spirituality</option>
+          <option value="Tasawwuf">Tasawwuf</option>
+          <option value="Divine Love">Divine Love</option>
+          <option value="Patience">Patience</option>
+          <option value="Destiny">Destiny</option>
+          <option value="Tanhai">Tanhai</option>
+          <option value="Wafa">Wafa</option>
+          <option value="Hijr">Hijr</option>
+          <option value="Visal">Visal</option>
+          <option value="Humanity">Humanity</option>
+          <option value="Social Commentary">Social Commentary</option>
+          <option value="Nature">Nature</option>
+        </select>
+      </div>
       <div class="form-group"><label>Urdu</label><textarea id="sherUrdu" class="form-control urdu-input"></textarea></div>
       <div class="form-group"><label>Hindi</label><textarea id="sherHindi" class="form-control"></textarea></div>
       <div class="form-group"><label>Roman</label><textarea id="sherRoman" class="form-control"></textarea></div>
@@ -963,7 +992,15 @@
     if (!data) return;
     editingSherId = id;
     document.getElementById('sherFormTitle').textContent = "Editing Sher #" + id;
-    document.getElementById('sherCategory').value = data.category || '';
+    const sherCategorySelect = document.getElementById('sherCategory');
+    const savedCategory = data.category || '';
+    if (savedCategory && !Array.from(sherCategorySelect.options).some(option => option.value === savedCategory)) {
+      const legacyOption = document.createElement('option');
+      legacyOption.value = savedCategory;
+      legacyOption.textContent = savedCategory + ' (existing)';
+      sherCategorySelect.appendChild(legacyOption);
+    }
+    sherCategorySelect.value = savedCategory;
     document.getElementById('sherUrdu').value = data.sher_urdu || '';
     document.getElementById('sherHindi').value = data.sher_hindi || '';
     document.getElementById('sherRoman').value = data.sher_roman || '';
