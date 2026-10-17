@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel | Janab Mir Syed Amjad Hussain Qadri Jajneri's Official Website</title>
+  <meta name="theme-color" content="#30151b">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Supabase JS & Config -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin-config.js"></script>
+
+  <style>
+    :root {
+      --bg-main: #180c10;
+      --bg-paper: #fbf8f2;
+      --bg-card: #fffdf9;
+      --bg-input: #ffffff;
+      --wine: #472127;
+      --wine-dark: #291115;
+      --gold: #c5a038;
+      --gold-light: #f7eedc;
+      --gold-dark: #917223;
+      --gold-glow: rgba(197, 160, 56, 0.18);
+      --text-ink: #2b1d22;
+      --text-muted: #78676c;
+      --border-color: #e3d2ba;
+      --border-accent: #c5a038;
+      --danger: #a4243b;
+      --sans: 'Plus Jakarta Sans', sans-serif;
+      --serif: 'Cinzel', Georgia, serif;
+      --urdu: 'Noto Nastaliq Urdu', serif;
+    }
+
+    * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+    body {
+      margin: 0;
+      background: var(--bg-paper);
+      color: var(--text-ink);
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.65;
+      min-height: 100vh;
+      background-image: radial-gradient(circle at 50% 0%, rgba(197, 160, 56, 0.06) 0%, transparent 60%);
+    }
+
+    .topbar {
+      height: 42px;
+      background: var(--wine-dark);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(197, 160, 56, 0.3);
+    }
+
+    .topbar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #fcefb4;
+      font-weight: 600;
+    }
+
+    .topbar-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    .site-header {
+      padding: 50px 6% 35px;
+      text-align: center;
+      background: linear-gradient(180deg, #f4ecd9 0%, var(--bg-paper) 100%);
+      border-bottom: 3px solid var(--gold);
+      position: relative;
+    }
+
+    .site-header h1 {
+      margin: 0;
+      font-family: var(--serif);
+      color: var(--wine);
+      font-size: clamp(22px, 3.8vw, 36px);
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 1.3;
+    }
+
+    .site-header p {
+      margin: 10px 0 0;
+      color: var(--gold-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto 70px;
+      padding: 0 24px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    @media(max-width: 1100px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media(max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 6px 20px rgba(71, 33, 39, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--gold);
+    }
+
+    .stat-info span { display: block; font-size: 10px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
+    .stat-info strong { font-size: 20px; font-family: var(--serif); color: var(--wine); }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 30px;
+      background: #ece1cc;
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px 14px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover { color: var(--wine); background: rgba(255, 255, 255, 0.6); }
+
+    .tab-btn.active {
+      background: var(--wine);
+      color: var(--gold-light);
+      box-shadow: 0 4px 15px rgba(71, 33, 39, 0.3);
+      border: 1px solid rgba(197, 160, 56, 0.4);
+    }
+
+    .panel {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--gold);
+      outline: 2px solid var(--border-color);
+      outline-offset: -8px;
+      border-radius: 8px;
+      padding: 40px 35px;
+      box-shadow: 0 15px 35px rgba(48, 21, 27, 0.06);
+    }
+
+    .panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .panel-title {
+      font-family: var(--serif);
+      color: var(--wine);
+      font-size: 22px;
+      margin: 0 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    @media(max-width: 700px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 22px; }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--wine);
+      text-transform: uppercase;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-ink);
+      font-family: var(--sans);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px var(--gold-glow);
+      background: #fff;
+    }
+
+    textarea.form-control { min-height: 130px; resize: vertical; line-height: 1.7; }
+    textarea.urdu-input { font-family: var(--urdu); font-size: 20px; direction: rtl; line-height: 2.3; }
+
+    .btn-group { display: flex; gap: 14px; margin-top: 15px; }
+
+    .btn-primary {
+      padding: 14px 30px;
+      background: linear-gradient(135deg, var(--wine) 0%, var(--wine-dark) 100%);
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      padding: 14px 24px;
+      background: #f4ece1;
+      color: var(--wine);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-export {
+      padding: 7px 16px;
+      background: rgba(197, 160, 56, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .archive-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+
+    .archive-card {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .archive-title { font-weight: 700; font-size: 15px; color: var(--wine); font-family: var(--serif); }
+    .archive-meta { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+    .action-btn { padding: 7px 14px; font-size: 11px; border-radius: 4px; border: none; cursor: pointer; font-weight: 700; }
+    .action-edit { background: var(--gold); color: #fff; margin-right: 8px; }
+    .action-delete { background: var(--danger); color: #fff; }
+
+    /* SIGNATURE EDITION UI */
+    :root {
+      --bg-main: #16090e !important;
+      --bg-paper: #f5f0e7 !important;
+      --bg-card: #fffdf8 !important;
+      --bg-input: #fffefa !important;
+      --wine: #4b1426 !important;
+      --wine-dark: #200a12 !important;
+      --gold: #c9a45b !important;
+      --gold-light: #f7ecd3 !important;
+      --gold-dark: #947039 !important;
+      --gold-glow: rgba(201,164,91,.19) !important;
+      --text-ink: #26171c !important;
+      --text-muted: #85747a !important;
+      --border-color: #e8ddcc !important;
+      --border-accent: #c9a45b !important;
+    }
+
+    #loginGate[hidden], #adminApp[hidden] { display:none !important; }
+    #loginGate { min-height:100vh; display:grid; place-items:center; padding:28px 16px; background:#170e13; color:#f7efe4; }
+    .login-shell { width:min(100%,460px); }
+    .login-brand { text-align:center; margin-bottom:24px; }
+    .login-monogram { width:66px;height:66px;display:grid;place-items:center;margin:0 auto 16px;border-radius:22px;border:1px solid rgba(224,194,125,.65);background:#4d202c;color:#e5c783;font-size:29px; }
+    .login-card { background:#fffdf8;color:#342129;padding:36px;border-radius:22px;border:1px solid rgba(229,200,143,.65); }
+    .login-field { margin-bottom:17px; }
+    .login-field label { display:block;font-size:11px;font-weight:800;text-transform:uppercase;color:#67404a;margin-bottom:8px; }
+    .login-field input { width:100%;height:49px;padding:0 14px;border-radius:11px;border:1px solid #d8c7b7;background:#fffdf8; }
+    .login-submit { width:100%;height:49px;border:0;border-radius:11px;background:#6c2939;color:#fff6e5;font-weight:800;cursor:pointer; }
+    #loginError { display:none;margin-bottom:15px;padding:11px;background:#fbe7e5;color:#8a2f2a;font-size:12px;border-radius:9px; }
+    #logoutBtn { border:1px solid rgba(221,190,126,.38);background:rgba(255,255,255,.07);color:#f5e5c3;border-radius:9px;padding:9px 13px;font-weight:700;cursor:pointer; }
+
+
+    /* PREMIUM VISUAL REFRESH — styling only; all existing IDs, forms and scripts remain unchanged */
+    :root {
+      --bg-main: #130b13 !important;
+      --bg-paper: #f7f4ef !important;
+      --bg-card: #fffefa !important;
+      --bg-input: #fffefa !important;
+      --wine: #40172d !important;
+      --wine-dark: #1d0b19 !important;
+      --gold: #c7a66a !important;
+      --gold-light: #fff4dd !important;
+      --gold-dark: #8c6b36 !important;
+      --gold-glow: rgba(199,166,106,.20) !important;
+      --text-ink: #2b2028 !important;
+      --text-muted: #81747c !important;
+      --border-color: #e9e0d7 !important;
+      --border-accent: #c7a66a !important;
+      --danger: #b42345 !important;
+    }
+
+    html { scroll-behavior: smooth; }
+    * { -webkit-tap-highlight-color: transparent; }
+    body {
+      background-color: var(--bg-paper);
+      background-image:
+        radial-gradient(ellipse at 12% 0%, rgba(199,166,106,.12), transparent 32%),
+        radial-gradient(ellipse at 95% 28%, rgba(64,23,45,.045), transparent 35%);
+      color: var(--text-ink);
+      letter-spacing: .005em;
+    }
+    button, input, textarea, select { font: inherit; }
+    button { -webkit-appearance: none; }
+
+    .topbar {
+      min-height: 54px; height: auto; gap: 14px; flex-wrap: wrap;
+      padding: 11px clamp(16px, 4vw, 54px);
+      background: linear-gradient(110deg, #180914 0%, #351329 58%, #241020 100%);
+      border-bottom: 1px solid rgba(199,166,106,.55);
+      box-shadow: 0 5px 22px rgba(29,11,25,.12);
+      letter-spacing: 1.7px;
+    }
+    .topbar-badge { font-size: 10px; letter-spacing: 2.2px; }
+    .topbar-badge::before { width: 8px; height: 8px; flex: 0 0 auto; }
+    .btn-export, #logoutBtn {
+      min-height: 37px; padding: 9px 14px; border-radius: 10px;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn-export { background: rgba(199,166,106,.13); border-color: rgba(199,166,106,.75); }
+    #logoutBtn { background: rgba(255,255,255,.055); }
+    .btn-export:hover, #logoutBtn:hover { transform: translateY(-1px); box-shadow: 0 5px 16px rgba(0,0,0,.18); }
+
+    .site-header {
+      overflow: hidden; isolation: isolate;
+      padding: clamp(34px, 5.5vw, 66px) 5% clamp(30px, 4.5vw, 52px);
+      text-align: center;
+      background: linear-gradient(135deg, #fffdf8 0%, #f5ecdf 50%, #fffaf1 100%);
+      border-bottom: 1px solid rgba(199,166,106,.8);
+      box-shadow: 0 12px 35px rgba(49,21,40,.055);
+    }
+    .site-header::before, .site-header::after { content: ''; position:absolute; z-index:-1; pointer-events:none; border:1px solid rgba(199,166,106,.24); border-radius:50%; }
+    .site-header::before { width:360px;height:360px;left:-180px;top:-240px; }
+    .site-header::after { width:420px;height:420px;right:-210px;bottom:-320px; }
+    .site-header h1 {
+      max-width: 1050px; margin: 0 auto; color: #40172d;
+      font-size: clamp(23px, 3.2vw, 37px); line-height: 1.35;
+      letter-spacing: .2px; text-wrap: balance;
+    }
+    .site-header p {
+      margin-top: 14px; color: #8c6b36; font-size: 10px;
+      letter-spacing: clamp(1.2px, .35vw, 3px); line-height: 1.8;
+    }
+
+    .container { width: min(1500px, 100%); margin: 30px auto 72px; padding: 0 clamp(14px, 3vw, 38px); }
+    .stats-grid { grid-template-columns: repeat(4, minmax(0,1fr)) !important; gap: 14px; margin-bottom: 25px; }
+    .stat-card {
+      min-height: 91px; padding: 19px 20px 18px 23px; gap: 12px;
+      background: rgba(255,254,250,.94); border: 1px solid rgba(225,213,199,.95);
+      border-radius: 16px; box-shadow: 0 5px 20px rgba(48,21,39,.045);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .stat-card::before { width: 3px; background: linear-gradient(180deg,#e0c58e,#a78042); }
+    .stat-card::after { content:''; position:absolute; width:58px;height:58px;right:-24px;bottom:-28px;border:1px solid rgba(199,166,106,.18);border-radius:50%; }
+    .stat-card:hover { transform: translateY(-3px); border-color: rgba(199,166,106,.75); box-shadow: 0 12px 28px rgba(48,21,39,.09); }
+    .stat-info span { font-size: 10px; letter-spacing: 1.3px; color: #82727b; }
+    .stat-info strong { display:block; margin-top: 4px; font-size: 25px; line-height:1.2; color:#40172d; }
+
+    .nav-tabs {
+      position: sticky; top: 10px; z-index: 20;
+      display: flex; flex-wrap: nowrap; gap: 5px; margin-bottom: 24px;
+      padding: 7px; background: rgba(35,16,31,.96); border: 1px solid rgba(199,166,106,.28);
+      border-radius: 16px; box-shadow: 0 12px 28px rgba(29,11,25,.16);
+      overflow-x: auto; scrollbar-width: thin; scrollbar-color: #9a7848 transparent;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    }
+    .tab-btn {
+      flex: 0 0 auto; min-height: 43px; padding: 11px 17px; border: 1px solid transparent;
+      border-radius: 11px; color: #d8c9d0; font-size: 11px; font-weight: 700;
+      letter-spacing: .25px; transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+    .tab-btn:hover { color:#fff4dd; background:rgba(255,255,255,.08); }
+    .tab-btn.active { color:#291322; background:linear-gradient(135deg,#f2dfb4,#c7a66a); border-color:rgba(255,248,225,.6); box-shadow:0 4px 14px rgba(0,0,0,.18); }
+
+    .panel {
+      padding: clamp(20px, 3.2vw, 40px); border:1px solid #e7d8c5; outline:none;
+      border-radius: 20px; background: rgba(255,254,250,.97);
+      box-shadow: 0 14px 44px rgba(48,21,39,.065);
+    }
+    .panel.active { animation: premiumEnter .28s ease both; }
+    @keyframes premiumEnter { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
+    .panel-title {
+      gap: 14px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 1px solid #eadfd2;
+      color:#40172d; font-size: clamp(19px,2.3vw,25px); letter-spacing:-.25px;
+    }
+    .panel-title::after { content:''; align-self:flex-end; width:44px; height:3px; margin-left:-8px; margin-bottom:-20px; border-radius:9px; background:linear-gradient(90deg,#b68d4c,#e7d4a8); }
+
+    .form-row { gap: 20px; }
+    .form-group { min-width:0; margin-bottom: 21px; }
+    .form-group label, .login-field label {
+      margin-bottom: 8px; color:#5a3045; font-size:10px; letter-spacing:1.15px; font-weight:800;
+    }
+    .form-control {
+      display:block; min-height:48px; padding:12px 14px; border:1px solid #e2d6ca;
+      border-radius:11px; background:#fffefa; color:#2b2028; font-size:14px;
+      box-shadow:inset 0 1px 2px rgba(39,19,32,.025);
+      transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .form-control:hover { border-color:#cdbb9e; }
+    .form-control:focus { border-color:#b68d4c; background:#fff; box-shadow:0 0 0 4px rgba(199,166,106,.16); }
+    textarea.form-control { min-height:135px; line-height:1.8; }
+    textarea.urdu-input { font-size:21px; line-height:2.35; background:#fffdf8; }
+    input[type="file"].form-control { padding:9px; cursor:pointer; }
+    input[type="file"]::file-selector-button { margin-right:12px; padding:8px 12px; border:0; border-radius:7px; background:#f0e5d5; color:#51263c; font-weight:700; cursor:pointer; }
+
+    .btn-group { display:flex; flex-wrap:wrap; gap:11px; margin-top:20px; }
+    .btn-primary, .btn-secondary, .action-btn {
+      min-height:43px; border-radius:10px; font-weight:800; letter-spacing:.15px;
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .btn-primary {
+      padding:13px 23px; border:1px solid #b68d4c;
+      background:linear-gradient(135deg,#54203e 0%,#301226 100%); color:#fff2d5;
+      box-shadow:0 5px 13px rgba(64,23,45,.16); font-size:12px;
+    }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 9px 20px rgba(64,23,45,.23); filter:brightness(1.07); }
+    .btn-secondary { padding:12px 20px; border:1px solid #e1d4c4; background:#f7f0e6; color:#57283f; }
+    .btn-secondary:hover { transform:translateY(-1px); background:#efe2d0; border-color:#d0b993; }
+    .btn-primary:disabled, .btn-secondary:disabled, button:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+
+    .archive-list { gap:13px; }
+    .archive-card { gap:16px; padding:17px 19px; border-radius:13px; border-color:#e7dacc; background:#fffefa; box-shadow:0 3px 12px rgba(48,21,39,.035); }
+    .archive-card:hover { border-color:#d1b989; box-shadow:0 7px 20px rgba(48,21,39,.07); }
+    .archive-title { color:#40172d; font-size:14px; line-height:1.5; }
+    .archive-meta { overflow-wrap:anywhere; line-height:1.7; }
+    .action-btn { padding:9px 13px; min-height:35px; }
+    .action-edit { background:#c7a66a; color:#2d1b25; }
+    .action-delete { background:#a92b47; color:white; }
+    .action-btn:hover { filter:brightness(1.06); transform:translateY(-1px); }
+
+    #loginGate {
+      position:relative; isolation:isolate; overflow:hidden; padding:30px 18px;
+      background:radial-gradient(ellipse at 15% 12%,rgba(199,166,106,.17),transparent 32%),
+                 radial-gradient(ellipse at 90% 88%,rgba(122,49,88,.25),transparent 35%),
+                 linear-gradient(145deg,#140914,#291025 55%,#170b18);
+    }
+    #loginGate::before, #loginGate::after { content:''; position:absolute; z-index:-1; border:1px solid rgba(199,166,106,.18); border-radius:50%; pointer-events:none; }
+    #loginGate::before { width:480px;height:480px;left:-240px;top:-260px;box-shadow:0 0 0 28px rgba(199,166,106,.025),0 0 0 58px rgba(199,166,106,.02); }
+    #loginGate::after { width:520px;height:520px;right:-260px;bottom:-300px; }
+    .login-shell { width:min(100%,470px); }
+    .login-brand { margin-bottom:26px; }
+    .login-monogram {
+      width:78px;height:78px;margin-bottom:19px;border-radius:25px;
+      border:1px solid rgba(224,194,125,.8); background:linear-gradient(145deg,#5a2945,#2d1227);
+      color:#f0d69c; font-size:35px; box-shadow:0 12px 32px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.13);
+    }
+    .login-brand h1 { margin:0; color:#fff4e1; font-family:var(--serif); font-size:clamp(23px,4vw,31px); line-height:1.4; }
+    .login-brand p { margin:10px 0 0; color:#d0b77f; font-size:10px; letter-spacing:2.4px; }
+    .login-card { padding:clamp(25px,5vw,38px); border-radius:22px; border:1px solid rgba(199,166,106,.58); background:linear-gradient(145deg,#fffefa,#f8f0e5); box-shadow:0 24px 65px rgba(0,0,0,.28); }
+    .login-card h2 { margin:0 0 24px; color:#40172d; font-family:var(--serif); font-size:25px; }
+    .login-field { margin-bottom:20px; }
+    .login-field input { height:50px; padding:0 14px; border:1px solid #e2d6ca; border-radius:11px; background:#fffefa; outline:none; transition:border-color .18s ease,box-shadow .18s ease; }
+    .login-field input:focus { border-color:#b68d4c; box-shadow:0 0 0 4px rgba(199,166,106,.16); }
+    .login-submit { height:50px; border:1px solid #b68d4c; border-radius:11px; background:linear-gradient(135deg,#54203e,#301226); color:#fff2d5; box-shadow:0 6px 16px rgba(64,23,45,.18); letter-spacing:.7px; transition:transform .18s ease,box-shadow .18s ease; }
+    .login-submit:hover { transform:translateY(-2px); box-shadow:0 10px 22px rgba(64,23,45,.24); }
+    #loginError { border:1px solid #f1c8c8; border-radius:10px; }
+
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns:repeat(4,minmax(0,1fr)) !important; }
+      .nav-tabs { top:6px; }
+      .panel { border-radius:16px; }
+    }
+    @media (max-width: 620px) {
+      .topbar { justify-content:center; text-align:center; }
+      .topbar > div { width:100%; justify-content:center; }
+      .site-header { padding:32px 18px 28px; }
+      .site-header p { max-width:340px; margin-left:auto; margin-right:auto; }
+      .container { margin:20px auto 45px; padding:0 12px; }
+      .stats-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px; margin-bottom:17px; }
+      .stat-card { min-height:78px; padding:14px 13px 13px 17px; border-radius:13px; }
+      .stat-info span { font-size:9px; letter-spacing:.9px; }
+      .stat-info strong { font-size:22px; }
+      .nav-tabs { margin-bottom:16px; padding:6px; border-radius:13px; }
+      .tab-btn { min-height:40px; padding:10px 13px; font-size:11px; }
+      .panel { padding:20px 15px; border-radius:15px; }
+      .panel-title { margin-bottom:22px; padding-bottom:15px; }
+      .form-row { grid-template-columns:1fr; gap:0; }
+      .form-group { margin-bottom:17px; }
+      .btn-group { gap:9px; }
+      .btn-primary,.btn-secondary { flex:1 1 auto; padding:12px 14px; }
+      .archive-card { align-items:flex-start; flex-direction:column; }
+      .archive-card > div:last-child { display:flex; flex-wrap:wrap; gap:8px; }
+      .action-edit { margin-right:0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; transition-duration:.01ms !important; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<section id="loginGate">
+  <div class="login-shell">
+    <div class="login-brand">
+      <div class="login-monogram">ع</div>
+      <h1>Syed Amjad Hussain</h1>
+      <p>Secure Administration Studio</p>
+    </div>
+    <div class="login-card">
+      <h2>Welcome back</h2>
+      <div id="loginError"></div>
+      <form id="adminLoginForm">
+        <div class="login-field">
+          <label>Administrator Email</label>
+          <input type="email" id="adminLoginEmail" required placeholder="you@example.com">
+        </div>
+        <div class="login-field">
+          <label>Password</label>
+          <input type="password" id="adminLoginPassword" required placeholder="Password">
+        </div>
+        <button class="login-submit" id="adminLoginSubmit" type="submit">SIGN IN SECURELY →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div id="adminApp" hidden>
+
+<div class="topbar">
+  <span class="topbar-badge">Royal Editorial Studio</span>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <button class="btn-export" onclick="exportBackup()">Export Backup</button>
+    <button id="logoutBtn" type="button">Sign out</button>
+  </div>
+</div>
+
+<header class="site-header">
+  <h1>Janab Mir Syed Amjad Hussain Qadri Jajneri's Official Admin Panel</h1>
+  <p>Supreme Literary, Heritage & History Control Center</p>
+</header>
+
+<div class="container">
+
+  <!-- Overview Stats Bar -->
+  <div class="stats-grid" style="grid-template-columns: repeat(8, 1fr);">
+    <div class="stat-card"><div class="stat-info"><span>Poetry</span><strong id="statPoetry">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Sher</span><strong id="statSher">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Saints</span><strong id="statSaints">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>History</span><strong id="statSheikhpura">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Awards</span><strong id="statAwards">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Books</span><strong id="statBooks">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Gallery</span><strong id="statGallery">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Directory</span><strong id="statDirectory">--</strong></div></div>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <nav class="nav-tabs">
+    <button class="tab-btn active" onclick="switchPanel('poetryPanel', this)">Poetry</button>
+    <button class="tab-btn" onclick="switchPanel('sherPanel', this)">Sher</button>
+    <button class="tab-btn" onclick="switchPanel('sufiPanel', this)">Saints</button>
+    <button class="tab-btn" onclick="switchPanel('sufiBioPanel', this); loadSaintFiles()">Bio of Sufis</button>
+    <button class="tab-btn" onclick="switchPanel('directoryPanel', this)">Directory</button>
+    <button class="tab-btn" onclick="switchPanel('sheikhpuraPanel', this)">History</button>
+    <button class="tab-btn" onclick="switchPanel('awardsPanel', this)">Awards</button>
+    <button class="tab-btn" onclick="switchPanel('booksPanel', this)">Books</button>
+    <button class="tab-btn" onclick="switchPanel('galleryPanel', this)">Gallery</button>
+    <button class="tab-btn" onclick="switchPanel('mediaPressPanel', this); loadMediaPress();">Media & Press</button>
+    <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">Archive</button>
+  </nav>
+
+  <!-- Poetry Panel -->
+  <div id="poetryPanel" class="panel active">
+    <div class="panel-title"><span id="poetryFormTitle">Publish / Edit Poetry</span></div>
+    <form id="poetryForm">
+      <div class="form-row">
+        <div class="form-group"><label>Title *</label><input type="text" id="poetryTitle" class="form-control" required></div>
+        <div class="form-group"><label>Type *</label>
+          <select id="poetryType" class="form-control" required>
+            <option value="Ghazal">Ghazal</option>
+            <option value="Naat">Naat</option>
+            <option value="Manqabat">Manqabat</option>
+            <option value="Salam">Salam</option>
+            <option value="Bait">Bait</option>
+            <option value="Sher">Sher</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label>Meter / Beher</label><input type="text" id="poetryBeher" class="form-control"></div>
+      <div class="form-group"><label>Urdu Text</label><textarea id="poetryUrdu" class="form-control urdu-input"></textarea></div>
+      <div class="form-group"><label>Hindi Text</label><textarea id="poetryHindi" class="form-control"></textarea></div>
+      <div class="form-group"><label>Roman Text</label><textarea id="poetryRoman" class="form-control"></textarea></div>
+      <div class="btn-group">
+        <button type="submit" id="poetrySaveBtn" class="btn-primary">Save Poetry</button>
+        <button type="button" class="btn-secondary" onclick="resetPoetryForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Sher Panel -->
+  <div id="sherPanel" class="panel">
+    <div class="panel-title"><span id="sherFormTitle">Publish / Edit Couplets (Sher)</span></div>
+    <form id="sherForm">
+      <div class="form-group"><label for="sherCategory">Category</label>
+        <select id="sherCategory" class="form-control" required>
+          <option value="Sufi">Sufi</option>
+          <option value="Love">Love</option>
+          <option value="Life">Life</option>
+          <option value="Reflection">Reflection</option>
+          <option value="Ishq">Ishq</option>
+          <option value="Separation">Separation</option>
+          <option value="Heartbreak">Heartbreak</option>
+          <option value="Hope">Hope</option>
+          <option value="Philosophy">Philosophy</option>
+          <option value="Spirituality">Spirituality</option>
+          <option value="Tasawwuf">Tasawwuf</option>
+          <option value="Divine Love">Divine Love</option>
+          <option value="Patience">Patience</option>
+          <option value="Destiny">Destiny</option>
+          <option value="Tanhai">Tanhai</option>
+          <option value="Wafa">Wafa</option>
+          <option value="Hijr">Hijr</option>
+          <option value="Visal">Visal</option>
+          <option value="Humanity">Humanity</option>
+          <option value="Social Commentary">Social Commentary</option>
+          <option value="Nature">Nature</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Urdu</label><textarea id="sherUrdu" class="form-control urdu-input"></textarea></div>
+      <div class="form-group"><label>Hindi</label><textarea id="sherHindi" class="form-control"></textarea></div>
+      <div class="form-group"><label>Roman</label><textarea id="sherRoman" class="form-control"></textarea></div>
+      <div class="btn-group">
+        <button type="submit" id="sherSaveBtn" class="btn-primary">Save Sher</button>
+        <button type="button" class="btn-secondary" onclick="resetSherForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Sufi Saints Panel -->
+  <div id="sufiPanel" class="panel">
+    <div class="panel-title"><span id="sufiFormTitle">Manage Sufi Saints</span></div>
+    <form id="sufiForm">
+      <div class="form-group"><label>Saint Name *</label><input type="text" id="saintName" class="form-control" required></div>
+      <div class="form-group"><label>Location</label><input type="text" id="shrineLocation" class="form-control"></div>
+      <div class="form-group"><label>Description</label><textarea id="saintDesc" class="form-control"></textarea></div>
+      <div class="btn-group">
+        <button type="submit" id="sufiSaveBtn" class="btn-primary">Save Saint</button>
+        <button type="button" class="btn-secondary" onclick="resetSufiForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bio of Sufis: edits the existing HTML files in /saints through a secured server API. -->
+  <div id="sufiBioPanel" class="panel">
+    <div class="panel-title"><span>Bio of Sufis — HTML Page Manager</span></div>
+    <p style="color:var(--text-muted);margin:0 0 18px">Edit the existing pages in the GitHub <code>saints/</code> folder. Changes are published to GitHub only after you press Save to GitHub.</p>
+    <div class="form-row" style="align-items:start">
+      <div class="form-group" style="min-width:260px">
+        <label for="saintFileSearch">Search pages</label>
+        <input id="saintFileSearch" class="form-control" type="search" placeholder="Search by file name…" oninput="filterSaintFiles()">
+        <label for="saintFileList" style="margin-top:12px">HTML files in saints/</label>
+        <select id="saintFileList" class="form-control" size="12" style="min-height:300px" onchange="loadSaintFile()"><option>Tap Load pages to list files</option></select>
+        <div class="btn-group" style="margin-top:12px">
+          <button type="button" class="btn-secondary" onclick="loadSaintFiles()">Load / Refresh Pages</button>
+        </div>
+        <div id="saintFileStatus" role="status" style="margin-top:10px;color:var(--text-muted);overflow-wrap:anywhere"></div>
+      </div>
+      <div class="form-group" style="min-width:300px">
+        <label for="saintHtmlEditor">HTML source</label>
+        <textarea id="saintHtmlEditor" class="form-control" rows="24" spellcheck="false" placeholder="Select a page on the left to load its HTML…" style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;line-height:1.5;white-space:pre;overflow:auto"></textarea>
+        <div class="btn-group" style="margin-top:12px">
+          <button type="button" class="btn-primary" id="saintHtmlSaveBtn" onclick="saveSaintFile()">Save to GitHub</button>
+          <button type="button" class="btn-secondary" onclick="previewSaintFile()">Preview page</button>
+        </div>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:10px">Important: configure the server-side GitHub environment variables before using Save. Never put a GitHub token in this HTML file.</p>
+      </div>
+    </div>
+    <details style="margin-top:18px"><summary style="cursor:pointer;font-weight:700">Create a new biography page</summary>
+      <div class="form-row" style="margin-top:12px">
+        <div class="form-group"><label for="newSaintTitle">Saint / Sufi name</label><input id="newSaintTitle" class="form-control" placeholder="e.g. Hazrat Shah ..."></div>
+        <div class="form-group"><label for="newSaintSlug">File name (without .html)</label><input id="newSaintSlug" class="form-control" placeholder="e.g. hazrat-shah-example"></div>
+      </div>
+      <button type="button" class="btn-secondary" onclick="createSaintFile()">Create new HTML page</button>
+      <p style="font-size:12px;color:var(--text-muted)">A simple starter page will be created in saints/. You can edit its HTML in the editor before publishing.</p>
+    </details>
+  </div>
+
+  <!-- New Directory Panel (Khanqahs & Dargahs of Bihar) -->
+  <div id="directoryPanel" class="panel">
+    <div class="panel-title"><span id="dirFormTitle">Manage Khanqahs & Dargahs of Bihar Directory</span></div>
+    <form id="directoryForm">
+      <div class="form-row">
+        <div class="form-group"><label>Shrine / Institution Name *</label><input type="text" id="dirName" class="form-control" required placeholder="e.g. Khanqah Maner Sharif"></div>
+        <div class="form-group"><label>District *</label><input type="text" id="dirDistrict" class="form-control" required placeholder="e.g. Patna"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Location / Town *</label><input type="text" id="dirLocation" class="form-control" required placeholder="e.g. Maner"></div>
+        <div class="form-group"><label>Site Type *</label>
+          <select id="dirType" class="form-control">
+            <option value="Khanqah">Khanqah</option>
+            <option value="Dargah">Dargah / Mazar</option>
+            <option value="Combined">Khanqah & Dargah</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Associated Saint / Figure</label><input type="text" id="dirSaint" class="form-control" placeholder="e.g. Hazrat Makhdoom..."></div>
+        <div class="form-group"><label>Silsila (Lineage)</label><input type="text" id="dirSilsila" class="form-control" placeholder="e.g. Suhrawardiyya"></div>
+      </div>
+      <div class="form-group"><label>Description Note *</label><textarea id="dirNote" class="form-control" required placeholder="Detailed historical note..."></textarea></div>
+      <div class="form-group"><label>Reference Source URL</label><input type="url" id="dirSource" class="form-control" placeholder="https://..."></div>
+      <div class="btn-group">
+        <button type="submit" id="dirSaveBtn" class="btn-primary">Save Directory Record</button>
+        <button type="button" class="btn-secondary" onclick="resetDirectoryForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- History Panel -->
+  <div id="sheikhpuraPanel" class="panel">
+    <div class="panel-title"><span id="skFormTitle">Manage Sheikhpura History</span></div>
+    <form id="sheikhpuraForm">
+      <div class="form-group"><label>Title *</label><input type="text" id="skTitle" class="form-control" required></div>
+      <div class="form-group"><label>Content</label><textarea id="skContent" class="form-control"></textarea></div>
+      <div class="btn-group">
+        <button type="submit" id="skSaveBtn" class="btn-primary">Save History</button>
+        <button type="button" class="btn-secondary" onclick="resetSheikhpuraForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Awards Panel -->
+  <div id="awardsPanel" class="panel">
+    <div class="panel-title"><span id="awardsFormTitle">Manage Awards & Honours</span></div>
+    <form id="awardsForm">
+      <div class="form-row">
+        <div class="form-group"><label>Award Title *</label><input type="text" id="awardTitle" class="form-control" required></div>
+        <div class="form-group"><label>Conferring Organization *</label><input type="text" id="awardOrg" class="form-control" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Year Conferred *</label><input type="text" id="awardYear" class="form-control" required></div>
+        <div class="form-group"><label>Category</label>
+          <select id="awardCategory" class="form-control">
+            <option value="Literary">Literary Excellence</option>
+            <option value="Research">Historical Research</option>
+            <option value="Social">Social Leadership</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label>Description / Citation</label><textarea id="awardDesc" class="form-control"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Award Image File</label><input type="file" id="awardFile" class="form-control" accept="image/*"></div>
+        <div class="form-group"><label>Or Image URL</label><input type="url" id="awardUrl" class="form-control"></div>
+      </div>
+      <div class="form-group"><label>Certificate Link (Optional)</label><input type="url" id="awardCertUrl" class="form-control"></div>
+      <div class="btn-group">
+        <button type="submit" id="awardSaveBtn" class="btn-primary">Save Award Record</button>
+        <button type="button" class="btn-secondary" onclick="resetAwardsForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Books Panel -->
+  <div id="booksPanel" class="panel">
+    <div class="panel-title"><span id="booksFormTitle">Manage Books, Research & Articles</span></div>
+    <form id="booksForm">
+      <div class="form-row">
+        <div class="form-group"><label>Publication Title *</label><input type="text" id="bookTitle" class="form-control" required></div>
+        <div class="form-group"><label>Category Type *</label>
+          <select id="bookCategory" class="form-control">
+            <option value="book">Book</option>
+            <option value="research">Research</option>
+            <option value="article">Article & Essay</option>
+            <option value="literature">Literature</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Publisher</label><input type="text" id="bookPublisher" class="form-control"></div>
+        <div class="form-group"><label>Published Year</label><input type="text" id="bookYear" class="form-control"></div>
+      </div>
+      <div class="form-group"><label>Description</label><textarea id="bookDesc" class="form-control"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Cover Image File</label><input type="file" id="bookFile" class="form-control" accept="image/*"></div>
+        <div class="form-group"><label>Or Cover Image URL</label><input type="url" id="bookUrl" class="form-control"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>External Link</label><input type="url" id="bookLink" class="form-control"></div>
+        <div class="form-group"><label>Search Keywords</label><input type="text" id="bookSearch" class="form-control"></div>
+      </div>
+      <div class="btn-group">
+        <button type="submit" id="bookSaveBtn" class="btn-primary">Save Publication Record</button>
+        <button type="button" class="btn-secondary" onclick="resetBooksForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Gallery Panel -->
+  <div id="galleryPanel" class="panel">
+    <div class="panel-title"><span id="galleryFormTitle">Upload & Manage Gallery Media</span></div>
+    <form id="galleryForm">
+      <div class="form-group"><label>Caption *</label><input type="text" id="galCaption" class="form-control" required></div>
+      <div class="form-group"><label>Select Photo File</label><input type="file" id="galFile" class="form-control" accept="image/*"></div>
+      <div class="form-group"><label>Or URL</label><input type="url" id="galUrl" class="form-control"></div>
+      <div class="btn-group">
+        <button type="submit" id="galSaveBtn" class="btn-primary">Upload & Save Media</button>
+        <button type="button" class="btn-secondary" onclick="resetGalleryForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Media & Press Editor -->
+  <div id="mediaPressPanel" class="panel">
+    <div class="panel-title"><span id="mediaPressFormTitle">Manage Media & Press Coverage</span></div>
+    <p style="color:var(--text-muted);margin-top:-12px">Add, edit, publish, unpublish or remove press coverage shown on media.html. Changes are stored in Supabase.</p>
+    <form id="mediaPressForm">
+      <div class="form-row">
+        <div class="form-group"><label>Publication / Outlet *</label><input id="mpOutlet" class="form-control" required maxlength="180" placeholder="e.g. Dainik Bhaskar"></div>
+        <div class="form-group"><label>Category *</label>
+          <select id="mpCategory" class="form-control">
+            <option value="PRESS COVERAGE">Press Coverage</option>
+            <option value="PROFILE">Profile</option>
+            <option value="PUBLIC ENGAGEMENT">Public Engagement</option>
+            <option value="BOOKS & RESEARCH">Books & Research</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label>Headline / Title *</label><textarea id="mpTitle" class="form-control" required maxlength="500" placeholder="Headline as published"></textarea></div>
+      <div class="form-group"><label>Publication URL *</label><input id="mpUrl" type="url" class="form-control" required placeholder="https://..."></div>
+      <div class="form-row">
+        <div class="form-group"><label>Display order (smaller first)</label><input id="mpOrder" type="number" class="form-control" value="100" step="1"></div>
+        <div class="form-group" style="display:flex;align-items:center;gap:10px;padding-top:25px"><input id="mpPublished" type="checkbox" checked style="width:18px;height:18px"><label for="mpPublished" style="margin:0">Published on public page</label></div>
+      </div>
+      <div class="btn-group">
+        <button type="submit" id="mpSaveBtn" class="btn-primary">Save Media Entry</button>
+        <button type="button" class="btn-secondary" onclick="resetMediaPressForm()">Reset</button>
+      </div>
+    </form>
+    <h3 style="color:var(--wine);margin-top:36px">Existing Media Entries</h3>
+    <div id="mediaPressArchiveList" class="archive-list">Select this tab to load entries.</div>
+  </div>
+
+  <!-- Archive Panel -->
+  <div id="archivePanel" class="panel">
+    <div class="panel-title"><span>Database Records Archive</span></div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Awards Records</h4>
+    <div id="awardsArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Books & Articles Records</h4>
+    <div id="booksArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Poetry Records</h4>
+    <div id="poetryArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Sher Records</h4>
+    <div id="sherArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Sufi Saints Records</h4>
+    <div id="sufiArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Directory Records (Khanqahs & Dargahs)</h4>
+    <div id="directoryArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">History Records</h4>
+    <div id="sheikhpuraArchiveList" class="archive-list">Loading...</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Media & Press Records</h4>
+    <div id="mediaPressArchiveListSecondary" class="archive-list">Open Media & Press tab to load.</div>
+
+    <h4 style="color:var(--wine); margin:20px 0 10px;">Gallery Media Records</h4>
+    <div id="galleryArchiveList" class="archive-list">Loading...</div>
+  </div>
+
+</div>
+
+<script>
+  let editingPoetryId = null, editingSherId = null, editingSufiId = null, editingDirectoryId = null, editingSheikhpuraId = null, editingGalleryId = null, editingAwardId = null, editingBookId = null;
+
+  function getClient() {
+    if (!window.__adminSupabaseClient) {
+      window.__adminSupabaseClient = supabase.createClient(window.ADMIN_CONFIG.supabaseUrl, window.ADMIN_CONFIG.supabaseAnonKey);
+    }
+    return window.__adminSupabaseClient;
+  }
+
+  function escapeHTML(str = '') {
+    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  }
+
+  function switchPanel(panelId, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(panelId).classList.add('active');
+    if (btn) btn.classList.add('active');
+  }
+
+  async function updateStats() {
+    try {
+      const client = getClient();
+      const { count: pCount } = await client.from('poetry').select('*', { count: 'exact', head: true });
+      const { count: sCount } = await client.from('sher').select('*', { count: 'exact', head: true });
+      const { count: sfCount } = await client.from('sufi_saints').select('*', { count: 'exact', head: true });
+      const { count: dCount } = await client.from('bihar_directory').select('*', { count: 'exact', head: true });
+      const { count: skCount } = await client.from('sheikhpura_history').select('*', { count: 'exact', head: true });
+      const { count: aCount } = await client.from('awards').select('*', { count: 'exact', head: true });
+      const { count: bCount } = await client.from('books_articles').select('*', { count: 'exact', head: true });
+      const { count: gCount } = await client.from('gallery_media').select('*', { count: 'exact', head: true });
+
+      document.getElementById('statPoetry').textContent = pCount || 0;
+      document.getElementById('statSher').textContent = sCount || 0;
+      document.getElementById('statSaints').textContent = sfCount || 0;
+      document.getElementById('statDirectory').textContent = dCount || 0;
+      document.getElementById('statSheikhpura').textContent = skCount || 0;
+      document.getElementById('statAwards').textContent = aCount || 0;
+      document.getElementById('statBooks').textContent = bCount || 0;
+      document.getElementById('statGallery').textContent = gCount || 0;
+    } catch(err) { console.error("Stats error:", err); }
+  }
+
+  // Poetry Form
+  document.getElementById('poetryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = { title: document.getElementById('poetryTitle').value.trim(), type: document.getElementById('poetryType').value, notes: document.getElementById('poetryBeher').value.trim(), urdu_text: document.getElementById('poetryUrdu').value, hindi_text: document.getElementById('poetryHindi').value, roman_text: document.getElementById('poetryRoman').value };
+    const client = getClient();
+    const res = editingPoetryId ? await client.from('poetry').update(data).eq('id', editingPoetryId) : await client.from('poetry').insert([data]);
+    if (res.error) { alert("Error: " + res.error.message); return; }
+    alert(editingPoetryId ? "Poetry Updated!" : "Poetry Saved Successfully!");
+    resetPoetryForm();
+    updateStats();
+  });
+
+  async function editPoetry(id) {
+    const client = getClient();
+    const { data } = await client.from('poetry').select('*').eq('id', id).single();
+    if (!data) return;
+    editingPoetryId = id;
+    document.getElementById('poetryFormTitle').textContent = "Editing Poetry: " + data.title;
+    document.getElementById('poetryTitle').value = data.title || '';
+    document.getElementById('poetryType').value = data.type || 'Ghazal';
+    document.getElementById('poetryBeher').value = data.notes || '';
+    document.getElementById('poetryUrdu').value = data.urdu_text || '';
+    document.getElementById('poetryHindi').value = data.hindi_text || '';
+    document.getElementById('poetryRoman').value = data.roman_text || '';
+    document.getElementById('poetrySaveBtn').textContent = "Update Poetry Record";
+    switchPanel('poetryPanel', document.querySelectorAll('.tab-btn')[0]);
+  }
+
+  function resetPoetryForm() {
+    document.getElementById('poetryForm').reset();
+    editingPoetryId = null;
+    document.getElementById('poetryFormTitle').textContent = "Publish / Edit Poetry";
+    document.getElementById('poetrySaveBtn').textContent = "Save Poetry";
+  }
+
+  // Sher Form
+  document.getElementById('sherForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = { category: document.getElementById('sherCategory').value, sher_urdu: document.getElementById('sherUrdu').value, sher_hindi: document.getElementById('sherHindi').value, sher_roman: document.getElementById('sherRoman').value };
+    const client = getClient();
+    const res = editingSherId ? await client.from('sher').update(data).eq('id', editingSherId) : await client.from('sher').insert([data]);
+    if (res.error) { alert("Error: " + res.error.message); return; }
+    alert(editingSherId ? "Sher Updated!" : "Sher Saved Successfully!");
+    resetSherForm();
+    updateStats();
+  });
+
+  async function editSher(id) {
+    const client = getClient();
+    const { data } = await client.from('sher').select('*').eq('id', id).single();
+    if (!data) return;
+    editingSherId = id;
+    document.getElementById('sherFormTitle').textContent = "Editing Sher #" + id;
+    const sherCategorySelect = document.getElementById('sherCategory');
+    const savedCategory = data.category || '';
+    if (savedCategory && !Array.from(sherCategorySelect.options).some(option => option.value === savedCategory)) {
+      const legacyOption = document.createElement('option');
+      legacyOption.value = savedCategory;
+      legacyOption.textContent = savedCategory + ' (existing)';
+      sherCategorySelect.appendChild(legacyOption);
+    }
+    sherCategorySelect.value = savedCategory;
+    document.getElementById('sherUrdu').value = data.sher_urdu || '';
+    document.getElementById('sherHindi').value = data.sher_hindi || '';
+    document.getElementById('sherRoman').value = data.sher_roman || '';
+    document.getElementById('sherSaveBtn').textContent = "Update Sher Record";
+    switchPanel('sherPanel', document.querySelectorAll('.tab-btn')[1]);
+  }
+
+  function resetSherForm() {
+    document.getElementById('sherForm').reset();
+    editingSherId = null;
+    document.getElementById('sherFormTitle').textContent = "Publish / Edit Couplets (Sher)";
+    document.getElementById('sherSaveBtn').textContent = "Save Sher";
+  }
+
+  // Sufi Saints Form
+  document.getElementById('sufiForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = { saint_name: document.getElementById('saintName').value.trim(), shrine_location: document.getElementById('shrineLocation').value.trim(), roman_desc: document.getElementById('saintDesc').value.trim() };
+    const client = getClient();
+    const res = editingSufiId ? await client.from('sufi_saints').update(data).eq('id', editingSufiId) : await client.from('sufi_saints').insert([data]);
+    if (res.error) { alert("Error: " + res.error.message); return; }
+    alert(editingSufiId ? "Saint Updated!" : "Saint Saved Successfully!");
+    resetSufiForm();
+    updateStats();
+  });
+
+  async function editSufi(id) {
+    const client = getClient();
+    const { data } = await client.from('sufi_saints').select('*').eq('id', id).single();
+    if (!data) return;
+    editingSufiId = id;
+    document.getElementById('sufiFormTitle').textContent = "Editing Saint: " + data.saint_name;
+    document.getElementById('saintName').value = data.saint_name || '';
+    document.getElementById('shrineLocation').value = data.shrine_location || '';
+    document.getElementById('saintDesc').value = data.roman_desc || '';
+    document.getElementById('sufiSaveBtn').textContent = "Update Saint Record";
+    switchPanel('sufiPanel', document.querySelectorAll('.tab-btn')[2]);
+  }
+
+  function resetSufiForm() {
+    document.getElementById('sufiForm').reset();
+    editingSufiId = null;
+    document.getElementById('sufiFormTitle').textContent = "Manage Sufi Saints";
+    document.getElementById('sufiSaveBtn').textContent = "Save Saint";
+  }
+
+  // Directory Form (Khanqahs & Dargahs of Bihar)
+  document.getElementById('directoryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById('dirName').value.trim(),
+      district: document.getElementById('dirDistrict').value.trim(),
+      location: document.getElementById('dirLocation').value.trim(),
+      type: document.getElementById('dirType').value,
+      saint: document.getElementById('dirSaint').value.trim(),
+      silsila: document.getElementById('dirSilsila').value.trim(),
+      note: document.getElementById('dirNote').value.trim(),
+      source: document.getElementById('dirSource').value.trim()
+    };
+    const client = getClient();
+    const res = editingDirectoryId ? await client.from('bihar_directory').update(data).eq('id', editingDirectoryId) : await client.from('bihar_directory').insert([data]);
+    if (res.error) { alert("Error: " + res.error.message); return; }
+    alert(editingDirectoryId ? "Directory Entry Updated!" : "Directory Entry Saved Successfully!");
+    resetDirectoryForm();
+    updateStats();
+  });
+
+  async function editDirectory(id) {
+    const client = getClient();
+    const { data } = await client.from('bihar_directory').select('*').eq('id', id).single();
+    if (!data) return;
+    editingDirectoryId = id;
+    document.getElementById('dirFormTitle').textContent = "Editing Directory Entry: " + data.name;
+    document.getElementById('dirName').value = data.name || '';
+    document.getElementById('dirDistrict').value = data.district || '';
+    document.getElementById('dirLocation').value = data.location || '';
+    document.getElementById('dirType').value = data.type || 'Khanqah';
+    document.getElementById('dirSaint').value = data.saint || '';
+    document.getElementById('dirSilsila').value = data.silsila || '';
+    document.getElementById('dirNote').value = data.note || '';
+    document.getElementById('dirSource').value = data.source || '';
+    document.getElementById('dirSaveBtn').textContent = "Update Directory Record";
+    switchPanel('directoryPanel', document.querySelectorAll('.tab-btn')[3]);
+  }
+
+  function resetDirectoryForm() {
+    document.getElementById('directoryForm').reset();
+    editingDirectoryId = null;
+    document.getElementById('dirFormTitle').textContent = "Manage Khanqahs & Dargahs of Bihar Directory";
+    document.getElementById('dirSaveBtn').textContent = "Save Directory Record";
+  }
+
+  // Sheikhpura History Form
+  document.getElementById('sheikhpuraForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = { title: document.getElementById('skTitle').value.trim(), content_text: document.getElementById('skContent').value.trim() };
+    const client = getClient();
+    const res = editingSheikhpuraId ? await client.from('sheikhpura_history').update(data).eq('id', editingSheikhpuraId) : await client.from('sheikhpura_history').insert([data]);
+    if (res.error) { alert("Error: " + res.error.message); return; }
+    alert(editingSheikhpuraId ? "History Updated!" : "History Saved Successfully!");
+    resetSheikhpuraForm();
+    updateStats();
+  });
+
+  async function editSheikhpura(id) {
+    const client = getClient();
+    const { data } = await client.from('sheikhpura_history').select('*').eq('id', id).single();
+    if (!data) return;
+    editingSheikhpuraId = id;
+    document.getElementById('skFormTitle').textContent = "Editing History: " + data.title;
+    document.getElementById('skTitle').value = data.title || '';
+    document.getElementById('skContent').value = data.content_text || '';
+    document.getElementById('skSaveBtn').textContent = "Update History Record";
+    switchPanel('sheikhpuraPanel', document.querySelectorAll('.tab-btn')[4]);
+  }
+
+  function resetSheikhpuraForm() {
+    document.getElementById('sheikhpuraForm').reset();
+    editingSheikhpuraId = null;
+    document.getElementById('skFormTitle').textContent = "Manage Sheikhpura History";
+    document.getElementById('skSaveBtn').textContent = "Save History";
+  }
+
+  // Awards Form
+  document.getElementById('awardsForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    try {
+      const client = getClient();
+      const fileInput = document.getElementById('awardFile');
+      let imageUrl = document.getElementById('awardUrl').value.trim();
+
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const fileName = `award_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+        const { error: uploadErr } = await client.storage.from('gallery').upload(fileName, file);
+        if (uploadErr) throw uploadErr;
+        const { data: publicUrlData } = client.storage.from('gallery').getPublicUrl(fileName);
+        imageUrl = publicUrlData.publicUrl;
+      }
+
+      const data = {
+        title: document.getElementById('awardTitle').value.trim(),
+        organization: document.getElementById('awardOrg').value.trim(),
+        award_year: document.getElementById('awardYear').value.trim(),
+        category: document.getElementById('awardCategory').value,
+        description: document.getElementById('awardDesc').value.trim(),
+        image_url: imageUrl,
+        certificate_url: document.getElementById('awardCertUrl').value.trim()
+      };
+
+      const res = editingAwardId ? await client.from('awards').update(data).eq('id', editingAwardId) : await client.from('awards').insert([data]);
+      if (res.error) throw res.error;
+      alert(editingAwardId ? "Award Updated!" : "Award Record Saved Successfully!");
+      resetAwardsForm();
+      updateStats();
+    } catch(err) { alert("Error: " + err.message); }
+  });
+
+  async function editAward(id) {
+    const client = getClient();
+    const { data } = await client.from('awards').select('*').eq('id', id).single();
+    if (!data) return;
+    editingAwardId = id;
+    document.getElementById('awardsFormTitle').textContent = "Editing Award: " + data.title;
+    document.getElementById('awardTitle').value = data.title || '';
+    document.getElementById('awardOrg').value = data.organization || '';
+    document.getElementById('awardYear').value = data.award_year || '';
+    document.getElementById('awardCategory').value = data.category || 'Literary';
+    document.getElementById('awardDesc').value = data.description || '';
+    document.getElementById('awardUrl').value = data.image_url || '';
+    document.getElementById('awardCertUrl').value = data.certificate_url || '';
+    document.getElementById('awardSaveBtn').textContent = "Update Award Record";
+    switchPanel('awardsPanel', document.querySelectorAll('.tab-btn')[5]);
+  }
+
+  function resetAwardsForm() {
+    document.getElementById('awardsForm').reset();
+    editingAwardId = null;
+    document.getElementById('awardsFormTitle').textContent = "Manage Awards & Honours";
+    document.getElementById('awardSaveBtn').textContent = "Save Award Record";
+  }
+
+  // Books Form
+  document.getElementById('booksForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    try {
+      const client = getClient();
+      const fileInput = document.getElementById('bookFile');
+      let imageUrl = document.getElementById('bookUrl').value.trim();
+
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const fileName = `book_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+        const { error: uploadErr } = await client.storage.from('gallery').upload(fileName, file);
+        if (uploadErr) throw uploadErr;
+        const { data: publicUrlData } = client.storage.from('gallery').getPublicUrl(fileName);
+        imageUrl = publicUrlData.publicUrl;
+      }
+
+      const data = {
+        title: document.getElementById('bookTitle').value.trim(),
+        category: document.getElementById('bookCategory').value,
+        publisher: document.getElementById('bookPublisher').value.trim(),
+        pub_year: document.getElementById('bookYear').value.trim(),
+        description: document.getElementById('bookDesc').value.trim(),
+        cover_image_url: imageUrl,
+        external_link: document.getElementById('bookLink').value.trim(),
+        search_keywords: document.getElementById('bookSearch').value.trim()
+      };
+
+      const res = editingBookId ? await client.from('books_articles').update(data).eq('id', editingBookId) : await client.from('books_articles').insert([data]);
+      if (res.error) throw res.error;
+      alert(editingBookId ? "Publication Updated!" : "Publication Record Saved Successfully!");
+      resetBooksForm();
+      updateStats();
+    } catch(err) { alert("Error: " + err.message); }
+  });
+
+  async function editBook(id) {
+    const client = getClient();
+    const { data } = await client.from('books_articles').select('*').eq('id', id).single();
+    if (!data) return;
+    editingBookId = id;
+    document.getElementById('booksFormTitle').textContent = "Editing Publication: " + data.title;
+    document.getElementById('bookTitle').value = data.title || '';
+    document.getElementById('bookCategory').value = data.category || 'book';
+    document.getElementById('bookPublisher').value = data.publisher || '';
+    document.getElementById('bookYear').value = data.pub_year || '';
+    document.getElementById('bookDesc').value = data.description || '';
+    document.getElementById('bookUrl').value = data.cover_image_url || '';
+    document.getElementById('bookLink').value = data.external_link || '';
+    document.getElementById('bookSearch').value = data.search_keywords || '';
+    document.getElementById('bookSaveBtn').textContent = "Update Publication Record";
+    switchPanel('booksPanel', document.querySelectorAll('.tab-btn')[6]);
+  }
+
+  function resetBooksForm() {
+    document.getElementById('booksForm').reset();
+    editingBookId = null;
+    document.getElementById('booksFormTitle').textContent = "Manage Books, Research & Articles";
+    document.getElementById('bookSaveBtn').textContent = "Save Publication Record";
+  }
+
+  // Gallery Form
+  document.getElementById('galleryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    try {
+      const client = getClient();
+      const fileInput = document.getElementById('galFile');
+      let imageUrl = document.getElementById('galUrl').value.trim();
+
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const fileName = `gallery_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+        const { error: uploadErr } = await client.storage.from('gallery').upload(fileName, file);
+        if (uploadErr) throw uploadErr;
+        const { data: publicUrlData } = client.storage.from('gallery').getPublicUrl(fileName);
+        imageUrl = publicUrlData.publicUrl;
+      }
+
+      const data = { caption: document.getElementById('galCaption').value.trim(), image_url: imageUrl };
+      const res = editingGalleryId ? await client.from('gallery_media').update(data).eq('id', editingGalleryId) : await client.from('gallery_media').insert([data]);
+      if (res.error) throw res.error;
+      alert(editingGalleryId ? "Gallery Media Updated!" : "Gallery Media Saved Successfully!");
+      resetGalleryForm();
+      updateStats();
+    } catch(err) { alert("Error: " + err.message); }
+  });
+
+  async function editGallery(id) {
+    const client = getClient();
+    const { data } = await client.from('gallery_media').select('*').eq('id', id).single();
+    if (!data) return;
+    editingGalleryId = id;
+    document.getElementById('galleryFormTitle').textContent = "Editing Media: " + data.caption;
+    document.getElementById('galCaption').value = data.caption || '';
+    document.getElementById('galUrl').value = data.image_url || '';
+    document.getElementById('galSaveBtn').textContent = "Update Media Record";
+    switchPanel('galleryPanel', document.querySelectorAll('.tab-btn')[7]);
+  }
+
+  function resetGalleryForm() {
+    document.getElementById('galleryForm').reset();
+    editingGalleryId = null;
+    document.getElementById('galleryFormTitle').textContent = "Upload & Manage Gallery Media";
+    document.getElementById('galSaveBtn').textContent = "Upload & Save Media";
+  }
+
+
+  // Media & Press editor. Requires the media_press table and RLS policies in media_press_setup.sql.
+  let editingMediaPressId = null;
+  async function loadMediaPress() {
+    const list = document.getElementById('mediaPressArchiveList');
+    list.innerHTML = '<p style="color:var(--text-muted)">Loading entries…</p>';
+    try {
+      const { data, error } = await getClient().from('media_press').select('*').order('sort_order', { ascending: true }).order('id', { ascending: false });
+      if (error) throw error;
+      const markup = (!data || !data.length) ? '<p style="color:var(--text-muted)">No media entries yet. Add the first one using the form above.</p>' : data.map(item => `
+        <div class="archive-card">
+          <div style="min-width:0;max-width:70%">
+            <div class="archive-title">${escapeHTML(item.outlet)} — ${escapeHTML(item.title)}</div>
+            <div class="archive-meta">${escapeHTML(item.category)} · Order ${Number(item.sort_order)||0} · ${item.published ? 'Published' : 'Hidden'}</div>
+            <div class="archive-meta" style="overflow-wrap:anywhere">${escapeHTML(item.url)}</div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="action-btn action-edit" onclick="editMediaPress(${Number(item.id)})">Edit</button>
+            <button class="action-btn action-delete" onclick="deleteMediaPress(${Number(item.id)})">Delete</button>
+          </div>
+        </div>`).join('');
+      list.innerHTML = markup;
+      const secondary = document.getElementById('mediaPressArchiveListSecondary');
+      if (secondary) secondary.innerHTML = markup;
+    } catch (error) {
+      console.error('Could not load media_press:', error);
+      list.innerHTML = '<p style="color:var(--danger)">Could not load media entries. Check that media_press_setup.sql was run and Supabase permissions are configured. Details: ' + escapeHTML(error.message) + '</p>';
+    }
+  }
+
+  document.getElementById('mediaPressForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const saveButton = document.getElementById('mpSaveBtn');
+    saveButton.disabled = true;
+    try {
+      const data = {
+        outlet: document.getElementById('mpOutlet').value.trim(),
+        title: document.getElementById('mpTitle').value.trim(),
+        url: document.getElementById('mpUrl').value.trim(),
+        category: document.getElementById('mpCategory').value,
+        sort_order: Number.parseInt(document.getElementById('mpOrder').value, 10) || 0,
+        published: document.getElementById('mpPublished').checked
+      };
+      if (!/^https?:\/\//i.test(data.url)) throw new Error('Enter a valid http:// or https:// publication URL.');
+      const query = editingMediaPressId
+        ? await getClient().from('media_press').update(data).eq('id', editingMediaPressId)
+        : await getClient().from('media_press').insert([data]);
+      if (query.error) throw query.error;
+      alert(editingMediaPressId ? 'Media entry updated.' : 'Media entry saved.');
+      resetMediaPressForm();
+      await loadMediaPress();
+    } catch (error) {
+      console.error(error);
+      alert('Could not save media entry: ' + error.message);
+    } finally {
+      saveButton.disabled = false;
+    }
+  });
+
+  async function editMediaPress(id) {
+    try {
+      const { data, error } = await getClient().from('media_press').select('*').eq('id', id).single();
+      if (error) throw error;
+      editingMediaPressId = id;
+      document.getElementById('mpOutlet').value = data.outlet || '';
+      document.getElementById('mpTitle').value = data.title || '';
+      document.getElementById('mpUrl').value = data.url || '';
+      document.getElementById('mpCategory').value = data.category || 'PRESS COVERAGE';
+      document.getElementById('mpOrder').value = data.sort_order ?? 100;
+      document.getElementById('mpPublished').checked = Boolean(data.published);
+      document.getElementById('mediaPressFormTitle').textContent = 'Editing: ' + data.outlet;
+      document.getElementById('mpSaveBtn').textContent = 'Update Media Entry';
+      switchPanel('mediaPressPanel', [...document.querySelectorAll('.tab-btn')].find(btn => btn.textContent.trim() === 'Media & Press'));
+      document.getElementById('mediaPressForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (error) { alert('Could not open entry: ' + error.message); }
+  }
+
+  async function deleteMediaPress(id) {
+    if (!confirm('Delete this media entry permanently?')) return;
+    try {
+      const { error } = await getClient().from('media_press').delete().eq('id', id);
+      if (error) throw error;
+      await loadMediaPress();
+    } catch (error) { alert('Could not delete entry: ' + error.message); }
+  }
+
+  function resetMediaPressForm() {
+    document.getElementById('mediaPressForm').reset();
+    document.getElementById('mpOrder').value = 100;
+    document.getElementById('mpPublished').checked = true;
+    editingMediaPressId = null;
+    document.getElementById('mediaPressFormTitle').textContent = 'Manage Media & Press Coverage';
+    document.getElementById('mpSaveBtn').textContent = 'Save Media Entry';
+  }
+
+  // Load Archives
+  async function loadArchives() {
+    const client = getClient();
+
+    const { data: aData } = await client.from('awards').select('*').order('id', { ascending: false });
+    document.getElementById('awardsArchiveList').innerHTML = (!aData || !aData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : aData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.title)} (${escapeHTML(i.award_year)})</div><div class="archive-meta">By: ${escapeHTML(i.organization)}</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editAward(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('awards', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
+    const { data: bData } = await client.from('books_articles').select('*').order('id', { ascending: false });
+    document.getElementById('booksArchiveList').innerHTML = (!bData || !bData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : bData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.title)}</div><div class="archive-meta">Category: ${escapeHTML(i.category)}</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editBook(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('books_articles', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
+    const { data: pData } = await client.from('poetry').select('*').order('id', { ascending: false });
+    document.getElementById('poetryArchiveList').innerHTML = (!pData || !pData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : pData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.title)}</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editPoetry(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('poetry', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
+    const { data: sData } = await client.from('sher').select('*').order('id', { ascending: false });
+    document.getElementById('sherArchiveList').innerHTML = (!sData || !sData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : sData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML((i.sher_roman || i.sher_urdu || 'Couplet').slice(0, 35))}...</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editSher(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('sher', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
+    const { data: sfData } = await client.from('sufi_saints').select('*').order('id', { ascending: false });
+    document.getElementById('sufiArchiveList').innerHTML = (!sfData || !sfData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : sfData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.saint_name)}</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editSufi(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('sufi_saints', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
+    const { data: dData } = await client.from('bihar_directory').select('*').order('id', { ascending: false });
+    document.getElementById('directoryArchiveList').innerHTML = (!dData || !dData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : dData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.name)}</div><div class="archive-meta">District: ${escapeHTML(i.district)} (${escapeHTML(i.type)})</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editDirectory(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('bihar_directory', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
+    const { data: skData } = await client.from('sheikhpura_history').select('*').order('id', { ascending: false });
+    document.getElementById('sheikhpuraArchiveList').innerHTML = (!skData || !skData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : skData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.title)}</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editSheikhpura(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('sheikhpura_history', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+
+    const { data: gData } = await client.from('gallery_media').select('*').order('id', { ascending: false });
+    document.getElementById('galleryArchiveList').innerHTML = (!gData || !gData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : gData.map(i => `
+      <div class="archive-card">
+        <div><div class="archive-title">${escapeHTML(i.caption)}</div></div>
+        <div>
+          <button class="action-btn action-edit" onclick="editGallery(${i.id})">Edit</button>
+          <button class="action-btn action-delete" onclick="deleteRecord('gallery_media', ${i.id})">Delete</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  async function deleteRecord(table, id) {
+    if(!confirm("Are you sure you want to delete this record?")) return;
+    await getClient().from(table).delete().eq('id', id);
+    alert("Record Deleted!");
+    loadArchives();
+    updateStats();
+  }
+
+  async function exportBackup() {
+    const client = getClient();
+    const tables = ['awards', 'books_articles', 'poetry', 'sher', 'sufi_saints', 'bihar_directory', 'sheikhpura_history', 'gallery_media', 'media_press'];
+    const backup = { exported_at: new Date().toISOString(), format_version: 1, tables: {} };
+    try {
+      for (const table of tables) {
+        const { data, error } = await client.from(table).select('*');
+        if (error) throw new Error(`Could not export ${table}: ${error.message}`);
+        backup.tables[table] = data || [];
+      }
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `syed_amjad_hussain_backup_${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch (error) {
+      console.error('Backup export failed:', error);
+      alert('Backup could not be completed. Please check the database permissions and try again.');
+    }
+  }
+</script>
+
+<script>
+  // Bio of Sufis manager. All GitHub writes are performed by the protected /api/saints endpoint.
+  let saintHtmlFiles = [];
+  let selectedSaintFile = '';
+  let selectedSaintSha = '';
+  let saintEditorDirty = false;
+
+  async function saintsApi(path, options = {}) {
+    const client = getClient();
+    const { data, error } = await client.auth.getSession();
+    if (error || !data?.session?.access_token) throw new Error('Please sign in again to manage Sufi biographies.');
+    const headers = Object.assign({ 'Authorization': 'Bearer ' + data.session.access_token }, options.headers || {});
+    if (options.body && !headers['Content-Type']) headers['Content-Type'] = 'application/json';
+    const response = await fetch('/api/saints' + path, Object.assign({}, options, { headers }));
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || 'The request could not be completed.');
+    return payload;
+  }
+
+  function setSaintFileStatus(message, isError = false) {
+    const el = document.getElementById('saintFileStatus');
+    if (el) { el.textContent = message; el.style.color = isError ? 'var(--danger, #a4243b)' : 'var(--text-muted)'; }
+  }
+
+  async function loadSaintFiles() {
+    const select = document.getElementById('saintFileList');
+    if (!select) return;
+    select.innerHTML = '<option>Loading pages…</option>';
+    setSaintFileStatus('Connecting securely to GitHub…');
+    try {
+      const payload = await saintsApi('');
+      saintHtmlFiles = Array.isArray(payload.files) ? payload.files : [];
+      renderSaintFileList();
+      setSaintFileStatus(saintHtmlFiles.length + ' HTML pages found in saints/.');
+      if (selectedSaintFile && saintHtmlFiles.some(f => f.name === selectedSaintFile)) {
+        select.value = selectedSaintFile;
+      }
+    } catch (error) {
+      select.innerHTML = '<option>Could not load pages</option>';
+      setSaintFileStatus(error.message, true);
+    }
+  }
+
+  function renderSaintFileList() {
+    const select = document.getElementById('saintFileList');
+    const query = (document.getElementById('saintFileSearch')?.value || '').trim().toLowerCase();
+    const files = saintHtmlFiles.filter(f => f.name.toLowerCase().includes(query));
+    select.innerHTML = '';
+    if (!files.length) { select.innerHTML = '<option value="">No matching HTML pages</option>'; return; }
+    files.forEach(file => {
+      const option = document.createElement('option');
+      option.value = file.name;
+      option.textContent = file.name;
+      select.appendChild(option);
+    });
+    if (selectedSaintFile && files.some(f => f.name === selectedSaintFile)) select.value = selectedSaintFile;
+  }
+
+  function filterSaintFiles() { renderSaintFileList(); }
+
+  async function loadSaintFile() {
+    const name = document.getElementById('saintFileList').value;
+    if (!name || !name.endsWith('.html')) return;
+    if (saintEditorDirty && !confirm('Discard unsaved editor changes and load another page?')) {
+      document.getElementById('saintFileList').value = selectedSaintFile;
+      return;
+    }
+    setSaintFileStatus('Loading ' + name + '…');
+    try {
+      const payload = await saintsApi('?file=' + encodeURIComponent(name));
+      selectedSaintFile = payload.name;
+      selectedSaintSha = payload.sha || '';
+      document.getElementById('saintHtmlEditor').value = payload.content || '';
+      saintEditorDirty = false;
+      document.getElementById('saintHtmlEditor').oninput = () => { saintEditorDirty = true; };
+      setSaintFileStatus('Loaded ' + selectedSaintFile + '. Review carefully before saving.');
+    } catch (error) { setSaintFileStatus(error.message, true); }
+  }
+
+  async function saveSaintFile() {
+    if (!selectedSaintFile) { setSaintFileStatus('Select an HTML page first.', true); return; }
+    const editor = document.getElementById('saintHtmlEditor');
+    if (!confirm('Publish changes to saints/' + selectedSaintFile + ' on GitHub? This will update the live website after deployment.')) return;
+    const button = document.getElementById('saintHtmlSaveBtn');
+    button.disabled = true; button.textContent = 'Saving…';
+    try {
+      const result = await saintsApi('', { method: 'PUT', body: JSON.stringify({ fileName: selectedSaintFile, content: editor.value, sha: selectedSaintSha }) });
+      selectedSaintSha = result.sha || selectedSaintSha;
+      saintEditorDirty = false;
+      setSaintFileStatus('Saved to GitHub: saints/' + selectedSaintFile + '. Vercel deployment may take a short while.');
+      await loadSaintFiles();
+      document.getElementById('saintFileList').value = selectedSaintFile;
+    } catch (error) { setSaintFileStatus(error.message, true); }
+    finally { button.disabled = false; button.textContent = 'Save to GitHub'; }
+  }
+
+  function previewSaintFile() {
+    if (!selectedSaintFile) { setSaintFileStatus('Select an HTML page first.', true); return; }
+    const url = '/saints/' + encodeURIComponent(selectedSaintFile);
+    window.open(url, '_blank', 'noopener');
+  }
+
+  async function createSaintFile() {
+    const title = document.getElementById('newSaintTitle').value.trim();
+    const slug = document.getElementById('newSaintSlug').value.trim().toLowerCase();
+    if (!title || !slug) { setSaintFileStatus('Enter both the name and file name.', true); return; }
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) { setSaintFileStatus('Use only lowercase letters, numbers, and hyphens in the file name.', true); return; }
+    const fileName = slug + '.html';
+    const safeTitle = title.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const content = '<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>' + safeTitle + ' | Bio of Sufis</title>\n  <meta name="description" content="Biography of ' + safeTitle + '">\n</head>\n<body>\n  <main>\n    <h1>' + safeTitle + '</h1>\n    <p>Add the verified biography here.</p>\n  </main>\n</body>\n</html>\n';
+    if (!confirm('Create saints/' + fileName + ' on GitHub?')) return;
+    try {
+      const result = await saintsApi('', { method: 'POST', body: JSON.stringify({ fileName, content }) });
+      selectedSaintFile = result.name || fileName;
+      selectedSaintSha = result.sha || '';
+      await loadSaintFiles();
+      document.getElementById('saintFileList').value = selectedSaintFile;
+      document.getElementById('saintHtmlEditor').value = content;
+      saintEditorDirty = false;
+      setSaintFileStatus('Created saints/' + selectedSaintFile + '. You can now edit it above.');
+      document.getElementById('newSaintTitle').value = '';
+      document.getElementById('newSaintSlug').value = '';
+    } catch (error) { setSaintFileStatus(error.message, true); }
+  }
+</script>
+
+<script>
+  // Authentication gate: the editing dashboard stays hidden until Supabase confirms a session.
+  (function () {
+    const gate = document.getElementById('loginGate');
+    const app = document.getElementById('adminApp');
+    const form = document.getElementById('adminLoginForm');
+    const errorBox = document.getElementById('loginError');
+    const submitBtn = document.getElementById('adminLoginSubmit');
+    let authListenerRegistered = false;
+
+    function showLogin(message) {
+      app.hidden = true;
+      gate.hidden = false;
+      if (message) {
+        errorBox.textContent = message;
+        errorBox.style.display = 'block';
+      } else {
+        errorBox.textContent = '';
+        errorBox.style.display = 'none';
+      }
+    }
+
+    function showDashboard() {
+      errorBox.textContent = '';
+      errorBox.style.display = 'none';
+      gate.hidden = true;
+      app.hidden = false;
+      if (typeof updateStats === 'function') updateStats();
+    }
+
+    async function initAuth() {
+      showLogin();
+      try {
+        if (!window.ADMIN_CONFIG || !window.ADMIN_CONFIG.supabaseUrl ||
+            !window.ADMIN_CONFIG.supabaseAnonKey || !window.supabase) {
+          showLogin('Admin configuration could not be loaded. Check admin-config.js.');
+          return;
+        }
+        const client = getClient();
+        const { data, error } = await client.auth.getSession();
+        if (error) throw error;
+        if (data && data.session && data.session.user) showDashboard();
+        else showLogin();
+
+        if (!authListenerRegistered) {
+          authListenerRegistered = true;
+          client.auth.onAuthStateChange((_event, session) => {
+            if (session && session.user) showDashboard();
+            else showLogin();
+          });
+        }
+      } catch (error) {
+        console.error('Admin session check failed:', error);
+        showLogin('Unable to verify your session. Please refresh and sign in again.');
+      }
+    }
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      errorBox.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'VERIFYING ACCESS…';
+      try {
+        const email = document.getElementById('adminLoginEmail').value.trim();
+        const password = document.getElementById('adminLoginPassword').value;
+        const { data, error } = await getClient().auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        if (!data || !data.session || !data.session.user) throw new Error('No authenticated session returned');
+        form.reset();
+        showDashboard();
+      } catch (error) {
+        console.error('Admin sign-in failed:', error);
+        showLogin('Sign-in failed. Please check your email and password.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'SIGN IN SECURELY →';
+      }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', async function () {
+      try {
+        const { error } = await getClient().auth.signOut();
+        if (error) throw error;
+        showLogin();
+      } catch (error) {
+        console.error('Admin sign-out failed:', error);
+        alert('Sign out failed. Please refresh the page and try again.');
+      }
+    });
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAuth, { once: true });
+    } else {
+      initAuth();
+    }
+  })();
+</script>
+</div>
+</body>
+</html>
