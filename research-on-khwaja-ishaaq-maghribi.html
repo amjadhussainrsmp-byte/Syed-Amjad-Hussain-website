@@ -1,0 +1,1454 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Research on Hazrat Khwaja Ish’aaq Maghribi | Syed Amjad Hussain</title>
+  <meta name="description" content="A literary research note on a ghazal attributed to Muhammad Ish’aaq Maghribi Hamadani, preserved in a manuscript Deewan and also reported in Tazkira Makhdoom Shoaib.">
+  <meta name="theme-color" content="#641f32">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --burgundy: #641f32;
+      --burgundy-dark: #35131e;
+      --burgundy-light: #82364b;
+      --gold: #b89558;
+      --gold-light: #e1cca2;
+      --ivory: #f8f5ee;
+      --paper: #fffdf8;
+      --ink: #292421;
+      --muted: #746c65;
+      --line: #e7dfd2;
+      --white: #fff;
+      --shadow: 0 14px 40px rgba(49, 28, 24, .08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 95px;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--ivory);
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1160px, 91%);
+      margin-inline: auto;
+    }
+
+    .serif {
+      font-family: "Playfair Display", serif;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .section-heading {
+      max-width: 770px;
+      margin-bottom: 36px;
+    }
+
+    .section-heading h2 {
+      font: 600 clamp(2rem, 4.3vw, 3.05rem)/1.2 "Playfair Display", serif;
+      color: var(--burgundy-dark);
+      margin: 13px 0 17px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* Navigation */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 253, 248, .96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      line-height: 1.3;
+    }
+
+    .brand strong {
+      font: 700 1.2rem "Playfair Display", serif;
+      color: var(--burgundy);
+    }
+
+    .brand span {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .66rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-links a {
+      font-size: .76rem;
+      font-weight: 600;
+      color: #49413e;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--burgundy);
+    }
+
+    .nav-links .contact-link {
+      padding: 10px 14px;
+      background: var(--burgundy);
+      color: var(--white);
+      border-radius: 7px;
+    }
+
+    .nav-links .contact-link:hover {
+      background: var(--burgundy-dark);
+      color: var(--white);
+    }
+
+    .menu-toggle {
+      display: none;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--burgundy);
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 83px 0 76px;
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at 86% 14%, rgba(184,149,88,.22), transparent 34%),
+        linear-gradient(125deg, #30101a, #641f32 60%, #793348);
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      border: 1px solid rgba(225,204,162,.24);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 460px;
+      height: 460px;
+      right: -135px;
+      top: -150px;
+    }
+
+    .hero::after {
+      width: 325px;
+      height: 325px;
+      right: -65px;
+      top: -82px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      align-items: center;
+      gap: 58px;
+    }
+
+    .hero .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin: 23px 0 20px;
+      font: 600 clamp(2.7rem, 5.5vw, 4.65rem)/1.12 "Playfair Display", serif;
+      letter-spacing: -.9px;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--gold-light);
+    }
+
+    .hero-subtitle {
+      max-width: 590px;
+      font: 500 clamp(1.15rem, 2.1vw, 1.55rem)/1.5 "Playfair Display", serif;
+      color: #f0e3d0;
+      margin-bottom: 20px;
+    }
+
+    .hero-description {
+      max-width: 630px;
+      color: #e6d8d9;
+      font-size: .96rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 19px;
+      border-radius: 7px;
+      font-size: .85rem;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #261b13;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.4);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero-note {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.17);
+      color: #d4c2c5;
+      font-size: .8rem;
+    }
+
+    /* Hero heritage illustration */
+
+    .heritage-art {
+      position: relative;
+      min-height: 385px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .art-frame {
+      width: min(390px, 100%);
+      aspect-ratio: 4 / 4.4;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(225,204,162,.55);
+      border-radius: 190px 190px 14px 14px;
+      background:
+        radial-gradient(ellipse at 50% 34%, rgba(225,204,162,.17), transparent 39%),
+        linear-gradient(160deg, #81513c, #4a202d 70%, #35131e);
+      box-shadow: 0 28px 55px rgba(0,0,0,.24);
+    }
+
+    .art-inner {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(225,204,162,.34);
+      border-radius: 180px 180px 8px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .art-star {
+      color: var(--gold-light);
+      font-size: 2.8rem;
+      line-height: 1;
+      margin-bottom: 23px;
+    }
+
+    .art-kicker {
+      color: var(--gold-light);
+      font-size: .63rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .art-title {
+      color: #fff6e8;
+      font: 600 clamp(1.5rem, 2.8vw, 2.1rem)/1.25 "Playfair Display", serif;
+      margin: 17px 0;
+    }
+
+    .art-rule {
+      width: 57px;
+      height: 1px;
+      background: var(--gold-light);
+      margin-bottom: 17px;
+    }
+
+    .art-place {
+      color: #e8d9cb;
+      font-size: .8rem;
+    }
+
+    .art-caption {
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #dbc9ca;
+      font-size: .75rem;
+    }
+
+    /* Introduction */
+
+    .intro-section {
+      padding: 83px 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.13fr .87fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .intro-copy h2 {
+      font: 600 clamp(2rem, 4vw, 2.85rem)/1.2 "Playfair Display", serif;
+      color: var(--burgundy-dark);
+      margin: 14px 0 22px;
+    }
+
+    .intro-copy p {
+      color: #625a53;
+      margin-bottom: 17px;
+    }
+
+    .intro-copy strong {
+      color: var(--burgundy);
+    }
+
+    .ancestry-panel {
+      padding: 30px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-symbol {
+      color: var(--gold);
+      font: 3.6rem/1 "Playfair Display", serif;
+    }
+
+    .ancestry-panel h3 {
+      color: var(--burgundy-dark);
+      font: 600 1.55rem/1.3 "Playfair Display", serif;
+      margin: 17px 0 12px;
+    }
+
+    .ancestry-panel p {
+      color: var(--muted);
+      font-size: .91rem;
+    }
+
+    .location-label {
+      display: block;
+      margin-top: 22px;
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+      color: var(--burgundy);
+      font-size: .79rem;
+      font-weight: 700;
+      letter-spacing: .4px;
+    }
+
+    /* Timeline */
+
+    .timeline-section {
+      padding: 83px 0;
+      background: var(--paper);
+      border-block: 1px solid var(--line);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 9px;
+      bottom: 10px;
+      width: 1px;
+      background: #d9c6a6;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 36px 65px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 13px;
+      top: 5px;
+      width: 19px;
+      height: 19px;
+      border: 4px solid var(--paper);
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold);
+    }
+
+    .timeline-date {
+      color: var(--burgundy);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+    }
+
+    .timeline-item h3 {
+      color: var(--burgundy-dark);
+      font: 600 1.55rem/1.35 "Playfair Display", serif;
+      margin: 8px 0 10px;
+    }
+
+    .timeline-item p {
+      color: #625a53;
+    }
+
+    /* Collective effort */
+
+    .community-section {
+      padding: 84px 0;
+    }
+
+    .community-intro {
+      max-width: 820px;
+      color: #625a53;
+      margin-bottom: 33px;
+    }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 21px;
+    }
+
+    .community-card {
+      padding: 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .community-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .community-card .card-kicker {
+      color: var(--gold);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .community-card h3 {
+      color: var(--burgundy-dark);
+      font: 600 1.45rem/1.35 "Playfair Display", serif;
+      margin: 11px 0 13px;
+    }
+
+    .community-card p {
+      color: var(--muted);
+      font-size: .91rem;
+    }
+
+    .community-note {
+      margin-top: 25px;
+      padding: 23px 26px;
+      background: rgba(184,149,88,.11);
+      border-left: 3px solid var(--gold);
+      color: #5d5145;
+      font: 500 1.2rem/1.65 "Playfair Display", serif;
+    }
+
+    /* Documents */
+
+    .records-section {
+      padding: 80px 0;
+      background: #eee6d9;
+    }
+
+    .records-panel {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--paper);
+      border: 1px solid #e0d4c2;
+    }
+
+    .records-heading {
+      padding: 36px;
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(225,204,162,.2), transparent 35%),
+        linear-gradient(145deg, #733047, #3c111d);
+    }
+
+    .records-heading .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .records-heading h2 {
+      font: 600 2.15rem/1.2 "Playfair Display", serif;
+      margin: 15px 0;
+    }
+
+    .records-heading p {
+      color: #e3d2d5;
+      font-size: .9rem;
+    }
+
+    .records-copy {
+      padding: 36px;
+      align-self: center;
+    }
+
+    .records-copy p {
+      color: #625a53;
+      margin-bottom: 16px;
+    }
+
+    .records-status {
+      display: inline-block;
+      padding: 7px 12px;
+      border: 1px solid #d8c5a1;
+      border-radius: 30px;
+      color: var(--burgundy);
+      background: #f7f0e3;
+      font-size: .77rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    /* Principles */
+
+    .principles-section {
+      padding: 84px 0;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .principle-card {
+      padding: 25px;
+      border-top: 2px solid var(--gold);
+      background: var(--paper);
+      box-shadow: 0 5px 24px rgba(49,28,24,.04);
+    }
+
+    .principle-card h3 {
+      color: var(--burgundy-dark);
+      font: 600 1.3rem "Playfair Display", serif;
+      margin-bottom: 10px;
+    }
+
+    .principle-card p {
+      color: var(--muted);
+      font-size: .89rem;
+    }
+
+    /* Closing */
+
+    .closing-section {
+      padding: 0 0 82px;
+    }
+
+    .closing-box {
+      padding: clamp(30px, 5.2vw, 58px);
+      border-radius: var(--radius);
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at 95% 0%, rgba(184,149,88,.19), transparent 35%),
+        linear-gradient(125deg, #35131e, #641f32);
+    }
+
+    .closing-box .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .closing-box h2 {
+      max-width: 850px;
+      font: 600 clamp(2.1rem, 4.8vw, 3.4rem)/1.17 "Playfair Display", serif;
+      margin: 17px 0 21px;
+    }
+
+    .closing-box p {
+      max-width: 850px;
+      color: #e5d5d7;
+      margin-bottom: 16px;
+    }
+
+    .closing-quote {
+      max-width: 800px;
+      padding: 20px 23px;
+      margin: 27px 0;
+      border-left: 3px solid var(--gold);
+      background: rgba(255,255,255,.055);
+      color: var(--gold-light);
+      font: 500 clamp(1.3rem, 2.7vw, 1.8rem)/1.5 "Playfair Display", serif;
+    }
+
+    .prayer-note {
+      color: #f0e2ce !important;
+      font-style: italic;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      padding: 47px 0 23px;
+      background: #29141a;
+      color: #eee3df;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap: 38px;
+      padding-bottom: 34px;
+    }
+
+    .footer-brand {
+      font: 600 1.45rem "Playfair Display", serif;
+      color: var(--gold-light);
+      margin-bottom: 13px;
+    }
+
+    .footer-about {
+      max-width: 390px;
+      color: #c8b9b7;
+      font-size: .86rem;
+    }
+
+    .footer-col h3 {
+      color: var(--gold-light);
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      margin-bottom: 14px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      color: #d7c9c6;
+      font-size: .84rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.13);
+      color: #b9a8a7;
+      font-size: .75rem;
+    }
+
+    @media (max-width: 1100px) {
+      .nav-links {
+        gap: 9px;
+      }
+
+      .nav-links a {
+        font-size: .69rem;
+      }
+
+      .hero-grid {
+        gap: 35px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .nav {
+        min-height: 73px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 17px 5%;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 15px 25px rgba(0,0,0,.07);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 10px 0;
+        font-size: .87rem;
+      }
+
+      .nav-links .contact-link {
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .hero-grid,
+      .intro-grid,
+      .records-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 18px;
+      }
+
+      .heritage-art {
+        min-height: 380px;
+      }
+
+      .community-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .principles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .intro-section,
+      .timeline-section,
+      .community-section,
+      .records-section,
+      .principles-section {
+        padding: 65px 0;
+      }
+
+      .closing-section {
+        padding-bottom: 65px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid > :first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .container {
+        width: 90%;
+      }
+
+      .brand strong {
+        font-size: 1.05rem;
+      }
+
+      .brand span {
+        font-size: .56rem;
+      }
+
+      .hero h1 {
+        font-size: 2.65rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .principles-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid > :first-child {
+        grid-column: auto;
+      }
+
+      .timeline-item {
+        padding-left: 49px;
+      }
+
+      .timeline::before {
+        left: 16px;
+      }
+
+      .timeline-dot {
+        left: 7px;
+      }
+
+      .records-heading,
+      .records-copy {
+        padding: 27px;
+      }
+
+      .heritage-art {
+        min-height: 330px;
+      }
+
+      .art-frame {
+        width: min(310px, 100%);
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container nav">
+
+      <a href="home.html" class="brand" aria-label="Syed Amjad Hussain home">
+        <strong>Syed Amjad Hussain</strong>
+        <span>Author · Historian · Researcher</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >☰ Menu</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+        <a href="sufi-heritage.html">The Sufi Heritage of Bihar</a>
+        <a href="research.html" class="active">Research</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="social-work.html">Social Work</a>
+        <a href="awards-honours.html">Awards & Honours</a>
+        <a href="ancestral-heritage.html">Ancestral Heritage</a>
+        <a href="contact.html" class="contact-link">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO: A separate research feature, styled in the site's Ancestral Heritage visual language -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Literary Research · Manuscripts · Sufi Heritage</span>
+          <h1>
+            Research on
+            <span>Hazrat Khwaja Ish’aaq Maghribi</span>
+          </h1>
+          <p class="hero-subtitle">A ghazal preserved across manuscript and print</p>
+          <p class="hero-description">
+            A research feature documenting a ghazal attributed to Muhammad Ish’aaq
+            Maghribi Hamadani, found in a Deewan in manuscript condition and also
+            reported as published in <em>Tazkira Makhdoom Shoaib</em> by
+            Hafiz Wazir Ali Warsi.
+          </p>
+          <div class="hero-actions">
+            <a href="#ghazal" class="btn btn-gold">Read the Ghazal ↓</a>
+            <a href="#textual-witnesses" class="btn btn-outline">Explore the Sources</a>
+          </div>
+          <p class="hero-note">
+            A work in progress: the text is presented without translation, with
+            transliteration options for readers.
+          </p>
+        </div>
+
+        <div class="heritage-art">
+          <div class="art-frame" role="img"
+            aria-label="Decorative research illustration inspired by manuscript culture and Persian literary heritage">
+            <div class="art-inner">
+              <div class="art-star" aria-hidden="true">✧</div>
+              <div class="art-kicker">Manuscript · Ghazal</div>
+              <div class="art-title" lang="ur" dir="rtl">دیوانِ مغربی</div>
+              <div class="art-rule"></div>
+              <div class="art-place">Textual Heritage · Bihar</div>
+            </div>
+          </div>
+          <p class="art-caption">Following a poem through its manuscript and printed witnesses.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH INTRODUCTION -->
+    <section class="intro-section" id="research-context">
+      <div class="container intro-grid">
+        <div class="intro-copy">
+          <span class="eyebrow">The Research Question</span>
+          <h2>A Ghazal in Two Textual Witnesses</h2>
+          <p>
+            During research, I came across a ghazal attributed to
+            <strong>Muhammad Ish’aaq Maghribi Hamadani</strong> in his
+            <em>Deewan</em>, which survives in manuscript condition.
+            The same ghazal is also reported as published in
+            <em>Tazkira Makhdoom Shoaib</em> by <strong>Hafiz Wazir Ali Warsi</strong>.
+          </p>
+          <p>
+            The presence of the poem in a manuscript collection and a printed
+            tazkira makes it a useful starting point for further literary and
+            bibliographical investigation. The next step is to compare both
+            witnesses directly and document their exact references.
+          </p>
+          <p>
+            This page preserves the supplied Persian text and provides Roman
+            and Devanagari transliterations for reading. <strong>No translation
+            is included.</strong> The transliterations are reading aids, not a
+            critical edition of the poem.
+          </p>
+        </div>
+
+        <aside class="ancestry-panel">
+          <div class="panel-symbol" aria-hidden="true">۞</div>
+          <h3 lang="ur" dir="rtl">از محمد اسحاق مغربی ہمدانی</h3>
+          <p>
+            The attribution line supplied with the ghazal names
+            Muhammad Ish’aaq Maghribi Hamadani.
+          </p>
+          <span class="location-label">
+            Literary source<br>
+            Deewan · Manuscript condition
+          </span>
+        </aside>
+      </div>
+    </section>
+
+    <!-- TEXTUAL WITNESSES -->
+    <section class="timeline-section" id="textual-witnesses">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Source Trail</span>
+          <h2>Following the Ghazal Across Sources</h2>
+          <p>
+            The two witnesses described by the researcher are presented separately
+            so that their bibliographical details can be recorded and compared
+            when the original items are available for inspection.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker">01</div>
+            <div class="timeline-content">
+              <span class="timeline-date">Manuscript Witness</span>
+              <h3>The Deewan of Muhammad Ish’aaq Maghribi Hamadani</h3>
+              <p>
+                The ghazal was found in a Deewan in manuscript condition.
+                Its repository or present owner, catalogue or shelfmark, folio
+                number, script, material and estimated date remain to be
+                recorded from the manuscript itself.
+              </p>
+              <span class="timeline-tag">Folio reference to be verified</span>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">02</div>
+            <div class="timeline-content">
+              <span class="timeline-date">Printed Witness</span>
+              <h3><em>Tazkira Makhdoom Shoaib</em></h3>
+              <p>
+                The same ghazal is reported as published in
+                <em>Tazkira Makhdoom Shoaib</em> by Hafiz Wazir Ali Warsi.
+                The edition, publication details and exact page number should
+                be checked against the copy consulted.
+              </p>
+              <span class="timeline-tag">Edition and page to be verified</span>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">03</div>
+            <div class="timeline-content">
+              <span class="timeline-date">Next Research Step</span>
+              <h3>Collation and Textual Comparison</h3>
+              <p>
+                A direct comparison can record differences in spelling, word
+                order, couplet arrangement and the repeated refrain. Any
+                variants should be documented rather than silently corrected
+                or harmonised.
+              </p>
+              <span class="timeline-tag">Pending source comparison</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GHazal READER -->
+    <section class="community-section" id="ghazal">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Primary Text</span>
+          <h2>The Ghazal of Muhammad Ish’aaq Maghribi Hamadani</h2>
+          <p>
+            Choose the Persian original, Rekhta-style Roman transliteration,
+            or Hindi-script transliteration. All three display the poem—not a
+            translation.
+          </p>
+        </div>
+
+        <div class="reader-controls" role="group" aria-label="Choose ghazal script">
+          <button type="button" class="reader-tab active" data-script="persian" aria-pressed="true">Persian Original</button>
+          <button type="button" class="reader-tab" data-script="roman" aria-pressed="false">Rekhta Roman</button>
+          <button type="button" class="reader-tab" data-script="hindi" aria-pressed="false">Hindi Script</button>
+        </div>
+
+        <div class="reader-actions">
+          <button type="button" class="btn btn-gold" id="readGhazal">▶ Read aloud</button>
+          <button type="button" class="btn btn-outline reader-stop" id="stopGhazal">■ Stop</button>
+          <span class="reader-hint" id="readerHint" aria-live="polite">Persian original selected.</span>
+        </div>
+
+        <div class="ghazal-paper" id="ghazalPanel">
+          <div class="ghazal-text" data-content="persian" lang="fa" dir="rtl">
+            <p>بستم باہر سرے، ہر سو سرے کارے دگر دارد<br>غمش بر ہر دلے سوداو بازارے دگر دارد</p>
+            <p>جمالِ عشق آن دلبر زہر معشوق و ہر عاشق<br>بگاہے جلوہ نظارہ دیدارے دگر دارد</p>
+            <p>اگرچہ دیدہ گلزارِ روئے او مشتاقانہ<br>کہ روئے او بجز این گلزار، گلزارے دگر دارد</p>
+            <p>اگرچہ دیدہ داری کہ دیدارش بدو دیدی<br>طلب کن دیدہ دیگر کہ دیدارے دگر دارد</p>
+            <p>اگر در ساعتِ صد بار رخسارش بصد دیدہ<br>ہمی بینی مشو قانع کہ رخسارے دگر دارد</p>
+            <p>چو گفتارش بدان گوشے کہ او بخشیدہ بشنیدی<br>برو گوشے دگر بستان کہ گفتارے دگر دارد</p>
+            <p>مگو در شہر و بازارش خریدارش مگو تنہا<br>کہ در ہر شہر و بازارے خریدارے دگر دارد</p>
+            <p>تو تنہا نیستی بیمارِ چشمِ شوخِ آن دلبر<br>کہ چشمش چون تو در ہر گوشہ بیمارے دگر دارد</p>
+            <p>نہ تنہا مغربی دارد گرفتاریِ سرِ زلفش<br>کہ زلفِ او بہر موئے گرفتارے دگر دارد</p>
+          </div>
+
+          <div class="ghazal-text roman-text" data-content="roman" lang="ur-Latn" hidden>
+            <p>Bastam baahar sare, har suu sare kaare digar daarad<br>Ghamash bar har dile saudaa-o baazaare digar daarad</p>
+            <p>Jamaal-e ishq aan dilbar ze har ma‘shuq-o har aashiq<br>Ba-gaah-e jalwa nazaara didaare digar daarad</p>
+            <p>Agarche deedah gulzaar-e ru-ye u mushtaaqaana<br>Ke ru-ye u be-juz een gulzaar, gulzaare digar daarad</p>
+            <p>Agarche deedah daari ke deedaarash ba-du deedee<br>Talab kon deedah-e digar ke deedaar-e digar daarad</p>
+            <p>Agar dar saa‘at-e sad baar rukhsaaraash ba-sad deedah<br>Hamee beenee, mashaw qaane‘ ke rukhsaare digar daarad</p>
+            <p>Chu guftaaraash ba-aan gush ke u bakhsheedah beshneedee<br>Biro gush-e digar bestaan ke guftaare digar daarad</p>
+            <p>Magoo dar shahr-o baazaarash khareedaarash magoo tanhaa<br>Ke dar har shahr-o baazaare khareedaare digar daarad</p>
+            <p>Tu tanhaa neestee beemaare chashm-e shukh-e aan dilbar<br>Ke chashmash chun tu dar har gusha beemaare digar daarad</p>
+            <p>Na tanhaa Maghribee daarad gereftaari-ye sar-e zolfash<br>Ke zolf-e u ba-har muyee gereftaare digar daarad</p>
+          </div>
+
+          <div class="ghazal-text hindi-text" data-content="hindi" lang="hi" hidden>
+            <p>बस्तम बाहर सरे, हर सू सरे कारे दिगर दारद<br>ग़मश बर हर दिले सौदा-ओ बाज़ारे दिगर दारद</p>
+            <p>जमाल-ए इश्क़ आँ दिलबर ज़े हर माशूक़-ओ हर आशिक़<br>बगाह-ए जल्वा नज़ारा दीदारे दिगर दारद</p>
+            <p>अगरचे दीदा गुलज़ार-ए रू-ए ऊ मुश्ताक़ाना<br>के रू-ए ऊ बजुज़ ईं गुलज़ार, गुलज़ारे दिगर दारद</p>
+            <p>अगरचे दीदा दारी के दीदारश बदू दीदी<br>तलब कुन दीदा-ए दिगर के दीदारे दिगर दारद</p>
+            <p>अगर दर साअत-ए सद बार रुख़सारश बसद दीदा<br>हमी बीनी, मَशो क़ाने के रुख़सारे दिगर दारद</p>
+            <p>चो गुफ़्तारश बदाँ गोश के ऊ बख़्शीदा बिशनीदी<br>बिरो गोश-ए दिगर बस्ताँ के गुफ़्तारे दिगर दारद</p>
+            <p>मगो दर शहर-ओ बाज़ारश ख़रीदारश मगो तन्हा<br>के दर हर शहर-ओ बाज़ारे ख़रीदारे दिगर दारद</p>
+            <p>तो तन्हा नीस्ती बीमारे चश्म-ए शोख़-ए आँ दिलबर<br>के चश्मश चुन तो दर हर गोशा बीमारे दिगर दारद</p>
+            <p>न तन्हा मग़रिबी दारद गिरफ़्तारी-ए सर-ए ज़ुल्फ़श<br>के ज़ुल्फ़-ए ऊ बहर मूए गिरफ़्तारे दिगर दारद</p>
+          </div>
+        </div>
+
+        <p class="reader-disclaimer">
+          The Persian text above is reproduced from the text supplied for this page.
+          Roman and Hindi versions are transliterations for reading convenience.
+          They are not translations or a verified critical transcription.
+        </p>
+      </div>
+    </section>
+
+    <!-- RESEARCH PRINCIPLES -->
+    <section class="intro-section" id="method">
+      <div class="container intro-grid">
+        <div class="intro-copy">
+          <span class="eyebrow">Method & Editorial Care</span>
+          <h2>Preserving the Text Without Inventing Certainty</h2>
+          <p>
+            The poem is presented here as a research object. Its attribution,
+            textual history and publication details should be documented from
+            the relevant witnesses rather than inferred from style alone.
+          </p>
+          <p>
+            A future scholarly note should cite the manuscript's repository or
+            owner, shelfmark, folio number and any available date. The printed
+            tazkira should be cited with its full title, author, edition,
+            publication details and page number.
+          </p>
+          <p>
+            If the two versions differ, those differences can be listed as
+            textual variants. Until then, the supplied wording remains visible
+            and no unsupported dates, biographical claims or lineage details
+            are added to this page.
+          </p>
+        </div>
+        <aside class="ancestry-panel">
+          <div class="panel-symbol" aria-hidden="true">✧</div>
+          <h3>Research Status</h3>
+          <p>
+            The source relationship and attribution on this page are based on
+            the researcher's report. The manuscript and printed edition have
+            not been independently inspected for this web presentation.
+          </p>
+          <span class="location-label">
+            Manuscript details: pending<br>
+            Printed page reference: pending
+          </span>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="records-section" id="references">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Bibliographical Record</span>
+          <h2>Sources & References</h2>
+          <p>
+            These are the two source witnesses identified for the present
+            research note. Exact bibliographical details should be completed
+            after checking the items directly.
+          </p>
+        </div>
+
+        <div class="records-grid">
+          <article class="record-card">
+            <span class="record-number">SOURCE 01</span>
+            <h3>Deewan of Muhammad Ish’aaq Maghribi Hamadani</h3>
+            <p>Manuscript witness reported by the researcher.</p>
+            <dl>
+              <dt>Repository / owner</dt><dd>To be documented</dd>
+              <dt>Shelfmark / catalogue no.</dt><dd>To be documented</dd>
+              <dt>Folio reference</dt><dd>To be checked</dd>
+            </dl>
+          </article>
+          <article class="record-card">
+            <span class="record-number">SOURCE 02</span>
+            <h3><em>Tazkira Makhdoom Shoaib</em></h3>
+            <p>By Hafiz Wazir Ali Warsi; printed witness reported by the researcher.</p>
+            <dl>
+              <dt>Edition / publisher</dt><dd>To be verified</dd>
+              <dt>Publication year</dt><dd>To be verified</dd>
+              <dt>Page number</dt><dd>To be checked</dd>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing-section">
+      <div class="container">
+        <div class="closing-card">
+          <span class="eyebrow">Continuing the Research</span>
+          <h2>A Poem Is Also a Historical Trace</h2>
+          <p>
+            Manuscripts and tazkiras can preserve literary traces that invite
+            closer examination. This page is a starting point for recording
+            the ghazal carefully and tracing its witnesses with precise citations.
+          </p>
+          <div class="closing-quote">
+            “Preserve the wording. Record the source. Let the evidence speak.”
+          </div>
+          <a href="research.html" class="btn btn-gold">Explore More Research →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <style>
+    .reader-controls{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 18px}
+    .reader-tab{border:1px solid var(--line);border-radius:999px;padding:10px 17px;background:var(--paper);color:var(--ink);font:600 .85rem "DM Sans",sans-serif;cursor:pointer;transition:.2s}
+    .reader-tab:hover{border-color:var(--gold)}
+    .reader-tab.active{background:var(--burgundy);border-color:var(--burgundy);color:#fff}
+    .reader-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+    .reader-stop{color:var(--burgundy);border-color:var(--line);background:transparent}
+    .reader-hint{font-size:.82rem;color:var(--muted)}
+    .ghazal-paper{padding:clamp(20px,4vw,48px);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .ghazal-paper::before{content:"";position:absolute;inset:10px;border:1px solid rgba(184,149,88,.24);border-radius:10px;pointer-events:none}
+    .ghazal-text{position:relative;z-index:1}
+    .ghazal-text p{margin:0 auto 22px;max-width:850px;text-align:center;line-height:2.15}
+    .ghazal-text p:last-child{margin-bottom:0}
+    .ghazal-text[lang="fa"]{font-family:"Noto Nastaliq Urdu",serif;font-size:clamp(1.25rem,2.6vw,1.75rem);line-height:2.5}
+    .roman-text{font-family:"DM Sans",sans-serif;font-size:clamp(1rem,2vw,1.13rem);line-height:2;letter-spacing:.01em}
+    .hindi-text{font-family:"Noto Sans Devanagari","DM Sans",sans-serif;font-size:clamp(1.05rem,2.1vw,1.22rem);line-height:2}
+    .reader-disclaimer{margin-top:14px;color:var(--muted);font-size:.84rem}
+    .timeline-tag{display:inline-block;margin-top:12px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.72rem}
+    .records-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+    .record-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+    .record-number{font-size:.7rem;font-weight:700;letter-spacing:1.5px;color:var(--gold)}
+    .record-card h3{font:600 1.45rem/1.3 "Playfair Display",serif;color:var(--burgundy-dark);margin:13px 0}
+    .record-card p{color:var(--muted);margin-bottom:16px}
+    .record-card dl{display:grid;grid-template-columns:minmax(120px,.9fr) 1.1fr;gap:8px 12px;font-size:.85rem}
+    .record-card dt{color:var(--muted)}
+    .record-card dd{margin:0;font-weight:600}
+    @media(max-width:700px){.records-grid{grid-template-columns:1fr}.record-card{padding:22px}.record-card dl{grid-template-columns:1fr;gap:3px}.record-card dd{margin-bottom:9px}.reader-tab{padding:9px 12px;font-size:.78rem}}
+  </style>
+
+  <script>
+    (function () {
+      const tabs = Array.from(document.querySelectorAll(".reader-tab"));
+      const blocks = Array.from(document.querySelectorAll(".ghazal-text[data-content]"));
+      const hint = document.getElementById("readerHint");
+      const readButton = document.getElementById("readGhazal");
+      const stopButton = document.getElementById("stopGhazal");
+      let activeScript = "persian";
+
+      const labels = {
+        persian: "Persian original selected.",
+        roman: "Rekhta Roman selected.",
+        hindi: "Hindi script selected."
+      };
+
+      function selectScript(script) {
+        activeScript = script;
+        tabs.forEach(function (tab) {
+          const selected = tab.dataset.script === script;
+          tab.classList.toggle("active", selected);
+          tab.setAttribute("aria-pressed", selected ? "true" : "false");
+        });
+        blocks.forEach(function (block) {
+          block.hidden = block.dataset.content !== script;
+        });
+        hint.textContent = labels[script];
+        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          selectScript(tab.dataset.script);
+        });
+      });
+
+      readButton.addEventListener("click", function () {
+        if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+          hint.textContent = "Read aloud is not supported by this browser. You can still read the text above.";
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const activeBlock = blocks.find(function (block) {
+          return block.dataset.content === activeScript;
+        });
+        const text = activeBlock ? activeBlock.innerText.replace(/\n+/g, ". ") : "";
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = activeScript === "hindi" ? "hi-IN" : "ur-PK";
+        utterance.rate = 0.78;
+        utterance.onstart = function () { hint.textContent = "Reading aloud…"; };
+        utterance.onend = function () { hint.textContent = labels[activeScript]; };
+        utterance.onerror = function () {
+          hint.textContent = "Your device may not have a suitable voice for this script. Try another script or read on screen.";
+        };
+        window.speechSynthesis.speak(utterance);
+      });
+
+      stopButton.addEventListener("click", function () {
+        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+        hint.textContent = "Reading stopped.";
+      });
+    })();
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-brand">Syed Amjad Hussain</div>
+          <p class="footer-about">
+            Author, poet, historian and independent research scholar
+            with a profound focus on Sufism and Islam. His work explores
+            Bihar's history, Sufi heritage, literature and cultural memory.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Explore</h3>
+          <div class="footer-links">
+            <a href="home.html">Home</a>
+            <a href="biography.html">Biography</a>
+            <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+            <a href="research.html">Research</a>
+            <a href="poetry.html">Poetry</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Heritage & Service</h3>
+          <div class="footer-links">
+            <a href="sufi-heritage.html">The Sufi Heritage of Bihar</a>
+            <a href="sheikhpura-heritage.html">Sheikhpura Heritage</a>
+            <a href="ancestral-heritage.html">Ancestral Heritage</a>
+            <a href="social-work.html">Social Work</a>
+            <a href="awards-honours.html">Awards & Honours</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>
+          © <span id="currentYear"></span> Syed Amjad Hussain. All rights reserved.
+        </span>
+        <span>History · Heritage · Research · Preservation</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuToggle.textContent = isOpen ? "✕ Close" : "☰ Menu";
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰ Menu";
+      });
+    });
+
+    // Dynamic copyright year
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
