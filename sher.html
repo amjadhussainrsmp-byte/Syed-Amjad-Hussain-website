@@ -12,7 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Supabase JS Client & Config -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -514,6 +514,319 @@
     }
 
 
+
+    /* Six downloadable poster directions: typography and composition inspired by the supplied references */
+    .download-style-select { min-height:39px; max-width:100%; padding:9px 10px; border:1px solid var(--line); border-radius:2px; background:#fffdf8; color:var(--wine); font:12px var(--sans); cursor:pointer; }
+    .sher-download-art { isolation:isolate; }
+    .sher-download-art::after { content:""; position:absolute; inset:18px; border:1px solid rgba(185,154,97,.28); pointer-events:none; z-index:-1; }
+    .sher-download-art.theme-blueprint { color:#f5f0e4; background:radial-gradient(circle at 20% 18%,#477ac4 0,#2459a8 42%,#17448d 100%); border:0; outline:0; font-family:"Oswald",sans-serif; }
+    .theme-blueprint::before { content:"✳  THE POETRY OF AMJADؔ  ✳"; color:#e6d9a9; font:500 15px "Oswald",sans-serif; letter-spacing:5px; }
+    .theme-blueprint::after { inset:24px; border:1px solid rgba(238,231,203,.38); background:repeating-linear-gradient(0deg,transparent 0 31px,rgba(255,255,255,.035) 32px),repeating-linear-gradient(90deg,transparent 0 31px,rgba(255,255,255,.035) 32px); }
+    .theme-blueprint .download-kicker { color:#e8dcae; font:600 15px "Oswald",sans-serif; letter-spacing:5px; }
+    .theme-blueprint .download-line { color:#fffdf4; font-family:"Oswald",sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.5px; font-size:37px; line-height:1.55; }
+    .theme-blueprint .download-line.urdu { font-family:"Noto Nastaliq Urdu",serif; text-transform:none; font-size:39px; line-height:2.15; }
+    .theme-blueprint .download-line.hindi { font-family:"Noto Serif Devanagari",serif; text-transform:none; font-size:32px; }
+    .theme-blueprint .download-line.roman { color:#f2dfab; font-family:"Oswald",sans-serif; font-style:normal; font-size:31px; }
+    .theme-blueprint .download-author,.theme-blueprint .download-takhallus { color:#fff5d9; font-family:"Cormorant Garamond",serif; }
+    .theme-blueprint .download-watermark { color:#e6d9a9; border-color:rgba(255,255,255,.28); }
+    .theme-blueprint .download-category { color:#e5d8b1; }
+
+    .sher-download-art.theme-editorial { background:linear-gradient(155deg,#15202d 0%,#172d43 50%,#101923 100%); color:#f7f1e9; border:0; outline:0; text-align:left; align-items:stretch; font-family:"Cormorant Garamond",serif; }
+    .theme-editorial::before { content:"POETRY  /  SELECTED COUPLETS"; align-self:flex-start; color:#ef7059; font:600 13px var(--sans); letter-spacing:4px; }
+    .theme-editorial::after { inset:25px; border:1px solid rgba(239,112,89,.38); }
+    .theme-editorial .download-kicker { color:#ef7059; font:600 12px var(--sans); letter-spacing:4px; }
+    .theme-editorial .download-poetry { align-items:flex-start; }
+    .theme-editorial .download-line { color:#f8f3ed; font-family:"Cormorant Garamond",serif; font-size:42px; line-height:1.45; }
+    .theme-editorial .download-line.urdu { align-self:stretch; text-align:right; font-family:"Noto Nastaliq Urdu",serif; font-size:39px; line-height:2.2; }
+    .theme-editorial .download-line.hindi { font-family:"Noto Serif Devanagari",serif; font-size:32px; }
+    .theme-editorial .download-line.roman { color:#ef7059; font-family:"Cormorant Garamond",serif; font-style:normal; font-size:34px; }
+    .theme-editorial .download-author { color:#fff; font:600 25px "Cormorant Garamond",serif; }
+    .theme-editorial .download-takhallus { color:#ef7059; }
+    .theme-editorial .download-watermark { border-color:rgba(255,255,255,.2); color:#d9c6b4; }
+    .theme-editorial .download-category { color:#ef7059; }
+
+    .sher-download-art.theme-cinematic { background:linear-gradient(180deg,#c9e6e2 0%,#8ebfbe 33%,#172c36 34%,#081820 100%); color:#fff5df; border:0; outline:0; font-family:"Oswald",sans-serif; }
+    .theme-cinematic::before { content:"AMJADؔ  •  SHER COLLECTION"; color:#82652c; font:600 14px var(--sans); letter-spacing:5px; }
+    .theme-cinematic::after { inset:22px; border:2px solid rgba(255,240,206,.55); }
+    .theme-cinematic .download-kicker { color:#6c5426; font:600 13px var(--sans); letter-spacing:4px; }
+    .theme-cinematic .download-line { color:#fff8e9; font-family:"Oswald",sans-serif; text-transform:uppercase; font-size:39px; line-height:1.55; text-shadow:0 2px 12px rgba(0,0,0,.25); }
+    .theme-cinematic .download-line.urdu { font-family:"Noto Nastaliq Urdu",serif; text-transform:none; font-size:39px; line-height:2.2; }
+    .theme-cinematic .download-line.hindi { font-family:"Noto Serif Devanagari",serif; text-transform:none; font-size:31px; }
+    .theme-cinematic .download-line.roman { color:#ffd9a5; font-size:30px; font-style:normal; }
+    .theme-cinematic .download-author { color:#fff5df; }
+    .theme-cinematic .download-takhallus { color:#ffd9a5; }
+    .theme-cinematic .download-watermark { border-color:rgba(255,255,255,.3); color:#e6d5bc; }
+    .theme-cinematic .download-category { color:#ffd9a5; }
+
+    .sher-download-art.theme-monochrome { background:radial-gradient(ellipse at 100% 100%,#343434 0,#121212 52%,#050505 100%); color:#f4f1eb; border:1px solid #777; outline:0; font-family:"Cormorant Garamond",serif; }
+    .theme-monochrome::before { content:"W A Q T  /  A L F A A Z"; color:#d4d0c8; font:500 14px "Cormorant Garamond",serif; letter-spacing:7px; }
+    .theme-monochrome::after { inset:24px; border:1px solid rgba(255,255,255,.22); }
+    .theme-monochrome .download-kicker { color:#aaa39a; font:500 12px var(--sans); letter-spacing:5px; }
+    .theme-monochrome .download-line { color:#f2f0eb; font-family:"Cormorant Garamond",serif; font-size:43px; line-height:1.5; }
+    .theme-monochrome .download-line.urdu { font-family:"Noto Nastaliq Urdu",serif; font-size:39px; line-height:2.2; }
+    .theme-monochrome .download-line.hindi { font-family:"Noto Serif Devanagari",serif; font-size:31px; }
+    .theme-monochrome .download-line.roman { color:#d5a99b; font-size:33px; font-style:normal; }
+    .theme-monochrome .download-author { color:#fff; font-family:"Cormorant Garamond",serif; }
+    .theme-monochrome .download-takhallus { color:#d5a99b; }
+    .theme-monochrome .download-watermark { color:#b9b3aa; border-color:#454545; }
+    .theme-monochrome .download-category { color:#d5a99b; }
+
+    .sher-download-art.theme-heritage { background:linear-gradient(180deg,#d9eeeb 0%,#d9eeeb 58%,#c9b08a 58%,#b68d5e 100%); border:0; outline:0; color:#1b3030; font-family:"Playfair Display",serif; }
+    .theme-heritage::before { content:"✦  ADABIYAAT  ✦"; color:#8b682d; font:600 14px var(--sans); letter-spacing:6px; }
+    .theme-heritage::after { inset:21px; border:1px solid rgba(93,76,45,.5); }
+    .theme-heritage .download-kicker { color:#82652c; font:600 12px var(--sans); letter-spacing:4px; }
+    .theme-heritage .download-line { color:#203b3b; font-family:"Playfair Display",serif; font-size:36px; line-height:1.55; }
+    .theme-heritage .download-line.urdu { color:#4b3821; font-family:"Noto Nastaliq Urdu",serif; font-size:39px; line-height:2.2; }
+    .theme-heritage .download-line.hindi { font-family:"Noto Serif Devanagari",serif; font-size:31px; }
+    .theme-heritage .download-line.roman { color:#5b3928; font-family:"Cormorant Garamond",serif; font-size:34px; font-style:normal; }
+    .theme-heritage .download-author { color:#263d37; }
+    .theme-heritage .download-takhallus { color:#8b682d; }
+    .theme-heritage .download-watermark { border-color:rgba(80,58,33,.3); color:#4d4130; }
+    .theme-heritage .download-category { color:#4d4130; }
+
+
+    /* Extra art-directed poster styles — typography, spacing and composition, not just palette */
+    .sher-download-art.theme-rose { background:linear-gradient(145deg,#fff2ed 0%,#f8d6d1 100%); color:#642d38; border:0; font-family:"Cormorant Garamond",serif; }
+    .theme-rose::before { content:"LOVE, IN TWO LINES"; color:#b15c68; letter-spacing:7px; font:600 12px var(--sans); }
+    .theme-rose::after { inset:28px; border:1px solid #d8a6a2; border-radius:2px; }
+    .theme-rose .download-line { font:600 43px/1.35 "Cormorant Garamond",serif; color:#642d38; }
+    .theme-rose .download-line.urdu { font:400 39px/2.1 "Noto Nastaliq Urdu",serif; }
+    .theme-rose .download-line.hindi { font:500 31px/1.7 "Noto Serif Devanagari",serif; }
+    .theme-rose .download-line.roman { font-size:34px; color:#a14f5c; }
+    .theme-rose .download-divider { width:150px; background:#bd7d79; }
+    .theme-rose .download-author,.theme-rose .download-takhallus { color:#642d38; }
+    .theme-rose .download-watermark { border-color:#dfb9b1; color:#94616a; }
+
+    .sher-download-art.theme-saffron { background:radial-gradient(circle at 50% 35%,#fff5d6,#edc27c 70%,#d99a4b); border:0; outline:0; color:#542d19; font-family:"Playfair Display",serif; }
+    .theme-saffron::before { content:"✦  ALFAAZ-E-DIL  ✦"; color:#895326; font:600 13px var(--sans); letter-spacing:6px; }
+    .theme-saffron::after { inset:24px; border:2px solid rgba(116,66,28,.42); }
+    .theme-saffron .download-line { color:#542d19; font:600 38px/1.5 "Playfair Display",serif; }
+    .theme-saffron .download-line.urdu { font:400 39px/2.15 "Noto Nastaliq Urdu",serif; }
+    .theme-saffron .download-line.hindi { font:500 31px/1.7 "Noto Serif Devanagari",serif; }
+    .theme-saffron .download-line.roman { color:#8b4a22; font:500 31px/1.6 "Cormorant Garamond",serif; }
+    .theme-saffron .download-watermark { color:#754622; border-color:rgba(116,66,28,.3); }
+
+    .sher-download-art.theme-lavender { background:linear-gradient(135deg,#f3efff,#d9d0f3 58%,#c6d8ee); border:0; outline:0; color:#332b54; font-family:"Playfair Display",serif; }
+    .theme-lavender::before { content:"A QUIET KIND OF BEAUTY"; color:#70619a; font:600 12px var(--sans); letter-spacing:5px; }
+    .theme-lavender::after { inset:24px; border:1px solid rgba(92,76,139,.35); border-radius:100px 100px 4px 4px; }
+    .theme-lavender .download-line { color:#332b54; font:500 37px/1.55 "Playfair Display",serif; }
+    .theme-lavender .download-line.urdu { font:400 39px/2.2 "Noto Nastaliq Urdu",serif; }
+    .theme-lavender .download-line.hindi { font:500 31px/1.7 "Noto Serif Devanagari",serif; }
+    .theme-lavender .download-line.roman { color:#7664a4; font:500 32px/1.5 "Cormorant Garamond",serif; }
+    .theme-lavender .download-author,.theme-lavender .download-takhallus { color:#4b3b73; }
+    .theme-lavender .download-watermark { color:#6f6290; border-color:rgba(92,76,139,.25); }
+
+    .sher-download-art.theme-forest { background:linear-gradient(155deg,#173c35,#0d2826 70%,#081c1c); color:#f4e9d1; border:0; outline:0; font-family:"Cormorant Garamond",serif; }
+    .theme-forest::before { content:"THE INNER GARDEN  ·  AMJADؔ"; color:#d4b879; font:500 12px var(--sans); letter-spacing:5px; }
+    .theme-forest::after { inset:26px; border:1px solid rgba(212,184,121,.48); }
+    .theme-forest .download-line { color:#fff4df; font:500 43px/1.4 "Cormorant Garamond",serif; }
+    .theme-forest .download-line.urdu { font:400 39px/2.2 "Noto Nastaliq Urdu",serif; }
+    .theme-forest .download-line.hindi { font:500 31px/1.7 "Noto Serif Devanagari",serif; }
+    .theme-forest .download-line.roman { color:#d4b879; font-size:33px; }
+    .theme-forest .download-author,.theme-forest .download-takhallus { color:#f4e9d1; }
+    .theme-forest .download-watermark { color:#d4c6a6; border-color:rgba(212,184,121,.3); }
+    .theme-forest .download-category { color:#d4b879; }
+
+    .sher-download-art.theme-newspaper { background:#f4efdf; color:#211e1a; border:0; outline:0; font-family:"Playfair Display",serif; text-align:left; align-items:stretch; }
+    .theme-newspaper::before { content:"THE POET'S JOURNAL  /  VOL. I"; color:#4c2929; font:700 12px var(--sans); letter-spacing:4px; align-self:stretch; border-bottom:3px double #4c2929; padding-bottom:13px; }
+    .theme-newspaper::after { inset:18px; border:1px solid rgba(76,41,41,.25); }
+    .theme-newspaper .download-kicker { text-align:left; color:#8a4e42; letter-spacing:3px; }
+    .theme-newspaper .download-poetry { align-items:flex-start; }
+    .theme-newspaper .download-line { color:#211e1a; font:600 39px/1.45 "Playfair Display",serif; }
+    .theme-newspaper .download-line.urdu { align-self:stretch; text-align:right; font:400 38px/2.1 "Noto Nastaliq Urdu",serif; }
+    .theme-newspaper .download-line.hindi { font:500 30px/1.7 "Noto Serif Devanagari",serif; }
+    .theme-newspaper .download-line.roman { color:#7a3734; font:500 31px/1.5 "Cormorant Garamond",serif; }
+    .theme-newspaper .download-divider { margin-left:0; }
+    .theme-newspaper .download-author { font-family:"Playfair Display",serif; }
+    .theme-newspaper .download-watermark { color:#6f6257; border-color:#c9bba4; }
+
+    .sher-download-art.theme-sunset { background:linear-gradient(180deg,#f7c9a5 0%,#dc8b82 39%,#6a526e 72%,#292e50 100%); color:#fff8e8; border:0; outline:0; font-family:"Oswald",sans-serif; }
+    .theme-sunset::before { content:"AFTER THE SUNSET"; color:#fff0d5; font:500 13px var(--sans); letter-spacing:8px; }
+    .theme-sunset::after { inset:24px; border:1px solid rgba(255,248,232,.5); }
+    .theme-sunset .download-line { color:#fff8e8; font:500 38px/1.5 "Oswald",sans-serif; text-transform:uppercase; }
+    .theme-sunset .download-line.urdu { font:400 39px/2.2 "Noto Nastaliq Urdu",serif; text-transform:none; }
+    .theme-sunset .download-line.hindi { font:500 30px/1.7 "Noto Serif Devanagari",serif; text-transform:none; }
+    .theme-sunset .download-line.roman { color:#ffe1bb; font:500 30px/1.6 "Oswald",sans-serif; }
+    .theme-sunset .download-author,.theme-sunset .download-takhallus { color:#fff4de; }
+    .theme-sunset .download-watermark { color:#f8ddcf; border-color:rgba(255,248,232,.3); }
+
+    .sher-download-art.theme-paper { background:linear-gradient(135deg,#fffdf7,#f0e6d4); color:#49362c; border:0; outline:0; font-family:"Cormorant Garamond",serif; }
+    .theme-paper::before { content:"FROM THE NOTEBOOK OF AMJADؔ"; color:#a18250; font:600 11px var(--sans); letter-spacing:5px; }
+    .theme-paper::after { inset:20px; border:1px solid #cbb58c; background:repeating-linear-gradient(0deg,transparent 0 35px,rgba(142,115,72,.09) 36px); }
+    .theme-paper .download-line { color:#49362c; font:600 42px/1.45 "Cormorant Garamond",serif; }
+    .theme-paper .download-line.urdu { font:400 39px/2.2 "Noto Nastaliq Urdu",serif; }
+    .theme-paper .download-line.hindi { font:500 31px/1.7 "Noto Serif Devanagari",serif; }
+    .theme-paper .download-line.roman { color:#8c6546; font-size:33px; }
+    .theme-paper .download-watermark { border-color:#d7c7a9; color:#96784d; }
+
+    .sher-download-art.theme-magenta { background:linear-gradient(135deg,#471d42,#812d60 55%,#b44b70); color:#fff4ee; border:0; outline:0; font-family:"Oswald",sans-serif; }
+    .theme-magenta::before { content:"DIL SE  /  ALFAAZ TAK"; color:#ffd7bd; font:600 12px var(--sans); letter-spacing:6px; }
+    .theme-magenta::after { inset:24px; border:1px solid rgba(255,215,189,.5); }
+    .theme-magenta .download-line { color:#fff4ee; font:500 39px/1.5 "Oswald",sans-serif; }
+    .theme-magenta .download-line.urdu { font:400 39px/2.2 "Noto Nastaliq Urdu",serif; }
+    .theme-magenta .download-line.hindi { font:500 30px/1.7 "Noto Serif Devanagari",serif; }
+    .theme-magenta .download-line.roman { color:#ffd7bd; font:500 30px/1.6 "Oswald",sans-serif; }
+    .theme-magenta .download-author,.theme-magenta .download-takhallus { color:#fff4ee; }
+    .theme-magenta .download-watermark { color:#f5d4df; border-color:rgba(255,215,189,.3); }
+
+    .sher-download-art.theme-ivory { background:#f8f4e9; color:#272727; border:0; outline:0; font-family:"Playfair Display",serif; }
+    .theme-ivory::before { content:"A COUPLET TO KEEP"; color:#6f6f6f; font:600 11px var(--sans); letter-spacing:7px; }
+    .theme-ivory::after { inset:32px; border:1px solid #b8b2a5; }
+    .theme-ivory .download-line { color:#272727; font:500 38px/1.55 "Playfair Display",serif; }
+    .theme-ivory .download-line.urdu { font:400 39px/2.2 "Noto Nastaliq Urdu",serif; }
+    .theme-ivory .download-line.hindi { font:500 31px/1.7 "Noto Serif Devanagari",serif; }
+    .theme-ivory .download-line.roman { color:#66615b; font:500 32px/1.5 "Cormorant Garamond",serif; }
+    .theme-ivory .download-author { color:#272727; }
+    .theme-ivory .download-takhallus { color:#888071; }
+    .theme-ivory .download-watermark { border-color:#d8d2c4; color:#777064; }
+
+    .sher-download-art.theme-cobalt { background:radial-gradient(circle at 80% 15%,#5c86d7,#263f91 48%,#17245b 100%); color:#fff; border:0; outline:0; font-family:"Oswald",sans-serif; }
+    .theme-cobalt::before { content:"THE VERSE  ✦  THE FEELING"; color:#e7d4a2; font:500 12px var(--sans); letter-spacing:5px; }
+    .theme-cobalt::after { inset:24px; border:1px solid rgba(255,255,255,.35); background:radial-gradient(circle at 50% 50%,transparent 0 42%,rgba(255,255,255,.035) 43% 44%,transparent 45%); }
+    .theme-cobalt .download-line { color:#fff; font:500 39px/1.5 "Oswald",sans-serif; text-transform:uppercase; }
+    .theme-cobalt .download-line.urdu { font:400 39px/2.2 "Noto Nastaliq Urdu",serif; text-transform:none; }
+    .theme-cobalt .download-line.hindi { font:500 30px/1.7 "Noto Serif Devanagari",serif; text-transform:none; }
+    .theme-cobalt .download-line.roman { color:#f2dda8; font:500 30px/1.6 "Oswald",sans-serif; }
+    .theme-cobalt .download-author,.theme-cobalt .download-takhallus { color:#fff4d8; }
+    .theme-cobalt .download-watermark { color:#e5d7b8; border-color:rgba(255,255,255,.28); }
+
+    /* Four premium, art-directed designs — placed first in the download list */
+    .sher-download-art.theme-premium-noor {
+      background: radial-gradient(ellipse at 50% 0%, #fff7df 0%, #f0dfbd 42%, #e4c99b 100%);
+      color:#382128; border:0; outline:0; font-family:"Cormorant Garamond",serif;
+    }
+    .theme-premium-noor::before { content:"نُور  ·  NOOR-E-SUKHAN"; color:#9b7139; font:600 13px var(--sans); letter-spacing:6px; }
+    .theme-premium-noor::after { inset:28px; border:1px solid rgba(132,91,43,.58); outline:1px solid rgba(132,91,43,.2); outline-offset:-7px; }
+    .theme-premium-noor .download-kicker { color:#9b7139; font:600 11px var(--sans); letter-spacing:5px; }
+    .theme-premium-noor .download-poetry { gap:28px; }
+    .theme-premium-noor .download-line { color:#382128; font:600 45px/1.38 "Cormorant Garamond",serif; }
+    .theme-premium-noor .download-line.urdu { font:400 43px/2.25 "Noto Nastaliq Urdu",serif; }
+    .theme-premium-noor .download-line.hindi { font:500 33px/1.8 "Noto Serif Devanagari",serif; }
+    .theme-premium-noor .download-line.roman { color:#76523e; font:500 35px/1.45 "Cormorant Garamond",serif; font-style:italic; }
+    .theme-premium-noor .download-divider { width:140px; height:2px; background:#b38b4d; }
+    .theme-premium-noor .download-author { color:#382128; font:600 25px "Cormorant Garamond",serif; }
+    .theme-premium-noor .download-takhallus { color:#9b7139; font:italic 21px "Cormorant Garamond",serif; }
+    .theme-premium-noor .download-watermark { color:#8d6d43; border-color:rgba(132,91,43,.3); }
+
+    .sher-download-art.theme-premium-mehfil {
+      background:linear-gradient(135deg,#112f30 0%,#174344 52%,#092324 100%);
+      color:#f7ebd0; border:0; outline:0; font-family:"Noto Nastaliq Urdu",serif;
+    }
+    .theme-premium-mehfil::before { content:"محفلِ سخن  /  MEHFIL-E-SUKHAN"; color:#e2c58a; font:600 12px var(--sans); letter-spacing:4px; }
+    .theme-premium-mehfil::after { inset:24px; border:1px solid rgba(226,197,138,.62); background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.08)); }
+    .theme-premium-mehfil .download-kicker { color:#e2c58a; font:600 11px var(--sans); letter-spacing:4px; }
+    .theme-premium-mehfil .download-poetry { gap:25px; }
+    .theme-premium-mehfil .download-line { color:#fff4dc; font:500 43px/1.4 "Cormorant Garamond",serif; }
+    .theme-premium-mehfil .download-line.urdu { font:400 44px/2.35 "Noto Nastaliq Urdu",serif; }
+    .theme-premium-mehfil .download-line.hindi { font:500 33px/1.8 "Noto Serif Devanagari",serif; }
+    .theme-premium-mehfil .download-line.roman { color:#e6cc96; font:500 34px/1.45 "Cormorant Garamond",serif; }
+    .theme-premium-mehfil .download-author { color:#fff2d8; font:600 25px "Cormorant Garamond",serif; }
+    .theme-premium-mehfil .download-takhallus { color:#e2c58a; }
+    .theme-premium-mehfil .download-watermark { color:#d7c9a9; border-color:rgba(226,197,138,.28); }
+    .theme-premium-mehfil .download-category { color:#e2c58a; }
+
+    .sher-download-art.theme-premium-ink {
+      background:#f5f1e8; color:#151515; border:0; outline:0; text-align:left; align-items:stretch; font-family:"Playfair Display",serif;
+    }
+    .theme-premium-ink::before { content:"AMJADؔ  /  SELECTED VERSE"; align-self:stretch; color:#222; font:700 12px var(--sans); letter-spacing:5px; padding-bottom:17px; border-bottom:3px double #242424; }
+    .theme-premium-ink::after { inset:24px; border:1px solid rgba(25,25,25,.22); }
+    .theme-premium-ink .download-kicker { color:#8a3e36; font:700 11px var(--sans); letter-spacing:4px; }
+    .theme-premium-ink .download-poetry { align-items:flex-start; gap:24px; }
+    .theme-premium-ink .download-line { color:#151515; font:600 45px/1.34 "Playfair Display",serif; letter-spacing:-.7px; }
+    .theme-premium-ink .download-line.urdu { align-self:stretch; text-align:right; font:400 43px/2.25 "Noto Nastaliq Urdu",serif; }
+    .theme-premium-ink .download-line.hindi { font:500 33px/1.8 "Noto Serif Devanagari",serif; }
+    .theme-premium-ink .download-line.roman { color:#8a3e36; font:500 35px/1.4 "Cormorant Garamond",serif; }
+    .theme-premium-ink .download-divider { align-self:flex-start; width:105px; height:3px; background:#8a3e36; }
+    .theme-premium-ink .download-author { color:#151515; font:700 23px "Playfair Display",serif; }
+    .theme-premium-ink .download-takhallus { color:#8a3e36; }
+    .theme-premium-ink .download-watermark { text-align:left; color:#55504a; border-color:#d4ccbd; }
+    .theme-premium-ink .download-category { text-align:left; color:#8a3e36; }
+
+    .sher-download-art.theme-premium-shab {
+      background:radial-gradient(ellipse at 50% 42%,#29365d 0%,#151b37 48%,#090d20 100%);
+      color:#f8f1e8; border:0; outline:0; font-family:"Oswald",sans-serif;
+    }
+    .theme-premium-shab::before { content:"AFTER HOURS  ✦  ALFAAZ"; color:#efad9b; font:500 12px var(--sans); letter-spacing:7px; }
+    .theme-premium-shab::after { inset:26px; border:1px solid rgba(239,173,155,.5); background:radial-gradient(circle at 50% 50%,transparent 0 34%,rgba(239,173,155,.07) 35% 35.5%,transparent 36%); }
+    .theme-premium-shab .download-kicker { color:#efad9b; font:600 11px var(--sans); letter-spacing:5px; }
+    .theme-premium-shab .download-poetry { gap:27px; }
+    .theme-premium-shab .download-line { color:#fff8f0; font:500 43px/1.4 "Oswald",sans-serif; letter-spacing:.3px; }
+    .theme-premium-shab .download-line.urdu { font:400 43px/2.25 "Noto Nastaliq Urdu",serif; }
+    .theme-premium-shab .download-line.hindi { font:500 32px/1.8 "Noto Serif Devanagari",serif; }
+    .theme-premium-shab .download-line.roman { color:#efad9b; font:500 33px/1.45 "Oswald",sans-serif; }
+    .theme-premium-shab .download-author { color:#fff8f0; font:500 23px "Cormorant Garamond",serif; letter-spacing:1px; }
+    .theme-premium-shab .download-takhallus { color:#efad9b; }
+    .theme-premium-shab .download-watermark { color:#d7d5e0; border-color:rgba(239,173,155,.25); }
+    .theme-premium-shab .download-category { color:#efad9b; }
+
+    /* Re-art-directed premium poster series: portrait format, expressive display type and textured compositions */
+    .sher-download-art[class*="theme-premium-"] { width:900px; height:1125px; min-height:1125px; padding:76px 70px 54px; justify-content:space-between; gap:0; }
+    .sher-download-art[class*="theme-premium-"] .download-kicker { margin:0 0 38px; align-self:stretch; text-align:left; font-size:16px; letter-spacing:7px; }
+    .sher-download-art[class*="theme-premium-"] .download-poetry { flex:1; justify-content:center; gap:30px; min-height:0; }
+    .sher-download-art[class*="theme-premium-"] .download-line { overflow-wrap:break-word; word-break:normal; }
+    .sher-download-art[class*="theme-premium-"] .download-line.roman { width:100%; text-align:center; font-family:"Oswald", Impact, sans-serif; font-weight:700; font-style:normal; font-size:76px; line-height:1.08; letter-spacing:-1px; text-transform:uppercase; }
+    .sher-download-art[class*="theme-premium-"] .download-line.urdu { width:100%; font-size:45px; line-height:2.1; }
+    .sher-download-art[class*="theme-premium-"] .download-line.hindi { width:100%; font-size:43px; line-height:1.55; }
+    .sher-download-art[class*="theme-premium-"] .download-divider { margin:32px auto 24px; }
+    .sher-download-art[class*="theme-premium-"] .download-author { font-size:25px; letter-spacing:3px; text-transform:uppercase; }
+    .sher-download-art[class*="theme-premium-"] .download-takhallus { font-size:22px; }
+    .sher-download-art[class*="theme-premium-"] .download-watermark { margin-top:24px; padding-top:16px; text-align:center; font-size:14px; letter-spacing:4px; }
+    .sher-download-art[class*="theme-premium-"] .download-category { font-size:13px; letter-spacing:4px; }
+
+    /* 01 — Cobalt / distressed-book-cover energy */
+    .sher-download-art.theme-premium-noor { background:radial-gradient(ellipse at 22% 12%,rgba(180,210,255,.55),transparent 34%),radial-gradient(ellipse at 85% 90%,rgba(25,54,143,.55),transparent 45%),linear-gradient(145deg,#477fd5 0%,#2863c5 48%,#17439d 100%); color:#fffdf2; border:0; outline:0; font-family:"Oswald",sans-serif; }
+    .theme-premium-noor::before { content:"✳  THE POETRY OF AMJADؔ"; align-self:stretch; text-align:right; color:#fff4c9; font:600 23px "Playfair Display",serif; letter-spacing:1px; margin-bottom:20px; }
+    .theme-premium-noor::after { inset:0; border:0; background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(255,255,255,.025) 6px 7px),repeating-linear-gradient(90deg,transparent 0 29px,rgba(13,39,98,.055) 30px 31px),radial-gradient(ellipse at 52% 55%,transparent 25%,rgba(8,28,76,.22) 100%); }
+    .theme-premium-noor .download-kicker { color:#fff0b9; }
+    .theme-premium-noor .download-poetry { align-items:stretch; }
+    .theme-premium-noor .download-line { color:#fffdf2; }
+    .theme-premium-noor .download-line.roman { color:#fffdf2; text-shadow:2px 3px 0 rgba(20,44,99,.28); font-size:82px; }
+    .theme-premium-noor .download-line.urdu { color:#fff7dc; text-align:left; }
+    .theme-premium-noor .download-line.hindi { color:#fff7dc; }
+    .theme-premium-noor .download-divider { background:#f5d889; height:3px; width:160px; }
+    .theme-premium-noor .download-author,.theme-premium-noor .download-takhallus { color:#fff5d6; }
+    .theme-premium-noor .download-watermark { color:#fff0c4; border-color:rgba(255,255,255,.3); }
+
+    /* 02 — Ink black / editorial high-contrast typography */
+    .sher-download-art.theme-premium-mehfil { background:#f3eee4; color:#171717; border:0; outline:0; font-family:"Oswald",sans-serif; }
+    .theme-premium-mehfil::before { content:"AMJADؔ  /  SELECTED VERSE"; align-self:stretch; color:#171717; font:700 20px "Oswald",sans-serif; letter-spacing:6px; padding-bottom:22px; border-bottom:5px solid #171717; }
+    .theme-premium-mehfil::after { inset:0; border:0; background:linear-gradient(90deg,transparent 0 7%,rgba(0,0,0,.035) 7.1% 7.25%,transparent 7.35%),repeating-linear-gradient(0deg,transparent 0 7px,rgba(0,0,0,.018) 8px 9px); }
+    .theme-premium-mehfil .download-kicker { color:#9d302e; }
+    .theme-premium-mehfil .download-line.roman { color:#171717; text-align:left; font-size:78px; line-height:1.04; }
+    .theme-premium-mehfil .download-line.urdu { color:#8f292b; text-align:right; }
+    .theme-premium-mehfil .download-line.hindi { color:#171717; }
+    .theme-premium-mehfil .download-divider { align-self:flex-start; margin-left:0; background:#9d302e; width:180px; height:6px; }
+    .theme-premium-mehfil .download-author { color:#171717; text-align:left; }
+    .theme-premium-mehfil .download-takhallus { color:#9d302e; text-align:left; }
+    .theme-premium-mehfil .download-watermark { color:#4e4a44; border-color:#c9c0b2; text-align:left; }
+    .theme-premium-mehfil .download-category { color:#9d302e; text-align:left; }
+
+    /* 03 — Deep wine / calligraphic Urdu and oversized Roman */
+    .sher-download-art.theme-premium-ink { background:radial-gradient(ellipse at 50% 30%,#853b4b 0%,#5b2032 50%,#2b101f 100%); color:#fff2df; border:0; outline:0; text-align:center; align-items:center; font-family:"Oswald",sans-serif; }
+    .theme-premium-ink::before { content:"محفلِ الفاظ  ·  THE ART OF VERSE"; align-self:stretch; color:#e9c98e; font:500 19px "Noto Nastaliq Urdu",serif; letter-spacing:1px; }
+    .theme-premium-ink::after { inset:26px; border:2px solid rgba(233,201,142,.55); outline:1px solid rgba(233,201,142,.2); outline-offset:-9px; background:radial-gradient(ellipse at 50% 50%,transparent 0 32%,rgba(233,201,142,.055) 32.3% 32.8%,transparent 33%),repeating-linear-gradient(45deg,transparent 0 22px,rgba(255,255,255,.018) 23px 24px); }
+    .theme-premium-ink .download-kicker { color:#e9c98e; text-align:center; }
+    .theme-premium-ink .download-line.roman { color:#fff3df; font-size:76px; text-shadow:0 3px 0 rgba(0,0,0,.15); }
+    .theme-premium-ink .download-line.urdu { color:#f0d49f; }
+    .theme-premium-ink .download-line.hindi { color:#fff0df; }
+    .theme-premium-ink .download-divider { background:#e9c98e; height:2px; }
+    .theme-premium-ink .download-author { color:#fff0dc; }
+    .theme-premium-ink .download-takhallus { color:#e9c98e; }
+    .theme-premium-ink .download-watermark { color:#e8d6c5; border-color:rgba(233,201,142,.3); }
+
+    /* 04 — Electric teal / kinetic contemporary poster */
+    .sher-download-art.theme-premium-shab { background:linear-gradient(155deg,#d9fff4 0%,#9ee7db 34%,#087c80 34.2%,#07505d 100%); color:#fffdf0; border:0; outline:0; font-family:"Oswald",sans-serif; }
+    .theme-premium-shab::before { content:"WORDS THAT STAY  ✦  AMJADؔ"; align-self:stretch; text-align:right; color:#07505d; font:700 19px "Oswald",sans-serif; letter-spacing:4px; }
+    .theme-premium-shab::after { inset:0; border:0; background:linear-gradient(115deg,transparent 0 52%,rgba(255,255,255,.075) 52.1% 52.6%,transparent 52.7%),repeating-linear-gradient(135deg,transparent 0 30px,rgba(255,255,255,.035) 31px 32px); }
+    .theme-premium-shab .download-kicker { color:#d9fff4; }
+    .theme-premium-shab .download-line.roman { color:#fffdf0; font-size:80px; line-height:1.04; text-align:left; }
+    .theme-premium-shab .download-line.urdu { color:#d9fff4; text-align:right; }
+    .theme-premium-shab .download-line.hindi { color:#fffdf0; }
+    .theme-premium-shab .download-divider { background:#b9f3df; height:4px; width:160px; }
+    .theme-premium-shab .download-author { color:#fffdf0; }
+    .theme-premium-shab .download-takhallus { color:#b9f3df; }
+    .theme-premium-shab .download-watermark { color:#d9fff4; border-color:rgba(217,255,244,.3); }
+
     /* Shared website navigation dropdowns */
     .site-header { overflow: visible; }
     .site-header .nav-dropdown { position: relative; }
@@ -574,7 +887,14 @@
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
     }
 
-  </style>
+  
+    /* Requested correction: hide the takhallus only on the four new premium poster designs. */
+    .sher-download-art.theme-premium-noor .download-takhallus,
+    .sher-download-art.theme-premium-mehfil .download-takhallus,
+    .sher-download-art.theme-premium-ink .download-takhallus,
+    .sher-download-art.theme-premium-shab .download-takhallus { display: none !important; }
+
+</style>
 </head>
 
 <body id="top">
@@ -851,6 +1171,28 @@ Parwah nahi.n usko, sazaa ki na jazaa ki`,
         </div>
 
         <div class="card-actions">
+          <select class="download-style-select" aria-label="Choose sher download design" data-style-for="${sher.id}">
+            <option value="premium-noor">✦ PREMIUM 01 · Noor-e-Sukhan</option>
+            <option value="premium-mehfil">✦ PREMIUM 02 · Mehfil-e-Sukhan</option>
+            <option value="premium-ink">✦ PREMIUM 03 · Poet’s Signature</option>
+            <option value="premium-shab">✦ PREMIUM 04 · Shab-e-Alfaaz</option>
+            <option value="classic">Classic · Cream & Gold</option>
+            <option value="blueprint">Blue · Bold Typography</option>
+            <option value="editorial">Midnight · Editorial</option>
+            <option value="cinematic">Teal · Cinematic</option>
+            <option value="monochrome">Black · Minimal</option>
+            <option value="heritage">Mint · Heritage</option>
+            <option value="rose">Rose Letter · Romantic Serif</option>
+            <option value="saffron">Saffron Glow · Classic Poetry</option>
+            <option value="lavender">Lavender Dream · Soft Editorial</option>
+            <option value="forest">Forest Sufi · Deep Green & Gold</option>
+            <option value="newspaper">Poet’s Journal · Literary Print</option>
+            <option value="sunset">Sunset · Cinematic Typography</option>
+            <option value="paper">Notebook · Warm Paper Texture</option>
+            <option value="magenta">Dil Se · Bold Contemporary</option>
+            <option value="ivory">Ivory Minimal · Gallery Style</option>
+            <option value="cobalt">Cobalt · Bold Blue Poster</option>
+          </select>
           <button class="btn btn-primary" type="button" data-download="${sher.id}">
             ↓ Download Sher
           </button>
@@ -866,7 +1208,7 @@ Parwah nahi.n usko, sazaa ki na jazaa ki`,
   languageFilter.addEventListener("change", renderSher);
   categoryFilter.addEventListener("change", renderSher);
 
-  async function downloadSherImage(sher, button) {
+  async function downloadSherImage(sher, button, template = "classic") {
     if (typeof html2canvas !== "function") {
       alert("Image library not loaded.");
       return;
@@ -877,7 +1219,7 @@ Parwah nahi.n usko, sazaa ki na jazaa ki`,
     button.textContent = "Preparing image...";
 
     const artwork = document.createElement("div");
-    artwork.className = "sher-download-art";
+    artwork.className = `sher-download-art theme-${template}`;
 
     const addText = (tag, className, text) => {
       if (!text || !text.trim()) return null;
@@ -933,7 +1275,7 @@ Parwah nahi.n usko, sazaa ki na jazaa ki`,
       });
 
       const link = document.createElement("a");
-      link.download = `SyedAmjadHussain-Sher-${sher.id}.png`;
+      link.download = `SyedAmjadHussain-Sher-${sher.id}-${template}.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
     } catch (error) {
@@ -952,7 +1294,8 @@ Parwah nahi.n usko, sazaa ki na jazaa ki`,
 
     if (downloadButton) {
       const sher = sherCollection.find(item => String(item.id) === String(downloadButton.dataset.download));
-      if (sher) await downloadSherImage(sher, downloadButton);
+      const styleSelect = grid.querySelector(`[data-style-for="${downloadButton.dataset.download}"]`);
+      if (sher) await downloadSherImage(sher, downloadButton, styleSelect ? styleSelect.value : "classic");
     }
 
     if (copyButton) {
