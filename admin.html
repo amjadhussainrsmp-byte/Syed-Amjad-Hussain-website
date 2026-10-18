@@ -630,8 +630,13 @@
   <div id="poetryPanel" class="panel active">
     <div class="panel-title"><span id="poetryFormTitle">Publish / Edit Poetry</span></div>
     <form id="poetryForm">
+      <input type="hidden" id="poetryTitle">
       <div class="form-row">
-        <div class="form-group"><label>Title *</label><input type="text" id="poetryTitle" class="form-control" required></div>
+        <div class="form-group"><label for="poetryTitleUrdu">Title — Urdu *</label><input type="text" id="poetryTitleUrdu" class="form-control urdu-input" dir="rtl" required placeholder="عنوان اردو میں"></div>
+        <div class="form-group"><label for="poetryTitleRoman">Title — Rekhta Roman *</label><input type="text" id="poetryTitleRoman" class="form-control" required placeholder="Poem title in Roman"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="poetryTitleHindi">Title — Hindi *</label><input type="text" id="poetryTitleHindi" class="form-control" required placeholder="कविता का शीर्षक हिंदी में"></div>
         <div class="form-group"><label>Type *</label>
           <select id="poetryType" class="form-control" required>
             <option value="Ghazal">Ghazal</option>
@@ -978,7 +983,11 @@
   // Poetry Form
   document.getElementById('poetryForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const data = { title: document.getElementById('poetryTitle').value.trim(), type: document.getElementById('poetryType').value, notes: document.getElementById('poetryBeher').value.trim(), urdu_text: document.getElementById('poetryUrdu').value, hindi_text: document.getElementById('poetryHindi').value, roman_text: document.getElementById('poetryRoman').value };
+    const titleUrdu = document.getElementById('poetryTitleUrdu').value.trim();
+    const titleRoman = document.getElementById('poetryTitleRoman').value.trim();
+    const titleHindi = document.getElementById('poetryTitleHindi').value.trim();
+    // Keep `title` as a legacy fallback for older site components while storing each display language separately.
+    const data = { title: titleRoman || titleUrdu || titleHindi, title_urdu: titleUrdu, title_roman: titleRoman, title_hindi: titleHindi, type: document.getElementById('poetryType').value, notes: document.getElementById('poetryBeher').value.trim(), urdu_text: document.getElementById('poetryUrdu').value, hindi_text: document.getElementById('poetryHindi').value, roman_text: document.getElementById('poetryRoman').value };
     const client = getClient();
     const res = editingPoetryId ? await client.from('poetry').update(data).eq('id', editingPoetryId) : await client.from('poetry').insert([data]);
     if (res.error) { alert("Error: " + res.error.message); return; }
@@ -994,6 +1003,9 @@
     editingPoetryId = id;
     document.getElementById('poetryFormTitle').textContent = "Editing Poetry: " + data.title;
     document.getElementById('poetryTitle').value = data.title || '';
+    document.getElementById('poetryTitleUrdu').value = data.title_urdu || data.title || '';
+    document.getElementById('poetryTitleRoman').value = data.title_roman || data.title || '';
+    document.getElementById('poetryTitleHindi').value = data.title_hindi || data.title || '';
     document.getElementById('poetryType').value = data.type || 'Ghazal';
     document.getElementById('poetryBeher').value = data.notes || '';
     document.getElementById('poetryUrdu').value = data.urdu_text || '';
@@ -1005,6 +1017,7 @@
 
   function resetPoetryForm() {
     document.getElementById('poetryForm').reset();
+    document.getElementById('poetryTitle').value = '';
     editingPoetryId = null;
     document.getElementById('poetryFormTitle').textContent = "Publish / Edit Poetry";
     document.getElementById('poetrySaveBtn').textContent = "Save Poetry";
@@ -1449,7 +1462,7 @@
     const { data: pData } = await client.from('poetry').select('*').order('id', { ascending: false });
     document.getElementById('poetryArchiveList').innerHTML = (!pData || !pData.length) ? '<p style="color:var(--text-muted)">No records.</p>' : pData.map(i => `
       <div class="archive-card">
-        <div><div class="archive-title">${escapeHTML(i.title)}</div></div>
+        <div><div class="archive-title">${escapeHTML(i.title_roman || i.title || 'Untitled')}</div><div class="archive-meta">Urdu: ${escapeHTML(i.title_urdu || i.title || '—')} · Hindi: ${escapeHTML(i.title_hindi || i.title || '—')}</div></div>
         <div>
           <button class="action-btn action-edit" onclick="editPoetry(${i.id})">Edit</button>
           <button class="action-btn action-delete" onclick="deleteRecord('poetry', ${i.id})">Delete</button>

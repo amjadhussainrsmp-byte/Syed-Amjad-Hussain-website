@@ -1238,9 +1238,9 @@ async function loadPublishedPoetry() {
       id: "db-" + record.id,
       category: record.type ? record.type.toLowerCase() : "ghazal",
       title: {
-        ur: record.title || "Untitled",
-        roman: record.title || "Untitled",
-        hi: record.title || "Untitled"
+        ur: record.title_urdu || record.title || "Title not available in this language",
+        roman: record.title_roman || record.title || "Title not available in this language",
+        hi: record.title_hindi || record.title || "Title not available in this language"
       },
       text: {
         ur: record.urdu_text || record.urdu || "",
