@@ -421,6 +421,39 @@ main { padding: 42px 0 85px; }
   border-color: var(--burgundy);
 }
 
+/* Collection-wide language switcher — uses the existing site palette. */
+.global-language {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 22px;
+  margin: 0 0 24px;
+  padding: 20px 22px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+}
+.global-language-copy { display: grid; gap: 3px; }
+.global-language-copy .eyebrow { margin-bottom: 2px; }
+.global-language-copy strong { font-family: var(--serif); font-size: 17px; font-weight: 500; }
+.language-help { color: var(--muted); font-size: 11px; }
+.global-language-options { display: flex; flex-wrap: wrap; gap: 7px; flex-shrink: 0; }
+.global-language-btn {
+  padding: 10px 15px;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-size: 11px;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.global-language-btn:hover { border-color: var(--gold); }
+.global-language-btn.active { background: var(--burgundy); color: #fff; border-color: var(--burgundy); }
+.reader-language-note { text-align: center; color: var(--muted); font-size: 10px; margin: 15px 0 4px; }
+@media (max-width: 700px) {
+  .global-language { align-items: stretch; flex-direction: column; padding: 17px; gap: 14px; }
+  .global-language-options { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .global-language-btn { padding: 10px 7px; }
+}
+
 .poem-body {
   max-width: 760px;
   margin: 20px auto 0;
@@ -639,8 +672,8 @@ main { padding: 42px 0 85px; }
     <h1>The world of <em>words</em></h1>
     <p>
       Explore ghazals, na'at, manqabat, salaam, bait, sher and other
-      literary works by Syed Amjad Hussain. Read each poem in Urdu,
-      Roman Urdu or Hindi whenever the corresponding text is available.
+      literary works by Syed Amjad Hussain. Choose Urdu, Rekhta Roman or Hindi
+      once, and the collection will follow your selected script wherever available.
     </p>
     <div class="hero-bottom">
       <div class="poet-signature">Syed Amjad Hussain · Amjadؔ</div>
@@ -655,9 +688,22 @@ main { padding: 42px 0 85px; }
       <h2>Poetry & Kalam</h2>
     </div>
     <p>
-      Browse by literary form, search for a title, and open a poem
-      to read its available versions in different scripts.
+      Browse by literary form, search for a title, and open a poem.
+      The language selector applies to the entire collection, not just one poem.
     </p>
+  </section>
+
+  <section class="global-language" aria-label="Choose language for the entire poetry collection">
+    <div class="global-language-copy">
+      <span class="eyebrow">Read in your preferred script</span>
+      <strong>Choose a language for the entire collection</strong>
+      <span class="language-help">Your selection updates poem titles, previews and the full text when you open a poem.</span>
+    </div>
+    <div class="global-language-options" role="group" aria-label="Poetry language">
+      <button class="global-language-btn active" type="button" data-site-script="ur" aria-pressed="true">اردو</button>
+      <button class="global-language-btn" type="button" data-site-script="roman" aria-pressed="false">Rekhta Roman</button>
+      <button class="global-language-btn" type="button" data-site-script="hi" aria-pressed="false">हिन्दी</button>
+    </div>
   </section>
 
   <div class="toolbar">
@@ -689,12 +735,7 @@ main { padding: 42px 0 85px; }
       <button class="close-reader" id="closeReader" type="button">Close ×</button>
     </div>
 
-    <div class="script-tabs" aria-label="Choose poem script">
-      <button class="script-btn active" type="button" data-script="ur">اردو</button>
-      <button class="script-btn" type="button" data-script="roman">Roman Urdu</button>
-      <button class="script-btn" type="button" data-script="hi">हिन्दी</button>
-    </div>
-
+    <div class="reader-language-note" id="readerLanguageNote" aria-live="polite">Showing the language selected above.</div>
     <div class="poem-body urdu" id="poemBody" lang="ur" dir="rtl"></div>
     <p class="poem-note" id="poemNote"></p>
   </section>
@@ -940,9 +981,28 @@ function getCategoryLabel(categoryId) {
   return category ? category.label : "Other";
 }
 
-function getTitle(poem) {
-  if (typeof poem.title === 'string') return poem.title;
-  return poem.title.roman || poem.title.ur || poem.title.hi || "Untitled poem";
+function getTitle(poem, script = currentScript) {
+  if (typeof poem.title === "string") return poem.title;
+  const title = poem.title || {};
+  return title[script] || "Title not available in this language";
+}
+
+function getPoemText(poem, script = currentScript) {
+  if (!poem || !poem.text) return "";
+  if (typeof poem.text === "string") return script === "ur" ? poem.text : "";
+  return poem.text[script] || "";
+}
+
+function getLanguageName(script = currentScript) {
+  return script === "ur" ? "Urdu" : script === "hi" ? "Hindi" : "Rekhta Roman";
+}
+
+function renderGlobalLanguageButtons() {
+  document.querySelectorAll("[data-site-script]").forEach(button => {
+    const selected = button.dataset.siteScript === currentScript;
+    button.classList.toggle("active", selected);
+    button.setAttribute("aria-pressed", selected ? "true" : "false");
+  });
 }
 
 function getSearchText(poem) {
@@ -1029,16 +1089,22 @@ function renderPoems() {
     category.textContent = getCategoryLabel(poem.category);
 
     const title = document.createElement("h3");
-    title.textContent = getTitle(poem);
+    title.textContent = getTitle(poem, currentScript);
 
     const preview = document.createElement("p");
     preview.className = "poem-preview";
 
-    const textObj = poem.text || {};
-    const previewText = textObj.roman || textObj.ur || textObj.hi || "";
+    const previewText = getPoemText(poem, currentScript);
     preview.textContent = previewText
       ? previewText.split("\n").slice(0, 2).join("\n")
-      : "Poem text coming soon.";
+      : `This version is not available in ${getLanguageName()} yet.`;
+    preview.dir = currentScript === "ur" ? "rtl" : "ltr";
+    preview.lang = currentScript === "ur" ? "ur" : currentScript === "hi" ? "hi" : "en";
+    preview.style.fontFamily = currentScript === "ur"
+      ? '"Noto Nastaliq Urdu", serif'
+      : currentScript === "hi"
+        ? '"Noto Serif Devanagari", serif'
+        : 'var(--sans)';
 
     const bottom = document.createElement("div");
     bottom.className = "card-bottom";
@@ -1061,27 +1127,16 @@ function renderPoems() {
 
 function openPoem(poem) {
   currentPoem = poem;
-  currentScript = "ur";
 
   $("poemReader").hidden = false;
   $("readerCategory").textContent = getCategoryLabel(poem.category);
   $("readerTitle").textContent = getTitle(poem);
 
-  renderScriptButtons();
   renderReader();
 
   $("poemReader").scrollIntoView({
     behavior: "smooth",
     block: "start"
-  });
-}
-
-function renderScriptButtons() {
-  document.querySelectorAll("[data-script]").forEach(button => {
-    button.classList.toggle(
-      "active",
-      button.dataset.script === currentScript
-    );
   });
 }
 
@@ -1091,48 +1146,38 @@ function renderReader() {
   const body = $("poemBody");
   const note = $("poemNote");
   const title = $("readerTitle");
-
-  let poemText = "";
-  if (currentPoem.text) {
-    if (typeof currentPoem.text === 'object') {
-      poemText = currentPoem.text[currentScript] || currentPoem.text.ur || currentPoem.text.roman || currentPoem.text.hi || "";
-    } else {
-      poemText = currentPoem.text;
-    }
-  }
+  const poemText = getPoemText(currentPoem, currentScript);
 
   body.className = "poem-body";
-  body.dir = "ltr";
-  body.lang = "en";
+  body.dir = currentScript === "ur" ? "rtl" : "ltr";
+  body.lang = currentScript === "ur" ? "ur" : currentScript === "hi" ? "hi" : "en";
+  title.textContent = getTitle(currentPoem, currentScript);
+  title.dir = currentScript === "ur" ? "rtl" : "ltr";
+  title.lang = body.lang;
+  title.style.fontFamily = currentScript === "ur"
+    ? '"Noto Nastaliq Urdu", serif'
+    : currentScript === "hi"
+      ? '"Noto Serif Devanagari", serif'
+      : "var(--serif)";
 
-  title.dir = "ltr";
-  title.style.fontFamily = "var(--serif)";
+  if (currentScript === "ur") body.classList.add("urdu");
+  if (currentScript === "hi") body.classList.add("hindi");
 
-  if (currentScript === "ur") {
-    body.classList.add("urdu");
-    body.dir = "rtl";
-    body.lang = "ur";
-
-    title.dir = "rtl";
-    title.style.fontFamily = '"Noto Nastaliq Urdu", serif';
-  } else if (currentScript === "hi") {
-    body.classList.add("hindi");
-    body.lang = "hi";
-
-    title.lang = "hi";
-    title.style.fontFamily = '"Noto Serif Devanagari", serif';
-  }
-
-  body.textContent = poemText || "This version has not been added yet.";
+  body.textContent = poemText || `This version is not available in ${getLanguageName()} yet.`;
   note.textContent = currentPoem.note || "";
+  $("readerLanguageNote").textContent = `Reading in ${getLanguageName()}. Change the language using the selector above the collection.`;
+} 
 
-  renderScriptButtons();
-}
-
-document.querySelectorAll("[data-script]").forEach(button => {
+// One collection-wide language setting controls every card and every opened poem.
+document.querySelectorAll("[data-site-script]").forEach(button => {
   button.addEventListener("click", () => {
-    currentScript = button.dataset.script;
-    renderReader();
+    currentScript = button.dataset.siteScript;
+    renderGlobalLanguageButtons();
+    renderPoems();
+    if (currentPoem) {
+      $("readerTitle").textContent = getTitle(currentPoem, currentScript);
+      renderReader();
+    }
   });
 });
 
@@ -1163,6 +1208,7 @@ document.querySelectorAll("#mainNav a").forEach(link => {
 $("currentYear").textContent = new Date().getFullYear();
 
 renderFilters();
+renderGlobalLanguageButtons();
 renderPoems();
 
 // Supabase se live data fetch karke poetry list me add karne ka function
