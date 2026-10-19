@@ -278,6 +278,26 @@ body{overflow-x:hidden}
 }
 @media(prefers-reduced-motion:reduce){.portrait-frame img,.real-book-cover{transition:none}}
 
+/* Navigation dropdown fix */
+#mainNav .nav-dropdown {
+  position: relative;
+}
+
+#mainNav .nav-dropdown > .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 230px;
+  z-index: 9999;
+  background: #fffaf2;
+}
+
+#mainNav .nav-dropdown:hover > .dropdown-menu,
+#mainNav .nav-dropdown:focus-within > .dropdown-menu {
+  display: block;
+}
+    
   </style>
 </head>
 <body>
