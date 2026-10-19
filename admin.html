@@ -609,6 +609,8 @@
     <div class="stat-card"><div class="stat-info"><span>Books</span><strong id="statBooks">--</strong></div></div>
     <div class="stat-card"><div class="stat-info"><span>Gallery</span><strong id="statGallery">--</strong></div></div>
     <div class="stat-card"><div class="stat-info"><span>Directory</span><strong id="statDirectory">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Reviews</span><strong id="statReviews">--</strong></div></div>
+    <div class="stat-card"><div class="stat-info"><span>Statements</span><strong id="statStatements">--</strong></div></div>
   </div>
 
   <!-- Navigation Tabs -->
@@ -623,8 +625,57 @@
     <button class="tab-btn" onclick="switchPanel('booksPanel', this)">Books</button>
     <button class="tab-btn" onclick="switchPanel('galleryPanel', this)">Gallery</button>
     <button class="tab-btn" onclick="switchPanel('mediaPressPanel', this); loadMediaPress();">Media & Press</button>
+    <button class="tab-btn" onclick="switchPanel('bookReviewsPanel', this); loadBookReviews();">Book Reviews</button>
+    <button class="tab-btn" onclick="switchPanel('officialStatementsPanel', this); loadOfficialStatements();">Official Statements</button>
     <button class="tab-btn" onclick="switchPanel('archivePanel', this); loadArchives();">Archive</button>
   </nav>
+
+  <!-- Book Reviews: form-based management, no HTML editing -->
+  <div id="bookReviewsPanel" class="panel">
+    <div class="panel-title"><span id="reviewFormTitle">Manage Book Reviews</span></div>
+    <p style="color:var(--text-muted);margin:-4px 0 20px">Add a review, update its details, control publication, or remove an entry. Published reviews appear automatically on book-reviews.html.</p>
+    <form id="bookReviewForm">
+      <input type="hidden" id="reviewRecordId">
+      <div class="form-row">
+        <div class="form-group"><label for="reviewBookTitle">Book title *</label><input id="reviewBookTitle" class="form-control" required maxlength="220" placeholder="Title of the book"></div>
+        <div class="form-group"><label for="reviewBookAuthor">Book author *</label><input id="reviewBookAuthor" class="form-control" required maxlength="180" placeholder="Author's name"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="reviewCategory">Subject *</label><select id="reviewCategory" class="form-control" required><option value="history">History</option><option value="literature">Literature</option><option value="sufism">Sufism &amp; spirituality</option><option value="society">Society &amp; culture</option><option value="other">Other subjects</option></select></div>
+        <div class="form-group"><label for="reviewDate">Review date</label><input id="reviewDate" type="date" class="form-control"></div>
+      </div>
+      <div class="form-group"><label for="reviewSummary">Short review / introduction *</label><textarea id="reviewSummary" class="form-control" rows="4" required maxlength="1800" placeholder="A concise introduction to the review"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label for="reviewUrl">Full review URL</label><input id="reviewUrl" type="url" class="form-control" placeholder="https://…"></div>
+        <div class="form-group"><label for="reviewCoverUrl">Book cover image URL (optional)</label><input id="reviewCoverUrl" type="url" class="form-control" placeholder="https://…"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="reviewDisplayOrder">Display order</label><input id="reviewDisplayOrder" type="number" class="form-control" value="0" min="0"></div>
+        <div class="form-group" style="display:flex;align-items:center;gap:10px;padding-top:26px"><input id="reviewPublished" type="checkbox" checked style="width:18px;height:18px"><label for="reviewPublished" style="margin:0">Publish this review on the website</label></div>
+      </div>
+      <div class="btn-group"><button type="submit" id="reviewSaveBtn" class="btn-primary">Save Book Review</button><button type="button" class="btn-secondary" onclick="resetBookReviewForm()">Clear form</button></div>
+    </form>
+    <h3 style="color:var(--wine);margin:30px 0 12px">Existing book reviews</h3><div id="bookReviewsList" class="archive-list">Open this tab to load reviews.</div>
+  </div>
+
+  <!-- Official Statements: form-based management, no HTML editing -->
+  <div id="officialStatementsPanel" class="panel">
+    <div class="panel-title"><span id="statementFormTitle">Manage Official Statements</span></div>
+    <p style="color:var(--text-muted);margin:-4px 0 20px">Publish dated, approved messages and announcements. Unpublished drafts remain visible only in this admin panel.</p>
+    <form id="officialStatementForm">
+      <input type="hidden" id="statementRecordId">
+      <div class="form-row">
+        <div class="form-group"><label for="statementTitle">Statement title *</label><input id="statementTitle" class="form-control" required maxlength="220" placeholder="Clear, specific heading"></div>
+        <div class="form-group"><label for="statementCategory">Category *</label><select id="statementCategory" class="form-control" required><option value="literature">Literature &amp; learning</option><option value="culture">Culture &amp; harmony</option><option value="announcement">Official announcements</option><option value="remembrance">Remembrance</option><option value="youth">Youth &amp; society</option><option value="author">Author’s notes</option></select></div>
+      </div>
+      <div class="form-row"><div class="form-group"><label for="statementDate">Statement date *</label><input id="statementDate" type="date" class="form-control" required></div><div class="form-group"><label for="statementSourceUrl">Related link (optional)</label><input id="statementSourceUrl" type="url" class="form-control" placeholder="https://…"></div></div>
+      <div class="form-group"><label for="statementSummary">Short summary *</label><textarea id="statementSummary" class="form-control" rows="3" required maxlength="700" placeholder="A short description shown on the statement card"></textarea></div>
+      <div class="form-group"><label for="statementBody">Full statement / message *</label><textarea id="statementBody" class="form-control" rows="8" required maxlength="12000" placeholder="Write the approved statement here. Paragraphs are preserved."></textarea></div>
+      <div class="form-row"><div class="form-group"><label for="statementDisplayOrder">Display order</label><input id="statementDisplayOrder" type="number" class="form-control" value="0" min="0"></div><div class="form-group" style="display:flex;align-items:center;gap:10px;padding-top:26px"><input id="statementPublished" type="checkbox" checked style="width:18px;height:18px"><label for="statementPublished" style="margin:0">Publish this statement on the website</label></div></div>
+      <div class="btn-group"><button type="submit" id="statementSaveBtn" class="btn-primary">Publish Statement</button><button type="button" class="btn-secondary" onclick="resetOfficialStatementForm()">Clear form</button></div>
+    </form>
+    <h3 style="color:var(--wine);margin:30px 0 12px">Existing statements and drafts</h3><div id="officialStatementsList" class="archive-list">Open this tab to load statements.</div>
+  </div>
 
   <!-- Poetry Panel -->
   <div id="poetryPanel" class="panel active">
@@ -968,6 +1019,8 @@
       const { count: aCount } = await client.from('awards').select('*', { count: 'exact', head: true });
       const { count: bCount } = await client.from('books_articles').select('*', { count: 'exact', head: true });
       const { count: gCount } = await client.from('gallery_media').select('*', { count: 'exact', head: true });
+      const { count: rCount } = await client.from('book_reviews').select('*', { count: 'exact', head: true });
+      const { count: osCount } = await client.from('official_statements').select('*', { count: 'exact', head: true });
 
       document.getElementById('statPoetry').textContent = pCount || 0;
       document.getElementById('statSher').textContent = sCount || 0;
@@ -977,6 +1030,8 @@
       document.getElementById('statAwards').textContent = aCount || 0;
       document.getElementById('statBooks').textContent = bCount || 0;
       document.getElementById('statGallery').textContent = gCount || 0;
+      if (document.getElementById('statReviews')) document.getElementById('statReviews').textContent = rCount || 0;
+      if (document.getElementById('statStatements')) document.getElementById('statStatements').textContent = osCount || 0;
     } catch(err) { console.error("Stats error:", err); }
   }
 
@@ -1669,7 +1724,41 @@
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) { setSaintFileStatus('Use only lowercase letters, numbers, and hyphens in the file name.', true); return; }
     const fileName = slug + '.html';
     const safeTitle = title.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const content = '<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>' + safeTitle + ' | Bio of Sufis</title>\n  <meta name="description" content="Biography of ' + safeTitle + '">\n</head>\n<body>\n  <main>\n    <h1>' + safeTitle + '</h1>\n    <p>Add the verified biography here.</p>\n  </main>\n</body>\n</html>\n';
+    const content = '<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>' + safeTitle + ' | Bio of Sufis</title>\n  <meta name="description" content="Biography of ' + safeTitle + '">\n</head>\n<body>\n  <main>\n    <h1>' + safeTitle + '</h1>\n    <p>Add the verified biography here.</p>\n  </main>\n
+<script>
+// Form-based Book Reviews and Official Statements manager.
+let editingBookReviewId = null, editingOfficialStatementId = null;
+const categoryLabels = {history:'History',literature:'Literature',sufism:'Sufism & spirituality',society:'Society & culture',other:'Other subjects',culture:'Culture & harmony',announcement:'Official announcements',remembrance:'Remembrance',youth:'Youth & society',author:'Author’s notes'};
+function safeText(value=''){return String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function localDate(value){return value ? String(value).slice(0,10) : '';}
+async function loadBookReviews(){
+ const box=document.getElementById('bookReviewsList'); box.textContent='Loading book reviews…';
+ try{const {data,error}=await getClient().from('book_reviews').select('*').order('display_order',{ascending:true}).order('created_at',{ascending:false});if(error)throw error;
+ if(!data?.length){box.innerHTML='<p>No book reviews yet. Use the form above to add your first review.</p>';return;}
+ box.innerHTML=data.map(r=>`<div class="archive-item" style="display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap"><div style="flex:1;min-width:220px"><strong>${safeText(r.book_title)}</strong><div style="font-size:12px;color:var(--text-muted);margin-top:4px">${safeText(r.book_author)} · ${safeText(categoryLabels[r.category]||r.category)} · ${r.is_published?'Published':'Draft'}</div><div style="font-size:12px;margin-top:5px">${safeText((r.summary||'').slice(0,180))}</div></div><div class="btn-group"><button type="button" class="btn-secondary" onclick="editBookReview('${r.id}')">Edit</button><button type="button" class="btn-secondary" onclick="toggleBookReview('${r.id}',${!r.is_published})">${r.is_published?'Unpublish':'Publish'}</button><button type="button" class="btn-secondary" onclick="deleteBookReview('${r.id}')">Delete</button></div></div>`).join('');
+ }catch(e){box.textContent='Could not load reviews: '+e.message+' — run the included SQL setup first.';}
+}
+function resetBookReviewForm(){document.getElementById('bookReviewForm').reset();document.getElementById('reviewRecordId').value='';document.getElementById('reviewDisplayOrder').value='0';document.getElementById('reviewPublished').checked=true;editingBookReviewId=null;document.getElementById('reviewFormTitle').textContent='Manage Book Reviews';document.getElementById('reviewSaveBtn').textContent='Save Book Review';}
+async function editBookReview(id){try{const {data,error}=await getClient().from('book_reviews').select('*').eq('id',id).single();if(error)throw error;editingBookReviewId=id;document.getElementById('reviewRecordId').value=id;document.getElementById('reviewBookTitle').value=data.book_title||'';document.getElementById('reviewBookAuthor').value=data.book_author||'';document.getElementById('reviewCategory').value=data.category||'history';document.getElementById('reviewDate').value=localDate(data.review_date);document.getElementById('reviewSummary').value=data.summary||'';document.getElementById('reviewUrl').value=data.review_url||'';document.getElementById('reviewCoverUrl').value=data.cover_image_url||'';document.getElementById('reviewDisplayOrder').value=data.display_order||0;document.getElementById('reviewPublished').checked=!!data.is_published;document.getElementById('reviewFormTitle').textContent='Edit Book Review';document.getElementById('reviewSaveBtn').textContent='Update Book Review';document.getElementById('bookReviewsPanel').scrollIntoView({behavior:'smooth'});}catch(e){alert('Could not load this review: '+e.message);}}
+document.getElementById('bookReviewForm').addEventListener('submit',async e=>{e.preventDefault();const btn=document.getElementById('reviewSaveBtn');btn.disabled=true;try{const data={book_title:document.getElementById('reviewBookTitle').value.trim(),book_author:document.getElementById('reviewBookAuthor').value.trim(),category:document.getElementById('reviewCategory').value,review_date:document.getElementById('reviewDate').value||null,summary:document.getElementById('reviewSummary').value.trim(),review_url:document.getElementById('reviewUrl').value.trim()||null,cover_image_url:document.getElementById('reviewCoverUrl').value.trim()||null,display_order:Number(document.getElementById('reviewDisplayOrder').value)||0,is_published:document.getElementById('reviewPublished').checked};const q=editingBookReviewId?getClient().from('book_reviews').update(data).eq('id',editingBookReviewId):getClient().from('book_reviews').insert(data);const {error}=await q;if(error)throw error;alert(editingBookReviewId?'Book review updated.':'Book review saved.');resetBookReviewForm();await loadBookReviews();await updateStats();}catch(err){alert('Could not save book review: '+err.message+' — check the SQL setup and permissions.');}finally{btn.disabled=false;}});
+async function toggleBookReview(id,publish){try{const {error}=await getClient().from('book_reviews').update({is_published:publish}).eq('id',id);if(error)throw error;await loadBookReviews();}catch(e){alert('Could not update publication status: '+e.message);}}
+async function deleteBookReview(id){if(!confirm('Delete this book review permanently?'))return;try{const {error}=await getClient().from('book_reviews').delete().eq('id',id);if(error)throw error;await loadBookReviews();await updateStats();}catch(e){alert('Could not delete review: '+e.message);}}
+
+async function loadOfficialStatements(){
+ const box=document.getElementById('officialStatementsList');box.textContent='Loading statements…';
+ try{const {data,error}=await getClient().from('official_statements').select('*').order('display_order',{ascending:true}).order('statement_date',{ascending:false});if(error)throw error;
+ if(!data?.length){box.innerHTML='<p>No statements yet. Add an approved message using the form above.</p>';return;}
+ box.innerHTML=data.map(r=>`<div class="archive-item" style="display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap"><div style="flex:1;min-width:220px"><strong>${safeText(r.title)}</strong><div style="font-size:12px;color:var(--text-muted);margin-top:4px">${safeText(localDate(r.statement_date))} · ${safeText(categoryLabels[r.category]||r.category)} · ${r.is_published?'Published':'Draft'}</div><div style="font-size:12px;margin-top:5px">${safeText((r.summary||'').slice(0,180))}</div></div><div class="btn-group"><button type="button" class="btn-secondary" onclick="editOfficialStatement('${r.id}')">Edit</button><button type="button" class="btn-secondary" onclick="toggleOfficialStatement('${r.id}',${!r.is_published})">${r.is_published?'Unpublish':'Publish'}</button><button type="button" class="btn-secondary" onclick="deleteOfficialStatement('${r.id}')">Delete</button></div></div>`).join('');
+ }catch(e){box.textContent='Could not load statements: '+e.message+' — run the included SQL setup first.';}
+}
+function resetOfficialStatementForm(){document.getElementById('officialStatementForm').reset();document.getElementById('statementRecordId').value='';document.getElementById('statementDisplayOrder').value='0';document.getElementById('statementPublished').checked=true;editingOfficialStatementId=null;document.getElementById('statementFormTitle').textContent='Manage Official Statements';document.getElementById('statementSaveBtn').textContent='Publish Statement';}
+async function editOfficialStatement(id){try{const {data,error}=await getClient().from('official_statements').select('*').eq('id',id).single();if(error)throw error;editingOfficialStatementId=id;document.getElementById('statementRecordId').value=id;document.getElementById('statementTitle').value=data.title||'';document.getElementById('statementCategory').value=data.category||'announcement';document.getElementById('statementDate').value=localDate(data.statement_date);document.getElementById('statementSourceUrl').value=data.source_url||'';document.getElementById('statementSummary').value=data.summary||'';document.getElementById('statementBody').value=data.body||'';document.getElementById('statementDisplayOrder').value=data.display_order||0;document.getElementById('statementPublished').checked=!!data.is_published;document.getElementById('statementFormTitle').textContent='Edit Official Statement';document.getElementById('statementSaveBtn').textContent='Update Statement';document.getElementById('officialStatementsPanel').scrollIntoView({behavior:'smooth'});}catch(e){alert('Could not load this statement: '+e.message);}}
+document.getElementById('officialStatementForm').addEventListener('submit',async e=>{e.preventDefault();const btn=document.getElementById('statementSaveBtn');btn.disabled=true;try{const data={title:document.getElementById('statementTitle').value.trim(),category:document.getElementById('statementCategory').value,statement_date:document.getElementById('statementDate').value,source_url:document.getElementById('statementSourceUrl').value.trim()||null,summary:document.getElementById('statementSummary').value.trim(),body:document.getElementById('statementBody').value.trim(),display_order:Number(document.getElementById('statementDisplayOrder').value)||0,is_published:document.getElementById('statementPublished').checked};const q=editingOfficialStatementId?getClient().from('official_statements').update(data).eq('id',editingOfficialStatementId):getClient().from('official_statements').insert(data);const {error}=await q;if(error)throw error;alert(editingOfficialStatementId?'Statement updated.':'Statement saved.');resetOfficialStatementForm();await loadOfficialStatements();await updateStats();}catch(err){alert('Could not save statement: '+err.message+' — check the SQL setup and permissions.');}finally{btn.disabled=false;}});
+async function toggleOfficialStatement(id,publish){try{const {error}=await getClient().from('official_statements').update({is_published:publish}).eq('id',id);if(error)throw error;await loadOfficialStatements();}catch(e){alert('Could not update publication status: '+e.message);}}
+async function deleteOfficialStatement(id){if(!confirm('Delete this statement permanently?'))return;try{const {error}=await getClient().from('official_statements').delete().eq('id',id);if(error)throw error;await loadOfficialStatements();await updateStats();}catch(e){alert('Could not delete statement: '+e.message);}}
+</script>
+
+</body>\n</html>\n';
     if (!confirm('Create saints/' + fileName + ' on GitHub?')) return;
     try {
       const result = await saintsApi('', { method: 'POST', body: JSON.stringify({ fileName, content }) });
