@@ -298,6 +298,14 @@ body{overflow-x:hidden}
   display: block;
 }
     
+#mainNav .nav-dropdown > .dropdown-menu {
+  display: none;
+}
+
+#mainNav .nav-dropdown.dropdown-open > .dropdown-menu {
+  display: block;
+}
+    
   </style>
 </head>
 <body>
@@ -745,5 +753,43 @@ ${data.get('message')}`
 });
 
   </script>
+  
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdowns = document.querySelectorAll(
+    "#mainNav .nav-dropdown"
+  );
+
+  dropdowns.forEach(function (dropdown) {
+    const parent = dropdown.querySelector(":scope > .nav-parent");
+    const menu = dropdown.querySelector(":scope > .dropdown-menu");
+
+    if (!parent || !menu) return;
+
+    parent.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const isOpen = dropdown.classList.contains("dropdown-open");
+
+      dropdowns.forEach(function (item) {
+        item.classList.remove("dropdown-open");
+      });
+
+      if (!isOpen) {
+        dropdown.classList.add("dropdown-open");
+      }
+    });
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest("#mainNav")) {
+      dropdowns.forEach(function (item) {
+        item.classList.remove("dropdown-open");
+      });
+    }
+  });
+});
+</script>
+  
 </body>
 </html>
