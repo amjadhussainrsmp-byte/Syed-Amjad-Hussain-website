@@ -716,11 +716,49 @@ menuToggle?.addEventListener('click', () => {
   menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
   menuToggle.textContent = open ? '×' : '☰';
 });
-mainNav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-  mainNav.classList.remove('open');
-  menuToggle?.setAttribute('aria-expanded', 'false');
-  if (menuToggle) { menuToggle.textContent = '☰'; menuToggle.setAttribute('aria-label', 'Open navigation'); }
-}));
+// Dropdown parents open/close their own submenu instead of closing the mobile nav.
+mainNav?.querySelectorAll('.nav-dropdown > .nav-parent').forEach(link => {
+  link.setAttribute('aria-haspopup', 'true');
+  link.setAttribute('aria-expanded', 'false');
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    const current = link.closest('.nav-dropdown');
+    const wasOpen = current.classList.contains('dropdown-open');
+
+    mainNav.querySelectorAll('.nav-dropdown').forEach(item => {
+      item.classList.remove('dropdown-open');
+      item.querySelector(':scope > .nav-parent')?.setAttribute('aria-expanded', 'false');
+    });
+
+    if (!wasOpen) {
+      current.classList.add('dropdown-open');
+      link.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// Only actual destination links close the mobile navigation.
+mainNav?.querySelectorAll('.dropdown-menu a, a:not(.nav-parent)').forEach(link => {
+  link.addEventListener('click', () => {
+    mainNav.classList.remove('open');
+    mainNav.querySelectorAll('.nav-dropdown').forEach(item => {
+      item.classList.remove('dropdown-open');
+      item.querySelector(':scope > .nav-parent')?.setAttribute('aria-expanded', 'false');
+    });
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    menuToggle?.setAttribute('aria-label', 'Open navigation');
+    if (menuToggle) menuToggle.textContent = '☰';
+  });
+});
+
+document.addEventListener('click', event => {
+  if (!event.target.closest('#mainNav')) {
+    mainNav?.querySelectorAll('.nav-dropdown').forEach(item => {
+      item.classList.remove('dropdown-open');
+      item.querySelector(':scope > .nav-parent')?.setAttribute('aria-expanded', 'false');
+    });
+  }
+});
 document.getElementById('year').textContent = new Date().getFullYear();
 
 const searchInput = document.getElementById('librarySearch');
@@ -769,36 +807,6 @@ ${data.get('message')}`
   </script>
   
 
-<script>
-document.querySelectorAll('#mainNav .nav-dropdown > .nav-parent')
-.forEach(function(link) {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const current = link.parentElement;
-    const wasOpen = current.classList.contains('dropdown-open');
-
-    document.querySelectorAll('#mainNav .nav-dropdown')
-      .forEach(function(item) {
-        item.classList.remove('dropdown-open');
-      });
-
-    if (!wasOpen) {
-      current.classList.add('dropdown-open');
-    }
-  });
-});
-
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('#mainNav')) {
-    document.querySelectorAll('#mainNav .nav-dropdown')
-      .forEach(function(item) {
-        item.classList.remove('dropdown-open');
-      });
-  }
-});
-</script>
 
   
 </body>
