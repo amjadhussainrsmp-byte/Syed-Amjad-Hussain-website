@@ -232,6 +232,25 @@ body{overflow-x:hidden}
 .library-card-art:after{content:"";position:absolute;inset:9px;border:1px solid rgba(224,204,168,.3);pointer-events:none}
 .library-card-copy a{display:inline-block;padding-bottom:3px;border-bottom:1px solid rgba(184,155,106,.6)}
 .library-card-copy a:hover{letter-spacing:.02em}
+
+.library-card-art {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.library-card-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.library-card-art:has(img) {
+  padding: 0;
+}
+    
 .press-section{background:linear-gradient(120deg,#eee6da,#e9dfd1)}
 .press-inner{border-left:2px solid var(--gold);padding-left:32px}
 .contact-section{background:radial-gradient(ellipse at 100% 0%,rgba(176,127,115,.18),transparent 40%),var(--burgundy)}
