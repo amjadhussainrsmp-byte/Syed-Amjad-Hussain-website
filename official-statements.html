@@ -748,7 +748,11 @@ footer {
       </div>
 
       <div class="message-grid" id="messageGrid">
-        <div class="empty-state" id="emptyState">Loading published statements…</div>
+        <div class="empty-state" id="loadingStatements">Loading published statements…</div>
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        No topics match your search. Try another word or choose a different category.
       </div>
 
       <aside class="authenticity-note">
@@ -756,10 +760,7 @@ footer {
         <div>
           <h3>A note on authenticity</h3>
           <p>
-            The cards above are topic categories, not claims that a particular
-            statement has already been issued. New messages should be published
-            here with their date and final approved text. This helps keep the
-            page accurate, transparent and genuinely official.
+            Only statements published through the admin panel appear in this archive. Each entry reflects the text and date supplied for publication.
           </p>
         </div>
       </aside>
@@ -802,11 +803,35 @@ footer {
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="admin-config.js"></script>
 <script>
-const menuToggle=document.getElementById('menuToggle');const mainNav=document.getElementById('mainNav');menuToggle?.addEventListener('click',()=>{const open=mainNav.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');menuToggle.textContent=open?'×':'☰'});mainNav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mainNav.classList.remove('open');menuToggle?.setAttribute('aria-expanded','false');if(menuToggle){menuToggle.textContent='☰';menuToggle.setAttribute('aria-label','Open navigation')}}));const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
-const grid=document.getElementById('messageGrid'),search=document.getElementById('messageSearch'),filters=[...document.querySelectorAll('.filter-btn')];let allStatements=[],active='all';const labels={literature:'Literature & learning',culture:'Culture & harmony',announcement:'Official announcements',remembrance:'Remembrance',youth:'Youth & society',author:'Author’s notes'};function esc(v=''){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}function renderStatements(){const q=(search?.value||'').trim().toLowerCase();const rows=allStatements.filter(s=>(active==='all'||s.category===active)&&(!q||[s.title,s.summary,s.body,s.category].join(' ').toLowerCase().includes(q)));grid.innerHTML=rows.length?rows.map(s=>`<article class="message-card" data-category="${esc(s.category)}" data-search="${esc([s.title,s.summary,s.body].join(' '))}"><div class="card-head"><span class="card-category">${esc(labels[s.category]||s.category)}</span><span class="card-symbol">§</span></div><div class="card-content"><h3>${esc(s.title)}</h3><p style="font-size:10px;color:var(--muted);margin:0 0 10px">${esc((s.statement_date||'').slice(0,10))}</p><p>${esc(s.summary)}</p><details style="margin-top:12px"><summary style="cursor:pointer;color:var(--wine);font-size:11px;font-weight:700">Read full statement</summary><div style="white-space:pre-wrap;line-height:1.9;margin-top:12px;font-size:12px">${esc(s.body)}</div></details>${s.source_url?`<a class="card-action" href="${esc(s.source_url)}" target="_blank" rel="noopener noreferrer">Related link <span>↗</span></a>`:''}</div></article>`).join(''):'<div class="empty-state">No published statements match this search yet.</div>';}
-filters.forEach(b=>b.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));b.classList.add('active');active=b.dataset.filter;renderStatements()}));document.getElementById('searchButton')?.addEventListener('click',renderStatements);search?.addEventListener('input',renderStatements);search?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();renderStatements()}});async function loadStatements(){try{if(!window.supabase||!window.ADMIN_CONFIG)throw new Error('Archive configuration unavailable');const client=window.supabase.createClient(window.ADMIN_CONFIG.supabaseUrl,window.ADMIN_CONFIG.supabaseAnonKey);const {data,error}=await client.from('official_statements').select('id,title,category,statement_date,summary,body,source_url,display_order').eq('is_published',true).order('display_order',{ascending:true}).order('statement_date',{ascending:false});if(error)throw error;allStatements=data||[];renderStatements()}catch(e){grid.innerHTML='<div class="empty-state">Official statements are temporarily unavailable. Please check back later.</div>';console.error('Official statements load failed',e)}}loadStatements();
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+menuToggle.addEventListener("click", () => {
+  const open = mainNav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(open));
+  menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+  menuToggle.textContent = open ? "×" : "☰";
+});
+
+mainNav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+    menuToggle.textContent = "☰";
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const searchInput = document.getElementById("messageSearch");
+const cards = [...document.querySelectorAll(".message-card")];
+const filterButtons=[...document.querySelectorAll('.filter-btn')];const searchInput=document.getElementById('messageSearch');const grid=document.getElementById('messageGrid');const emptyState=document.getElementById('emptyState');let activeFilter='all',allStatements=[];
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderStatements(){const q=(searchInput.value||'').trim().toLowerCase();const rows=allStatements.filter(r=>(activeFilter==='all'||String(r.category||'announcement').toLowerCase()===activeFilter)&&(!q||[r.title,r.category,r.summary,r.statement_content].join(' ').toLowerCase().includes(q)));grid.querySelectorAll('.message-card').forEach(e=>e.remove());rows.forEach(r=>{const card=document.createElement('article');card.className='message-card';card.dataset.category=r.category||'announcement';card.dataset.search=[r.title,r.category,r.summary,r.statement_content].join(' ');card.innerHTML=`<div class="card-head"><span class="card-category">${esc(String(r.category||'announcement').replace(/-/g,' '))}</span><span class="card-symbol">§</span></div><div class="card-content"><h3>${esc(r.title)}</h3>${r.statement_date?`<p class="statement-date">${esc(new Date(r.statement_date+'T00:00:00').toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}))}</p>`:''}${r.summary?`<p>${esc(r.summary)}</p>`:''}<p>${esc(r.statement_content)}</p>${r.related_link?`<a class="card-action" href="${esc(r.related_link)}" target="_blank" rel="noopener">Related link <span>↗</span></a>`:''}</div>`;grid.appendChild(card);});emptyState.classList.toggle('show',rows.length===0);emptyState.textContent=rows.length?'':'No published statements match your search or category.';}
+async function loadStatements(){try{if(!window.supabase||!window.ADMIN_CONFIG?.supabaseUrl||!window.ADMIN_CONFIG?.supabaseAnonKey)throw new Error('Supabase configuration could not be loaded.');const client=window.supabase.createClient(window.ADMIN_CONFIG.supabaseUrl,window.ADMIN_CONFIG.supabaseAnonKey);const {data,error}=await client.from('official_statements').select('id,title,category,statement_date,summary,statement_content,related_link,display_order,is_published').eq('is_published',true).order('display_order',{ascending:true}).order('statement_date',{ascending:false});if(error)throw error;allStatements=data||[];renderStatements();}catch(e){emptyState.classList.add('show');emptyState.textContent='Statements could not be loaded: '+e.message;}}
+filterButtons.forEach(button=>button.addEventListener('click',()=>{activeFilter=button.dataset.filter;filterButtons.forEach(item=>item.classList.toggle('active',item===button));renderStatements()}));searchInput.addEventListener('input',renderStatements);document.getElementById('searchButton').addEventListener('click',renderStatements);searchInput.addEventListener('keydown',event=>{if(event.key==='Enter')renderStatements()});loadStatements();
 </script>
 </body>
 </html>
