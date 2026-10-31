@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#652e36">
+
+<meta name="description" content="Official social media, literary, academic and research profiles of Syed Amjad Hussain.">
+
+<title>Profiles &amp; Connect | Syed Amjad Hussain</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --wine:#652e36;
+  --wine2:#472127;
+  --gold:#b89b6a;
+  --cream:#f4efe6;
+  --ink:#2f2926;
+  --muted:#71675f;
+  --line:#d8cdbd;
+  --white:#fffdf9;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'DM Sans',Arial,Helvetica,sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.75 var(--sans)}
+a{color:inherit}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+
+/* TOP STRIP */
+
+.top{
+  height:32px;
+  padding:0 5.5%;
+  display:flex;
+  align-items:center;
+  background:var(--wine2);
+  color:#e9ded0;
+  font-size:9px;
+  letter-spacing:.16em;
+}
+
+.top .wrap{
+  width:100%;
+  max-width:none;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+/* ORIGINAL WEBSITE HEADER */
+
+.site-header{
+  box-sizing:border-box;
+  height:86px;
+  padding:0 5.5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  border-bottom:1px solid rgba(90,67,56,.12);
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(244,239,230,.96);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+
+.site-header .brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-shrink:0;
+  color:var(--ink);
+  text-decoration:none;
+  font-size:inherit;
+}
+
+/* YOUR ORIGINAL PERSONAL LOGO — UNCHANGED */
+
+.site-header .brand-mark{
+  box-sizing:border-box;
+  width:42px;
+  height:42px;
+  border:1px solid var(--gold);
+  color:var(--wine);
+  display:grid;
+  place-items:center;
+  font-family:var(--serif);
+  font-size:27px;
+  line-height:1;
+}
+
+.site-header .brand-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.3;
+}
+
+.site-header .brand-text strong{
+  font-family:var(--serif);
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:-.02em;
+}
+
+.site-header .brand-text small{
+  font-family:var(--sans);
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:5px;
+  white-space:nowrap;
+}
+
+/* NAVIGATION */
+
+.site-header #mainNav{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:25px;
+  font-family:var(--sans);
+  font-size:11px;
+  color:#544942;
+}
+
+.site-header #mainNav a{
+  color:inherit;
+  text-decoration:none;
+  transition:color .2s ease;
+}
+
+.site-header #mainNav > a,
+.site-header #mainNav .nav-parent{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:8px 0;
+  border:0;
+  background:transparent;
+  white-space:nowrap;
+}
+
+.site-header #mainNav a:hover,
+.site-header #mainNav a:focus-visible,
+.site-header #mainNav > a[aria-current="page"]{
+  color:var(--wine);
+}
+
+.site-header #mainNav .nav-contact{
+  border:1px solid var(--line);
+  padding:12px 14px;
+  color:var(--ink);
+}
+
+.site-header #mainNav .nav-contact span{
+  color:var(--wine);
+  margin-left:9px;
+}
+
+.site-header #mainNav .nav-dropdown{position:relative}
+.site-header #mainNav .nav-parent{cursor:pointer}
+
+.site-header #mainNav .nav-arrow{
+  display:inline-block;
+  color:var(--gold);
+  font-size:14px;
+  line-height:1;
+  transition:transform .2s ease;
+}
+
+.site-header #mainNav .dropdown-menu{
+  display:none;
+  position:absolute;
+  top:100%;
+  left:-12px;
+  min-width:225px;
+  padding:8px;
+  margin:0;
+  background:var(--cream);
+  border:1px solid var(--line);
+  box-shadow:0 14px 30px rgba(47,41,38,.12);
+  z-index:100;
+}
+
+.site-header #mainNav .dropdown-menu a{
+  display:block;
+  padding:11px 12px;
+  font-size:11px;
+  line-height:1.5;
+  white-space:normal;
+}
+
+.site-header #mainNav .dropdown-menu a:hover,
+.site-header #mainNav .dropdown-menu a:focus-visible{
+  color:var(--wine);
+  background:#ebe3d7;
+}
+
+@media(min-width:781px){
+  .site-header #mainNav .nav-dropdown:hover > .dropdown-menu,
+  .site-header #mainNav .nav-dropdown:focus-within > .dropdown-menu{
+    display:block;
+  }
+
+  .site-header #mainNav .nav-dropdown:hover .nav-arrow{
+    transform:rotate(180deg);
+  }
+}
+
+.site-header .menu-toggle{
+  display:none;
+  border:0;
+  background:transparent;
+  color:var(--wine);
+  padding:8px;
+  font-family:var(--sans);
+  font-size:24px;
+  cursor:pointer;
+}
+
+@media(max-width:1050px) and (min-width:781px){
+  .site-header{gap:12px}
+  .site-header #mainNav{gap:14px;font-size:10px}
+  .site-header .brand-text small{letter-spacing:.06em}
+}
+
+@media(max-width:780px){
+  .top{padding:0 5%;font-size:7px;letter-spacing:.1em}
+
+  .site-header{height:72px;padding:0 5%}
+  .site-header .brand{gap:9px}
+
+  .site-header .brand-mark{
+    width:36px;
+    height:36px;
+    font-size:25px;
+  }
+
+  .site-header .brand-text strong{font-size:14px}
+
+  .site-header .brand-text small{
+    font-size:7px;
+    letter-spacing:.04em;
+    white-space:normal;
+    max-width:225px;
+  }
+
+  .site-header .menu-toggle{
+    display:block;
+    flex-shrink:0;
+  }
+
+  .site-header #mainNav{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    max-height:calc(100vh - 72px);
+    overflow-y:auto;
+    padding:18px 5% 24px;
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 16px 28px rgba(33,16,22,.08);
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+    gap:0;
+    font-size:12px;
+  }
+
+  .site-header #mainNav.open{display:flex}
+
+  .site-header #mainNav > a,
+  .site-header #mainNav .nav-parent{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+    white-space:normal;
+  }
+
+  .site-header #mainNav .nav-contact{
+    justify-content:center;
+    margin-top:12px;
+    padding:12px;
+  }
+
+  .site-header #mainNav .nav-dropdown{width:100%}
+
+  .site-header #mainNav .dropdown-menu{
+    display:block;
+    position:static;
+    min-width:0;
+    width:100%;
+    padding:2px 0 2px 12px;
+    margin:0 0 8px 10px;
+    border:0;
+    border-left:1px solid var(--gold);
+    box-shadow:none;
+    background:transparent;
+  }
+
+  .site-header #mainNav .dropdown-menu a{
+    padding:9px 10px;
+    font-size:11px;
+  }
+}
+
+@media(max-width:420px){
+  .site-header{padding:0 4%}
+
+  .site-header .brand-mark{
+    width:34px;
+    height:34px;
+    font-size:23px;
+  }
+
+  .site-header .brand-text strong{font-size:13px}
+  .site-header .brand-text small{font-size:6px;max-width:205px}
+}
+
+/* PAGE HERO */
+
+.profile-hero{
+  background:var(--wine);
+  color:var(--white);
+  position:relative;
+  overflow:hidden;
+}
+
+.profile-hero:before,
+.profile-hero:after{
+  content:"";
+  position:absolute;
+  border:1px solid #c2a06a35;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.profile-hero:before{
+  width:570px;
+  height:570px;
+  right:-190px;
+  top:-330px;
+  box-shadow:0 0 0 35px #c2a06a0b,0 0 0 80px #c2a06a08;
+}
+
+.profile-hero:after{
+  width:300px;
+  height:300px;
+  left:-190px;
+  bottom:-230px;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:1;
+  padding:78px 0 82px;
+  max-width:900px;
+}
+
+.eyebrow{
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:700;
+}
+
+.hero-inner h1{
+  font:clamp(43px,6vw,70px)/1.06 var(--serif);
+  letter-spacing:-.04em;
+  margin:18px 0;
+}
+
+.hero-inner h1 em{
+  color:#d8bc91;
+  font-weight:400;
+}
+
+.hero-inner p{
+  max-width:760px;
+  margin:0;
+  color:#eee0d1;
+  font:clamp(18px,2vw,21px)/1.8 var(--serif);
+}
+
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  margin-top:27px;
+  color:#ddcdbb;
+  font-size:10px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.hero-meta span:before{
+  content:"";
+  display:inline-block;
+  width:5px;
+  height:5px;
+  background:var(--gold);
+  border-radius:50%;
+  margin:0 9px 2px 0;
+}
+
+/* PLATFORM LOGO MOTIF — NOT YOUR PERSONAL LOGO */
+
+.platform-motif{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:34px;
+}
+
+.platform-motif span{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border:1px solid #d8bc916b;
+  color:#e7d0ad;
+  font-size:12px;
+  letter-spacing:.03em;
+}
+
+/* INTRO */
+
+.intro-section{
+  padding:57px 0 42px;
+  background:var(--white);
+}
+
+.eyebrow-dark{
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--wine2);
+  font-weight:700;
+}
+
+.intro-section h2{
+  font:clamp(30px,4vw,43px)/1.15 var(--serif);
+  letter-spacing:-.025em;
+  margin:11px 0 17px;
+}
+
+.intro-section p{
+  max-width:800px;
+  margin:0;
+  color:#5b5149;
+  font:18px/1.8 var(--serif);
+}
+
+/* QUICK LINKS */
+
+.profile-shortcuts{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:26px;
+}
+
+.profile-shortcuts a{
+  display:inline-block;
+  border:1px solid var(--line);
+  color:var(--wine);
+  text-decoration:none;
+  padding:8px 13px;
+  font-size:10px;
+  letter-spacing:.06em;
+  transition:.2s ease;
+}
+
+.profile-shortcuts a:hover{
+  background:var(--wine);
+  color:white;
+  border-color:var(--wine);
+}
+
+/* MAIN PROFILE SECTIONS */
+
+.profiles-section{
+  background:var(--white);
+  padding:30px 0 76px;
+}
+
+.profile-group{
+  margin-bottom:58px;
+  scroll-margin-top:110px;
+}
+
+.group-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:17px;
+  margin-bottom:23px;
+}
+
+.group-heading h2{
+  margin:7px 0 0;
+  font:clamp(28px,3.5vw,38px)/1.2 var(--serif);
+  color:var(--wine2);
+  letter-spacing:-.025em;
+}
+
+.group-heading p{
+  margin:0;
+  max-width:340px;
+  text-align:right;
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* PROFILE CARDS */
+
+.profile-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.profile-card{
+  min-width:0;
+  min-height:224px;
+  display:flex;
+  flex-direction:column;
+  padding:24px;
+  background:var(--cream);
+  border:1px solid var(--line);
+  text-decoration:none;
+  position:relative;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+
+.profile-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--gold);
+  box-shadow:0 14px 30px rgba(47,41,38,.08);
+}
+
+.profile-card-top{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:17px;
+}
+
+/* EXTERNAL PLATFORM LOGOS */
+
+.platform-logo{
+  width:53px;
+  height:53px;
+  flex:0 0 53px;
+  display:grid;
+  place-items:center;
+  background:#fffdf9;
+  border:1px solid var(--line);
+  padding:9px;
+}
+
+.platform-logo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.platform-logo .fallback{
+  font:23px var(--serif);
+  color:var(--wine);
+}
+
+.profile-card h3{
+  margin:0;
+  color:var(--wine2);
+  font:21px/1.25 var(--serif);
+}
+
+.profile-handle{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:4px;
+  overflow-wrap:anywhere;
+}
+
+.profile-card p{
+  margin:0 0 20px;
+  color:#655a51;
+  font-size:12px;
+  line-height:1.8;
+  flex-grow:1;
+}
+
+.profile-open{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:var(--wine);
+  border-top:1px solid var(--line);
+  padding-top:12px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+
+.profile-open span:last-child{
+  font-size:17px;
+  font-weight:400;
+  transition:transform .2s ease;
+}
+
+.profile-card:hover .profile-open span:last-child{
+  transform:translate(3px,-3px);
+}
+
+/* FEATURED LITERARY PLATFORMS */
+
+.featured-card{
+  background:var(--wine2);
+  border-color:var(--wine2);
+}
+
+.featured-card h3{color:#f7eee3}
+.featured-card .profile-handle,
+.featured-card p{color:#ddcdbb}
+
+.featured-card .platform-logo{
+  background:#fffdf9;
+  border-color:var(--gold);
+}
+
+.featured-card .profile-open{
+  color:#e5c99d;
+  border-color:#ffffff2c;
+}
+
+/* FUTURE PROFILES */
+
+.more-profiles{
+  background:var(--wine);
+  color:var(--white);
+  padding:55px 0;
+  position:relative;
+  overflow:hidden;
+}
+
+.more-profiles:after{
+  content:"";
+  position:absolute;
+  width:350px;
+  height:350px;
+  right:-180px;
+  top:-210px;
+  border:1px solid #d8bc9130;
+  border-radius:50%;
+  box-shadow:0 0 0 35px #d8bc910b,0 0 0 75px #d8bc9108;
+}
+
+.more-profiles .wrap{position:relative;z-index:1}
+
+.more-profiles h2{
+  margin:10px 0 12px;
+  font:clamp(29px,4vw,42px)/1.2 var(--serif);
+}
+
+.more-profiles p{
+  max-width:720px;
+  color:#e6d6c8;
+  margin:0;
+  font-size:13px;
+  line-height:1.9;
+}
+
+.more-profile-note{
+  display:inline-block;
+  margin-top:23px;
+  border:1px solid #d8bc9180;
+  padding:11px 15px;
+  color:#e7d0ad;
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+/* ORIGINAL WEBSITE FOOTER STYLE */
+
+footer{
+  background:#29151a;
+  color:#d9c9ba;
+  padding:25px 0;
+  font-size:12px;
+}
+
+.foot{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.foot a{color:#e8d3ad}
+.footer-links{line-height:2.2}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+  .profile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:650px){
+  .wrap{width:calc(100% - 30px)}
+
+  .hero-inner{padding:57px 0 62px}
+  .hero-inner h1{font-size:clamp(42px,12vw,59px)}
+  .hero-inner p{font-size:17px}
+
+  .intro-section{padding:44px 0 32px}
+  .intro-section p{font-size:16px}
+
+  .group-heading{display:block}
+  .group-heading p{text-align:left;margin-top:8px}
+
+  .profile-grid{grid-template-columns:1fr;gap:13px}
+
+  .profile-card{
+    min-height:190px;
+    padding:21px;
+  }
+
+  .profile-group{margin-bottom:43px}
+  .profiles-section{padding-bottom:52px}
+  .more-profiles{padding:44px 0}
+}
+
+@media(max-width:420px){
+  .site-header{padding:0 4%}
+  .site-header .brand-mark{width:34px;height:34px;font-size:23px}
+  .site-header .brand-text strong{font-size:13px}
+  .site-header .brand-text small{font-size:6px;max-width:205px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP STRIP -->
+
+<div class="top">
+  <div class="wrap">
+    <span>INDEPENDENT RESEARCH · LITERATURE · HERITAGE</span>
+    <span>Bihar, India</span>
+  </div>
+</div>
+
+<!-- HEADER: SAME PERSONAL LOGO AS BIOGRAPHY.HTML -->
+
+<header class="site-header">
+
+  <a class="brand" href="home.html" aria-label="Syed Amjad Hussain home">
+
+    <span class="brand-mark" aria-hidden="true">أ</span>
+
+    <span class="brand-text">
+      <strong>Syed Amjad Hussain</strong>
+      <small>Ethnographer · Author · Historian · Poet · Researcher</small>
+    </span>
+
+  </a>
+
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    type="button"
+    aria-label="Open navigation"
+    aria-expanded="false"
+    aria-controls="mainNav"
+  >☰</button>
+
+  <nav id="mainNav" aria-label="Main navigation">
+
+    <a href="home.html">Home</a>
+
+    <a href="biography.html">Biography</a>
+
+    <div class="nav-dropdown">
+      <a href="books-articles.html" class="nav-parent">
+        Books &amp; Articles <span class="nav-arrow">⌄</span>
+      </a>
+      <div class="dropdown-menu">
+        <a href="the-eternals-of-bihar.html">The Eternals of Bihar</a>
+        <a href="akhtar-orenvi-bio.html">Akhtar Orenvi</a>
+        <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a>
+      </div>
+    </div>
+
+    <div class="nav-dropdown">
+      <a href="poetry.html" class="nav-parent">
+        Poetry <span class="nav-arrow">⌄</span>
+      </a>
+      <div class="dropdown-menu">
+        <a href="sher.html">Sher Collection</a>
+      </div>
+    </div>
+
+    <a href="social-work.html">Social Work</a>
+
+    <a href="awards-honours.html">Awards &amp; Honours</a>
+
+    <div class="nav-dropdown">
+      <a href="research.html" class="nav-parent">
+        Research <span class="nav-arrow">⌄</span>
+      </a>
+      <div class="dropdown-menu">
+        <a href="sufi-heritage.html">Sufi Heritage of Bihar</a>
+        <a href="sheikhpura-history.html">Sheikhpura History</a>
+        <a href="ancestral-heritage.html">Ancestral Heritage</a>
+      </div>
+    </div>
+
+    <a href="media.html">Media</a>
+
+    <a href="profiles.html" aria-current="page">Profiles</a>
+
+    <a class="nav-contact" href="contact.html">
+      Contact <span>↗</span>
+    </a>
+
+  </nav>
+
+</header>
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="profile-hero">
+
+    <div class="wrap hero-inner">
+
+      <div class="eyebrow">Official Online Presence</div>
+
+      <h1>
+        Connect.<br>
+        <em>Discover. Follow.</em>
+      </h1>
+
+      <p>
+        Explore the social, literary, academic and research profiles of
+        Syed Amjad Hussain across platforms dedicated to literature,
+        Urdu poetry, independent scholarship and cultural heritage.
+      </p>
+
+      <div class="hero-meta">
+        <span>Syed Amjad Hussain</span>
+        <span>Author · Poet · Researcher</span>
+      </div>
+
+      <div class="platform-motif" aria-label="Featured platforms">
+        <span>IG</span>
+        <span>f</span>
+        <span>𝕏</span>
+        <span>ر</span>
+        <span>ص</span>
+        <span>A</span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- INTRODUCTION -->
+
+  <section class="intro-section">
+
+    <div class="wrap">
+
+      <div class="eyebrow-dark">One identity · Many platforms</div>
+
+      <h2>Find me across the digital world.</h2>
+
+      <p>
+        My work and writing reach readers through different platforms.
+        This page brings together my social media accounts, Urdu literary
+        profiles, academic presence and research platforms. Choose a
+        platform below to visit the respective profile.
+      </p>
+
+      <div class="profile-shortcuts">
+        <a href="#social">Social Media</a>
+        <a href="#literary">Literary Platforms</a>
+        <a href="#research">Research &amp; Academic</a>
+        <a href="#more">More Profiles</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROFILE COLLECTION -->
+
+  <section class="profiles-section">
+
+    <div class="wrap">
+
+      <!-- SOCIAL MEDIA -->
+
+      <div class="profile-group" id="social">
+
+        <div class="group-heading">
+          <div>
+            <div class="eyebrow-dark">Stay connected</div>
+            <h2>Social Media</h2>
+          </div>
+          <p>Updates, writings, announcements and moments from my work.</p>
+        </div>
+
+        <div class="profile-grid">
+
+          <a class="profile-card"
+             href="https://www.instagram.com/isyedamjad"
+             target="_blank" rel="noopener noreferrer">
+
+            <div class="profile-card-top">
+              <div class="platform-logo">
+                <img src="https://cdn.simpleicons.org/instagram/E4405F"
+                     alt="Instagram logo">
+              </div>
+              <div>
+                <h3>Instagram</h3>
+                <span class="profile-handle">@isyedamjad</span>
+              </div>
+            </div>
+
+            <p>
+              Poetry, literary posts, personal updates, photographs
+              and glimpses of research and heritage work.
+            </p>
+
+            <div class="profile-open">
+              <span>Visit Instagram</span><span>↗</span>
+            </div>
+
+          </a>
+
+          <a class="profile-card"
+             href="https://www.facebook.com/isyedamjad"
+             target="_blank" rel="noopener noreferrer">
+
+            <div class="profile-card-top">
+              <div class="platform-logo">
+                <img src="https://cdn.simpleicons.org/facebook/1877F2"
+                     alt="Facebook logo">
+              </div>
+              <div>
+                <h3>Facebook</h3>
+                <span class="profile-handle">facebook.com/isyedamjad</span>
+              </div>
+            </div>
+
+            <p>
+              Public updates, articles, literary activities,
+              announcements and interactions with readers.
+            </p>
+
+            <div class="profile-open">
+              <span>Visit Facebook</span><span>↗</span>
+            </div>
+
+          </a>
+
+          <a class="profile-card"
+             href="https://www.twitter.com/Isyedamjad"
+             target="_blank" rel="noopener noreferrer">
+
+            <div class="profile-card-top">
+              <div class="platform-logo">
+                <img src="https://cdn.simpleicons.org/x/000000"
+                     alt="X logo">
+              </div>
+              <div>
+                <h3>X / Twitter</h3>
+                <span class="profile-handle">@Isyedamjad</span>
+              </div>
+            </div>
+
+            <p>
+              Thoughts, research updates, public conversations
+              and selected writings.
+            </p>
+
+            <div class="profile-open">
+              <span>Visit X / Twitter</span><span>↗</span>
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- LITERARY PLATFORMS -->
+
+      <div class="profile-group" id="literary">
+
+        <div class="group-heading">
+          <div>
+            <div class="eyebrow-dark">Poetry · Literature · Urdu</div>
+            <h2>Literary Platforms</h2>
+          </div>
+          <p>My literary identity and presence on Urdu literary platforms.</p>
+        </div>
+
+        <div class="profile-grid">
+
+          <a class="profile-card featured-card"
+             href="https://www.rekhta.org/poets/syed-amjad-hussain/profile"
+             target="_blank" rel="noopener noreferrer">
+
+            <div class="profile-card-top">
+              <div class="platform-logo">
+                <img src="https://www.google.com/s2/favicons?domain=rekhta.org&sz=128"
+                     alt="Rekhta logo">
+              </div>
+              <div>
+                <h3>Rekhta</h3>
+                <span class="profile-handle">Poet Profile</span>
+              </div>
+            </div>
+
+            <p>
+              My poet profile on Rekhta, featuring my literary identity
+              and presence in the world of Urdu poetry.
+            </p>
+
+            <div class="profile-open">
+              <span>Explore Rekhta Profile</span><span>↗</span>
+            </div>
+
+          </a>
+
+          <a class="profile-card featured-card"
+             href="https://sufinama.org/poets/syed-amjad-hussain/profile"
+             target="_blank" rel="noopener noreferrer">
+
+            <div class="profile-card-top">
+              <div class="platform-logo">
+                <img src="https://www.google.com/s2/favicons?domain=sufinama.org&sz=128"
+                     alt="Sufinama logo">
+              </div>
+              <div>
+                <h3>Sufinama</h3>
+                <span class="profile-handle">Poet Profile</span>
+              </div>
+            </div>
+
+            <p>
+              My profile on Sufinama, a platform dedicated to Sufi poetry,
+              literature and spiritual traditions.
+            </p>
+
+            <div class="profile-open">
+              <span>Explore Sufinama Profile</span><span>↗</span>
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- ACADEMIC AND RESEARCH -->
+
+      <div class="profile-group" id="research">
+
+        <div class="group-heading">
+          <div>
+            <div class="eyebrow-dark">Scholarship · Research · Publications</div>
+            <h2>Research &amp; Academic Profiles</h2>
+          </div>
+          <p>Research interests, academic writing and scholarly contributions.</p>
+        </div>
+
+        <div class="profile-grid">
+
+          <a class="profile-card"
+             href="https://independentresearcher.academia.edu/SyedAmjadHussain"
+             target="_blank" rel="noopener noreferrer">
+
+            <div class="profile-card-top">
+              <div class="platform-logo">
+                <img src="https://www.google.com/s2/favicons?domain=academia.edu&sz=128"
+                     alt="Academia.edu logo">
+              </div>
+              <div>
+                <h3>Academia.edu</h3>
+                <span class="profile-handle">Independent Researcher</span>
+              </div>
+            </div>
+
+            <p>
+              Research interests, scholarly contributions and papers
+              on Sufism, history and related subjects.
+            </p>
+
+            <div class="profile-open">
+              <span>Visit Academia.edu</span><span>↗</span>
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- MORE PROFILES CAN BE ADDED HERE -->
+
+      <div class="profile-group" id="more">
+
+        <div class="group-heading">
+          <div>
+            <div class="eyebrow-dark">Digital presence</div>
+            <h2>More Profiles</h2>
+          </div>
+          <p>Additional publishing, media and professional profiles.</p>
+        </div>
+
+        <div class="profile-grid">
+
+          <!--
+          COPY THIS CARD TO ADD ANOTHER PLATFORM:
+
+          <a class="profile-card"
+             href="YOUR-PROFILE-LINK"
+             target="_blank" rel="noopener noreferrer">
+
+            <div class="profile-card-top">
+              <div class="platform-logo">
+                <img src="PLATFORM-LOGO-IMAGE"
+                     alt="Platform logo">
+              </div>
+              <div>
+                <h3>Platform Name</h3>
+                <span class="profile-handle">Profile description</span>
+              </div>
+            </div>
+
+            <p>Short description of this profile.</p>
+
+            <div class="profile-open">
+              <span>Visit Profile</span><span>↗</span>
+            </div>
+
+          </a>
+          -->
+
+          <article class="profile-card">
+            <div class="profile-card-top">
+              <div class="platform-logo">
+                <span class="fallback">+</span>
+              </div>
+              <div>
+                <h3>More Coming Soon</h3>
+                <span class="profile-handle">Additional profiles</span>
+              </div>
+            </div>
+
+            <p>
+              More literary, academic, publishing and professional
+              profiles will be added to this directory.
+            </p>
+
+            <div class="profile-open">
+              <span>Directory expanding</span><span>✦</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CLOSING SECTION -->
+
+  <section class="more-profiles">
+
+    <div class="wrap">
+
+      <div class="eyebrow">A growing digital presence</div>
+
+      <h2>One name. Many expressions of work.</h2>
+
+      <p>
+        From Urdu poetry and literary platforms to independent research
+        and historical documentation, these profiles represent different
+        dimensions of my work. I welcome readers, researchers, writers
+        and institutions to connect through the platform most relevant
+        to them.
+      </p>
+
+      <div class="more-profile-note">
+        Literature · Research · Heritage · Poetry
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<!-- FOOTER: SAME STYLE AS YOUR EXISTING WEBSITE -->
+
+<footer>
+  <div class="wrap foot">
+
+    <span>
+      © <span id="year">2026</span> Syed Amjad Hussain
+    </span>
+
+    <span class="footer-links">
+      <a href="home.html">Home</a> ·
+      <a href="biography.html">Biography</a> ·
+      <a href="books-articles.html">Books &amp; Articles</a> ·
+      <a href="bihar-aur-sufivad.html">Bihar Aur Sufivad</a> ·
+      <a href="the-eternals-of-bihar.html">The Eternals of Bihar</a> ·
+      <a href="akhtar-orenvi-bio.html">Akhtar Orenvi</a> ·
+      <a href="poetry.html">Poetry</a> ·
+      <a href="sher.html">Sher Collection</a> ·
+      <a href="social-work.html">Social Work</a> ·
+      <a href="awards-honours.html">Awards &amp; Honours</a> ·
+      <a href="research.html">Research</a> ·
+      <a href="sufi-heritage.html">Sufi Heritage of Bihar</a> ·
+      <a href="sheikhpura-history.html">Sheikhpura History</a> ·
+      <a href="ancestral-heritage.html">Ancestral Heritage</a> ·
+      <a href="media.html">Media</a> ·
+      <a href="profiles.html">Profiles</a> ·
+      <a href="contact.html">Contact</a>
+    </span>
+
+  </div>
+</footer>
+
+<!-- ORIGINAL MOBILE MENU BEHAVIOUR -->
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+if (menuToggle && mainNav) {
+
+  menuToggle.addEventListener("click", () => {
+
+    const isOpen = mainNav.classList.toggle("open");
+
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation" : "Open navigation"
+    );
+
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+
+  });
+
+  mainNav.querySelectorAll("a").forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+      mainNav.classList.remove("open");
+
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation");
+
+      menuToggle.textContent = "☰";
+
+    });
+
+  });
+
+  document.addEventListener("keydown", (event) => {
+
+    if (event.key === "Escape") {
+
+      mainNav.classList.remove("open");
+
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation");
+
+      menuToggle.textContent = "☰";
+
+    }
+
+  });
+
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
