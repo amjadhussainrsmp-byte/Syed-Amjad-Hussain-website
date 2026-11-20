@@ -378,21 +378,21 @@ body{background:var(--media-cream)}
 .media-card h3{font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#332425;letter-spacing:-.012em;margin:0 0 25px}
 .media-link{margin-top:auto;align-self:flex-start;color:#642631;border-bottom:1px solid #c7a86d;padding-bottom:5px;font-size:10px;font-weight:700;letter-spacing:.03em}
 .media-link span{color:#a47a3f;margin-left:10px}
-.media-card:nth-child(1){grid-column:span 2;background:linear-gradient(135deg,#fffdf8,#f1e5d4)}
-.media-card:nth-child(1) .media-card-top{background:#5a202b;color:#fff8ec;border-bottom:0}
-.media-card:nth-child(1) .media-number{font-size:34px;color:#e6c78c}
-.media-card:nth-child(1) .media-tag{color:#f2dfb9}
-.media-card:nth-child(1) .media-card-body{padding:30px 32px 33px;min-height:250px}
-.media-card:nth-child(1) .media-card-body:before{content:"FEATURED STORY";display:block;font-size:8px;letter-spacing:.2em;color:#987343;margin-bottom:14px}
-.media-card:nth-child(1) h3{font-size:clamp(22px,2.5vw,31px);line-height:1.42;max-width:760px}
-.media-card:nth-child(1):after{content:"“";position:absolute;right:20px;bottom:-80px;font-family:Georgia,serif;font-size:250px;line-height:1;color:rgba(126,63,53,.055);pointer-events:none}
+.media-card.is-featured{grid-column:span 2;background:linear-gradient(135deg,#fffdf8,#f1e5d4)}
+.media-card.is-featured .media-card-top{background:#5a202b;color:#fff8ec;border-bottom:0}
+.media-card.is-featured .media-number{font-size:34px;color:#e6c78c}
+.media-card.is-featured .media-tag{color:#f2dfb9}
+.media-card.is-featured .media-card-body{padding:30px 32px 33px;min-height:250px}
+.media-card.is-featured .media-card-body:before{content:"FEATURED STORY";display:block;font-size:8px;letter-spacing:.2em;color:#987343;margin-bottom:14px}
+.media-card.is-featured h3{font-size:clamp(22px,2.5vw,31px);line-height:1.42;max-width:760px}
+.media-card.is-featured:after{content:"“";position:absolute;right:20px;bottom:-80px;font-family:Georgia,serif;font-size:250px;line-height:1;color:rgba(126,63,53,.055);pointer-events:none}
 .site-footer{margin-top:0}
 @media(max-width:900px){
  .media-hero-inner{grid-template-columns:1fr;gap:25px}
  .media-hero-inner:after{grid-column:1;grid-row:2;justify-self:start;width:min(100%,420px);min-height:150px}
  .media-stats{grid-column:1;grid-row:3;margin-top:18px}
  .media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .media-card:nth-child(1){grid-column:span 2}
+ .media-card.is-featured{grid-column:span 2}
 }
 @media(max-width:600px){
  .media-hero{padding:46px 0 45px;min-height:auto}
@@ -411,9 +411,9 @@ body{background:var(--media-cream)}
  .media-search input{min-width:0;width:100%;flex:1}
  .media-search button{padding:0 13px}
  .media-grid{grid-template-columns:1fr;gap:14px}
- .media-card:nth-child(1){grid-column:auto}
- .media-card:nth-child(1) .media-card-body{padding:24px 22px;min-height:0}
- .media-card:nth-child(1) h3{font-size:23px}
+ .media-card.is-featured{grid-column:auto}
+ .media-card.is-featured .media-card-body{padding:24px 22px;min-height:0}
+ .media-card.is-featured h3{font-size:23px}
  .media-card-body{min-height:0;padding:21px}
  .media-card h3{font-size:18px}
 }
@@ -589,36 +589,36 @@ main{background:var(--media-cream)}
 .media-link span{font-size:13px;display:inline-block;transition:transform .2s}
 .media-link:hover span{transform:translate(3px,-2px)}
 /* Featured lead story */
-.media-card:nth-child(1){
+.media-card.is-featured{
   grid-column:span 2;
   min-height:320px;
   background:linear-gradient(125deg,#fffdf8 0%,#f2e7d8 100%);
   border-color:#d9c7aa;
   box-shadow:0 16px 42px rgba(55,34,29,.075);
 }
-.media-card:nth-child(1) .media-card-top{
+.media-card.is-featured .media-card-top{
   min-height:76px;padding:19px 27px;
   background:linear-gradient(110deg,#3e1720,#642a36);
 }
-.media-card:nth-child(1) .media-number{font-size:34px;color:#e5c58b}
-.media-card:nth-child(1) .media-tag{color:#ead8b8}
-.media-card:nth-child(1) .media-card-body{
+.media-card.is-featured .media-number{font-size:34px;color:#e5c58b}
+.media-card.is-featured .media-tag{color:#ead8b8}
+.media-card.is-featured .media-card-body{
   padding:31px 34px 32px;
   min-height:240px;
 }
-.media-card:nth-child(1) .media-card-body:before{
+.media-card.is-featured .media-card-body:before{
   content:"EDITOR'S HIGHLIGHT";
   display:block;width:max-content;
   color:#977243;font-size:8px;letter-spacing:.23em;
   border-bottom:1px solid #c9ac7a;padding-bottom:8px;margin-bottom:18px;
 }
-.media-card:nth-child(1) .media-outlet{margin-bottom:13px}
-.media-card:nth-child(1) h3{
+.media-card.is-featured .media-outlet{margin-bottom:13px}
+.media-card.is-featured h3{
   font-size:clamp(23px,2.5vw,32px);
   line-height:1.42;max-width:760px;
   margin-bottom:25px;
 }
-.media-card:nth-child(1):after{
+.media-card.is-featured:after{
   content:"“";right:20px;bottom:-88px;
   font-size:280px;color:rgba(126,63,53,.045);
 }
@@ -686,16 +686,16 @@ main{background:var(--media-cream)}
   .media-card{min-height:0}
   .media-card-body{min-height:0;padding:19px 17px 21px}
   .media-card h3{font-size:16px;line-height:1.55}
-  .media-card:nth-child(1) .media-card-body{padding:25px 23px;min-height:0}
-  .media-card:nth-child(1) h3{font-size:23px}
+  .media-card.is-featured .media-card-body{padding:25px 23px;min-height:0}
+  .media-card.is-featured h3{font-size:23px}
   .media-cta{margin-top:55px;padding:30px 24px}
   .media-cta:after{right:1%;font-size:130px}
 }
 @media(max-width:600px){
   .media-grid{grid-template-columns:1fr;gap:14px}
-  .media-card:nth-child(1){grid-column:auto}
-  .media-card:nth-child(1) .media-card-body{padding:24px 21px}
-  .media-card:nth-child(1) h3{font-size:22px}
+  .media-card.is-featured{grid-column:auto}
+  .media-card.is-featured .media-card-body{padding:24px 21px}
+  .media-card.is-featured h3{font-size:22px}
   .media-card-body{padding:20px 20px 22px}
   .media-card h3{font-size:17px}
   .media-card-top{min-height:58px;padding:14px 18px}
@@ -830,31 +830,31 @@ main{background:var(--media-cream)}
 .media-link:hover{color:#9b7040 !important;border-color:#c5a36b}
 .media-link:hover span{transform:translate(3px,-2px);background:#652e36;color:#fff8ed}
 /* Lead story: larger editorial feature, still part of the card grid. */
-.media-card:nth-child(1){
+.media-card.is-featured{
   grid-column:span 2 !important;
   min-height:330px !important;
   border-color:#cdb991 !important;
   background:linear-gradient(125deg,#fffdf8 0%,#f2e8da 100%) !important;
   box-shadow:0 14px 36px rgba(55,34,29,.09) !important;
 }
-.media-card:nth-child(1) .media-card-top{
+.media-card.is-featured .media-card-top{
   min-height:84px !important;padding:20px 28px !important;
   background:linear-gradient(110deg,#32141d,#652e36 75%,#78434a) !important;
 }
-.media-card:nth-child(1) .media-number{font-size:39px !important}
-.media-card:nth-child(1) .media-card-body{padding:28px 30px 25px !important;min-height:246px !important}
-.media-card:nth-child(1) .media-card-body:before{
+.media-card.is-featured .media-number{font-size:39px !important}
+.media-card.is-featured .media-card-body{padding:28px 30px 25px !important;min-height:246px !important}
+.media-card.is-featured .media-card-body:before{
   content:"FEATURED PRESS STORY";
   display:block;margin:0 0 13px;padding:0 0 8px;
   color:#987443;border-bottom:1px solid #cdb58b;
   font-size:8px;font-weight:700;letter-spacing:.22em;
 }
-.media-card:nth-child(1) .media-outlet{margin-bottom:13px !important}
-.media-card:nth-child(1) h3{
+.media-card.is-featured .media-outlet{margin-bottom:13px !important}
+.media-card.is-featured h3{
   max-width:790px;margin-bottom:23px !important;
   font-size:clamp(23px,2.35vw,31px) !important;line-height:1.4 !important;
 }
-.media-card:nth-child(1):after{
+.media-card.is-featured:after{
   right:15px;bottom:-100px;width:240px;height:240px;
   border-color:rgba(184,155,106,.22);
   box-shadow:0 0 0 17px rgba(184,155,106,.035),0 0 0 35px rgba(184,155,106,.025);
@@ -866,15 +866,236 @@ main{background:var(--media-cream)}
 }
 @media(max-width:600px){
   .media-grid{grid-template-columns:1fr !important;gap:16px !important}
-  .media-card,.media-card:nth-child(1){grid-column:auto !important;min-height:0 !important}
-  .media-card-top,.media-card:nth-child(1) .media-card-top{min-height:66px !important;padding:16px 19px !important}
-  .media-number,.media-card:nth-child(1) .media-number{font-size:28px !important}
-  .media-card-body,.media-card:nth-child(1) .media-card-body{min-height:0 !important;padding:22px 20px 20px !important}
-  .media-card h3,.media-card:nth-child(1) h3{font-size:20px !important;line-height:1.48 !important;margin-bottom:24px !important}
-  .media-card:nth-child(1) .media-card-body:before{margin-bottom:12px}
+  .media-card,.media-card.is-featured{grid-column:auto !important;min-height:0 !important}
+  .media-card-top,.media-card.is-featured .media-card-top{min-height:66px !important;padding:16px 19px !important}
+  .media-number,.media-card.is-featured .media-number{font-size:28px !important}
+  .media-card-body,.media-card.is-featured .media-card-body{min-height:0 !important;padding:22px 20px 20px !important}
+  .media-card h3,.media-card.is-featured h3{font-size:20px !important;line-height:1.48 !important;margin-bottom:24px !important}
+  .media-card.is-featured .media-card-body:before{margin-bottom:12px}
   .media-tag{font-size:6px !important;padding:6px 7px}
 }
 @media(prefers-reduced-motion:reduce){.media-card,.media-card:before,.media-link,.media-link span{transition:none !important}}
+
+
+
+/* =====================================================
+   MEDIA ARCHIVE — FINAL VISUAL + INTERACTION REFINEMENT
+   Header, navigation and footer are intentionally untouched.
+===================================================== */
+.media-card[hidden], .media-empty[hidden], .media-clear[hidden] { display:none !important; }
+.media-hero {
+  position:relative; isolation:isolate; overflow:hidden;
+  background:radial-gradient(ellipse at 82% 24%,rgba(190,160,112,.19),transparent 34%),linear-gradient(125deg,#f7f2e9 0%,#eee5d8 58%,#e8dccd 100%);
+}
+.media-hero:before {
+  content:""; position:absolute; z-index:-1; inset:20px 3.5%;
+  border:1px solid rgba(184,155,106,.27); pointer-events:none;
+}
+.media-hero-inner { position:relative; }
+.media-hero h1 { max-width:780px; letter-spacing:-.055em; }
+.media-hero h1 em { color:var(--burgundy); }
+.media-lede { max-width:660px; }
+.media-stats { border-top:1px solid rgba(184,155,106,.38); }
+.media-stats>div { position:relative; }
+.media-stats>div:before { content:""; position:absolute; top:0; left:0; width:25px; height:2px; background:var(--gold); }
+.media-toolbar { align-items:end; }
+.media-search-tools { width:min(100%,520px); display:grid; grid-template-columns:1fr auto; gap:9px 14px; align-items:center; }
+.media-search {
+  grid-column:1 / -1; display:flex; align-items:center; gap:10px; width:100%;
+  min-height:56px; padding:6px 7px 6px 16px; border:1px solid #d6c7b3;
+  background:rgba(255,253,248,.92); box-shadow:0 7px 22px rgba(54,34,29,.045);
+  transition:border-color .2s,box-shadow .2s;
+}
+.media-search:focus-within { border-color:#a98253; box-shadow:0 0 0 3px rgba(184,155,106,.15),0 12px 28px rgba(54,34,29,.07); }
+.search-symbol { color:#98784d; font-size:25px; line-height:1; }
+.media-search input { flex:1; min-width:0; border:0!important; outline:0!important; background:transparent!important; color:var(--ink); font-size:12px; box-shadow:none!important; }
+.media-search input::placeholder { color:#9a8c7e; }
+.media-search button { min-height:40px; border:0; padding:0 16px; background:var(--burgundy); color:#fffaf2; font-size:10px; font-weight:700; letter-spacing:.08em; cursor:pointer; transition:background .2s,transform .2s; }
+.media-search button:hover { background:var(--burgundy-dark); transform:translateY(-1px); }
+.media-search button span { margin-left:8px; color:#e4c58e; }
+.media-search .media-clear { min-width:30px; width:30px; min-height:30px; padding:0; background:transparent; color:#8b7867; font-size:20px; }
+.media-search .media-clear:hover { background:#eee4d7; color:var(--burgundy); transform:none; }
+.media-sort-label { justify-self:end; color:#8d7861; font-size:8px; font-weight:700; letter-spacing:.16em; }
+.media-sort { min-width:175px; min-height:35px; border:1px solid #d8cbb9; padding:0 10px; background:#fffdf8; color:#54463d; font-size:10px; outline-color:var(--gold); }
+.media-filters { display:flex; flex-wrap:wrap; gap:9px; margin:26px 0 19px; }
+.media-filter { border:1px solid #d6c7b3!important; border-radius:2px!important; padding:10px 15px!important; background:rgba(255,253,248,.6)!important; color:#6d5d50!important; font-size:9px!important; font-weight:700!important; letter-spacing:.06em; cursor:pointer; transition:all .22s ease; }
+.media-filter:hover { border-color:#a98253!important; color:var(--burgundy)!important; transform:translateY(-1px); }
+.media-filter.active { border-color:var(--burgundy)!important; background:var(--burgundy)!important; color:#fff9ef!important; box-shadow:0 5px 13px rgba(71,33,39,.14); }
+.media-results-line { display:flex; align-items:center; gap:13px; margin:0 0 17px; color:#8b7867; font-size:8px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
+.media-results-line #mediaResultsCount { color:#6b5144; letter-spacing:.06em; }
+.media-results-rule { flex:1; height:1px; background:linear-gradient(90deg,#cdbb9f,transparent); }
+.media-grid { gap:22px!important; }
+.media-card { border-radius:4px!important; min-height:310px; }
+.media-card-top { min-height:69px!important; }
+.media-card-body { min-height:238px!important; padding:25px 25px 22px!important; }
+.media-card h3 { font-size:clamp(17px,1.42vw,20px)!important; line-height:1.55!important; }
+.media-card.is-featured { grid-column:span 2!important; }
+.media-card.is-featured .media-card-body { min-height:238px!important; }
+.media-empty { margin:24px 0; padding:28px; border:1px dashed #cdbb9f; background:rgba(255,253,248,.55); text-align:center; color:#75675b; font-size:13px; }
+.media-note { margin-top:25px; padding:15px 18px; border-left:2px solid var(--gold); background:rgba(255,253,248,.42); color:#837568; font-size:10px; line-height:1.8; }
+.media-cta { position:relative; overflow:hidden; border:1px solid rgba(211,183,136,.42); box-shadow:0 18px 45px rgba(49,24,28,.13); }
+.media-cta h2 { font-family:var(--serif); letter-spacing:-.025em; }
+.media-card:focus-within { outline:2px solid rgba(184,155,106,.75); outline-offset:3px; }
+@media(max-width:900px) {
+  .media-search-tools { width:100%; }
+  .media-grid { grid-template-columns:repeat(2,minmax(0,1fr))!important; }
+  .media-card.is-featured { grid-column:span 2!important; }
+}
+@media(max-width:600px) {
+  .media-hero:before { inset:9px; }
+  .media-toolbar { align-items:stretch; }
+  .media-search-tools { grid-template-columns:1fr auto; }
+  .media-search { min-height:52px; padding-left:11px; }
+  .media-search button { padding:0 11px; font-size:9px; }
+  .media-sort { min-width:150px; }
+  .media-grid { grid-template-columns:1fr!important; gap:15px!important; }
+  .media-card,.media-card.is-featured { grid-column:auto!important; min-height:0!important; }
+  .media-card-body,.media-card.is-featured .media-card-body { min-height:0!important; padding:22px 20px!important; }
+  .media-card h3,.media-card.is-featured h3 { font-size:19px!important; line-height:1.5!important; }
+  .media-results-line { letter-spacing:.1em; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .media-filter,.media-search,.media-search button,.media-card { transition:none!important; }
+}
+
+
+/* =========================================================
+   MOBILE + CONTRAST CORRECTION
+   Restores the intended burgundy hero and removes the
+   oversized decorative pseudo-card that disrupts mobile flow.
+========================================================= */
+.media-hero {
+  min-height: 0 !important;
+  padding: clamp(54px, 7vw, 86px) 0 54px !important;
+  color: #fffaf2 !important;
+  background:
+    radial-gradient(circle at 88% 14%, rgba(215,183,120,.16), transparent 26%),
+    radial-gradient(circle at 5% 100%, rgba(150,75,82,.24), transparent 34%),
+    linear-gradient(122deg, #35151e 0%, #55212d 54%, #713641 100%) !important;
+}
+.media-hero:before {
+  inset: 14px !important;
+  border-color: rgba(225,194,137,.30) !important;
+}
+.media-hero:after {
+  color: rgba(239,218,181,.075) !important;
+}
+.media-hero-inner {
+  display: block !important;
+  max-width: 1160px !important;
+  padding: 24px clamp(24px, 5vw, 58px) !important;
+}
+.media-hero-inner:after { display: none !important; content: none !important; }
+.media-hero .eyebrow {
+  display: flex !important;
+  align-items: center !important;
+  gap: 13px !important;
+  color: #edcf98 !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .2em !important;
+  line-height: 1.7 !important;
+}
+.media-hero .eyebrow-line {
+  display: inline-block !important;
+  flex: 0 0 42px !important;
+  width: 42px !important;
+  height: 1px !important;
+  background: #d7b778 !important;
+}
+.media-hero h1 {
+  max-width: 850px !important;
+  margin: 28px 0 20px !important;
+  color: #fffaf2 !important;
+  font-size: clamp(48px, 7vw, 82px) !important;
+  line-height: 1.04 !important;
+  letter-spacing: -.055em !important;
+}
+.media-hero h1 em { color: #e8c98e !important; }
+.media-hero .media-lede {
+  max-width: 690px !important;
+  margin: 0 !important;
+  color: #f0e4d9 !important;
+  font-size: 15px !important;
+  line-height: 1.9 !important;
+}
+.media-hero .media-stats {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0,1fr)) !important;
+  max-width: 760px !important;
+  width: 100% !important;
+  margin: 38px 0 0 !important;
+  border: 1px solid rgba(232,207,158,.36) !important;
+  background: rgba(255,250,242,.055) !important;
+  backdrop-filter: blur(5px);
+}
+.media-hero .media-stats > div {
+  min-width: 0 !important;
+  padding: 20px 22px !important;
+  background: transparent !important;
+}
+.media-hero .media-stats strong {
+  color: #f0d49a !important;
+  font-size: clamp(26px, 3vw, 36px) !important;
+  line-height: 1.1 !important;
+}
+.media-hero .media-stats span {
+  display: block !important;
+  margin-top: 8px !important;
+  color: #eadbca !important;
+  font-size: 9px !important;
+  line-height: 1.5 !important;
+  letter-spacing: .13em !important;
+}
+.media-toolbar { padding-top: clamp(48px, 7vw, 82px) !important; }
+.media-card h3 { color: #302426 !important; }
+.media-outlet { color: #805d35 !important; }
+.media-results-line, .media-results-line #mediaResultsCount { color: #665347 !important; }
+.media-note { color: #66594e !important; }
+.media-filter { color: #5d4b40 !important; }
+.media-search input { color: #302426 !important; }
+.media-search input::placeholder { color: #827568 !important; }
+
+@media (max-width: 600px) {
+  .media-hero {
+    padding: 43px 0 34px !important;
+  }
+  .media-hero:before { inset: 8px !important; }
+  .media-hero-inner { padding: 18px 25px !important; }
+  .media-hero .eyebrow {
+    gap: 9px !important;
+    font-size: 8px !important;
+    letter-spacing: .14em !important;
+  }
+  .media-hero .eyebrow-line { flex-basis: 25px !important; width: 25px !important; }
+  .media-hero h1 {
+    margin: 22px 0 15px !important;
+    font-size: clamp(43px, 11vw, 58px) !important;
+    line-height: 1.04 !important;
+  }
+  .media-hero .media-lede {
+    font-size: 13px !important;
+    line-height: 1.8 !important;
+  }
+  .media-hero .media-stats {
+    margin-top: 27px !important;
+    grid-template-columns: repeat(3, minmax(0,1fr)) !important;
+  }
+  .media-hero .media-stats > div { padding: 14px 9px !important; }
+  .media-hero .media-stats strong { font-size: 25px !important; }
+  .media-hero .media-stats span {
+    font-size: 7px !important;
+    letter-spacing: .07em !important;
+    overflow-wrap: anywhere;
+  }
+  .media-toolbar { padding-top: 45px !important; }
+}
+@media (max-width: 360px) {
+  .media-hero-inner { padding-left: 20px !important; padding-right: 20px !important; }
+  .media-hero h1 { font-size: 41px !important; }
+  .media-hero .media-stats > div { padding-left: 6px !important; padding-right: 6px !important; }
+  .media-hero .media-stats span { font-size: 6px !important; }
+}
 
 </style>
 </head>
@@ -987,20 +1208,31 @@ main{background:var(--media-cream)}
           <div class="eyebrow"><span class="eyebrow-line"></span> MEDIA ARCHIVE</div>
           <h2>Stories, books &amp; <em style="color:var(--burgundy)">heritage.</em></h2>
         </div>
-        <div class="media-search" role="search">
-          <input id="mediaSearch" type="search" placeholder="Search headlines or publications…" aria-label="Search media coverage">
-          <button id="mediaSearchButton" type="button">Search ↗</button>
+        <div class="media-search-tools">
+          <form class="media-search" id="mediaSearchForm" role="search">
+            <span class="search-symbol" aria-hidden="true">⌕</span>
+            <input id="mediaSearch" type="search" placeholder="Search headlines or publications…" aria-label="Search media coverage" autocomplete="off">
+            <button id="mediaSearchButton" type="submit">Search <span aria-hidden="true">↗</span></button>
+            <button class="media-clear" id="mediaClearButton" type="button" aria-label="Clear search" title="Clear search">×</button>
+          </form>
+          <label class="media-sort-label" for="mediaSort">SORT BY</label>
+          <select class="media-sort" id="mediaSort" aria-label="Sort press coverage">
+            <option value="featured">Featured order</option>
+            <option value="az">Publication: A–Z</option>
+            <option value="za">Publication: Z–A</option>
+          </select>
         </div>
       </div>
       <div class="media-filters" role="group" aria-label="Filter media coverage">
-        <button class="media-filter active" data-filter="all" type="button">All coverage</button>
-        <button class="media-filter" data-filter="book" type="button">Books &amp; research</button>
-        <button class="media-filter" data-filter="profile" type="button">Profiles &amp; recognition</button>
-        <button class="media-filter" data-filter="public" type="button">Public engagements</button>
+        <button class="media-filter active" data-filter="all" type="button" aria-pressed="true">All coverage</button>
+        <button class="media-filter" data-filter="books" type="button" aria-pressed="false">Books &amp; research</button>
+        <button class="media-filter" data-filter="profiles" type="button" aria-pressed="false">Profiles &amp; recognition</button>
+        <button class="media-filter" data-filter="public" type="button" aria-pressed="false">Public engagements</button>
       </div>
+      <div class="media-results-line"><span id="mediaResultsCount" aria-live="polite">Showing 16 press stories</span><span class="media-results-rule"></span><span>THE PRESS ARCHIVE</span></div>
       <div class="media-grid" id="mediaGrid">
 
-      <article class="media-card">
+      <article class="media-card is-featured" data-categories="books">
         <div class="media-card-top"><span class="media-number">01</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">TwoCircles.net</p>
@@ -1008,7 +1240,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://twocircles.net/2024aug08/450233.html" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="profiles public">
         <div class="media-card-top"><span class="media-number">02</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Dainik Bhaskar</p>
@@ -1016,7 +1248,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://www.bhaskar.com/local/bihar/shekhapura/news/syed-amjad-hussain-to-participate-in-medina-book-fair-in-saudi-arabia-dbp-137788810.html" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="books">
         <div class="media-card-top"><span class="media-number">03</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Navbharat Times</p>
@@ -1024,7 +1256,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://navbharattimes.indiatimes.com/state/uttar-pradesh/bareilly/syed-amjad-hussain-will-write-book-on-imam-ahmed-raza-khan-barelvi/amp_articleshow/104015266.cms" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="public books">
         <div class="media-card-top"><span class="media-number">04</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Dainik Bhaskar</p>
@@ -1032,7 +1264,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://www.bhaskar.com/local/bihar/shekhapura/news/syed-amjad-hussain-presented-a-book-to-the-dm-136108279.html" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="books">
         <div class="media-card-top"><span class="media-number">05</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Navodaya Times</p>
@@ -1040,7 +1272,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://www.navodayatimes.in/news/national/syed-amjad-hussain-opened-the-untouched-aspects-of-urdu-poet/221358/" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="books profiles">
         <div class="media-card-top"><span class="media-number">06</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Prabhat Khabar</p>
@@ -1048,7 +1280,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://www.prabhatkhabar.com/state/bihar/syed-amjad-hussain-new-book-based-on-sufi-history-of-bihar-will-be-published-soon" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="profiles public">
         <div class="media-card-top"><span class="media-number">07</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Hindustan</p>
@@ -1056,7 +1288,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://www.livehindustan.com/bihar/biharsharif/story-young-author-syed-amjad-hussain-invited-to-republic-day-parade-by-ministry-of-defence-201736689042539.html" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="books">
         <div class="media-card-top"><span class="media-number">08</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Journo Mirror</p>
@@ -1064,7 +1296,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://journomirror.com/" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="books">
         <div class="media-card-top"><span class="media-number">09</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Prabhat Khabar</p>
@@ -1072,7 +1304,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://www.prabhatkhabar.com/state/bihar/syed-amjad-hussain-new-book-based-on-sufi-history-of-bihar-will-be-published-soon" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="books">
         <div class="media-card-top"><span class="media-number">10</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">OneIndia Hindi</p>
@@ -1080,7 +1312,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://hindi.oneindia.com/news/bihar/young-author-of-bihar-amjad-writing-book-on-sufi-saints-history-to-promote-peace-and-brotherhood-1147657.html" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="profiles">
         <div class="media-card-top"><span class="media-number">11</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Bhaskar Hindi</p>
@@ -1088,7 +1320,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://www.bhaskarhindi.com/city/patna/syed-amjad-hussain-gave-important-statement-on-sufism-and-mutual-harmony-1059537" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="public">
         <div class="media-card-top"><span class="media-number">12</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">News24 Hindi</p>
@@ -1096,7 +1328,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://hindi.news24online.com/state/now-young-writer-syed-amjad-hussain-will-write-on-sufism/407907/" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="books">
         <div class="media-card-top"><span class="media-number">13</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">News24 Hindi</p>
@@ -1104,7 +1336,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://hindi.news24online.com/state/now-young-writer-syed-amjad-hussain-will-write-on-sufism/407907/" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="books">
         <div class="media-card-top"><span class="media-number">14</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">News24 Hindi</p>
@@ -1112,7 +1344,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://hindi.news24online.com/" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="profiles public">
         <div class="media-card-top"><span class="media-number">15</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Dainik Bhaskar</p>
@@ -1120,7 +1352,7 @@ main{background:var(--media-cream)}
           <a class="media-link" href="https://www.bhaskar.com/" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card" data-categories="public">
         <div class="media-card-top"><span class="media-number">16</span><span class="media-tag">PRESS COVERAGE</span></div>
         <div class="media-card-body">
           <p class="media-outlet">Bhaskar Hindi</p>
@@ -1146,95 +1378,149 @@ main{background:var(--media-cream)}
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="admin-config.js"></script>
   <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const mainNav = document.getElementById('mainNav');
-    menuToggle?.addEventListener('click', () => {
-      const open = mainNav.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', String(open));
-      menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-      menuToggle.textContent = open ? '×' : '☰';
-    });
-    mainNav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      mainNav.classList.remove('open');
-      menuToggle?.setAttribute('aria-expanded', 'false');
-      if (menuToggle) { menuToggle.textContent = '☰'; menuToggle.setAttribute('aria-label', 'Open navigation'); }
-    }));
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const mediaSearch = document.getElementById('mediaSearch');
-    let mediaCards = [...document.querySelectorAll('.media-card')];
-    const mediaFilters = [...document.querySelectorAll('.media-filter')];
-    const mediaEmpty = document.getElementById('mediaEmpty');
-    let activeMediaFilter = 'all';
-    function filterMedia() {
-      const query = (mediaSearch?.value || '').trim().toLowerCase();
-      let count = 0;
-      mediaCards.forEach((card, index) => {
-        const text = card.textContent.toLowerCase();
-        const filter = activeMediaFilter;
-        let categoryMatch = filter === 'all';
-        if (filter === 'book') categoryMatch = /book|sufi|urdu|literary|history|research|kitaab|किताब|सूफी|सूफ़ी|उर्दू|साहित्य/.test(text);
-        if (filter === 'profile') categoryMatch = /award|emerging|आमंत्रण|आमंत्रित|अवार्ड|पहचान|चर्चा|युवा लेखक/.test(text);
-        if (filter === 'public') categoryMatch = /dm|भेंट|बयान|सौहार्द|परेड|madinah|मदीनाह/.test(text);
-        const show = categoryMatch && (!query || text.includes(query));
-        card.hidden = !show;
-        if (show) count++;
-      });
-      mediaEmpty.style.display = count ? 'none' : 'block';
-    }
-    mediaFilters.forEach(button => button.addEventListener('click', () => {
-      activeMediaFilter = button.dataset.filter;
-      mediaFilters.forEach(item => item.classList.toggle('active', item === button));
-      filterMedia();
-    }));
-    mediaSearch?.addEventListener('input', filterMedia);
-    document.getElementById('mediaSearchButton')?.addEventListener('click', filterMedia);
-
-    mediaSearch?.addEventListener('keydown', event => { if (event.key === 'Enter') filterMedia(); });
-
-    // If Supabase is configured and media_press has records, use the live database.
-    // The existing embedded cards remain as a graceful fallback if the table is empty/unavailable.
-    async function loadLiveMediaPress() {
-      try {
-        if (!window.ADMIN_CONFIG?.supabaseUrl || !window.ADMIN_CONFIG?.supabaseAnonKey || !window.supabase) return;
-        const client = window.supabase.createClient(
-          window.ADMIN_CONFIG.supabaseUrl,
-          window.ADMIN_CONFIG.supabaseAnonKey,
-          { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } }
-        );
-        const { data, error } = await client.from('media_press')
-          .select('id,outlet,title,url,category,sort_order,published')
-          .eq('published', true)
-          .order('sort_order', { ascending: true })
-          .order('id', { ascending: false });
-        if (error || !data || !data.length) return;
-        const safe = value => String(value ?? '').replace(/[&<>"']/g, char => ({
-          '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
-        })[char]);
-        const validUrl = value => {
-          try { const url = new URL(value); return ['http:', 'https:'].includes(url.protocol) ? url.href : ''; }
-          catch { return ''; }
-        };
-        const grid = document.getElementById('mediaGrid');
-        grid.innerHTML = data.map((item, index) => {
-          const href = validUrl(item.url);
-          if (!href) return '';
-          return `<article class="media-card">
-            <div class="media-card-top"><span class="media-number">${String(index + 1).padStart(2, '0')}</span><span class="media-tag">${safe(item.category || 'PRESS COVERAGE')}</span></div>
-            <div class="media-card-body">
-              <p class="media-outlet">${safe(item.outlet)}</p>
-              <h3>${safe(item.title)}</h3>
-              <a class="media-link" href="${safe(href)}" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a>
-            </div>
-          </article>`;
-        }).join('');
-        mediaCards = [...document.querySelectorAll('.media-card')];
-        filterMedia();
-      } catch (error) {
-        console.warn('Live media list unavailable; showing embedded press entries.', error);
+    (() => {
+      'use strict';
+      const menuToggle = document.getElementById('menuToggle');
+      const mainNav = document.getElementById('mainNav');
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = mainNav.classList.toggle('open');
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
+          menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+          menuToggle.textContent = isOpen ? '×' : '☰';
+        });
+        mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+          mainNav.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.setAttribute('aria-label', 'Open navigation');
+          menuToggle.textContent = '☰';
+        }));
       }
-    }
-    loadLiveMediaPress();
+
+      const year = document.getElementById('year');
+      if (year) year.textContent = new Date().getFullYear();
+
+      const grid = document.getElementById('mediaGrid');
+      const searchInput = document.getElementById('mediaSearch');
+      const searchForm = document.getElementById('mediaSearchForm');
+      const clearButton = document.getElementById('mediaClearButton');
+      const sortSelect = document.getElementById('mediaSort');
+      const filterButtons = [...document.querySelectorAll('.media-filter')];
+      const emptyState = document.getElementById('mediaEmpty');
+      const resultsCount = document.getElementById('mediaResultsCount');
+      let cards = grid ? [...grid.querySelectorAll('.media-card')] : [];
+      let activeFilter = 'all';
+      let originalOrder = new Map();
+
+      const normalise = value => String(value || '').toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[’‘]/g, "'");
+      const getCategories = card => (card.dataset.categories || '').split(/\s+/).filter(Boolean).map(value => ({ book: 'books', profile: 'profiles' }[value] || value));
+      const getOutlet = card => card.querySelector('.media-outlet')?.textContent.trim() || '';
+      const getSearchText = card => normalise(card.textContent + ' ' + (card.querySelector('.media-link')?.getAttribute('href') || ''));
+
+      function refreshCards() {
+        if (!grid) return;
+        cards = [...grid.querySelectorAll('.media-card')];
+        originalOrder = new Map(cards.map((card, index) => [card, index]));
+      }
+      refreshCards();
+
+      function applyMediaControls() {
+        if (!grid) return;
+        const query = normalise(searchInput?.value.trim() || '');
+        let visible = 0;
+        cards.forEach(card => {
+          const categoryMatch = activeFilter === 'all' || getCategories(card).includes(activeFilter);
+          const searchMatch = !query || getSearchText(card).includes(query);
+          const show = categoryMatch && searchMatch;
+          card.hidden = !show;
+          if (show) visible++;
+        });
+
+        const sort = sortSelect?.value || 'featured';
+        const sorted = [...cards].sort((a, b) => {
+          if (sort === 'az') return getOutlet(a).localeCompare(getOutlet(b), undefined, { sensitivity: 'base' });
+          if (sort === 'za') return getOutlet(b).localeCompare(getOutlet(a), undefined, { sensitivity: 'base' });
+          return (originalOrder.get(a) ?? 0) - (originalOrder.get(b) ?? 0);
+        });
+        sorted.forEach(card => grid.appendChild(card));
+
+        if (emptyState) emptyState.hidden = visible !== 0;
+        if (resultsCount) resultsCount.textContent = `Showing ${visible} of ${cards.length} press ${cards.length === 1 ? 'story' : 'stories'}`;
+        if (clearButton) clearButton.hidden = !searchInput?.value;
+      }
+
+      filterButtons.forEach(button => {
+        button.setAttribute('aria-pressed', String((button.dataset.filter || 'all') === activeFilter));
+        button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter || 'all';
+        filterButtons.forEach(item => {
+          const selected = item === button;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-pressed', String(selected));
+        });
+        applyMediaControls();
+        });
+      });
+
+      searchForm?.addEventListener('submit', event => {
+        event.preventDefault();
+        applyMediaControls();
+      });
+      searchInput?.addEventListener('input', applyMediaControls);
+      clearButton?.addEventListener('click', () => {
+        if (searchInput) { searchInput.value = ''; searchInput.focus(); }
+        applyMediaControls();
+      });
+      sortSelect?.addEventListener('change', applyMediaControls);
+      applyMediaControls();
+
+      // Live database entries are optional; embedded cards remain the fallback.
+      async function loadLiveMediaPress() {
+        try {
+          const config = window.ADMIN_CONFIG;
+          if (!config?.supabaseUrl || !config?.supabaseAnonKey || !window.supabase || !grid) return;
+          const client = window.supabase.createClient(config.supabaseUrl, config.supabaseAnonKey, {
+            auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
+          });
+          const { data, error } = await client.from('media_press')
+            .select('id,outlet,title,url,category,sort_order,published')
+            .eq('published', true)
+            .order('sort_order', { ascending: true })
+            .order('id', { ascending: false });
+          if (error || !Array.isArray(data) || !data.length) return;
+          const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+            '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+          })[char]);
+          const safeURL = value => {
+            try { const url = new URL(value); return ['http:', 'https:'].includes(url.protocol) ? url.href : ''; }
+            catch { return ''; }
+          };
+          const categoryFor = value => {
+            const c = normalise(value);
+            if (/profile|award|recognition|honour|invitation|emerging|parade|सम्मान|अवार्ड|आमंत्रण|परेड/.test(c)) return 'profiles';
+            if (/public|engagement|statement|meeting|event|भेंट|बयान|सौहार्द/.test(c)) return 'public';
+            return 'books';
+          };
+          const markup = data.map((item, index) => {
+            const href = safeURL(item.url);
+            if (!href || !item.title || !item.outlet) return '';
+            const category = categoryFor(item.category || item.title);
+            return `<article class="media-card${index === 0 ? ' is-featured' : ''}" data-categories="${category}">
+              <div class="media-card-top"><span class="media-number">${String(index + 1).padStart(2, '0')}</span><span class="media-tag">${escapeHTML(item.category || 'PRESS COVERAGE')}</span></div>
+              <div class="media-card-body"><p class="media-outlet">${escapeHTML(item.outlet)}</p><h3>${escapeHTML(item.title)}</h3>
+              <a class="media-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">Visit publication <span>↗</span></a></div>
+            </article>`;
+          }).join('');
+          if (!markup.trim()) return;
+          grid.innerHTML = markup;
+          refreshCards();
+          applyMediaControls();
+        } catch (error) {
+          console.warn('Live media list unavailable; showing embedded press entries.', error);
+        }
+      }
+      loadLiveMediaPress();
+    })();
   </script>
 </body>
 </html>
